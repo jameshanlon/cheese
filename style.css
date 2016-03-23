@@ -1,3 +1,8 @@
+body {
+  font-family: 'Droid Sans',sans-serif;
+  font-size:14px;
+}
+
 .container {
   width: 750px;
   margin: 0 auto;
@@ -8,7 +13,7 @@ ul {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #555;
+    background-color: #666;
 }
 
 li {
