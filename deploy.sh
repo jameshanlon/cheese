@@ -24,9 +24,6 @@ rebuild() {
 up() {
   echo "Starting containers..."
   docker start website
-  sleep 5
-  echo "\nWebsite container logs:"
-  docker logs website
 }
 
 down() {
