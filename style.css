@@ -53,7 +53,7 @@ nav li a:hover {
 }
 
 .lead {
-  font-size:1.05em;
+  font-size:1.15em;
   font-weight:bold;
 }
 
@@ -65,6 +65,18 @@ nav li a:hover {
 .banner img {
   width:170px;
   padding: 0 4px 0 4px;
+}
+
+.news li {
+  margin:0.7em 0;
+}
+
+.caption {
+  margin-top:-0.4em;
+}
+
+.video {
+  text-align:center;
 }
 
 .footer {
@@ -91,5 +103,3 @@ nav li a:hover {
   margin:0;
   padding:0;
 }
-
-
