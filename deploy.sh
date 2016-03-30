@@ -9,32 +9,32 @@ rebuild() {
   echo "Rebuilding containers..."
   
   # Remove the existing containers.
-  docker rm website
+  docker rm cheese-website
 
-  # (Re)build the website container.
-  docker build -t website .
+  # (Re)build the cheese-website container.
+  docker build -t cheese-website .
 
-  # Create the website container and link with the db.
-  docker create --name website \
+  # Create the cheese-website container and link with the db.
+  docker create --name cheese-website \
     -p 9080:9080 \
     -v `pwd`:/opt/www \
-    website
+    cheese-website
 }
 
 up() {
   echo "Starting containers..."
-  docker start website
+  docker start cheese-website
 }
 
 down() {
   echo "Stopping containers..."
-  docker stop website
+  docker stop cheese-website
 }
 
 restart() {
-  echo "Restarting website processes..."
+  echo "Restarting cheese-website processes..."
   # Restart processes with supervisorctl.
-  docker exec -it website \
+  docker exec -it cheese-website \
     service nginx restart
 }
 
