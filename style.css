@@ -80,6 +80,10 @@ nav li a:hover {
   list-style-type:none;
 }
 
+.footer-left {
+  width:350px;
+}
+
 .footer-right {
   float:right;
   text-align:right;
