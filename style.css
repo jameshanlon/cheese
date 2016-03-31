@@ -62,8 +62,12 @@ nav li a:hover {
   padding: 4px 4px;
 }
 
+.banner > * {
+  vertical-align:top;
+}
+
 .banner img {
-  width:170px;
+  width:136px;
   padding: 0 4px 0 4px;
 }
 
@@ -73,6 +77,13 @@ nav li a:hover {
 
 .caption {
   margin-top:-0.4em;
+  font-size:0.8em;
+}
+
+.imgcaption {
+  margin-top:-0.4em;
+  font-size:0.75em;
+  width: 136px;
 }
 
 .video {
