@@ -9,6 +9,3 @@ COPY nginx-cheese.conf /etc/nginx/sites-available/
 RUN rm /etc/nginx/conf.d/default.conf && \
     ln -s /etc/nginx/sites-available/nginx-cheese.conf \
           /etc/nginx/sites-enabled/nginx-cheese.conf
-
-EXPOSE 9080
-CMD service nginx start
