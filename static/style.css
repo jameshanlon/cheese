@@ -23,7 +23,7 @@ a:hover {
 }
 
 .container {
-  width: 750px;
+  width: 800px;
   margin: 0 auto;
 }
 
@@ -33,14 +33,16 @@ nav ul {
   padding: 0;
   overflow: hidden;
   background-color:#888;
+  text-align: center;
 }
 
 nav li {
-  float: left;
+  display: inline;
+  font-size: 1.15em;
 }
 
 nav li a {
-  display: block;
+  display: inline-block;
   color: white;
   text-align: center;
   padding: 0.5em;
@@ -48,12 +50,21 @@ nav li a {
 }
 
 nav li a:hover {
+  color: #fff;
   background-color: #111;
   text-decoration: none;
 }
 
+.splash {
+  padding: 0.4em 0.2em 0 0.2em;
+  font-size:1.4em;
+  font-weight:bold;
+  text-align:center;
+}
+
 .lead {
-  font-size:1.15em;
+  padding: 0.4em 0.2em 0 0.2em;
+  font-size:1.4em;
   font-weight:bold;
 }
 
@@ -76,13 +87,14 @@ nav li a:hover {
 }
 
 .caption {
-  margin-top:-0.4em;
+  margin-top:-0.2em;
   font-size:0.8em;
+  text-align:center;
 }
 
 .imgcaption {
-  margin-top:-0.4em;
-  font-size:0.75em;
+  margin-top:0.4em;
+  font-size:0.9em;
   width: 136px;
 }
 
@@ -90,27 +102,53 @@ nav li a:hover {
   text-align:center;
 }
 
-.footer {
-  color:gray;
-  width:100%;
+.content {
+  padding: 1.2em;
 }
 
-.footer ul {
+footer {
+  color:gray;
+  width:100%;
+  padding-bottom:2em;
+}
+
+footer ul {
   padding:0;
   margin:0;
 }
 
-.footer li {
+footer li {
   list-style-type:none;
 }
 
-.footer-left {
+#footer-left {
   width:350px;
 }
 
-.footer-right {
+#footer-right {
   float:right;
   text-align:right;
   margin:0;
   padding:0;
+}
+
+.page-contents {
+  background-color: #ccddff;
+  border-radius:4px;
+  padding:0.5em 0.8em 0.4em 0.8em;
+  margin:0.2em 0 0.6em 0.8em;
+  min-width: 180px;
+  color:white;
+  font-weight:bold;
+}
+
+.page-contents li {
+  padding-top:0.4em; 
+}
+
+.notice {
+  background-color: #ccddff;
+  border-radius:4px;
+  padding:0.8em;
+  margin:0.8em 0 0.8em 0;
 }
