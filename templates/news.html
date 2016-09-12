@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1>News</h1>
+
+{% for item in news %}
+  <h3>{{item.title}}</h3>
+  <p>{{item.date}}<p>
+  <p>{{item.content | safe}}</p>
+{% endfor %}
+
+{% endblock %}

@@ -1,5 +1,7 @@
 import os
 import sys
+import json
+import re
 from flask import Flask, render_template, request
 
 import smtplib
@@ -30,9 +32,31 @@ def send_email(subject, message):
     mailserver.quit()
 
 
+def read_news():
+    items = open('news.txt').read().split('###')[1:]
+    news = []
+    for i in items:
+        date_start = i.find(':date:')
+        title_start = i.find(':title:')
+        content_start = i.find(':content:')
+        date = i[date_start+6:title_start]
+        title = i[title_start+7:content_start]
+        content = i[content_start+9:]
+        news.append({"date": date, "title": title, "content": content})
+    return news
+
+
 @app.route('/')
 def index():
-    return render_template('index.html')
+    news = json.loads(open('news.json').read())
+    if len(news) >= 4:
+        news = news[:4]
+    return render_template('index.html', news=news)
+
+@app.route('/news')
+def news():
+    news = json.loads(open('news.json').read())
+    return render_template('news.html', news=news)
 
 @app.route('/about')
 def about():

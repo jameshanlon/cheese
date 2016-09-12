@@ -1,0 +1,5 @@
+export SMTP_SERVER=
+export USERNAME=
+export PASSWORD=
+export SENDER=
+export RECEIVER=
