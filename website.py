@@ -32,20 +32,6 @@ def send_email(subject, message):
     mailserver.quit()
 
 
-def read_news():
-    items = open('news.txt').read().split('###')[1:]
-    news = []
-    for i in items:
-        date_start = i.find(':date:')
-        title_start = i.find(':title:')
-        content_start = i.find(':content:')
-        date = i[date_start+6:title_start]
-        title = i[title_start+7:content_start]
-        content = i[content_start+9:]
-        news.append({"date": date, "title": title, "content": content})
-    return news
-
-
 @app.route('/')
 def index():
     news = json.loads(open('news.json').read())
