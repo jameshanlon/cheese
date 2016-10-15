@@ -1,2 +1,4 @@
 uwsgi
 flask
+Flask-FlatPages=0.5
+Flask-thumbnails=0.2.1

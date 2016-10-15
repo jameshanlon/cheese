@@ -1,14 +1,19 @@
+import datetime
 import os
 import sys
-import json
 import re
-from flask import Flask, render_template, request
+from flask import Flask, render_template, render_template_string, request
+from flask_flatpages import FlatPages
+from flask_thumbnails import Thumbnail
 
 import smtplib
 from email.MIMEMultipart import MIMEMultipart
 from email.MIMEText import MIMEText
 
 app = Flask(__name__)
+app.config.from_pyfile('settings.cfg')
+pages = FlatPages(app)
+thumb = Thumbnail(app)
 
 SMTP_SERVER = os.environ['SMTP_SERVER']
 USERNAME    = os.environ['USERNAME']
@@ -32,21 +37,39 @@ def send_email(subject, message):
     mailserver.quit()
 
 
+def get_news():
+    news_items = [x for x in pages if 'news' in x.meta]
+    news_items = sorted(news_items, reverse=True,
+                        key=lambda p: p.meta['date'])
+    # Render any templating in each news item.
+    for item in news_items:
+        item.html = render_template_string(item.html)
+    return news_items
+
 @app.route('/')
 def index():
-    news = json.loads(open('news.json').read())
-    if len(news) >= 4:
-        news = news[:4]
-    return render_template('index.html', news=news)
+    news_items = get_news()
+    if len(news_items) >= 4:
+        news_items = news_items[:4]
+    return render_template('index.html', news_items=news_items)
+
+
+@app.route('/<path:path>/')
+def page(path):
+    page = pages.get_or_404(path)
+    template = page.meta.get('template', 'page.html')
+    return render_template(template, page=page)
+
 
 @app.route('/news')
 def news():
-    news = json.loads(open('news.json').read())
-    return render_template('news.html', news=news)
+    return render_template('news.html', news_items=get_news())
+
 
 @app.route('/about')
 def about():
     return render_template('about.html')
+
 
 @app.route('/apply-for-a-survey', methods=['GET', 'POST'])
 def apply_for_a_survey():
@@ -76,9 +99,11 @@ def apply_for_a_survey():
         return render_template('application_successful.html')
     return render_template('apply_for_a_survey.html')
 
+
 @app.route('/get-involved')
 def get_involved():
     return render_template('get_involved.html')
+
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', debug=True)

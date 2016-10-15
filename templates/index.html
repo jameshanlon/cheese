@@ -9,23 +9,38 @@ reduces our carbon emissions.</p>
 
 <div class="banner">
   <div style="display:inline-block">
-  <img src="static/images/thermal6.jpg">
+  <a href="javascript:void(0)" class="pop">
+    <img src="{{'static/images/thermal6.jpg'|thumbnail('128x171')}}"
+         alt="Draught between floorboards">
+  </a>
   <div class="imgcaption">Draught between floorboards</div>
   </div>
   <div style="display:inline-block;">
-  <img src="static/images/thermal7.jpg">
+  <a href="javascript:void(0)" class="pop">
+    <img src="{{'static/images/thermal7.jpg'|thumbnail('128x171')}}"
+         alt="Missing cavity wall insulation">
+  </a>
   <div class="imgcaption">Missing cavity wall insulation</div>
   </div>
   <div style="display:inline-block;">
-  <img src="static/images/thermal8.jpg">
+  <a href="javascript:void(0)" class="pop">
+    <img src="{{'static/images/thermal8.jpg'|thumbnail('128x171')}}"
+         alt="Cold bathroom vent">
+  </a>
   <div class="imgcaption">Cold bathroom vent</div>
   </div>
   <div style="display:inline-block;">
-  <img src="static/images/thermal9.jpg">
+  <a href="javascript:void(0)" class="pop">
+    <img src="{{'static/images/thermal9.jpg'|thumbnail('128x171')}}"
+         alt="Cold loft entrance">
+  </a>
   <div class="imgcaption">Cold loft entrance</div>
   </div>
   <div style="display:inline-block;">
-  <img src="static/images/thermal10.jpg">
+  <a href="javascript:void(0)" class="pop">
+    <img src="{{'static/images/thermal10.jpg'|thumbnail('128x171')}}"
+         alt="Poorly fitted window">
+  </a>
   <div class="imgcaption">Poorly fitted window</div>
   </div>
 </div>
@@ -86,8 +101,8 @@ work.</p>
 
 <div class="news">
 <ul>
-{% for item in news %}
-<li><strong>{{item.title}}</strong>. {{item.content | safe}}</li>
+{% for item in news_items %}
+  <li><strong>{{item.title}}</strong>. {{item}}</li>
 {% endfor %}
 </ul>
 </div>

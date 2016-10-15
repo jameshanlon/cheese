@@ -3,10 +3,12 @@
 
 <h1>News</h1>
 
-{% for item in news %}
-  <h3>{{item.title}}</h3>
-  <p>{{item.date}}<p>
-  <p>{{item.content | safe}}</p>
+{% for item in news_items %}
+  <div class="news-item-large">
+    <h3>{{item.title}}</h3>
+    <p class="news-date">{{item.date}}<p>
+    {{item}}
+  </div>
 {% endfor %}
 
 {% endblock %}

@@ -55,6 +55,32 @@ nav li a:hover {
   text-decoration: none;
 }
 
+.news-item-large {
+  margin-bottom: 2em;
+}
+
+.news-date {
+  color: #888;
+  font-size:1.05em;
+}
+
+.thumbs {
+  text-align: center;
+}
+
+.thumbs img {
+  margin-right: 0.3em;
+}
+
+#imagepreview {
+  width:100%;
+  padding:0.8em;
+}
+
+#imagepreview-caption {
+  padding: 0 0.8em 0.8em 0.8em;
+}
+
 .splash {
   padding: 0.4em 0.2em 0 0.2em;
   font-size:1.4em;
@@ -78,7 +104,6 @@ nav li a:hover {
 }
 
 .banner img {
-  width:136px;
   padding: 0 4px 0 4px;
 }
 
@@ -151,4 +176,12 @@ footer li {
   border-radius:4px;
   padding:0.8em;
   margin:0.8em 0 0.8em 0;
+}
+
+button.close {
+  padding: 0 0.4em 0 0;
+}
+
+body.modal-open {
+  overflow: visible !important;
 }
