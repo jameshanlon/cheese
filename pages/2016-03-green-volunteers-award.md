@@ -1,10 +1,12 @@
 news:
-date: 2016-03-01
+date: 2016-03-29
 title: CHEESE wins Volunteers for Energy Award 2016
 
 The CHEESE project won the [Volunteers for Energy
 Award](http://bristolgreencapital.org/winners-announced-in-the-green-volunteers-awards-2016)
-at the Bristol Green Capital Partnership Green Volunteers' Awards 2016.
+at the Bristol Green Capital Partnership Green Volunteers' Awards 2016, held at
+BGC/Wildlife Consortium awards evening. We would like to congratulate all who
+have helped to make the pilot project a success.
 
 <div class="thumbs">
   <a href="javascript:void(0)" class="pop">

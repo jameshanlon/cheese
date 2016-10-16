@@ -2,7 +2,10 @@ news:
 date: 2016-04-02
 title: CHEESE at the Bristol Energy Hub
 
-On 2nd and 9th April.
+[Bristol Energy](www.bristol-energy.co.uk) kindly invited the CHEESE project to
+run a stall on 2nd and 9th April in their new Energy Hub, located on the
+Bristol Harbourside. This was a great opportunity to showcase the achievements
+and ambitions of CHEESE to members of the public.
 
 <div class="thumbs">
   <a href="javascript:void(0)" class="pop">

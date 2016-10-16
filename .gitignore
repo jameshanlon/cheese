@@ -1,3 +1,4 @@
 CONFIG
+docker-compose.yml
 *.pyc
 static/images/thumbs
