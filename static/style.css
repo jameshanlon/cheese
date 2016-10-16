@@ -64,6 +64,10 @@ nav li a:hover {
   font-size:1.05em;
 }
 
+.news-item-short {
+  padding: 0.8em 0 0 0.6em;
+}
+
 .thumbs {
   text-align: center;
 }

@@ -6,7 +6,7 @@
 {% for item in news_items %}
   <div class="news-item-large">
     <h3>{{item.title}}</h3>
-    <p class="news-date">{{item.date}}<p>
+    <p class="news-date">{{item.date_str}}<p>
     {{item}}
   </div>
 {% endfor %}

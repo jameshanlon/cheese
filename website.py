@@ -44,13 +44,14 @@ def get_news():
     # Render any templating in each news item.
     for item in news_items:
         item.html = render_template_string(item.html)
+        item.date_str = item.meta['date'].strftime('%B %Y')
     return news_items
 
 @app.route('/')
 def index():
     news_items = get_news()
-    if len(news_items) >= 4:
-        news_items = news_items[:4]
+    if len(news_items) >= 3:
+        news_items = news_items[:3]
     return render_template('index.html', news_items=news_items)
 
 

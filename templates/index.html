@@ -100,11 +100,12 @@ work.</p>
 <h3>Latest news</h3>
 
 <div class="news">
-<ul>
 {% for item in news_items %}
-  <li><strong>{{item.title}}</strong>. {{item}}</li>
+  <div class="news-item-short">
+    <strong>{{item.title}}</strong>, <span class="news-date">{{item.date_str}}</span>
+    {{item}}
+  </div>
 {% endfor %}
-</ul>
 </div>
 
 <p><a href="/news">Read more news...</a></p>
