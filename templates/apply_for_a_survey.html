@@ -128,108 +128,24 @@ reception rooms plus bedrooms.</p>
 have submitted it, we will be in contact as soon as possible to confirm the
 date with you.</p>
 
-<form class="form-horizontal" action="/apply-for-a-survey" method="post">
-  <div class="form-group">
-    <label for="name" class="col-sm-3 control-label">Name</label>
-    <div class="col-sm-9">
-      <input type="text" class="form-control" name="name"
-             placeholder="Your name">
+<div id="survey-form">
+  <form method="POST" action="">
+    {{ form.hidden_tag() if form.hidden_tag }}
+    {% for f in form if f.type != 'CSRFTokenField' %}
+    <div class="form-group">
+      {{ f.label }}
+      {{ f }}
+      {% if f.errors %}
+        <ul>
+          {% for e in f.errors %}
+            <span class="error-block">{{ e }}</span>
+          {% endfor %}
+        </ul>
+      {% endif %}
     </div>
-  </div>
-  <div class="form-group">
-    <label for="address" class="col-sm-3 control-label">Address</label>
-    <div class="col-sm-9">
-      <input type="text" class="form-control" name="address"
-             placeholder="The address of the house to be surveyed">
-    </div>
-  </div>
-  <div class="form-group">
-    <label for="telephone" class="col-sm-3 control-label">Telephone</label>
-    <div class="col-sm-9">
-      <input type="text" class="form-control" name="telephone"
-             placeholder="Your contact telephone number">
-    </div>
-  </div>
-  <div class="form-group">
-    <label for="email" class="col-sm-3 control-label">Email</label>
-    <div class="col-sm-9">
-      <input type="email" class="form-control" name="email"
-             placeholder="Your contact email address">
-    </div>
-  </div>
-  <div class="form-group">
-    <label for="availability" class="col-sm-3 control-label">Availability</label>
-    <div class="col-sm-9">
-      <textarea class="form-control" rows="3" name="availability"placeholder="Please indicate the dates and times you are available to have the survey"></textarea>
-    </div>
-  </div>
-  <div class="form-group">
-    <label class="col-sm-3 control-label">Building type</label>
-    <div class="col-sm-9">
-    <div class="radio">
-      <label>
-        <input type="radio" name="house-type" value="detached">
-        Detached/semi-detached
-      </label>
-    </div>
-    <div class="radio">
-      <label>
-        <input type="radio" name="house-type" value="terrace">
-        Terrace
-      </label>
-    </div>
-    <div class="radio">
-      <label>
-        <input type="radio" name="house-type" value="flat">
-        Flat/maisonette
-      </label>
-    </div>
-    <div class="radio">
-      <label>
-        <input type="radio" name="house-type" value="other">
-        <p>Other</p>
-      </label>
-    </div>
-    <input type="text" class="form-control" name="house-type-other"
-            placeholder="If other, please describe the type of building">
-    </div>
-  </div>
-  <div class="form-group">
-    <label for="number-receptions" class="col-sm-3 control-label">
-      Number of reception rooms</label>
-    <div class="col-sm-9">
-      <select class="form-control" name="number-receptions">
-        <option>1</option>
-        <option>2</option>
-        <option>3</option>
-        <option>4+</option>
-      </select>
-    </div>
-  </div>
-  <div class="form-group">
-    <label for="number-bedrooms" class="col-sm-3 control-label">
-      Number of bedrooms</label>
-    <div class="col-sm-9">
-      <select class="form-control" name="number-bedrooms">
-        <option>1</option>
-        <option>2</option>
-        <option>3</option>
-        <option>4+</option>
-      </select>
-    </div>
-  </div>
-  <div class="checkbox">
-    <label class="col-sm-offset-3 col-sm-9">
-      <input type="checkbox" name="free-survey">
-        <p>I live in a low-income household and would like
-        to be considered for a free survey.</p>
-    </label>
-  </div>
-  <div class="form-group">
-    <div class="col-sm-offset-3 col-sm-9">
-      <button type="submit" class="btn btn-default">Submit</button>
-    </div>
-  </div>
-</form>
+    {% endfor %}
+    <button class="btn" type="submit">Submit</button>
+  </form>
+</div>
 
 {% endblock %}

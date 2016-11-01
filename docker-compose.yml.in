@@ -1,18 +1,5 @@
 version: '2'
 services:
-  cheese-flask:
-    restart: always
-    build: flask
-    expose:
-      - "8000"
-    volumes:
-      - .:/opt/www
-    environment:
-      - SMTP_SERVER=${SMTP_SERVER}
-      - USERNAME=${SMTP_USERNAME}
-      - PASSWORD=${SMTP_PASSWORD}
-      - SENDER=${SENDER}
-      - RECEIVER=${RECEIVER}
   nginx:
     restart: always
     build: nginx
@@ -22,3 +9,32 @@ services:
       - cheese-flask
     ports:
       - "80:80"
+  cheese-flask:
+    restart: always
+    build: flask
+    links:
+      - cheese-db
+    expose:
+      - "8000"
+    volumes:
+      - .:/opt/www
+    environment:
+      - CHEESE_SECRET_KEY=${CHEESE_SECRET_KEY}
+      - CHEESE_MYSQL_HOST=${CHEESE_MYSQL_HOST}
+      - CHEESE_MYSQL_DATABASE=${CHEESE_MYSQL_DATABASE}
+      - CHEESE_MYSQL_USER=${CHEESE_MYSQL_USER}
+      - CHEESE_MYSQL_PASSWORD=${CHEESE_MYSQL_PASSWORD}
+      - CHEESE_SMTP_SERVER=${CHEESE_SMTP_SERVER}
+      - CHEESE_SMTP_USERNAME=${CHEESE_SMTP_USERNAME}
+      - CHEESE_SMTP_PASSWORD=${CHEESE_SMTP_PASSWORD}
+      - CHEESE_EMAIL_SENDER=${CHEESE_EMAIL_SENDER}
+      - CHEESE_EMAIL_RECEIVER=${CHEESE_EMAIL_RECEIVER}
+  cheese-db:
+    image: mysql:8.0
+    volumes:
+      - ${CHEESE_MYSQL_DATA_DIR}:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=${CHEESE_MYSQL_ROOT_PASSWORD}
+      - MYSQL_DATABASE=${CHEESE_MYSQL_DATABASE}
+      - MYSQL_USER=${CHEESE_MYSQL_USER}
+      - MYSQL_PASSWORD=${CHEESE_MYSQL_PASSWORD}

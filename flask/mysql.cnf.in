@@ -1,0 +1,6 @@
+[client]
+host = ${CHEESE_MYSQL_HOST}
+default-character-set = utf8
+database = ${CHEESE_MYSQL_DATABASE}
+user = ${CHEESE_MYSQL_USER}
+password = ${CHEESE_MYSQL_PASSWORD}

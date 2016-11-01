@@ -1,0 +1,15 @@
+.admin-form input,
+.admin-form textarea {
+  width: 400px;
+}
+.admin-form input[type="radio"],
+.admin-form input[type="checkbox"],
+.admin-form input[type="submit"] {
+  width: auto;
+}
+.admin-form .control-label {
+  width: 200px;
+  text-align: right;
+  margin-left: 0;
+  margin-right: 1em;
+}

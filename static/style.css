@@ -135,6 +135,28 @@ nav li a:hover {
   padding: 1.2em;
 }
 
+#survey-form input,
+#survey-form textarea {
+  width: 400px;
+}
+#survey-form input[type="checkbox"],
+#survey-form input[type="radio"],
+#survey-form input[type="submit"] {
+  width: auto;
+}
+#survey-form label {
+  width:180px;
+  text-align: right;
+}
+#survey-form ul {
+  list-style: none;
+  margin-left: 140px;
+}
+#survey-form li label {
+  text-align: left;
+  font-weight: normal;
+}
+
 footer {
   color:gray;
   width:100%;

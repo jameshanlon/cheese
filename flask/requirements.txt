@@ -1,4 +1,11 @@
-uwsgi
-flask
+uwsgi==2.0.14
+MySQL-python==1.2.5
+flask==0.11
+Flask-Script==2.0.5
+Flask-Migrate==2.0.0
+Flask-Admin==1.4.2
+Flask-BasicAuth==0.2.0
+Flask-SQLAlchemy==2.1
+Flask-Security==1.7.5
 Flask-FlatPages==0.6
 Flask-thumbnails==0.2.1
