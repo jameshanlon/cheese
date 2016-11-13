@@ -6,6 +6,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && \
     apt-get install -y build-essential \
                        libmysqlclient-dev \
+                       mysql-client \
                        libjpeg-dev \
                        python \
                        python-dev \
@@ -15,5 +16,6 @@ RUN apt-get update && \
 COPY requirements.txt /tmp
 RUN pip install -r /tmp/requirements.txt
 
+COPY mysql.cnf /etc/mysql/conf.d/
 COPY uwsgi.ini /tmp
 CMD uwsgi --ini /tmp/uwsgi.ini

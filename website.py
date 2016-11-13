@@ -38,12 +38,13 @@ EMAIL_RECEIVER = os.environ['CHEESE_EMAIL_RECEIVER']
 app = Flask(__name__)
 app.config.from_pyfile('settings.cfg')
 app.config['SECRET_KEY'] = os.environ['CHEESE_SECRET_KEY']
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_DATABASE_URI'] = \
     'sqlite:///test.db' if __name__ == '__main__' else \
     'mysql://'+MYSQL_USER+':'+MYSQL_PASSWORD \
         +'@'+MYSQL_HOST+'/'+MYSQL_DATABASE
 app.debug = True
-db.init_app(app)
+db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 manager = Manager(app)
 basic_auth = BasicAuth(app)
