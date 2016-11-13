@@ -1,5 +1,6 @@
 # Flask
 export CHEESE_SECRET_KEY=
+export CHEESE_CONTAINER_NAME=
 # Email
 export CHEESE_SMTP_SERVER=
 export CHEESE_SMTP_USERNAME=
