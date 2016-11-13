@@ -18,6 +18,8 @@ $ pip install -r flask/requirements.txt
 - `CHEESE_MYSQL_DATA_DIR` must be set to a location on the host machine, in
   which to store the MySQL data.
 
+Run `./update-env.sh to create the mysql.cnf file.`
+
 ### Setup a local MySQL server
 
 Create a MySQL user and database, setting the correct permissions (this happens
@@ -39,12 +41,13 @@ To initialise a minimal database:
 $ docker exec -it <cheese-flask> bash
 $ cd /opt/www
 $ python
->>> from website import db, Users
+>>> from website import db, People
 ...
+>>> db.drop_all()
 >>> db.create_all()
 >>> from werkzeug.security import generate_password_hash
->>> user = Users(email="admin", password=generate_password_hash("..."), is_admin=True)
->>> db.session.add(user)
+>>> person = People(email="admin", password=generate_password_hash("..."), group='Admin')
+>>> db.session.add(person)
 >>> db.session.commit()
 ```
 
