@@ -89,26 +89,65 @@ class People(db.Model):
 
 class Inventory(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(200))
-    asset_number = db.Column(db.Integer)
-    notes = db.Column(db.Text())
-    loans = db.relationship('Loans', backref='inventory', lazy='dynamic')
+    name                = db.Column(db.String(200))
+    asset_number        = db.Column(db.Integer)
+    serial_number       = db.Column(db.String(50))
+    value               = db.Column(db.Float)
+    sim_iccid           = db.Column(db.String(25))
+    imei                = db.Column(db.String(25))
+    phone_number        = db.Column(db.String(20))
+    icloud_username     = db.Column(db.String(25))
+    icloud_password     = db.Column(db.String(25))
+    credit_amount       = db.Column(db.Float)
+    credit_date         = db.Column(db.Date())
+    notes               = db.Column(db.Text())
+    # Kit
+    kit_id = db.Column(db.Integer, db.ForeignKey('kits.id'))
+    kit    = db.relationship('Kits')
+    # Loan
+    loan_id = db.Column(db.Integer, db.ForeignKey('loans.id'))
+    loan    = db.relationship('Loans')
+    # Invoice
+    invoice_id = db.Column(db.Integer, db.ForeignKey('invoices.id'))
+    invoice    = db.relationship('Invoices')
 
     def __repr__(self):
         return self.name+' (#'+str(self.asset_number)+')'
 
 
-class Loans(db.Model):
+class Kits(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    name         = db.Column(db.String(100))
-    email        = db.Column(db.String(100))
-    telephone    = db.Column(db.String(20))
-    date         = db.Column(db.Date())
-    notes        = db.Column(db.Text)
-    inventory_id = db.Column(db.Integer, db.ForeignKey('inventory.id'))
+    name         = db.Column(db.String(200))
+    notes        = db.Column(db.Text())
+    # Inventory
+    inventory  = db.relationship('Inventory')
+    # Loan
+    loan_id    = db.Column(db.Integer, db.ForeignKey('loans.id'))
+    loan       = db.relationship('Loans')
+    # Invoice
+    invoice_id = db.Column(db.Integer, db.ForeignKey('invoices.id'))
+    invoice    = db.relationship('Invoices')
 
     def __repr__(self):
-        return 'To '+self.name+' on '+str(self.date)
+        if self.name:
+            return self.name
+        return 'Unknown loan '+str(self.id)
+
+
+class Loans(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name      = db.Column(db.String(100))
+    email     = db.Column(db.String(100))
+    telephone = db.Column(db.String(20))
+    date      = db.Column(db.Date())
+    notes     = db.Column(db.Text)
+    item      = db.relationship('Inventory')
+    kit       = db.relationship('Kits')
+
+    def __repr__(self):
+        if self.name and self.date:
+            return 'To '+self.name+' on '+str(self.date)
+        return 'Unknown loan '+str(self.id)
 
 
 class Surveys(db.Model):
@@ -186,6 +225,8 @@ class Invoices(db.Model):
     date_paid   = db.Column(db.Date)
     category    = db.Column(db.Enum(*categories))
     notes       = db.Column(db.Text)
+    inventory   = db.relationship('Inventory')
+    kits        = db.relationship('Kits')
 
     def __repr__(self):
         return 'Invoice #'+self.number+' raised '+str(self.date_raised)
@@ -373,22 +414,59 @@ class SurveysView(RegularModelView):
         'householder_comments': { 'rows': 8, 'cols': 20 },
         'surveyor_comments':    { 'rows': 8, 'cols': 20 },
         }
+    column_filters = [
+        'postcode',
+        'ward',
+        ]
 
 
 class InventoryView(AdminModelView):
-    pass
+    form_columns = [
+            'name',
+            'asset_number',
+            'serial_number',
+            'value',
+            'sim_iccid',
+            'imei',
+            'phone_number',
+            'icloud_username',
+            'icloud_password',
+            'credit_amount',
+            'credit_date',
+            'notes',
+            'kit',
+            'invoice']
+    column_list = ['name', 'asset_number', 'kit', 'loan', ]
+    column_filters = form_columns + ['loan']
+
+
+class KitsView(AdminModelView):
+    form_columns = ['name', 'notes', 'inventory']
+    column_list = form_columns + ['invoice']
+    column_filters = column_list
 
 
 class LoansView(AdminModelView):
-    column_exclude_list = [ 'notes' ]
+    form_columns = [
+        'name',
+        'email',
+        'telephone',
+        'date',
+        'notes',
+        'item',
+        'kit']
     form_args = {
-        'name':      { 'label': 'Person loaned to' },
-        'date':      { 'label': 'Date of loan' },
-        'inventory': { 'label': 'Item to be loaned' },
+        'name': { 'label': 'Person loaned to' },
+        'date': { 'label': 'Date of loan' },
+        'kit':  { 'label': 'Kit loaned' },
+        'item': { 'label': 'Item loaned' },
         }
+    column_list = ['name', 'item', 'kit']
+    column_filters = form_columns
+
 
 class InvoicesView(AdminModelView):
-    pass
+    form_columns = [ 'inventory' ]
 
 
 # Setup admin.
@@ -398,6 +476,7 @@ admin = admin.Admin(app, name='CHEESE database',
 admin.add_view(PeopleView(People, db.session))
 admin.add_view(SurveysView(Surveys, db.session))
 admin.add_view(InventoryView(Inventory, db.session))
+admin.add_view(KitsView(Kits, db.session))
 admin.add_view(LoansView(Loans, db.session))
 admin.add_view(InvoicesView(Invoices, db.session))
 
@@ -554,13 +633,13 @@ def populate_db():
                        group='Surveyor')
     survey_1 = Surveys(name="Joe Blogs", address_line="Some street",
                        postcode="BS5 XXX")
-    item_1 = Inventory(name="Blower door", asset_number=100)
-    loan_1 = Loans(name="Jamie Hanlon", inventory=item_1)
+    #item_1 = Inventory(name="Blower door", asset_number=100)
+    #loan_1 = Loans(name="Jamie Hanlon", inventory=item_1)
     db.session.add(admin_user)
     db.session.add(test_user)
     db.session.add(survey_1)
-    db.session.add(item_1)
-    db.session.add(loan_1)
+    #db.session.add(item_1)
+    #db.session.add(loan_1)
     db.session.commit()
 
 
