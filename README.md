@@ -18,7 +18,7 @@ $ pip install -r flask/requirements.txt
 - `CHEESE_MYSQL_DATA_DIR` must be set to a location on the host machine, in
   which to store the MySQL data.
 
-Run `./update-env.sh to create the mysql.cnf file.`
+Run `./update-env.sh` to create the mysql.cnf file.
 
 ### Setup a local MySQL server
 
@@ -50,6 +50,7 @@ $ python
 >>> db.session.add(person)
 >>> db.session.commit()
 ```
+Or use the `website.py populate_db` command.
 
 ### Setup SSL
 
@@ -69,6 +70,6 @@ $ cat intermediate.pem >> cheeseproject.co.uk.crt
 Place the `.crt` and `.key` files in a directory for the webserver to access:
 ```
 $ ls ssl/
-cheeseproject.co.uk.crt  cheeseproject.co.uk.csr
+cheeseproject.co.uk.crt       cheeseproject.co.uk.csr
 cheeseproject.co.uk.gandi.pem cheeseproject.co.uk.key
 ```
