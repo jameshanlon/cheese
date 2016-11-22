@@ -52,6 +52,12 @@ $ python
 ```
 Or use the `website.py populate_db` command.
 
+### Perform a database migration
+```
+$ flask db migrate
+$ flask db upgrade
+```
+
 ### Setup SSL
 
 Generate a certificate signing request:
