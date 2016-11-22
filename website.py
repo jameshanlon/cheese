@@ -436,7 +436,7 @@ class InventoryView(AdminModelView):
             'notes',
             'kit',
             'invoice']
-    column_list = ['name', 'asset_number', 'kit', 'loan', ]
+    column_list = ['name', 'asset_number', 'kit', 'loan', 'invoice']
     column_filters = form_columns + ['loan']
 
 
