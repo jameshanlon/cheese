@@ -22,37 +22,59 @@ a:hover {
   text-decoration:underline;
 }
 
-.container {
-  width: 800px;
-  margin: 0 auto;
+/* Fix the width to be 768px. */
+@media (min-width: 1200px) {
+  .container{
+    max-width: 768px;
+  }
+}
+@media (min-width: 940px) {
+  .container{
+    max-width: 768px;
+  }
+}
+@media (min-width: 768px) {
+  .container{
+    max-width: 768px;
+  }
 }
 
-nav ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  background-color:#888;
-  text-align: center;
+/* Restyle the BS nav bar */
+.navbar {
+  min-height: 40px;
+  margin-bottom: 0;
+  border: none;
 }
-
-nav li {
-  display: inline;
+.navbar-default {
+  background-color: #888;
+  border-color: #E7E7E7;
   font-size: 1.15em;
 }
-
-nav li a {
-  display: inline-block;
+.navbar-default .navbar-nav > li > a {
   color: white;
-  text-align: center;
-  padding: 0.5em;
-  text-decoration: none;
+  padding-top:10px;
+  padding-bottom:10px;
+}
+.nav > li > a {
+  padding: 0 10px;
+}
+.navbar-default .navbar-toggle .icon-bar {
+  background-color: #ddd;
+}
+.dropdown-menu > li > a {
+  font-size:1.1em;
 }
 
-nav li a:hover {
-  color: #fff;
-  background-color: #111;
-  text-decoration: none;
+/* Centre the nav bar elements */
+@media (min-width: 768px) {
+  .navbar .navbar-nav {
+    display: inline-block;
+    float: none;
+    vertical-align: top;
+  }
+  .navbar .navbar-collapse {
+    text-align: center;
+  }
 }
 
 .news-item-large {

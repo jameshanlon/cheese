@@ -510,30 +510,6 @@ def get_news():
         item.date_str = item.meta['date'].strftime('%B %Y')
     return news_items
 
-@app.route('/')
-def index():
-    news_items = get_news()
-    if len(news_items) >= 3:
-        news_items = news_items[:3]
-    return render_template('index.html', news_items=news_items)
-
-
-@app.route('/<path:path>/')
-def page(path):
-    page = pages.get_or_404(path)
-    template = page.meta.get('template', 'page.html')
-    return render_template(template, page=page)
-
-
-@app.route('/news')
-def news():
-    return render_template('news.html', news_items=get_news())
-
-
-@app.route('/about')
-def about():
-    return render_template('about.html')
-
 
 class ApplySurveyForm(form.Form):
     def choice(string):
@@ -611,13 +587,32 @@ def apply_for_a_survey():
                   + ' at '+str(datetime.datetime.today())
         send_email(EMAIL_RECEIVER, subject, message)
         # Success page.
-        return render_template('application_successful.html')
-    return render_template('apply_for_a_survey.html', form=form)
+        page = pages.get('application-successful')
+        return render_template('page.html', page=page)
+    page = pages.get('apply-for-a-survey')
+    page.html = render_template_string(page.html, form=form)
+    return render_template('page.html', page=page)
 
 
-@app.route('/get-involved')
-def get_involved():
-    return render_template('get_involved.html')
+@app.route('/')
+def index():
+    news_items = get_news()
+    if len(news_items) >= 3:
+        news_items = news_items[:3]
+    return render_template('index.html', news_items=news_items)
+
+
+@app.route('/news')
+def news():
+    return render_template('news.html', news_items=get_news())
+
+
+# Any flat pages.
+@app.route('/<path:path>/')
+def page(path):
+    page = pages.get_or_404(path)
+    template = page.meta.get('template', 'page.html')
+    return render_template(template, page=page)
 
 
 @manager.command
