@@ -39,10 +39,10 @@ app = Flask(__name__)
 app.config.from_pyfile('settings.cfg')
 app.config['SECRET_KEY'] = os.environ['CHEESE_SECRET_KEY']
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
-#app.config['SQLALCHEMY_DATABASE_URI'] = \
-#    'mysql://'+MYSQL_USER+':'+MYSQL_PASSWORD \
-#        +'@'+MYSQL_HOST+'/'+MYSQL_DATABASE
+#app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = \
+    'mysql://'+MYSQL_USER+':'+MYSQL_PASSWORD \
+        +'@'+MYSQL_HOST+'/'+MYSQL_DATABASE
 app.debug = True
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
