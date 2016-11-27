@@ -14,12 +14,22 @@ hr {
   padding: 0;
 }
 
+h2 {
+  margin-top: 0.5em;
+  margin-bottom: 0.3em;
+}
+
 a {
   text-decoration:none;
 }
 
 a:hover {
   text-decoration:underline;
+}
+
+img {
+  padding-left: 0.3em;
+  padding-bottom: 0.3em;
 }
 
 /* Fix the width to be 768px. */
@@ -41,6 +51,14 @@ a:hover {
     width: 768px;
   }
 }
+@media (max-width: 480px) {
+  #logo img {
+    max-width:320px;
+  }
+  .banner img {
+    max-width:100px;
+  }
+}
 
 /* Restyle the BS nav bar */
 .navbar {
@@ -57,6 +75,15 @@ a:hover {
   color: white;
   padding-top:10px;
   padding-bottom:10px;
+}
+.navbar-nav > li > .dropdown-menu {
+  background-color: #888;
+}
+.navbar-default .navbar-nav .open .dropdown-menu > li > a {
+  color: white;
+}
+.navbar-default .navbar-nav .open .dropdown-menu > li > a:hover {
+  color: #555;
 }
 .nav > li > a {
   padding: 0 10px;
@@ -98,7 +125,8 @@ a:hover {
 }
 
 .thumbs img {
-  margin-right: 0.3em;
+  margin-left: 0.3em;
+  margin-bottom: 0.3em;
 }
 
 #imagepreview {
@@ -162,7 +190,7 @@ a:hover {
 
 #survey-form input,
 #survey-form textarea {
-  width: 400px;
+  width: 55%;
 }
 #survey-form input[type="checkbox"],
 #survey-form input[type="radio"],
@@ -170,12 +198,12 @@ a:hover {
   width: auto;
 }
 #survey-form label {
-  width:180px;
+  width:25%;
   text-align: right;
 }
 #survey-form ul {
   list-style: none;
-  margin-left: 140px;
+  margin-left: 22%;
 }
 #survey-form li label {
   text-align: left;
@@ -195,10 +223,6 @@ footer ul {
 
 footer li {
   list-style-type:none;
-}
-
-#footer-left {
-  width:350px;
 }
 
 #footer-right {
