@@ -94,6 +94,7 @@ class Inventory(db.Model):
     name                = db.Column(db.String(200))
     asset_number        = db.Column(db.Integer)
     serial_number       = db.Column(db.String(50))
+    date_of_purchase    = db.Column(db.Date)
     value               = db.Column(db.Float)
     sim_iccid           = db.Column(db.String(25))
     imei                = db.Column(db.String(25))
@@ -427,6 +428,7 @@ class InventoryView(AdminModelView):
             'name',
             'asset_number',
             'serial_number',
+            'date_of_purchase',
             'value',
             'sim_iccid',
             'imei',
