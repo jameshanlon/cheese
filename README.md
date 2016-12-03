@@ -53,10 +53,18 @@ $ python
 Or use the `website.py populate_db` command.
 
 ### Perform a database migration
+
+Create the migration and run the upgrade from in the container.
 ```
+$ docker exec -it <continer-name> bash
+$ cd /opt/www
 $ flask db migrate
+...
 $ flask db upgrade
+...
+$ exit
 ```
+Then commit the new migration Python script.
 
 ### Setup SSL
 
