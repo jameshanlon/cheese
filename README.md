@@ -1,6 +1,8 @@
 # The CHEESE Project website.
 
-Visit it at: http://www.cheeseproject.co.uk.
+The CHEESE Project aims to reduce domestic energy losses, at low cost, by up to
+a third. This saves money, improves health and wellbeing and, reduces our
+carbon emissions. Visit it at: http://www.cheeseproject.co.uk.
 
 ## Development notes
 
@@ -51,6 +53,17 @@ $ python
 >>> db.session.commit()
 ```
 Or use the `website.py populate_db` command.
+
+### Run the development server
+
+```
+$ source env/bin/activate
+$ source CONFIG
+$ python website.py runserver
+...
+```
+
+## Deployment notes
 
 ### Perform a database migration
 
