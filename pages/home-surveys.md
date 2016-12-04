@@ -1,11 +1,26 @@
 
-<p class="lead">Would you like to improve the
-comfort and energy efficiency of your home? Would you like to save money on
-your bills? Then <a href="/apply-for-a-survey">apply for a survey</a> now!</p>
+# Home thermal-imaging surveys
 
-## Home surveys
+**Our internal thermal-imaging surveys aim to improve the comfort and energy
+efficiency of your home, to you save money on your bills and to reduce your
+climate impact.**
 
-We perform surveys in the winter - so that when a house is heated there is a
+The survey process is based on a unique methodology developed by Brian Harper,
+who has been working with thermal imaging for 45 years and has surveyed over
+400 homes.
+
+<!--The method involves heating the house to 10 degrees above ambient
+temperature, reducing the indoor pressure and locating incoming cold draughts,
+inadequate insulation, poor construction, etc.
+
+The householder observes the survey and is informed of any energy-loss
+problems as they are revealed. The survey is also filmed, capturing the
+live thermal images and commentary from the surveyor, to provide to the
+householder for future reference.-->
+
+## How it works
+
+We perform surveys in the winter so that when a house is heated there is a
 large difference between the temperature inside the house compared to the
 outside.
 
@@ -19,8 +34,9 @@ insulation from cold bridging or missing insulation etc.
 As the householder, you are involved directly with the survey by accompanying
 the surveyor to see first hand how heat moves around your home and where it is
 lost.  The entire survey is recorded as a video with audio of the surveyor's
-commentary and any discussions you might have. The video is given to you
-afterwards on a USB memory stick, so you can review the findings at any point.
+commentary and any discussions you might have with them. The video is given to
+you afterwards on a USB memory stick, so you can review the findings at any
+point.
 
 Following the survey, a briefing is carried out on the main problems that
 were identified and how they might be remedied. You will have the opportunity
@@ -94,5 +110,8 @@ We do offer **free surveys** to households on low incomes.
   </tbody>
 </table>
 
-* We can only survey large houses at weekends.
+\* We can only survey large houses at weekends.
 
+<div class="notice lead">
+  <a href="/apply-for-a-survey">Apply for a survey</a> now!
+</div>

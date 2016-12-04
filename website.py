@@ -175,6 +175,7 @@ class Surveys(db.Model):
     availability                = db.Column(db.Text)
     free_survey_consideration   = db.Column(db.Boolean, default=False)
     fee                         = db.Column(db.Float)
+    argree_to_requirements      = db.Column(db.Boolean, default=False)
     survey_date                 = db.Column(db.Date)
     survey_complete             = db.Column(db.Boolean, default=False)
     follow_up_1_complete        = db.Column(db.Boolean, default=False)
@@ -548,8 +549,13 @@ class ApplySurveyForm(form.Form):
     referral = fields.StringField('How did you hear about CHEESE?')
     free_survey_consideration = \
         fields.BooleanField('I live in a low-income household and ' \
-                            +'would like to be considered for a ' \
-                            +'free survey.')
+            +'would like to be considered for a free survey.')
+    argree_to_requirements = \
+        fields.BooleanField('I agree to make the  ' \
+            +'<a href="/pre-survey-guide/#preparation" target="_blank">'
+            +'necessary preparations</a> for the survey and am happy ' \
+            +'to <a href="/pre-survey-guide/#follow-ups" target="_blank"> ' \
+            +'report my progress after one month and one year</a>.')
 
 
 @app.route('/apply-for-a-survey', methods=['GET', 'POST'])
@@ -573,6 +579,7 @@ def apply_for_a_survey():
             expected_benefit=form.expected_benefit.data,
             referral=form.referral.data,
             free_survey_consideration=form.free_survey_consideration.data,
+            argree_to_requirements=form.argree_to_requirements.data,
             )
         db.session.add(survey)
         db.session.commit()

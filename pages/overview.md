@@ -31,41 +31,6 @@ be fixed cheaply and easily when they have been identified.  We record
 energy consumption before and after a survey, to verify the impact of our
 work.
 
-## Thermal imaging of Bristol housing
-
-<p>We have been carrying out external thermal imaging surveys by photographing
-houses in Bristol streets to reveal the heat being lost, to encourage
-householders to request an internal survey. This uses the effective principle
-of <i>seeing is believing</i>. All of the images are available on the <a
-  href="http://www.heatview.co.uk">Heatview.co.uk</a> website, where you can
-browse the map and find your own house (as long as it is in one of our pilot
-areas).</p>
-
-<div class="row text-center">
-  <a href="http://www.heatview.co.uk">
-    <img src="/static/images/heatview.png" height="230px">
-  </a>
-  <img src="/static/images/heatview-image.png" height="230px">
-</div>
-
-## Internal home surveys
-
-<p>Our internal surveys are based on a unique methodology developed by
-Brian Harper, who has been working with thermal imaging for 45 years and
-has surveyed over 400 homes. The method involves heating the house to 10
-degrees above ambient temperature, reducing the indoor pressure and
-locating incoming cold draughts, inadequate insulation, poor construction,
-etc.</p>
-
-<p>The householder observes the survey and is informed of any energy-loss
-problems as they are revealed. The survey is also filmed, capturing the
-live thermal images and commentary from the surveyor, to provide to the
-householder for future reference.</p>
-
-<p>You can find out more about what is involved with a survey on the
-<a href="/home-surveys">information page</a>, and apply for one
-on the <a href="/apply-for-a-survey">survey page</a>.</p>
-
 ## Our achievements and plans
 
 Last 2015/16 winter we completed a successful pilot of the CHEESE Project
