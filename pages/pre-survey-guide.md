@@ -66,8 +66,8 @@ Please note:
 
 We will ask you to feedback on the actions you have taken (or plan to take) as
 a result of the survey. We would also like to hear any thoughts or comments you
-have on the survey and use of the energy-monitoring pack, which we will collect
-from you.
+have on the survey and use of the [energy-monitoring pack](/energy-pack), which
+we will collect from you around the same time.
 
 ### One year
 
