@@ -530,21 +530,32 @@ class ApplySurveyForm(form.Form):
     name = fields.StringField(validators=[validators.required()])
     address_line = fields.StringField(validators=[validators.required()])
     postcode = fields.StringField(validators=[validators.required()])
+    ward = fields.SelectField('Ward',
+               choices=[choice(''),
+                        choice('Bishopston'),
+                        choice('Cotham'),
+                        choice('Easton'),
+                        choice('Filwood (Knowle West)'),
+                        choice('Lawrence Weston'),
+                        choice('Redland'),
+                        choice('Other'), ], default='')
     email = EmailField(validators=[validators.required(),
                                    validators.Email()])
     telephone = fields.StringField(validators=[validators.required()])
     availability = fields.TextAreaField()
-    building_type = fields.RadioField('Building type',
-                        choices=[choice('Detached'),
+    building_type = fields.SelectField('Building type',
+                        choices=[choice(''),
+                                 choice('Detached'),
                                  choice('Semi-detached'),
                                  choice('Terrace'),
                                  choice('Flat/maisonette'),
-                                 choice('Other'), ])
+                                 choice('Other'), ], default='')
     building_type_other = fields.StringField('Other building type')
-    building_construction = fields.RadioField('Building construction',
-                                choices=[choice('Single-skin brick'),
+    building_construction = fields.SelectField('Building construction',
+                                choices=[choice(''),
+                                         choice('Single-skin brick'),
                                          choice('Cavity wall'),
-                                         choice('Other'), ])
+                                         choice('Other'), ], default='')
     building_construction_other = fields.StringField('Other building ' \
                                                      +'construction type')
     num_occupants = fields.IntegerField('Number of occupants')
@@ -573,6 +584,7 @@ def apply_for_a_survey():
             name=form.name.data,
             address_line=form.address_line.data,
             postcode=form.postcode.data,
+            ward=form.ward.data,
             email=form.email.data,
             telephone=form.telephone.data,
             availability=form.availability.data,

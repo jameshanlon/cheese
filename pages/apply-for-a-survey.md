@@ -11,6 +11,11 @@ guide](/pre-survey-guide) and are happy to make the necessary preparations for
 the survey, and to report your progress back to us after one month and after
 one year.
 
+Note that The CHEESE Project concentrates on six wards in Bristol:
+**Bishopston**, **Cotham**, **Easton**, **Filwood (Knowle West)**, **Lawrence
+Weston**, **Redland**. We do accept requests for surveys in other wards, but
+only if we have the available time, travel and transport.
+
 Once you have submitted the form, we will be in contact to organise a date with
 you.  If you have any questions about our surveys, then please get in touch by
 emailing [surveys@cheeseproject.co.uk](mailto:surveys@cheeseproject.co.uk).

@@ -38,15 +38,17 @@ commentary and any discussions you might have with them. The video is given to
 you afterwards on a USB memory stick, so you can review the findings at any
 point.
 
-Following the survey, a briefing is carried out on the main problems that
-were identified and how they might be remedied. You will have the opportunity
-to borrow a CHEESE *energy monitoring and action pack* containing
-simple-to-use meters to monitor energy use and information on DIY energy-saving
-techniques.  Because we are continuously developing the CHEESE Project and its
-approach, we will ask you to complete a short questionnaire after the survey to
-obtain feedback and to learn how effective the survey was for you. We will
-follow up again after a month, three months and a year to see if your energy
-use has changed!
+Following the survey, a briefing is carried out on the main problems that were
+identified and how they might be remedied. We will record your current energy
+use by looking at your gas and electricity bills (you will need to [find them
+in advance](/pre-survey-info/#preparation) and you will have the opportunity to
+borrow a *CHEESE energy monitoring and action pack* containing simple-to-use
+meters to monitor energy use and information on DIY energy-saving techniques.
+
+Because we are continuously developing the CHEESE Project and its approach, we
+will ask you to complete a short questionnaire after the survey to obtain
+feedback and to learn how effective the survey was for you. We will follow up
+again after a month and after a year to see if your energy use has changed!
 
 ## Testimonials
 
@@ -71,6 +73,7 @@ you very much for laying on Brian, Dave and Matt today. Very instructive, some
 draught proofing and the like to work on but generally very encouraging for
 us."***
 
+<a name="pricing"></a>
 ## Pricing
 
 Below are our prices for various sizes of home; note that rooms means
