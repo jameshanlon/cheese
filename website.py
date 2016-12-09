@@ -163,6 +163,7 @@ class Surveys(db.Model):
     ward                        = db.Column(db.String(50))
     email                       = db.Column(db.String(100))
     telephone                   = db.Column(db.String(20))
+    reference                   = db.Column(db.String(8))
     building_type               = db.Column(db.String(25))
     building_type_other         = db.Column(db.String(100))
     building_construction       = db.Column(db.String(25))
@@ -175,8 +176,8 @@ class Surveys(db.Model):
     availability                = db.Column(db.Text)
     free_survey_consideration   = db.Column(db.Boolean, default=False)
     fee                         = db.Column(db.Float)
-    argree_to_requirements      = db.Column(db.Boolean, default=False)
-    survey_date                 = db.Column(db.Date)
+    agree_to_requirements       = db.Column(db.Boolean, default=False)
+    survey_date                 = db.Column(db.DateTime)
     survey_complete             = db.Column(db.Boolean, default=False)
     follow_up_1_complete        = db.Column(db.Boolean, default=False)
     follow_up_2_complete        = db.Column(db.Boolean, default=False)
@@ -338,13 +339,16 @@ class PeopleView(AdminModelView):
 
 
 class SurveysView(RegularModelView):
+    page_size = 100
     all_cols = set([
+        'survey_request_date',
         'name',
         'address_line',
         'postcode',
         'ward',
         'email',
         'telephone',
+        'reference',
         'building_type',
         'building_type_other',
         'building_construction',
@@ -357,6 +361,7 @@ class SurveysView(RegularModelView):
         'availability',
         'free_survey_consideration',
         'fee',
+        'agree_to_requirements',
         'survey_date',
         'survey_complete',
         'follow_up_1_complete',
@@ -381,6 +386,7 @@ class SurveysView(RegularModelView):
     # Admin view columns.
     columns_list = [
         'name',
+        'survey_request_date',
         'survey_date',
         'survey_complete',
         'follow_up_1_complete',
@@ -550,7 +556,7 @@ class ApplySurveyForm(form.Form):
     free_survey_consideration = \
         fields.BooleanField('I live in a low-income household and ' \
             +'would like to be considered for a free survey.')
-    argree_to_requirements = \
+    agree_to_requirements = \
         fields.BooleanField('I agree to make the  ' \
             +'<a href="/pre-survey-guide/#preparation" target="_blank">'
             +'necessary preparations</a> for the survey and am happy ' \
@@ -579,7 +585,7 @@ def apply_for_a_survey():
             expected_benefit=form.expected_benefit.data,
             referral=form.referral.data,
             free_survey_consideration=form.free_survey_consideration.data,
-            argree_to_requirements=form.argree_to_requirements.data,
+            agree_to_requirements=form.agree_to_requirements.data,
             )
         db.session.add(survey)
         db.session.commit()
