@@ -1,4 +1,9 @@
 #!/bin/bash
+set -e
+if [ -z ${CHEESE_BACKUP_DIR+x} ]; then
+  echo "CHEESE_BACKUP_DIR not set!"
+  exit 1
+fi
 echo "Performing backup..."
 DATE=$(date +"%m-%d-%y-%H-%M")
 FILENAME="${CHEESE_BACKUP_DIR}/backup-${CHEESE_MYSQL_DATABASE}_${DATE}.sql"
