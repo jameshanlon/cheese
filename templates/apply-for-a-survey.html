@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1>Apply for a home survey</h1>
+
+<p>We are now booking internal thermal-imaging surveys for this winter, between
+November and March. The number of surveys we can do is limited and they will be
+offered on a first-come first-served basis.</p>
+
+<p>Please complete the form below to apply for a survey this winter, but before
+you do, we ask that you read through the [survey preparation and information
+guide](/pre-survey-guide) and are happy to make the necessary preparations for
+the survey, and to report your progress back to us after one month and after
+one year.</p>
+
+<p>Note that The CHEESE Project concentrates on six wards in Bristol:
+<strong>Bishopston</strong>, <strong>Cotham</strong>, <strong>Easton</strong>,
+<strong>Filwood (Knowle West)</strong>, <strong>Lawrence Weston</strong> and
+<strong>Redland</strong>. We do accept requests for surveys in other wards, but
+only if we have the available time, travel and transport.</p>
+
+<p>Once you have submitted the form, we will be in contact to organise a date
+with you.  If you have any questions about our surveys, then please get in
+touch by emailing <a
+href="mailto:surveys@cheeseproject.co.uk">surveys@cheeseproject.co.uk</a>.</p>
+
+<div id="survey-form" style="padding-top:1.2em">
+  <form method="POST" action="">
+    {{ form.hidden_tag() if form.hidden_tag }}
+    {% for f in form if f.type != 'CSRFTokenField' %}
+      {% if f.errors %}
+        <div class="form-group has-error">
+          {{ f.label(class_="control-label") }}{{ f(class_="form-control") }}
+          {% for e in f.errors %}
+            <span class="help-block">{{ e }}</span>
+          {% endfor %}
+        </div>
+      {% else %}
+        <div class="form-group">
+          {{ f.label(class_="control-label") }}{{ f(class_="form-control") }}
+        </div>
+      {% endif %}
+    {% endfor %}
+    <label></label>
+    <button class="btn" type="submit">Submit</button>
+  </form>
+</div>
+
+{% endblock %}
