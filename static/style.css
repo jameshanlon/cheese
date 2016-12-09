@@ -193,39 +193,16 @@ img {
   padding: 1.2em;
 }
 
-#survey-form input,
-#survey-form textarea {
-  width: 55%;
-}
-#survey-form input[type="checkbox"],
-#survey-form input[type="radio"],
-#survey-form input[type="submit"] {
-  width: auto;
-}
-#survey-form label {
-  width:25%;
-  text-align: right;
-}
-#survey-form ul {
-  list-style: none;
-  margin-left: 22%;
-}
-#survey-form li label {
-  text-align: left;
-  font-weight: normal;
-}
-
 footer {
   color:gray;
   width:100%;
+  min-height: 160px;
   padding-bottom:2em;
 }
-
 footer ul {
   padding:0;
   margin:0;
 }
-
 footer li {
   list-style-type:none;
 }

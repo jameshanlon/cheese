@@ -530,7 +530,7 @@ class ApplySurveyForm(form.Form):
     name = fields.StringField(validators=[validators.required()])
     address_line = fields.StringField(validators=[validators.required()])
     postcode = fields.StringField(validators=[validators.required()])
-    ward = fields.SelectField('Ward',
+    ward = fields.SelectField('Ward', validators=[validators.required()],
                choices=[choice(''),
                         choice('Bishopston'),
                         choice('Cotham'),
@@ -542,28 +542,32 @@ class ApplySurveyForm(form.Form):
     email = EmailField(validators=[validators.required(),
                                    validators.Email()])
     telephone = fields.StringField(validators=[validators.required()])
-    availability = fields.TextAreaField()
+    availability = fields.TextAreaField(validators=[validators.required()])
     building_type = fields.SelectField('Building type',
                         choices=[choice(''),
                                  choice('Detached'),
                                  choice('Semi-detached'),
                                  choice('Terrace'),
                                  choice('Flat/maisonette'),
-                                 choice('Other'), ], default='')
+                                 choice('Other'), ], default='',
+                        validators=[validators.required()])
     building_type_other = fields.StringField('Other building type')
     building_construction = fields.SelectField('Building construction',
                                 choices=[choice(''),
                                          choice('Single-skin brick'),
                                          choice('Cavity wall'),
-                                         choice('Other'), ], default='')
+                                         choice('Other'), ], default='',
+                                validators=[validators.required()])
     building_construction_other = fields.StringField('Other building ' \
                                                      +'construction type')
     num_occupants = fields.IntegerField('Number of occupants')
     num_main_rooms = fields.IntegerField('Number of main rooms ' \
                                          +'(reception + living + bedroom)')
     expected_benefit = fields.TextAreaField('How do you think you will ' \
-                                            + 'benefit from a survey?')
-    referral = fields.StringField('How did you hear about CHEESE?')
+                                            + 'benefit from a survey?',
+                                        validators=[validators.Length(min=1)])
+    referral = fields.StringField('How did you hear about CHEESE?',
+                                  validators=[validators.Length(min=1)])
     free_survey_consideration = \
         fields.BooleanField('I live in a low-income household and ' \
             +'would like to be considered for a free survey.')
@@ -572,13 +576,14 @@ class ApplySurveyForm(form.Form):
             +'<a href="/pre-survey-guide/#preparation" target="_blank">'
             +'necessary preparations</a> for the survey and am happy ' \
             +'to <a href="/pre-survey-guide/#follow-ups" target="_blank"> ' \
-            +'report my progress after one month and one year</a>.')
+            +'report my progress after one month and one year</a>.',
+            validators=[validators.required()])
 
 
 @app.route('/apply-for-a-survey', methods=['GET', 'POST'])
 def apply_for_a_survey():
     form = ApplySurveyForm(request.form)
-    if helpers.validate_form_on_submit(form):
+    if request.method=='POST' and helpers.validate_form_on_submit(form):
         # Add to db.
         survey = Surveys(
             name=form.name.data,
@@ -620,9 +625,7 @@ def apply_for_a_survey():
         # Success page.
         page = pages.get('application-successful')
         return render_template('page.html', page=page)
-    page = pages.get('apply-for-a-survey')
-    page.html = render_template_string(page.html, form=form)
-    return render_template('page.html', page=page)
+    return render_template('apply-for-a-survey.html', form=form)
 
 
 @app.route('/')
