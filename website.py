@@ -176,7 +176,8 @@ class Surveys(db.Model):
     availability                = db.Column(db.Text)
     free_survey_consideration   = db.Column(db.Boolean, default=False)
     fee                         = db.Column(db.Float)
-    agree_to_requirements       = db.Column(db.Boolean, default=False)
+    fee_paid                    = db.Column(db.Boolean, default=False)
+    fee_paid_date               = db.Column(db.Date)
     survey_date                 = db.Column(db.DateTime)
     survey_complete             = db.Column(db.Boolean, default=False)
     follow_up_1_complete        = db.Column(db.Boolean, default=False)
@@ -602,7 +603,6 @@ def apply_for_a_survey():
             expected_benefit=form.expected_benefit.data,
             referral=form.referral.data,
             free_survey_consideration=form.free_survey_consideration.data,
-            agree_to_requirements=form.agree_to_requirements.data,
             )
         db.session.add(survey)
         db.session.commit()
