@@ -155,8 +155,6 @@ class Loans(db.Model):
 
 class Surveys(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    survey_request_date         = db.Column(db.Date,
-                                    default=datetime.datetime.now().date())
     name                        = db.Column(db.String(100))
     address_line                = db.Column(db.String(100))
     postcode                    = db.Column(db.String(10))
@@ -164,6 +162,8 @@ class Surveys(db.Model):
     email                       = db.Column(db.String(100))
     telephone                   = db.Column(db.String(20))
     reference                   = db.Column(db.String(8))
+    survey_request_date         = db.Column(db.Date,
+                                    default=datetime.datetime.now().date())
     building_type               = db.Column(db.String(25))
     building_type_other         = db.Column(db.String(100))
     building_construction       = db.Column(db.String(25))
@@ -342,7 +342,6 @@ class PeopleView(AdminModelView):
 class SurveysView(RegularModelView):
     page_size = 100
     all_cols = set([
-        'survey_request_date',
         'name',
         'address_line',
         'postcode',
@@ -350,6 +349,7 @@ class SurveysView(RegularModelView):
         'email',
         'telephone',
         'reference',
+        'survey_request_date',
         'building_type',
         'building_type_other',
         'building_construction',
@@ -362,7 +362,8 @@ class SurveysView(RegularModelView):
         'availability',
         'free_survey_consideration',
         'fee',
-        'agree_to_requirements',
+        'fee_paid',
+        'fee_paid_date',
         'survey_date',
         'survey_complete',
         'follow_up_1_complete',
@@ -387,12 +388,13 @@ class SurveysView(RegularModelView):
     # Admin view columns.
     columns_list = [
         'name',
+        'ward',
+        'reference',
         'survey_request_date',
+        'fee',
         'survey_date',
-        'survey_complete',
-        'follow_up_1_complete',
-        'follow_up_2_complete',
-        'follow_up_3_complete', ]
+        'survey_complete', ]
+    column_filters = columns_list
     column_exclude_list = list(all_cols - set(columns_list))
     def choice(string):
         return (string, string)
@@ -427,10 +429,6 @@ class SurveysView(RegularModelView):
         'householder_comments': { 'rows': 8, 'cols': 20 },
         'surveyor_comments':    { 'rows': 8, 'cols': 20 },
         }
-    column_filters = [
-        'postcode',
-        'ward',
-        ]
 
 
 class InventoryView(AdminModelView):
