@@ -219,25 +219,21 @@ class Invoices(db.Model):
             'Travel',
             'Segments',
             'Capital kit',
-            'Consumables',
-            'BEN/BCG',
-            'BEN/CEF',
-            'BCR/FoE',
-            'EEG',
-            'ALW']
+            'Consumables', ]
     id = db.Column(db.Integer, primary_key=True)
-    reference   = db.Column(db.String(100))
-    number      = db.Column(db.Integer, unique=True)
-    amount      = db.Column(db.Float)
-    date_raised = db.Column(db.Date, default=datetime.datetime.now().date())
-    date_paid   = db.Column(db.Date)
-    category    = db.Column(db.Enum(*categories))
-    notes       = db.Column(db.Text)
-    inventory   = db.relationship('Inventory')
-    kits        = db.relationship('Kits')
+    reference    = db.Column(db.String(100))
+    amount       = db.Column(db.Float)
+    date_raised  = db.Column(db.Date, default=datetime.datetime.now().date())
+    paid_by      = db.Column(db.String(100))
+    settled      = db.Column(db.Boolean, default=False)
+    date_settled = db.Column(db.Date)
+    category     = db.Column(db.Enum(*categories))
+    notes        = db.Column(db.Text)
+    inventory    = db.relationship('Inventory')
+    kits         = db.relationship('Kits')
 
     def __repr__(self):
-        return 'Invoice #'+self.number+' raised '+str(self.date_raised)
+        return 'Invoice #'+self.id+' raised '+str(self.date_raised)
 
 
 #===-----------------------------------------------------------------------===#
@@ -267,6 +263,7 @@ class LoginForm(form.Form):
 
 
 class AdminModelView(sqla.ModelView):
+    page_size = 100
     can_export = True
     can_view_details = True
     def is_accessible(self):
@@ -275,6 +272,7 @@ class AdminModelView(sqla.ModelView):
 
 
 class RegularModelView(sqla.ModelView):
+    page_size = 100
     can_export = True
     can_view_details = True
     def is_accessible(self):
@@ -340,7 +338,6 @@ class PeopleView(AdminModelView):
 
 
 class SurveysView(RegularModelView):
-    page_size = 100
     all_cols = set([
         'name',
         'address_line',
@@ -478,7 +475,27 @@ class LoansView(AdminModelView):
 
 
 class InvoicesView(AdminModelView):
-    form_columns = [ 'inventory' ]
+    form_columns = [
+        'reference',
+        'amount',
+        'date_raised',
+        'paid_by',
+        'settled',
+        'date_settled',
+        'category',
+        'notes',
+        'inventory',
+        'kits', ]
+    column_list = [
+        'id',
+        'reference',
+        'amount',
+        'date_raised',
+        'paid_by',
+        'settled',
+        'date_settled',
+        'category', ]
+    column_filters = form_columns
 
 
 # Setup admin.
