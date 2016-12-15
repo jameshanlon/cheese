@@ -37,8 +37,9 @@ make some preparations before the survey:
   temperature).
 
 - Switch off/stop any wood burners, open fires, Agas/Rayburns, gas fires etc.
-  This is important since we will reduce the pressure inside the house during
-  the survey, and this might draw exhaust gases or smoke into the house.
+  two hours before the survey.  This is important since we will reduce the
+  pressure inside the house during the survey, and this might draw exhaust
+  gases or smoke into the house.
 
 - For the same reason, block chimneys (with a pillow or cushion in a plastic
   bag, or a chimney balloon) and cover any open fireplaces to prevent soot from
@@ -88,12 +89,10 @@ Please note:
   it is led by your own knowledge of the building and because it is important
   you see for yourself where heat is being lost.
 
-- As the thermal survey is made you will be able to watch the images on a
+- As the thermal survey is conducted you will be able to watch the images on a
   tablet computer.
 
-- Children will probably enjoy the survey, but they can also slow up progress.
-
-- Any dogs may have to be shut in a room.
+- Children will probably enjoy the survey.
 
 - During the survey a video with sound will be made, recording what is found
   together with interpretation comments by the surveyor and your own comments.
