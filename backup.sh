@@ -1,5 +1,6 @@
 #!/bin/bash
 set -e
+source ./CONFIG
 if [ -z ${CHEESE_BACKUP_DIR+x} ]; then
   echo "CHEESE_BACKUP_DIR not set!"
   exit 1
