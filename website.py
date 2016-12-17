@@ -2,8 +2,10 @@ import datetime
 import os
 import sys
 import re
+from functools import wraps
 from flask import Flask, url_for, redirect, render_template, \
-                  render_template_string, request, flash
+                  render_template_string, request, flash, \
+                  Response
 import flask_admin as admin
 import flask_login as login
 from flask_admin.contrib import sqla
@@ -33,6 +35,8 @@ SMTP_USERNAME  = os.environ['CHEESE_SMTP_USERNAME']
 SMTP_PASSWORD  = os.environ['CHEESE_SMTP_PASSWORD']
 EMAIL_SENDER   = os.environ['CHEESE_EMAIL_SENDER']
 EMAIL_RECEIVER = os.environ['CHEESE_EMAIL_RECEIVER']
+AUTH_USER      = os.environ['CHEESE_AUTH_USER']
+AUTH_PASSWORD  = os.environ['CHEESE_AUTH_PASSWORD']
 
 # Init Flask and extensions.
 app = Flask(__name__)
@@ -568,6 +572,107 @@ admin.add_view(InvoicesView(Invoices, db.session))
 
 
 #===-----------------------------------------------------------------------===#
+# Restricted pages.
+#===-----------------------------------------------------------------------===#
+
+def check_auth(username, password):
+    return username == AUTH_USER and password == AUTH_PASSWORD
+
+
+def authenticate():
+    return Response(
+	'Invalid login.', 401,
+        {'WWW-Authenticate': 'Basic realm="Login Required"'})
+
+
+def requires_auth(f):
+    @wraps(f)
+    def decorated(*args, **kwargs):
+        auth = request.authorization
+        if not auth or not check_auth(auth.username, auth.password):
+            return authenticate()
+        return f(*args, **kwargs)
+    return decorated
+
+
+class SubmitResultsForm(form.Form):
+    surveyors_name = fields.StringField('Surveyor\'s name',
+                                        validators=[validators.required()])
+    householders_name = fields.StringField('Householder\'s name',
+                                           validators=[validators.required()])
+    address_line = fields.StringField('Address line',
+                                      validators=[validators.required()])
+    survey_date = DateField('Survey date (dd-mm-yyyy)', format='%d-%m-%Y',
+                      validators=[validators.required()])
+    external_temperature = fields.FloatField('External temperature (C)')
+    cheese_box_number = fields.StringField('Loaned CHEESE box number')
+    building_type = fields.SelectField('Building type',
+                        choices=[choice('')]+BUILDING_TYPES, default='',
+                        validators=[validators.required()], )
+    year_of_construction = fields.IntegerField('Year of construction')
+    wall_construction = fields.SelectField('Wall construction',
+                            choices=[choice('')]+WALL_CONSTRUCTION_TYPES,
+                            validators=[validators.required()], )
+    occupation_type = fields.SelectField('Type of occupation',
+                          choices=[choice('')]+OCCUPATION_TYPES,
+                          validators=[validators.required()], )
+    primary_heating_type = fields.StringField('Type of primary heating',
+                                validators=[validators.required()])
+    secondary_heating_type = fields.StringField('Type of secondary heating',
+                                validators=[validators.required()])
+    depth_loft_insulation = fields.StringField('Depth of loft insulation (cm)',
+                                validators=[validators.required()])
+    number_open_fireplaces = fields.StringField('Number of open fireplaces',
+                                validators=[validators.required()])
+    num_occupants = fields.IntegerField('Number of occupants')
+    annual_gas_kwh = fields.FloatField('Annual gas use (kWh)')
+    annual_elec_kwh = fields.FloatField('Annual electricity use (kWh)')
+    annual_solid_spend = fields.FloatField('Annual solid fuel spend')
+    renewable_contribution_kwh = fields.FloatField(
+	                         'Contribution from renewable generaiton (kWh)')
+    faults_identified = fields.TextAreaField('Faults identified',
+                                             validators=[validators.required()])
+    recommendations = fields.TextAreaField(validators=[validators.required()])
+    notes = fields.TextAreaField()
+
+
+@app.route('/submit-results', methods=['GET', 'POST'])
+@requires_auth
+def submit_results():
+    form = SubmitResultsForm(request.form)
+    if request.method=='POST' and helpers.validate_form_on_submit(form):
+        # Add to db.
+        result = Results(
+            surveyors_name=form.surveyors_name.data,
+            householders_name=form.householders_name.data,
+            address_line=form.address_line.data,
+            survey_date=form.survey_date.data,
+            external_temperature=form.external_temperature.data,
+            cheese_box_number=form.cheese_box_number.data,
+            building_type=form.building_type.data,
+            year_of_construction=form.year_of_construction.data,
+            wall_construction=form.wall_construction.data,
+            occupation_type=form.occupation_type.data,
+            primary_heating_type=form.primary_heating_type.data,
+            secondary_heating_type=form.secondary_heating_type.data,
+            depth_loft_insulation=form.depth_loft_insulation.data,
+            number_open_fireplaces=form.number_open_fireplaces.data,
+            num_occupants=form.num_occupants.data,
+            annual_gas_kwh=form.annual_gas_kwh.data,
+            annual_elec_kwh=form.annual_elec_kwh.data,
+            annual_solid_spend=form.annual_solid_spend.data,
+            renewable_contribution_kwh=form.renewable_contribution_kwh.data,
+            faults_identified=form.faults_identified.data,
+            recommendations=form.recommendations.data,
+            notes=form.notes.data, )
+        db.session.add(result)
+        db.session.commit()
+        flash('Survey result submitted successfully.')
+        return redirect(url_for('submit_results'))
+    return render_template('submit-results.html', form=form)
+
+
+#===-----------------------------------------------------------------------===#
 # Website pages.
 #===-----------------------------------------------------------------------===#
 
@@ -669,82 +774,6 @@ def apply_for_a_survey():
         page = pages.get('application-successful')
         return render_template('page.html', page=page)
     return render_template('apply-for-a-survey.html', form=form)
-
-
-class SubmitResultsForm(form.Form):
-    surveyors_name = fields.StringField('Surveyor\'s name',
-                                        validators=[validators.required()])
-    householders_name = fields.StringField('Householder\'s name',
-                                           validators=[validators.required()])
-    address_line = fields.StringField('Address line',
-                                      validators=[validators.required()])
-    survey_date = DateField('Survey date (dd-mm-yyyy)', format='%d-%m-%Y',
-                      validators=[validators.required()])
-    external_temperature = fields.FloatField('External temperature (C)')
-    cheese_box_number = fields.StringField('Loaned CHEESE box number')
-    building_type = fields.SelectField('Building type',
-                        choices=[choice('')]+BUILDING_TYPES, default='',
-                        validators=[validators.required()], )
-    year_of_construction = fields.IntegerField('Year of construction')
-    wall_construction = fields.SelectField('Wall construction',
-                            choices=[choice('')]+WALL_CONSTRUCTION_TYPES,
-                            validators=[validators.required()], )
-    occupation_type = fields.SelectField('Type of occupation',
-                          choices=[choice('')]+OCCUPATION_TYPES,
-                          validators=[validators.required()], )
-    primary_heating_type = fields.StringField('Type of primary heating',
-                                validators=[validators.required()])
-    secondary_heating_type = fields.StringField('Type of secondary heating',
-                                validators=[validators.required()])
-    depth_loft_insulation = fields.StringField('Depth of loft insulation (cm)',
-                                validators=[validators.required()])
-    number_open_fireplaces = fields.StringField('Number of open fireplaces',
-                                validators=[validators.required()])
-    num_occupants = fields.IntegerField('Number of occupants')
-    annual_gas_kwh = fields.FloatField('Annual gas use (kWh)')
-    annual_elec_kwh = fields.FloatField('Annual electricity use (kWh)')
-    annual_solid_spend = fields.FloatField('Annual solid fuel spend')
-    renewable_contribution_kwh = fields.FloatField(
-	                         'Contribution from renewable generaiton (kWh)')
-    faults_identified = fields.TextAreaField('Faults identified',
-                                             validators=[validators.required()])
-    recommendations = fields.TextAreaField(validators=[validators.required()])
-    notes = fields.TextAreaField()
-
-
-@app.route('/submit-results', methods=['GET', 'POST'])
-def submit_results():
-    form = SubmitResultsForm(request.form)
-    if request.method=='POST' and helpers.validate_form_on_submit(form):
-        # Add to db.
-        result = Results(
-            surveyors_name=form.surveyors_name.data,
-            householders_name=form.householders_name.data,
-            address_line=form.address_line.data,
-            survey_date=form.survey_date.data,
-            external_temperature=form.external_temperature.data,
-            cheese_box_number=form.cheese_box_number.data,
-            building_type=form.building_type.data,
-            year_of_construction=form.year_of_construction.data,
-            wall_construction=form.wall_construction.data,
-            occupation_type=form.occupation_type.data,
-            primary_heating_type=form.primary_heating_type.data,
-            secondary_heating_type=form.secondary_heating_type.data,
-            depth_loft_insulation=form.depth_loft_insulation.data,
-            number_open_fireplaces=form.number_open_fireplaces.data,
-            num_occupants=form.num_occupants.data,
-            annual_gas_kwh=form.annual_gas_kwh.data,
-            annual_elec_kwh=form.annual_elec_kwh.data,
-            annual_solid_spend=form.annual_solid_spend.data,
-            renewable_contribution_kwh=form.renewable_contribution_kwh.data,
-            faults_identified=form.faults_identified.data,
-            recommendations=form.recommendations.data,
-            notes=form.notes.data, )
-        db.session.add(result)
-        db.session.commit()
-        flash('Survey result submitted successfully.')
-        return redirect(url_for('submit_results'))
-    return render_template('submit-results.html', form=form)
 
 
 @app.route('/')

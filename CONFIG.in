@@ -17,3 +17,6 @@ export CHEESE_MYSQL_PASSWORD=
 # Certificates
 export CHEESE_WEBSITE_DIR=
 export CHEESE_CERTIFICATE_DIR=
+# Basic authentication
+export CHEESE_AUTH_USER=
+export CHEESE_AUTH_PASSWORD=
