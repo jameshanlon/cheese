@@ -17,8 +17,10 @@ from flask_thumbnails import Thumbnail
 from flask_script import Command, Manager, Server
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash, check_password_hash
+from flask_wtf import Form
 from wtforms import form, fields, validators
 from wtforms.fields.html5 import EmailField, DateField
+from wtforms_sqlalchemy.orm import model_form
 from models import *
 
 import smtplib
@@ -62,35 +64,27 @@ thumb = Thumbnail(app)
 def choice(string):
     return (string, string)
 
-WARDS = [
-    choice('Bishopston'),
-    choice('Cotham'),
-    choice('Easton'),
-    choice('Filwood (Knowle West)'),
-    choice('Lawrence Weston'),
-    choice('Redland'),
-    choice('Other'), ]
 BUILDING_TYPES = [
-    choice('Flat'),
-    choice('Maisonette'),
-    choice('Mid terrace'),
-    choice('End terrace'),
-    choice('Semi-detatched'),
-    choice('Detatched'),
-    choice('Other'), ]
+    'Flat',
+    'Maisonette',
+    'Mid terrace',
+    'End terrace',
+    'Semi-detatched',
+    'Detatched',
+    'Other', ]
 WALL_CONSTRUCTION_TYPES = [
-    choice('Solid brick'),
-    choice('Insulated cavity'),
-    choice('Uninsulated cavity'),
-    choice('Stone'),
-    choice('Timber'),
-    choice('Other'), ]
+    'Solid brick',
+    'Insulated cavity',
+    'Uninsulated cavity',
+    'Stone',
+    'Timber',
+    'Other', ]
 OCCUPATION_TYPES = [
-    choice('Owned'),
-    choice('Rented privately'),
-    choice('Rented council'),
-    choice('Rented housing association'),
-    choice('Other'), ]
+    'Owned',
+    'Rented privately',
+    'Rented council',
+    'Rented housing association',
+    'Other', ]
 
 #===-----------------------------------------------------------------------===#
 # Models.
@@ -211,19 +205,18 @@ class Surveys(db.Model):
     def __repr__(self):
         return '<Survey '+str(self.id)+'>'
 
-
 class Results(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     surveyors_name             = db.Column(db.String(50))
     householders_name          = db.Column(db.String(50))
     address_line               = db.Column(db.String(100))
-    survey_date                = db.Column(db.DateTime)
+    survey_date                = db.Column(db.Date)
     external_temperature       = db.Column(db.Float)
     cheese_box_number          = db.Column(db.String(25))
-    building_type              = db.Column(db.String(30))
+    building_type              = db.Column(db.Enum(*BUILDING_TYPES))
     year_of_construction       = db.Column(db.Integer)
-    wall_construction          = db.Column(db.String(30))
-    occupation_type            = db.Column(db.String(30))
+    wall_construction          = db.Column(db.Enum(*WALL_CONSTRUCTION_TYPES))
+    occupation_type            = db.Column(db.Enum(*OCCUPATION_TYPES))
     primary_heating_type       = db.Column(db.String(30))
     secondary_heating_type     = db.Column(db.String(30))
     depth_loft_insulation      = db.Column(db.String(30))
@@ -595,81 +588,44 @@ def requires_auth(f):
     return decorated
 
 
-class SubmitResultsForm(form.Form):
-    surveyors_name = fields.StringField('Surveyor\'s name',
-                                        validators=[validators.required()])
-    householders_name = fields.StringField('Householder\'s name',
-                                           validators=[validators.required()])
-    address_line = fields.StringField('Address line',
-                                      validators=[validators.required()])
-    survey_date = DateField('Survey date (dd-mm-yyyy)', format='%d-%m-%Y',
-                      validators=[validators.required()])
-    external_temperature = fields.FloatField('External temperature (C)')
-    cheese_box_number = fields.StringField('Loaned CHEESE box number')
-    building_type = fields.SelectField('Building type',
-                        choices=[choice('')]+BUILDING_TYPES, default='',
-                        validators=[validators.required()], )
-    year_of_construction = fields.IntegerField('Year of construction')
-    wall_construction = fields.SelectField('Wall construction',
-                            choices=[choice('')]+WALL_CONSTRUCTION_TYPES,
-                            validators=[validators.required()], )
-    occupation_type = fields.SelectField('Type of occupation',
-                          choices=[choice('')]+OCCUPATION_TYPES,
-                          validators=[validators.required()], )
-    primary_heating_type = fields.StringField('Type of primary heating',
-                                validators=[validators.required()])
-    secondary_heating_type = fields.StringField('Type of secondary heating',
-                                validators=[validators.required()])
-    depth_loft_insulation = fields.StringField('Depth of loft insulation (cm)',
-                                validators=[validators.required()])
-    number_open_fireplaces = fields.StringField('Number of open fireplaces',
-                                validators=[validators.required()])
-    num_occupants = fields.IntegerField('Number of occupants')
-    annual_gas_kwh = fields.FloatField('Annual gas use (kWh)')
-    annual_elec_kwh = fields.FloatField('Annual electricity use (kWh)')
-    annual_solid_spend = fields.FloatField('Annual solid fuel spend')
-    renewable_contribution_kwh = fields.FloatField(
-	                         'Contribution from renewable generaiton (kWh)')
-    faults_identified = fields.TextAreaField('Faults identified',
-                                             validators=[validators.required()])
-    recommendations = fields.TextAreaField(validators=[validators.required()])
-    notes = fields.TextAreaField()
-
-
 @app.route('/submit-results', methods=['GET', 'POST'])
 @requires_auth
 def submit_results():
-    form = SubmitResultsForm(request.form)
+    ResultsForm = model_form(Results, db_session=db.session, field_args={
+        "surveyors_name": { "label": "Surveyor's name", },
+        "householders_name": { "label": "Householder's name", },
+        "address_line": { "label": "Address line", },
+        "survey_date": { "label": "Survey date (dd-mm-yy)",
+                         "format": "%d-%m-%Y", },
+        "external_temperature": { "label": "External temperature (C)", },
+        "cheese_box_number": { "label": "Loaned CHEESE box number", },
+        "building_type" : { "label": "Building type", },
+        })
+    results = Results()
+    results_form = ResultsForm(obj=results)
+    form = ResultsForm(request.form, results)
     if request.method=='POST' and helpers.validate_form_on_submit(form):
-        # Add to db.
-        result = Results(
-            surveyors_name=form.surveyors_name.data,
-            householders_name=form.householders_name.data,
-            address_line=form.address_line.data,
-            survey_date=form.survey_date.data,
-            external_temperature=form.external_temperature.data,
-            cheese_box_number=form.cheese_box_number.data,
-            building_type=form.building_type.data,
-            year_of_construction=form.year_of_construction.data,
-            wall_construction=form.wall_construction.data,
-            occupation_type=form.occupation_type.data,
-            primary_heating_type=form.primary_heating_type.data,
-            secondary_heating_type=form.secondary_heating_type.data,
-            depth_loft_insulation=form.depth_loft_insulation.data,
-            number_open_fireplaces=form.number_open_fireplaces.data,
-            num_occupants=form.num_occupants.data,
-            annual_gas_kwh=form.annual_gas_kwh.data,
-            annual_elec_kwh=form.annual_elec_kwh.data,
-            annual_solid_spend=form.annual_solid_spend.data,
-            renewable_contribution_kwh=form.renewable_contribution_kwh.data,
-            faults_identified=form.faults_identified.data,
-            recommendations=form.recommendations.data,
-            notes=form.notes.data, )
-        db.session.add(result)
+        form.populate_obj(results)
+        db.session.add(results)
         db.session.commit()
         flash('Survey result submitted successfully.')
         return redirect(url_for('submit_results'))
     return render_template('submit-results.html', form=form)
+
+
+@app.route('/submit-follow-up', methods=['GET', 'POST'])
+@requires_auth
+def submit_follow_up():
+    FollowUpForm = model_form(FollowUps, db_session=db.session)
+    follow_up = FollowUps()
+    form = FollowUpForm(request.form, follow_up)
+    if request.method=='POST' and helpers.validate_form_on_submit(form):
+        form.populate_obj(follow_up)
+        db.session.add(follow_up)
+        db.session.commit()
+        flash('Follow up result submitted successfully.')
+        return redirect(url_for('submit_follow_up'))
+    return render_template('submit-follow-up.html', form=form)
 
 
 #===-----------------------------------------------------------------------===#
@@ -703,6 +659,14 @@ def get_news():
 
 
 class ApplySurveyForm(form.Form):
+    WARDS = [
+        choice('Bishopston'),
+        choice('Cotham'),
+        choice('Easton'),
+        choice('Filwood (Knowle West)'),
+        choice('Lawrence Weston'),
+        choice('Redland'),
+        choice('Other'), ]
     name = fields.StringField(validators=[validators.required()])
     address_line = fields.StringField(validators=[validators.required()])
     postcode = fields.StringField(validators=[validators.required()])
