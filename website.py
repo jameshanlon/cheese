@@ -294,7 +294,7 @@ class Invoices(db.Model):
     kits         = db.relationship('Kits')
 
     def __repr__(self):
-        return 'Invoice #'+self.id+' raised '+str(self.date_raised)
+        return 'Invoice #'+str(self.id)+' raised '+str(self.date_raised)
 
 
 #===-----------------------------------------------------------------------===#
