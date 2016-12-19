@@ -198,7 +198,7 @@ class Surveys(db.Model):
     reference                 = db.Column(db.String(8))
     survey_request_date       = db.Column(db.Date,
                                   default=datetime.datetime.now().date())
-    building_type             = db.Column(db.String(25))
+    building_type             = db.Column(db.Enum(*BUILDING_TYPES))
     num_main_rooms            = db.Column(db.Integer)
     expected_benefit          = db.Column(db.Text)
     referral                  = db.Column(db.String(100))
@@ -427,8 +427,6 @@ class SurveysView(RegularModelView):
         'survey_complete', ]
     column_filters = columns_list
     column_exclude_list = list(all_cols - set(columns_list))
-    form_choices = {
-        'building_type': BUILDING_TYPES, }
     form_args = {
         'referral':       { 'label': 'Referral from?' },
         'num_main_rooms': { 'label': 'Number of main rooms' }, }
