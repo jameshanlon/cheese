@@ -600,6 +600,20 @@ def submit_results():
         "external_temperature": { "label": "External temperature (C)", },
         "cheese_box_number": { "label": "Loaned CHEESE box number", },
         "building_type" : { "label": "Building type", },
+        "year_of_construction": { "label": "Year of construction", },
+        "wall_construction": { "label": "Wall construction", },
+        "occupation_type": { "label": "Occupation type", },
+        "primary_heating_type": { "label": "Primary heating type", },
+        "secondary_heating_type": { "label": "Secondary heating type", },
+        "depth_loft_insulation": { "label": "Depth of loft insulation (mm)", },
+        "number_open_fireplaces": { "label": "Number of open fireplaces", },
+        "num_occupants": { "label": "Number of occupants", },
+        "annual_gas_kwh": { "label": "Annual gas consumption (kWh)", },
+        "annual_elec_kwh": { "label": "Annual electricity consumption (kWh)", },
+        "annual_solid_spend": { "label": "Annual spend on solid fuels", },
+        "renewable_contribution_kwh": {
+            "label":"Annual contribution from renewable generation (kWh)", },
+        "faults_identified": { "label": "Faults identified", },
         })
     results = Results()
     results_form = ResultsForm(obj=results)
@@ -616,7 +630,17 @@ def submit_results():
 @app.route('/submit-follow-up', methods=['GET', 'POST'])
 @requires_auth
 def submit_follow_up():
-    FollowUpForm = model_form(FollowUps, db_session=db.session)
+    FollowUpForm = model_form(FollowUps, db_session=db.session, field_args={
+        "householders_name": { "label": "Householder's name", },
+        "address_line": { "label": "Address line", },
+        "annual_gas_kwh": { "label": "Annual gas consumption (kWh)", },
+        "annual_elec_kwh": { "label": "Annual electricity consumption (kWh)", },
+        "annual_solid_spend": { "label": "Annual spend on solid fuels", },
+        "renewable_contribution_kwh": {
+            "label":"Annual contribution from renewable generation (kWh)", },
+        "householder_actions": { "label": "Householder pledged actions", },
+        "householder_feedback": { "label": "Householder feedback", },
+        })
     follow_up = FollowUps()
     form = FollowUpForm(request.form, follow_up)
     if request.method=='POST' and helpers.validate_form_on_submit(form):
