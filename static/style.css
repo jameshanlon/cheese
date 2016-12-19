@@ -207,6 +207,10 @@ footer li {
   list-style-type:none;
 }
 
+#footer-left {
+  width:400px;
+}
+
 #footer-right {
   float:right;
   text-align:right;
