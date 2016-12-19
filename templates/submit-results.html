@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1>Submit survey results</h1>
+
+<div id="survey-form" style="padding-top:1.2em">
+  <form method="POST" action="">
+    {{ form.hidden_tag() if form.hidden_tag }}
+    {% for f in form if f.type != 'CSRFTokenField' %}
+      {% if f.errors %}
+        <div class="form-group has-error">
+          {{ f.label(class_="control-label") }}{{ f(class_="form-control") }}
+          {% for e in f.errors %}
+            <span class="help-block">{{ e }}</span>
+          {% endfor %}
+        </div>
+      {% else %}
+        <div class="form-group">
+          {{ f.label(class_="control-label") }}{{ f(class_="form-control") }}
+        </div>
+      {% endif %}
+    {% endfor %}
+    <label></label>
+    <button class="btn" type="submit">Submit</button>
+  </form>
+</div>
+
+{% endblock %}
