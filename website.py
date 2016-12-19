@@ -64,6 +64,14 @@ thumb = Thumbnail(app)
 def choice(string):
     return (string, string)
 
+WARDS = [
+    'Bishopston',
+    'Cotham',
+    'Easton',
+    'Filwood (Knowle West)',
+    'Lawrence Weston',
+    'Redland',
+    'Other', ]
 BUILDING_TYPES = [
     'Flat',
     'Maisonette',
@@ -573,8 +581,7 @@ def check_auth(username, password):
 
 
 def authenticate():
-    return Response(
-	'Invalid login.', 401,
+    return Response('Invalid login.', 401,
         {'WWW-Authenticate': 'Basic realm="Login Required"'})
 
 
@@ -683,26 +690,19 @@ def get_news():
 
 
 class ApplySurveyForm(form.Form):
-    WARDS = [
-        choice('Bishopston'),
-        choice('Cotham'),
-        choice('Easton'),
-        choice('Filwood (Knowle West)'),
-        choice('Lawrence Weston'),
-        choice('Redland'),
-        choice('Other'), ]
     name = fields.StringField(validators=[validators.required()])
     address_line = fields.StringField(validators=[validators.required()])
     postcode = fields.StringField(validators=[validators.required()])
-    ward = fields.SelectField('Ward', validators=[validators.required()],
-               choices=[choice('')]+WARDS, default='')
+    ward = fields.SelectField('Ward',
+               choices=[choice('')]+[choice(x) for x in WARDS],
+               default='', validators=[validators.required()],)
     email = EmailField(validators=[validators.required(),
                                    validators.Email()])
     telephone = fields.StringField(validators=[validators.required()])
     availability = fields.TextAreaField(validators=[validators.required()])
     building_type = fields.SelectField('Building type',
-                        choices=[choice('')]+BUILDING_TYPES, default='',
-                        validators=[validators.required()])
+            choices=[choice('')]+[choice(x) for x in BUILDING_TYPES],
+            default='', validators=[validators.required()])
     num_main_rooms = fields.IntegerField('Number of main rooms ' \
                                          +'(reception + living + bedroom)')
     expected_benefit = fields.TextAreaField('How do you think you will ' \
@@ -727,19 +727,8 @@ def apply_for_a_survey():
     form = ApplySurveyForm(request.form)
     if request.method=='POST' and helpers.validate_form_on_submit(form):
         # Add to db.
-        survey = Surveys(
-            name=form.name.data,
-            address_line=form.address_line.data,
-            postcode=form.postcode.data,
-            ward=form.ward.data,
-            email=form.email.data,
-            telephone=form.telephone.data,
-            availability=form.availability.data,
-            building_type=form.building_type.data,
-            num_main_rooms=form.num_main_rooms.data,
-            expected_benefit=form.expected_benefit.data,
-            referral=form.referral.data,
-            free_survey_consideration=form.free_survey_consideration.data, )
+        survey = Surveys()
+        form.populate_obj(survey)
         db.session.add(survey)
         db.session.commit()
         # Send email to applicant.
@@ -811,7 +800,6 @@ def populate_db():
 #===-----------------------------------------------------------------------===#
 # On the command line.
 #===-----------------------------------------------------------------------===#
-
 
 manager.add_command('db', MigrateCommand)
 manager.add_command('runserver', Server(host='0.0.0.0',
