@@ -220,6 +220,7 @@ class Results(db.Model):
     address_line               = db.Column(db.String(100))
     survey_date                = db.Column(db.Date)
     external_temperature       = db.Column(db.Float)
+    loaned_cheese_box          = db.Column(db.Boolean, default=False)
     cheese_box_number          = db.Column(db.String(25))
     building_type              = db.Column(db.Enum(*BUILDING_TYPES))
     year_of_construction       = db.Column(db.Integer)
@@ -229,6 +230,7 @@ class Results(db.Model):
     secondary_heating_type     = db.Column(db.String(30))
     depth_loft_insulation      = db.Column(db.String(30))
     number_open_fireplaces     = db.Column(db.String(30))
+    double_glazing             = db.Column(db.String(30))
     num_occupants              = db.Column(db.Integer)
     annual_gas_kwh             = db.Column(db.Float)
     annual_elec_kwh            = db.Column(db.Float)
@@ -250,6 +252,7 @@ class FollowUps(db.Model):
     type                       = db.Column(db.Enum('One month', 'One year'))
     householders_name          = db.Column(db.String(50))
     address_line               = db.Column(db.String(100))
+    collected_cheese_box       = db.Column(db.Boolean, default=False)
     annual_gas_kwh             = db.Column(db.Float)
     annual_elec_kwh            = db.Column(db.Float)
     annual_solid_spend         = db.Column(db.Float)
@@ -603,7 +606,8 @@ def submit_results():
         "survey_date": { "label": "Survey date (dd-mm-yy)",
                          "format": "%d-%m-%Y", },
         "external_temperature": { "label": "External temperature (C)", },
-        "cheese_box_number": { "label": "Loaned CHEESE box number", },
+        "loaned_cheese_box": { "label": "CHEESE box loaned?", },
+        "cheese_box_number": { "label": "CHEESE box number", },
         "building_type" : { "label": "Building type", },
         "year_of_construction": { "label": "Year of construction", },
         "wall_construction": { "label": "Wall construction", },
@@ -612,6 +616,7 @@ def submit_results():
         "secondary_heating_type": { "label": "Secondary heating type", },
         "depth_loft_insulation": { "label": "Depth of loft insulation (mm)", },
         "number_open_fireplaces": { "label": "Number of open fireplaces", },
+        "double_glazing": { "label": "Amount of double glazing", },
         "num_occupants": { "label": "Number of occupants", },
         "annual_gas_kwh": { "label": "Annual gas consumption (kWh)", },
         "annual_elec_kwh": { "label": "Annual electricity consumption (kWh)", },
@@ -638,6 +643,7 @@ def submit_follow_up():
     FollowUpForm = model_form(FollowUps, db_session=db.session, field_args={
         "householders_name": { "label": "Householder's name", },
         "address_line": { "label": "Address line", },
+        "collected_cheese_box": { "label": "CHEESE box collected?", },
         "annual_gas_kwh": { "label": "Annual gas consumption (kWh)", },
         "annual_elec_kwh": { "label": "Annual electricity consumption (kWh)", },
         "annual_solid_spend": { "label": "Annual spend on solid fuels", },
