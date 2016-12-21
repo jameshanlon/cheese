@@ -211,14 +211,14 @@ class Surveys(db.Model):
     survey_complete           = db.Column(db.Boolean, default=False)
 
     def __repr__(self):
-        if reference:
-            return reference
-        elif name and address_line:
-            return name+', '+address_line
-        elif name:
-            return name
-        elif address_line:
-            return address_line
+        if self.reference:
+            return self.reference
+        elif self.name and self.address_line:
+            return self.name+', '+self.address_line
+        elif self.name:
+            return self.name
+        elif self.address_line:
+            return self.address_line
         return 'Survey '+str(self.id)
 
 class Results(db.Model):
