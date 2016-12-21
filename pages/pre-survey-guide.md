@@ -34,7 +34,7 @@ make some preparations before the survey:
 - Switch on the central heating for a period of at least 24 hours before the
   survey to thoroughly warm up the fabric of the house up (this is to create a
   difference of at least 10 degrees between the house and the ambient external
-  temperature).
+  temperature). Please, make sure that all radiators are turned on.
 
 - Switch off/stop any wood burners, open fires, Agas/Rayburns, gas fires etc.
   two hours before the survey.  This is important since we will reduce the
