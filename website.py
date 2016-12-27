@@ -141,9 +141,6 @@ class Inventory(db.Model):
     # Kit
     kit_id = db.Column(db.Integer, db.ForeignKey('kits.id'))
     kit    = db.relationship('Kits')
-    # Loan
-    loan_id = db.Column(db.Integer, db.ForeignKey('loans.id'))
-    loan    = db.relationship('Loans')
     # Invoice
     invoice_id = db.Column(db.Integer, db.ForeignKey('invoices.id'))
     invoice    = db.relationship('Invoices')
@@ -158,9 +155,6 @@ class Kits(db.Model):
     notes        = db.Column(db.Text())
     # Inventory
     inventory  = db.relationship('Inventory')
-    # Loan
-    loan_id    = db.Column(db.Integer, db.ForeignKey('loans.id'))
-    loan       = db.relationship('Loans')
     # Invoice
     invoice_id = db.Column(db.Integer, db.ForeignKey('invoices.id'))
     invoice    = db.relationship('Invoices')
@@ -168,23 +162,7 @@ class Kits(db.Model):
     def __repr__(self):
         if self.name:
             return self.name
-        return 'Unknown loan '+str(self.id)
-
-
-class Loans(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    name      = db.Column(db.String(100))
-    email     = db.Column(db.String(100))
-    telephone = db.Column(db.String(20))
-    date      = db.Column(db.Date(), default=datetime.datetime.now().date())
-    notes     = db.Column(db.Text)
-    item      = db.relationship('Inventory')
-    kit       = db.relationship('Kits')
-
-    def __repr__(self):
-        if self.name and self.date:
-            return 'To '+self.name+' on '+str(self.date)
-        return 'Unknown loan '+str(self.id)
+        return 'Unnamed kit '+str(self.id)
 
 
 class Surveys(db.Model):
@@ -516,33 +494,14 @@ class InventoryView(AdminModelView):
             'notes',
             'kit',
             'invoice']
-    column_list = ['name', 'asset_number', 'kit', 'loan', 'invoice']
-    column_filters = form_columns + ['loan']
+    column_list = ['name', 'asset_number', 'kit', 'invoice']
+    column_filters = form_columns
 
 
 class KitsView(AdminModelView):
     form_columns = ['name', 'notes', 'inventory']
     column_list = form_columns + ['invoice']
     column_filters = column_list
-
-
-class LoansView(AdminModelView):
-    form_columns = [
-        'name',
-        'email',
-        'telephone',
-        'date',
-        'notes',
-        'item',
-        'kit']
-    form_args = {
-        'name': { 'label': 'Person loaned to' },
-        'date': { 'label': 'Date of loan' },
-        'kit':  { 'label': 'Kit loaned' },
-        'item': { 'label': 'Item loaned' },
-        }
-    column_list = ['name', 'item', 'kit']
-    column_filters = form_columns
 
 
 class InvoicesView(AdminModelView):
@@ -579,7 +538,6 @@ admin.add_view(ResultsView(Results, db.session))
 admin.add_view(FollowUpsView(FollowUps, db.session))
 admin.add_view(InventoryView(Inventory, db.session))
 admin.add_view(KitsView(Kits, db.session))
-admin.add_view(LoansView(Loans, db.session))
 admin.add_view(InvoicesView(Invoices, db.session))
 
 
@@ -802,12 +760,10 @@ def populate_db():
     survey_1 = Surveys(name="Joe Blogs", address_line="Some street",
                        postcode="BS5 XXX")
     #item_1 = Inventory(name="Blower door", asset_number=100)
-    #loan_1 = Loans(name="Jamie Hanlon", inventory=item_1)
     db.session.add(admin_user)
     db.session.add(test_user)
     db.session.add(survey_1)
     #db.session.add(item_1)
-    #db.session.add(loan_1)
     db.session.commit()
 
 
