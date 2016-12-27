@@ -1,4 +1,11 @@
 
+<div class="pull-right">
+  <a href="javascript:void(0)" class="pop">
+    <img src="{{'static/images/thermal13.jpg'|thumbnail('180x180')}}"
+         alt="xxx">
+  </a>
+</div>
+
 # Home thermal-imaging surveys
 
 **Our internal thermal-imaging surveys aim to improve the comfort and energy

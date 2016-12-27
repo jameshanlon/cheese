@@ -739,9 +739,17 @@ def news():
 
 
 # Any flat pages.
-@app.route('/<path:path>/')
+@app.route('/<path:path>')
 def page(path):
     page = pages.get_or_404(path)
+    template = page.meta.get('template', 'page.html')
+    return render_template(template, page=page)
+
+
+@app.route('/home-surveys')
+def home_surveys():
+    page = pages.get('home-surveys')
+    page.html = render_template_string(page.html)
     template = page.meta.get('template', 'page.html')
     return render_template(template, page=page)
 
