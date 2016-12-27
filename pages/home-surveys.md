@@ -2,7 +2,7 @@
 <div class="pull-right">
   <a href="javascript:void(0)" class="pop">
     <img src="{{'static/images/thermal13.jpg'|thumbnail('180x180')}}"
-         alt="xxx">
+         alt="Thermal image of a bay window.">
   </a>
 </div>
 
