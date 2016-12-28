@@ -37,6 +37,13 @@ img {
   padding-bottom: 0.3em;
 }
 
+.big-text {
+  font-size: 2.25em;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom:0.6em;
+}
+
 /* Fix the width to be 768px. */
 @media (min-width: 1200px) {
   .container{
@@ -55,12 +62,18 @@ img {
     max-width: 768px;
     width: 768px;
   }
+  /* Adjust jumbotron side padding */
+  .container .jumbotron {
+    padding-left:20px;
+    padding-right:20px;
+  }
 }
-@media (max-width: 480px) {
+@media (max-width: 768px) {
+  /* Adjust the size of the logo and main banner. */
   #logo img {
     max-width:320px;
   }
-  .banner img {
+  .jumbotron img {
     max-width:100px;
   }
 }
@@ -100,8 +113,8 @@ img {
   font-size:1.1em;
 }
 
-/* Centre the nav bar elements */
 @media (min-width: 768px) {
+  /* Centre the nav bar elements */
   .navbar .navbar-nav {
     display: inline-block;
     float: none;
@@ -150,24 +163,10 @@ img {
   text-align:center;
 }
 
-.big-text {
-  font-size: 2.25em;
-  font-weight: bold;
-  text-align: center;
-  margin-bottom:0.4em;
-}
-
 .lead {
   padding: 0.4em 0.2em 0 0.2em;
   font-size:1.4em;
   font-weight:bold;
-}
-
-.banner {
-  border: 2px solid gray;
-  border-radius:4px;
-  padding:0.8em;
-  margin:0.8em 0 0.8em 0;
 }
 
 .banner-imgs {
@@ -189,14 +188,14 @@ img {
 
 .caption {
   margin-top:-0.2em;
-  font-size:0.8em;
+  font-size:1.2em;
   text-align:center;
 }
 
 .imgcaption {
   margin-top:0.4em;
   font-size:0.9em;
-  width: 120px;
+  width: 110px;
 }
 
 .video {
