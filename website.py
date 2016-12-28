@@ -571,7 +571,7 @@ def submit_results():
         "surveyors_name": { "label": "Surveyor's name", },
         "householders_name": { "label": "Householder's name", },
         "address_line": { "label": "Address line", },
-        "survey_date": { "label": "Survey date (dd-mm-yy)",
+        "survey_date": { "label": "Survey date (dd-mm-yyyy)",
                          "format": "%d-%m-%Y", },
         "external_temperature": { "label": "External temperature (C)", },
         "loaned_cheese_box": { "label": "CHEESE box loaned?", },
