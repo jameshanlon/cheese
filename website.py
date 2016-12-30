@@ -178,6 +178,7 @@ class Surveys(db.Model):
                                   default=datetime.datetime.now().date())
     building_type             = db.Column(db.Enum(*BUILDING_TYPES))
     num_main_rooms            = db.Column(db.Integer)
+    can_heat_comfortably      = db.Column(db.Boolean, default=False)
     expected_benefit          = db.Column(db.Text)
     referral                  = db.Column(db.String(100))
     availability              = db.Column(db.Text)
@@ -397,6 +398,7 @@ class SurveysView(RegularModelView):
         'survey_request_date',
         'building_type',
         'num_main_rooms',
+        'can_heat_comfortably',
         'expected_benefit',
         'referral',
         'availability',
@@ -677,6 +679,9 @@ class ApplySurveyForm(form.Form):
             default='', validators=[validators.required()])
     num_main_rooms = fields.IntegerField('Number of main rooms ' \
                                          +'(reception + living + bedroom)')
+    can_heat_comfortably = \
+        fields.BooleanField('Can you heat your home to a comfortable ' \
+                            +'temperature in the winter?')
     expected_benefit = fields.TextAreaField('How do you think you will ' \
                                             + 'benefit from a survey?',
                                         validators=[validators.required()])
