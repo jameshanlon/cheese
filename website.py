@@ -590,7 +590,8 @@ def submit_results():
         "num_occupants": { "label": "Number of occupants", },
         "annual_gas_kwh": { "label": "Annual gas consumption (kWh)", },
         "annual_elec_kwh": { "label": "Annual electricity consumption (kWh)", },
-        "annual_solid_spend": { "label": "Annual spend on solid fuels", },
+        "annual_solid_spend": {
+            "label": "Annual spend on solid fuels (&pound;)", },
         "renewable_contribution_kwh": {
             "label":"Annual contribution from renewable generation (kWh)", },
         "faults_identified": { "label": "Faults identified", },
@@ -616,11 +617,12 @@ def submit_follow_up():
         "collected_cheese_box": { "label": "CHEESE box collected?", },
         "annual_gas_kwh": { "label": "Annual gas consumption (kWh)", },
         "annual_elec_kwh": { "label": "Annual electricity consumption (kWh)", },
-        "annual_solid_spend": { "label": "Annual spend on solid fuels", },
+        "annual_solid_spend": {
+            "label": "Annual spend on solid fuels (&pound;)", },
         "renewable_contribution_kwh": {
             "label":"Annual contribution from renewable generation (kWh)", },
-        "householder_actions": { "label": "Householder pledged actions", },
-        "householder_feedback": { "label": "Householder feedback", },
+        "householder_actions": { "label": "Planned actions", },
+        "householder_feedback": { "label": "Feedback on CHEESE", },
         })
     follow_up = FollowUps()
     form = FollowUpForm(request.form, follow_up)
