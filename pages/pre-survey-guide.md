@@ -18,7 +18,7 @@ purposes.
 To save administration time for our largely volunteer staff, we do ask that you
 pay in advance for your survey. This is priced according to the number of
 bedrooms plus living rooms, because this affects the time taken on the survey.
-See [our pricing for various sizes of homes](/home-surveys/#pricing).
+See [our pricing for various sizes of homes](/home-surveys#pricing).
 
 Please make on-line payments to **The CHEESE Project**. Sort code 089299,
 account number 65811564 with your name as reference. Cheques should be posted
