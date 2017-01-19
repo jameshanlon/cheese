@@ -48,7 +48,7 @@ point.
 Following the survey, a briefing is carried out on the main problems that were
 identified and how they might be remedied. We will record your current energy
 use by looking at your gas and electricity bills (you will need to [find them
-in advance](/pre-survey-info#preparation) and you will have the opportunity to
+in advance](/pre-survey-guide#preparation) and you will have the opportunity to
 borrow a *CHEESE energy monitoring and action pack* containing simple-to-use
 meters to monitor energy use and information on DIY energy-saving techniques.
 
