@@ -1,5 +1,5 @@
 news:
-date: 2017-1-22
+date: 2017-01-22
 title: CHEESE features in the Bristol Cable newspaper
 
 If you have this quarter's edition of the [Bristol Cable
