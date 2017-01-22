@@ -31,14 +31,13 @@ Road, Sneyd Park, Bristol BS9 1PG.
 In order for us to conduct an efficient and successful survey, we need you to
 make some preparations before the survey:
 
-- We recommend that you switch on your heating for a period of 24 hours before
-  the survey to thoroughly warm up the fabric of the house (this is to create a
-  difference of at least 10 degrees between the house and the ambient external
-  temperature). Please make sure that all radiators are turned on; however you
-  might want to adjust the heating temperature and/or individual radiators so
-  that rooms do not become uncomfortable, particularly at night. Please also
-  note, if you feel that you're unable to keep your heating on for this length
-  of time, contact us at:
+- We recommend that you switch on your heating for 24 hours before the survey
+  to thoroughly warm up the fabric of the house (this is to create a difference
+  of at least 10 degrees between the house and the external temperature).
+  Please make sure that all radiators are turned on; however you might want to
+  adjust individual radiators so that rooms do not become uncomfortable,
+  particularly at night. Please also note, if you feel that you're unable to
+  keep your heating on for this length of time, contact us at:
   [surveys@cheeseproject.co.uk](mailto:surveys@cheeseproject.co.uk) so we can
   work out the best approach for you.
 
