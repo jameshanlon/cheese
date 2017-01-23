@@ -35,11 +35,11 @@ make some preparations before the survey:
   to thoroughly warm up the fabric of the house (this is to create a difference
   of at least 10 degrees between the house and the external temperature).
   Please make sure that all radiators are turned on; however you might want to
-  adjust individual radiators so that rooms do not become uncomfortable,
-  particularly at night. Please also note, if you feel that you're unable to
-  keep your heating on for this length of time, contact us at:
-  [surveys@cheeseproject.co.uk](mailto:surveys@cheeseproject.co.uk) so we can
-  work out the best approach for you.
+  adjust the temperature of individual radiators/rooms so that rooms do not
+  become uncomfortable, particularly at night. Please also note, if you feel
+  that you're unable to keep your heating on for this length of time, contact
+  us at: [surveys@cheeseproject.co.uk](mailto:surveys@cheeseproject.co.uk) so
+  we can work out the best approach for you.
 
 - Switch off/stop any wood burners, open fires, Agas/Rayburns, gas fires etc.
   two hours before the survey.  This is important since we will reduce the
