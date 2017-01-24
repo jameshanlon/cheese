@@ -1,8 +1,10 @@
 news:
 date: 2017-01-22
-title: CHEESE features in the Bristol Cable newspaper
+title: Plugging Bristol's energy gaps
 
-If you have this quarter's edition of the [Bristol Cable
-newspaper](https://thebristolcable.org/) then look out for an article on
-'Plugging Bristol's energy gap', about the Bristol CHEESE Project.
-Unfortunately, there's no online version of the article.
+In this quarter's edition of the [Bristol Cable
+newspaper](https://thebristolcable.org/), CHEESE gets a mention in an article
+on the poor thermal efficiency of Bristol's housing stock and the growing
+problem of fuel povery. Read the full article in the print or [on their
+website](https://thebristolcable.org/2017/01/energy-gaps/).
+
