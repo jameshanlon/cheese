@@ -7,11 +7,11 @@ we will follow up with your progress afterwards.
 
 ## Confidentiality
 
-Results of our surveys remain confidential between you and The CHEESE Project,
-however, in order for us to be able to collect data city-wide on building
-faults and energy saving, etc. we may use anonymised recordings, photos of
-structure, and details of the survey for analysis, publicity, fund-raising etc.
-purposes.
+Results of our surveys and follow-ups remain confidential between you and The
+CHEESE Project, however, in order for us to be able to collect data city-wide
+on building faults and energy saving, etc. we may use anonymised recordings,
+photos of structure, and details of the survey for analysis, publicity,
+fund-raising etc.  purposes.
 
 ## Payment
 
