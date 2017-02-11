@@ -141,9 +141,6 @@ class Inventory(db.Model):
     # Kit
     kit_id = db.Column(db.Integer, db.ForeignKey('kits.id'))
     kit    = db.relationship('Kits')
-    # Invoice
-    invoice_id = db.Column(db.Integer, db.ForeignKey('invoices.id'))
-    invoice    = db.relationship('Invoices')
 
     def __repr__(self):
         return self.name+' (#'+str(self.asset_number)+')'
@@ -155,9 +152,6 @@ class Kits(db.Model):
     notes        = db.Column(db.Text())
     # Inventory
     inventory  = db.relationship('Inventory')
-    # Invoice
-    invoice_id = db.Column(db.Integer, db.ForeignKey('invoices.id'))
-    invoice    = db.relationship('Invoices')
 
     def __repr__(self):
         if self.name:
@@ -274,38 +268,6 @@ class YearFeedback(db.Model):
 
     def __repr__(self):
         return '<Year feedback '+str(self.id)+'>'
-
-
-class Invoices(db.Model):
-    categories = [
-            'Salaries',
-            'NIC',
-            'Pension',
-            'Fees',
-            'License fees',
-            'Technical fees',
-            'Office',
-            'Legal/insurance',
-            'Publicity/printing',
-            'Training/video',
-            'Travel',
-            'Segments',
-            'Capital kit',
-            'Consumables', ]
-    id = db.Column(db.Integer, primary_key=True)
-    reference    = db.Column(db.String(100))
-    amount       = db.Column(db.Float)
-    date_raised  = db.Column(db.Date, default=datetime.datetime.now().date())
-    paid_by      = db.Column(db.String(100))
-    settled      = db.Column(db.Boolean, default=False)
-    date_settled = db.Column(db.Date)
-    category     = db.Column(db.Enum(*categories))
-    notes        = db.Column(db.Text)
-    inventory    = db.relationship('Inventory')
-    kits         = db.relationship('Kits')
-
-    def __repr__(self):
-        return 'Invoice #'+str(self.id)+' raised '+str(self.date_raised)
 
 
 #===-----------------------------------------------------------------------===#
@@ -515,40 +477,15 @@ class InventoryView(AdminModelView):
             'credit_amount',
             'credit_date',
             'notes',
-            'kit',
-            'invoice']
-    column_list = ['name', 'asset_number', 'kit', 'invoice']
+            'kit']
+    column_list = ['name', 'asset_number', 'kit']
     column_filters = form_columns
 
 
 class KitsView(AdminModelView):
     form_columns = ['name', 'notes', 'inventory']
-    column_list = form_columns + ['invoice']
+    column_list = form_columns
     column_filters = column_list
-
-
-class InvoicesView(AdminModelView):
-    form_columns = [
-        'reference',
-        'amount',
-        'date_raised',
-        'paid_by',
-        'settled',
-        'date_settled',
-        'category',
-        'notes',
-        'inventory',
-        'kits', ]
-    column_list = [
-        'id',
-        'reference',
-        'amount',
-        'date_raised',
-        'paid_by',
-        'settled',
-        'date_settled',
-        'category', ]
-    column_filters = form_columns
 
 
 # Setup admin.
@@ -564,7 +501,6 @@ admin.add_view(FeedbackView(YearFeedback, db.session,
                              name='1 year feedback'))
 admin.add_view(InventoryView(Inventory, db.session))
 admin.add_view(KitsView(Kits, db.session))
-admin.add_view(InvoicesView(Invoices, db.session))
 
 
 #===-----------------------------------------------------------------------===#
