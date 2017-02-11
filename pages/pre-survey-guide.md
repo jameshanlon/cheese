@@ -5,15 +5,24 @@ This page describes what you need to do to prepare for a Cold Homes Energy
 Efficiency Survey Experts (CHEESE) survey, what will happen on the day, and how
 we will follow up with your progress afterwards.
 
-## Confidentiality
+## Contents
+
+1. [Confidentiality](#confidentiality)
+2. [Payment](#payment)
+3. [Preparation](#preparation)
+4. [During the survey](#during)
+5. [Follow ups after the survey](#follow-ups)
+6. [Subsequently](#subsequently)
+
+## Confidentiality <a name="confidentiality"></a>
 
 Results of our surveys and follow-ups remain confidential between you and The
 CHEESE Project, however, in order for us to be able to collect data city-wide
 on building faults and energy saving, etc. we may use anonymised recordings,
-photos of structure, and details of the survey for analysis, publicity,
-fund-raising etc.  purposes.
+photos of structure, and details of the survey for the purposes of analysis,
+publicity, fund-raising etc.
 
-## Payment
+## Payment <a name="payment"></a>
 
 To save administration time for our largely volunteer staff, we do ask that you
 pay in advance for your survey. This is priced according to the number of
@@ -25,8 +34,7 @@ account number 65811564 with your name as reference. Cheques should be posted
 to: Mike Andrews, General Manager, The CHEESE Project, 28 Seawalls, Seawalls
 Road, Sneyd Park, Bristol BS9 1PG.
 
-<a name="preparation"></a>
-## Preparation for the survey
+## Preparation for the survey <a name="preparation"></a>
 
 In order for us to conduct an efficient and successful survey, we need you to
 make some preparations before the survey:
@@ -73,7 +81,7 @@ information](https://www.uswitch.com/gas-electricity/guides/energy-bills/) on
 understanding your energy bills. If you are not sure how to do this, then we
 can calculate them after the survey with you.
 
-## During the survey
+## During the survey <a name="during"></a>
 
 Please note:
 
@@ -114,8 +122,7 @@ Please note:
   incoming electricity supply. This will be collected two weeks after the
   survey.
 
-<a name="follow-ups"></a>
-## Follow ups after the survey
+## Follow ups after the survey<a name="follow-ups"></a>
 
 ### One month
 
@@ -140,7 +147,7 @@ how you are getting on. We would like to know:
 
 - Any other comments that you might have.
 
-### Subsequently
+### Subsequently <a name="subsequently"></a>
 
 We find that following a CHEESE survey, people may continue to take action for
 years afterwards, reviewing the video again and again as they gradually deal

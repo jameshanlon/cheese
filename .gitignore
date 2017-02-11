@@ -5,3 +5,4 @@ static/images/thumbs
 env/
 test.db
 flask/mysql.cnf
+.DS_Store

@@ -255,19 +255,19 @@ class MonthFeedback(db.Model):
 
 class YearFeedback(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    householders_name          = db.Column(db.String(50))
-    address_line               = db.Column(db.String(100))
-    annual_gas_kwh             = db.Column(db.Float)
-    annual_elec_kwh            = db.Column(db.Float)
-    annual_solid_spend         = db.Column(db.Float)
-    renewable_contribution_kwh = db.Column(db.Float)
-    diy_work                   = db.Column(db.Text)
-    prof_work                  = db.Column(db.Text)
-    total_spent                = db.Column(db.Float)
-    planned_work               = db.Column(db.Text)
-    behaviour_changes          = db.Column(db.Text)
-    feedback                   = db.Column(db.Text)
-    notes                      = db.Column(db.Text)
+    householders_name     = db.Column(db.String(50))
+    address_line          = db.Column(db.String(100))
+    annual_gas_kwh        = db.Column(db.Float)
+    annual_elec_kwh       = db.Column(db.Float)
+    annual_solid_spend    = db.Column(db.Float)
+    renewable_contrib_kwh = db.Column(db.Float)
+    diy_work              = db.Column(db.Text)
+    prof_work             = db.Column(db.Text)
+    total_spent           = db.Column(db.Float)
+    planned_work          = db.Column(db.Text)
+    behaviour_changes     = db.Column(db.Text)
+    feedback              = db.Column(db.Text)
+    notes                 = db.Column(db.Text)
     # Survey ref
     survey_id = db.Column(db.Integer, db.ForeignKey('surveys.id'))
     survey    = db.relationship('Surveys')
@@ -729,30 +729,40 @@ def apply_for_a_survey():
 
 @app.route('/one-month-feedback', methods=['GET', 'POST'])
 def one_month_feedback():
-    kwh_help = 'We only need this if we didn\'t collect this during the survey.<br>' \
-		+'For help with calculating the value, please see <a href="/cheese-box">our guide</a>.'
+    not_needed = 'We only need this if we didn\'t collect this during the survey.'
+    kwh_help = 'For help with calculating the value, please see ' \
+                +'<a href="/cheese-box#recording-energy-use">our guide</a>.' \
+                +'<br>'+not_needed
     MonthFeedbackForm = model_form(MonthFeedback, db_session=db.session,
         exclude=['survey', 'notes'],
 	field_args={
-          'householders_name': 
-	    { 'label': 'Name', },
-          'address':
-	    { 'label': 'Address', },
-          'annual_gas_kwh':
-            { 'label': 'Total annual gas usage in kWh',
+          'householders_name': { 'label': 'Name', },
+          'address': 	       { 'label': 'Address', },
+          'annual_gas_kwh': {
+              'label': 'Total annual gas usage in kWh',
               'description': kwh_help, },
-          'annual_elec_kwh':
-            { 'label': 'Total annual electricity usage in kWh',
+          'annual_elec_kwh': {
+              'label': 'Total annual electricity usage in kWh',
               'description': kwh_help, },
- 	  'annual_solid_spend':
-            { 'label': 'Total annual spend in pounds on solid fuels', },
-          'renewable_contrib_kwh':
-            { 'label': 'Total annual contribution of any renewable generation in kWh', },
-	  'planned_actions':
-            { 'label': 'What you are planning to do?',
-              'description': '', },
-	  'feedback':
-            { 'label': 'Please provide any feedback you have on your CHEESE survey', },
+ 	  'annual_solid_spend': {
+              'label': 'Total annual spend in pounds (&pound;) on solid fuels', 
+              'description': 'Such as wood, coal etc.<br>'+not_needed, },
+          'renewable_contrib_kwh': {
+              'label': 'Total annual contribution of any renewable generation in kWh',
+              'description': 'Such as from solar PV or a ground-source heat pump.<br>'+not_needed, },
+	  'planned_actions': {
+              'label': 'What you are planning to do to improve the thermal efficiency of your home?',
+              'description': 'This can be anything from draught proofing to installing external wall insulation.', },
+	  'feedback': {
+              'label': 'Do you have any feedback you have on your CHEESE survey?',
+              'description': 'We would like to hear what you think about:'
+                              +' the organisation of the survey,'
+                              +' the conduct of the Energy Tracers,'
+                              +' the results of the survey and suggested remedies,'
+                              +' the usefulness of the <a href="/cheese-box">CHEESE box</a>,'
+                              +' the overall value for money of the survey,'
+                              +' your overall satisfaction,'
+                              +' and anything else at all you would like to let us know.', },
           }
         )
     follow_up = MonthFeedback()
@@ -764,6 +774,59 @@ def one_month_feedback():
         flash('Your one month feedback was submitted successfully, thank you.')
         return redirect(url_for('one_month_feedback'))
     return render_template('one-month-feedback.html', form=form)
+
+
+@app.route('/one-year-feedback', methods=['GET', 'POST'])
+def one_year_feedback():
+    kwh_help = 'For help with calculating the value, please see ' \
+                +'<a href="/cheese-box#recording-energy-use">our guide</a>.'
+    YearFeedbackForm = model_form(YearFeedback, db_session=db.session,
+        exclude=['survey', 'notes'],
+	field_args={
+          'householders_name': { 'label': 'Name', },
+          'address': 	       { 'label': 'Address', },
+          'annual_gas_kwh': {
+              'label': 'Total annual gas usage in kWh',
+              'description': kwh_help, },
+          'annual_elec_kwh': {
+              'label': 'Total annual electricity usage in kWh',
+              'description': kwh_help, },
+ 	  'annual_solid_spend': {
+              'label': 'Total annual spend in pounds (&pound;) on solid fuels', 
+              'description': 'Such as wood, coal etc.', },
+          'renewable_contrib_kwh': {
+             'label': 'Total annual contribution of any renewable generation in kWh',
+              'description': 'Such as from solar PV or a ground-source heat pump.', },
+          'diy_work' : {
+              'label': 'What work have you done yourself?'},
+          'prof_work': {
+              'label': 'What work have you paid for to be done professionally?', },
+          'total_spent': {
+	      'label': 'Approximately how much have you spent in total on energy improvements to your home?',
+              'description': 'Only answer this if you feel comfortable to.', },
+          'planned_work': {
+	      'label': 'Do you have any further work planned? And, if so, what?', },
+          'behaviour_changes': {
+              'label': 'Do you think your behaviour has changed at all after having had the survey? And, if so, how?',
+              'description': 'Such as the period and temperature you use the heating for, or the way you use the space in your home.', },
+	  'feedback':
+            { 'label': 'Do you have any feedback you have on the CHEESE Project?',
+              'description': 'We would like to hear what you think about:'
+                              +' how useful the survey was,'
+                              +' how useful the <a href="/cheese-box">CHEESE box</a> was,'
+                              +' your overall satisfaction,'
+                              +' and anything else at all you would like to let us know.', },
+          }
+        )
+    follow_up = YearFeedback()
+    form = YearFeedbackForm(request.form, follow_up)
+    if request.method=='POST' and helpers.validate_form_on_submit(form):
+        form.populate_obj(follow_up)
+        db.session.add(follow_up)
+        db.session.commit()
+        flash('Your one year feedback was submitted successfully, thank you.')
+        return redirect(url_for('one_year_feedback'))
+    return render_template('one-year-feedback.html', form=form)
 
 
 
@@ -790,7 +853,17 @@ def page(path):
 
 @app.route('/home-surveys')
 def home_surveys():
+    # Flat page with template code.
     page = pages.get('home-surveys')
+    page.html = render_template_string(page.html)
+    template = page.meta.get('template', 'page.html')
+    return render_template(template, page=page)
+
+
+@app.route('/cheese-box')
+def cheese_box():
+    # Flat page with template code.
+    page = pages.get('cheese-box')
     page.html = render_template_string(page.html)
     template = page.meta.get('template', 'page.html')
     return render_template(template, page=page)

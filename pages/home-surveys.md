@@ -1,12 +1,12 @@
 
+# Home thermal-imaging surveys
+
 <div class="pull-right">
   <a href="javascript:void(0)" class="pop">
     <img src="{{'static/images/thermal13.jpg'|thumbnail('180x180')}}"
          alt="Thermal image of a bay window.">
   </a>
 </div>
-
-# Home thermal-imaging surveys
 
 **Our internal thermal-imaging surveys aim to improve the comfort and energy
 efficiency of your home, to you save money on your bills and to reduce your
