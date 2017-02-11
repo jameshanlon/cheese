@@ -71,9 +71,9 @@ Create the migration and run the upgrade from in the container.
 ```
 $ docker exec -it <continer-name> bash
 $ cd /opt/www
-$ flask db migrate
+$ python website.py db migrate
 ...
-$ flask db upgrade
+$ python website.py db upgrade
 ...
 $ exit
 ```
