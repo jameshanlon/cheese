@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1>One-year feedback</h1>
+
+<p>As part of the CHEESE survey process, we check in with householders one
+month and one year after the survey. After one year we would we would like to
+find out how you have got on and what effect the changes have had. This data is
+important for us to demonstrate the effectivness of what we do.</p>
+
+<p>Please complete the form below to provide us with your one-year feedback.</p>
+
+<div id="survey-form" style="padding-top:1.2em">
+  <form method="POST" action="">
+    {{ form.hidden_tag() if form.hidden_tag }}
+    {% for f in form if f.type != 'CSRFTokenField' %}
+      {% if f.errors %}
+        <div class="form-group has-error">
+          {{ f.label(class_="control-label") }}
+          {% if f.description %}
+            <p class="help-block">{{ f.description | safe}}</p>
+          {% endif %}
+          {{ f(class_="form-control") }}
+          {% for e in f.errors %}
+            <span class="help-block">{{ e }}</span>
+          {% endfor %}
+        </div>
+      {% else %}
+        <div class="form-group">
+          {{ f.label(class_="control-label") }}
+          {% if f.description %}
+            <p class="help-block">{{ f.description | safe }}</p>
+          {% endif %}
+          {{ f(class_="form-control") }}
+        </div>
+      {% endif %}
+    {% endfor %}
+    <label></label>
+    <p>Please note: your data remains confidential with The CHEESE Project,
+    however, in order for us to be able to collect data city-wide on building
+    faults and energy saving, etc. we may use anonymised details for the
+    purposes of analysis, publicity, fund-raising etc.</p>
+    <button class="btn" type="submit">Submit</button>
+  </form>
+</div>
+
+{% endblock %}
