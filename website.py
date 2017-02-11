@@ -234,25 +234,46 @@ class Results(db.Model):
         return '<Result '+str(self.id)+'>'
 
 
-class FollowUps(db.Model):
+class MonthFeedback(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    type                       = db.Column(db.Enum('One month', 'One year'))
+    householders_name     = db.Column(db.String(50))
+    address               = db.Column(db.String(100))
+    annual_gas_kwh        = db.Column(db.Float)
+    annual_elec_kwh       = db.Column(db.Float)
+    annual_solid_spend    = db.Column(db.Float)
+    renewable_contrib_kwh = db.Column(db.Float)
+    planned_actions       = db.Column(db.Text)
+    feedback              = db.Column(db.Text)
+    notes                 = db.Column(db.Text)
+    # Survey ref
+    survey_id = db.Column(db.Integer, db.ForeignKey('surveys.id'))
+    survey    = db.relationship('Surveys')
+
+    def __repr__(self):
+        return '<Month feedback '+str(self.id)+'>'
+
+
+class YearFeedback(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
     householders_name          = db.Column(db.String(50))
     address_line               = db.Column(db.String(100))
-    collected_cheese_box       = db.Column(db.Boolean, default=False)
     annual_gas_kwh             = db.Column(db.Float)
     annual_elec_kwh            = db.Column(db.Float)
     annual_solid_spend         = db.Column(db.Float)
     renewable_contribution_kwh = db.Column(db.Float)
-    householder_actions        = db.Column(db.Text)
-    householder_feedback       = db.Column(db.Text)
+    diy_work                   = db.Column(db.Text)
+    prof_work                  = db.Column(db.Text)
+    total_spent                = db.Column(db.Float)
+    planned_work               = db.Column(db.Text)
+    behaviour_changes          = db.Column(db.Text)
+    feedback                   = db.Column(db.Text)
     notes                      = db.Column(db.Text)
     # Survey ref
     survey_id = db.Column(db.Integer, db.ForeignKey('surveys.id'))
     survey    = db.relationship('Surveys')
 
     def __repr__(self):
-        return '<Follow up '+str(self.id)+'>'
+        return '<Year feedback '+str(self.id)+'>'
 
 
 class Invoices(db.Model):
@@ -464,7 +485,7 @@ class ResultsView(RegularModelView):
         'notes':             { 'rows': 8, 'cols': 20 }, }
 
 
-class FollowUpsView(RegularModelView):
+class FeedbackView(RegularModelView):
     column_exclude_list = [
         'annual_gas_kwh',
         'annual_elec_kwh',
@@ -537,7 +558,10 @@ admin = admin.Admin(app, name='CHEESE database',
 admin.add_view(PeopleView(People, db.session))
 admin.add_view(SurveysView(Surveys, db.session))
 admin.add_view(ResultsView(Results, db.session))
-admin.add_view(FollowUpsView(FollowUps, db.session))
+admin.add_view(FeedbackView(MonthFeedback, db.session,
+                             name='1 month feedback'))
+admin.add_view(FeedbackView(YearFeedback, db.session,
+                             name='1 year feedback'))
 admin.add_view(InventoryView(Inventory, db.session))
 admin.add_view(KitsView(Kits, db.session))
 admin.add_view(InvoicesView(Invoices, db.session))
@@ -570,31 +594,29 @@ def requires_auth(f):
 @requires_auth
 def submit_results():
     ResultsForm = model_form(Results, db_session=db.session, field_args={
-        "surveyors_name": { "label": "Surveyor's name", },
-        "householders_name": { "label": "Householder's name", },
-        "address_line": { "label": "Address line", },
-        "survey_date": { "label": "Survey date (dd-mm-yyyy)",
-                         "format": "%d-%m-%Y", },
-        "external_temperature": { "label": "External temperature (C)", },
-        "loaned_cheese_box": { "label": "CHEESE box loaned?", },
-        "cheese_box_number": { "label": "CHEESE box number", },
-        "building_type" : { "label": "Building type", },
-        "year_of_construction": { "label": "Year of construction", },
-        "wall_construction": { "label": "Wall construction", },
-        "occupation_type": { "label": "Occupation type", },
-        "primary_heating_type": { "label": "Primary heating type", },
-        "secondary_heating_type": { "label": "Secondary heating type", },
-        "depth_loft_insulation": { "label": "Depth of loft insulation (mm)", },
-        "number_open_fireplaces": { "label": "Number of open fireplaces", },
-        "double_glazing": { "label": "Amount of double glazing", },
-        "num_occupants": { "label": "Number of occupants", },
-        "annual_gas_kwh": { "label": "Annual gas consumption (kWh)", },
-        "annual_elec_kwh": { "label": "Annual electricity consumption (kWh)", },
-        "annual_solid_spend": {
-            "label": "Annual spend on solid fuels (&pound;)", },
-        "renewable_contribution_kwh": {
-            "label":"Annual contribution from renewable generation (kWh)", },
-        "faults_identified": { "label": "Faults identified", },
+        "surveyors_name":             { "label": "Surveyor's name", },
+        "householders_name":          { "label": "Householder's name", },
+        "address_line":               { "label": "Address line", },
+        "survey_date":                { "label": "Survey date (dd-mm-yyyy)",
+                                        "format": "%d-%m-%Y", },
+        "external_temperature":       { "label": "External temperature (C)", },
+        "loaned_cheese_box":          { "label": "CHEESE box loaned?", },
+        "cheese_box_number":          { "label": "CHEESE box number", },
+        "building_type" :             { "label": "Building type", },
+        "year_of_construction":       { "label": "Year of construction", },
+        "wall_construction":          { "label": "Wall construction", },
+        "occupation_type":            { "label": "Occupation type", },
+        "primary_heating_type":       { "label": "Primary heating type", },
+        "secondary_heating_type":     { "label": "Secondary heating type", },
+        "depth_loft_insulation":      { "label": "Depth of loft insulation (mm)", },
+        "number_open_fireplaces":     { "label": "Number of open fireplaces", },
+        "double_glazing":             { "label": "Amount of double glazing", },
+        "num_occupants":              { "label": "Number of occupants", },
+        "annual_gas_kwh":             { "label": "Annual gas consumption (kWh)", },
+        "annual_elec_kwh":            { "label": "Annual electricity consumption (kWh)", },
+        "annual_solid_spend":         { "label": "Annual spend on solid fuels (&pound;)", },
+        "renewable_contribution_kwh": { "label":"Annual contribution from renewable generation (kWh)", },
+        "faults_identified":          { "label": "Faults identified", },
         })
     results = Results()
     results_form = ResultsForm(obj=results)
@@ -606,33 +628,6 @@ def submit_results():
         flash('Survey result submitted successfully.')
         return redirect(url_for('submit_results'))
     return render_template('submit-results.html', form=form)
-
-
-@app.route('/submit-follow-up', methods=['GET', 'POST'])
-@requires_auth
-def submit_follow_up():
-    FollowUpForm = model_form(FollowUps, db_session=db.session, field_args={
-        "householders_name": { "label": "Householder's name", },
-        "address_line": { "label": "Address line", },
-        "collected_cheese_box": { "label": "CHEESE box collected?", },
-        "annual_gas_kwh": { "label": "Annual gas consumption (kWh)", },
-        "annual_elec_kwh": { "label": "Annual electricity consumption (kWh)", },
-        "annual_solid_spend": {
-            "label": "Annual spend on solid fuels (&pound;)", },
-        "renewable_contribution_kwh": {
-            "label":"Annual contribution from renewable generation (kWh)", },
-        "householder_actions": { "label": "Planned actions", },
-        "householder_feedback": { "label": "Feedback on CHEESE", },
-        })
-    follow_up = FollowUps()
-    form = FollowUpForm(request.form, follow_up)
-    if request.method=='POST' and helpers.validate_form_on_submit(form):
-        form.populate_obj(follow_up)
-        db.session.add(follow_up)
-        db.session.commit()
-        flash('Follow up result submitted successfully.')
-        return redirect(url_for('submit_follow_up'))
-    return render_template('submit-follow-up.html', form=form)
 
 
 #===-----------------------------------------------------------------------===#
@@ -730,6 +725,46 @@ def apply_for_a_survey():
         page = pages.get('application-successful')
         return render_template('page.html', page=page)
     return render_template('apply-for-a-survey.html', form=form)
+
+
+@app.route('/one-month-feedback', methods=['GET', 'POST'])
+def one_month_feedback():
+    kwh_help = 'We only need this if we didn\'t collect this during the survey.<br>' \
+		+'For help with calculating the value, please see <a href="/cheese-box">our guide</a>.'
+    MonthFeedbackForm = model_form(MonthFeedback, db_session=db.session,
+        exclude=['survey', 'notes'],
+	field_args={
+          'householders_name': 
+	    { 'label': 'Name', },
+          'address':
+	    { 'label': 'Address', },
+          'annual_gas_kwh':
+            { 'label': 'Total annual gas usage in kWh',
+              'description': kwh_help, },
+          'annual_elec_kwh':
+            { 'label': 'Total annual electricity usage in kWh',
+              'description': kwh_help, },
+ 	  'annual_solid_spend':
+            { 'label': 'Total annual spend in pounds on solid fuels', },
+          'renewable_contrib_kwh':
+            { 'label': 'Total annual contribution of any renewable generation in kWh', },
+	  'planned_actions':
+            { 'label': 'What you are planning to do?',
+              'description': '', },
+	  'feedback':
+            { 'label': 'Please provide any feedback you have on your CHEESE survey', },
+          }
+        )
+    follow_up = MonthFeedback()
+    form = MonthFeedbackForm(request.form, follow_up)
+    if request.method=='POST' and helpers.validate_form_on_submit(form):
+        form.populate_obj(follow_up)
+        db.session.add(follow_up)
+        db.session.commit()
+        flash('Your one month feedback was submitted successfully, thank you.')
+        return redirect(url_for('one_month_feedback'))
+    return render_template('one-month-feedback.html', form=form)
+
 
 
 @app.route('/')
