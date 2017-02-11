@@ -447,19 +447,30 @@ class ResultsView(RegularModelView):
         'notes':             { 'rows': 8, 'cols': 20 }, }
 
 
-class FeedbackView(RegularModelView):
+class MonthFeedbackView(RegularModelView):
     column_exclude_list = [
         'annual_gas_kwh',
         'annual_elec_kwh',
         'annual_solid_spend',
-        'renewable_contribution_kwh',
-        'householder_actions',
-        'householder_feedback',
+        'renewable_contrib_kwh',
+        'planned_actions',
+        'feedback',
         'notes', ]
-    form_widget_args = {
-        'householder_actions':  { 'rows': 8, 'cols': 20 },
-        'householder_feedback': { 'rows': 8, 'cols': 20 },
-        'notes':                { 'rows': 8, 'cols': 20 }, }
+
+
+class YearFeedbackView(RegularModelView):
+    column_exclude_list = [
+        'annual_gas_kwh',
+        'annual_elec_kwh',
+        'annual_solid_spend',
+        'renewable_contrib_kwh',
+        'diy_work',
+        'prof_work',
+        'total_spent',
+        'planned_work',
+        'behaviour_changes',
+        'feedback',
+        'notes', ]
 
 
 class InventoryView(AdminModelView):
@@ -495,10 +506,10 @@ admin = admin.Admin(app, name='CHEESE database',
 admin.add_view(PeopleView(People, db.session))
 admin.add_view(SurveysView(Surveys, db.session))
 admin.add_view(ResultsView(Results, db.session))
-admin.add_view(FeedbackView(MonthFeedback, db.session,
-                             name='1 month feedback'))
-admin.add_view(FeedbackView(YearFeedback, db.session,
-                             name='1 year feedback'))
+admin.add_view(MonthFeedbackView(MonthFeedback, db.session,
+                                 name='1 month feedback'))
+admin.add_view(YearFeedbackView(YearFeedback, db.session,
+                                name='1 year feedback'))
 admin.add_view(InventoryView(Inventory, db.session))
 admin.add_view(KitsView(Kits, db.session))
 
