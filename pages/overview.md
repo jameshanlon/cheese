@@ -60,3 +60,9 @@ In winter 2017/18 we want to double the scale of the CHEESE Project to
 survey over 400 houses, and we are keen to establish city partners elsewhere in
 the UK.
 
+## Progress reports
+
+For more detail on the current progress, status and plans for the CHEESE
+Project, please see our progress report document:
+
+- [CHEESE progress report January 2017 (PDF)](/static/files/CHEESE-progress-Jan17.pdf).
