@@ -257,6 +257,7 @@ class YearFeedback(db.Model):
     renewable_contrib_kwh = db.Column(db.Float)
     diy_work              = db.Column(db.Text)
     prof_work             = db.Column(db.Text)
+    contractors_used      = db.Column(db.Text)
     total_spent           = db.Column(db.Float)
     planned_work          = db.Column(db.Text)
     behaviour_changes     = db.Column(db.Text)
@@ -736,7 +737,8 @@ def one_month_feedback():
 
 @app.route('/one-year-feedback', methods=['GET', 'POST'])
 def one_year_feedback():
-    kwh_help = 'For help with calculating the value, please see ' \
+    kwh_help = 'For your usage in the year immediately after your survey.<br>' \
+                +'For help with calculating the value, please see ' \
                 +'<a href="/cheese-box#recording-energy-use">our guide</a>.'
     YearFeedbackForm = model_form(YearFeedback, db_session=db.session,
         exclude=['survey', 'notes'],
@@ -769,6 +771,9 @@ def one_year_feedback():
           'prof_work': {
               'label': 'What work have you paid for to be done professionally?',
 	      'validators': [validators.required()], },
+          'contractors_used': {
+              'label': 'If you had work done professionally, which contractors did you use?',
+              'description': 'And were these contractors based in Bristol or from further afield?', },
           'total_spent': {
 	      'label': 'Approximately how much have you spent in total on energy improvements to your home?',
               'description': 'Only answer this if you feel comfortable to.', },
