@@ -1,6 +1,11 @@
 
 # The CHEESE energy-saving box
 
+<div class="pull-right">
+  <img src="{{'static/images/CHEESE-box.jpg'|thumbnail('220x220')}}"
+       alt="A CHEESE energy-saving box!">
+</div>
+
 Your CHEESE survey has made visible how heat (and the energy it embodies) moves
 around your home, and ultimately how it escapes. Heating is only part of the
 energy that you use however.
@@ -113,7 +118,7 @@ investigate by turning things off for a short period and checking the change.
 <div class="pull-right">
 <a href="javascript:void(0)" class="pop">
   <img src="{{'static/images/plug-monitor-in-use.jpg'|thumbnail('220x220')}}"
-       alt="The plug monitor being used to meaure the consumption of an appliance.">
+       alt="The plug monitor being used to meaure the consumption of a toaster.">
 </a>
 </div>
 
