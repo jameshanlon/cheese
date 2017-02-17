@@ -260,6 +260,7 @@ class YearFeedback(db.Model):
     contractors_used      = db.Column(db.Text)
     total_spent           = db.Column(db.Float)
     planned_work          = db.Column(db.Text)
+    wellbeing_improvement = db.Column(db.Text)
     behaviour_changes     = db.Column(db.Text)
     feedback              = db.Column(db.Text)
     notes                 = db.Column(db.Text)
@@ -780,6 +781,9 @@ def one_year_feedback():
           'planned_work': {
 	      'label': 'Do you have any further work planned? And, if so, what?',
 	      'validators': [validators.required()], },
+          'wellbeing_improvement': {
+              'label': 'Do you now feel you have a warmer home?',
+              'description': 'Perhaps even if you haven\'t saved any money on your bills!', },
           'behaviour_changes': {
               'label': 'Do you think your behaviour has changed at all after having had the survey? And, if so, how?',
               'description': 'Such as the period and temperature you use the heating for, or the way you use the space in your home.',
