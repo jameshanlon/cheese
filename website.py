@@ -858,16 +858,7 @@ def populate_db():
     admin_user = People(email="admin",
                         password=generate_password_hash("admin"),
                         group='Admin')
-    test_user = People(email="test",
-                       password=generate_password_hash("test"),
-                       group='Surveyor')
-    survey_1 = Surveys(name="Joe Blogs", address_line="Some street",
-                       postcode="BS5 XXX")
-    #item_1 = Inventory(name="Blower door", asset_number=100)
     db.session.add(admin_user)
-    db.session.add(test_user)
-    db.session.add(survey_1)
-    #db.session.add(item_1)
     db.session.commit()
 
 
