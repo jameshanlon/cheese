@@ -182,6 +182,8 @@ class Surveys(db.Model):
     fee_paid_date             = db.Column(db.Date)
     survey_date               = db.Column(db.DateTime)
     survey_complete           = db.Column(db.Boolean, default=False)
+    followed_up               = db.Column(db.Boolean, default=False)
+    notes                      = db.Column(db.Text)
 
     def __repr__(self):
         if self.reference:
@@ -392,7 +394,9 @@ class SurveysView(RegularModelView):
         'fee_paid',
         'fee_paid_date',
         'survey_date',
-        'survey_complete', ])
+        'survey_complete',
+        'followed_up',
+        'notes', ])
     columns_list = [
         'name',
         'ward',
@@ -400,7 +404,8 @@ class SurveysView(RegularModelView):
         'survey_request_date',
         'fee',
         'survey_date',
-        'survey_complete', ]
+        'survey_complete',
+        'followed_up', ]
     column_filters = columns_list
     column_exclude_list = list(all_cols - set(columns_list))
     form_args = {
