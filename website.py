@@ -643,9 +643,9 @@ class ApplySurveyForm(form.Form):
             +'would like to be considered for a free survey.')
     agree_to_requirements = \
         fields.BooleanField('I agree to make the  ' \
-            +'<a href="/pre-survey-guide/#preparation" target="_blank">'
+            +'<a href="/pre-survey-guide#preparation" target="_blank">'
             +'necessary preparations</a> for the survey and am happy ' \
-            +'to <a href="/pre-survey-guide/#follow-ups" target="_blank"> ' \
+            +'to <a href="/pre-survey-guide#follow-ups" target="_blank"> ' \
             +'report my progress after one month and one year</a>.',
             validators=[validators.required()])
 
