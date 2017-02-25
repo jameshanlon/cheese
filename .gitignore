@@ -2,6 +2,7 @@ CONFIG
 docker-compose.yml
 *.pyc
 static/images/thumbs
+static/uploads
 env/
 test.db
 flask/mysql.cnf

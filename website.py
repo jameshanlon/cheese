@@ -2,6 +2,8 @@ import datetime
 import os
 import sys
 import re
+import random
+import string
 from functools import wraps
 from flask import Flask, url_for, redirect, render_template, \
                   render_template_string, request, flash, \
@@ -10,14 +12,20 @@ import flask_admin as admin
 import flask_login as login
 from flask_admin.contrib import sqla
 from flask_admin import helpers, expose
+from flask_admin import form as admin_form
 from flask_basicauth import BasicAuth
 from flask_flatpages import FlatPages
 from flask_migrate import Migrate, MigrateCommand
+from flask_uploads import UploadSet, configure_uploads, patch_request_class, \
+                          IMAGES, UploadNotAllowed
 from flask_thumbnails import Thumbnail
 from flask_script import Command, Manager, Server
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy.event import listens_for
 from werkzeug.security import generate_password_hash, check_password_hash
-from flask_wtf import Form
+from flask_wtf import Form, FlaskForm
+from flask_wtf.file import FileField, FileAllowed, FileRequired
+from jinja2 import Markup
 from wtforms import form, fields, validators
 from wtforms.fields.html5 import EmailField, DateField
 from wtforms_sqlalchemy.orm import model_form
@@ -60,9 +68,18 @@ login_manager = login.LoginManager()
 login_manager.init_app(app)
 pages = FlatPages(app)
 thumb = Thumbnail(app)
+images = UploadSet('images', IMAGES)
+configure_uploads(app, images)
+patch_request_class(app, 4 * 1024 * 1024)
 
 def choice(string):
     return (string, string)
+
+
+def random_string(length):
+    return ''.join(random.choice(string.ascii_uppercase + string.digits) \
+                for _ in range(length))
+
 
 WARDS = [
     'Bishopston',
@@ -272,6 +289,18 @@ class YearFeedback(db.Model):
 
     def __repr__(self):
         return '<Year feedback '+str(self.id)+'>'
+
+
+class ThermalImage(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    filename     = db.Column(db.Unicode(100))
+    description  = db.Column(db.UnicodeText)
+    submitted_by = db.Column(db.Unicode(50))
+    date         = db.Column(db.DateTime,
+                             default=datetime.datetime.now())
+
+    def __repr__(self):
+        return '<Thermal image '+filename+'>'
 
 
 #===-----------------------------------------------------------------------===#
@@ -506,6 +535,31 @@ class KitsView(AdminModelView):
     column_filters = column_list
 
 
+@listens_for(ThermalImage, 'after_delete')
+def del_thermal_image(mapper, connection, target):
+    if target.filename:
+        try:
+	    filename = os.path.join(app.config['UPLOADED_IMAGES_DEST'],
+                                    target.filename)
+            os.remove(filename)
+        except OSError:
+            pass
+
+
+class ThermalImageView(RegularModelView):
+    can_create = False
+    def _list_thumbnail(view, context, model, name):
+        if not model.filename:
+            return ''
+        filename = os.path.join(app.config['UPLOADED_IMAGES_DEST'],
+                                model.filename)
+        thumb_filename = thumb.thumbnail(filename, '100x100')
+        return Markup('<a href="/{}"><img src="{}"></a>'.format(filename,
+                                                                thumb_filename))
+    column_formatters = { 'filename': _list_thumbnail, }
+    column_exclude_list = ['date', ]
+
+
 # Setup admin.
 admin = admin.Admin(app, name='CHEESE database',
                     index_view=CheeseAdminIndexView(),
@@ -519,6 +573,8 @@ admin.add_view(YearFeedbackView(YearFeedback, db.session,
                                 name='1 year feedback'))
 admin.add_view(InventoryView(Inventory, db.session))
 admin.add_view(KitsView(Kits, db.session))
+admin.add_view(ThermalImageView(ThermalImage, db.session,
+                                name='Thermal images'))
 
 
 #===-----------------------------------------------------------------------===#
@@ -582,6 +638,48 @@ def submit_results():
         flash('Survey result submitted successfully.')
         return redirect(url_for('submit_results'))
     return render_template('submit-results.html', form=form)
+
+
+class UploadThermalImageForm(FlaskForm):
+    image = FileField('Image file',
+              validators=[FileRequired(),
+                          FileAllowed(images, 'Only images can be uploaded')])
+    description = fields.TextAreaField('Description of the image',
+                    validators=[validators.required()])
+    submitted_by = fields.StringField('Your name',
+                     validators=[validators.required()])
+
+
+@app.route('/upload-thermal-image', methods=['GET', 'POST'])
+@requires_auth
+def upload_thermal_image():
+    form = UploadThermalImageForm()
+    if request.method=='POST' and form.validate_on_submit():
+        image = request.files.get('image')
+        description = request.form.get('description')
+        submitted_by = request.form.get('submitted_by')
+        try:
+            filename = random_string(10)+'_'+image.filename
+            filename = images.save(image, name=filename)
+        except UploadNotAllowed:
+            flash('The uploaded file is not allowed')
+        else:
+            thermal_image = ThermalImage()
+            thermal_image.filename=filename
+            thermal_image.description=description
+            thermal_image.submitted_by=submitted_by
+            db.session.add(thermal_image)
+            db.session.commit()
+            flash('The thermal image has been submitted successfully.')
+            form = UploadThermalImageForm()
+    return render_template('upload-thermal-image.html', form=form)
+
+
+@app.route('/collected-thermal-images')
+@requires_auth
+def collected_thermal_images():
+    return render_template('collected-thermal-images.html',
+                           images=ThermalImage.query.all())
 
 
 #===-----------------------------------------------------------------------===#

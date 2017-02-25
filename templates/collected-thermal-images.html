@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1>Collected thermal images</h1>
+
+<p>This page displays thermal images that highlight problems or solutions. It
+is part of an effort to document the experience of the CHEESE Project. There
+are currently {{images|length}} images in the collection.</p>
+
+<p><a href="/upload-thermal-image">Add a new thermal image</a>.</p>
+
+{% macro get_path(filename) -%}
+  static/uploads/{{filename}}
+{%- endmacro %}
+
+<table class="table table-striped">
+<thead>
+  <tr>
+    <th></th><th>Description</th><th>Submitted by</th>
+  </tr>
+</thead>
+{% for image in images %}
+  <tr>
+    <td>
+      <a href="{{get_path(image.filename)}}">
+        <img src="{{get_path(image.filename)|thumbnail('100x100')}}">
+      </a>
+    </td>
+    <td>{{ image.description }}</td>
+    <td>{{ image.submitted_by }}</td>
+  </tr>
+{% endfor %}
+</table>
+
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1>Upload a thermal image</h1>
+
+<p>As part of the CHEESE project, we want to record thermal images that:
+<ul>
+  <li>clearly display a building construction fault;</li>
+  <li>clearly display a the effect of insulation or draughtproofing;</li>
+  <li>or show anything else of interest or out of the ordinary.</li>
+</ul>
+From our combined survey experience, we hope to build a collection of common
+faults and remedies, that can be used as a reference by housholders after a
+survey, and indeed to anyone else. The
+<a href="/collected-thermal-images">thermal images page</a> displays the images
+we have collected so far.</p>
+
+<p>Please use this page to upload images, providing with each one a short
+description of what the image illustrates and your name. <strong>Do not upload
+any images that identify a specific person or place.</strong></p>
+
+{{ render_form(form, 'survey_form') }}
+
+{% endblock %}
