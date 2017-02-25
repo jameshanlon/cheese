@@ -215,6 +215,8 @@ class Surveys(db.Model):
 
 class Results(db.Model):
     id = db.Column(db.Integer, primary_key=True)
+    date                       = db.Column(db.DateTime,
+                                           default=datetime.datetime.now())
     surveyors_name             = db.Column(db.String(50))
     householders_name          = db.Column(db.String(50))
     address_line               = db.Column(db.String(100))
@@ -249,6 +251,8 @@ class Results(db.Model):
 
 class MonthFeedback(db.Model):
     id = db.Column(db.Integer, primary_key=True)
+    date                  = db.Column(db.DateTime,
+                                      default=datetime.datetime.now())
     householders_name     = db.Column(db.String(50))
     address               = db.Column(db.String(100))
     annual_gas_kwh        = db.Column(db.Float)
@@ -268,6 +272,8 @@ class MonthFeedback(db.Model):
 
 class YearFeedback(db.Model):
     id = db.Column(db.Integer, primary_key=True)
+    date                  = db.Column(db.DateTime,
+                                      default=datetime.datetime.now())
     householders_name     = db.Column(db.String(50))
     address               = db.Column(db.String(100))
     annual_gas_kwh        = db.Column(db.Float)
@@ -444,6 +450,7 @@ class SurveysView(RegularModelView):
 
 class ResultsView(RegularModelView):
     all_cols = set([
+        'date',
         'surveyors_name',
         'householders_name',
         'address_line',
@@ -485,6 +492,7 @@ class ResultsView(RegularModelView):
 
 class MonthFeedbackView(RegularModelView):
     column_exclude_list = [
+        'date',
         'annual_gas_kwh',
         'annual_elec_kwh',
         'annual_solid_spend',
@@ -496,6 +504,7 @@ class MonthFeedbackView(RegularModelView):
 
 class YearFeedbackView(RegularModelView):
     column_exclude_list = [
+        'date',
         'annual_gas_kwh',
         'annual_elec_kwh',
         'annual_solid_spend',
