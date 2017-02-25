@@ -68,7 +68,7 @@ login_manager = login.LoginManager()
 login_manager.init_app(app)
 pages = FlatPages(app)
 thumb = Thumbnail(app)
-images = UploadSet('images', IMAGES)
+images = UploadSet('images', IMAGES+[x.upper() for x in IMAGES])
 configure_uploads(app, images)
 patch_request_class(app, 4 * 1024 * 1024)
 
