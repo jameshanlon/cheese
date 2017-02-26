@@ -680,7 +680,7 @@ def upload_thermal_image():
             db.session.add(thermal_image)
             db.session.commit()
             flash('The thermal image has been submitted successfully.')
-            form = UploadThermalImageForm()
+            return redirect(url_for('upload_thermal_image'))
     return render_template('upload-thermal-image.html', form=form)
 
 
