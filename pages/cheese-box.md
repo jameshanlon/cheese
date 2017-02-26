@@ -276,15 +276,9 @@ of home. You should be aiming to be below average!
 
 ## Resources <a name="resources"></a>
 
-We provide downloadable versions of the electricity and gas record forms.
+You can download the electricity and gas record forms as a spreadsheet or to
+print:
 
-For electricity use:
-
-- [spreadsheet version (Excel)]()
-- [print version (PDF)](static/files/electricity-use-record.pdf)
-
-For gas use:
-
-- [spreadsheet version (Excel)]()
-- [print version (PDF)](static/file/gas-use-record.pdf)
-
+- [Spreadsheet version (Excel .xlsx)](static/files/CHEESE-energy-record.xlsx)
+- [Electricity record form, print version (PDF)](static/files/CHEESE-electricity-use-record.pdf)
+- [Gas record form, print version (PDF)](static/files/CHEESE-gas-use-record.pdf)
