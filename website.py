@@ -551,7 +551,7 @@ class KitsView(AdminModelView):
 def del_thermal_image(mapper, connection, target):
     if target.filename:
         try:
-	    filename = os.path.join(app.config['UPLOADED_IMAGES_DEST'],
+            filename = os.path.join(app.config['UPLOADED_IMAGES_DEST'],
                                     target.filename)
             os.remove(filename)
         except OSError:
@@ -664,7 +664,7 @@ class UploadThermalImageForm(FlaskForm):
             choices=[choice('')]+[choice(x) for x in BUILDING_TYPES],
             default='', validators=[validators.required()])
     year_of_construction = fields.IntegerField('Year of construction',
-	    validators=[validators.required()])
+            validators=[validators.required()])
     keywords = fields.StringField("Keywords (separated by commas ',')",
                                   validators=[validators.required()])
     submitted_by = fields.StringField('Your name',
@@ -685,12 +685,12 @@ def upload_thermal_image():
         else:
             thermal_image = ThermalImage()
             thermal_image.filename = filename
-	    for f in ['description',
+            for f in ['description',
                       'building_type',
-		      'year_of_construction',
+                      'year_of_construction',
                       'keywords',
                       'submitted_by']:
-            	setattr(thermal_image, f, request.form.get(f))
+                    setattr(thermal_image, f, request.form.get(f))
             db.session.add(thermal_image)
             db.session.commit()
             flash('The thermal image has been submitted successfully.')
@@ -708,14 +708,14 @@ def collected_thermal_images():
     for image in images:
         if image.keywords:
             for k in image.keywords.split(','):
-            	keywords.add(k.strip().lower())
+                    keywords.add(k.strip().lower())
     # Filter images by keyword.
     if keyword:
-     	images = [x for x in images if \
-		    x.keywords and keyword in x.keywords.lower()]
+             images = [x for x in images if \
+                    x.keywords and keyword in x.keywords.lower()]
     return render_template('collected-thermal-images.html',
                            keywords=keywords,
-			   keyword=keyword,
+                           keyword=keyword,
                            images=images)
 
 
@@ -824,12 +824,12 @@ def one_month_feedback():
                 +'<br>'+not_needed
     MonthFeedbackForm = model_form(MonthFeedback, db_session=db.session,
         exclude=['survey', 'notes'],
-	field_args={
+        field_args={
           'householders_name': {
-	    'label': 'Name',
+            'label': 'Name',
             'validators': [validators.required()], },
           'address': {
-	       'label': 'Address',
+               'label': 'Address',
                'validators': [validators.required()], },
           'annual_gas_kwh': {
               'label': 'Total annual gas usage in kWh',
@@ -837,17 +837,17 @@ def one_month_feedback():
           'annual_elec_kwh': {
               'label': 'Total annual electricity usage in kWh',
               'description': kwh_help, },
- 	  'annual_solid_spend': {
+           'annual_solid_spend': {
               'label': 'Total annual spend in pounds (&pound;) on solid fuels',
               'description': 'Such as wood, coal etc.<br>'+not_needed, },
           'renewable_contrib_kwh': {
               'label': 'Total annual contribution of any renewable generation in kWh',
               'description': 'Such as from solar PV or a ground-source heat pump.<br>'+not_needed, },
-	  'planned_actions': {
+          'planned_actions': {
               'label': 'What you are planning to do to improve the thermal efficiency of your home?',
               'description': 'This can be anything from draught proofing to installing external wall insulation.',
-	      'validators': [validators.required()], },
-	  'feedback': {
+              'validators': [validators.required()], },
+          'feedback': {
               'label': 'Do you have any feedback you have on your CHEESE survey?',
               'description': 'We would like to hear what you think about:'
                               +' the organisation of the survey,'
@@ -883,13 +883,13 @@ def one_year_feedback():
                 +'<a href="/cheese-box#recording-energy-use">our guide</a>.'
     YearFeedbackForm = model_form(YearFeedback, db_session=db.session,
         exclude=['survey', 'notes'],
-	field_args={
+        field_args={
           'householders_name': {
               'label': 'Name',
-	      'validators': [validators.required()], },
+              'validators': [validators.required()], },
           'address': {
               'label': 'Address',
-	      'validators': [validators.required()], },
+              'validators': [validators.required()], },
           'annual_gas_kwh': {
               'label': 'Total annual gas usage in kWh',
               'description': kwh_help,
@@ -898,7 +898,7 @@ def one_year_feedback():
               'label': 'Total annual electricity usage in kWh',
               'description': kwh_help,
               'validators': [validators.required()], },
- 	  'annual_solid_spend': {
+           'annual_solid_spend': {
               'label': 'Total annual spend in pounds (&pound;) on solid fuels',
               'description': 'Such as wood, coal etc.',
               'validators': [validators.required()], },
@@ -908,19 +908,19 @@ def one_year_feedback():
               'validators': [validators.required()], },
           'diy_work' : {
               'label': 'What work have you done yourself?',
-	      'validators': [validators.required()], },
+              'validators': [validators.required()], },
           'prof_work': {
               'label': 'What work have you paid for to be done professionally?',
-	      'validators': [validators.required()], },
+              'validators': [validators.required()], },
           'contractors_used': {
               'label': 'If you had work done professionally, which contractors did you use?',
               'description': 'And were these contractors based in Bristol or from further afield?', },
           'total_spent': {
-	      'label': 'Approximately how much have you spent in total on energy improvements to your home?',
+              'label': 'Approximately how much have you spent in total on energy improvements to your home?',
               'description': 'Only answer this if you feel comfortable to.', },
           'planned_work': {
-	      'label': 'Do you have any further work planned? And, if so, what?',
-	      'validators': [validators.required()], },
+              'label': 'Do you have any further work planned? And, if so, what?',
+              'validators': [validators.required()], },
           'wellbeing_improvement': {
               'label': 'Do you now feel you have a warmer home?',
               'description': 'Perhaps even if you haven\'t saved any money on your bills!', },
@@ -928,7 +928,7 @@ def one_year_feedback():
               'label': 'Do you think your behaviour has changed at all after having had the survey? And, if so, how?',
               'description': 'Such as the period and temperature you use the heating for, or the way you use the space in your home.',
               'validators': [validators.required()], },
-	  'feedback':
+          'feedback':
             { 'label': 'Do you have any feedback you have on the CHEESE Project?',
               'description': 'We would like to hear what you think about:'
                               +' how useful the survey was,'
