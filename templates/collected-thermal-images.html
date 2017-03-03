@@ -4,19 +4,37 @@
 <h1>Collected thermal images</h1>
 
 <p>This page displays thermal images that highlight problems or solutions. It
-is part of an effort to document the experience of the CHEESE Project. There
-are currently {{images|length}} images in the collection.</p>
+is part of an effort to document the experience of the CHEESE Project.</p>
 
 <p><a href="/upload-thermal-image">Add a new thermal image</a>.</p>
+
+<p>
+<strong>Browse by keyword</strong>:
+{% for x in keywords %}
+  <a href="?keyword={{x}}">
+    <button type="button" class="btn btn-default btn-sm">{{x}}</button>
+  </a>
+{% endfor %}
+</p>
 
 {% macro get_path(filename) -%}
   static/uploads/{{filename}}
 {%- endmacro %}
 
+{% if keyword %}
+  <p>Showing {{images|length}} images with the keyword '{{keyword}}'
+  (<a href="?keyword=">view all</a>)</p>
+{% else %}
+  <p>There are currently {{images|length}} in the collection.</p>
+{% endif %}
+
 <table class="table table-striped">
 <thead>
   <tr>
-    <th></th><th>Description</th><th>Submitted by</th>
+    <th></th>
+    <th>Submitted by</th>
+    <th>Keywords</th>
+    <th>Description</th>
   </tr>
 </thead>
 {% for image in images %}
@@ -26,8 +44,10 @@ are currently {{images|length}} images in the collection.</p>
         <img src="{{get_path(image.filename)|thumbnail('100x100')}}">
       </a>
     </td>
-    <td>{{ image.description }}</td>
-    <td>{{ image.submitted_by }}</td>
+    <td>{{ image.submitted_by }} on {{ image.date.strftime('%d-%m-%Y') }}</td>
+    <td>{{ image.keywords }}</td>
+    <td><p>{{ image.building_type }} ({{ image.year_of_construction }})</p>
+        <p>{{ image.description }}</p></td>
   </tr>
 {% endfor %}
 </table>

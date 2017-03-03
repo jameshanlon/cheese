@@ -299,11 +299,14 @@ class YearFeedback(db.Model):
 
 class ThermalImage(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    filename     = db.Column(db.Unicode(100))
-    description  = db.Column(db.UnicodeText)
-    submitted_by = db.Column(db.Unicode(50))
-    date         = db.Column(db.DateTime,
-                             default=datetime.datetime.now())
+    filename             = db.Column(db.Unicode(100))
+    description          = db.Column(db.UnicodeText)
+    building_type        = db.Column(db.Enum(*BUILDING_TYPES))
+    year_of_construction = db.Column(db.Integer)
+    keywords             = db.Column(db.String(150))
+    submitted_by         = db.Column(db.Unicode(50))
+    date                 = db.Column(db.DateTime,
+                                     default=datetime.datetime.now())
 
     def __repr__(self):
         return '<Thermal image '+filename+'>'
@@ -649,12 +652,21 @@ def submit_results():
     return render_template('submit-results.html', form=form)
 
 
+# Unfortunately, model_form can't be used here because we need a FlaskForm for
+# it to be validated properly with a FileField.
 class UploadThermalImageForm(FlaskForm):
     image = FileField('Image file',
               validators=[FileRequired(),
                           FileAllowed(images, 'Only images can be uploaded')])
     description = fields.TextAreaField('Description of the image',
                     validators=[validators.required()])
+    building_type = fields.SelectField('Building type',
+            choices=[choice('')]+[choice(x) for x in BUILDING_TYPES],
+            default='', validators=[validators.required()])
+    year_of_construction = fields.IntegerField('Year of construction',
+	    validators=[validators.required()])
+    keywords = fields.StringField("Keywords (separated by commas ',')",
+                                  validators=[validators.required()])
     submitted_by = fields.StringField('Your name',
                      validators=[validators.required()])
 
@@ -665,8 +677,6 @@ def upload_thermal_image():
     form = UploadThermalImageForm()
     if request.method=='POST' and form.validate_on_submit():
         image = request.files.get('image')
-        description = request.form.get('description')
-        submitted_by = request.form.get('submitted_by')
         try:
             filename = random_string(10)+'_'+image.filename
             filename = images.save(image, name=filename)
@@ -674,9 +684,13 @@ def upload_thermal_image():
             flash('The uploaded file is not allowed')
         else:
             thermal_image = ThermalImage()
-            thermal_image.filename=filename
-            thermal_image.description=description
-            thermal_image.submitted_by=submitted_by
+            thermal_image.filename = filename
+	    for f in ['description',
+                      'building_type',
+		      'year_of_construction',
+                      'keywords',
+                      'submitted_by']:
+            	setattr(thermal_image, f, request.form.get(f))
             db.session.add(thermal_image)
             db.session.commit()
             flash('The thermal image has been submitted successfully.')
@@ -687,8 +701,22 @@ def upload_thermal_image():
 @app.route('/collected-thermal-images')
 @requires_auth
 def collected_thermal_images():
+    images = ThermalImage.query.all()
+    keyword = request.args.get('keyword')
+    # Get all keywords.
+    keywords = set()
+    for image in images:
+        if image.keywords:
+            for k in image.keywords.split(','):
+            	keywords.add(k.strip().lower())
+    # Filter images by keyword.
+    if keyword:
+     	images = [x for x in images if \
+		    x.keywords and keyword in x.keywords.lower()]
     return render_template('collected-thermal-images.html',
-                           images=ThermalImage.query.all())
+                           keywords=keywords,
+			   keyword=keyword,
+                           images=images)
 
 
 #===-----------------------------------------------------------------------===#
