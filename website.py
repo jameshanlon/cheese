@@ -70,7 +70,7 @@ pages = FlatPages(app)
 thumb = Thumbnail(app)
 images = UploadSet('images', list(IMAGES)+[x.upper() for x in IMAGES])
 configure_uploads(app, images)
-patch_request_class(app, 4 * 1024 * 1024)
+patch_request_class(app, app.config['MAX_IMAGE_SIZE'])
 
 def choice(string):
     return (string, string)
