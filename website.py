@@ -639,7 +639,7 @@ def submit_results():
         "annual_solid_spend":         { "label": "Annual spend on solid fuels (&pound;)", },
         "renewable_contribution_kwh": { "label":"Annual contribution from renewable generation (kWh)", },
         "faults_identified":          { "label": "Faults identified", },
-        })
+        }, exclude=['date'])
     results = Results()
     results_form = ResultsForm(obj=results)
     form = ResultsForm(request.form, results)
