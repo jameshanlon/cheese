@@ -6,6 +6,8 @@ Welcome to the resources page for Energy Tracers.
 ## Survey results
 
 - [Submit survey results](/submit-results)
+- [View submitted one-month feedback](/received-one-month-feedback)
+- [View submitted one-year feedback](/received-one-year-feedback)
 
 ## Thermal images
 
