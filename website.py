@@ -823,7 +823,7 @@ def one_month_feedback():
                 +'<a href="/cheese-box#recording-energy-use">our guide</a>.' \
                 +'<br>'+not_needed
     MonthFeedbackForm = model_form(MonthFeedback, db_session=db.session,
-        exclude=['survey', 'notes'],
+        exclude=['date', 'survey', 'notes'],
         field_args={
           'householders_name': {
             'label': 'Name',
@@ -882,7 +882,7 @@ def one_year_feedback():
                 +'For help with calculating the value, please see ' \
                 +'<a href="/cheese-box#recording-energy-use">our guide</a>.'
     YearFeedbackForm = model_form(YearFeedback, db_session=db.session,
-        exclude=['survey', 'notes'],
+        exclude=['date', 'survey', 'notes'],
         field_args={
           'householders_name': {
               'label': 'Name',
