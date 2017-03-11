@@ -867,7 +867,7 @@ def one_month_feedback():
         db.session.commit()
         # Send admin email.
         subject = 'New one year response'
-        message = 'From '+form.name.data+', '+form.address_line.data \
+        message = 'From '+form.householders_name.data+', '+form.address.data \
                   + ' at '+str(datetime.datetime.today())
         send_email(EMAIL_RECEIVER, subject, message)
         # Flash success message.
@@ -945,7 +945,7 @@ def one_year_feedback():
         db.session.commit()
         # Send admin email.
         subject = 'New one year response'
-        message = 'From '+form.name.data+', '+form.address_line.data \
+        message = 'From '+form.householders_name.data+', '+form.address.data \
                   + ' at '+str(datetime.datetime.today())
         send_email(EMAIL_RECEIVER, subject, message)
         # Flash success message.
