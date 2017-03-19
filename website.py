@@ -909,19 +909,19 @@ def one_year_feedback():
           'annual_gas_kwh': {
               'label': 'Total annual gas usage in kWh',
               'description': kwh_help,
-              'validators': [validators.required()], },
+              'validators': [validators.InputRequired()], },
           'annual_elec_kwh': {
               'label': 'Total annual electricity usage in kWh',
               'description': kwh_help,
-              'validators': [validators.required()], },
+              'validators': [validators.InputRequired()], },
            'annual_solid_spend': {
               'label': 'Total annual spend in pounds (&pound;) on solid fuels',
               'description': 'Such as wood, coal etc.',
-              'validators': [validators.required()], },
+              'validators': [validators.InputRequired()], },
           'renewable_contrib_kwh': {
               'label': 'Total annual contribution of any renewable generation in kWh',
               'description': 'Such as from solar PV or a ground-source heat pump.',
-              'validators': [validators.required()], },
+              'validators': [validators.InputRequired()], },
           'diy_work' : {
               'label': 'What work have you done yourself?',
               'validators': [validators.required()], },
