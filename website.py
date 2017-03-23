@@ -882,7 +882,7 @@ def one_month_feedback():
         db.session.add(follow_up)
         db.session.commit()
         # Send admin email.
-        subject = 'New one year response'
+        subject = 'New one month response'
         message = 'From '+form.householders_name.data+', '+form.address.data \
                   + ' at '+str(datetime.datetime.today())
         send_email(EMAIL_RECEIVER, subject, message)
