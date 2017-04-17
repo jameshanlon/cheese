@@ -36,20 +36,55 @@ work.
 
 ## Our achievements and plans
 
-Last 2015/16 winter we completed a successful pilot of the CHEESE Project in
-Bristol in Bishopston, Cotham, Redland, Easton and Lawrence Weston.  We
-conduced over 50 internal house surveys and captured 11,000 thermal images of
-domestic properties in the same wards for our [Heatview
-map](http://www.heatview.co.uk).
+### The pilot
 
-For this work, the CHEESE project [won the Volunteers for Energy
+In the 2015/16 winter we completed a successful pilot of the CHEESE Project in
+Bristol and conducted 50 internal home surveys in the wards of Bishopston,
+Cotham, Redland, Easton and Lawrence Weston. These surveys were led by Brian
+Harper, a thermal imaging expert and founder of the [Transition Malvern
+Hills](https://transitionmalvernhills.org.uk) *Energy Tracers*,  the project on
+which the Bristol CHEESE Project is modeled. This gave us the opportunity to
+road test our new software, which had been in development for over a year, to
+use Flir One thermal-imaging cameras for our surveys.  We also
+captured 11,000 thermal images of domestic properties in the same wards for our
+Google Street View-style [Heatview map](http://www.heatview.co.uk).
+
+For the achievements of the pilot, the CHEESE project [won the Volunteers for Energy
 Award](http://bristolgreencapital.org/winners-announced-in-the-green-volunteers-awards-2016)
 at the Bristol Green Capital Partnership Green Volunteers' Awards 2016.
 
-Based on the success of our pilot, we enhanced and expanded the CHEESE Project
-in winter 2016/17, including surveying in more areas of Bristol. We have
-documented a wide range of common faults and remedies and we plan to make this
-information available to the 200,000 households in Bristol.
+### Phase two
+
+Based on the success of our pilot, we developed the CHEESE Project so that it
+was able to operate autonomously in the 2016/17 winter surveying season. This
+required development of many facets of the project:
+
+- we recruited and trained ten Energy Tracer surveyors, with a two-day course
+  that covered the theory and practice of thermal imaging and building
+  construction, a half-day health-and-safety course and a set of live surveys
+  in which they shadow a trained Energy Tracer;
+
+- we recruited our overall coordinator, Nick Clack, to organise and manage the
+  surveys;
+
+- we designed and put together our own CHEESE [energy boxes](/cheese-box) that
+  are left with householders for a month after their survey to encourage action
+  on saving energy;
+
+- we upgraded our thermal imaging kits to make use of Flir's [new thermal
+  imaging camera attachment](http://www.flir.co.uk/flirone) and made numerous
+  bug fixes and enhancements the CHEESE survey software;
+
+- we put together a new website (this one), which also provides facilities to
+  manage our survey organisation, results and feedback.
+
+Following this groundwork, we delivered 54 surveys in and around our target
+wards, in wide-ranging types of buildings and socioeconomic groups of
+householders. During this work, we carefully documented many of common faults
+and remedies and we plan to make this information available to the 200,000
+households in Bristol.
+
+### Phase three
 
 In winter 2017/18 we want to increase the scale of the CHEESE Project to reach
 even more homes, and we are keen to establish further partnerships in Bristol,
