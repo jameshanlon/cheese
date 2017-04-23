@@ -512,8 +512,10 @@ class YearFeedbackView(RegularModelView):
         'renewable_contrib_kwh',
         'diy_work',
         'prof_work',
+        'contractors_used',
         'total_spent',
         'planned_work',
+        'wellbeing_improvement',
         'behaviour_changes',
         'feedback',
         'notes', ]
