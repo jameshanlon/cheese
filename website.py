@@ -251,13 +251,16 @@ class MonthFeedback(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     date                  = db.Column(db.DateTime,
                                       default=datetime.datetime.now())
+    collected_by          = db.Column(db.String(50))
     householders_name     = db.Column(db.String(50))
     address               = db.Column(db.String(100))
     annual_gas_kwh        = db.Column(db.Float)
     annual_elec_kwh       = db.Column(db.Float)
     annual_solid_spend    = db.Column(db.Float)
     renewable_contrib_kwh = db.Column(db.Float)
+    completed_actions     = db.Column(db.Text)
     planned_actions       = db.Column(db.Text)
+    cheese_box            = db.Column(db.Text)
     feedback              = db.Column(db.Text)
     notes                 = db.Column(db.Text)
     # Survey ref
@@ -498,7 +501,9 @@ class MonthFeedbackView(RegularModelView):
         'annual_elec_kwh',
         'annual_solid_spend',
         'renewable_contrib_kwh',
+        'completed_actions',
         'planned_actions',
+        'cheese_box',
         'feedback',
         'notes', ]
 
@@ -839,7 +844,7 @@ def one_month_feedback():
                 +'<a href="/cheese-box#recording-energy-use">our guide</a>.' \
                 +'<br>'+not_needed
     MonthFeedbackForm = model_form(MonthFeedback, db_session=db.session,
-        exclude=['date', 'survey', 'notes'],
+        exclude=['date', 'collected_by', 'survey', 'notes'],
         field_args={
           'householders_name': {
             'label': 'Name',
@@ -859,9 +864,17 @@ def one_month_feedback():
           'renewable_contrib_kwh': {
               'label': 'Total annual contribution of any renewable generation in kWh',
               'description': 'Such as from solar PV or a ground-source heat pump.<br>'+not_needed, },
+          'completed_actions': {
+              'label': 'Have you already taken action to improve the thermal efficiency of your home?',
+              'description': 'If so, then what have you done?',
+              'validators': [validators.required()], },
           'planned_actions': {
-              'label': 'What you are planning to do to improve the thermal efficiency of your home?',
+              'label': 'What you are planning to do to in the next few years improve the thermal efficiency of your home?',
               'description': 'This can be anything from draught proofing to installing external wall insulation.',
+              'validators': [validators.required()], },
+          'cheese_box': {
+              'label': 'Did you find your <a href="/cheese-box">CHEESE box</a> useful?',
+              'description': 'We would be interested to know what you found useful and what you didn\'t.',
               'validators': [validators.required()], },
           'feedback': {
               'label': 'Do you have any feedback you have on your CHEESE survey?',
@@ -869,16 +882,17 @@ def one_month_feedback():
                               +' the organisation of the survey,'
                               +' the conduct of the Energy Tracers,'
                               +' the results of the survey and suggested remedies,'
-                              +' the usefulness of the <a href="/cheese-box">CHEESE box</a>,'
                               +' the overall value for money of the survey,'
                               +' your overall satisfaction,'
-                              +' and anything else at all you would like to let us know.', },
+                              +' and anything else at all you would like to let us know.',
+              'validators': [validators.required()], },
           }
         )
     follow_up = MonthFeedback()
     form = MonthFeedbackForm(request.form, follow_up)
     if request.method=='POST' and helpers.validate_form_on_submit(form):
         form.populate_obj(follow_up)
+        follow_up.collected_by = 'Submitted from the website'
         db.session.add(follow_up)
         db.session.commit()
         # Send admin email.
