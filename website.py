@@ -203,9 +203,7 @@ class Surveys(db.Model):
     notes                      = db.Column(db.Text)
 
     def __repr__(self):
-        if self.reference:
-            return self.reference
-        elif self.name and self.address_line:
+        if self.name and self.address_line:
             return self.name+', '+self.address_line
         elif self.name:
             return self.name
