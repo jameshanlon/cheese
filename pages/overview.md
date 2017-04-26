@@ -36,6 +36,7 @@ work.
 
 ## Our achievements and plans
 
+<a name="pilot"></a>
 ### The pilot
 
 In the 2015/16 winter we completed a successful pilot of the CHEESE Project in
@@ -53,6 +54,7 @@ For the achievements of the pilot, the CHEESE project [won the Volunteers for En
 Award](http://bristolgreencapital.org/winners-announced-in-the-green-volunteers-awards-2016)
 at the Bristol Green Capital Partnership Green Volunteers' Awards 2016.
 
+<a name="phase-two"></a>
 ### Phase two
 
 Based on the success of our pilot, we developed the CHEESE Project so that it
@@ -78,7 +80,7 @@ required development of many facets of the project:
 - we put together a new website (this one), which also provides facilities to
   manage our survey organisation, results and feedback.
 
-Following this groundwork, we delivered 54 surveys in and around our target
+Following this groundwork, we delivered 56 surveys in and around our target
 wards, in wide-ranging types of buildings and socioeconomic groups of
 householders. During this work, we carefully documented many of common faults
 and remedies and we plan to make this information available to the 200,000
