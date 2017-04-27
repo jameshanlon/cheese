@@ -1025,7 +1025,7 @@ def cheese_box():
 
 
 @manager.command
-def populate_db():
+def resetdb():
     "Create a test database"
     db.drop_all()
     db.create_all()
