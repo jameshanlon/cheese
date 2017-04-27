@@ -75,7 +75,7 @@ required development of many facets of the project:
 
 - we upgraded our thermal imaging kits to make use of Flir's [new thermal
   imaging camera attachment](http://www.flir.co.uk/flirone) and made numerous
-  bug fixes and enhancements the CHEESE survey software;
+  bug fixes and enhancements to the CHEESE survey software;
 
 - we put together a new website (this one), which also provides facilities to
   manage our survey organisation, results and feedback.
