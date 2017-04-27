@@ -63,7 +63,13 @@
 {% for item in news_items %}
   <div class="news-item-short">
     <strong>{{item.title}}</strong>, <span class="news-date">{{item.date_str}}</span>
-    {{item}}
+    {% set body = item.html|safe|striptags %}
+    {% if body|length > 500 %}
+      {{body|truncate(500)}}
+      <a href="/{{item.path}}">read more</a>
+    {% else %}
+      {{item.html|safe}}
+    {% endif %}
   </div>
 {% endfor %}
 </div>
