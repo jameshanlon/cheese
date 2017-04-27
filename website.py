@@ -251,7 +251,7 @@ class MonthFeedback(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     date                  = db.Column(db.DateTime,
                                       default=datetime.datetime.now())
-    collected_by          = db.Column(db.String(50))
+    submitted_by          = db.Column(db.String(50))
     householders_name     = db.Column(db.String(50))
     address               = db.Column(db.String(100))
     annual_gas_kwh        = db.Column(db.Float)
@@ -275,6 +275,7 @@ class YearFeedback(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     date                  = db.Column(db.DateTime,
                                       default=datetime.datetime.now())
+    submitted_by          = db.Column(db.String(50))
     householders_name     = db.Column(db.String(50))
     address               = db.Column(db.String(100))
     annual_gas_kwh        = db.Column(db.Float)
@@ -844,7 +845,7 @@ def one_month_feedback():
                 +'<a href="/cheese-box#recording-energy-use">our guide</a>.' \
                 +'<br>'+not_needed
     MonthFeedbackForm = model_form(MonthFeedback, db_session=db.session,
-        exclude=['date', 'collected_by', 'survey', 'notes'],
+        exclude=['date', 'submitted_by', 'survey', 'notes'],
         field_args={
           'householders_name': {
             'label': 'Name',
@@ -892,7 +893,7 @@ def one_month_feedback():
     form = MonthFeedbackForm(request.form, follow_up)
     if request.method=='POST' and helpers.validate_form_on_submit(form):
         form.populate_obj(follow_up)
-        follow_up.collected_by = 'Submitted from the website'
+        follow_up.submitted_by = 'Submitted from the website'
         db.session.add(follow_up)
         db.session.commit()
         # Send admin email.
@@ -912,7 +913,7 @@ def one_year_feedback():
                 +'For help with calculating the value, please see ' \
                 +'<a href="/cheese-box#recording-energy-use">our guide</a>.'
     YearFeedbackForm = model_form(YearFeedback, db_session=db.session,
-        exclude=['date', 'survey', 'notes'],
+        exclude=['date', 'submitted_by', 'survey', 'notes'],
         field_args={
           'householders_name': {
               'label': 'Name',
@@ -971,6 +972,7 @@ def one_year_feedback():
     form = YearFeedbackForm(request.form, follow_up)
     if request.method=='POST' and helpers.validate_form_on_submit(form):
         form.populate_obj(follow_up)
+        follow_up.submitted_by = 'Submitted from the website'
         db.session.add(follow_up)
         db.session.commit()
         # Send admin email.
