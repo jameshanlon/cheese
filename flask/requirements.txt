@@ -12,3 +12,4 @@ Flask-FlatPages==0.6
 Flask-thumbnails==0.2.1
 Flask-Uploads==0.2.1
 WTForms-SQLAlchemy==0.1
+mixer==5.6.6

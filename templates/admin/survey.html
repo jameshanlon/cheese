@@ -1,0 +1,52 @@
+{% macro display_entry(name, table, entry) -%}
+<a href="/admin/{{name}}/edit/?id={{entry.id}}">
+    <span class="fa fa-pencil glyphicon glyphicon-pencil"></span>
+  </a>
+  <table class="table table-condensed">
+  <tbody>
+  {% for column in table.c %}
+  <tr>
+    <td>{{ column.name }}</td>
+    <td>{{ entry[column.name] }}</tr>
+  </tr>
+  {% endfor %}
+  </tbody>
+  </table>
+{%- endmacro %}
+
+{% macro display_relation(name, table, relation) -%}
+  {% if relation %}
+    {% if relation|length == 1 %}
+      {{ display_entry(name, table, relation[0]) }}
+    {% else %}
+      <p>There are multiple entries for this survey:</p>
+      {% for x in survey.result %}
+      <a href="/admin/{{name.replace(' ')}}/{{x.id}}">{{x.date.strftime('%d %b %Y')}}</a>
+      {% endfor %}
+    {% endif %}
+  {% else %}
+  <p>No {{name}} entry.</p>
+  {% endif %}
+{%- endmacro %}
+
+{% extends 'admin/master.html' %}
+{% block body %}
+{{ super() }}
+
+<h2>Survey details</h2>
+
+{{ display_entry('surveys', surveys_table, survey) }}
+
+<h2>Survey result</h2>
+
+{{ display_relation('results', results_table, survey.result) }}
+
+<h2>One month feedback</h2>
+
+{{ display_relation('month feedback', month_table, survey.month_feedback) }}
+
+<h2>One year feedback</h2>
+
+{{ display_relation('year feedback', year_table, survey.year_feedback) }}
+
+{% endblock body %}

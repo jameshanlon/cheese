@@ -11,7 +11,7 @@ from flask import Flask, url_for, redirect, render_template, \
 import flask_admin as admin
 import flask_login as login
 from flask_admin.contrib import sqla
-from flask_admin import helpers, expose
+from flask_admin import BaseView, helpers, expose
 from flask_admin import form as admin_form
 from flask_basicauth import BasicAuth
 from flask_flatpages import FlatPages
@@ -22,6 +22,7 @@ from flask_thumbnails import Thumbnail
 from flask_script import Command, Manager, Server
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.event import listens_for
+from sqlalchemy.inspection import inspect
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_wtf import Form, FlaskForm
 from flask_wtf.file import FileField, FileAllowed, FileRequired
@@ -30,6 +31,7 @@ from wtforms import form, fields, validators
 from wtforms.fields.html5 import EmailField, DateField
 from wtforms_sqlalchemy.orm import model_form
 from models import *
+from mixer.backend.flask import mixer
 
 import smtplib
 from email.MIMEMultipart import MIMEMultipart
@@ -118,10 +120,10 @@ OCCUPATION_TYPES = [
 class People(db.Model):
     groups = ['Admin', 'Management', 'Coordinator', 'Surveyor']
     id = db.Column(db.Integer, primary_key=True)
-    email      = db.Column(db.String(120))
-    password   = db.Column(db.String(128))
-    first_name = db.Column(db.String(100))
-    last_name  = db.Column(db.String(100))
+    email      = db.Column(db.String(120), nullable=False)
+    password   = db.Column(db.String(128), nullable=False)
+    first_name = db.Column(db.String(100), nullable=False)
+    last_name  = db.Column(db.String(100), nullable=False)
     group      = db.Column(db.Enum(*groups), nullable=False)
 
     def is_authenticated(self):
@@ -200,7 +202,11 @@ class Surveys(db.Model):
     survey_date               = db.Column(db.DateTime)
     survey_complete           = db.Column(db.Boolean, default=False)
     followed_up               = db.Column(db.Boolean, default=False)
-    notes                      = db.Column(db.Text)
+    box_collected             = db.Column(db.Boolean, default=False)
+    notes                     = db.Column(db.Text)
+    result                    = db.relationship('Results')
+    month_feedback            = db.relationship('MonthFeedback')
+    year_feedback             = db.relationship('YearFeedback')
 
     def __repr__(self):
         if self.name and self.address_line:
@@ -349,6 +355,12 @@ class AdminModelView(sqla.ModelView):
                 and login.current_user.group == 'Admin'
 
 
+class AdminView(BaseView):
+    def is_accessible(self):
+        return login.current_user.is_authenticated \
+                and login.current_user.group == 'Admin'
+
+
 class RegularModelView(sqla.ModelView):
     page_size = 100
     can_export = True
@@ -395,6 +407,23 @@ class CreateUserForm(form.Form):
                     choice('Coordinator'),
                     choice('Surveyor')],
                 validators=[validators.required()])
+
+
+class Overview(AdminView):
+    @expose('/')
+    def index(self):
+        surveys = Surveys.query.all()
+        return self.render('admin/overview.html', surveys=surveys)
+
+    @expose('/survey/<int:survey_id>')
+    def survey(self, survey_id):
+        survey = Surveys.query.get(survey_id)
+        return self.render('admin/survey.html',
+                survey=survey,
+                surveys_table=inspect(Surveys),
+                results_table=inspect(Results),
+                month_table=inspect(MonthFeedback),
+                year_table=inspect(YearFeedback))
 
 
 class PeopleView(AdminModelView):
@@ -581,7 +610,9 @@ class ThermalImageView(RegularModelView):
 # Setup admin.
 admin = admin.Admin(app, name='CHEESE database',
                     index_view=CheeseAdminIndexView(),
-                    base_template='admin_master.html')
+                    base_template='admin_master.html',
+                    template_mode='bootstrap3')
+admin.add_view(Overview(name='Overview'))
 admin.add_view(PeopleView(People, db.session))
 admin.add_view(SurveysView(Surveys, db.session))
 admin.add_view(ResultsView(Results, db.session))
@@ -1025,6 +1056,7 @@ def cheese_box():
     template = page.meta.get('template', 'page.html')
     return render_template(template, page=page)
 
+mixer.init_app(app)
 
 @manager.command
 def resetdb():
@@ -1032,9 +1064,40 @@ def resetdb():
     db.drop_all()
     db.create_all()
     admin_user = People(email="admin",
+                        first_name='Joe',
+                        last_name='Bloggs',
                         password=generate_password_hash("admin"),
                         group='Admin')
     db.session.add(admin_user)
+    db.session.commit()
+    # Generate some random entries.
+    mixer.cycle(10).blend(People)
+    mixer.cycle(50).blend(Surveys)
+    mixer.cycle(50).blend(Results,
+                          survey=mixer.SELECT,
+                          faults_identified=mixer.RANDOM,
+                          recommendations=mixer.RANDOM)
+    mixer.cycle(50).blend(MonthFeedback,
+                          survey=mixer.SELECT,
+                          completed_actions=mixer.RANDOM,
+                          planned_actions=mixer.RANDOM,
+                          feedback=mixer.RANDOM)
+    mixer.cycle(20).blend(YearFeedback,
+                          survey=mixer.SELECT,
+                          planned_work=mixer.RANDOM,
+                          wellbeing_improvement=mixer.RANDOM,
+                          feedback=mixer.RANDOM)
+    # Remove duplicate references (where there should only be one).
+    for s in Surveys.query.all():
+      if len(s.result) > 1:
+        for x in s.result[1:]:
+          db.session.delete(x)
+      if len(s.month_feedback) > 1:
+        for x in s.month_feedback[1:]:
+          db.session.delete(x)
+      if len(s.year_feedback) > 1:
+        for x in s.year_feedback[1:]:
+          db.session.delete(x)
     db.session.commit()
 
 

@@ -271,3 +271,6 @@ body.modal-open {
   vertical-align: middle;
   float: none;
 }
+
+.green { color: green; }
+.red { color: red; }
