@@ -902,7 +902,7 @@ def one_month_feedback():
               'description': 'We would be interested to know what you found useful and what you didn\'t.',
               'validators': [validators.required()], },
           'feedback': {
-              'label': 'Do you have any feedback you have on your CHEESE survey?',
+              'label': 'Do you have any feedback?',
               'description': 'We would like to hear what you think about:'
                               +' the organisation of the survey,'
                               +' the conduct of the Energy Tracers,'
