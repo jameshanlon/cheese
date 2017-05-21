@@ -374,7 +374,8 @@ class CheeseAdminIndexView(admin.AdminIndexView):
     def index(self):
         if not login.current_user.is_authenticated:
             return redirect(url_for('.login_view'))
-        return super(CheeseAdminIndexView, self).index()
+        surveys = Surveys.query.all()
+        return self.render('admin/overview.html', surveys=surveys)
 
     @expose('/login/', methods=('GET', 'POST'))
     def login_view(self):
@@ -395,6 +396,16 @@ class CheeseAdminIndexView(admin.AdminIndexView):
         login.logout_user()
         return redirect(url_for('.index'))
 
+    @expose('/survey/<int:survey_id>')
+    def survey(self, survey_id):
+        survey = Surveys.query.get(survey_id)
+        return self.render('admin/survey.html',
+                survey=survey,
+                surveys_table=inspect(Surveys),
+                results_table=inspect(Results),
+                month_table=inspect(MonthFeedback),
+                year_table=inspect(YearFeedback))
+
 
 class CreateUserForm(form.Form):
     email = fields.StringField(validators=[validators.required()])
@@ -407,23 +418,6 @@ class CreateUserForm(form.Form):
                     choice('Coordinator'),
                     choice('Surveyor')],
                 validators=[validators.required()])
-
-
-class Overview(AdminView):
-    @expose('/')
-    def index(self):
-        surveys = Surveys.query.all()
-        return self.render('admin/overview.html', surveys=surveys)
-
-    @expose('/survey/<int:survey_id>')
-    def survey(self, survey_id):
-        survey = Surveys.query.get(survey_id)
-        return self.render('admin/survey.html',
-                survey=survey,
-                surveys_table=inspect(Surveys),
-                results_table=inspect(Results),
-                month_table=inspect(MonthFeedback),
-                year_table=inspect(YearFeedback))
 
 
 class PeopleView(AdminModelView):
@@ -609,10 +603,9 @@ class ThermalImageView(RegularModelView):
 
 # Setup admin.
 admin = admin.Admin(app, name='CHEESE database',
-                    index_view=CheeseAdminIndexView(),
+                    index_view=CheeseAdminIndexView(name='Overview'),
                     base_template='admin_master.html',
                     template_mode='bootstrap3')
-admin.add_view(Overview(name='Overview'))
 admin.add_view(PeopleView(People, db.session))
 admin.add_view(SurveysView(Surveys, db.session))
 admin.add_view(ResultsView(Results, db.session))

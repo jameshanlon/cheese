@@ -14,7 +14,6 @@
     <tr>
       <th>Survey</th>
       <th>Ward</th>
-      <th>Date</th>
       <th>Box collected?</th>
       <th>Result</th>
       <th>One month</th>
@@ -24,9 +23,9 @@
   <tbody>
     {% for survey in surveys %}
     <tr>
-      <td><a href="/admin/overview/survey/{{survey.id}}">{{survey.name}}, {{survey.address}}</a></td>
+      <td><a href="/admin/survey/{{survey.id}}">
+          {{survey.name}}, {{survey.address_line}}</a></td>
       <td>{{survey.ward}}</td>
-      <td>{{survey.date}}</td>
       <td>{{ render_boolean(survey.box_collected) }}</td>
       <td>{{ render_boolean(survey.result) }}</td>
       <td>{{ render_boolean(survey.month_feedback) }} </td>
