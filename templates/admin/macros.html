@@ -1,0 +1,14 @@
+{% macro render_boolean(value) -%}
+  {% if value %}
+    <span class="glyphicon glyphicon-ok" style="color:green"></span>
+  {% else %}
+    <span class="glyphicon glyphicon-remove" style="color:red"></span>
+  {% endif %}
+{%- endmacro %}
+
+{% macro render_text(value) -%}
+  {% set paras = value.split('\n') %}
+  {% for para in paras %}
+    <p>{{ para }}</p>
+  {% endfor %}
+{%- endmacro %}

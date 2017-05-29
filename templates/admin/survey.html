@@ -1,3 +1,6 @@
+{% extends 'admin/master.html' %}
+{% import 'admin/macros.html' as macros %}
+
 {% macro display_entry(name, table, entry) -%}
 <a href="/admin/{{name}}/edit/?id={{entry.id}}">
     <span class="fa fa-pencil glyphicon glyphicon-pencil"></span>
@@ -6,8 +9,14 @@
   <tbody>
   {% for column in table.c %}
   <tr>
-    <td>{{ column.name }}</td>
-    <td>{{ entry[column.name] }}</tr>
+    <td>{{ column.name|format_db_name }}</td>
+    {% if column.type|string() == 'TEXT' %}
+      <td>{{ macros.render_text(entry[column.name]) }}</td>
+    {% elif column.type|string() == 'BOOLEAN' %}
+      <td>{{ macros.render_boolean(entry[column.name]) }}</td>
+    {% else %}
+      <td>{{ entry[column.name] }}</td>
+    {% endif %}
   </tr>
   {% endfor %}
   </tbody>
@@ -29,7 +38,6 @@
   {% endif %}
 {%- endmacro %}
 
-{% extends 'admin/master.html' %}
 {% block body %}
 {{ super() }}
 

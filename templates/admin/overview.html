@@ -1,12 +1,5 @@
-{% macro render_boolean(value) -%}
-  {% if value %}
-    <span class="glyphicon glyphicon-ok" style="color:green"></span>
-  {% else %}
-    <span class="glyphicon glyphicon-remove" style="color:red"></span>
-  {% endif %}
-{%- endmacro %}
-
 {% extends 'admin/master.html' %}
+{% import 'admin/macros.html' as macros %}
 {% block body %}
 {{ super() }}
 <table class="table table-condensed">
@@ -14,7 +7,10 @@
     <tr>
       <th>Survey</th>
       <th>Ward</th>
+      <th>Survey date</th>
+      <th>Box</th>
       <th>Box collected?</th>
+      <th>Surveyor</th>
       <th>Result</th>
       <th>One month</th>
       <th>One year</th>
@@ -26,10 +22,13 @@
       <td><a href="/admin/survey/{{survey.id}}">
           {{survey.name}}, {{survey.address_line}}</a></td>
       <td>{{survey.ward}}</td>
-      <td>{{ render_boolean(survey.box_collected) }}</td>
-      <td>{{ render_boolean(survey.result) }}</td>
-      <td>{{ render_boolean(survey.month_feedback) }} </td>
-      <td>{{ render_boolean(survey.year_feedback) }}</td>
+      <td>{{survey.survey_date}}</td>
+      <td>{{ survey.result.loaned_cheese_box }}</td>
+      <td>{{ macros.render_boolean(survey.box_collected) }}</td>
+      <td>{{ survey.surveyor }}</td>
+      <td>{{ macros.render_boolean(survey.result) }}</td>
+      <td>{{ macros.render_boolean(survey.month_feedback) }} </td>
+      <td>{{ macros.render_boolean(survey.year_feedback) }}</td>
     </tr>
     {% endfor %}
   </tbody>

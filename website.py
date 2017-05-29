@@ -83,12 +83,6 @@ def random_string(length):
                 for _ in range(length))
 
 
-def string_html_formatter(view, context, model, name):
-    if getattr(model, name):
-        return Markup(''.join(['<p>'+x+'</p>' for x in getattr(model, name).split('\n')]))
-    else:
-        return ''
-
 WARDS = [
     'Bishopston',
     'Cotham',
@@ -118,6 +112,21 @@ OCCUPATION_TYPES = [
     'Rented council',
     'Rented housing association',
     'Other', ]
+
+
+def string_html_formatter(text):
+    return Markup(''.join(['<p>'+x+'</p>' for x in text.split('\n')])) if text else ''
+
+
+def view_string_html_formatter(view, context, model, name):
+    return string_html_formatter(getattr(model, name))
+
+
+@app.template_filter('format_db_name')
+def format_db_name(name):
+    name = name.replace('_', ' ')
+    return name[0].upper() + name[1:]
+
 
 #===-----------------------------------------------------------------------===#
 # Models.
@@ -478,9 +487,9 @@ class SurveysView(RegularModelView):
     column_filters = columns_list
     column_exclude_list = list(all_cols - set(columns_list))
     column_formatters = {
-    'expected_benefit': string_html_formatter,
-    'availability':     string_html_formatter,
-    'notes':            string_html_formatter, }
+    'expected_benefit': view_string_html_formatter,
+    'availability':     view_string_html_formatter,
+    'notes':            view_string_html_formatter, }
     form_args = {
         'referral':       { 'label': 'Referral from?' },
         'num_main_rooms': { 'label': 'Number of main rooms' }, }
@@ -523,9 +532,9 @@ class ResultsView(RegularModelView):
     column_filters = columns_list
     column_exclude_list = list(all_cols - set(columns_list))
     column_formatters = {
-        'faults_identified': string_html_formatter,
-        'recommendations':   string_html_formatter,
-        'notes':             string_html_formatter, }
+        'faults_identified': view_string_html_formatter,
+        'recommendations':   view_string_html_formatter,
+        'notes':             view_string_html_formatter, }
     form_widget_args = {
         'faults_identified': { 'rows': 8, 'cols': 20 },
         'recommendations':   { 'rows': 8, 'cols': 20 },
@@ -545,11 +554,11 @@ class MonthFeedbackView(RegularModelView):
         'feedback',
         'notes', ]
     column_formatters = {
-        'completed_actions': string_html_formatter,
-        'planned_actions':   string_html_formatter,
-        'cheese_box':        string_html_formatter,
-        'feedback':          string_html_formatter,
-        'notes':             string_html_formatter, }
+        'completed_actions': view_string_html_formatter,
+        'planned_actions':   view_string_html_formatter,
+        'cheese_box':        view_string_html_formatter,
+        'feedback':          view_string_html_formatter,
+        'notes':             view_string_html_formatter, }
 
 
 class YearFeedbackView(RegularModelView):
@@ -569,14 +578,14 @@ class YearFeedbackView(RegularModelView):
         'feedback',
         'notes', ]
     column_formatters = {
-        'diy_work':              string_html_formatter,
-        'prof_work':             string_html_formatter,
-        'contractors_used':      string_html_formatter,
-        'planned_actions':       string_html_formatter,
-        'wellbeing_improvement': string_html_formatter,
-        'behaviour_changes':    string_html_formatter,
-        'feedback':      string_html_formatter,
-        'notes':            string_html_formatter, }
+        'diy_work':              view_string_html_formatter,
+        'prof_work':             view_string_html_formatter,
+        'contractors_used':      view_string_html_formatter,
+        'planned_actions':       view_string_html_formatter,
+        'wellbeing_improvement': view_string_html_formatter,
+        'behaviour_changes':     view_string_html_formatter,
+        'feedback':              view_string_html_formatter,
+        'notes':                 view_string_html_formatter, }
 
 
 class InventoryView(AdminModelView):
@@ -1095,6 +1104,8 @@ def resetdb():
     # Generate some random entries.
     mixer.cycle(10).blend(People)
     mixer.cycle(50).blend(Surveys,
+                          name=mixer.RANDOM,
+                          address_line=mixer.RANDOM,
                           availability=mixer.RANDOM,
                           expected_benefit=mixer.RANDOM,
                           notes=mixer.RANDOM)
