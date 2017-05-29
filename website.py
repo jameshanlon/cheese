@@ -83,6 +83,12 @@ def random_string(length):
                 for _ in range(length))
 
 
+def string_html_formatter(view, context, model, name):
+    if getattr(model, name):
+        return Markup(''.join(['<p>'+x+'</p>' for x in getattr(model, name).split('\n')]))
+    else:
+        return ''
+
 WARDS = [
     'Bishopston',
     'Cotham',
@@ -471,6 +477,10 @@ class SurveysView(RegularModelView):
         'followed_up', ]
     column_filters = columns_list
     column_exclude_list = list(all_cols - set(columns_list))
+    column_formatters = {
+    'expected_benefit': string_html_formatter,
+    'availability':     string_html_formatter,
+    'notes':            string_html_formatter, }
     form_args = {
         'referral':       { 'label': 'Referral from?' },
         'num_main_rooms': { 'label': 'Number of main rooms' }, }
@@ -512,6 +522,10 @@ class ResultsView(RegularModelView):
         'survey', ]
     column_filters = columns_list
     column_exclude_list = list(all_cols - set(columns_list))
+    column_formatters = {
+        'faults_identified': string_html_formatter,
+        'recommendations':   string_html_formatter,
+        'notes':             string_html_formatter, }
     form_widget_args = {
         'faults_identified': { 'rows': 8, 'cols': 20 },
         'recommendations':   { 'rows': 8, 'cols': 20 },
@@ -530,6 +544,12 @@ class MonthFeedbackView(RegularModelView):
         'cheese_box',
         'feedback',
         'notes', ]
+    column_formatters = {
+        'completed_actions': string_html_formatter,
+        'planned_actions':   string_html_formatter,
+        'cheese_box':        string_html_formatter,
+        'feedback':          string_html_formatter,
+        'notes':             string_html_formatter, }
 
 
 class YearFeedbackView(RegularModelView):
@@ -548,6 +568,15 @@ class YearFeedbackView(RegularModelView):
         'behaviour_changes',
         'feedback',
         'notes', ]
+    column_formatters = {
+        'diy_work':              string_html_formatter,
+        'prof_work':             string_html_formatter,
+        'contractors_used':      string_html_formatter,
+        'planned_actions':       string_html_formatter,
+        'wellbeing_improvement': string_html_formatter,
+        'behaviour_changes':    string_html_formatter,
+        'feedback':      string_html_formatter,
+        'notes':            string_html_formatter, }
 
 
 class InventoryView(AdminModelView):
@@ -1065,21 +1094,32 @@ def resetdb():
     db.session.commit()
     # Generate some random entries.
     mixer.cycle(10).blend(People)
-    mixer.cycle(50).blend(Surveys)
+    mixer.cycle(50).blend(Surveys,
+                          availability=mixer.RANDOM,
+                          expected_benefit=mixer.RANDOM,
+                          notes=mixer.RANDOM)
     mixer.cycle(50).blend(Results,
                           survey=mixer.SELECT,
                           faults_identified=mixer.RANDOM,
-                          recommendations=mixer.RANDOM)
+                          recommendations=mixer.RANDOM,
+                          notes=mixer.RANDOM)
     mixer.cycle(50).blend(MonthFeedback,
                           survey=mixer.SELECT,
                           completed_actions=mixer.RANDOM,
                           planned_actions=mixer.RANDOM,
-                          feedback=mixer.RANDOM)
+                          cheese_box=mixer.RANDOM,
+                          feedback=mixer.RANDOM,
+                          notes=mixer.RANDOM)
     mixer.cycle(20).blend(YearFeedback,
                           survey=mixer.SELECT,
+                          diy_work=mixer.RANDOM,
+                          prof_work=mixer.RANDOM,
+                          contractors_used=mixer.RANDOM,
                           planned_work=mixer.RANDOM,
                           wellbeing_improvement=mixer.RANDOM,
-                          feedback=mixer.RANDOM)
+                          behaviour_changes=mixer.RANDOM,
+                          feedback=mixer.RANDOM,
+                          notes=mixer.RANDOM)
     # Remove duplicate references (where there should only be one).
     for s in Surveys.query.all():
       if len(s.result) > 1:
