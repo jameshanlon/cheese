@@ -208,7 +208,7 @@ class Surveys(db.Model):
     num_main_rooms            = db.Column(db.Integer)
     can_heat_comfortably      = db.Column(db.Boolean, default=False)
     expected_benefit          = db.Column(db.Text)
-    referral                  = db.Column(db.String(100))
+    referral                  = db.Column(db.String(250))
     availability              = db.Column(db.Text)
     free_survey_consideration = db.Column(db.Boolean, default=False)
     fee                       = db.Column(db.Float)
