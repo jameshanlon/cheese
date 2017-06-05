@@ -856,7 +856,8 @@ class ApplySurveyForm(form.Form):
                                             + 'benefit from a survey?',
                                         validators=[validators.required()])
     referral = fields.StringField('How did you hear about CHEESE?',
-                                  validators=[validators.required()])
+                                  validators=[validators.required(),
+                                              validators.Length(max=250)])
     free_survey_consideration = \
         fields.BooleanField('I live in a low-income household and ' \
             +'would like to be considered for a free survey.')
