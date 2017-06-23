@@ -43,27 +43,51 @@ To initialise a minimal database:
 $ docker exec -it <cheese-flask> bash
 $ cd /opt/www
 $ python
->>> from website import db, People
+>>> from cheese.init_app import app, init_app, db, user_manager
 ...
+>>> from cheese.models import User, Role
+>>> init_app(app)
 >>> db.drop_all()
 >>> db.create_all()
->>> from werkzeug.security import generate_password_hash
->>> person = People(email="admin", password=generate_password_hash("..."), group='Admin')
->>> db.session.add(person)
+>>> user = User(email="admin@cheeseproject.co.uk", \
+      password=user_manager.hash_password('admin'))
+>>> user.roles.append(Role(name='admin'))
+>>> db.session.add(user)
 >>> db.session.commit()
 ```
-Or use the `website.py populate_db` command.
+Or use the `manage.py resetdb` command.
 
 ### Run the development server
 
 ```
 $ source env/bin/activate
 $ source CONFIG
-$ python website.py runserver
+$ python manage.py runserver
 ...
+```
+Note that uWSGI can be run manually, e.g.:
+```
+uwsgi --http 0.0.0.0:9000 --manage-script-name --wsgi-file wsgi.py --callable app
 ```
 
 ## Deployment notes
+
+### From scratch
+
+- Create the CONFIG file as described above.
+- Create the MySQL database as described above.
+- Copy the `docker-compose.yml.in` file and populate it:
+```
+$ cp docker-compose.yml.in docker-compose.yml
+$ ./update-env.sh
+```
+- Build and start the Docker containers:
+```
+$ docker-compose build
+...
+$ docker-compose up
+...
+```
 
 ### Perform a database migration
 
@@ -71,9 +95,9 @@ Create the migration and run the upgrade from in the container.
 ```
 $ docker exec -it <continer-name> bash
 $ cd /opt/www
-$ python website.py db migrate
+$ python manage.py db migrate
 ...
-$ python website.py db upgrade
+$ python manage.py db upgrade
 ...
 $ exit
 ```

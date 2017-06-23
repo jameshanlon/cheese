@@ -1,0 +1,284 @@
+html {
+  color:#222;
+  font-size:0.95em;
+  line-height:1.4;
+  font-family: 'Droid Sans',sans-serif;
+}
+
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 1em 0;
+  padding: 0;
+}
+
+h1 {
+  font-size: 2.4em;
+}
+
+h2 {
+  font-size: 1.8em;
+  margin-top: 0.8em;
+  margin-bottom: 0.4em;
+}
+
+h3 {
+  font-size: 1.3em;
+  margin-top: 0.8em;
+  margin-bottom: 0.4em;
+}
+
+a {
+  text-decoration:none;
+}
+
+a:hover {
+  text-decoration:underline;
+}
+
+img {
+  padding-left: 0.3em;
+  padding-bottom: 0.3em;
+}
+
+.big-text {
+  font-size: 2.25em;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom:0.6em;
+}
+
+/* Fix the width to be 768px. */
+@media (min-width: 1200px) {
+  .container{
+    max-width: 768px;
+    width: 768px;
+  }
+}
+@media (min-width: 940px) {
+  .container{
+    max-width: 768px;
+    width: 768px;
+  }
+}
+@media (min-width: 768px) {
+  .container{
+    max-width: 768px;
+    width: 768px;
+  }
+  /* Adjust jumbotron side padding */
+  .container .jumbotron {
+    padding-left:20px;
+    padding-right:20px;
+  }
+}
+@media (max-width: 768px) {
+  /* Adjust the size of the logo and main banner. */
+  #logo img {
+    max-width:320px;
+  }
+  .jumbotron img {
+    max-width:100px;
+  }
+}
+
+#logo {
+  clear: both;
+}
+
+/* Restyle the BS nav bar */
+.navbar {
+  min-height: 40px;
+  margin-bottom: 0;
+  border: none;
+}
+.navbar-default {
+  background-color: #888;
+  border-color: #E7E7E7;
+  font-size: 1.15em;
+}
+.navbar-default .navbar-nav > li > a {
+  color: white;
+  padding-top:10px;
+  padding-bottom:10px;
+}
+.navbar-nav > li > .dropdown-menu {
+  background-color: #888;
+}
+.navbar-default .navbar-nav .open .dropdown-menu > li > a {
+  color: white;
+}
+.navbar-default .navbar-nav .open .dropdown-menu > li > a:hover {
+  color: #555;
+}
+.nav > li > a {
+  padding: 0 10px;
+}
+.navbar-default .navbar-toggle .icon-bar {
+  background-color: #ddd;
+}
+.dropdown-menu > li > a {
+  font-size:1.1em;
+}
+
+@media (min-width: 768px) {
+  /* Centre the nav bar elements */
+  .navbar .navbar-nav {
+    display: inline-block;
+    float: none;
+    vertical-align: top;
+  }
+  .navbar .navbar-collapse {
+    text-align: center;
+  }
+}
+
+.user-navbar {
+  padding: 0.4em;
+}
+
+.news-item-large {
+  margin-bottom: 2em;
+}
+
+.news-date {
+  color: #888;
+  font-size:1.05em;
+}
+
+.news-item-short {
+  padding: 0.8em 0 0 0.6em;
+}
+
+.thumbs {
+  text-align: center;
+}
+
+.thumbs img {
+  margin-left: 0.3em;
+  margin-bottom: 0.3em;
+}
+
+#imagepreview {
+  width:100%;
+  padding:0.8em;
+}
+
+#imagepreview-caption {
+  padding: 0 0.8em 0.8em 0.8em;
+}
+
+.splash {
+  padding: 0.4em 0.2em 0 0.2em;
+  font-size:1.4em;
+  font-weight:bold;
+  text-align:center;
+}
+
+.lead {
+  padding: 0.4em 0.2em 0 0.2em;
+  font-size:1.4em;
+  font-weight:bold;
+}
+
+.banner-imgs {
+  text-align: center;
+  padding: 4px 4px;
+}
+
+.banner-imgs > * {
+  vertical-align:top;
+}
+
+.banner-imgs img {
+  padding: 0 4px 0 4px;
+}
+
+.news li {
+  margin:0.7em 0;
+}
+
+.caption {
+  margin-top:-0.2em;
+  font-size:1.2em;
+  text-align:center;
+}
+
+.imgcaption {
+  margin-top:0.4em;
+  font-size:0.9em;
+  width: 110px;
+}
+
+.video {
+  text-align:center;
+}
+
+.content {
+  padding: 1.2em;
+}
+
+footer {
+  color:gray;
+  width:100%;
+  min-height: 160px;
+  padding-bottom:2em;
+}
+footer ul {
+  padding:0;
+  margin:0;
+}
+footer li {
+  list-style-type:none;
+}
+
+#footer-left {
+  width:400px;
+}
+
+#footer-right {
+  float:right;
+  text-align:right;
+  margin:0;
+  padding:0;
+}
+
+.page-contents {
+  background-color: #ccddff;
+  border-radius:4px;
+  padding:0.5em 0.8em 0.4em 0.8em;
+  margin:0.2em 0 0.6em 0.8em;
+  min-width: 180px;
+  color:white;
+  font-weight:bold;
+}
+
+.page-contents li {
+  padding-top:0.4em;
+}
+
+.notice {
+  background-color: #ccddff;
+  border-radius:4px;
+  padding:0.8em;
+  margin:0.8em 0 0.8em 0;
+}
+
+button.close {
+  padding: 0 0.4em 0 0;
+}
+
+body.modal-open {
+  overflow: visible !important;
+}
+
+.vcenter {
+  display: inline-block;
+  vertical-align: middle;
+  float: none;
+}
+
+.green { color: green; }
+.red { color: red; }

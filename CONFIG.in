@@ -5,8 +5,10 @@ export CHEESE_CONTAINER_NAME=
 export CHEESE_SMTP_SERVER=
 export CHEESE_SMTP_USERNAME=
 export CHEESE_SMTP_PASSWORD=
+export CHEESE_SMTP_PORT=
+export CHEESE_SMTP_USE_SSL=
+export CHEESE_SMTP_USE_TLS=
 export CHEESE_EMAIL_SENDER=
-export CHEESE_EMAIL_RECEIVER=
 # MySQL
 export CHEESE_MYSQL_HOST=
 export CHEESE_MYSQL_DATA_DIR=
@@ -17,6 +19,7 @@ export CHEESE_MYSQL_PASSWORD=
 # Certificates
 export CHEESE_WEBSITE_DIR=
 export CHEESE_CERTIFICATE_DIR=
-# Basic authentication
-export CHEESE_AUTH_USER=
-export CHEESE_AUTH_PASSWORD=
+# Error email subject
+export CHEESE_APP_SYSTEM_ERROR_SUBJECT_LINE='CHEESE webiste error'
+# List of admins ("name" <email>, ...)
+export CHEESE_ADMINS=
