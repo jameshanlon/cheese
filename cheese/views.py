@@ -1,3 +1,4 @@
+import os
 import random
 import string
 from cheese.init_app import app, db, images, pages
