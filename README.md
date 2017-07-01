@@ -43,10 +43,10 @@ To initialise a minimal database:
 $ docker exec -it <cheese-flask> bash
 $ cd /opt/www
 $ python
->>> from cheese.init_app import app, init_app, db, user_manager
-...
->>> from cheese.models import User, Role
+>>> from cheese.init_app import app, init_app, db
 >>> init_app(app)
+>>> from cheese.init_app import user_manager
+>>> from cheese.models import User, Role
 >>> db.drop_all()
 >>> db.create_all()
 >>> user = User(email="admin@cheeseproject.co.uk", \

@@ -1,3 +1,4 @@
+export CHEESE_BACKUP_DIR=
 # Flask
 export CHEESE_SECRET_KEY=
 export CHEESE_CONTAINER_NAME=
