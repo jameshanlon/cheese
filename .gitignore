@@ -2,8 +2,8 @@ CONFIG
 docker-compose.yml
 *.pyc
 *.sqlite
-app/static/images/thumbs
-app/static/uploads
+cheese/static/images/thumbs
+cheese/static/uploads
 env/
 test.db
 flask/mysql.cnf

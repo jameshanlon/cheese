@@ -7,9 +7,9 @@ FLATPAGES_EXTENSION    = '.md'
 ADMINS                 = os.environ['CHEESE_ADMINS']
 # Media
 MEDIA_FOLDER           = 'cheese/'
+MEDIA_URL              = '/'
 MEDIA_THUMBNAIL_FOLDER = 'cheese/static/images/thumbs'
 UPLOADED_IMAGES_DEST   = 'cheese/static/uploads'
-MEDIA_URL              = '/'
 MEDIA_THUMBNAIL_URL    = '/static/images/thumbs/'
 MAX_IMAGE_SIZE         = 4*1024*1024 # 4 MB
 # Flask-Mail
