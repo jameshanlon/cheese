@@ -4,6 +4,7 @@ APP_NAME               = 'The CHEESE Project'
 SECRET_KEY             = os.environ['CHEESE_SECRET_KEY']
 CSRF_ENABLED           = True
 FLATPAGES_EXTENSION    = '.md'
+SYSTEM_ERROR_SUBJECT_LINE = 'CHEESE webiste error'
 ADMINS                 = os.environ['CHEESE_ADMINS']
 # Media
 MEDIA_FOLDER           = 'cheese/'

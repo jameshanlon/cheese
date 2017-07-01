@@ -12,13 +12,13 @@ from flask_thumbnails import Thumbnail
 from flask_user import SQLAlchemyAdapter, UserManager
 from flask_script import Command, Manager, Server
 from flask_sqlalchemy import SQLAlchemy
-from flask_wtf.csrf import CsrfProtect
+from flask_wtf.csrf import CSRFProtect
 from jinja2 import Markup
 from mixer.backend.flask import mixer
 
 # Global declarations since they are imported by manage.py
 app = Flask(__name__)
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config.from_object('cheese.settings')
 db = SQLAlchemy(app)
 manager = Manager(app)
 
@@ -33,7 +33,7 @@ def init_email_error_handler(app):
         mailhost=(app.config['MAIL_SERVER'], app.config['MAIL_PORT']),
         fromaddr=app.config['MAIL_DEFAULT_SENDER'],
         toaddrs=app.config['ADMINS'],
-        subject=os.environ['CHEESE_APP_SYSTEM_ERROR_SUBJECT_LINE'],
+        subject=app.config['SYSTEM_ERROR_SUBJECT_LINE'],
         credentials=(app.config['MAIL_USERNAME'], app.config['MAIL_PASSWORD']),
         secure=() if app.config.get('MAIL_USE_TLS') else None, )
     mail_handler.setLevel(logging.ERROR)
@@ -74,9 +74,8 @@ def init_app(app):
     global user_manager
     global images
     global pages
-    app.config.from_object('cheese.settings')
     mail = Mail(app)
-    CsrfProtect(app)
+    CSRFProtect(app)
     migrate = Migrate(app, db, compare_type=True)
     pages = FlatPages(app)
     thumb = Thumbnail(app)
