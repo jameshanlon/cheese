@@ -50,7 +50,8 @@ $ python
 >>> db.drop_all()
 >>> db.create_all()
 >>> user = User(email="admin@cheeseproject.co.uk", \
-      password=user_manager.hash_password('admin'))
+      password=user_manager.hash_password('admin'), \
+      is_active=True)
 >>> user.roles.append(Role(name='admin'))
 >>> db.session.add(user)
 >>> db.session.commit()
