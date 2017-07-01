@@ -1,7 +1,7 @@
 import os
 import random
 import string
-from cheese.init_app import app, db, images, pages
+from cheese.init_app import app, db, images, pages, thumb
 from cheese.definitions import *
 from cheese.models import Surveys, Results, MonthFeedback, YearFeedback, \
                           ThermalImage
