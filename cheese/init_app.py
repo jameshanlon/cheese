@@ -72,6 +72,7 @@ def init_app(app):
     global user_manager
     global images
     global pages
+    global thumb
     mail = Mail(app)
     CSRFProtect(app)
     migrate = Migrate(app, db, compare_type=True)

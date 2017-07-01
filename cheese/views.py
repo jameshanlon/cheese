@@ -6,7 +6,8 @@ from cheese.definitions import *
 from cheese.models import Surveys, Results, MonthFeedback, YearFeedback, \
                           ThermalImage
 from flask import url_for, redirect, render_template, \
-                  render_template_string, request, flash
+                  render_template_string, request, flash, \
+                  Markup
 import flask_admin as admin
 from flask_admin import BaseView, helpers, expose
 from flask_admin.contrib import sqla
