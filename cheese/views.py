@@ -1,3 +1,5 @@
+import random
+import string
 from cheese.init_app import app, db, images, pages
 from cheese.definitions import *
 from cheese.models import Surveys, Results, MonthFeedback, YearFeedback, \
@@ -9,6 +11,7 @@ from flask_admin import BaseView, helpers, expose
 from flask_admin.contrib import sqla
 from flask_mail import Message
 from flask_user import login_required, roles_required, current_user
+from flask_uploads import UploadNotAllowed
 from flask_wtf import Form, FlaskForm
 from flask_wtf.file import FileField, FileAllowed, FileRequired
 from sqlalchemy.event import listens_for
@@ -16,6 +19,7 @@ from sqlalchemy.inspection import inspect
 from wtforms import form, fields, validators
 from wtforms.fields.html5 import EmailField
 from wtforms_sqlalchemy.orm import model_form
+from werkzeug.utils import secure_filename
 
 #===-----------------------------------------------------------------------===#
 # Admin views.
@@ -330,7 +334,7 @@ def upload_thermal_image():
     if request.method=='POST' and form.validate_on_submit():
         image = request.files.get('image')
         try:
-            filename = random_string(10)+'_'+image.filename
+            filename = random_string(10)+'_'+secure_filename(image.filename)
             filename = images.save(image, name=filename)
         except UploadNotAllowed:
             flash('The uploaded file is not allowed')

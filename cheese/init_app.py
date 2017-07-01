@@ -1,6 +1,4 @@
 import os
-import random
-import string
 from flask import Flask
 import flask_admin as admin
 from flask_flatpages import FlatPages
