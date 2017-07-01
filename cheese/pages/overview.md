@@ -40,19 +40,42 @@ work.
 ### The pilot
 
 In the 2015/16 winter we completed a successful pilot of the CHEESE Project in
-Bristol and conducted 50 internal home surveys in the wards of Bishopston,
-Cotham, Redland, Easton and Lawrence Weston. These surveys were led by Brian
-Harper, a thermal imaging expert and founder of the [Transition Malvern
+Bristol and conducted 30 internal home surveys in the wards of Bishopston,
+Cotham, Redland, Easton and Lawrence Weston. This brings us to a total of 50
+surveys since March 2015.
+
+The pilot surveys were led by Brian Harper, a thermal imaging expert and
+founder of the [Transition Malvern
 Hills](https://transitionmalvernhills.org.uk) *Energy Tracers*,  the project on
 which the Bristol CHEESE Project is modeled. This gave us the opportunity to
 road test our new software, which had been in development for over a year, to
-use Flir One thermal-imaging cameras for our surveys.  We also
-captured 11,000 thermal images of domestic properties in the same wards for our
-Google Street View-style [Heatview map](http://www.heatview.co.uk).
+use Flir One thermal-imaging cameras for our surveys.
+
+As well as the internal surveys, we also captured a total of 11,000 external
+thermal images of domestic properties in the same wards for our Google Street
+View-style [Heatview map](http://www.heatview.co.uk), covering Bishopston,
+Cotham, Redland, Easton and Lawrence Weston.
 
 For the achievements of the pilot, the CHEESE project [won the Volunteers for Energy
 Award](http://bristolgreencapital.org/winners-announced-in-the-green-volunteers-awards-2016)
 at the Bristol Green Capital Partnership Green Volunteers' Awards 2016.
+
+<div class="thumbs">
+<a href="javascript:void(0)" class="pop">
+  <img src="{{'static/images/heatview.png'|thumbnail('100x100')}}">
+</a>
+<a href="javascript:void(0)" class="pop">
+  <img src="{{'static/images/heatview-image.png'|thumbnail('101x100')}}">
+</a>
+<a href="javascript:void(0)" class="pop">
+  <img src="{{'static/images/2016-03-green-volunteers-award/award.jpg'|thumbnail('100x100')}}"
+       alt="The Volunteers for Energy award!">
+</a>
+<a href="javascript:void(0)" class="pop">
+  <img src="{{'static/images/2016-03-green-volunteers-award/mike-jeremy.jpg'|thumbnail('100x100')}}"
+       alt="Mareike Schmidt, Bristol City Council, with Mike and Jeremy from CHEESE.">
+</a>
+</div>
 
 <a name="phase-two"></a>
 ### Phase two

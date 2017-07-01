@@ -57,16 +57,22 @@
   </div>
 </div>
 
-<h3>Latest news</h3>
+<div class="pull-right">
+<a class="twitter-timeline" data-width="300" data-height="450" data-theme="light"
+   href="https://twitter.com/CHEESEBristol/timelines/881179139969097728">
+  Tweets by @CHEESEBristol</a>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
 
 <div class="news">
 {% for item in news_items %}
   <div class="news-item-short">
-    <strong>{{item.title}}</strong>, <span class="news-date">{{item.date_str}}</span>
+    <h3>{{item.title}}</h3>
+    <p class="news-date">{{item.date_str}}</p>
     {% set body = item.html|safe|striptags %}
     {% if body|length > 500 %}
       {{body|truncate(500)}}
-      <a href="/{{item.path}}">read more</a>
+      <p><a href="/{{item.path}}">Read more</p>
     {% else %}
       {{item.html|safe}}
     {% endif %}
@@ -74,12 +80,6 @@
 {% endfor %}
 </div>
 
-<p style="padding-top:1em"><a href="/news">Read more news...</a></p>
-
-<a class="twitter-timeline" href="https://twitter.com/CHEESEBristol"
-   data-tweet-limit="5">
-  Tweets by @CHEESEBristol</a>
-<script async src="http://platform.twitter.com/widgets.js" charset="utf-8">
-</script>
+<p style="padding-top:1em"><a href="/blog">More from the blog...</a></p>
 
 {% endblock %}

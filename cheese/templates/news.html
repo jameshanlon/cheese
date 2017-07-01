@@ -1,11 +1,9 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h1>News</h1>
-
 {% for item in news_items %}
   <div class="news-item-large">
-    <h3>{{item.title}}</h3>
+    <h2>{{item.title}}</h2>
     <p class="news-date">{{item.date_str}}<p>
     {{item}}
   </div>

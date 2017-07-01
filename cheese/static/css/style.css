@@ -225,6 +225,7 @@ footer {
   width:100%;
   min-height: 160px;
   padding-bottom:2em;
+  clear:both;
 }
 footer ul {
   padding:0;

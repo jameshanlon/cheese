@@ -640,8 +640,8 @@ def index():
     return render_template('index.html', news_items=news_items)
 
 
-@app.route('/news')
-def news():
+@app.route('/blog')
+def blog():
     return render_template('news.html', news_items=get_news())
 
 
@@ -666,6 +666,24 @@ def home_surveys():
 def cheese_box():
     # Flat page with template code.
     page = pages.get('cheese-box')
+    page.html = render_template_string(page.html)
+    template = page.meta.get('template', 'page.html')
+    return render_template(template, page=page)
+
+
+@app.route('/overview')
+def overview():
+    # Flat page with template code.
+    page = pages.get('overview')
+    page.html = render_template_string(page.html)
+    template = page.meta.get('template', 'page.html')
+    return render_template(template, page=page)
+
+
+@app.route('/events')
+def events():
+    # Flat page with template code.
+    page = pages.get('events')
     page.html = render_template_string(page.html)
     template = page.meta.get('template', 'page.html')
     return render_template(template, page=page)
