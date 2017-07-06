@@ -1,8 +1,10 @@
 
 <div class="splash">
 <p>The CHEESE Project aims to reduce domestic energy losses, at low cost,
-by up to a third. This saves money, improves health and wellbeing and,
-reduces our carbon emissions.</p>
+by up to a third. This saves money and reduces our carbon emissions.
+It improves the comfort and health of low income families, helping them to
+avoid fuel poverty.
+</p>
 </div>
 
 ## Overview
