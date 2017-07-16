@@ -13,7 +13,6 @@
 {% macro render_form(form, name, submit_description=None) -%}
 <div id="{{name}}" style="padding-top:1.2em">
   <form method="POST" action="" enctype="multipart/form-data">
-    {{ form.csrf_token }}
     {{ form.hidden_tag() if form.hidden_tag }}
     {% for f in form if f.type != 'CSRFTokenField' %}
       {% if f.errors %}

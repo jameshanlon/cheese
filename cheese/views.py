@@ -1,7 +1,8 @@
+import datetime
 import os
 import random
 import string
-from cheese.init_app import app, db, images, pages, thumb
+from cheese.init_app import app, db, mail, images, pages, thumb
 from cheese.definitions import *
 from cheese.models import Surveys, Results, MonthFeedback, YearFeedback, \
                           ThermalImage
@@ -415,7 +416,7 @@ def get_news():
     return news_items
 
 
-class ApplySurveyForm(form.Form):
+class ApplySurveyForm(FlaskForm):
     name = fields.StringField(validators=[validators.required()])
     address_line = fields.StringField(validators=[validators.required()])
     postcode = fields.StringField(validators=[validators.required()])
@@ -476,7 +477,7 @@ def apply_for_a_survey():
         subject = 'New request for a CHEESE survey'
         message = 'From '+form.name.data+', '+form.address_line.data \
                   + ' at '+str(datetime.datetime.today())
-        send_email(EMAIL_RECEIVER, subject, message)
+        send_email(app.config['ADMINS'], subject, message)
         # Success page.
         page = pages.get('application-successful')
         return render_template('page.html', page=page)
