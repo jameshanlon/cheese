@@ -398,13 +398,6 @@ def received_one_year_feedback():
 # Public pages.
 #===-----------------------------------------------------------------------===#
 
-def send_email(recipient, subject, message):
-    msg = Message(subject=subject,
-                  body=message,
-                  recipients=[recipient])
-    mail.send(msg)
-
-
 def get_news():
     news_items = [x for x in pages if 'news' in x.meta]
     news_items = sorted(news_items, reverse=True,
@@ -472,12 +465,16 @@ def apply_for_a_survey():
         message += 'questions.\n\n'
         message += 'Many thanks,\nThe CHEESE Project team\n\n'
         message += 'www.cheeseproject.co.uk\ninfo@cheeseproject.co.uk'
-        send_email(form.email.data, subject, message)
+        mail.send(Message(subject=subject,
+                          body=message,
+                          recipients=[form.email.data]))
         # Send admin email.
         subject = 'New request for a CHEESE survey'
         message = 'From '+form.name.data+', '+form.address_line.data \
                   + ' at '+str(datetime.datetime.today())
-        send_email(app.config['ADMINS'], subject, message)
+        mail.send(Message(subject=subject,
+                          body=message,
+                          recipients=[app.config['ADMINS']]))
         # Success page.
         page = pages.get('application-successful')
         return render_template('page.html', page=page)
@@ -546,7 +543,9 @@ def one_month_feedback():
         subject = 'New one month response'
         message = 'From '+form.householders_name.data+', '+form.address.data \
                   + ' at '+str(datetime.datetime.today())
-        send_email(EMAIL_RECEIVER, subject, message)
+        mail.send(Message(subject=subject,
+                          body=message,
+                          recipients=[app.config['ADMINS']]))
         # Flash success message.
         flash('Your one month feedback was submitted successfully, thank you.')
         return redirect(url_for('one_month_feedback'))
@@ -625,7 +624,9 @@ def one_year_feedback():
         subject = 'New one year response'
         message = 'From '+form.householders_name.data+', '+form.address.data \
                   + ' at '+str(datetime.datetime.today())
-        send_email(EMAIL_RECEIVER, subject, message)
+        mail.send(Message(subject=subject,
+                          body=message,
+                          recipients=[app.config['ADMINS']]))
         # Flash success message.
         flash('Your one year feedback was submitted successfully, thank you.')
         return redirect(url_for('one_year_feedback'))
