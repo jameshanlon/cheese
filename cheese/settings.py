@@ -1,6 +1,7 @@
 import os
 
 APP_NAME               = 'The CHEESE Project'
+URL_BASE               = 'https://www.cheeseproject.co.uk'
 SECRET_KEY             = os.environ['CHEESE_SECRET_KEY']
 CSRF_ENABLED           = True
 FLATPAGES_EXTENSION    = '.md'
