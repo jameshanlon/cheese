@@ -57,29 +57,6 @@ will ask you to complete a short questionnaire after the survey to obtain
 feedback and to learn how effective the survey was for you. We will follow up
 again after a month and after a year to see if your energy use has changed!
 
-## Testimonials
-
-From someone who struggled to heat her home to a comfortable temperature:
-***"A real eye-opener. Excellent! I found I could do everything for
-about £150 and got to work straight away."***
-
-***"There were still places where draughts were coming in and heat
-leaking out that I would never have thought of."***
-
-***"We were very pleased with the results of the survey and found the process
-very interesting.  We have found the results of the electricity smart reader
-useful too and I'm much more conscious now about turning off lights, sockets
-etc!"***
-
-***“Measures [sealing round skirting boards in kitchen and lounge, blocking
-chimney draught, lagging pipes in cellar] have reduced monthly electricity bill
-by £15.”***
-
-From two people who had already made some insulation improvements: ***"Thank
-you very much for laying on Brian, Dave and Matt today. Very instructive, some
-draught proofing and the like to work on but generally very encouraging for
-us."***
-
 <a name="pricing"></a>
 ## Pricing
 
