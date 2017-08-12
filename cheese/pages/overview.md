@@ -120,6 +120,8 @@ and possibly elsewhere in the UK, to enable us to do this.
 ## Progress reports
 
 For more detail on the current progress, status and plans for the CHEESE
-Project, please see our progress report document:
+Project, please see our progress report documents:
 
+- [CHEESE progress report June 2017 (PDF)](/static/files/CHEESE-progress-Jun17.pdf).
 - [CHEESE progress report January 2017 (PDF)](/static/files/CHEESE-progress-Jan17.pdf).
+
