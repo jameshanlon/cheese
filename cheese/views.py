@@ -12,8 +12,8 @@ from flask import url_for, redirect, render_template, \
 import flask_admin as admin
 from flask_admin import BaseView, helpers, expose
 from flask_admin.contrib import sqla
-from flask_mail import Message
 from flask_user import login_required, roles_required, current_user
+from flask_mail import Message
 from flask_uploads import UploadNotAllowed
 from flask_wtf import Form, FlaskForm
 from flask_wtf.file import FileField, FileAllowed, FileRequired
