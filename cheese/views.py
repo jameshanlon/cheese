@@ -410,15 +410,21 @@ def get_news():
 
 
 class ApplySurveyForm(FlaskForm):
-    name = fields.StringField(validators=[validators.required()])
-    address_line = fields.StringField(validators=[validators.required()])
-    postcode = fields.StringField(validators=[validators.required()])
+    name = fields.StringField(validators=[validators.required(),
+                                          validators.Length(max=100)])
+    address_line = fields.StringField(validators=[validators.required(),
+                                                  validators.Length(max=100)])
+    postcode = fields.StringField(validators=[validators.required(),
+                                              validators.Length(max=10)])
     ward = fields.SelectField('Ward',
                choices=[choice('')]+[choice(x) for x in WARDS],
-               default='', validators=[validators.required()],)
+               default='', validators=[validators.required(),
+                                       validators.Length(max=50)])
     email = EmailField(validators=[validators.required(),
-                                   validators.Email()])
-    telephone = fields.StringField(validators=[validators.required()])
+                                   validators.Email(),
+                                   validators.Length(max=100)])
+    telephone = fields.StringField(validators=[validators.required(),
+                                               validators.Length(max=20)])
     availability = fields.TextAreaField(validators=[validators.required()])
     building_type = fields.SelectField('Building type',
             choices=[choice('')]+[choice(x) for x in BUILDING_TYPES],
