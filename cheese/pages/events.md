@@ -1,6 +1,27 @@
 
 ## Events
 
+### At Goram Fair, September 2017
+
+We had our gazebo stall at this year's [Goram
+Fair](https://www.bristolmuseums.org.uk/blaise-castle-house-museum/whats-on/goram-fair/).
+We didn't escape the rain but it didn't seem to put people off from coming.
+
+<div class="thumbs">
+<a href="javascript:void(0)" class="pop">
+  <img src="{{'static/images/2017-11-goram-fair/goram-fair-1.jpg'|thumbnail('100x100')}}"
+       alt="">
+</a>
+<a href="javascript:void(0)" class="pop">
+  <img src="{{'static/images/2017-11-goram-fair/goram-fair-2.jpg'|thumbnail('100x100')}}"
+       alt="">
+</a>
+</div>
+
+### At the Westbury Village Show, September 2017
+
+More details [here](http://www.wotvs.co.uk).
+
 ### At Redland May Fair, May 2017
 
 This year's [Redland May Fair](http://www.rcas.org.uk/redland-fair) was hugely
