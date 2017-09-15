@@ -117,11 +117,35 @@ In winter 2017/18 we want to increase the scale of the CHEESE Project to reach
 even more homes, and we are keen to establish further partnerships in Bristol,
 and possibly elsewhere in the UK, to enable us to do this.
 
+## Who we work with
+
+We work closely with community groups in Bristol. We have a number of segments,
+that, where possible, carry out surveys in their areas, have their own
+trained Energy Tracers and use equipment supplied by the central office. Our
+current CHEESE segments are:
+
+- [Ambition Lawrence Weston](http://www.ambitionlw.org)
+- [Bedminster Energy Group](http://www.bedminsterenergy.org.uk)
+- [Easton Energy Group](http://www.eastonenergygroup.org)
+- [Bishopston, Cotham, Redland Energy Group](https://www.facebook.com/BCR.EnergyGroup)
+- [Re:work](https://sites.google.com/site/reworkltd)
+- [Sustainable Westbury On Trym](http://www.suswot.org.uk)
+
+To obtain referrals for surveys, we have contacts with ohter socially-active
+groups, such as:
+
+- [Acorn](https://acorntheunion.org.uk/)
+- [Centre for Sustainable Energy](https://www.cse.org.uk)
+- [North Bristol Advice Centre](www.northbristoladvice.org.uk/)
+- [North Bristol Food Bank](https://northbristol.foodbank.org.uk/)
+- [Talking Money](https://www.talkingmoney.org.uk/)
+
+We are a also a member of [Bristol Energy Network](http://www.bristolenergynetwork.org).
+
 ## Progress reports
 
 For more detail on the current progress, status and plans for the CHEESE
 Project, please see our progress report documents:
 
-- [CHEESE progress report June 2017 (PDF)](/static/files/CHEESE-progress-Jun17.pdf).
 - [CHEESE progress report January 2017 (PDF)](/static/files/CHEESE-progress-Jan17.pdf).
-
+- [CHEESE progress report June 2017 (PDF)](/static/files/CHEESE-progress-Jun17.pdf).
