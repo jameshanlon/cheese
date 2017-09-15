@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-{% if 'news' in page.meta %}
+{% if 'article' in page.meta %}
 <h1>{{page.meta.title}}</h1>
 <p>{{page.meta.date.strftime('%B %Y')}}</p>
 {% endif %}

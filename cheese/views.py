@@ -398,17 +398,6 @@ def received_one_year_feedback():
 # Public pages.
 #===-----------------------------------------------------------------------===#
 
-def get_news():
-    news_items = [x for x in pages if 'news' in x.meta]
-    news_items = sorted(news_items, reverse=True,
-                        key=lambda p: p.meta['date'])
-    # Render any templating in each news item.
-    for item in news_items:
-        item.html = render_template_string(item.html)
-        item.date_str = item.meta['date'].strftime('%B %Y')
-    return news_items
-
-
 class ApplySurveyForm(FlaskForm):
     name = fields.StringField(validators=[validators.required(),
                                           validators.Length(max=100)])
@@ -640,25 +629,46 @@ def one_year_feedback():
 
 
 
+def get_articles():
+    articles = [x for x in pages if 'article' in x.meta]
+    articles = sorted(articles, reverse=True,
+                        key=lambda p: p.meta['date'])
+    # Render any templating in each news item.
+    for item in articles:
+        item.html = render_template_string(item.html)
+        item.date_str = item.meta['date'].strftime('%B %Y')
+    return articles
+
+
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template('404.html'), 404
+
+
 @app.route('/')
 def index():
-    news_items = get_news()
-    if len(news_items) >= 3:
-        news_items = news_items[:3]
-    return render_template('index.html', news_items=news_items)
+    articles = get_articles()
+    if len(articles) >= 3:
+        articles = articles[:3]
+    return render_template('index.html', articles=articles)
 
 
-@app.route('/blog')
-def blog():
-    return render_template('news.html', news_items=get_news())
-
-
-# Any flat pages.
 @app.route('/<path:path>')
 def page(path):
     page = pages.get_or_404(path)
+    if 'article' in page.meta:
+        return page_not_found();
     template = page.meta.get('template', 'page.html')
     return render_template(template, page=page)
+
+
+@app.route('/blog/<path:path>')
+def article(path):
+    page = pages.get_or_404(path)
+    if not 'article' in page.meta:
+        return page_not_found();
+    return render_template('article.html', page=page,
+                           path=app.config['URL_BASE']+request.path)
 
 
 @app.route('/home-surveys')

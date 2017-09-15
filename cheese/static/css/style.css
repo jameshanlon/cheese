@@ -139,16 +139,16 @@ img {
   padding: 0.4em;
 }
 
-.news-item-large {
+.article-large {
   margin-bottom: 2em;
 }
 
-.news-date {
+.article-date {
   color: #888;
   font-size:1.05em;
 }
 
-.news-item-short {
+.article-short {
   padding: 0.8em 0 0 0.6em;
 }
 
@@ -196,7 +196,7 @@ img {
   padding: 0 4px 0 4px;
 }
 
-.news li {
+.blog-list li {
   margin:0.7em 0;
 }
 
@@ -283,3 +283,7 @@ body.modal-open {
 
 .green { color: green; }
 .red { color: red; }
+
+.fb_iframe_widget span {
+  vertical-align: baseline !important;
+}

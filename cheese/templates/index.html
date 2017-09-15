@@ -65,22 +65,21 @@
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 </div>
 
-<div class="news">
-{% for item in news_items %}
-  <div class="news-item-short">
+<div class="blog-list">
+<h2>The CHEESE blog</h2>
+{% for item in articles %}
+  <div class="article-short">
     <h3>{{item.title}}</h3>
-    <p class="news-date">{{item.date_str}}</p>
+    <p class="article-date">{{item.date_str}}</p>
     {% set body = item.html|safe|striptags %}
     {% if body|length > 500 %}
       {{body|truncate(500)}}
-      <p><a href="/{{item.path}}">Read more</p>
+      <p><a href="/blog/{{item.path}}">Read more &#187;</p>
     {% else %}
       {{item.html|safe}}
     {% endif %}
   </div>
 {% endfor %}
 </div>
-
-<p style="padding-top:1em"><a href="/blog">More from the blog...</a></p>
 
 {% endblock %}

@@ -1,4 +1,4 @@
-news:
+article:
 date: 2017-04-25
 title: Phase two complete
 
