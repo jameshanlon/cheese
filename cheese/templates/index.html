@@ -74,7 +74,7 @@
     {% set body = item.html|safe|striptags %}
     {% if body|length > 500 %}
       {{body|truncate(500)}}
-      <p><a href="/blog/{{item.path}}">Read more &#187;</p>
+      <p><a href="/blog/{{item.path}}">Read more &#187;</a></p>
     {% else %}
       {{item.html|safe}}
     {% endif %}
