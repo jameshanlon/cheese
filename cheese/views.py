@@ -58,8 +58,32 @@ class CheeseAdminIndexView(admin.AdminIndexView):
     def index(self):
         if not current_user.is_authenticated:
             return redirect(url_for('user.login'))
+        sort = request.args.get('sort')
+        reverse = False if request.args.get('reverse') == '1' else True
         surveys = Surveys.query.all()
-        return self.render('admin/overview.html', surveys=surveys)
+        def sort_surveys(key):
+            return sorted(surveys, reverse=reverse, key=key)
+        if sort == 'survey':
+            surveys = sort_surveys(lambda x: x.name.lower())
+        if sort == 'ward':
+            surveys = sort_surveys(lambda x: x.ward.lower())
+        if sort == 'date':
+            surveys = sort_surveys(lambda x: x.survey_date)
+        if sort == 'box_collected':
+            surveys = sort_surveys(lambda x: x.box_collected)
+        if sort == 'surveyors_name':
+            surveys = sort_surveys(lambda x:
+                        x.result[0].surveyors_name if x.result else None)
+        if sort == 'got_result':
+            surveys = sort_surveys(lambda x: x.result)
+        if sort == 'got_month':
+            surveys = sort_surveys(lambda x: x.month_feedback)
+        if sort == 'got_year':
+            surveys = sort_surveys(lambda x: x.year_feedback)
+        return self.render('admin/overview.html',
+                           surveys=surveys,
+                           path=request.path,
+                           reverse=(1 if reverse else 0))
 
     @expose('/survey/<int:survey_id>')
     def survey(self, survey_id):

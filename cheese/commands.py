@@ -1,3 +1,4 @@
+import random
 from cheese.init_app import manager, mixer, db, user_manager
 from cheese.models import User, Role, Surveys, Results, \
                           MonthFeedback, YearFeedback
@@ -18,15 +19,28 @@ def resetdb():
     db.session.add(admin_user)
     db.session.commit()
     # Generate some random entries.
+    names = ['Jim', 'Bob', 'Sarah', 'Sue']
+    wards = ['Easton', 'AWL', 'BCR', 'WOT']
+    def get_random_name():
+        return random.choice(names)
+    def get_random_ward():
+        return random.choice(wards)
+    def get_random_box_number():
+        return random.randrange(100)
     mixer.cycle(10).blend(User)
     mixer.cycle(50).blend(Surveys,
                           name=mixer.RANDOM,
+                          ward=get_random_ward,
+                          survey_date=mixer.RANDOM,
                           address_line=mixer.RANDOM,
                           availability=mixer.RANDOM,
                           expected_benefit=mixer.RANDOM,
+                          box_collected=mixer.RANDOM,
                           notes=mixer.RANDOM)
     mixer.cycle(50).blend(Results,
                           survey=mixer.SELECT,
+                          surveyors_name=get_random_name,
+                          cheese_box_number=get_random_box_number,
                           faults_identified=mixer.RANDOM,
                           recommendations=mixer.RANDOM,
                           notes=mixer.RANDOM)

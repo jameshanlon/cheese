@@ -5,15 +5,15 @@
 <table class="table table-condensed">
   <thead>
     <tr>
-      <th>Survey</th>
-      <th>Ward</th>
-      <th>Survey date</th>
-      <th>Box</th>
-      <th>Box collected?</th>
-      <th>Surveyor</th>
-      <th>Result</th>
-      <th>One month</th>
-      <th>One year</th>
+      <th><a href="{{url_for('admin.index', sort='survey', reverse=reverse)}}">Survey</a></th>
+      <th><a href="{{url_for('admin.index', sort='ward', reverse=reverse)}}">Ward</a></th>
+      <th><a href="{{url_for('admin.index', sort='date', reverse=reverse)}}">Survey date</a></th>
+      <th><a href="{{url_for('admin.index', sort='box_number', reverse=reverse)}}">Box number</a></th>
+      <th><a href="{{url_for('admin.index', sort='box_collected', reverse=reverse)}}">Box collected?</a></th>
+      <th><a href="{{url_for('admin.index', sort='surveyors_name', reverse=reverse)}}">Surveyor</a></th>
+      <th><a href="{{url_for('admin.index', sort='got_result', reverse=reverse)}}">Result</a></th>
+      <th><a href="{{url_for('admin.index', sort='got_month', reverse=reverse)}}">One month</a></th>
+      <th><a href="{{url_for('admin.index', sort='got_year', reverse=reverse)}}">One year</a></th>
     </tr>
   </thead>
   <tbody>
@@ -23,9 +23,17 @@
           {{survey.name}}, {{survey.address_line}}</a></td>
       <td>{{survey.ward}}</td>
       <td>{{survey.survey_date}}</td>
-      <td>{{ survey.result.loaned_cheese_box }}</td>
+      <td>
+        {% if survey.result and survey.result[0].cheese_box_number %}
+          {{survey.result[0].cheese_box_number}}
+        {% endif %}
+      </td>
       <td>{{ macros.render_boolean(survey.box_collected) }}</td>
-      <td>{{ survey.surveyor }}</td>
+      <td>
+        {% if survey.result and survey.result[0].surveyors_name %}
+          {{survey.result[0].surveyors_name}}
+        {% endif %}
+      </td>
       <td>{{ macros.render_boolean(survey.result) }}</td>
       <td>{{ macros.render_boolean(survey.month_feedback) }} </td>
       <td>{{ macros.render_boolean(survey.year_feedback) }}</td>
