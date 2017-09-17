@@ -25,17 +25,17 @@
 <strong>Filters:</strong>
 {% for filter in filters %}
   {% if filter in active_filters %}
-		<a href="{{remove_from_query(filter=filter)}}">
-			<button type="button" class="btn btn-primary btn-xs">
-				{{filter|format_db_name}}
-			</button>
-		</a>
+    <a href="{{remove_from_query(filter=filter)}}">
+      <button type="button" class="btn btn-primary btn-xs">
+        {{filter|format_db_name}}
+      </button>
+    </a>
   {% else %}
-		<a href="{{add_to_query(filter=filter)}}">
-			<button type="button" class="btn btn-default btn-xs">
-				{{filter|format_db_name}}
-			</button>
-		</a>
+    <a href="{{add_to_query(filter=filter)}}">
+      <button type="button" class="btn btn-default btn-xs">
+        {{filter|format_db_name}}
+      </button>
+    </a>
   {% endif %}
 {% endfor %}
 </p>
@@ -76,39 +76,43 @@
         {% endif %}
       </td>
       <td>{% if survey.survey_date %}{{survey.survey_date.strftime('%d %b %Y')}}{% endif %}</td>
-      <td>
-        {% if survey.result and survey.result[0].surveyors_name %}
-          {{survey.result[0].surveyors_name}}
+      {% if survey.result %}
+        <td>
+          {% if survey.result and survey.result[0].surveyors_name %}
+            {{survey.result[0].surveyors_name}}
+          {% endif %}
+        </td>
+        <td>
+          {% if survey.result and survey.result[0].cheese_box_number %}
+            {{survey.result[0].cheese_box_number}}
+          {% endif %}
+        </td>
+        <td {{cell_bg(survey.box_collected)}}>
+          {{ macros.render_boolean(survey.box_collected) }}
+        </td>
+        <td {{cell_bg(survey.result)}}>{{ macros.render_boolean(survey.result) }}</td>
+        <!--Month feedback-->
+        {% if survey.month_feedback %}
+          <td class="green-bg">{{ macros.render_boolean(survey.month_feedback) }}</td>
+        {% elif survey.survey_date %}
+          {% set due_date = get_one_month_date(survey.survey_date) %}
+          <td {% if due_date <= get_date_now() %}class="red-bg"{% endif %}>
+            Due {{ due_date.strftime('%d %b %Y') }}</td>
+        {% else %}
+          <td></td>
         {% endif %}
-      </td>
-      <td>
-        {% if survey.result and survey.result[0].cheese_box_number %}
-          {{survey.result[0].cheese_box_number}}
+        <!--Year feedback-->
+        {% if survey.year_feedback %}
+          <td class="green-bg">{{ macros.render_boolean(survey.year_feedback) }}</td>
+        {% elif survey.survey_date %}
+          {% set due_date = get_one_year_date(survey.survey_date) %}
+          <td {% if due_date <= get_date_now() %}class="red-bg"{% endif %}>
+            Due {{ due_date.strftime('%d %b %Y') }}</td>
+        {% else %}
+          <td></td>
         {% endif %}
-      </td>
-      <td {{cell_bg(survey.box_collected)}}>
-        {{ macros.render_boolean(survey.box_collected) }}
-      </td>
-      <td {{cell_bg(survey.result)}}>{{ macros.render_boolean(survey.result) }}</td>
-      <!--Month feedback-->
-      {% if survey.month_feedback %}
-        <td class="green-bg">{{ macros.render_boolean(survey.month_feedback) }}</td>
-      {% elif survey.survey_date %}
-        {% set due_date = get_one_month_date(survey.survey_date) %}
-        <td {% if due_date <= get_date_now() %}class="red-bg"{% endif %}>
-          Due {{ due_date.strftime('%d %b %Y') }}</td>
       {% else %}
-        <td></td>
-      {% endif %}
-      <!--Year feedback-->
-      {% if survey.year_feedback %}
-        <td class="green-bg">{{ macros.render_boolean(survey.year_feedback) }}</td>
-      {% elif survey.survey_date %}
-        {% set due_date = get_one_year_date(survey.survey_date) %}
-        <td {% if due_date <= get_date_now() %}class="red-bg"{% endif %}>
-          Due {{ due_date.strftime('%d %b %Y') }}</td>
-      {% else %}
-        <td></td>
+        <td colspan="6"></td>
       {% endif %}
     </tr>
     {% endfor %}
