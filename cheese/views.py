@@ -78,16 +78,23 @@ class CheeseAdminIndexView(admin.AdminIndexView):
         return query
 
     def sort_by_column(self, surveys, sort, reverse):
+        earliest_date = app.config['PHASE_START_DATES'][0]
         def sort_surveys(key):
             return sorted(surveys, reverse=reverse, key=key)
+        def sort_by_planned_survey_date():
+            return sort_surveys(lambda x:
+                     x.survey_date if x.survey_date \
+                                   else earliest_date)
         if sort == 'survey':
             return sort_surveys(lambda x: x.name.lower())
         elif sort == 'ward':
             return sort_surveys(lambda x: x.ward.lower())
         elif sort == 'request_date':
-            return sort_surveys(lambda x: x.survey_request_date)
+            return sort_surveys(lambda x:
+                     x.survey_request_date if x.survey_request_date \
+                                           else earliest_date)
         elif sort == 'survey_date':
-            return sort_surveys(lambda x: x.survey_date)
+            return sort_by_planned_survey_date()
         elif sort == 'box_number':
             return sort_surveys(lambda x:
                      x.result[0].cheese_box_number if x.result else None)
@@ -99,9 +106,9 @@ class CheeseAdminIndexView(admin.AdminIndexView):
         elif sort == 'got_result':
             return sort_surveys(lambda x: x.result)
         elif sort == 'got_month':
-            return sort_surveys(lambda x: x.survey_date)
+            return sort_by_planned_survey_date()
         elif sort == 'got_year':
-            return sort_surveys(lambda x: x.survey_date)
+            return sort_by_planned_survey_date()
         else:
             return surveys
 
@@ -110,7 +117,8 @@ class CheeseAdminIndexView(admin.AdminIndexView):
         if not current_user.is_authenticated:
             return redirect(url_for('user.login'))
         # Handle filters.
-        phases = [str(x) for x in range(len(app.config['PHASE_START_DATES']))]
+        num_phases = len(app.config['PHASE_START_DATES'])
+        phases = [str(x+1) for x in range(num_phases)]
         active_phase = request.args.get('phase')
         active_filters = request.args.getlist('filter')
         surveys = self.filter_query(active_phase, active_filters).all()
@@ -722,7 +730,7 @@ def index():
 def page(path):
     page = pages.get_or_404(path)
     if 'article' in page.meta:
-        return page_not_found();
+        return render_template('404.html'), 404
     template = page.meta.get('template', 'page.html')
     return render_template(template, page=page)
 
@@ -731,7 +739,7 @@ def page(path):
 def article(path):
     page = pages.get_or_404(path)
     if not 'article' in page.meta:
-        return page_not_found();
+        return render_template('404.html'), 404
     return render_template('article.html', page=page,
                            path=app.config['URL_BASE']+request.path)
 

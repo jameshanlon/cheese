@@ -62,13 +62,17 @@
     {% set survey_month_only = survey_result_only and survey.month_feedback %}
     {% set survey_complete = survey_month_only and survey.year_feedback %}
     <tr {% if survey_complete %}     style="background-color:#b3fcb6"
-        {% elif survey_month_only %} style="background-color:#e0e0e0"
-        {% elif survey_result_only %}style="background-color:#f2f2f2"
+        {% elif survey_month_only %} style="background-color:#e5ffea"
+        {% elif survey_result_only %}style="background-color:#edfff0"
         {% endif %}>
       <td><a href="/admin/survey/{{survey.id}}">
           {{survey.name}}, {{survey.address_line}}</a></td>
       <td>{{survey.ward}}</td>
-      <td>{{survey.survey_request_date.strftime('%d %b %Y')}}</td>
+      <td>
+        {% if survey.survey_request_date %}
+          {{survey.survey_request_date.strftime('%d %b %Y')}}
+        {% endif %}
+      </td>
       <td>{% if survey.survey_date %}{{survey.survey_date.strftime('%d %b %Y')}}{% endif %}</td>
       <td>
         {% if survey.result and survey.result[0].cheese_box_number %}
