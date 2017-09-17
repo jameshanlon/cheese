@@ -2,27 +2,74 @@
 {% import 'admin/macros.html' as macros %}
 {% block body %}
 {{ super() }}
-<table class="table table-condensed">
+<div class="pull-right">
+  {{surveys|length}} surveys
+</div>
+<p>
+  <strong>Phases:</strong>
+  {% for phase in phases %}
+    {% if phase == active_phase %}
+      <a href="{{remove_from_query(phase=phase)}}">
+        <button type="button" class="btn btn-primary btn-xs">
+					Phase {{phase|format_db_name}}
+				</button>
+			</a>
+    {% else %}
+      <a href="{{modify_query(phase=phase)}}">
+        <button type="button" class="btn btn-default btn-xs">
+					Phase {{phase|format_db_name}}
+				</button>
+			</a>
+    {% endif %}
+  {% endfor %}
+</p>
+<p>
+<strong>Filters:</strong>
+{% for filter in filters %}
+  {% if filter in active_filters %}
+		<a href="{{remove_from_query(filter=filter)}}">
+			<button type="button" class="btn btn-primary btn-xs">
+				{{filter|format_db_name}}
+			</button>
+		</a>
+  {% else %}
+		<a href="{{add_to_query(filter=filter)}}">
+			<button type="button" class="btn btn-default btn-xs">
+				{{filter|format_db_name}}
+			</button>
+		</a>
+  {% endif %}
+{% endfor %}
+</p>
+<table class="table table-condensed survey-overview-table">
   <thead>
     <tr>
-      <th><a href="{{url_for('admin.index', sort='survey', reverse=reverse)}}">Survey</a></th>
-      <th><a href="{{url_for('admin.index', sort='ward', reverse=reverse)}}">Ward</a></th>
-      <th><a href="{{url_for('admin.index', sort='date', reverse=reverse)}}">Survey date</a></th>
-      <th><a href="{{url_for('admin.index', sort='box_number', reverse=reverse)}}">Box number</a></th>
-      <th><a href="{{url_for('admin.index', sort='box_collected', reverse=reverse)}}">Box collected?</a></th>
-      <th><a href="{{url_for('admin.index', sort='surveyors_name', reverse=reverse)}}">Surveyor</a></th>
-      <th><a href="{{url_for('admin.index', sort='got_result', reverse=reverse)}}">Result</a></th>
-      <th><a href="{{url_for('admin.index', sort='got_month', reverse=reverse)}}">One month</a></th>
-      <th><a href="{{url_for('admin.index', sort='got_year', reverse=reverse)}}">One year</a></th>
+      <th><a href="{{modify_query(sort='survey',         reverse=reverse)}}">Survey</a></th>
+      <th><a href="{{modify_query(sort='ward',           reverse=reverse)}}">Ward</a></th>
+      <th><a href="{{modify_query(sort='request_date',   reverse=reverse)}}">Request date</a></th>
+      <th><a href="{{modify_query(sort='survey_date',    reverse=reverse)}}">Survey date</a></th>
+      <th><a href="{{modify_query(sort='box_number',     reverse=reverse)}}">Box number</a></th>
+      <th><a href="{{modify_query(sort='box_collected',  reverse=reverse)}}">Box collected?</a></th>
+      <th><a href="{{modify_query(sort='surveyors_name', reverse=reverse)}}">Surveyor</a></th>
+      <th><a href="{{modify_query(sort='got_result',     reverse=reverse)}}">Result</a></th>
+      <th><a href="{{modify_query(sort='got_month',      reverse=reverse)}}">One month</a></th>
+      <th><a href="{{modify_query(sort='got_year',       reverse=reverse)}}">One year</a></th>
     </tr>
   </thead>
   <tbody>
     {% for survey in surveys %}
-    <tr>
+    {% set survey_result_only = survey.result %}
+    {% set survey_month_only = survey_result_only and survey.month_feedback %}
+    {% set survey_complete = survey_month_only and survey.year_feedback %}
+    <tr {% if survey_complete %}     style="background-color:#b3fcb6"
+        {% elif survey_month_only %} style="background-color:#e0e0e0"
+        {% elif survey_result_only %}style="background-color:#f2f2f2"
+        {% endif %}>
       <td><a href="/admin/survey/{{survey.id}}">
           {{survey.name}}, {{survey.address_line}}</a></td>
       <td>{{survey.ward}}</td>
-      <td>{{survey.survey_date}}</td>
+      <td>{{survey.survey_request_date.strftime('%d %b %Y')}}</td>
+      <td>{% if survey.survey_date %}{{survey.survey_date.strftime('%d %b %Y')}}{% endif %}</td>
       <td>
         {% if survey.result and survey.result[0].cheese_box_number %}
           {{survey.result[0].cheese_box_number}}
@@ -35,8 +82,24 @@
         {% endif %}
       </td>
       <td>{{ macros.render_boolean(survey.result) }}</td>
-      <td>{{ macros.render_boolean(survey.month_feedback) }} </td>
-      <td>{{ macros.render_boolean(survey.year_feedback) }}</td>
+      <td>
+				{% if survey.month_feedback %}
+					{{ macros.render_boolean(survey.month_feedback) }}
+				{% elif survey.survey_date %}
+          {% set due_date = get_one_month_date(survey.survey_date) %}
+					<p {% if due_date <= get_date_now() %}style="color:red"{% endif %}>
+            Due {{ due_date.strftime('%d %b %Y') }}</p>
+				{% endif %}
+      </td>
+      <td>
+				{% if survey.year_feedback %}
+          {{ macros.render_boolean(survey.year_feedback) }}
+				{% elif survey.survey_date %}
+          {% set due_date = get_one_year_date(survey.survey_date) %}
+					<p {% if due_date <= get_date_now() %}style="color:red"{% endif %}>
+					Due {{ due_date.strftime('%d %b %Y') }}</p>
+				{% endif %}
+      </td>
     </tr>
     {% endfor %}
   </tbody>

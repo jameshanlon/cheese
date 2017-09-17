@@ -95,4 +95,5 @@ def init_app(app):
                                             passthrough_errors=False))
     import cheese.commands
     import cheese.filters
+    import cheese.functions
     import cheese.signals

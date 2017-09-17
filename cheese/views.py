@@ -54,36 +54,77 @@ class ManagerModelView(AdminModelView):
 
 
 class CheeseAdminIndexView(admin.AdminIndexView):
+    filters = ['box_not_collected',
+               'no_result',
+               'no_one_month',
+               'no_one_year']
+
+    def filter_query(self, active_phase, active_filters):
+        query = Surveys.query;
+	if active_phase:
+	    start = app.config['PHASE_START_DATES'][int(active_phase)-1]
+	    end = start + datetime.timedelta(365.25)
+	    query = query.filter(Surveys.survey_request_date >= start)
+	    query = query.filter(Surveys.survey_request_date < end)
+        for name in active_filters:
+            if name == 'box_not_collected':
+                query = query.filter(Surveys.box_collected == False)
+            if name == 'no_result':
+                query = query.filter(Surveys.result == None)
+            if name == 'no_one_month':
+                query = query.filter(Surveys.month_feedback == None)
+            if name == 'no_one_year':
+                query = query.filter(Surveys.year_feedback == None)
+        return query
+
+    def sort_by_column(self, surveys, sort, reverse):
+        def sort_surveys(key):
+            return sorted(surveys, reverse=reverse, key=key)
+        if sort == 'survey':
+            return sort_surveys(lambda x: x.name.lower())
+        elif sort == 'ward':
+            return sort_surveys(lambda x: x.ward.lower())
+        elif sort == 'request_date':
+            return sort_surveys(lambda x: x.survey_request_date)
+        elif sort == 'survey_date':
+            return sort_surveys(lambda x: x.survey_date)
+        elif sort == 'box_number':
+            return sort_surveys(lambda x:
+                     x.result[0].cheese_box_number if x.result else None)
+        elif sort == 'box_collected':
+            return sort_surveys(lambda x: x.box_collected)
+        elif sort == 'surveyors_name':
+            return sort_surveys(lambda x:
+                     x.result[0].surveyors_name if x.result else None)
+        elif sort == 'got_result':
+            return sort_surveys(lambda x: x.result)
+        elif sort == 'got_month':
+            return sort_surveys(lambda x: x.survey_date)
+        elif sort == 'got_year':
+            return sort_surveys(lambda x: x.survey_date)
+        else:
+            return surveys
+
     @expose('/')
     def index(self):
         if not current_user.is_authenticated:
             return redirect(url_for('user.login'))
+        # Handle filters.
+        phases = [str(x) for x in range(len(app.config['PHASE_START_DATES']))]
+        active_phase = request.args.get('phase')
+        active_filters = request.args.getlist('filter')
+        surveys = self.filter_query(active_phase, active_filters).all()
+        # Handle sorting by column.
         sort = request.args.get('sort')
         reverse = False if request.args.get('reverse') == '1' else True
-        surveys = Surveys.query.all()
-        def sort_surveys(key):
-            return sorted(surveys, reverse=reverse, key=key)
-        if sort == 'survey':
-            surveys = sort_surveys(lambda x: x.name.lower())
-        if sort == 'ward':
-            surveys = sort_surveys(lambda x: x.ward.lower())
-        if sort == 'date':
-            surveys = sort_surveys(lambda x: x.survey_date)
-        if sort == 'box_collected':
-            surveys = sort_surveys(lambda x: x.box_collected)
-        if sort == 'surveyors_name':
-            surveys = sort_surveys(lambda x:
-                        x.result[0].surveyors_name if x.result else None)
-        if sort == 'got_result':
-            surveys = sort_surveys(lambda x: x.result)
-        if sort == 'got_month':
-            surveys = sort_surveys(lambda x: x.month_feedback)
-        if sort == 'got_year':
-            surveys = sort_surveys(lambda x: x.year_feedback)
+        surveys = self.sort_by_column(surveys, sort, reverse)
         return self.render('admin/overview.html',
                            surveys=surveys,
-                           path=request.path,
-                           reverse=(1 if reverse else 0))
+                           reverse=(1 if reverse else 0),
+                           phases=phases,
+                           active_phase=active_phase,
+                           filters=self.filters,
+                           active_filters=active_filters)
 
     @expose('/survey/<int:survey_id>')
     def survey(self, survey_id):
