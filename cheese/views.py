@@ -83,16 +83,16 @@ class CheeseAdminIndexView(admin.AdminIndexView):
             return sorted(surveys, reverse=reverse, key=key)
         def sort_by_planned_survey_date():
             return sort_surveys(lambda x:
-                     x.survey_date if x.survey_date \
-                                   else earliest_date)
+                     x.survey_date.date() if x.survey_date \
+                                          else earliest_date)
         if sort == 'survey':
             return sort_surveys(lambda x: x.name.lower())
         elif sort == 'ward':
             return sort_surveys(lambda x: x.ward.lower())
         elif sort == 'request_date':
             return sort_surveys(lambda x:
-                     x.survey_request_date if x.survey_request_date \
-                                           else earliest_date)
+                     x.survey_request_date.date() if x.survey_request_date \
+                                                  else earliest_date)
         elif sort == 'survey_date':
             return sort_by_planned_survey_date()
         elif sort == 'box_number':
