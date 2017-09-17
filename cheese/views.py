@@ -61,11 +61,11 @@ class CheeseAdminIndexView(admin.AdminIndexView):
 
     def filter_query(self, active_phase, active_filters):
         query = Surveys.query;
-	if active_phase:
-	    start = app.config['PHASE_START_DATES'][int(active_phase)-1]
-	    end = start + datetime.timedelta(365.25)
-	    query = query.filter(Surveys.survey_request_date >= start)
-	    query = query.filter(Surveys.survey_request_date < end)
+  if active_phase:
+      start = app.config['PHASE_START_DATES'][int(active_phase)-1]
+      end = start + datetime.timedelta(365.25)
+      query = query.filter(Surveys.survey_request_date >= start)
+      query = query.filter(Surveys.survey_request_date < end)
         for name in active_filters:
             if name == 'box_not_collected':
                 query = query.filter(Surveys.box_collected == False)
@@ -91,8 +91,8 @@ class CheeseAdminIndexView(admin.AdminIndexView):
             return sort_surveys(lambda x: x.ward.lower())
         elif sort == 'request_date':
             return sort_surveys(lambda x:
-                     x.survey_request_date.date() if x.survey_request_date \
-                                                  else earliest_date)
+		     x.survey_request_date if x.survey_request_date \
+					   else earliest_date)
         elif sort == 'survey_date':
             return sort_by_planned_survey_date()
         elif sort == 'box_number':
