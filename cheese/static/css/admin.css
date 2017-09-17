@@ -15,4 +15,13 @@
 }
 .survey-overview-table {
   font-size: 12px;
+  text-align: center;
 }
+.survey-overview-table > thead > tr > th {
+  text-align: center;
+}
+.survey-overview-col1 {
+  text-align: left;
+}
+.green-bg { background-color:#e5ffea; }
+.red-bg { background-color:#ffbfbf; }
