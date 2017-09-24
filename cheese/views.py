@@ -163,7 +163,7 @@ class CheeseAdminIndexView(admin.AdminIndexView):
                    survey.email,
                    survey.telephone,
                    survey.survey_date, ]
-            writer.writerow(row)
+            writer.writerow([unicode(s).encode("utf-8") for s in row])
         f.close()
         return send_from_directory(app.config['EXPORT_DIR'],
                                    filename, as_attachment=True)
