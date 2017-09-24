@@ -1,3 +1,4 @@
+import csv
 import datetime
 import os
 import random
@@ -8,7 +9,7 @@ from cheese.models import Surveys, Results, MonthFeedback, YearFeedback, \
                           ThermalImage
 from flask import url_for, redirect, render_template, \
                   render_template_string, request, flash, \
-                  Markup
+                  Markup, send_from_directory
 import flask_admin as admin
 from flask_admin import BaseView, helpers, expose
 from flask_admin.contrib import sqla
@@ -61,11 +62,11 @@ class CheeseAdminIndexView(admin.AdminIndexView):
 
     def filter_query(self, active_phase, active_filters):
         query = Surveys.query;
-  if active_phase:
-      start = app.config['PHASE_START_DATES'][int(active_phase)-1]
-      end = start + datetime.timedelta(365.25)
-      query = query.filter(Surveys.survey_request_date >= start)
-      query = query.filter(Surveys.survey_request_date < end)
+        if active_phase:
+            start = app.config['PHASE_START_DATES'][int(active_phase)-1]
+            end = start + datetime.timedelta(365.25)
+            query = query.filter(Surveys.survey_request_date >= start)
+            query = query.filter(Surveys.survey_request_date < end)
         for name in active_filters:
             if name == 'box_not_collected':
                 query = query.filter(Surveys.box_collected == False)
@@ -112,13 +113,8 @@ class CheeseAdminIndexView(admin.AdminIndexView):
         else:
             return surveys
 
-    @expose('/')
-    def index(self):
-        if not current_user.is_authenticated:
-            return redirect(url_for('user.login'))
+    def get_surveys(self):
         # Handle filters.
-        num_phases = len(app.config['PHASE_START_DATES'])
-        phases = [str(x+1) for x in range(num_phases)]
         active_phase = request.args.get('phase')
         active_filters = request.args.getlist('filter')
         surveys = self.filter_query(active_phase, active_filters).all()
@@ -126,13 +122,49 @@ class CheeseAdminIndexView(admin.AdminIndexView):
         sort = request.args.get('sort')
         reverse = False if request.args.get('reverse') == '1' else True
         surveys = self.sort_by_column(surveys, sort, reverse)
+        return active_phase, active_filters, reverse, surveys
+
+    @expose('/')
+    def index(self):
+        if not current_user.is_authenticated:
+            return redirect(url_for('user.login'))
+        num_phases = len(app.config['PHASE_START_DATES'])
+        phases = [str(x+1) for x in range(num_phases)]
+        active_phase, active_filters, reverse, surveys = self.get_surveys()
+        export_filename = 'cheese-surveys-'+datetime.datetime.now().strftime("%Y%m%d-%H%M%S")+'.csv'
         return self.render('admin/overview.html',
                            surveys=surveys,
                            reverse=(1 if reverse else 0),
                            phases=phases,
                            active_phase=active_phase,
                            filters=self.filters,
-                           active_filters=active_filters)
+                           active_filters=active_filters,
+                           export_filename=export_filename)
+
+    @expose('/export/<filename>')
+    def export(self, filename):
+	export_headers = ['name',
+			  'address_line',
+			  'postcode',
+			  'ward',
+			  'email',
+			  'telephone', ]
+        _, _, _, surveys = self.get_surveys()
+        path = app.config['EXPORT_PATH']+'/'+filename
+        f = open(path, 'w')
+        writer = csv.writer(f)
+        writer.writerow([field for field in export_headers])
+        for survey in surveys:
+            row = [survey.name,
+                   survey.address_line,
+                   survey.postcode,
+                   survey.ward,
+                   survey.email,
+                   survey.telephone, ]
+            writer.writerow(row)
+        f.close()
+        return send_from_directory(app.config['EXPORT_DIR'],
+                                   filename, as_attachment=True)
 
     @expose('/survey/<int:survey_id>')
     def survey(self, survey_id):

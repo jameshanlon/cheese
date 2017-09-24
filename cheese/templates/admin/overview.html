@@ -2,7 +2,16 @@
 {% import 'admin/macros.html' as macros %}
 {% block body %}
 {{ super() }}
-<div class="pull-right">{{surveys|length}} surveys</div>
+<div class="pull-right">
+  <p>
+    {{surveys|length}} surveys<br/>
+    <a href="{{url_for('admin.export', filename=export_filename)}}?{{request.query_string}}">
+      <button type="button" class="btn btn-default btn-xs">
+        Export as CSV
+      </button>
+    </a>
+  </p>
+</div>
 <p>
 <strong>Phases:</strong>
 {% for phase in phases %}
