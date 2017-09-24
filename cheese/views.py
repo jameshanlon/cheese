@@ -148,7 +148,8 @@ class CheeseAdminIndexView(admin.AdminIndexView):
 			  'postcode',
 			  'ward',
 			  'email',
-			  'telephone', ]
+			  'telephone',
+                          'survey_date', ]
         _, _, _, surveys = self.get_surveys()
         path = app.config['EXPORT_PATH']+'/'+filename
         f = open(path, 'w')
@@ -160,7 +161,8 @@ class CheeseAdminIndexView(admin.AdminIndexView):
                    survey.postcode,
                    survey.ward,
                    survey.email,
-                   survey.telephone, ]
+                   survey.telephone,
+                   survey.survey_date, ]
             writer.writerow(row)
         f.close()
         return send_from_directory(app.config['EXPORT_DIR'],
