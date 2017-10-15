@@ -1,5 +1,6 @@
 import csv
 import sys
+from datetime import datetime
 from cheese.init_app import app, init_app, db
 init_app(app)
 from cheese.models import Surveys
@@ -17,6 +18,9 @@ COL_NOTES    = 8
 f = open(sys.argv[1], 'r')
 reader = csv.reader(f)
 for row in reader:
+  date = None
+  if row[COL_DATE]:
+    date = datetime.strptime(row[COL_DATE], '%d-%b-%Y')
   s = Surveys(name=row[COL_NAME],
               address_line=row[COL_ADDRESS],
               postcode=row[COL_POSTCODE],
@@ -25,8 +29,8 @@ for row in reader:
               telephone=row[COL_PHONE],
               signed_up_via='Signup form at '+row[COL_EVENT],
               referral=row[COL_EVENT],
-              survey_request_date=row[COL_DATE],
+              survey_request_date=date,
               notes=row[COL_NOTES])
   db.session.add(s)
-#db.session.commit()
+db.session.commit()
 f.close()
