@@ -9,9 +9,10 @@ from cheese.models import Surveys, YearFeedback
 year_feedback = YearFeedback.query.all()
 for x in year_feedback:
     if x.survey == None:
+        request_date = (x.date - timedelta(app.config['ONE_YEAR_FOLLOW_UP_DAYS'])).date()
         s = Surveys(name=x.householders_name,
                     address_line=x.address,
-                    survey_request_date=(x.date - timedelta(app.config['ONE_YEAR_FOLLOW_UP_DAYS'])),
+                    survey_request_date=request_date,
                     notes='This survey record was created automatically from a one-year response. The request date is estimated.',
                     year_feedback=[x])
         x.survey=s
