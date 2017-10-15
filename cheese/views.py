@@ -587,9 +587,11 @@ def apply_for_a_survey():
 @app.route('/one-month-feedback', methods=['GET', 'POST'])
 def one_month_feedback():
     not_needed = 'We only need this if we didn\'t collect this during the survey.'
+    numbers_only = 'Please only use digits and (optionally) a decimal point, no other' \
+                    +' punctuation or symbols.'
     kwh_help = 'For help with calculating the value, please see ' \
                 +'<a href="/cheese-box#recording-energy-use">our guide</a>.' \
-                +'<br>'+not_needed
+                +'<br>'+not_needed+'<br>'+numbers_only
     MonthFeedbackForm = model_form(MonthFeedback, db_session=db.session,
         exclude=['date', 'submitted_by', 'survey', 'notes'],
         field_args={
@@ -657,9 +659,12 @@ def one_month_feedback():
 
 @app.route('/one-year-feedback', methods=['GET', 'POST'])
 def one_year_feedback():
+    numbers_only = 'Please only use digits and (optionally) a decimal point, no other' \
+                    +' punctuation or symbols.'
     kwh_help = 'For your usage in the year immediately after your survey.<br>' \
                 +'For help with calculating the value, please see ' \
-                +'<a href="/cheese-box#recording-energy-use">our guide</a>.'
+                +'<a href="/cheese-box#recording-energy-use">our guide</a>.' \
+                +'<br>'+numbers_only
     YearFeedbackForm = model_form(YearFeedback, db_session=db.session,
         exclude=['date', 'submitted_by', 'survey', 'notes'],
         field_args={
