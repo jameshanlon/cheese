@@ -708,7 +708,7 @@ def one_year_feedback():
               'description': 'Such as the period and temperature you use the heating for, or the way you use the space in your home.',
               'validators': [validators.required()], },
           'feedback':
-            { 'label': 'Do you have any feedback you have on the CHEESE Project?',
+            { 'label': 'Do you have any feedback on the CHEESE Project?',
               'description': 'We would like to hear what you think about:'
                               +' how useful the survey was,'
                               +' how useful the <a href="/cheese-box">CHEESE box</a> was,'
