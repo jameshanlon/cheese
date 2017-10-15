@@ -60,6 +60,7 @@ def resetdb():
                           feedback=mixer.RANDOM,
                           notes=mixer.RANDOM)
     mixer.cycle(20).blend(YearFeedback,
+                          householders_name=mixer.RANDOM,
                           survey=mixer.SELECT,
                           diy_work=mixer.RANDOM,
                           prof_work=mixer.RANDOM,
