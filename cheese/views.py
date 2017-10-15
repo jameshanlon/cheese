@@ -555,6 +555,7 @@ def apply_for_a_survey():
         # Add to db.
         survey = Surveys()
         form.populate_obj(survey)
+        survey.signed_up_via = 'The CHEESE website'
         db.session.add(survey)
         db.session.commit()
         # Send email to applicant.
