@@ -1,3 +1,4 @@
+{% import 'macros.html' as macros %}
 {% extends "base.html" %}
 {% block content %}
 
@@ -28,7 +29,7 @@ touch by emailing <a
 href="mailto:surveys@cheeseproject.co.uk">surveys@cheeseproject.co.uk</a>.</p>
 
 <div id="survey-form" style="padding-top:1.2em">
-{{ render_form(form, 'survey_form') }}
+{{ macros.render_form(form, 'survey_form') }}
 </div>
 
 {% endblock %}

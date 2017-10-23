@@ -1,4 +1,6 @@
 import datetime
+import glob
+import os
 from flask import request
 from werkzeug import url_encode
 from cheese.init_app import app
@@ -37,3 +39,8 @@ def get_one_year_date(survey_date):
 @app.template_global()
 def get_date_now():
     return datetime.datetime.now()
+
+@app.template_global()
+def image_list(directory, ext='.jpg'):
+    return ['static/images/'+directory+'/'+os.path.basename(x) \
+              for x in glob.glob(app.config['IMAGES_DIR']+'/'+directory+'/*'+ext)]

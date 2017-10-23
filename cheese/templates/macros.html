@@ -1,0 +1,46 @@
+{% macro render_form_field(f) -%}
+  {{ f.label(class_="control-label") }}
+  {% if f.description %}
+    <p class="help-block">{{ f.description | safe}}</p>
+  {% endif %}
+  {% if f.type == "FileField" %}
+    {{ f }}
+  {% else %}
+    {{ f(class_="form-control") }}
+  {% endif %}
+{%- endmacro %}
+
+{% macro render_form(form, name, submit_description=None) -%}
+<div id="{{name}}" style="padding-top:1.2em">
+  <form method="POST" action="" enctype="multipart/form-data">
+    {{ form.hidden_tag() if form.hidden_tag }}
+    {% for f in form if f.type != 'CSRFTokenField' %}
+      {% if f.errors %}
+        <div class="form-group has-error">
+          {{ render_form_field(f) }}
+          {% for e in f.errors %}
+            <span class="help-block">{{ e }}</span>
+          {% endfor %}
+        </div>
+      {% else %}
+        <div class="form-group">
+          {{ render_form_field(f) }}
+        </div>
+      {% endif %}
+    {% endfor %}
+    <label></label>
+    {% if submit_description %}<p>{{submit_description}}</p>{% endif %}
+    <button class="btn" type="submit">Submit</button>
+  </form>
+</div>
+{%- endmacro %}
+
+{% macro gallery(directory) -%}
+  <div class="thumbs">
+    {% for image in image_list(directory) %}
+      <a data-lightbox="{{directory}}" href="{{image}}">
+        <img src="{{image|thumbnail(config['THUMB_SIZE'])}}" class="img-thumbnail">
+      </a>
+    {% endfor %}
+  </div>
+{%- endmacro %}

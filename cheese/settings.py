@@ -17,6 +17,8 @@ MAX_IMAGE_SIZE         = 4*1024*1024 # 4 MB
 UPLOADED_IMAGES_DEST   = 'static/uploads'
 EXPORT_DIR             = 'static/export'
 EXPORT_PATH            = 'cheese/'+EXPORT_DIR
+IMAGES_DIR             = 'cheese/static/images'
+THUMB_SIZE             = '200x200'
 # Flask-Mail
 MAIL_SERVER            = os.environ['CHEESE_SMTP_SERVER']
 MAIL_USERNAME          = os.environ['CHEESE_SMTP_USERNAME']

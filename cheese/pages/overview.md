@@ -63,19 +63,19 @@ Award](http://bristolgreencapital.org/winners-announced-in-the-green-volunteers-
 at the Bristol Green Capital Partnership Green Volunteers' Awards 2016.
 
 <div class="thumbs">
-<a href="javascript:void(0)" class="pop">
+<a data-lightbox="achievements" href="static/images/heatview.png">
   <img src="{{'static/images/heatview.png'|thumbnail('100x100')}}">
 </a>
-<a href="javascript:void(0)" class="pop">
-  <img src="{{'static/images/heatview-image.png'|thumbnail('101x100')}}">
+<a data-lightbox="achievements" href="static/images/heatview-image.png">
+  <img src="{{'static/images/heatview-image.png'|thumbnail('100x100')}}">
 </a>
-<a href="javascript:void(0)" class="pop">
-  <img src="{{'static/images/2016-03-green-volunteers-award/award.jpg'|thumbnail('100x100')}}"
-       alt="The Volunteers for Energy award!">
+<a data-lightbox="achievements" href="static/images/2016-03-green-volunteers-award/award.jpg"
+   data-title="The Volunteers for Energy award!">
+  <img src="{{'static/images/2016-03-green-volunteers-award/award.jpg'|thumbnail('100x100')}}">
 </a>
-<a href="javascript:void(0)" class="pop">
-  <img src="{{'static/images/2016-03-green-volunteers-award/mike-jeremy.jpg'|thumbnail('100x100')}}"
-       alt="Mareike Schmidt, Bristol City Council, with Mike and Jeremy from CHEESE.">
+<a data-lightbox="achievements" href="static/images/2016-03-green-volunteers-award/mike-jeremy.jpg"
+   data-title="Mareike Schmidt, Bristol City Council, with Mike and Jeremy from CHEESE.">
+  <img src="{{'static/images/2016-03-green-volunteers-award/mike-jeremy.jpg'|thumbnail('100x100')}}">
 </a>
 </div>
 

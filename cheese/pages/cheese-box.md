@@ -78,9 +78,9 @@ being saved by householders taking action following a CHEESE Project survey.
 ### Whole-home electricity monitor
 
 <div class="pull-right">
-<a href="javascript:void(0)" class="pop">
-  <img src="{{'static/images/monitor-transmitter.jpg'|thumbnail('220x220')}}"
-       alt="The transmitter for the Efergy monitor with its clip around a main supply cable.">
+<a data-lightbox="monitor-transmitter" href="static/images/monitor-transmitter.jpg"
+   data-title="The transmitter for the Efergy monitor with its clip around a main supply cable.">
+  <img src="{{'static/images/monitor-transmitter.jpg'|thumbnail('220x220')}}">
 </a>
 </div>
 
@@ -116,9 +116,10 @@ investigate by turning things off for a short period and checking the change.
 ### Single-device plug monitor
 
 <div class="pull-right">
-<a href="javascript:void(0)" class="pop">
+<a data-lightbox="plug-monitor" href="static/images/plug-monitor-in-use.jpg"
+   data-title="The plug monitor being used to meaure the consumption of a toaster.">
   <img src="{{'static/images/plug-monitor-in-use.jpg'|thumbnail('220x220')}}"
-       alt="The plug monitor being used to meaure the consumption of a toaster.">
+       alt="">
 </a>
 </div>
 
@@ -182,9 +183,9 @@ can easily be read, and another inside.
 ### Electricity
 
 <div class="pull-right">
-<a href="javascript:void(0)" class="pop">
-  <img src="{{'static/images/electricity-meter.jpg'|thumbnail('220x220')}}"
-       alt="An example of an electricity meter.">
+<a data-lightbox="electricity-meter" href="static/images/electricity-meter.jpg"
+   data-title="An example of an electricity meter.">
+  <img src="{{'static/images/electricity-meter.jpg'|thumbnail('220x220')}}">
 </a>
 </div>
 
@@ -202,9 +203,9 @@ rate, but record both numbers using two rows of the form.
 ### Gas
 
 <div class="pull-right">
-<a href="javascript:void(0)" class="pop">
-  <img src="{{'static/images/gas-meter.jpg'|thumbnail('220x220')}}"
-       alt="An example of a metric gas meter.">
+<a data-lightbox="gas-meter" href="static/images/gas-meter.jpg"
+   data-title="An example of a metric gas meter.">
+  <img src="{{'static/images/gas-meter.jpg'|thumbnail('220x220')}}">
 </a>
 </div>
 

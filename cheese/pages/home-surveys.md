@@ -2,9 +2,9 @@
 # Home thermal-imaging surveys
 
 <div class="pull-right">
-  <a href="javascript:void(0)" class="pop">
-    <img src="{{'static/images/thermal13.jpg'|thumbnail('180x180')}}"
-         alt="Thermal image of a bay window.">
+  <a data-lightbox="bay-window" href="static/images/thermal13.jpg"
+     data-title="Thermal image of a bay window.">
+    <img src="{{'static/images/thermal13.jpg'|thumbnail('180x180')}}">
   </a>
 </div>
 

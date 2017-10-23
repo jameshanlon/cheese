@@ -1,3 +1,4 @@
+{% import 'macros.html' as macros %}
 {% extends "base.html" %}
 {% block content %}
 
@@ -19,6 +20,6 @@ we have collected so far.</p>
 description of what the image illustrates and your name. <strong>Do not upload
 any images that identify a specific person or place.</strong></p>
 
-{{ render_form(form, 'survey_form') }}
+{{ macros.render_form(form, 'survey_form') }}
 
 {% endblock %}

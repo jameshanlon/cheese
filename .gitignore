@@ -4,6 +4,7 @@ docker-compose.yml
 *.sqlite
 cheese/static/images/thumbs
 cheese/static/uploads
+cheese/static/export
 env/
 test.db
 flask/mysql.cnf

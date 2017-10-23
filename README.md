@@ -125,3 +125,11 @@ $ ls ssl/
 cheeseproject.co.uk.crt       cheeseproject.co.uk.csr
 cheeseproject.co.uk.gandi.pem cheeseproject.co.uk.key
 ```
+
+## Misc
+
+Resize a set of images using ImageMagick to a fixed width (only shrink), eg:
+```
+$ convert '*.JPG[650x>]' -auto-orient 2017-10-training-%03d.jpg
+```
+See http://www.imagemagick.org/script/command-line-processing.php#geometry
