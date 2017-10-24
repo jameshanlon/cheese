@@ -130,6 +130,6 @@ cheeseproject.co.uk.gandi.pem cheeseproject.co.uk.key
 
 Resize a set of images using ImageMagick to a fixed width (only shrink), eg:
 ```
-$ convert '*.JPG[650x>]' -auto-orient 2017-10-training-%03d.jpg
+$ convert '*.{jpg,JPG}[800x>]' -auto-orient <album-name>-%0d.jpg
 ```
 See http://www.imagemagick.org/script/command-line-processing.php#geometry
