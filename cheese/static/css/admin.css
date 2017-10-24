@@ -9,6 +9,10 @@
 }
 .survey-overview-table {
   font-size: 12px;
+  vertical-align: middle;
+}
+.survey-overview-table > tbody > tr > td{
+  vertical-align: middle;
 }
 .green-bg { background-color:#e5ffea; }
 .red-bg { background-color:#ffbfbf; }

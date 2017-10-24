@@ -55,9 +55,13 @@ class ManagerModelView(AdminModelView):
 
 
 class CheeseAdminIndexView(admin.AdminIndexView):
-    filters = ['box_not_collected',
+    filters = ['box_collected',
+               'box_not_collected',
+               'has_result',
                'no_result',
+               'has_one_month',
                'no_one_month',
+               'has_one_year',
                'no_one_year']
 
     def filter_query(self, active_phase, active_filters):
@@ -68,12 +72,20 @@ class CheeseAdminIndexView(admin.AdminIndexView):
             query = query.filter(Surveys.survey_request_date >= start)
             query = query.filter(Surveys.survey_request_date < end)
         for name in active_filters:
+            if name == 'box_collected':
+                query = query.filter(Surveys.box_collected == True)
             if name == 'box_not_collected':
                 query = query.filter(Surveys.box_collected == False)
+            if name == 'has_result':
+                query = query.filter(Surveys.result != None)
             if name == 'no_result':
                 query = query.filter(Surveys.result == None)
+            if name == 'has_one_month':
+                query = query.filter(Surveys.month_feedback != None)
             if name == 'no_one_month':
                 query = query.filter(Surveys.month_feedback == None)
+            if name == 'has_one_year':
+                query = query.filter(Surveys.year_feedback != None)
             if name == 'no_one_year':
                 query = query.filter(Surveys.year_feedback == None)
         return query
@@ -128,6 +140,17 @@ class CheeseAdminIndexView(admin.AdminIndexView):
     def index(self):
         if not current_user.is_authenticated:
             return redirect(url_for('user.login'))
+        # Handle actions.
+        if 'set_box_collected' in request.args:
+            survey = Surveys.query.get(int(request.args.get('survey_id')))
+            survey.box_collected = request.args.get('set_box_collected') == 'True'
+            print 'Set box collected to '+str(survey.box_collected)
+            db.session.commit()
+            args = request.args.copy()
+            args.pop('set_box_collected')
+            args.pop('survey_id')
+            return redirect(url_for('admin.index', **args))
+        # Render page.
         num_phases = len(app.config['PHASE_START_DATES'])
         phases = [str(x+1) for x in range(num_phases)]
         active_phase, active_filters, reverse, surveys = self.get_surveys()

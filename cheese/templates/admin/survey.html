@@ -2,9 +2,11 @@
 {% import 'admin/macros.html' as macros %}
 
 {% macro display_entry(name, table, entry) -%}
-<a href="/admin/{{name}}/edit/?id={{entry.id}}">
-    <span class="fa fa-pencil glyphicon glyphicon-pencil"></span>
-  </a>
+  <div class="pull-right">
+    <a href="/admin/{{name}}/edit/?id={{entry.id}}">
+      <span class="fa fa-pencil glyphicon glyphicon-pencil"></span> edit record
+    </a>
+  </div>
   <table class="table table-condensed">
   <tbody>
   {% for column in table.c %}
