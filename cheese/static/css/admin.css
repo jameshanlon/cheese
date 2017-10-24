@@ -7,12 +7,6 @@
 .admin-form input[type="submit"] {
   width: auto;
 }
-.admin-form .control-label {
-  width: 200px;
-  text-align: right;
-  margin-left: 0;
-  margin-right: 1em;
-}
 .survey-overview-table {
   font-size: 12px;
 }
