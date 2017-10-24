@@ -140,6 +140,8 @@ class CheeseAdminIndexView(admin.AdminIndexView):
     def index(self):
         if not current_user.is_authenticated:
             return redirect(url_for('user.login'))
+        if not current_user.has_role('admin', 'manager'):
+            return self.render('admin/welcome.html')
         # Handle actions.
         if 'set_box_collected' in request.args:
             survey = Surveys.query.get(int(request.args.get('survey_id')))

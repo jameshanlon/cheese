@@ -1,0 +1,10 @@
+{% extends 'admin/master.html' %}
+{% block body %}
+{{ super() }}
+<div class="row-fluid">
+  <div>
+    <h3>Welcome {{current_user.first_name}} to the CHEESE database</h3>
+    <p><a href="/">Back to the CHEESE website</a></p>
+  </div>
+</div>
+{% endblock body %}
