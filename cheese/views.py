@@ -55,7 +55,9 @@ class ManagerModelView(AdminModelView):
 
 
 class CheeseAdminIndexView(admin.AdminIndexView):
-    filters = ['box_collected',
+    filters = ['fee_paid',
+               'fee_not_paid',
+               'box_collected',
                'box_not_collected',
                'has_result',
                'no_result',
@@ -72,6 +74,10 @@ class CheeseAdminIndexView(admin.AdminIndexView):
             query = query.filter(Surveys.survey_request_date >= start)
             query = query.filter(Surveys.survey_request_date < end)
         for name in active_filters:
+            if name == 'fee_paid':
+                query = query.filter(Surveys.fee_paid == True)
+            if name == 'fee_not_paid':
+                query = query.filter(Surveys.fee_paid == False)
             if name == 'box_collected':
                 query = query.filter(Surveys.box_collected == True)
             if name == 'box_not_collected':
