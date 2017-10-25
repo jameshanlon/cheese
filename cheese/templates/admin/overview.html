@@ -57,7 +57,7 @@
       <th>                    <a href="{{modify_query(sort='request_date',   reverse=reverse)}}">Request date</a></th>
       <th>                    <a href="{{modify_query(sort='survey_date',    reverse=reverse)}}">Survey date</a></th>
       <th class="text-center"><a href="{{modify_query(sort='fee_paid',       reverse=reverse)}}">Fee paid?<br>(click to change)</a></th>
-      <th>                    <a href="{{modify_query(sort='lead_surveyor',  reverse=reverse)}}">Lead surveyor</a></th>
+      <th>                    <a href="{{modify_query(sort='lead_surveyor',  reverse=reverse)}}">Lead surveyor<br>& assistant</a></th>
       <th class="text-center"><a href="{{modify_query(sort='box_number',     reverse=reverse)}}">Box number</a></th>
       <th class="text-center"><a href="{{modify_query(sort='box_collected',  reverse=reverse)}}">Box collected?<br>(click to change)</a></th>
       <th class="text-center"><a href="{{modify_query(sort='got_result',     reverse=reverse)}}">Survey result</a></th>
@@ -106,6 +106,9 @@
         <td>
           {% if survey.result and survey.result[0].lead_surveyor %}
             {{survey.result[0].lead_surveyor}}
+          {% endif %}
+          {% if survey.result and survey.result[0].assistant_surveyor %}
+            <br>{{survey.result[0].assistant_surveyor}}
           {% endif %}
         </td>
         <td class="text-center">
