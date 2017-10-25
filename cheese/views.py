@@ -108,6 +108,8 @@ class CheeseAdminIndexView(admin.AdminIndexView):
 					   else earliest_date)
         elif sort == 'survey_date':
             return sort_by_planned_survey_date()
+        elif sort == 'fee_paid':
+            return sort_surveys(lambda x: x.fee_paid)
         elif sort == 'box_number':
             return sort_surveys(lambda x:
                      x.result[0].cheese_box_number if x.result else None)
@@ -146,10 +148,17 @@ class CheeseAdminIndexView(admin.AdminIndexView):
         if 'set_box_collected' in request.args:
             survey = Surveys.query.get(int(request.args.get('survey_id')))
             survey.box_collected = request.args.get('set_box_collected') == 'True'
-            print 'Set box collected to '+str(survey.box_collected)
             db.session.commit()
             args = request.args.copy()
             args.pop('set_box_collected')
+            args.pop('survey_id')
+            return redirect(url_for('admin.index', **args))
+        if 'set_fee_paid' in request.args:
+            survey = Surveys.query.get(int(request.args.get('survey_id')))
+            survey.fee_paid = request.args.get('set_fee_paid') == 'True'
+            db.session.commit()
+            args = request.args.copy()
+            args.pop('set_fee_paid')
             args.pop('survey_id')
             return redirect(url_for('admin.index', **args))
         # Render page.

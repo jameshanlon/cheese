@@ -56,6 +56,7 @@
       <th class="text-center"><a href="{{modify_query(sort='ward',           reverse=reverse)}}">Ward</a></th>
       <th>                    <a href="{{modify_query(sort='request_date',   reverse=reverse)}}">Request date</a></th>
       <th>                    <a href="{{modify_query(sort='survey_date',    reverse=reverse)}}">Survey date</a></th>
+      <th class="text-center"><a href="{{modify_query(sort='fee_paid',       reverse=reverse)}}">Fee paid?<br>(click to change)</a></th>
       <th>                    <a href="{{modify_query(sort='lead_surveyor',  reverse=reverse)}}">Lead surveyor</a></th>
       <th class="text-center"><a href="{{modify_query(sort='box_number',     reverse=reverse)}}">Box number</a></th>
       <th class="text-center"><a href="{{modify_query(sort='box_collected',  reverse=reverse)}}">Box collected?<br>(click to change)</a></th>
@@ -95,6 +96,11 @@
       </td>
       <td>
         {% if survey.survey_date %}{{survey.survey_date.strftime('%d %b %y')}}{% endif %}
+      </td>
+      <td class="text-center" {{cell_bg(survey.fee_paid)}}>
+        <a href="{{add_to_query(set_fee_paid=(not survey.fee_paid), survey_id=survey.id)}}"
+           onclick="return confirm('Are you sure you want to change this entry?')">
+          {{ macros.render_boolean(survey.fee_paid) }}</a>
       </td>
       {% if survey.result %}
         <td>
