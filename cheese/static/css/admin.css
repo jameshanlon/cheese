@@ -1,6 +1,9 @@
 .admin-form input,
-.admin-form textarea {
+.admin-form select {
   width: 400px;
+}
+.admin-form textarea {
+  height: 180px;
 }
 .admin-form input[type="radio"],
 .admin-form input[type="checkbox"],
