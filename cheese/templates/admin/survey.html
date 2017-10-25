@@ -3,7 +3,7 @@
 
 {% macro display_entry(name, table, entry) -%}
   <div class="pull-right">
-    <a href="/admin/{{name}}/edit/?id={{entry.id}}">
+    <a href="{{url_for(name.replace('_', '')+'.edit_view', id=entry.id, url=request.path)}}">
       <span class="fa fa-pencil glyphicon glyphicon-pencil"></span> edit record
     </a>
   </div>
@@ -32,7 +32,9 @@
     {% else %}
       <p>There are multiple entries for this survey:</p>
       {% for x in survey.result %}
-      <a href="/admin/{{name.replace(' ')}}/{{x.id}}">{{x.date.strftime('%d %b %Y')}}</a>
+        <a href="{{url_for(name.replace('_', '')+'.edit_view', id=entry.id, url=request.path)}}">
+          {{x.date.strftime('%d %b %Y')}}
+        </a>
       {% endfor %}
     {% endif %}
   {% else %}
@@ -53,10 +55,10 @@
 
 <h2>One month feedback</h2>
 
-{{ display_relation('month feedback', month_table, survey.month_feedback) }}
+{{ display_relation('month_feedback', month_table, survey.month_feedback) }}
 
 <h2>One year feedback</h2>
 
-{{ display_relation('year feedback', year_table, survey.year_feedback) }}
+{{ display_relation('year_feedback', year_table, survey.year_feedback) }}
 
 {% endblock body %}
