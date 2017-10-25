@@ -58,8 +58,8 @@ USER_REQUIRE_INVITATION     = True
 USER_AFTER_LOGIN_ENDPOINT   = 'index'
 USER_AFTER_LOGOUT_ENDPOINT  = 'index'
 # Constants
-PHASE_START_DATES = [datetime.date(2015, 5, 1),
-                     datetime.date(2016, 5, 1),
-                     datetime.date(2017, 5, 1)]
+PHASE_START_DATES = [datetime.date(2015, 4, 1),
+                     datetime.date(2016, 4, 1),
+                     datetime.date(2017, 4, 1)]
 ONE_MONTH_FOLLOW_UP_DAYS = 31
 ONE_YEAR_FOLLOW_UP_DAYS = 365.25
