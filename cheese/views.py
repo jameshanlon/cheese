@@ -113,9 +113,9 @@ class CheeseAdminIndexView(admin.AdminIndexView):
                      x.result[0].cheese_box_number if x.result else None)
         elif sort == 'box_collected':
             return sort_surveys(lambda x: x.box_collected)
-        elif sort == 'surveyors_name':
+        elif sort == 'lead_surveyor':
             return sort_surveys(lambda x:
-                     x.result[0].surveyors_name if x.result else None)
+                     x.result[0].lead_surveyor if x.result else None)
         elif sort == 'got_result':
             return sort_surveys(lambda x: x.result)
         elif sort == 'got_month':
@@ -255,7 +255,8 @@ class SurveysView(ManagerModelView):
 class ResultsView(ManagerModelView):
     all_cols = set([
         'date',
-        'surveyors_name',
+        'lead_surveyor',
+        'assistant_surveyor',
         'householders_name',
         'address_line',
         'survey_date',
@@ -281,7 +282,8 @@ class ResultsView(ManagerModelView):
         'notes',
         'survey', ])
     columns_list = [
-        'surveyors_name',
+        'lead_surveyor',
+        'assistant_surveyor',
         'householders_name',
         'address_line',
         'survey_date',
@@ -404,7 +406,8 @@ class ThermalImageView(ManagerModelView):
 @login_required
 def submit_results():
     ResultsForm = model_form(Results, db_session=db.session, field_args={
-        "surveyors_name":             { "label": "Surveyor's name", },
+        "lead_surveyor":              { "label": "Lead surveyor", },
+        "assistant_surveyor":         { "label": "Assistant surveyor", },
         "householders_name":          { "label": "Householder's name", },
         "address_line":               { "label": "Address line", },
         "survey_date":                { "label": "Survey date (dd-mm-yyyy)",

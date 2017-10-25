@@ -119,7 +119,8 @@ class Results(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     date                       = db.Column(db.DateTime,
                                            default=datetime.datetime.now())
-    surveyors_name             = db.Column(db.String(50))
+    lead_surveyor              = db.Column(db.String(50))
+    assistant_surveyor         = db.Column(db.String(50))
     householders_name          = db.Column(db.String(50))
     address_line               = db.Column(db.String(100))
     survey_date                = db.Column(db.Date)
