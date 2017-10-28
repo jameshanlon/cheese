@@ -77,11 +77,13 @@ class CheeseAdminIndexView(admin.AdminIndexView):
             if name == 'fee_paid':
                 query = query.filter(Surveys.fee_paid == True)
             if name == 'fee_not_paid':
-                query = query.filter(Surveys.fee_paid == False)
+                query = query.filter((Surveys.fee_paid == False) |
+                                     (Surveys.fee_paid == None))
             if name == 'box_collected':
                 query = query.filter(Surveys.box_collected == True)
             if name == 'box_not_collected':
-                query = query.filter(Surveys.box_collected == False)
+                query = query.filter((Surveys.box_collected == False) |
+                                     (Surveys.box_collected == None))
             if name == 'has_result':
                 query = query.filter(Surveys.result != None)
             if name == 'no_result':
