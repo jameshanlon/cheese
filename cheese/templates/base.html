@@ -24,7 +24,7 @@
                 <span class="caret"></span>
               </button>
               <ul class="dropdown-menu">
-                {% if current_user.has_role('admin', 'manager', 'energy_tracer') %}
+                {% if current_user.has_role('admin', 'manager', 'surveyor') %}
                   <li><a href="/energy-tracer-resources">Energy Tracer resources</a></li>
                 {% endif %}
                 {% if current_user.has_role('admin', 'manager') %}
