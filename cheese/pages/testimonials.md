@@ -4,7 +4,7 @@
 On this page, we've collected some representative feedback from customers who've had
 a internal home survey.
 
-## From the 2016/17 surveying season
+## From the 2016/17 surveying season (phase 2)
 
 - *"A really valuable service, represented excellent value for money. The friendly,
   very helpful surveyors suggested simple remedies that will make a big, positive
@@ -85,7 +85,7 @@ he has. He said that CHEESE surveys should be extended to survey all houses in B
 - *"Surveyors were absolutely lovely. Survey was great. Overall really
   grateful and enjoyed the survey"*.
 
-## From the 2015/16 surveying season
+## From the 2015/16 surveying season (phase 1)
 
 - From someone who struggled to heat her home to a comfortable temperature:
   *"A real eye-opener. Excellent! I found I could do everything for
