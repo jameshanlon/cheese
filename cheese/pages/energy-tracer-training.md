@@ -29,7 +29,7 @@ practical exam, but you will then be eligible for payment and be able to lead
 surveys, mostly during evenings and weekends, and train new aspiring Energy
 Tracers.
 
-One of the participants of the Energy Tracer training course, held over the
+Nick Banks, a participant of the Energy Tracer training course, held over the
 weekend of 21st, 22nd October 2017 said: 
 
 > I just wanted to say thankyou for the excellent course you delivered last
