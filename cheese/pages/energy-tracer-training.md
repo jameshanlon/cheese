@@ -30,13 +30,14 @@ surveys, mostly during evenings and weekends, and train new aspiring Energy
 Tracers.
 
 One of the participants of the Energy Tracer training course, held over the
-weekend of 21st, 22nd October 2017 said *I just wanted to say thankyou for the
-excellent course you delivered last weekend. I thought the whole was delivered
-at the right pace, with insight, gentle humour and plenty of opportunity to
-harvest contributions from the trainees. And Sue – thankyou so much for
-suggesting I get involved with it. I look forward to the follow up sessions
-and, in the meantime, I’d like to start proactively raising interest in a
-thermal survey on my street and then the wider area.*
+weekend of 21st, 22nd October 2017 said: 
+
+> I just wanted to say thankyou for the excellent course you delivered last
+> weekend. I thought the whole was delivered at the right pace, with insight,
+> gentle humour and plenty of opportunity to harvest contributions from the
+> trainees. [...] I look forward to the follow up sessions and, in the
+> meantime, I’d like to start proactively raising interest in a thermal survey
+> on my street and then the wider area.
 
 If you are excited by the idea of becoming involved with the CHEESE Project
 to train as an Energy Tracer, then please get in touch by emailing
