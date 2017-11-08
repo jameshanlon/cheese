@@ -97,7 +97,8 @@ We do offer **free surveys** to households on low incomes.
   </tbody>
 </table>
 
-\* We can only survey large houses at weekends.
+\* We generally only survey large houses at weekends, though there may be some
+limited availability for surveying large houses on other days.
 
 <div class="notice lead">
   <a href="/apply-for-a-survey">Apply for a survey</a> now!
