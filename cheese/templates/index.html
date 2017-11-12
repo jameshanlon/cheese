@@ -59,7 +59,7 @@
 </div>
 
 <div class="pull-right">
-<a class="twitter-timeline" data-width="300" data-height="450" data-theme="light"
+<a class="twitter-timeline" data-width="300" data-height="650" data-theme="light"
    href="https://twitter.com/CHEESEBristol">
   Tweets by @CHEESEBristol</a>
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
@@ -74,10 +74,10 @@
     {% set body = item.html|safe|striptags %}
     {% if body|length > 500 %}
       {{body|truncate(500)}}
-      <p><a href="/blog/{{item.path}}">Read more &#187;</a></p>
     {% else %}
       {{item.html|safe}}
     {% endif %}
+    <p><a href="/blog/{{item.path}}">Read more &#187;</a></p>
   </div>
 {% endfor %}
 </div>

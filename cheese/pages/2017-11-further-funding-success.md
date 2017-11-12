@@ -12,7 +12,7 @@ Community
 Foundation](http://quartetcf.org.uk/grant-programmes/megawatt-community-energy-large-and-small-grants/).
 It was a very competative round, with many fantastic organisations, so we are very
 pleased to have received the money and the recognition and support of the wider
-community.
+community. See [here](http://quartetcf.org.uk/report/grants-awarded/) for a full list of the grants awarded.
 
 We also recieved a £1,000 grant from [The Naturesave
 Trust](http://www.naturesave.co.uk/the-naturesave-trust/) to purchase new
