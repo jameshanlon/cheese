@@ -13,12 +13,9 @@ coordination with Bristol, in other cities.
 
 We currently have three community segments in Bristol:
 
-- <a href="http://www.ambitionlw.org">
-      Ambition Lawrence Weston</a>
-- <a href="http://www.eastonenergygroup.org">
-      Easton Energy Group</a>
-- <a href="https://www.facebook.com/BCR.EnergyGroup">
-      Bishopston, Cotham, Redland Energy Group</a>
+- [Ambition Lawrence Weston](http://www.ambitionlw.org)
+- [Easton Energy Group](http://www.eastonenergygroup.org)
+- [Bishopston, Cotham, Redland Energy Group](https://www.facebook.com/BCR.EnergyGroup)
 
 Our central office management team consists of six people:
 
@@ -31,24 +28,28 @@ Our central office management team consists of six people:
 ## Constitution
 
 For more information on the structure and organisation of the CHEESE Project,
-please read our
-<a href="/static/files/CHEESE-Constitution-17August2016.pdf">constitution (PDF)</a>.
+please read our [constitution document (PDF)](/static/files/CHEESE-Constitution-17August2016.pdf).
 
+<a name="funding"></a>
 # Funding
 
-The CHEESE pilot project was setup in November 2014 with funding from
-<a href="http://bristolgreencapital.org/">Bristol Green Capital 2015</a> and
-with the support of <a href="http://www.bristolenergynetwork.org">Bristol
-  Energy Network</a>.
-Two initial small grants of £5,000 were
-awarded to <a href="http://www.eastonenergygroup.org">Easton Energy
-Group</a> and <a href="http://www.ambitionlw.org">Ambition Lawrence Weston</a>.
-A further two grants were awarded to the Bishopston, Cotham and
-Redland Neighbourhood Partnership of £2,000 and £1,610.
+The CHEESE pilot project was setup in November 2014 with funding from [Bristol
+Green Capital 2015](http://bristolgreencapital.org/) and with the support of
+[Bristol Energy Network](http://www.bristolenergynetwork.org). Two initial
+small grants were awarded to [Easton Energy
+Group](http://www.eastonenergygroup.org) and [Ambition Lawrence
+Weston](http://www.ambitionlw.org). A further two grants were awarded to the
+Bishopston, Cotham and Redland Neighbourhood Partnership of £2,000 and £1,610
+respectively.
 
-For phase two of the project, to date we have recieved £4,400 from the
-Community Energy Best Practice fund, £10,000 from the <a
-  href="http://www.bristolcommunityenergy.co.uk/">Community Energy Fund</a> and
-£10,000 from <a
-  href="https://www.biglotteryfund.org.uk/global-content/programmes/england/awards-for-all-england">
-  Lottery Awards for All</a>.
+For phase two of the project, the CHEESE Project recieved:
+
+ - £4,400 from the Bristol Community Energy Best Practice fund.
+ - £10,000 from the [Bristol Community Energy Fund](http://www.bristolcommunityenergy.co.uk/).
+ - £10,000 from [Lottery Awards for All](https://www.biglotteryfund.org.uk/global-content/programmes/england/awards-for-all-england)</a>.
+
+For phase three of the project, the CHEESE Project has so far received:
+
+ - £5,000 from the [Megawatt Community Energy Fund](http://quartetcf.org.uk/grant-programmes/megawatt-community-energy-large-and-small-grants/).
+ - £5,000 from [The Funding Network (TFN)](https://www.thefundingnetwork.org.uk/events/tfn-bristol/1310).
+ - £1,000 from [The Naturesave Trust](http://www.naturesave.co.uk).
