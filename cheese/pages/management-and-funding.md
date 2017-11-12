@@ -52,4 +52,4 @@ For phase three of the project, the CHEESE Project has so far received:
 
  - £5,000 from the [Megawatt Community Energy Fund](http://quartetcf.org.uk/grant-programmes/megawatt-community-energy-large-and-small-grants/).
  - £5,000 from [The Funding Network (TFN)](https://www.thefundingnetwork.org.uk/events/tfn-bristol/1310).
- - £1,000 from [The Naturesave Trust](http://www.naturesave.co.uk).
+ - £1,000 from [The Naturesave Trust](http://www.naturesave.co.uk/the-naturesave-trust/).
