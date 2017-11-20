@@ -449,7 +449,6 @@ def submit_results():
         "faults_identified":          { "label": "Faults identified", },
         }, exclude=['date'])
     results = Results()
-    results_form = ResultsForm(obj=results)
     form = ResultsForm(request.form, results)
     if request.method=='POST' and helpers.validate_form_on_submit(form):
         form.populate_obj(results)
