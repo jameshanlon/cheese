@@ -423,6 +423,7 @@ class ThermalImageView(ManagerModelView):
 @login_required
 def submit_results():
     ResultsForm = model_form(Results, db_session=db.session, field_args={
+        "survey":                     { "label": "Survey (type to search)", },
         "lead_surveyor":              { "label": "Lead surveyor", },
         "assistant_surveyor":         { "label": "Assistant surveyor", },
         "householders_name":          { "label": "Householder's name", },
@@ -445,7 +446,7 @@ def submit_results():
         "annual_gas_kwh":             { "label": "Annual gas consumption (kWh)", },
         "annual_elec_kwh":            { "label": "Annual electricity consumption (kWh)", },
         "annual_solid_spend":         { "label": "Annual spend on solid fuels (&pound;)", },
-        "renewable_contribution_kwh": { "label":"Annual contribution from renewable generation (kWh)", },
+        "renewable_contribution_kwh": { "label": "Annual contribution from renewable generation (kWh)", },
         "faults_identified":          { "label": "Faults identified", },
         }, exclude=['date'])
     results = Results()
