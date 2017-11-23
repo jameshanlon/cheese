@@ -83,6 +83,7 @@ class Surveys(db.Model):
     ward                      = db.Column(db.String(50))
     email                     = db.Column(db.String(100))
     telephone                 = db.Column(db.String(20))
+    mobile                    = db.Column(db.String(20))
     reference                 = db.Column(db.String(8))
     survey_request_date       = db.Column(db.Date,
                                   default=datetime.datetime.now().date())

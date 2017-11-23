@@ -197,6 +197,7 @@ class CheeseAdminIndexView(admin.AdminIndexView):
 			  'ward',
 			  'email',
 			  'telephone',
+			  'mobile',
                           'survey_date', ]
         _, _, _, surveys = self.get_surveys()
         path = app.config['EXPORT_PATH']+'/'+filename
@@ -209,7 +210,7 @@ class CheeseAdminIndexView(admin.AdminIndexView):
                    survey.postcode,
                    survey.ward,
                    survey.email,
-                   survey.telephone,
+                   survey.mobile,
                    survey.survey_date, ]
             writer.writerow([unicode(s).encode("utf-8") for s in row])
         f.close()
@@ -240,6 +241,7 @@ class SurveysView(ManagerModelView):
         'ward',
         'email',
         'telephone',
+        'mobile',
         'reference',
         'survey_request_date',
         'building_type',
@@ -582,6 +584,8 @@ class ApplySurveyForm(FlaskForm):
                                    validators.Length(max=100)])
     telephone = fields.StringField(validators=[validators.required(),
                                                validators.Length(max=20)])
+    mobile = fields.StringField(validators=[validators.required(),
+                                            validators.Length(max=20)])
     availability = fields.TextAreaField(validators=[validators.required()])
     building_type = fields.SelectField('Building type',
             choices=[choice('')]+[choice(x) for x in BUILDING_TYPES],
