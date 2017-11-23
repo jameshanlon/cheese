@@ -31,11 +31,15 @@
       {{ display_entry(name, table, relation[0]) }}
     {% else %}
       <p>There are multiple entries for this survey:</p>
-      {% for x in survey.result %}
-        <a href="{{url_for(name.replace('_', '')+'.edit_view', id=x.id, url=request.path)}}">
-          {{x.date.strftime('%d %b %Y')}}
-        </a>
-      {% endfor %}
+        <ul>
+          {% for x in survey.result %}
+            <li>
+              <a href="{{url_for(name.replace('_', '')+'.edit_view', id=x.id, url=request.path)}}">
+              {{x.date.strftime('%d %b %Y')}}
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
     {% endif %}
   {% else %}
   <p>No {{name}} entry.</p>
