@@ -462,6 +462,15 @@ def submit_results():
         form.populate_obj(results)
         db.session.add(results)
         db.session.commit()
+        # Send watchers email.
+        subject = '[CHEESE] New survey result'
+        message = 'For '+results.householders_name+', '+results.address_line \
+                  + ' at '+str(datetime.datetime.today())+': ' \
+                  + app.config['URL_BASE']+str(url_for('results.details_view', id=results.id))
+        mail.send(Message(subject=subject,
+                          body=message,
+                          recipients=[app.config['WATCHERS']]))
+        # Flash success message.
         flash('Survey result submitted successfully.')
         return redirect(url_for('submit_results'))
     return render_template('submit-results.html', form=form)
@@ -623,13 +632,14 @@ def apply_for_a_survey():
         mail.send(Message(subject=subject,
                           body=message,
                           recipients=[form.email.data]))
-        # Send admin email.
-        subject = 'New request for a CHEESE survey'
-        message = 'From '+form.name.data+', '+form.address_line.data \
-                  + ' at '+str(datetime.datetime.today())
+        # Send watchers email.
+        subject = '[CHEESE] New request for a survey'
+        message = 'From '+survey.name+', '+survey.address_line \
+                  + ' at '+str(datetime.datetime.today())+': ' \
+                  + app.config['URL_BASE']+str(url_for('surveys.details_view', id=survey.id))
         mail.send(Message(subject=subject,
                           body=message,
-                          recipients=[app.config['ADMINS']]))
+                          recipients=[app.config['WATCHERS']]))
         # Success page.
         page = pages.get('application-successful')
         return render_template('page.html', page=page)
@@ -696,13 +706,14 @@ def one_month_feedback():
         follow_up.submitted_by = 'Submitted from the website'
         db.session.add(follow_up)
         db.session.commit()
-        # Send admin email.
-        subject = 'New one month response'
-        message = 'From '+form.householders_name.data+', '+form.address.data \
-                  + ' at '+str(datetime.datetime.today())
+        # Send watchers email.
+        subject = '[CHEESE] New one-month response'
+        message = 'From '+follow_up.householders_name+', '+follow_up.address \
+                  + ' at '+str(datetime.datetime.today())+': ' \
+                  + app.config['URL_BASE']+str(url_for('monthfeedback.details_view', id=follow_up.id))
         mail.send(Message(subject=subject,
                           body=message,
-                          recipients=[app.config['ADMINS']]))
+                          recipients=[app.config['WATCHERS']]))
         # Flash success message.
         flash('Your one month feedback was submitted successfully, thank you.')
         return redirect(url_for('one_month_feedback'))
@@ -780,13 +791,14 @@ def one_year_feedback():
         follow_up.submitted_by = 'Submitted from the website'
         db.session.add(follow_up)
         db.session.commit()
-        # Send admin email.
-        subject = 'New one year response'
-        message = 'From '+form.householders_name.data+', '+form.address.data \
-                  + ' at '+str(datetime.datetime.today())
+        # Send watchers email.
+        subject = '[CHEESE] New one-year response'
+        message = 'From '+follow_up.householders_name+', '+follow_up.address \
+                  + ' at '+str(datetime.datetime.today())+': ' \
+                  + app.config['URL_BASE']+str(url_for('yearfeedback.details_view', id=follow_up.id))
         mail.send(Message(subject=subject,
                           body=message,
-                          recipients=[app.config['ADMINS']]))
+                          recipients=[app.config['WATCHERS']]))
         # Flash success message.
         flash('Your one year feedback was submitted successfully, thank you.')
         return redirect(url_for('one_year_feedback'))

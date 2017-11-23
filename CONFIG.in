@@ -20,7 +20,7 @@ export CHEESE_MYSQL_PASSWORD=
 # Certificates
 export CHEESE_WEBSITE_DIR=
 export CHEESE_CERTIFICATE_DIR=
-# Error email subject
-export CHEESE_APP_SYSTEM_ERROR_SUBJECT_LINE='CHEESE webiste error'
 # List of admins ("name" <email>, ...)
 export CHEESE_ADMINS=
+# List of watchers to be notified of events ("name" <email>, ...)
+export CHEESE_WATCHERS=

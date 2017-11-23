@@ -8,6 +8,7 @@ CSRF_ENABLED           = True
 FLATPAGES_EXTENSION    = '.md'
 SYSTEM_ERROR_SUBJECT_LINE = 'CHEESE webiste error'
 ADMINS                 = os.environ['CHEESE_ADMINS']
+WATCHERS               = os.environ['CHEESE_WATCHERS']
 # Media
 MEDIA_FOLDER           = 'cheese/'
 MEDIA_URL              = '/'

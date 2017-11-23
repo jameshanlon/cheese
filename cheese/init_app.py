@@ -31,7 +31,7 @@ def init_email_error_handler(app):
         mailhost=(app.config['MAIL_SERVER'], app.config['MAIL_PORT']),
         fromaddr=app.config['MAIL_DEFAULT_SENDER'],
         toaddrs=app.config['ADMINS'],
-        subject=app.config['SYSTEM_ERROR_SUBJECT_LINE'],
+        subject='[CHEESE] Website error',
         credentials=(app.config['MAIL_USERNAME'], app.config['MAIL_PASSWORD']),
         secure=() if app.config.get('MAIL_USE_TLS') else None, )
     mail_handler.setLevel(logging.ERROR)
