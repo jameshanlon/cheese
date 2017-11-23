@@ -146,6 +146,12 @@ class CheeseAdminIndexView(admin.AdminIndexView):
         surveys = self.sort_by_column(surveys, sort, reverse)
         return active_phase, active_filters, reverse, surveys
 
+    def get_delete_form(self):
+        class DeleteForm(Form):
+            id = fields.HiddenField(validators=[validators.required()])
+            url = fields.HiddenField()
+        return DeleteForm()
+
     @expose('/')
     def index(self):
         if not current_user.is_authenticated:
@@ -214,6 +220,7 @@ class CheeseAdminIndexView(admin.AdminIndexView):
     def survey(self, survey_id):
         survey = Surveys.query.get(survey_id)
         return self.render('admin/survey.html',
+                delete_form=self.get_delete_form(),
                 survey=survey,
                 surveys_table=inspect(Surveys),
                 results_table=inspect(Results),

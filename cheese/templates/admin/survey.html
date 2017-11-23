@@ -30,13 +30,30 @@
     {% if relation|length == 1 %}
       {{ display_entry(name, table, relation[0]) }}
     {% else %}
+      {% set table = name.replace('_', '') %}
       <p>There are multiple entries for this survey:</p>
         <ul>
           {% for x in survey.result %}
             <li>
-              <a href="{{url_for(name.replace('_', '')+'.edit_view', id=x.id, url=request.path)}}">
-              {{x.date.strftime('%d %b %Y')}}
+              Submitted on {{x.date.strftime('%d %b %Y at %X')}}&nbsp;
+              <a class="icon" href="{{url_for(table+'.details_view', id=x.id, url=request.path)}}">
+                <span class="fa fa-eye glyphicon glyphicon-eye-open"></span>
               </a>
+              <a class="icon" href="{{url_for(table+'.edit_view', id=x.id, url=request.path)}}">
+                <span class="fa fa-pencil glyphicon glyphicon-pencil"></span>
+              </a>
+              <form class="icon" method="POST" action="{{url_for(table+'.delete_view') }}">
+                {{ delete_form.id(value=x.id) }}
+                {{ delete_form.url(value=request.path) }}
+                {% if delete_form.csrf_token %}
+                  {{ delete_form.csrf_token }}
+                {% elif csrf_token %}
+                  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+                {% endif %}
+                <button onclick="return confirm('Are you sure you want to delete this record?');">
+                  <span class="fa fa-trash glyphicon glyphicon-trash"></span>
+                </button>
+              </form>
             </li>
           {% endfor %}
         </ul>

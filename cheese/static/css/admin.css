@@ -19,3 +19,16 @@
 }
 .green-bg { background-color:#e5ffea; }
 .red-bg { background-color:#ffbfbf; }
+a.icon {
+  color: inherit;
+}
+form.icon {
+  display: inline;
+}
+form.icon button {
+  border: none;
+  background: transparent;
+  text-decoration: none;
+  padding: 0;
+  line-height: normal;
+}

@@ -73,9 +73,16 @@
         class="red-bg"
       {% endif %}
     {%- endmacro %}
+    {% macro details_button(table, id) -%}
+      <div class="pull-right" style="padding:0.2em">
+        <a class="icon" href="{{url_for(table.replace('_', '')+'.details_view', id=id, url=request.path)}}">
+          <span class="fa fa-pencil glyphicon glyphicon-eye-open"></span>
+        </a>
+      </div>
+    {%- endmacro %}
     {% macro edit_button(table, id) -%}
-      <div class="pull-right">
-        <a href="{{url_for(table.replace('_', '')+'.edit_view', id=id, url=request.path)}}">
+      <div class="pull-right" style="padding:0.2em">
+        <a class="icon" href="{{url_for(table.replace('_', '')+'.edit_view', id=id, url=request.path)}}">
           <span class="fa fa-pencil glyphicon glyphicon-pencil"></span>
         </a>
       </div>
@@ -123,12 +130,14 @@
         </td>
         <td class="text-center" {{cell_bg(survey.result)}}>
           {{ edit_button('results', survey.result[0].id) }}
+          {{ details_button('results', survey.result[0].id) }}
           {{ macros.render_boolean(survey.result) }}
         </td>
         <!--Month feedback-->
         {% if survey.month_feedback %}
           <td class="text-center green-bg">
             {{ edit_button('month_feedback', survey.month_feedback[0].id) }}
+            {{ details_button('month_feedback', survey.month_feedback[0].id) }}
             {{ macros.render_boolean(survey.month_feedback) }}
           </td>
         {% elif survey.survey_date %}
@@ -142,6 +151,7 @@
         {% if survey.year_feedback %}
           <td class="text-center green-bg">
             {{ edit_button('year_feedback', survey.year_feedback[0].id) }}
+            {{ details_button('year_feedback', survey.year_feedback[0].id) }}
             {{ macros.render_boolean(survey.year_feedback) }}
           </td>
         {% elif survey.survey_date %}
