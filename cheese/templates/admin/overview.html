@@ -75,14 +75,14 @@
     {%- endmacro %}
     {% macro details_button(table, id) -%}
       <div class="pull-right" style="padding:0.2em">
-        <a class="icon" href="{{url_for(table.replace('_', '')+'.details_view', id=id, url=request.path)}}">
+        <a class="icon" href="{{url_for(table.replace('_', '')+'.details_view', id=id, url=request.path+'?'+request.query_string)}}">
           <span class="fa fa-pencil glyphicon glyphicon-eye-open"></span>
         </a>
       </div>
     {%- endmacro %}
     {% macro edit_button(table, id) -%}
       <div class="pull-right" style="padding:0.2em">
-        <a class="icon" href="{{url_for(table.replace('_', '')+'.edit_view', id=id, url=request.path)}}">
+        <a class="icon" href="{{url_for(table.replace('_', '')+'.edit_view', id=id, url=request.path+'?'+request.query_string)}}">
           <span class="fa fa-pencil glyphicon glyphicon-pencil"></span>
         </a>
       </div>
