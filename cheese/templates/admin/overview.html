@@ -105,9 +105,13 @@
         {% if survey.survey_date %}{{survey.survey_date.strftime('%d %b %y')}}{% endif %}
       </td>
       <td class="text-center" {{cell_bg(survey.fee_paid)}}>
-        <a href="{{add_to_query(set_fee_paid=(not survey.fee_paid), survey_id=survey.id)}}"
-           onclick="return confirm('Are you sure you want to change this entry?')">
-          {{ macros.render_boolean(survey.fee_paid) }}</a>
+        {% if survey.free_survey_consideration %}
+          <strong>Free survey</strong>
+        {% else %}
+          <a href="{{add_to_query(set_fee_paid=(not survey.fee_paid), survey_id=survey.id)}}"
+             onclick="return confirm('Are you sure you want to change this entry?')">
+            {{ macros.render_boolean(survey.fee_paid) }}</a>
+        {% endif %}
       </td>
       {% if survey.result %}
         <td>

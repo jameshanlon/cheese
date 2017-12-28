@@ -117,7 +117,7 @@ class CheeseAdminIndexView(admin.AdminIndexView):
         elif sort == 'survey_date':
             return sort_by_planned_survey_date()
         elif sort == 'fee_paid':
-            return sort_surveys(lambda x: x.fee_paid)
+            return sort_surveys(lambda x: 2 if x.free_survey_consideration else x.fee_paid)
         elif sort == 'box_number':
             return sort_surveys(lambda x:
                      x.result[0].cheese_box_number if x.result else None)
