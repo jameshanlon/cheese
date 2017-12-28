@@ -471,7 +471,7 @@ def submit_results():
                   + app.config['URL_BASE']+str(url_for('results.details_view', id=results.id))
         mail.send(Message(subject=subject,
                           body=message,
-                          recipients=[app.config['WATCHERS']]))
+                          recipients=app.config['WATCHERS']))
         # Flash success message.
         flash('Survey result submitted successfully.')
         return redirect(url_for('submit_results'))
@@ -643,7 +643,7 @@ def apply_for_a_survey():
                   + app.config['URL_BASE']+str(url_for('surveys.details_view', id=survey.id))
         mail.send(Message(subject=subject,
                           body=message,
-                          recipients=[app.config['WATCHERS']]))
+                          recipients=app.config['WATCHERS']))
         # Success page.
         page = pages.get('application-successful')
         return render_template('page.html', page=page)
@@ -717,7 +717,7 @@ def one_month_feedback():
                   + app.config['URL_BASE']+str(url_for('monthfeedback.details_view', id=follow_up.id))
         mail.send(Message(subject=subject,
                           body=message,
-                          recipients=[app.config['WATCHERS']]))
+                          recipients=app.config['WATCHERS']))
         # Flash success message.
         flash('Your one month feedback was submitted successfully, thank you.')
         return redirect(url_for('one_month_feedback'))
@@ -802,7 +802,7 @@ def one_year_feedback():
                   + app.config['URL_BASE']+str(url_for('yearfeedback.details_view', id=follow_up.id))
         mail.send(Message(subject=subject,
                           body=message,
-                          recipients=[app.config['WATCHERS']]))
+                          recipients=app.config['WATCHERS']))
         # Flash success message.
         flash('Your one year feedback was submitted successfully, thank you.')
         return redirect(url_for('one_year_feedback'))
