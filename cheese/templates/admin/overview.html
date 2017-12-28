@@ -135,14 +135,16 @@
         <td class="text-center" {{cell_bg(survey.result)}}>
           {{ edit_button('results', survey.result[0].id) }}
           {{ details_button('results', survey.result[0].id) }}
-          {{ macros.render_boolean(survey.result) }}
+          <a href="/admin/survey/{{survey.id}}#result">
+            {{ macros.render_boolean(survey.result) }}</a>
         </td>
         <!--Month feedback-->
         {% if survey.month_feedback %}
           <td class="text-center green-bg">
             {{ edit_button('month_feedback', survey.month_feedback[0].id) }}
             {{ details_button('month_feedback', survey.month_feedback[0].id) }}
-            {{ macros.render_boolean(survey.month_feedback) }}
+            <a href="/admin/survey/{{survey.id}}#month-feedback">
+              {{ macros.render_boolean(survey.month_feedback) }}</a>
           </td>
         {% elif survey.survey_date %}
           {% set due_date = get_one_month_date(survey.survey_date) %}
@@ -156,7 +158,8 @@
           <td class="text-center green-bg">
             {{ edit_button('year_feedback', survey.year_feedback[0].id) }}
             {{ details_button('year_feedback', survey.year_feedback[0].id) }}
-            {{ macros.render_boolean(survey.year_feedback) }}
+            <a href="/admin/survey/{{survey.id}}#year-feedback">
+              {{ macros.render_boolean(survey.year_feedback) }}</a>
           </td>
         {% elif survey.survey_date %}
           {% set due_date = get_one_year_date(survey.survey_date) %}
