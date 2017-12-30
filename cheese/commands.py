@@ -38,6 +38,7 @@ def resetdb():
                           name=mixer.RANDOM,
                           ward=get_random_ward,
                           free_survey_consideration=mixer.RANDOM,
+                          lead_status=mixer.RANDOM,
                           survey_request_date=get_random_date,
                           survey_date=get_random_date,
                           address_line=mixer.RANDOM,

@@ -85,6 +85,7 @@ class Surveys(db.Model):
     telephone                 = db.Column(db.String(20))
     mobile                    = db.Column(db.String(20))
     reference                 = db.Column(db.String(8))
+    lead_status               = db.Column(db.Enum(*SURVEY_LEAD_STATUSES))
     survey_request_date       = db.Column(db.Date,
                                   default=datetime.datetime.now().date())
     building_type             = db.Column(db.Enum(*BUILDING_TYPES))

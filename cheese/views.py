@@ -55,7 +55,10 @@ class ManagerModelView(AdminModelView):
 
 
 class CheeseAdminIndexView(admin.AdminIndexView):
-    filters = ['fee_paid',
+    filters = ['possible_lead',
+               'dead_lead',
+               'free_survey',
+               'fee_paid',
                'fee_not_paid',
                'box_collected',
                'box_not_collected',
@@ -74,6 +77,14 @@ class CheeseAdminIndexView(admin.AdminIndexView):
             query = query.filter(Surveys.survey_request_date >= start)
             query = query.filter(Surveys.survey_request_date < end)
         for name in active_filters:
+	    if name == 'possible_lead':
+	        query = query.filter((Surveys.lead_status == 'Possible') &
+		                     (Surveys.result == None))
+	    if name == 'dead_lead':
+	        query = query.filter((Surveys.lead_status == 'Dead') &
+		                     (Surveys.result == None))
+            if name == 'free_survey':
+                query = query.filter(Surveys.free_survey_consideration == True)
             if name == 'fee_paid':
                 query = query.filter(Surveys.fee_paid == True)
             if name == 'fee_not_paid':

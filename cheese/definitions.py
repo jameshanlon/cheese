@@ -27,3 +27,7 @@ OCCUPATION_TYPES = [
     'Rented council',
     'Rented housing association',
     'Other', ]
+SURVEY_LEAD_STATUSES = [
+    'Possible',
+    'Successful',
+    'Dead', ]
