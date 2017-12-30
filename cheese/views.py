@@ -16,7 +16,7 @@ from flask_admin.contrib import sqla
 from flask_user import login_required, roles_required, current_user
 from flask_mail import Message
 from flask_uploads import UploadNotAllowed
-from flask_wtf import Form, FlaskForm
+from flask_wtf import FlaskForm
 from flask_wtf.file import FileField, FileAllowed, FileRequired
 from sqlalchemy.event import listens_for
 from sqlalchemy.inspection import inspect
@@ -161,7 +161,7 @@ class CheeseAdminIndexView(admin.AdminIndexView):
         return active_phase, active_filters, reverse, surveys
 
     def get_delete_form(self):
-        class DeleteForm(Form):
+        class DeleteForm(FlaskForm):
             id = fields.HiddenField(validators=[validators.required()])
             url = fields.HiddenField()
         return DeleteForm()
