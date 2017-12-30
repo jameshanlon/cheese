@@ -12,7 +12,7 @@
     </a>
   </p>
 </div>
-<p>
+<!--<p>
 <strong>Phases:</strong>
 {% for phase in phases %}
   {% if phase == active_phase %}
@@ -29,7 +29,7 @@
     </a>
   {% endif %}
 {% endfor %}
-</p>
+</p>-->
 <p>
 <strong>Filters:</strong>
 {% for filter in filters %}
@@ -106,7 +106,7 @@
       </td>
       <td class="text-center" {{cell_bg(survey.fee_paid)}}>
         {% if survey.free_survey_consideration %}
-          <strong>Free survey</strong>
+          <strong>Free</strong>
         {% else %}
           <a href="{{add_to_query(set_fee_paid=(not survey.fee_paid), survey_id=survey.id)}}"
              onclick="return confirm('Are you sure you want to change this entry?')">

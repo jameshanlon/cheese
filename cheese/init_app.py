@@ -1,6 +1,7 @@
 import os
 from flask import Flask
 import flask_admin as admin
+from flask_admin.menu import MenuLink
 from flask_flatpages import FlatPages
 from flask_mail import Mail
 from flask_migrate import Migrate, MigrateCommand
@@ -47,25 +48,38 @@ def init_admin(app):
                              ThermalImageView
     global admin
     admin = admin.Admin(app, name='CHEESE database',
-                        index_view=CheeseAdminIndexView(name='Overview'),
+                        index_view=CheeseAdminIndexView(name='Summary'),
                         base_template='admin_master.html',
                         template_mode='bootstrap3')
+    admin.add_menu_item(MenuLink(name='Phase 3', url='/admin?phase=3'))
+    admin.add_menu_item(MenuLink(name='Phase 2', url='/admin?phase=2'))
+    admin.add_menu_item(MenuLink(name='Phase 1', url='/admin?phase=1'))
     admin.add_view(UserView(User, db.session,
-                            name='Users'))
+                            name='Users',
+                            category='Tables'))
     admin.add_view(AdminModelView(UserInvitation, db.session,
-                                  name='Invitations'))
+                                  name='Invitations',
+                                  category='Tables'))
     admin.add_view(AdminModelView(Role, db.session,
-                                  name='Roles'))
-    admin.add_view(SurveysView(Surveys, db.session))
-    admin.add_view(ResultsView(Results, db.session))
+                                  name='Roles',
+                                  category='Tables'))
+    admin.add_view(SurveysView(Surveys, db.session,
+                               category='Tables'))
+    admin.add_view(ResultsView(Results, db.session,
+                               category='Tables'))
     admin.add_view(MonthFeedbackView(MonthFeedback, db.session,
-                                     name='1 month feedback'))
+                                     name='1 month feedback',
+                                     category='Tables'))
     admin.add_view(YearFeedbackView(YearFeedback, db.session,
-                                    name='1 year feedback'))
-    admin.add_view(InventoryView(Inventory, db.session))
-    admin.add_view(KitsView(Kits, db.session))
+                                    name='1 year feedback',
+                                    category='Tables'))
+    admin.add_view(InventoryView(Inventory, db.session,
+                                 category='Tables'))
+    admin.add_view(KitsView(Kits, db.session,
+                            category='Tables'))
     admin.add_view(ThermalImageView(ThermalImage, db.session,
-                                    name='Thermal images'))
+                                    name='Thermal images',
+                                    category='Tables'))
 
 def init_app(app):
     global mail
