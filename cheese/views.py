@@ -58,6 +58,7 @@ class CheeseAdminIndexView(admin.AdminIndexView):
     filters = ['possible_lead',
                'dead_lead',
                'free_survey',
+               'paid_survey',
                'fee_paid',
                'fee_not_paid',
                'box_collected',
@@ -85,6 +86,8 @@ class CheeseAdminIndexView(admin.AdminIndexView):
 		                     (Surveys.result == None))
             if name == 'free_survey':
                 query = query.filter(Surveys.free_survey_consideration == True)
+            if name == 'paid_survey':
+                query = query.filter(Surveys.free_survey_consideration == False)
             if name == 'fee_paid':
                 query = query.filter(Surveys.fee_paid == True)
             if name == 'fee_not_paid':
