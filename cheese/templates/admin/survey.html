@@ -2,11 +2,13 @@
 {% import 'admin/macros.html' as macros %}
 
 {% macro display_entry(name, table, entry) -%}
-  <div class="pull-right">
-    <a href="{{url_for(name.replace('_', '')+'.edit_view', id=entry.id, url=request.path)}}">
-      <span class="fa fa-pencil glyphicon glyphicon-pencil"></span> edit record
-    </a>
-  </div>
+  {% if edit_permission %}
+    <div class="pull-right">
+      <a href="{{url_for(name.replace('_', '')+'.edit_view', id=entry.id, url=request.path)}}">
+        <span class="fa fa-pencil glyphicon glyphicon-pencil"></span> edit record
+      </a>
+    </div>
+  {% endif %}
   <table class="table table-condensed">
   <tbody>
   {% for column in table.c %}
@@ -39,9 +41,11 @@
               <a class="icon" href="{{url_for(table+'.details_view', id=x.id, url=request.path)}}">
                 <span class="fa fa-eye glyphicon glyphicon-eye-open"></span>
               </a>
-              <a class="icon" href="{{url_for(table+'.edit_view', id=x.id, url=request.path)}}">
-                <span class="fa fa-pencil glyphicon glyphicon-pencil"></span>
-              </a>
+              {% if edit_permission %}
+                <a class="icon" href="{{url_for(table+'.edit_view', id=x.id, url=request.path)}}">
+                  <span class="fa fa-pencil glyphicon glyphicon-pencil"></span>
+                </a>
+              {% endif %}
               <form class="icon" method="POST" action="{{url_for(table+'.delete_view') }}">
                 {{ delete_form.id(value=x.id) }}
                 {{ delete_form.url(value=request.path) }}
@@ -70,17 +74,17 @@
 
 {{ display_entry('surveys', surveys_table, survey) }}
 
-<a name="result">
+<a name="result"></a>
 <h2>Survey result</h2>
 
 {{ display_relation('results', results_table, survey.result) }}
 
-<a name="month-feedback">
+<a name="month-feedback"></a>
 <h2>One month feedback</h2>
 
 {{ display_relation('month_feedback', month_table, survey.month_feedback) }}
 
-<a name="year-feedback">
+<a name="year-feedback"></a>
 <h2>One year feedback</h2>
 
 {{ display_relation('year_feedback', year_table, survey.year_feedback) }}

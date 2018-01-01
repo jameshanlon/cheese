@@ -39,19 +39,40 @@ def view_string_html_formatter(view, context, model, name):
     return string_html_formatter(getattr(model, name))
 
 
+def has_edit_permission():
+    return current_user.has_role('admin', 'manager')
+
+
 class AdminModelView(sqla.ModelView):
+    """
+    Admins have access to special views such as invitations, users and roles.
+    """
     page_size = 100
     can_export = True
     can_view_details = True
     def is_accessible(self):
         return current_user.is_authenticated \
-                and current_user.has_role('admin')
+                 and current_user.has_role('admin')
 
 
-class ManagerModelView(AdminModelView):
+class GeneralModelView(sqla.ModelView):
+    """
+    All authenticated users can view the database, but not make changes.
+    """
+    page_size = 100
+    can_export = True
+    can_view_details = True
     def is_accessible(self):
-        return current_user.is_authenticated \
-                and current_user.has_role('admin', 'manager')
+        return current_user.is_authenticated
+    @property
+    def can_edit(self):
+        return has_edit_permission()
+    @property
+    def can_create(self):
+        return has_edit_permission()
+    @property
+    def can_delete(self):
+        return has_edit_permission()
 
 
 class CheeseAdminIndexView(admin.AdminIndexView):
@@ -170,8 +191,6 @@ class CheeseAdminIndexView(admin.AdminIndexView):
     def index(self):
         if not current_user.is_authenticated:
             return redirect(url_for('user.login'))
-        if not current_user.has_role('admin', 'manager'):
-            return self.render('admin/welcome.html')
         # Handle actions.
         if 'set_box_collected' in request.args:
             survey = Surveys.query.get(int(request.args.get('survey_id')))
@@ -201,7 +220,8 @@ class CheeseAdminIndexView(admin.AdminIndexView):
                            active_phase=active_phase,
                            filters=self.filters,
                            active_filters=active_filters,
-                           export_filename=export_filename)
+                           export_filename=export_filename,
+                           edit_permission=has_edit_permission())
 
     @expose('/export/<filename>')
     def export(self, filename):
@@ -240,14 +260,15 @@ class CheeseAdminIndexView(admin.AdminIndexView):
                 surveys_table=inspect(Surveys),
                 results_table=inspect(Results),
                 month_table=inspect(MonthFeedback),
-                year_table=inspect(YearFeedback))
+                year_table=inspect(YearFeedback),
+                edit_permission=has_edit_permission())
 
 
 class UserView(AdminModelView):
     column_list = ['email', 'roles']
 
 
-class SurveysView(ManagerModelView):
+class SurveysView(GeneralModelView):
     all_cols = set([
         'name',
         'address_line',
@@ -292,7 +313,7 @@ class SurveysView(ManagerModelView):
         'num_main_rooms': { 'label': 'Number of main rooms' }, }
 
 
-class ResultsView(ManagerModelView):
+class ResultsView(GeneralModelView):
     all_cols = set([
         'date',
         'lead_surveyor',
@@ -340,7 +361,7 @@ class ResultsView(ManagerModelView):
         'notes':             { 'rows': 8, 'cols': 20 }, }
 
 
-class MonthFeedbackView(ManagerModelView):
+class MonthFeedbackView(GeneralModelView):
     column_exclude_list = [
         'date',
         'annual_gas_kwh',
@@ -360,7 +381,7 @@ class MonthFeedbackView(ManagerModelView):
         'notes':             view_string_html_formatter, }
 
 
-class YearFeedbackView(ManagerModelView):
+class YearFeedbackView(GeneralModelView):
     column_exclude_list = [
         'date',
         'annual_gas_kwh',
@@ -387,7 +408,7 @@ class YearFeedbackView(ManagerModelView):
         'notes':                 view_string_html_formatter, }
 
 
-class InventoryView(ManagerModelView):
+class InventoryView(GeneralModelView):
     form_columns = [
             'name',
             'asset_number',
@@ -407,7 +428,7 @@ class InventoryView(ManagerModelView):
     column_filters = form_columns
 
 
-class KitsView(ManagerModelView):
+class KitsView(GeneralModelView):
     form_columns = ['name', 'notes', 'inventory']
     column_list = form_columns
     column_filters = column_list
@@ -424,7 +445,7 @@ def del_thermal_image(mapper, connection, target):
             pass
 
 
-class ThermalImageView(ManagerModelView):
+class ThermalImageView(GeneralModelView):
     can_create = False
     def _list_thumbnail(view, context, model, name):
         if not model.filename:
