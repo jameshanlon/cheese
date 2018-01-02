@@ -9,4 +9,4 @@ def after_registered_hook(sender, user, user_invite):
     message='Update their roles: '+app.config['URL_BASE']+'/admin/user/'
     mail.send(Message(subject=subject,
                       body=message,
-                      recipients=[app.config['ADMINS']]))
+                      recipients=app.config['ADMINS']))
