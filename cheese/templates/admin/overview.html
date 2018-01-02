@@ -56,10 +56,10 @@
       <th class="text-center"><a href="{{modify_query(sort='ward',           reverse=reverse)}}">Ward</a></th>
       <th>                    <a href="{{modify_query(sort='request_date',   reverse=reverse)}}">Request date</a></th>
       <th>                    <a href="{{modify_query(sort='survey_date',    reverse=reverse)}}">Survey date</a></th>
-      <th class="text-center"><a href="{{modify_query(sort='fee_paid',       reverse=reverse)}}">Fee paid?<br>(click to change)</a></th>
+      <th class="text-center"><a href="{{modify_query(sort='fee_paid',       reverse=reverse)}}">Fee paid?{% if edit_permission %}<br>(click to change)</a>{% endif %}</th>
       <th>                    <a href="{{modify_query(sort='lead_surveyor',  reverse=reverse)}}">Lead surveyor<br>& assistant</a></th>
       <th class="text-center"><a href="{{modify_query(sort='box_number',     reverse=reverse)}}">Box number</a></th>
-      <th class="text-center"><a href="{{modify_query(sort='box_collected',  reverse=reverse)}}">Box collected?<br>(click to change)</a></th>
+      <th class="text-center"><a href="{{modify_query(sort='box_collected',  reverse=reverse)}}">Box collected?{% if edit_permission %}<br>(click to change)</a>{% endif %}</th>
       <th class="text-center"><a href="{{modify_query(sort='got_result',     reverse=reverse)}}">Survey result</a></th>
       <th class="text-center"><a href="{{modify_query(sort='got_month',      reverse=reverse)}}">One month<br>(due/done)</a></th>
       <th class="text-center"><a href="{{modify_query(sort='got_year',       reverse=reverse)}}">One year<br>(due/done)</a></th>
@@ -110,9 +110,13 @@
         {% if survey.free_survey_consideration %}
           <strong>Free</strong>
         {% else %}
-          <a href="{{add_to_query(set_fee_paid=(not survey.fee_paid), survey_id=survey.id)}}"
-             onclick="return confirm('Are you sure you want to change this entry?')">
-            {{ macros.render_boolean(survey.fee_paid) }}</a>
+          {% if edit_permission %}
+            <a href="{{add_to_query(set_fee_paid=(not survey.fee_paid), survey_id=survey.id)}}"
+               onclick="return confirm('Are you sure you want to change this entry?')">
+              {{ macros.render_boolean(survey.fee_paid) }}</a>
+          {% else %}
+            {{ macros.render_boolean(survey.fee_paid) }}
+          {% endif %}
         {% endif %}
       </td>
       {% if survey.result %}
@@ -130,9 +134,13 @@
           {% endif %}
         </td>
         <td class="text-center" {{cell_bg(survey.box_collected)}}>
-          <a href="{{add_to_query(set_box_collected=(not survey.box_collected), survey_id=survey.id)}}"
-             onclick="return confirm('Are you sure you want to change this entry?')">
-            {{ macros.render_boolean(survey.box_collected) }}</a>
+          {% if edit_permission %}
+            <a href="{{add_to_query(set_box_collected=(not survey.box_collected), survey_id=survey.id)}}"
+               onclick="return confirm('Are you sure you want to change this entry?')">
+              {{ macros.render_boolean(survey.box_collected) }}</a>
+          {% else %}
+            {{ macros.render_boolean(survey.fee_paid) }}
+          {% endif %}
         </td>
         <td class="text-center" {{cell_bg(survey.result)}}>
           {{ edit_button('results', survey.result[0].id, edit_permission) }}
