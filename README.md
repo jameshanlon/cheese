@@ -14,6 +14,11 @@ $ source env/bin/activate
 $ pip install -r flask/requirements.txt
 ```
 
+Update Python packages:
+```
+$ pip install --upgrade -r flask/requirements.txt
+```
+
 ### Populate CONFIG
 
 - `CHEESE_MYSQL_HOST` must be set to the name of the MySQL Docker container.
@@ -56,19 +61,19 @@ $ python
 >>> db.session.add(user)
 >>> db.session.commit()
 ```
-Or use the `manage.py resetdb` command.
+Or use the `flask resetdb` command.
 
 ### Run the development server
 
 ```
 $ source env/bin/activate
 $ source CONFIG
-$ python manage.py runserver
+$ flask run
 ...
 ```
 Note that uWSGI can be run manually, e.g.:
 ```
-uwsgi --http 0.0.0.0:9000 --manage-script-name --wsgi-file wsgi.py --callable app
+uwsgi --http 0.0.0.0:9000 --manage-script-name --wsgi-file run.py --callable app
 ```
 
 ## Deployment notes
@@ -96,9 +101,9 @@ Create the migration and run the upgrade from in the container.
 ```
 $ docker exec -it <continer-name> bash
 $ cd /opt/www
-$ python manage.py db migrate
+$ flask db migrate
 ...
-$ python manage.py db upgrade
+$ flask db upgrade
 ...
 $ exit
 ```

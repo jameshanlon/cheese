@@ -1,7 +1,11 @@
 import datetime
-from flask_user import UserMixin
-from cheese.init_app import db
+from flask_user import SQLAlchemyAdapter, UserManager, UserMixin
+from flask_migrate import Migrate
+from flask_sqlalchemy import SQLAlchemy
 from cheese.definitions import *
+
+db = SQLAlchemy()
+migrate = Migrate(compare_type=True)
 
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
@@ -24,6 +28,9 @@ class UserInvitation(db.Model):
     invited_by_user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     token              = db.Column(db.String(100), nullable=False, server_default='')
 
+# Setup Flask-User
+db_adapter = SQLAlchemyAdapter(db, User, UserInvitationClass=UserInvitation)
+user_manager = UserManager()
 
 class Role(db.Model):
     id = db.Column(db.Integer(), primary_key=True)

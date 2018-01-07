@@ -13,7 +13,7 @@
     <i class="icon-user"></i> {{ current_user.email }} <span class="caret"></span>
   </a>
   <ul class="dropdown-menu">
-    <li><a href="{{url_for('index')}}">Back to website</a></li>
+    <li><a href="{{url_for('cheese.index')}}">Back to website</a></li>
     <li><a href="{{url_for('user.change_password')}}">Change password</a></li>
     <li><a href="{{url_for('user.logout')}}">Sign out</a></li>
   </ul>

@@ -1,10 +1,9 @@
 import datetime
 import random
-from cheese.init_app import manager, mixer, db, user_manager
-from cheese.models import User, Role, Surveys, Results, \
+from mixer.backend.flask import mixer
+from cheese.models import db, user_manager, User, Role, Surveys, Results, \
                           MonthFeedback, YearFeedback
 
-@manager.command
 def resetdb():
     "Create a test database"
     db.drop_all()

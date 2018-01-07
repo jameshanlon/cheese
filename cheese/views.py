@@ -3,19 +3,24 @@ import datetime
 import os
 import random
 import string
-from cheese.init_app import app, db, mail, images, pages, thumb
 from cheese.definitions import *
-from cheese.models import Surveys, Results, MonthFeedback, YearFeedback, \
-                          ThermalImage
-from flask import url_for, redirect, render_template, \
-                  render_template_string, request, flash, \
-                  Markup, send_from_directory
-import flask_admin as admin
+from cheese.models import db, Surveys, Results, \
+                          MonthFeedback, YearFeedback, \
+                          ThermalImage, Inventory, Kits, \
+                          User, UserInvitation, Role
+from flask import Blueprint, current_app, url_for, redirect, render_template, \
+                  render_template_string, request, flash, Markup, \
+                  send_from_directory
+import flask_admin
 from flask_admin import BaseView, helpers, expose
+from flask_admin.menu import MenuLink
 from flask_admin.contrib import sqla
-from flask_user import login_required, roles_required, current_user
-from flask_mail import Message
-from flask_uploads import UploadNotAllowed
+from flask_user import login_required, roles_required, current_user, \
+                       user_registered
+from flask_flatpages import FlatPages
+from flask_thumbnails import Thumbnail
+from flask_mail import Mail, Message
+from flask_uploads import UploadSet, UploadNotAllowed, IMAGES
 from flask_wtf import FlaskForm
 from flask_wtf.file import FileField, FileAllowed, FileRequired
 from sqlalchemy.event import listens_for
@@ -24,6 +29,57 @@ from wtforms import form, fields, validators
 from wtforms.fields.html5 import EmailField
 from wtforms_sqlalchemy.orm import model_form
 from werkzeug.utils import secure_filename
+
+mail = Mail()
+pages = FlatPages()
+thumb = Thumbnail()
+images = UploadSet('images', list(IMAGES)+[x.upper() for x in IMAGES])
+
+bp = Blueprint('cheese', __name__)
+
+def init_admin(admin):
+    admin.add_menu_item(MenuLink(name='Phase 3', url='/admin?phase=3'))
+    admin.add_menu_item(MenuLink(name='Phase 2', url='/admin?phase=2'))
+    admin.add_menu_item(MenuLink(name='Phase 1', url='/admin?phase=1'))
+    admin.add_view(UserView(User, db.session,
+                            name='Users',
+                            category='Tables'))
+    admin.add_view(AdminModelView(UserInvitation, db.session,
+                                  name='Invitations',
+                                  category='Tables'))
+    admin.add_view(AdminModelView(Role, db.session,
+                                  name='Roles',
+                                  category='Tables'))
+    admin.add_view(SurveysView(Surveys, db.session,
+                               category='Tables'))
+    admin.add_view(ResultsView(Results, db.session,
+                               category='Tables'))
+    admin.add_view(MonthFeedbackView(MonthFeedback, db.session,
+                                     name='1 month feedback',
+                                     category='Tables'))
+    admin.add_view(YearFeedbackView(YearFeedback, db.session,
+                                    name='1 year feedback',
+                                    category='Tables'))
+    admin.add_view(InventoryView(Inventory, db.session,
+                                 category='Tables'))
+    admin.add_view(KitsView(Kits, db.session,
+                            category='Tables'))
+    admin.add_view(ThermalImageView(ThermalImage, db.session,
+                                    name='Thermal images',
+                                    category='Tables'))
+
+#===-----------------------------------------------------------------------===#
+# Signals.
+#===-----------------------------------------------------------------------===#
+
+@user_registered.connect_via(bp)
+def after_registered_hook(sender, user, user_invite):
+    sender.logger.info("User {} registered".format(user.email))
+    subject='[CHEESE] User {} registered'.format(user.email)
+    message='Update their roles: '+app.config['URL_BASE']+'/admin/user/'
+    mail.send(Message(subject=subject,
+                      body=message,
+                      recipients=app.config['ADMINS']))
 
 #===-----------------------------------------------------------------------===#
 # Admin views.
@@ -75,7 +131,7 @@ class GeneralModelView(sqla.ModelView):
         return has_edit_permission()
 
 
-class CheeseAdminIndexView(admin.AdminIndexView):
+class CheeseAdminIndexView(flask_admin.AdminIndexView):
     filters = ['possible_lead',
                'dead_lead',
                'free_survey',
@@ -94,7 +150,7 @@ class CheeseAdminIndexView(admin.AdminIndexView):
     def filter_query(self, active_phase, active_filters):
         query = Surveys.query;
         if active_phase:
-            start = app.config['PHASE_START_DATES'][int(active_phase)-1]
+            start = current_app.config['PHASE_START_DATES'][int(active_phase)-1]
             end = start + datetime.timedelta(365.25)
             query = query.filter(Surveys.survey_request_date >= start)
             query = query.filter(Surveys.survey_request_date < end)
@@ -134,7 +190,7 @@ class CheeseAdminIndexView(admin.AdminIndexView):
         return query
 
     def sort_by_column(self, surveys, sort, reverse):
-        earliest_date = app.config['PHASE_START_DATES'][0]
+        earliest_date = current_app.config['PHASE_START_DATES'][0]
         def sort_surveys(key):
             return sorted(surveys, reverse=reverse, key=key)
         def sort_by_planned_survey_date():
@@ -209,7 +265,7 @@ class CheeseAdminIndexView(admin.AdminIndexView):
             args.pop('survey_id')
             return redirect(url_for('admin.index', **args))
         # Render page.
-        num_phases = len(app.config['PHASE_START_DATES'])
+        num_phases = len(current_app.config['PHASE_START_DATES'])
         phases = [str(x+1) for x in range(num_phases)]
         active_phase, active_filters, reverse, surveys = self.get_surveys()
         export_filename = 'cheese-surveys-'+datetime.datetime.now().strftime("%Y%m%d-%H%M%S")+'.csv'
@@ -234,7 +290,7 @@ class CheeseAdminIndexView(admin.AdminIndexView):
 			  'mobile',
                           'survey_date', ]
         _, _, _, surveys = self.get_surveys()
-        path = app.config['EXPORT_PATH']+'/'+filename
+        path = current_app.config['EXPORT_PATH']+'/'+filename
         f = open(path, 'w')
         writer = csv.writer(f)
         writer.writerow([field for field in export_headers])
@@ -248,7 +304,7 @@ class CheeseAdminIndexView(admin.AdminIndexView):
                    survey.survey_date, ]
             writer.writerow([unicode(s).encode("utf-8") for s in row])
         f.close()
-        return send_from_directory(app.config['EXPORT_DIR'],
+        return send_from_directory(current_app.config['EXPORT_DIR'],
                                    filename, as_attachment=True)
 
     @expose('/survey/<int:survey_id>')
@@ -438,7 +494,7 @@ class KitsView(GeneralModelView):
 def del_thermal_image(mapper, connection, target):
     if target.filename:
         try:
-            filename = os.path.join(app.config['UPLOADED_IMAGES_DEST'],
+            filename = os.path.join(current_app.config['UPLOADED_IMAGES_DEST'],
                                     target.filename)
             os.remove(filename)
         except OSError:
@@ -450,7 +506,7 @@ class ThermalImageView(GeneralModelView):
     def _list_thumbnail(view, context, model, name):
         if not model.filename:
             return ''
-        filename = os.path.join(app.config['UPLOADED_IMAGES_DEST'],
+        filename = os.path.join(current_app.config['UPLOADED_IMAGES_DEST'],
                                 model.filename)
         thumb_filename = thumb.thumbnail(filename, '100x100')
         return Markup('<a href="/{}"><img src="{}"></a>'.format(filename,
@@ -458,12 +514,11 @@ class ThermalImageView(GeneralModelView):
     column_formatters = { 'filename': _list_thumbnail, }
     column_exclude_list = ['date', ]
 
-
 #===-----------------------------------------------------------------------===#
 # Restricted pages.
 #===-----------------------------------------------------------------------===#
 
-@app.route('/submit-results', methods=['GET', 'POST'])
+@bp.route('/submit-results', methods=['GET', 'POST'])
 @login_required
 def submit_results():
     ResultsForm = model_form(Results, db_session=db.session, field_args={
@@ -503,10 +558,10 @@ def submit_results():
         subject = '[CHEESE] New survey result'
         message = 'For '+results.householders_name+', '+results.address_line \
                   + ' at '+str(datetime.datetime.today())+': ' \
-                  + app.config['URL_BASE']+str(url_for('results.details_view', id=results.id))
+                  + current_app.config['URL_BASE']+str(url_for('results.details_view', id=results.id))
         mail.send(Message(subject=subject,
                           body=message,
-                          recipients=app.config['WATCHERS']))
+                          recipients=current_app.config['WATCHERS']))
         # Flash success message.
         flash('Survey result submitted successfully.')
         return redirect(url_for('submit_results'))
@@ -535,7 +590,7 @@ def random_string(length):
     return ''.join(random.choice(string.ascii_uppercase + string.digits) \
                 for _ in range(length))
 
-@app.route('/upload-thermal-image', methods=['GET', 'POST'])
+@bp.route('/upload-thermal-image', methods=['GET', 'POST'])
 @login_required
 def upload_thermal_image():
     form = UploadThermalImageForm()
@@ -562,7 +617,7 @@ def upload_thermal_image():
     return render_template('upload-thermal-image.html', form=form)
 
 
-@app.route('/collected-thermal-images')
+@bp.route('/collected-thermal-images')
 @login_required
 def collected_thermal_images():
     images = ThermalImage.query.all()
@@ -583,7 +638,7 @@ def collected_thermal_images():
                            images=images)
 
 
-@app.route('/received-one-month-feedback')
+@bp.route('/received-one-month-feedback')
 @login_required
 def received_one_month_feedback():
     feedback = MonthFeedback.query.all()
@@ -591,7 +646,7 @@ def received_one_month_feedback():
                            feedback=feedback)
 
 
-@app.route('/received-one-year-feedback')
+@bp.route('/received-one-year-feedback')
 @login_required
 def received_one_year_feedback():
     feedback = YearFeedback.query.all()
@@ -648,7 +703,7 @@ class ApplySurveyForm(FlaskForm):
             validators=[validators.required()])
 
 
-@app.route('/apply-for-a-survey', methods=['GET', 'POST'])
+@bp.route('/apply-for-a-survey', methods=['GET', 'POST'])
 def apply_for_a_survey():
     form = ApplySurveyForm(request.form)
     if request.method=='POST' and helpers.validate_form_on_submit(form):
@@ -675,17 +730,17 @@ def apply_for_a_survey():
         subject = '[CHEESE] New request for a survey'
         message = 'From '+survey.name+', '+survey.address_line \
                   + ' at '+str(datetime.datetime.today())+': ' \
-                  + app.config['URL_BASE']+str(url_for('surveys.details_view', id=survey.id))
+                  + current_app.config['URL_BASE']+str(url_for('surveys.details_view', id=survey.id))
         mail.send(Message(subject=subject,
                           body=message,
-                          recipients=app.config['WATCHERS']))
+                          recipients=current_app.config['WATCHERS']))
         # Success page.
         page = pages.get('application-successful')
         return render_template('page.html', page=page)
     return render_template('apply-for-a-survey.html', form=form)
 
 
-@app.route('/one-month-feedback', methods=['GET', 'POST'])
+@bp.route('/one-month-feedback', methods=['GET', 'POST'])
 def one_month_feedback():
     not_needed = 'We only need this if we didn\'t collect this during the survey.'
     numbers_only = 'Please only use digits and (optionally) a decimal point, no other' \
@@ -749,17 +804,17 @@ def one_month_feedback():
         subject = '[CHEESE] New one-month response'
         message = 'From '+follow_up.householders_name+', '+follow_up.address \
                   + ' at '+str(datetime.datetime.today())+': ' \
-                  + app.config['URL_BASE']+str(url_for('monthfeedback.details_view', id=follow_up.id))
+                  + current_app.config['URL_BASE']+str(url_for('monthfeedback.details_view', id=follow_up.id))
         mail.send(Message(subject=subject,
                           body=message,
-                          recipients=app.config['WATCHERS']))
+                          recipients=current_app.config['WATCHERS']))
         # Flash success message.
         flash('Your one month feedback was submitted successfully, thank you.')
         return redirect(url_for('one_month_feedback'))
     return render_template('one-month-feedback.html', form=form)
 
 
-@app.route('/one-year-feedback', methods=['GET', 'POST'])
+@bp.route('/one-year-feedback', methods=['GET', 'POST'])
 def one_year_feedback():
     numbers_only = 'Please only use digits and (optionally) a decimal point, no other' \
                     +' punctuation or symbols.'
@@ -834,10 +889,10 @@ def one_year_feedback():
         subject = '[CHEESE] New one-year response'
         message = 'From '+follow_up.householders_name+', '+follow_up.address \
                   + ' at '+str(datetime.datetime.today())+': ' \
-                  + app.config['URL_BASE']+str(url_for('yearfeedback.details_view', id=follow_up.id))
+                  + current_app.config['URL_BASE']+str(url_for('yearfeedback.details_view', id=follow_up.id))
         mail.send(Message(subject=subject,
                           body=message,
-                          recipients=app.config['WATCHERS']))
+                          recipients=current_app.config['WATCHERS']))
         # Flash success message.
         flash('Your one year feedback was submitted successfully, thank you.')
         return redirect(url_for('one_year_feedback'))
@@ -856,12 +911,12 @@ def get_articles():
     return articles
 
 
-@app.errorhandler(404)
+@bp.errorhandler(404)
 def page_not_found(e):
     return render_template('404.html'), 404
 
 
-@app.route('/')
+@bp.route('/')
 def index():
     articles = get_articles()
     if len(articles) >= 3:
@@ -869,7 +924,7 @@ def index():
     return render_template('index.html', articles=articles)
 
 
-@app.route('/<path:path>')
+@bp.route('/<path:path>')
 def page(path):
     page = pages.get_or_404(path)
     if 'article' in page.meta:
@@ -878,16 +933,16 @@ def page(path):
     return render_template(template, page=page)
 
 
-@app.route('/blog/<path:path>')
+@bp.route('/blog/<path:path>')
 def article(path):
     page = pages.get_or_404(path)
     if not 'article' in page.meta:
         return render_template('404.html'), 404
     return render_template('article.html', page=page,
-                           path=app.config['URL_BASE']+request.path)
+                           path=current_app.config['URL_BASE']+request.path)
 
 
-@app.route('/home-surveys')
+@bp.route('/home-surveys')
 def home_surveys():
     # Flat page with template code.
     page = pages.get('home-surveys')
@@ -896,7 +951,7 @@ def home_surveys():
     return render_template(template, page=page)
 
 
-@app.route('/cheese-box')
+@bp.route('/cheese-box')
 def cheese_box():
     # Flat page with template code.
     page = pages.get('cheese-box')
@@ -905,7 +960,7 @@ def cheese_box():
     return render_template(template, page=page)
 
 
-@app.route('/overview')
+@bp.route('/overview')
 def overview():
     # Flat page with template code.
     page = pages.get('overview')
@@ -914,7 +969,7 @@ def overview():
     return render_template(template, page=page)
 
 
-@app.route('/events')
+@bp.route('/events')
 def events():
     # Flat page with template code.
     page = pages.get('events')

@@ -1,6 +1,8 @@
-from cheese.init_app import app
+from flask import Blueprint
 
-@app.template_filter('format_db_name')
+bp = Blueprint('filters', __name__)
+
+@bp.app_template_filter('format_db_name')
 def format_db_name(name):
     name = name.replace('_', ' ')
     return name[0].upper() + name[1:]
