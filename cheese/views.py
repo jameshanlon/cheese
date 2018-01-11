@@ -915,6 +915,9 @@ def get_articles():
 def page_not_found(e):
     return render_template('404.html'), 404
 
+@bp.route('/robots.txt')
+def static_from_root():
+    return send_from_directory(current_app.static_folder, request.path[1:])
 
 @bp.route('/')
 def index():
