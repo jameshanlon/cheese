@@ -2,10 +2,43 @@ import datetime
 from flask_user import SQLAlchemyAdapter, UserManager, UserMixin
 from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
-from cheese.definitions import *
 
 db = SQLAlchemy()
 migrate = Migrate(compare_type=True)
+
+WARDS = [
+    'Bishopston',
+    'Cotham',
+    'Easton',
+    'Filwood (Knowle West)',
+    'Lawrence Weston',
+    'Redland',
+    'Other', ]
+BUILDING_TYPES = [
+    'Flat',
+    'Maisonette',
+    'Mid terrace',
+    'End terrace',
+    'Semi-detatched',
+    'Detatched',
+    'Other', ]
+WALL_CONSTRUCTION_TYPES = [
+    'Solid brick',
+    'Insulated cavity',
+    'Uninsulated cavity',
+    'Stone',
+    'Timber',
+    'Other', ]
+OCCUPATION_TYPES = [
+    'Owned',
+    'Rented privately',
+    'Rented council',
+    'Rented housing association',
+    'Other', ]
+SURVEY_LEAD_STATUSES = [
+    'Possible',
+    'Successful',
+    'Dead', ]
 
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
@@ -225,4 +258,4 @@ class ThermalImage(db.Model):
                                      default=datetime.datetime.now())
 
     def __repr__(self):
-        return '<Thermal image '+filename+'>'
+        return '<Thermal image '+self.filename+'>'

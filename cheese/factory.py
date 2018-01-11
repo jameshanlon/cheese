@@ -1,4 +1,3 @@
-import os
 from flask import Flask
 import flask_admin
 from flask_uploads import configure_uploads, patch_request_class

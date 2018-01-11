@@ -3,8 +3,7 @@ import datetime
 import os
 import random
 import string
-from cheese.definitions import *
-from cheese.models import db, Surveys, Results, \
+from cheese.models import db, WARDS, BUILDING_TYPES, Surveys, Results, \
                           MonthFeedback, YearFeedback, \
                           ThermalImage, Inventory, Kits, \
                           User, UserInvitation, Role
@@ -12,11 +11,10 @@ from flask import Blueprint, current_app, url_for, redirect, render_template, \
                   render_template_string, request, flash, Markup, \
                   send_from_directory
 import flask_admin
-from flask_admin import BaseView, helpers, expose
+from flask_admin import helpers, expose
 from flask_admin.menu import MenuLink
 from flask_admin.contrib import sqla
-from flask_user import login_required, roles_required, current_user, \
-                       user_registered
+from flask_user import login_required, current_user, user_registered
 from flask_flatpages import FlatPages
 from flask_thumbnails import Thumbnail
 from flask_mail import Mail, Message
@@ -25,7 +23,7 @@ from flask_wtf import FlaskForm
 from flask_wtf.file import FileField, FileAllowed, FileRequired
 from sqlalchemy.event import listens_for
 from sqlalchemy.inspection import inspect
-from wtforms import form, fields, validators
+from wtforms import fields, validators
 from wtforms.fields.html5 import EmailField
 from wtforms_sqlalchemy.orm import model_form
 from werkzeug.utils import secure_filename
@@ -76,10 +74,10 @@ def init_admin(admin):
 def after_registered_hook(sender, user, user_invite):
     sender.logger.info("User {} registered".format(user.email))
     subject='[CHEESE] User {} registered'.format(user.email)
-    message='Update their roles: '+app.config['URL_BASE']+'/admin/user/'
+    message='Update their roles: '+current_app.config['URL_BASE']+'/admin/user/'
     mail.send(Message(subject=subject,
                       body=message,
-                      recipients=app.config['ADMINS']))
+                      recipients=current_app.config['ADMINS']))
 
 #===-----------------------------------------------------------------------===#
 # Admin views.
