@@ -1,10 +1,12 @@
 {% macro render_form_field(f) -%}
   {{ f.label(class_="control-label") }}
   {% if f.description %}
-    <p class="help-block">{{ f.description | safe}}</p>
+    <p class="help-block">{{ f.description | safe }}</p>
   {% endif %}
   {% if f.type == "FileField" %}
     {{ f }}
+  {% elif f.type == "DateField" %}
+    {{ f(class_="datepicker") }}
   {% else %}
     {{ f(class_="form-control") }}
   {% endif %}

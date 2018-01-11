@@ -23,7 +23,7 @@ from flask_wtf import FlaskForm
 from flask_wtf.file import FileField, FileAllowed, FileRequired
 from sqlalchemy.event import listens_for
 from sqlalchemy.inspection import inspect
-from wtforms import fields, validators
+from wtforms import fields, validators, widgets
 from wtforms.fields.html5 import EmailField
 from wtforms_sqlalchemy.orm import model_form
 from werkzeug.utils import secure_filename
@@ -738,32 +738,63 @@ def apply_for_a_survey():
     return render_template('apply-for-a-survey.html', form=form)
 
 
+class DatePickerWidget(widgets.TextInput):
+    """ A custom date picker widget, using Bootstrap-datetimepicker. """
+    def __call__(self, field, **kwargs):
+        html = """<div class='input-group date' id='datetimepicker'>
+                    <input type='text' class='form-control' %s/>
+                      <span class='input-group-addon'>
+                        <span class='glyphicon glyphicon-calendar'></span>
+                      </span>
+                   </div>"""
+        return Markup(html % (self.html_params(name=field.name, **kwargs)))
+
+
 @bp.route('/one-month-feedback', methods=['GET', 'POST'])
 def one_month_feedback():
     not_needed = 'We only need this if we didn\'t collect this during the survey.'
-    numbers_only = 'Please only use digits and (optionally) a decimal point, no other' \
-                    +' punctuation or symbols.'
-    kwh_help = 'For help with calculating the value, please see ' \
-                +'<a href="/cheese-box#recording-energy-use">our guide</a>.' \
-                +'<br>'+not_needed+'<br>'+numbers_only
+    numbers_only = \
+        """Please only use digits and (optionally) a decimal point, no other
+        punctuation or symbols."""
+    kwh_help = \
+        """Please note:<ul>
+        <li>It is important that we have accurate energy figures, not ones that
+        extrapolate from previous use.</li>
+        <li>{}</li>
+        <li>{}</li>
+        </ul>
+        For help with calculating the value, please see
+          <a href="/cheese-box#recording-energy-use">our guide</a>.""".format(not_needed, numbers_only)
     MonthFeedbackForm = model_form(MonthFeedback, db_session=db.session,
         exclude=['date', 'submitted_by', 'survey', 'notes'],
         field_args={
           'householders_name': {
-            'label': 'Name',
-            'validators': [validators.required()], },
+               'label': 'Name',
+               'validators': [validators.required()], },
           'address': {
                'label': 'Address',
                'validators': [validators.required()], },
           'annual_gas_kwh': {
               'label': 'Total annual gas usage in kWh',
               'description': kwh_help, },
+          'annual_gas_measured': {
+              'label': 'Is the annual gas figure based on meter readings in the last year?',
+              'description': 'Only tick this box if the figure is not an estimate based on previous usage.', },
+          'annual_gas_start_date': {
+              'label': 'The start date of the annual gas usage figure.',
+              'widget': DatePickerWidget() },
           'annual_elec_kwh': {
               'label': 'Total annual electricity usage in kWh',
               'description': kwh_help, },
-           'annual_solid_spend': {
+          'annual_elec_measured': {
+              'label': 'Is the annual electricity figure based on meter readings in the last year?',
+              'description': 'Only tick this box if the figure is not an estimate based on previous usage.', },
+          'annual_elec_start_date': {
+              'label': 'The start date of the annual electricity usage figure.',
+              'widget': DatePickerWidget(), },
+          'annual_solid_spend': {
               'label': 'Total annual spend in pounds (&pound;) on solid fuels',
-              'description': 'Such as wood, coal etc.<br>'+not_needed, },
+              'description': 'Such as wood, coal etc. '+not_needed, },
           'renewable_contrib_kwh': {
               'label': 'Total annual contribution of any renewable generation in kWh',
               'description': 'Such as from solar PV or a ground-source heat pump.<br>'+not_needed, },
