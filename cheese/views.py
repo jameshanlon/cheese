@@ -676,22 +676,6 @@ def collected_thermal_images():
                            images=images)
 
 
-@bp.route('/received-one-month-feedback')
-@login_required
-def received_one_month_feedback():
-    feedback = MonthFeedback.query.all()
-    return render_template('received-feedback.html', type='one-month',
-                           feedback=feedback)
-
-
-@bp.route('/received-one-year-feedback')
-@login_required
-def received_one_year_feedback():
-    feedback = YearFeedback.query.all()
-    return render_template('received-feedback.html', type='one-year',
-                           feedback=feedback)
-
-
 #===-----------------------------------------------------------------------===#
 # Public pages.
 #===-----------------------------------------------------------------------===#
