@@ -220,6 +220,9 @@ img {
   padding: 1.2em;
 }
 
+.rating-1to5 input[type=radio] { margin-right: 0.4em; }
+.rating-1to5 span { padding-right: 1em; }
+
 footer {
   color:gray;
   width:100%;

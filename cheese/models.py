@@ -35,6 +35,19 @@ OCCUPATION_TYPES = [
     'Rented council',
     'Rented housing association',
     'Other', ]
+WATER_HEATING_TYPES = [
+    'Unknown',
+    'Gas',
+    'Electricity',
+    'Solar',
+    'Shared/municipal',
+    'Geothermal',
+    'Other', ]
+COOKING_TYPES = [
+    'Unknown',
+    'Gas',
+    'Electricity',
+    'Other', ]
 SURVEY_LEAD_STATUSES = [
     'Possible',
     'Successful',
@@ -175,12 +188,21 @@ class Results(db.Model):
     occupation_type            = db.Column(db.Enum(*OCCUPATION_TYPES))
     primary_heating_type       = db.Column(db.String(150))
     secondary_heating_type     = db.Column(db.String(150))
+    water_heating_type         = db.Column(db.Enum(*WATER_HEATING_TYPES))
+    cooking_type               = db.Column(db.Enum(*COOKING_TYPES))
+    occupation_type            = db.Column(db.Enum(*OCCUPATION_TYPES))
     depth_loft_insulation      = db.Column(db.String(150))
     number_open_fireplaces     = db.Column(db.String(150))
     double_glazing             = db.Column(db.String(150))
     num_occupants              = db.Column(db.Integer)
     annual_gas_kwh             = db.Column(db.Float)
+    annual_gas_estimated       = db.Column(db.Boolean)
+    annual_gas_start_date      = db.Column(db.Date)
+    annual_gas_end_date        = db.Column(db.Date)
     annual_elec_kwh            = db.Column(db.Float)
+    annual_elec_estimated      = db.Column(db.Boolean)
+    annual_elec_start_date     = db.Column(db.Date)
+    annual_elec_end_date       = db.Column(db.Date)
     annual_solid_spend         = db.Column(db.Float)
     renewable_contribution_kwh = db.Column(db.Float)
     faults_identified          = db.Column(db.Text)
@@ -202,16 +224,24 @@ class MonthFeedback(db.Model):
     householders_name      = db.Column(db.String(50))
     address                = db.Column(db.String(100))
     annual_gas_kwh         = db.Column(db.Float)
-    annual_gas_measured    = db.Column(db.Boolean)
+    annual_gas_estimated   = db.Column(db.Boolean)
     annual_gas_start_date  = db.Column(db.Date)
+    annual_gas_end_date    = db.Column(db.Date)
     annual_elec_kwh        = db.Column(db.Float)
-    annual_elec_measured   = db.Column(db.Boolean)
+    annual_elec_estimated  = db.Column(db.Boolean)
     annual_elec_start_date = db.Column(db.Date)
+    annual_elec_end_date   = db.Column(db.Date)
     annual_solid_spend     = db.Column(db.Float)
     renewable_contrib_kwh  = db.Column(db.Float)
     completed_actions      = db.Column(db.Text)
     planned_actions        = db.Column(db.Text)
     cheese_box             = db.Column(db.Text)
+    satisfaction_1to5      = db.Column(db.Integer)
+    cheese_box_1to5        = db.Column(db.Integer)
+    survey_video_1to5      = db.Column(db.Integer)
+    surveyor_conduct_1to5  = db.Column(db.Integer)
+    survey_value_1to5      = db.Column(db.Integer)
+    recommend_1to5         = db.Column(db.Integer)
     feedback               = db.Column(db.Text)
     notes                  = db.Column(db.Text)
     # Survey ref
@@ -224,24 +254,32 @@ class MonthFeedback(db.Model):
 
 class YearFeedback(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    date                  = db.Column(db.DateTime,
-                                      default=datetime.datetime.now())
-    submitted_by          = db.Column(db.String(50))
-    householders_name     = db.Column(db.String(50))
-    address               = db.Column(db.String(100))
-    annual_gas_kwh        = db.Column(db.Float)
-    annual_elec_kwh       = db.Column(db.Float)
-    annual_solid_spend    = db.Column(db.Float)
-    renewable_contrib_kwh = db.Column(db.Float)
-    diy_work              = db.Column(db.Text)
-    prof_work             = db.Column(db.Text)
-    contractors_used      = db.Column(db.Text)
-    total_spent           = db.Column(db.Float)
-    planned_work          = db.Column(db.Text)
-    wellbeing_improvement = db.Column(db.Text)
-    behaviour_changes     = db.Column(db.Text)
-    feedback              = db.Column(db.Text)
-    notes                 = db.Column(db.Text)
+    date                   = db.Column(db.DateTime,
+                                       default=datetime.datetime.now())
+    submitted_by           = db.Column(db.String(50))
+    householders_name      = db.Column(db.String(50))
+    address                = db.Column(db.String(100))
+    annual_gas_kwh         = db.Column(db.Float)
+    annual_gas_estimated   = db.Column(db.Boolean)
+    annual_gas_start_date  = db.Column(db.Date)
+    annual_gas_end_date    = db.Column(db.Date)
+    annual_elec_kwh        = db.Column(db.Float)
+    annual_elec_estimated  = db.Column(db.Boolean)
+    annual_elec_start_date = db.Column(db.Date)
+    annual_elec_end_date   = db.Column(db.Date)
+    annual_solid_spend     = db.Column(db.Float)
+    renewable_contrib_kwh  = db.Column(db.Float)
+    diy_work               = db.Column(db.Text)
+    prof_work              = db.Column(db.Text)
+    contractors_used       = db.Column(db.Text)
+    total_spent            = db.Column(db.Float)
+    total_spent_diy        = db.Column(db.Float)
+    total_spent_local      = db.Column(db.Float)
+    planned_work           = db.Column(db.Text)
+    wellbeing_improvement  = db.Column(db.Text)
+    behaviour_changes      = db.Column(db.Text)
+    feedback               = db.Column(db.Text)
+    notes                  = db.Column(db.Text)
     # Survey ref
     survey_id = db.Column(db.Integer, db.ForeignKey('surveys.id'))
     survey    = db.relationship('Surveys')

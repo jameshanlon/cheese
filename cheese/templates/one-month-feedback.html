@@ -12,10 +12,59 @@ for us to demonstrate the effectivness of what we do.</p>
 
 <p>Please complete the form below to provide us with your one-month feedback.</p>
 
-{{ macros.render_form(form, 'one-month-feedback',
-    'Please note: your data remains confidential with The CHEESE Project, \
-    however, in order for us to be able to collect data city-wide on building \
-    faults and energy saving, etc. we may use anonymised details for the \
-    purposes of analysis, publicity, fund-raising etc.') }}
+<div id="one-month-feedback" style="padding-top:1.2em">
+  <form method="POST" action="" enctype="multipart/form-data">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+    {{ macros.render_form_field(form.householders_name) }}
+    {{ macros.render_form_field(form.address) }}
+    {{ macros.form_section('Your electricity use') }}
+    <p>Please provide details of your total annual electricity use for the year
+    period before your survey in the fields below. For help with calculating the
+    value, please see <a href="/cheese-box#recording-energy-use">our guide</a>. It
+    is important that we have accurate energy figures, not ones that extrapolate
+    from previous use. If however you only have estimated ones, tick the box
+    below.</p>
+    {{ macros.render_form_field(form.annual_elec_kwh) }}
+    {{ macros.render_form_field(form.annual_elec_estimated) }}
+    {{ macros.render_form_field(form.annual_elec_start_date) }}
+    {{ macros.render_form_field(form.annual_elec_end_date) }}
+    {{ macros.end_form_section() }}
+    {{ macros.form_section('Your gas use') }}
+    <p>Please provide details of your total annual gas use for the year
+    period before your survey in the fields below. For help with calculating the
+    value, please see <a href="/cheese-box#recording-energy-use">our guide</a>. It
+    is important that we have accurate energy figures, not ones that extrapolate
+    from previous use. If however you only have estimated ones, tick the box
+    below.</p>
+    {{ macros.render_form_field(form.annual_gas_kwh) }}
+    {{ macros.render_form_field(form.annual_gas_estimated) }}
+    {{ macros.render_form_field(form.annual_gas_start_date) }}
+    {{ macros.render_form_field(form.annual_gas_end_date) }}
+    {{ macros.end_form_section() }}
+    {{ macros.form_section('Other energy use') }}
+    {{ macros.render_form_field(form.annual_solid_spend) }}
+    {{ macros.render_form_field(form.renewable_contrib_kwh) }}
+    {{ macros.end_form_section() }}
+    {{ macros.form_section('Remedial work') }}
+    {{ macros.render_form_field(form.completed_actions) }}
+    {{ macros.render_form_field(form.planned_actions) }}
+    {{ macros.end_form_section() }}
+    {{ macros.form_section('Feedback to us') }}
+    {{ macros.render_form_field(form.satisfaction_1to5) }}
+    {{ macros.render_form_field(form.cheese_box_1to5) }}
+    {{ macros.render_form_field(form.survey_video_1to5) }}
+    {{ macros.render_form_field(form.surveyor_conduct_1to5) }}
+    {{ macros.render_form_field(form.survey_value_1to5) }}
+    {{ macros.render_form_field(form.recommend_1to5) }}
+    {{ macros.render_form_field(form.cheese_box) }}
+    {{ macros.render_form_field(form.feedback) }}
+    <label></label>
+    <p>Please note: your data remains confidential with The CHEESE Project,
+    however, in order for us to be able to collect data city-wide on building
+    faults and energy saving, etc. we may use anonymised details for the
+    purposes of analysis, publicity, fund-raising etc.</p>
+    <button class="btn" type="submit">Submit</button>
+  </form>
+</div>
 
 {% endblock %}

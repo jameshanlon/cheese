@@ -1,15 +1,39 @@
+{% macro render_form_field_base(f) -%}
+  <div class="form-group">
+    {{ f.label(class_="control-label") }}
+    {% if f.description %}
+      <p class="help-block">{{ f.description | safe }}</p>
+    {% endif %}
+    {% if f.type == "FileField" or f.name.endswith('_1to5') %}
+      {{ f }}
+    {% else %}
+      {{ f(class_="form-control") }}
+    {% endif %}
+  </div>
+{%- endmacro %}
+
 {% macro render_form_field(f) -%}
-  {{ f.label(class_="control-label") }}
-  {% if f.description %}
-    <p class="help-block">{{ f.description | safe }}</p>
-  {% endif %}
-  {% if f.type == "FileField" %}
-    {{ f }}
-  {% elif f.type == "DateField" %}
-    {{ f(class_="datepicker") }}
+  {% if f.errors %}
+    <div class="form-group has-error">
+      {{ render_form_field_base(f) }}
+      {% for e in f.errors %}
+        <span class="help-block">{{ e }}</span>
+      {% endfor %}
+    </div>
   {% else %}
-    {{ f(class_="form-control") }}
+    {{ render_form_field_base(f) }}
   {% endif %}
+{%- endmacro %}
+
+{% macro form_section(name) -%}
+  <div class="panel panel-default">
+  <div class="panel-heading">{{name}}</div>
+  <div class="panel-body">
+{%- endmacro %}
+
+{% macro end_form_section() -%}
+  </div>
+  </div>
 {%- endmacro %}
 
 {% macro render_form(form, name, submit_description=None) -%}
@@ -17,18 +41,7 @@
   <form method="POST" action="" enctype="multipart/form-data">
     <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
     {% for f in form if f.type != 'CSRFTokenField' %}
-      {% if f.errors %}
-        <div class="form-group has-error">
-          {{ render_form_field(f) }}
-          {% for e in f.errors %}
-            <span class="help-block">{{ e }}</span>
-          {% endfor %}
-        </div>
-      {% else %}
-        <div class="form-group">
-          {{ render_form_field(f) }}
-        </div>
-      {% endif %}
+      {{ render_form_field(f) }}
     {% endfor %}
     <label></label>
     {% if submit_description %}<p>{{submit_description}}</p>{% endif %}

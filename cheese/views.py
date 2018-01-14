@@ -35,6 +35,31 @@ images = UploadSet('images', list(IMAGES)+[x.upper() for x in IMAGES])
 
 bp = Blueprint('cheese', __name__)
 
+
+class DatePickerWidget(widgets.TextInput):
+    """ A custom date picker widget, using Bootstrap-datetimepicker. """
+    def __call__(self, field, **kwargs):
+        html = """<div class='input-group date' id='datetimepicker'>
+                    <input type='text' class='form-control' %s/>
+                      <span class='input-group-addon'>
+                        <span class='glyphicon glyphicon-calendar'></span>
+                      </span>
+                   </div>"""
+        return Markup(html % (self.html_params(name=field.name, **kwargs)))
+
+
+class OneToFiveWidget(widgets.Input):
+    """ A custom widget for 1-to-5 ratings. """
+    def __call__(self, field, **kwargs):
+        html = """<div class="rating-1to5">
+                  <span><input type="radio" name="{0}" value="1" {1}>1</span>
+                  <span><input type="radio" name="{0}" value="2" {1}>2</span>
+                  <span><input type="radio" name="{0}" value="3" {1}>3</span>
+                  <span><input type="radio" name="{0}" value="4" {1}>4</span>
+                  <span><input type="radio" name="{0}" value="5" {1}>5</span>
+                  </div>"""
+        return Markup(html.format(field.name, self.html_params(**kwargs)))
+
 def init_admin(admin):
     admin.add_menu_item(MenuLink(name='Phase 3', url='/admin?phase=3'))
     admin.add_menu_item(MenuLink(name='Phase 2', url='/admin?phase=2'))
@@ -525,8 +550,9 @@ def submit_results():
         "assistant_surveyor":         { "label": "Assistant surveyor", },
         "householders_name":          { "label": "Householder's name", },
         "address_line":               { "label": "Address line", },
-        "survey_date":                { "label": "Survey date (dd-mm-yyyy)",
-                                        "format": "%d-%m-%Y", },
+        "survey_date":                { "label": "Survey date (dd/mm/yyyy)",
+                                        "format": "%d/%m/%Y",
+                                        "widget": DatePickerWidget(), },
         "external_temperature":       { "label": "External temperature (C)", },
         "loaned_cheese_box":          { "label": "CHEESE box loaned?", },
         "cheese_box_number":          { "label": "CHEESE box number", },
@@ -538,10 +564,24 @@ def submit_results():
         "secondary_heating_type":     { "label": "Secondary heating type", },
         "depth_loft_insulation":      { "label": "Depth of loft insulation (mm)", },
         "number_open_fireplaces":     { "label": "Number of open fireplaces", },
-        "double_glazing":             { "label": "Amount of double glazing", },
+        "double_glazing":             { "label": "Amount of double glazing (%)", },
         "num_occupants":              { "label": "Number of occupants", },
-        "annual_gas_kwh":             { "label": "Annual gas consumption (kWh)", },
-        "annual_elec_kwh":            { "label": "Annual electricity consumption (kWh)", },
+        "annual_gas_kwh":             { "label": "Annual consumption (kWh)", },
+        "annual_gas_estimated":       { "label": "Is the value based on estimated use?", },
+        "annual_gas_start_date":      { "label": "Start date (dd/mm/yyy)",
+                                        "format": "%d/%m/%Y",
+                                        "widget": DatePickerWidget(), },
+        "annual_gas_end_date":        { "label": "End date (dd/mm/yyy)",
+                                        "format": "%d/%m/%Y",
+                                        "widget": DatePickerWidget(), },
+        "annual_elec_kwh":            { "label": "Annual consumption (kWh)", },
+        "annual_elec_estimated":      { "label": "Is the value based on estimated use??", },
+        "annual_elec_start_date":     { "label": "Start date (dd/mm/yyy)",
+                                        "format": "%d/%m/%Y",
+                                        "widget": DatePickerWidget(), },
+        "annual_elec_end_date":       { "label": "End date (dd/mm/yyy)",
+                                        "format": "%d/%m/%Y",
+                                        "widget": DatePickerWidget(), },
         "annual_solid_spend":         { "label": "Annual spend on solid fuels (&pound;)", },
         "renewable_contribution_kwh": { "label": "Annual contribution from renewable generation (kWh)", },
         "faults_identified":          { "label": "Faults identified", },
@@ -562,7 +602,7 @@ def submit_results():
                           recipients=current_app.config['WATCHERS']))
         # Flash success message.
         flash('Survey result submitted successfully.')
-        return redirect(url_for('submit_results'))
+        return redirect(url_for('cheese.submit_results'))
     return render_template('submit-results.html', form=form)
 
 
@@ -611,7 +651,7 @@ def upload_thermal_image():
             db.session.add(thermal_image)
             db.session.commit()
             flash('The thermal image has been submitted successfully.')
-            return redirect(url_for('upload_thermal_image'))
+            return redirect(url_for('cheese.upload_thermal_image'))
     return render_template('upload-thermal-image.html', form=form)
 
 
@@ -738,33 +778,10 @@ def apply_for_a_survey():
     return render_template('apply-for-a-survey.html', form=form)
 
 
-class DatePickerWidget(widgets.TextInput):
-    """ A custom date picker widget, using Bootstrap-datetimepicker. """
-    def __call__(self, field, **kwargs):
-        html = """<div class='input-group date' id='datetimepicker'>
-                    <input type='text' class='form-control' %s/>
-                      <span class='input-group-addon'>
-                        <span class='glyphicon glyphicon-calendar'></span>
-                      </span>
-                   </div>"""
-        return Markup(html % (self.html_params(name=field.name, **kwargs)))
-
-
 @bp.route('/one-month-feedback', methods=['GET', 'POST'])
 def one_month_feedback():
     not_needed = 'We only need this if we didn\'t collect this during the survey.'
-    numbers_only = \
-        """Please only use digits and (optionally) a decimal point, no other
-        punctuation or symbols."""
-    kwh_help = \
-        """Please note:<ul>
-        <li>It is important that we have accurate energy figures, not ones that
-        extrapolate from previous use.</li>
-        <li>{}</li>
-        <li>{}</li>
-        </ul>
-        For help with calculating the value, please see
-          <a href="/cheese-box#recording-energy-use">our guide</a>.""".format(not_needed, numbers_only)
+    numbers_only = 'Only use digits and (optionally) a decimal point, no other punctuation or symbols.'
     MonthFeedbackForm = model_form(MonthFeedback, db_session=db.session,
         exclude=['date', 'submitted_by', 'survey', 'notes'],
         field_args={
@@ -775,22 +792,30 @@ def one_month_feedback():
                'label': 'Address',
                'validators': [validators.required()], },
           'annual_gas_kwh': {
-              'label': 'Total annual gas usage in kWh',
-              'description': kwh_help, },
-          'annual_gas_measured': {
-              'label': 'Is the annual gas figure based on meter readings in the last year?',
-              'description': 'Only tick this box if the figure is not an estimate based on previous usage.', },
+              'label': 'Total annual gas use in kWh',
+              'description': numbers_only, },
+          'annual_gas_estimated': {
+              'label': 'Is this figure based on estimated use (rather than meter readings)?', },
           'annual_gas_start_date': {
-              'label': 'The start date of the annual gas usage figure.',
+              'label': 'Start date (mm/dd/yyy)',
+              "format": "%d/%m/%Y",
+              'widget': DatePickerWidget() },
+          'annual_gas_end_date': {
+              'label': 'End date (mm/dd/yyy)',
+              "format": "%d/%m/%Y",
               'widget': DatePickerWidget() },
           'annual_elec_kwh': {
               'label': 'Total annual electricity usage in kWh',
-              'description': kwh_help, },
-          'annual_elec_measured': {
-              'label': 'Is the annual electricity figure based on meter readings in the last year?',
-              'description': 'Only tick this box if the figure is not an estimate based on previous usage.', },
+              'description': numbers_only, },
+          'annual_elec_estimated': {
+              'label': 'Is this figure based on estimated use (rather than meter readings)?', },
           'annual_elec_start_date': {
-              'label': 'The start date of the annual electricity usage figure.',
+              'label': 'Start date (mm/dd/yyy)',
+              "format": "%d/%m/%Y",
+              'widget': DatePickerWidget(), },
+          'annual_elec_end_date': {
+              'label': 'End date (mm/dd/yyy)',
+              "format": "%d/%m/%Y",
               'widget': DatePickerWidget(), },
           'annual_solid_spend': {
               'label': 'Total annual spend in pounds (&pound;) on solid fuels',
@@ -806,6 +831,24 @@ def one_month_feedback():
               'label': 'What you are planning to do to in the next few years improve the thermal efficiency of your home?',
               'description': 'This can be anything from draught proofing to installing external wall insulation.',
               'validators': [validators.required()], },
+          'satisfaction_1to5': {
+              'label': 'How satisified were you with the survey overall? (1: least, to 5: most)',
+              'widget': OneToFiveWidget(), },
+          'cheese_box_1to5': {
+              'label': 'How useful did you find the CHEESE box? (1: least, to 5: most)',
+              'widget': OneToFiveWidget(), },
+          'survey_video_1to5': {
+              'label': 'How useful have you find the survey video? (1: not at all, to 5: very)',
+              'widget': OneToFiveWidget(), },
+          'surveyor_conduct_1to5': {
+              'label': 'How was the conduct of the surveyor? (1: poor, to 5: excellent)',
+              'widget': OneToFiveWidget(), },
+          'survey_value_1to5': {
+              'label': 'Was the survey good value for money? (1: disagree, to 5: agree)',
+              'widget': OneToFiveWidget(), },
+          'recommend_1to5': {
+              'label': 'Are you likely to recommend the survey to a friend or neighbour? (1: unlikely, to 5: definitely)',
+              'widget': OneToFiveWidget(), },
           'cheese_box': {
               'label': 'Did you find your <a href="/cheese-box">CHEESE box</a> useful?',
               'description': 'We would be interested to know what you found useful and what you didn\'t.',
@@ -839,18 +882,13 @@ def one_month_feedback():
                           recipients=current_app.config['WATCHERS']))
         # Flash success message.
         flash('Your one month feedback was submitted successfully, thank you.')
-        return redirect(url_for('one_month_feedback'))
+        return redirect(url_for('cheese.one_month_feedback'))
     return render_template('one-month-feedback.html', form=form)
 
 
 @bp.route('/one-year-feedback', methods=['GET', 'POST'])
 def one_year_feedback():
-    numbers_only = 'Please only use digits and (optionally) a decimal point, no other' \
-                    +' punctuation or symbols.'
-    kwh_help = 'For your usage in the year immediately after your survey.<br>' \
-                +'For help with calculating the value, please see ' \
-                +'<a href="/cheese-box#recording-energy-use">our guide</a>.' \
-                +'<br>'+numbers_only
+    numbers_only = 'Only use digits and (optionally) a decimal point, no other punctuation or symbols.'
     YearFeedbackForm = model_form(YearFeedback, db_session=db.session,
         exclude=['date', 'submitted_by', 'survey', 'notes'],
         field_args={
@@ -861,14 +899,38 @@ def one_year_feedback():
               'label': 'Address',
               'validators': [validators.required()], },
           'annual_gas_kwh': {
-              'label': 'Total annual gas usage in kWh',
-              'description': kwh_help,
+              'label': 'Total annual gas use in kWh',
+              'description': numbers_only,
+              'validators': [validators.InputRequired()], },
+          'annual_gas_estimated': {
+              'label': 'Is this figure based on estimated use (rather than meter readings)?', },
+          'annual_gas_start_date': {
+              'label': 'Start date (mm/dd/yyy)',
+              "format": "%d/%m/%Y",
+              'widget': DatePickerWidget(),
+              'validators': [validators.InputRequired()], },
+          'annual_gas_end_date': {
+              'label': 'End date (mm/dd/yyy)',
+              "format": "%d/%m/%Y",
+              'widget': DatePickerWidget(),
               'validators': [validators.InputRequired()], },
           'annual_elec_kwh': {
               'label': 'Total annual electricity usage in kWh',
-              'description': kwh_help,
+              'description': numbers_only,
               'validators': [validators.InputRequired()], },
-           'annual_solid_spend': {
+          'annual_elec_estimated': {
+              'label': 'Is this figure based on estimated use (rather than meter readings)?', },
+          'annual_elec_start_date': {
+              'label': 'Start date (mm/dd/yyy)',
+              "format": "%d/%m/%Y",
+              'widget': DatePickerWidget(),
+              'validators': [validators.InputRequired()], },
+          'annual_elec_end_date': {
+              'label': 'End date (mm/dd/yyy)',
+              "format": "%d/%m/%Y",
+              'widget': DatePickerWidget(),
+              'validators': [validators.InputRequired()], },
+          'annual_solid_spend': {
               'label': 'Total annual spend in pounds (&pound;) on solid fuels',
               'description': 'Such as wood, coal etc.',
               'validators': [validators.InputRequired()], },
@@ -888,6 +950,10 @@ def one_year_feedback():
           'total_spent': {
               'label': 'Approximately how much have you spent in total on energy improvements to your home?',
               'description': 'Only answer this if you feel comfortable to.', },
+          'total_spent_diy': {
+              'label': 'Approximately how much did you spend on DIY?', },
+          'total_spent_local': {
+              'label': 'Approximately how much did you spend on local contractors?', },
           'planned_work': {
               'label': 'Do you have any further work planned? And, if so, what?',
               'validators': [validators.required()], },
@@ -899,7 +965,7 @@ def one_year_feedback():
               'description': 'Such as the period and temperature you use the heating for, or the way you use the space in your home.',
               'validators': [validators.required()], },
           'feedback':
-            { 'label': 'Do you have any feedback on the CHEESE Project?',
+            { 'label': 'Lastly, do you have any other feedback on the CHEESE Project?',
               'description': 'We would like to hear what you think about:'
                               +' how useful the survey was,'
                               +' how useful the <a href="/cheese-box">CHEESE box</a> was,'
@@ -924,7 +990,7 @@ def one_year_feedback():
                           recipients=current_app.config['WATCHERS']))
         # Flash success message.
         flash('Your one year feedback was submitted successfully, thank you.')
-        return redirect(url_for('one_year_feedback'))
+        return redirect(url_for('cheese.one_year_feedback'))
     return render_template('one-year-feedback.html', form=form)
 
 

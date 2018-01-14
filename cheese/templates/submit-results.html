@@ -4,6 +4,58 @@
 
 <h1>Submit survey results</h1>
 
-{{ macros.render_form(form, 'survey_form') }}
+<div id="submit-results-form" style="padding-top:1.2em">
+  <form method="POST" action="" enctype="multipart/form-data">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+    {{ macros.form_section('Survey details') }}
+    {{ macros.render_form_field(form.survey) }}
+    {{ macros.render_form_field(form.householders_name) }}
+    {{ macros.render_form_field(form.address_line) }}
+    {{ macros.render_form_field(form.survey_date) }}
+    {{ macros.render_form_field(form.lead_surveyor) }}
+    {{ macros.render_form_field(form.assistant_surveyor) }}
+    {{ macros.render_form_field(form.external_temperature) }}
+    {{ macros.render_form_field(form.loaned_cheese_box) }}
+    {{ macros.render_form_field(form.cheese_box_number) }}
+    {{ macros.end_form_section() }}
+    {{ macros.form_section('Building details') }}
+    {{ macros.render_form_field(form.building_type) }}
+    {{ macros.render_form_field(form.year_of_construction) }}
+    {{ macros.render_form_field(form.wall_construction) }}
+    {{ macros.render_form_field(form.occupation_type) }}
+    {{ macros.render_form_field(form.primary_heating_type) }}
+    {{ macros.render_form_field(form.secondary_heating_type) }}
+    {{ macros.render_form_field(form.water_heating_type) }}
+    {{ macros.render_form_field(form.cooking_type) }}
+    {{ macros.render_form_field(form.depth_loft_insulation) }}
+    {{ macros.render_form_field(form.number_open_fireplaces) }}
+    {{ macros.render_form_field(form.double_glazing) }}
+    {{ macros.render_form_field(form.num_occupants) }}
+    {{ macros.end_form_section() }}
+    {{ macros.form_section('Gas use') }}
+    {{ macros.render_form_field(form.annual_gas_kwh) }}
+    {{ macros.render_form_field(form.annual_gas_estimated) }}
+    {{ macros.render_form_field(form.annual_gas_start_date) }}
+    {{ macros.render_form_field(form.annual_gas_end_date) }}
+    {{ macros.end_form_section() }}
+    {{ macros.form_section('Electricity use') }}
+    {{ macros.render_form_field(form.annual_elec_kwh) }}
+    {{ macros.render_form_field(form.annual_elec_estimated) }}
+    {{ macros.render_form_field(form.annual_elec_start_date) }}
+    {{ macros.render_form_field(form.annual_elec_end_date) }}
+    {{ macros.end_form_section() }}
+    {{ macros.form_section('Other energy use') }}
+    {{ macros.render_form_field(form.annual_solid_spend) }}
+    {{ macros.render_form_field(form.renewable_contribution_kwh) }}
+    {{ macros.end_form_section() }}
+    {{ macros.form_section('Results and recommendations') }}
+    {{ macros.render_form_field(form.faults_identified) }}
+    {{ macros.render_form_field(form.recommendations) }}
+    {{ macros.render_form_field(form.notes) }}
+    {{ macros.end_form_section() }}
+    <label></label>
+    <button class="btn" type="submit">Submit</button>
+  </form>
+</div>
 
 {% endblock %}

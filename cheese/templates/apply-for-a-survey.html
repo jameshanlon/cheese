@@ -28,6 +28,31 @@ with you.  If you have any questions about our surveys, then please get in
 touch by emailing <a
 href="mailto:surveys@cheeseproject.co.uk">surveys@cheeseproject.co.uk</a>.</p>
 
-{{ macros.render_form(form, 'survey-form') }}
+<div id="survey-form" style="padding-top:1.2em">
+  <form method="POST" action="" enctype="multipart/form-data">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+    {{ macros.form_section('Your details') }}
+    {{ macros.render_form_field(form.name) }}
+    {{ macros.render_form_field(form.address_line) }}
+    {{ macros.render_form_field(form.postcode) }}
+    {{ macros.render_form_field(form.ward) }}
+    {{ macros.render_form_field(form.email) }}
+    {{ macros.render_form_field(form.telephone) }}
+    {{ macros.render_form_field(form.mobile) }}
+    {{ macros.end_form_section() }}
+    {{ macros.form_section('Details of you home') }}
+    {{ macros.render_form_field(form.building_type) }}
+    {{ macros.render_form_field(form.num_main_rooms) }}
+    {{ macros.render_form_field(form.can_heat_comfortably) }}
+    {{ macros.render_form_field(form.free_survey_consideration) }}
+    {{ macros.render_form_field(form.expected_benefit) }}
+    {{ macros.render_form_field(form.free_survey_consideration) }}
+    {{ macros.end_form_section() }}
+    {{ macros.render_form_field(form.referral) }}
+    {{ macros.render_form_field(form.availability) }}
+    <label></label>
+    <button class="btn" type="submit">Submit</button>
+  </form>
+</div>
 
 {% endblock %}
