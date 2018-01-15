@@ -67,13 +67,20 @@ Or use the `flask resetdb` command.
 
 ```
 $ source env/bin/activate
-$ source CONFIG
+$ source CONFIG # Make sure FLASK_APP and FLASK_DEBUG set.
 $ flask run
 ...
 ```
 Note that uWSGI can be run manually, e.g.:
 ```
 uwsgi --http 0.0.0.0:9000 --manage-script-name --wsgi-file run.py --callable app
+```
+
+### Run the unit tests
+
+```
+$ pytest
+...
 ```
 
 ## Deployment notes
