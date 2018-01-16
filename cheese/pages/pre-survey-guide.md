@@ -71,7 +71,7 @@ make some preparations before the survey:
 
 In order for us to be able to calculate the energy saving you may make after
 the survey, please retrieve energy bills (electricity, gas and possibly solid
-fuel) for the last three years if they available, or just the last year if not.
+fuel) for the last year.
 
 We need to know how many [kilowatt hours (kWh) of
 energy](https://www.ovoenergy.com/guides/energy-guides/what-is-a-kwh-kw-and-kwh-explained.html)
@@ -117,10 +117,10 @@ Please note:
   Centre for Sustainable Energy (CSE) on how to deal with energy saving
   opportunities.
 
-- Finally, we will lend an energy-monitoring kit (a [CHEESE Box](/cheese-box)
-  to you for two weeks. This includes a meter which we will fit for you to your
-  incoming electricity supply. This will be collected two weeks after the
-  survey.
+- Finally, we will lend an energy-monitoring kit (a [CHEESE Box](/cheese-box))
+  to you for one month, which includes a meter which we will fit for you to your
+  incoming electricity supply. The kit will be collected two weeks about a
+  month after the survey.
 
 ## Follow ups after the survey<a name="follow-ups"></a>
 
@@ -135,10 +135,10 @@ have on the survey and use of the energy-monitoring [CHEESE Box](/cheese-box).
 We will contact you one year after the survey by telephone or email to find out
 how you are getting on. We would like to know:
 
-- **Your approximate energy use since the survey**. This is to compare with
-  the figures we recorded on the day of the survey. We would like you to
-  calculate the total kilowatt hours of electricity and gas you have used that
-  year, from your bills, as you did before the survey.
+- **Your actual (not estimated) energy use since the survey**. This is to
+  compare with the figures we recorded on the day of the survey. We would like
+  you to calculate the total kilowatt hours of electricity and gas you have used
+  that year, from your bills, as you did before the survey.
 
 - **What actions over the year you have taken to reduce energy use**.
 
