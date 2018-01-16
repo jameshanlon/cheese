@@ -1,10 +1,10 @@
 
 ## Media coverage
 
-- **[RCAS: A Visit from the CHEESE Team](/static/files/RCAS-a-visit-from-CHEESE.pdf)**
-  (PDF). After his CHEESE survey, Peter Wilde of the Redland and Cotham Amenities
-  Society wrote up a short piece in their magazine on the project and results of the
-  survey of his Victorian house, concluding "We highly reccommend this approach which
+- **[RCAS: A Visit from the CHEESE Team](/static/files/RCAS-a-visit-from-CHEESE.pdf)
+  (PDF), December 2017**. After his CHEESE survey, Peter Wilde of the Redland and Cotham
+  Amenities Society wrote up a short piece in their magazine on the project and results of
+  the survey of his Victorian house, concluding "We highly reccommend this approach which
   is a 'win-win' project"!
 
 - **[BBC Future: The man who makes you see the
