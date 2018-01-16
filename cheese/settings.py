@@ -34,7 +34,7 @@ MYSQL_DATABASE         = os.environ['CHEESE_MYSQL_DATABASE']
 MYSQL_USER             = os.environ['CHEESE_MYSQL_USER']
 MYSQL_PASSWORD         = os.environ['CHEESE_MYSQL_PASSWORD']
 SQLALCHEMY_TRACK_MODIFICATIONS = False
-if 'FLASK_DEBUG' in os.environ and os.environ['FLASK_DEBUG'] == True:
+if 'FLASK_DEBUG' in os.environ and os.environ['FLASK_DEBUG']:
     # Settings for testing.
     SQLALCHEMY_DATABASE_URI = 'sqlite:///test.db'
     WTF_CSRF_ENABLED = False
