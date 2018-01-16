@@ -71,7 +71,7 @@ make some preparations before the survey:
 
 In order for us to be able to calculate the energy saving you may make after
 the survey, please retrieve energy bills (electricity, gas and possibly solid
-fuel) for the last year.
+fuel) for the year period before your survey.
 
 We need to know how many [kilowatt hours (kWh) of
 energy](https://www.ovoenergy.com/guides/energy-guides/what-is-a-kwh-kw-and-kwh-explained.html)
@@ -118,9 +118,9 @@ Please note:
   opportunities.
 
 - Finally, we will lend an energy-monitoring kit (a [CHEESE Box](/cheese-box))
-  to you for one month, which includes a meter which we will fit for you to your
-  incoming electricity supply. The kit will be collected two weeks about a
-  month after the survey.
+  to you for one month, which includes a meter which we will fit for you to
+  your incoming electricity supply. The kit will be collected about a month after
+  the survey.
 
 ## Follow ups after the survey<a name="follow-ups"></a>
 
