@@ -10,9 +10,10 @@ we will follow up with your progress afterwards.
 1. [Confidentiality](#confidentiality)
 2. [Payment](#payment)
 3. [Preparation](#preparation)
-4. [During the survey](#during)
-5. [Follow ups after the survey](#follow-ups)
-6. [Subsequently](#subsequently)
+4. [Previous energy use](#previous-energy-use)
+5. [During the survey](#during)
+6. [Follow ups after the survey](#follow-ups)
+7. [Subsequently](#subsequently)
 
 ## Confidentiality <a name="confidentiality"></a>
 
@@ -37,7 +38,7 @@ Road, Sneyd Park, Bristol BS9 1PG.
 ## Preparation for the survey <a name="preparation"></a>
 
 In order for us to conduct an efficient and successful survey, we need you to
-make some preparations before the survey:
+make some preparations around your home before the survey:
 
 - We recommend that you switch on your heating for 24 hours before the survey
   to thoroughly warm up the fabric of the house (this is to create a difference
@@ -69,17 +70,26 @@ make some preparations before the survey:
     * Switch off the central heating.
     * Open all curtains and blinds.
 
-In order for us to be able to calculate the energy saving you may make after
-the survey, please retrieve energy bills (electricity, gas and possibly solid
-fuel) for the year period before your survey.
+## Previous energy use <a name="previous-energy-use"></a>
 
-We need to know how many [kilowatt hours (kWh) of
-energy](https://www.ovoenergy.com/guides/energy-guides/what-is-a-kwh-kw-and-kwh-explained.html)
-you use per year, for each type of energy. Please look through your bills and
-calculate the total kWh figures to have them ready. USwitch has some [good
+It is important for us to record data on energy use so that we can measure the
+impact of our surveys. For us to be able to do this, please retrieve energy
+bills (electricity, gas and possibly solid fuel) for the year period before
+your survey. For each type of energy, we need to know how many [kilowatt hours
+(kWh) of energy](https://www.ovoenergy.com/guides/energy-guides/what-is-a-kwh-kw-and-kwh-explained.html)
+you have used in the year prior to the survey.
+
+Please look through your bills and calculate the total kilowatt-hours figures
+to have them ready with the start and end dates of their period. [USwitch has
+some good
 information](https://www.uswitch.com/gas-electricity/guides/energy-bills/) on
-understanding your energy bills. If you are not sure how to do this, then we
-can calculate them after the survey with you.
+understanding your energy bills and the figures, but if you are not sure how to
+calculate these totals, then we can calculate them after the survey with you.
+
+It is important that we collect energy use figures that are based on meter
+readings, rather than estimates made by the energy provider, so that our
+analyses are accurate. If you do not have meter readings available, then we can
+mark the figure as an estimate.
 
 ## During the survey <a name="during"></a>
 
