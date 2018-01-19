@@ -1033,6 +1033,15 @@ def home_surveys():
     return render_template(template, page=page)
 
 
+@bp.route('/pre-survey-guide')
+def pre_survey_guide():
+    # Flat page with template code.
+    page = pages.get('pre-survey-guide')
+    page.html = render_template_string(page.html)
+    template = page.meta.get('template', 'page.html')
+    return render_template(template, page=page)
+
+
 @bp.route('/cheese-box')
 def cheese_box():
     # Flat page with template code.
