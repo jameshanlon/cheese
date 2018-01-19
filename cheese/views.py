@@ -621,8 +621,6 @@ class UploadThermalImageForm(FlaskForm):
             validators=[validators.required()])
     keywords = fields.StringField("Keywords (separated by commas ',')",
                                   validators=[validators.required()])
-    submitted_by = fields.StringField('Your name',
-                     validators=[validators.required()])
 
 def random_string(length):
     return ''.join(random.choice(string.ascii_uppercase + string.digits) \
@@ -645,9 +643,9 @@ def upload_thermal_image():
             for f in ['description',
                       'building_type',
                       'year_of_construction',
-                      'keywords',
-                      'submitted_by']:
+                      'keywords', ]:
                     setattr(thermal_image, f, request.form.get(f))
+            setattr(thermal_image, 'user', User.query.get(current_user.get_id()))
             db.session.add(thermal_image)
             db.session.commit()
             flash('The thermal image has been submitted successfully.')

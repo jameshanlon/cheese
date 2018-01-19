@@ -50,7 +50,14 @@ is part of an effort to document the experience of the CHEESE Project.</p>
         <img src="{{get_path(image.filename)|thumbnail('100x100')}}">
       </a>
     </td>
-    <td>{{ image.submitted_by }} on {{ image.date.strftime('%d-%m-%Y') }}</td>
+    <td>
+      {% if image.submitted_by == None %}
+        {{ image.user.first_name }} {{ image.user.last_name }}
+      {% else %}
+        {{ image.submitted_by }}
+      {% endif %}
+      on {{ image.date.strftime('%d-%m-%Y') }}
+    </td>
     <td>{{ image.keywords }}</td>
     <td><p>{{ image.building_type }} ({{ image.year_of_construction }})</p>
         <p>{{ image.description }}</p></td>

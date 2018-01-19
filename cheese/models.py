@@ -295,9 +295,11 @@ class ThermalImage(db.Model):
     building_type        = db.Column(db.Enum(*BUILDING_TYPES))
     year_of_construction = db.Column(db.Integer)
     keywords             = db.Column(db.String(150))
-    submitted_by         = db.Column(db.Unicode(50))
+    submitted_by         = db.Column(db.Unicode(50)) # To remove.
     date                 = db.Column(db.DateTime,
                                      default=datetime.datetime.now())
+    user_id              = db.Column(db.Integer, db.ForeignKey('user.id'))
+    user                 = db.relationship('User')
 
     def __repr__(self):
         return '<Thermal image '+self.filename+'>'
