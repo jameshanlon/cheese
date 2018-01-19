@@ -69,16 +69,18 @@ make some preparations around your home before the survey:
 ## Previous energy use <a name="previous-energy-use"></a>
 
 It is important for us to record data on energy use so that we can measure the
-impact of our surveys. For us to be able to do this, please retrieve energy
-bills (electricity, gas and possibly solid fuel) for the year period before
-your survey. For each type of energy, we need to know how many [kilowatt hours
-(kWh) of energy](https://www.ovoenergy.com/guides/energy-guides/what-is-a-kwh-kw-and-kwh-explained.html)
-you have used in the year prior to the survey.
+impact of our surveys. We want to compare your energy use before the survey
+with it afterwards. To do this, we ask you to find out your total energy use
+for the year before your survey. One year after your survey, we will contact
+you again to ask you to calculate the same figures for comparison.
 
-Please look through your bills and calculate the total kilowatt-hours figures
-to have them ready with the start and end dates of their period. [USwitch has
-some good
-information](https://www.uswitch.com/gas-electricity/guides/energy-bills/) on
+For the pre-survey use figures, please retrieve energy bills (electricity, gas
+and possibly solid fuel) for the year period before your survey, or as close as
+you have records for. For each type of energy, we need to know the total
+[kilowatt hours (kWh) of energy](https://www.ovoenergy.com/guides/energy-guides/what-is-a-kwh-kw-and-kwh-explained.html)
+you have used. Please look through your bills and calculate the total
+kilowatt-hours figures to have them ready with the start and end dates of their
+period. [USwitch has some good information](https://www.uswitch.com/gas-electricity/guides/energy-bills/) on
 understanding your energy bills and the figures, but if you are not sure how to
 calculate these totals, then we can calculate them after the survey with you.
 
