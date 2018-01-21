@@ -3,6 +3,10 @@
 
 Welcome to the resources page for Energy Tracers.
 
+## Survey materials
+
+- [Results paper form to print (PDF)](/static/files/CHEESE-survey-results-form.pdf)
+
 ## Survey results
 
 - [Submit survey results](/submit-results)
