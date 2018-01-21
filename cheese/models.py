@@ -41,7 +41,7 @@ WATER_HEATING_TYPES = [
     'Electricity',
     'Solar',
     'Shared/municipal',
-    'Geothermal',
+    'Heat pump',
     'Other', ]
 COOKING_TYPES = [
     'Unknown',
