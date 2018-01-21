@@ -529,7 +529,7 @@ class ThermalImageView(GeneralModelView):
     def _list_thumbnail(view, context, model, name):
         if not model.filename:
             return ''
-        filename = os.path.join(current_app.config['UPLOADED_IMAGES_DEST'],
+        filename = os.path.join(current_app.config['UPLOADED_IMAGES_URL'],
                                 model.filename)
         thumb_filename = thumb.thumbnail(filename, '100x100')
         return Markup('<a href="/{}"><img src="{}"></a>'.format(filename,
@@ -648,6 +648,15 @@ def upload_thermal_image():
             setattr(thermal_image, 'user', User.query.get(current_user.get_id()))
             db.session.add(thermal_image)
             db.session.commit()
+            # Send watchers email.
+            subject = '[CHEESE] New themrmal image'
+            message = 'From '+str(thermal_image.user) \
+                      + ' at '+str(datetime.datetime.today())+': ' \
+                      + current_app.config['URL_BASE']+str(url_for('thermalimage.details_view', id=thermal_image.id))
+            mail.send(Message(subject=subject,
+                              body=message,
+                              recipients=current_app.config['WATCHERS']))
+            # Flash success message.
             flash('The thermal image has been submitted successfully.')
             return redirect(url_for('cheese.upload_thermal_image'))
     return render_template('upload-thermal-image.html', form=form)

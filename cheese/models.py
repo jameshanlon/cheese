@@ -66,6 +66,12 @@ class User(db.Model, UserMixin):
     roles                = db.relationship('Role', secondary='user_roles',
                                            backref=db.backref('users', lazy='dynamic'))
 
+    def __repr__(self):
+        if self.first_name != '' or self.last_name != '':
+            return self.first_name+' '+self.last_name
+        else:
+            return self.email
+
 
 class UserInvitation(db.Model):
     __tablename__ = 'user_invite'
