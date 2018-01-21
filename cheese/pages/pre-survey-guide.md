@@ -135,8 +135,13 @@ Please note:
 ### One month
 
 We will ask you to feedback on the actions you have taken (or plan to take) as
-a result of the survey. We would also like to hear any thoughts or comments you
+a result of the survey, approximately one month after. 
+We would also like to hear any thoughts or comments you
 have on the survey and use of the energy-monitoring [CHEESE Box](/cheese-box).
+
+For reference, you can take a look at the [one-month feedback form
+here](/one-month-feedback). The form can be filled in by you, or by an Energy
+Tracer on your behalf over the telephone or in person.
 
 ### One year
 
@@ -154,6 +159,10 @@ how you are getting on. We would like to know:
   of saving energy, from your bills.
 
 - Any other comments that you might have.
+
+As with the one-month feedback form, the [one-year feedback
+form](/one-year-feedback) can be completed by you or by an Energy Tracer on
+your behalf.
 
 ### Subsequently <a name="subsequently"></a>
 
