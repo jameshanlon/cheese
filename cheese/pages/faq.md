@@ -1,6 +1,11 @@
 
 # FAQ
 
+## I would like to become an Energy Tracer, what do I need to do?
+
+Please read our page on [working as an Energy Tracer on the
+project](/energy-tracer-training) and get in touch by emailing us.
+
 ## I don't live in Bristol, but can I train to become an Energy Tracer?
 
 If you are interested in becoming an Energy Tracer but do not live in the
