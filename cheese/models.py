@@ -59,49 +59,49 @@ class Wards(db.Model):
     id    = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(255), nullable=False, unique=True)
     def __repr__(self):
-        return name
+        return self.name
 
 
 class BuildingTypes(db.Model):
     id    = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(255), nullable=False, unique=True)
     def __repr__(self):
-        return name
+        return self.name
 
 
 class WallConstructionTypes(db.Model):
     id    = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(255), nullable=False, unique=True)
     def __repr__(self):
-        return name
+        return self.name
 
 
 class OccupationTypes(db.Model):
     id    = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(255), nullable=False, unique=True)
     def __repr__(self):
-        return name
+        return self.name
 
 
 class SpaceHeatingTypes(db.Model):
     id    = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(255), nullable=False, unique=True)
     def __repr__(self):
-        return name
+        return self.name
 
 
 class WaterHeatingTypes(db.Model):
     id    = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(255), nullable=False, unique=True)
     def __repr__(self):
-        return name
+        return self.name
 
 
 class CookingTypes(db.Model):
     id    = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(255), nullable=False, unique=True)
     def __repr__(self):
-        return name
+        return self.name
 
 
 class User(db.Model, UserMixin):
