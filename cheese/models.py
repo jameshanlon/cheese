@@ -231,7 +231,7 @@ class Surveys(db.Model):
 class Results(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     date                       = db.Column(db.DateTime,
-                                           default=datetime.datetime.now())
+                                           default=datetime.datetime.now)
     lead_surveyor              = db.Column(db.String(50))
     assistant_surveyor         = db.Column(db.String(50))
     householders_name          = db.Column(db.String(50))
