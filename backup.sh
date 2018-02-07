@@ -16,4 +16,4 @@ echo "Created '$FILENAME'"
 echo "Removing old backups:"
 find ${CHEESE_BACKUP_DIR} -type f -mtime +90 -print -exec rm {} +
 # Copy all photos.
-cp -r static/uploads ${CHEESE_BACKUP_DIR}
+cp -r cheese/static/uploads ${CHEESE_BACKUP_DIR}

@@ -146,7 +146,7 @@ class Surveys(db.Model):
     reference                 = db.Column(db.String(8))
     lead_status               = db.Column(db.Enum(*SURVEY_LEAD_STATUSES))
     survey_request_date       = db.Column(db.Date,
-                                  default=datetime.datetime.now().date())
+                                  default=datetime.datetime.utcnow().date)
     building_type             = db.Column(db.Enum(*BUILDING_TYPES))
     num_main_rooms            = db.Column(db.Integer)
     can_heat_comfortably      = db.Column(db.Boolean, default=False)
