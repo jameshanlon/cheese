@@ -6,6 +6,7 @@ from flask_sqlalchemy import SQLAlchemy
 db = SQLAlchemy()
 migrate = Migrate(compare_type=True)
 
+# TODO: remove these and use reference tables for enumerated values.
 WARDS = [
     'Bishopston',
     'Cotham',
@@ -52,6 +53,56 @@ SURVEY_LEAD_STATUSES = [
     'Possible',
     'Successful',
     'Dead', ]
+
+
+class Wards(db.Model):
+    id    = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(255), nullable=False, unique=True)
+    def __repr__(self):
+        return name
+
+
+class BuildingTypes(db.Model):
+    id    = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(255), nullable=False, unique=True)
+    def __repr__(self):
+        return name
+
+
+class WallConstructionTypes(db.Model):
+    id    = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(255), nullable=False, unique=True)
+    def __repr__(self):
+        return name
+
+
+class OccupationTypes(db.Model):
+    id    = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(255), nullable=False, unique=True)
+    def __repr__(self):
+        return name
+
+
+class SpaceHeatingTypes(db.Model):
+    id    = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(255), nullable=False, unique=True)
+    def __repr__(self):
+        return name
+
+
+class WaterHeatingTypes(db.Model):
+    id    = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(255), nullable=False, unique=True)
+    def __repr__(self):
+        return name
+
+
+class CookingTypes(db.Model):
+    id    = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(255), nullable=False, unique=True)
+    def __repr__(self):
+        return name
+
 
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
@@ -176,6 +227,7 @@ class Surveys(db.Model):
             return self.address_line
         return 'Survey '+str(self.id)
 
+
 class Results(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     date                       = db.Column(db.DateTime,
@@ -188,15 +240,23 @@ class Results(db.Model):
     external_temperature       = db.Column(db.Float)
     loaned_cheese_box          = db.Column(db.Boolean, default=False)
     cheese_box_number          = db.Column(db.String(25))
-    building_type              = db.Column(db.Enum(*BUILDING_TYPES))
+    building_type_id           = db.Column(db.Integer, db.ForeignKey('building_types.id'))
+    building_type              = db.relationship('BuildingTypes')
     year_of_construction       = db.Column(db.Integer)
-    wall_construction          = db.Column(db.Enum(*WALL_CONSTRUCTION_TYPES))
-    occupation_type            = db.Column(db.Enum(*OCCUPATION_TYPES))
-    primary_heating_type       = db.Column(db.String(150))
-    secondary_heating_type     = db.Column(db.String(150))
-    water_heating_type         = db.Column(db.Enum(*WATER_HEATING_TYPES))
-    cooking_type               = db.Column(db.Enum(*COOKING_TYPES))
-    occupation_type            = db.Column(db.Enum(*OCCUPATION_TYPES))
+    wall_construction_type_id  = db.Column(db.Integer, db.ForeignKey('wall_construction_types.id'))
+    wall_construction_type     = db.relationship('WallConstructionTypes')
+    occupation_type_id         = db.Column(db.Integer, db.ForeignKey('occupation_types.id'))
+    occupation_type            = db.relationship('OccupationTypes')
+    primary_heating_type_id    = db.Column(db.Integer, db.ForeignKey('space_heating_types.id'))
+    primary_heating_type       = db.relationship('SpaceHeatingTypes', foreign_keys=primary_heating_type_id)
+    secondary_heating_type_id  = db.Column(db.Integer, db.ForeignKey('space_heating_types.id'))
+    secondary_heating_type     = db.relationship('SpaceHeatingTypes', foreign_keys=secondary_heating_type_id)
+    water_heating_type_id      = db.Column(db.Integer, db.ForeignKey('water_heating_types.id'))
+    water_heating_type         = db.relationship('WaterHeatingTypes')
+    cooking_type_id            = db.Column(db.Integer, db.ForeignKey('cooking_types.id'))
+    cooking_type               = db.relationship('CookingTypes')
+    occupation_type_id         = db.Column(db.Integer, db.ForeignKey('occupation_types.id'))
+    occupation_type            = db.relationship('OccupationTypes')
     depth_loft_insulation      = db.Column(db.String(150))
     number_open_fireplaces     = db.Column(db.String(150))
     double_glazing             = db.Column(db.String(150))

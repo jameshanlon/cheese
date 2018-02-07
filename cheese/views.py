@@ -562,6 +562,8 @@ def submit_results():
         "occupation_type":            { "label": "Occupation type", },
         "primary_heating_type":       { "label": "Primary heating type", },
         "secondary_heating_type":     { "label": "Secondary heating type", },
+        "water_heating_type":         { "label": "Primary water heating type", },
+        "cooking_type":               { "label": "Primary cooking type", },
         "depth_loft_insulation":      { "label": "Depth of loft insulation (mm)", },
         "number_open_fireplaces":     { "label": "Number of open fireplaces", },
         "double_glazing":             { "label": "Amount of double glazing (%)", },
