@@ -357,11 +357,13 @@ class SurveysView(GeneralModelView):
         'telephone',
         'mobile',
         'reference',
+        'lead_status',
         'survey_request_date',
         'building_type',
         'num_main_rooms',
         'can_heat_comfortably',
         'expected_benefit',
+        'signed_up_via',
         'referral',
         'availability',
         'free_survey_consideration',
@@ -371,16 +373,13 @@ class SurveysView(GeneralModelView):
         'survey_date',
         'survey_complete',
         'followed_up',
+        'box_collected',
         'notes', ])
     columns_list = [
         'name',
         'ward',
         'reference',
-        'survey_request_date',
-        'fee',
-        'survey_date',
-        'survey_complete',
-        'followed_up', ]
+        'survey_request_date', ]
     column_filters = columns_list
     column_exclude_list = list(all_cols - set(columns_list))
     column_formatters = {
@@ -393,7 +392,7 @@ class SurveysView(GeneralModelView):
 
 
 class ResultsView(GeneralModelView):
-    all_cols = set([
+    all_cols = [
         'date',
         'lead_surveyor',
         'assistant_surveyor',
@@ -401,26 +400,34 @@ class ResultsView(GeneralModelView):
         'address_line',
         'survey_date',
         'external_temperature',
-        'cheese_box_loaned',
+        'loaned_cheese_box',
         'cheese_box_number',
         'building_type',
         'year_of_construction',
-        'wall_construction',
-        'occupation_type',
+        'wall_construction_type',
         'primary_heating_type',
         'secondary_heating_type',
+        'water_heating_type',
+        'cooking_type',
+        'occupation_type',
         'depth_loft_insulation',
         'number_open_fireplaces',
         'double_glazing',
         'num_occupants',
         'annual_gas_kwh',
+        'annual_gas_estimated',
+        'annual_gas_start_date',
+        'annual_gas_end_date',
         'annual_elec_kwh',
+        'annual_elec_estimated',
+        'annual_elec_start_date',
+        'annual_elec_end_date',
         'annual_solid_spend',
         'renewable_contribution_kwh',
         'faults_identified',
         'recommendations',
         'notes',
-        'survey', ])
+        'survey', ]
     columns_list = [
         'lead_surveyor',
         'assistant_surveyor',
@@ -428,8 +435,8 @@ class ResultsView(GeneralModelView):
         'address_line',
         'survey_date',
         'survey', ]
-    column_filters = columns_list
-    column_exclude_list = list(all_cols - set(columns_list))
+    column_filters = all_cols
+    column_exclude_list = list(set(all_cols) - set(columns_list))
     column_formatters = {
         'faults_identified': view_string_html_formatter,
         'recommendations':   view_string_html_formatter,
@@ -441,17 +448,41 @@ class ResultsView(GeneralModelView):
 
 
 class MonthFeedbackView(GeneralModelView):
-    column_exclude_list = [
+    all_cols = [
         'date',
+        'submitted_by',
+        'householders_name',
+        'address',
         'annual_gas_kwh',
+        'annual_gas_estimated',
+        'annual_gas_start_date',
+        'annual_gas_end_date',
         'annual_elec_kwh',
+        'annual_elec_estimated',
+        'annual_elec_start_date',
+        'annual_elec_end_date',
         'annual_solid_spend',
         'renewable_contrib_kwh',
         'completed_actions',
         'planned_actions',
         'cheese_box',
+        'satisfaction_1to5',
+        'cheese_box_1to5',
+        'survey_video_1to5',
+        'surveyor_conduct_1to5',
+        'survey_value_1to5',
+        'recommend_1to5',
         'feedback',
-        'notes', ]
+        'notes',
+        'survey', ]
+    columns_list = [
+        'date',
+        'submitted_by',
+        'householders_name',
+        'address',
+        'survey', ]
+    column_filters = all_cols
+    column_exclude_list = list(set(all_cols) - set(columns_list))
     column_formatters = {
         'completed_actions': view_string_html_formatter,
         'planned_actions':   view_string_html_formatter,
@@ -461,21 +492,41 @@ class MonthFeedbackView(GeneralModelView):
 
 
 class YearFeedbackView(GeneralModelView):
-    column_exclude_list = [
+    all_cols = [
         'date',
+        'submitted_by',
+        'householders_name',
+        'address',
         'annual_gas_kwh',
+        'annual_gas_estimated',
+        'annual_gas_start_date',
+        'annual_gas_end_date',
         'annual_elec_kwh',
+        'annual_elec_estimated',
+        'annual_elec_start_date',
+        'annual_elec_end_date',
         'annual_solid_spend',
         'renewable_contrib_kwh',
         'diy_work',
         'prof_work',
         'contractors_used',
         'total_spent',
+        'total_spent_diy',
+        'total_spent_local',
         'planned_work',
         'wellbeing_improvement',
         'behaviour_changes',
         'feedback',
-        'notes', ]
+        'notes',
+        'survey', ]
+    columns_list = [
+        'date',
+        'submitted_by',
+        'householders_name',
+        'address',
+        'survey', ]
+    column_filters = all_cols
+    column_exclude_list = list(set(all_cols) - set(columns_list))
     column_formatters = {
         'diy_work':              view_string_html_formatter,
         'prof_work':             view_string_html_formatter,
