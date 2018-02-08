@@ -109,7 +109,7 @@ class User(db.Model, UserMixin):
     email                = db.Column(db.String(255), nullable=False, unique=True)
     password             = db.Column(db.String(255), nullable=False, server_default='')
     reset_password_token = db.Column(db.String(100), nullable=False, server_default='')
-    confirmed_at         = db.Column(db.DateTime(), default=datetime.datetime.now().date())
+    confirmed_at         = db.Column(db.DateTime(), default=datetime.datetime.utcnow)
     active               = db.Column('is_active', db.Boolean(), nullable=False, server_default='0')
     first_name           = db.Column(db.String(100), nullable=False, server_default='')
     last_name            = db.Column(db.String(100), nullable=False, server_default='')
@@ -162,8 +162,8 @@ class Inventory(db.Model):
     icloud_username     = db.Column(db.String(25))
     icloud_password     = db.Column(db.String(25))
     credit_amount       = db.Column(db.Float)
-    credit_date         = db.Column(db.Date())
-    notes               = db.Column(db.Text())
+    credit_date         = db.Column(db.Date)
+    notes               = db.Column(db.Text)
     # Kit
     kit_id = db.Column(db.Integer, db.ForeignKey('kits.id'))
     kit    = db.relationship('Kits')
@@ -197,7 +197,7 @@ class Surveys(db.Model):
     reference                 = db.Column(db.String(8))
     lead_status               = db.Column(db.Enum(*SURVEY_LEAD_STATUSES))
     survey_request_date       = db.Column(db.Date,
-                                  default=datetime.datetime.utcnow().date)
+                                          default=datetime.datetime.utcnow)
     building_type             = db.Column(db.Enum(*BUILDING_TYPES))
     num_main_rooms            = db.Column(db.Integer)
     can_heat_comfortably      = db.Column(db.Boolean, default=False)
@@ -231,7 +231,7 @@ class Surveys(db.Model):
 class Results(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     date                       = db.Column(db.DateTime,
-                                           default=datetime.datetime.now)
+                                           default=datetime.datetime.utcnow)
     lead_surveyor              = db.Column(db.String(50))
     assistant_surveyor         = db.Column(db.String(50))
     householders_name          = db.Column(db.String(50))
@@ -285,7 +285,7 @@ class Results(db.Model):
 class MonthFeedback(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     date                   = db.Column(db.DateTime,
-                                       default=datetime.datetime.now())
+                                       default=datetime.datetime.utcnow)
     submitted_by           = db.Column(db.String(50))
     householders_name      = db.Column(db.String(50))
     address                = db.Column(db.String(100))
@@ -321,7 +321,7 @@ class MonthFeedback(db.Model):
 class YearFeedback(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     date                   = db.Column(db.DateTime,
-                                       default=datetime.datetime.now())
+                                       default=datetime.datetime.utcnow)
     submitted_by           = db.Column(db.String(50))
     householders_name      = db.Column(db.String(50))
     address                = db.Column(db.String(100))
@@ -363,7 +363,7 @@ class ThermalImage(db.Model):
     keywords             = db.Column(db.String(150))
     submitted_by         = db.Column(db.Unicode(50)) # To remove.
     date                 = db.Column(db.DateTime,
-                                     default=datetime.datetime.now())
+                                     default=datetime.datetime.now)
     user_id              = db.Column(db.Integer, db.ForeignKey('user.id'))
     user                 = db.relationship('User')
 
