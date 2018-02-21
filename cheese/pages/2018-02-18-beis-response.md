@@ -31,7 +31,7 @@ For reference, the consultation document can be [accessed here (PDF)][beis-docum
 
 There is very little focus on TI in the consultation document, perhaps because
 the Government wishes to concentrates on automated data collection (para.119),
-whereas TI requires the expense of a technician. Nevertheless, a C.H.E.E.S.E
+whereas TI requires the expense of a technician. Nevertheless, a C.H.E.E.S.E.
 survey is a powerful tool to assess heat loss, engage householders and assist
 retrofitting. Many faults, such as lack of or incomplete wall insulation, are
 only detectable by internal thermal imaging. TI can help to achieve Government
@@ -69,7 +69,7 @@ in the building and retrofit industries.
 ### Qu. 1. What information do you have on current rates of delivery of measures outside of Government programmes, including through DIY etc.?
 
 In answer to your request for installation rates of remedial measures (para.
-20), The CHEESE Project’s analysis of 49/56 homes surveyed by TI in winter
+20), The C.H.E.E.S.E. Project’s analysis of 49/56 homes surveyed by TI in winter
 2016-2017 showed that 1 to 3 months after survey:
 
 - 84% had taken action, mostly low cost (<£250 and mostly by DIY, e.g.
@@ -127,12 +127,12 @@ Energy savings from this would be considerable, but as the Government
 recognises, would require incentives because of cost and long pay-back periods.
 
 Our experiences in Bristol have national applicability and we are developing
-The C.H.E.E.S.E Project as a replicable model that can be deployed across the
+The C.H.E.E.S.E. Project as a replicable model that can be deployed across the
 UK.
 
 **Savings to be expected**
 
-The C.H.E.E.S.E Project is collecting energy consumption figures before and
+The C.H.E.E.S.E. Project is collecting energy consumption figures before and
 after retrofit, but we have not yet been operating for long enough to assess
 long-term energy savings from our surveys. We expect to have preliminary
 figures by June 2018.
@@ -209,7 +209,7 @@ are trusted. There is an opportunity for them to be assisted by lenders.
 
 We can give two examples of this in Bristol:
 
-- Householders respond well to C.H.E.E.S.E surveys because we are seen as
+- Householders respond well to C.H.E.E.S.E. surveys because we are seen as
 acting on behalf of the community, give objective advice and do not have a
 sales pitch. We also operate at low cost. We use income from paid surveys to
 subsidise free surveys, but rely on grant funding for core costs. This funding
@@ -270,28 +270,28 @@ buildings, with consequent less than expected energy savings, from both new
 build and retrofit, and lack of customer satisfaction. We can offer many
 examples of these barriers reducing effectiveness of outcomes in Bristol:
 
-- **Experience from C.H.E.E.S.E thermal imaging surveys.** Surveys have
+- **Experience from C.H.E.E.S.E. thermal imaging surveys.** Surveys have
 frequently identified examples of poor workmanship such as:
 
-	* Faulty PVC double-glazed window installation with draughts round the
+- Faulty PVC double-glazed window installation with draughts round the
 outside of the window frame and in the window itself, because of faulty
 adjustment of catches, hinges and failure to seal the frame to the brickwork.
 
-  * Gaps in cavity wall insulation.
+- Gaps in cavity wall insulation.
 
-  * Incomplete and insufficient loft insulation.
+- Incomplete and insufficient loft insulation.
 
-  * Lack of insulation on central heating pipes under floors and in garages.
+- Lack of insulation on central heating pipes under floors and in garages.
 
-	* Use of “dot and dab” fixture of internal SWI (see our analysis in Qu.1),
+- Use of “dot and dab” fixture of internal SWI (see our analysis in Qu.1),
 promoting damp and mould growth.
 
-	* A survey of a flat in a 2 year-old block on the Whapping Wharf development
+- A survey of a flat in a 2 year-old block on the Whapping Wharf development
 found wall insulation to be missing. The development has won awards and
 features as having “a high level of finish and specification”. The householder
 is now submitting thermal images to the developer in the hope of redress.
 
-	* Together with Brian Harper we have identified a very poor practice, common
+- Together with Brian Harper we have identified a very poor practice, common
 to many large- scale house builders, where dot-and-dab plastering has been
 adopted as a de-skilling and therefore lower cost method. Carried out
 correctly, the plaster-board should be sealed at the top and bottom. In order
@@ -334,7 +334,7 @@ land, gain planning permission and start a token amount of work, e.g. building
 a wall. They can then ‘sit’ on the site for long periods of time, during which
 more stringent regulations may have been introduced, but developers are only
 legally bound to the standards in force when they completed the token building
-work. 5
+work.
 
 Although we cannot supply evidence ourselves, we recognise the importance of
 learning how other European countries, such as Germany and the Scandinavian
@@ -354,7 +354,7 @@ efficiency should be key market players (para 4) and that policies should
 exploit “what works”. We have given you examples above of what works. In
 addition we offer a proposal to engage finance:
 
-The C.H.E.E.S.E Project is discussing with the Bristol-based Triodos Bank the
+The C.H.E.E.S.E. Project is discussing with the Bristol-based Triodos Bank the
 way to develop a Community Development Finance Initiative (CDFI) to encourage
 energy-saving retrofitting. Triodos Bank already has the precedent of providing
 ‘green’ energy mortgages in Spain and The Netherlands, where loans with
@@ -402,7 +402,7 @@ project would be happy to enter a dialogue with BEIS on these themes.
 <a name="q38"></a>
 ### Qu.38. Are there other ways that Government could help improve access to data energy efficiency and performance of homes for research purposes?
 
-Members of The C.H.E.E.S.E Project would be happy to enter into a dialogue
+Members of The C.H.E.E.S.E. Project would be happy to enter into a dialogue
 about the use of our thermal imaging methodology for research into the thermal
 performance of buildings (para. 116), as well as for identifying building
 faults.
