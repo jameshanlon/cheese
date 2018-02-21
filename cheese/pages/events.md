@@ -1,7 +1,27 @@
 
-## Events in 2017
-
 {% import 'macros.html' as macros %}
+
+Jump to:
+[2018](#2018),
+[2017](#2017),
+[2016](#2016)
+
+<a name="2018"></a>
+## Events in 2018
+
+<a name="2018-social"></a>
+### CHEESE social at Narrow Quay YHA
+
+We organised an informal get together on 19 February at the Harbourise YHA.
+This was an opportunity for those working on the project, and others who have
+expressed an interest in it, to get to know each other, to ask questions and to
+provide their own feedback and ideas. Thanks to all who came, and we look
+forward to the next one, sometime in the summer.
+
+{{ macros.gallery('2018-02-social') }}
+
+<a name="2017"></a>
+## Events in 2017
 
 ### Second Energy Tracer Training weekend, October 2017
 
@@ -53,6 +73,7 @@ centre to spread the word about CHEESE (not to sell any!).
 
 {{ macros.gallery('2017-2-easton-food-assembly') }}
 
+<a name="2016"></a>
 ## Events in 2016
 
 ### Second Energy Tracer training session, November 2016
