@@ -12,7 +12,7 @@ Jump to:
 <a name="2018-social"></a>
 ### CHEESE social at Narrow Quay YHA
 
-We organised an informal get together on 19 February at the Harbourise YHA.
+We organised an informal get together on 19 February at the Harbourside YHA.
 This was an opportunity for those working on the project, and others who have
 expressed an interest in it, to get to know each other, to ask questions and to
 provide their own feedback and ideas. Thanks to all who came, and we look
@@ -81,7 +81,7 @@ centre to spread the word about CHEESE (not to sell any!).
 We held our second training session on 26th/27th November, which was again
 kindly hosted by the [Ambition Lawrence Weston](http://www.ambitionlw.org/)
 youth centre. After a productive two days of the theory and practice of
-domestic thermal imaginag, five more enthusiastic traineers are well on their
+domestic thermal imaging, five more enthusiastic trainees are well on their
 way to becoming fully-fledged Energy Tracers!
 
 {{ macros.gallery('2016-11-training') }}
