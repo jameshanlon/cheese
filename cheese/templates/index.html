@@ -69,7 +69,7 @@
 <h2>The CHEESE blog</h2>
 {% for item in articles %}
   <div class="article-short">
-    <h3>{{item.title}}</h3>
+    <a href="/blog/{{item.path}}"><h3>{{item.title}}</h3></a>
     <p class="article-date">{{item.date_str}}</p>
     {% set body = item.html|safe|striptags %}
     {% if body|length > 500 %}
