@@ -131,7 +131,7 @@ current CHEESE segments are:
 - [Re:work](https://sites.google.com/site/reworkltd)
 - [Sustainable Westbury On Trym](http://www.suswot.org.uk)
 
-To obtain referrals for surveys, we have contacts with ohter socially-active
+To obtain referrals for surveys, we have contacts with other socially-active
 groups, such as:
 
 - [Acorn](https://acorntheunion.org.uk/)
