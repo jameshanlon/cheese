@@ -122,6 +122,21 @@ def has_edit_permission():
     return current_user.has_role('admin', 'manager')
 
 
+def validate_date(form, field):
+    """
+    Check whether date format is supported by strftime(), avoiding:
+      ValueError: year=X is before 1900; the datetime strftime() methods require year >= 1900
+    See FlaskAdmin issue: https://github.com/flask-admin/flask-admin/issues/987
+    """
+    if field.data:
+        try:
+            field.data.strftime('%d.%m.%Y')
+        except ValueError:
+            field.errors.append('Year must be >= 1900')
+            return False
+    return True
+
+
 class AdminModelView(sqla.ModelView):
     """
     Admins have access to special views such as invitations, users and roles.
@@ -387,8 +402,11 @@ class SurveysView(GeneralModelView):
     'availability':     view_string_html_formatter,
     'notes':            view_string_html_formatter, }
     form_args = {
-        'referral':       { 'label': 'Referral from?' },
-        'num_main_rooms': { 'label': 'Number of main rooms' }, }
+        'referral':             { 'label': 'Referral from?' },
+        'num_main_rooms':       { 'label': 'Number of main rooms' },
+        'survey_request_date':  { 'validators': [validate_date], },
+        'fee_paid_date':        { 'validators': [validate_date], },
+        'survey_date':          { 'validators': [validate_date], }, }
 
 
 class ResultsView(GeneralModelView):
@@ -445,7 +463,12 @@ class ResultsView(GeneralModelView):
         'faults_identified': { 'rows': 8, 'cols': 20 },
         'recommendations':   { 'rows': 8, 'cols': 20 },
         'notes':             { 'rows': 8, 'cols': 20 }, }
-
+    form_args = {
+        'survey_date':            { 'validators': [validate_date], },
+        'annual_gas_start_date':  { 'validators': [validate_date], },
+        'annual_gas_end_date':    { 'validators': [validate_date], },
+        'annual_elec_start_date': { 'validators': [validate_date], },
+        'annual_elec_end_date':   { 'validators': [validate_date], }, }
 
 class MonthFeedbackView(GeneralModelView):
     all_cols = [
@@ -489,6 +512,11 @@ class MonthFeedbackView(GeneralModelView):
         'cheese_box':        view_string_html_formatter,
         'feedback':          view_string_html_formatter,
         'notes':             view_string_html_formatter, }
+    form_args = {
+        'annual_gas_start_date':  { 'validators': [validate_date], },
+        'annual_gas_end_date':    { 'validators': [validate_date], },
+        'annual_elec_start_date': { 'validators': [validate_date], },
+        'annual_elec_end_date':   { 'validators': [validate_date], }, }
 
 
 class YearFeedbackView(GeneralModelView):
@@ -536,6 +564,11 @@ class YearFeedbackView(GeneralModelView):
         'behaviour_changes':     view_string_html_formatter,
         'feedback':              view_string_html_formatter,
         'notes':                 view_string_html_formatter, }
+    form_args = {
+        'annual_gas_start_date':  { 'validators': [validate_date], },
+        'annual_gas_end_date':    { 'validators': [validate_date], },
+        'annual_elec_start_date': { 'validators': [validate_date], },
+        'annual_elec_end_date':   { 'validators': [validate_date], }, }
 
 
 class InventoryView(GeneralModelView):
@@ -556,6 +589,9 @@ class InventoryView(GeneralModelView):
             'kit']
     column_list = ['name', 'asset_number', 'kit']
     column_filters = form_columns
+    form_args = {
+        'date_of_purchase': { 'validators': [validate_date], },
+        'credit_date':      { 'validators': [validate_date], }, }
 
 
 class KitsView(GeneralModelView):
@@ -603,7 +639,8 @@ def submit_results():
         "address_line":               { "label": "Address line", },
         "survey_date":                { "label": "Survey date (dd/mm/yyyy)",
                                         "format": "%d/%m/%Y",
-                                        "widget": DatePickerWidget(), },
+                                        "widget": DatePickerWidget(),
+                                        "validators": [validate_date], },
         "external_temperature":       { "label": "External temperature (C)", },
         "loaned_cheese_box":          { "label": "CHEESE box loaned?", },
         "cheese_box_number":          { "label": "CHEESE box number", },
@@ -623,18 +660,22 @@ def submit_results():
         "annual_gas_estimated":       { "label": "Is the value based on estimated use?", },
         "annual_gas_start_date":      { "label": "Start date (dd/mm/yyy)",
                                         "format": "%d/%m/%Y",
-                                        "widget": DatePickerWidget(), },
+                                        "widget": DatePickerWidget(),
+                                        "validators": [validate_date], },
         "annual_gas_end_date":        { "label": "End date (dd/mm/yyy)",
                                         "format": "%d/%m/%Y",
-                                        "widget": DatePickerWidget(), },
+                                        "widget": DatePickerWidget(),
+                                        "validators": [validate_date], },
         "annual_elec_kwh":            { "label": "Annual consumption (kWh)", },
         "annual_elec_estimated":      { "label": "Is the value based on estimated use??", },
         "annual_elec_start_date":     { "label": "Start date (dd/mm/yyy)",
                                         "format": "%d/%m/%Y",
-                                        "widget": DatePickerWidget(), },
+                                        "widget": DatePickerWidget(),
+                                        "validators": [validate_date], },
         "annual_elec_end_date":       { "label": "End date (dd/mm/yyy)",
                                         "format": "%d/%m/%Y",
-                                        "widget": DatePickerWidget(), },
+                                        "widget": DatePickerWidget(),
+                                        "validators": [validate_date], },
         "annual_solid_spend":         { "label": "Annual spend on solid fuels (&pound;)", },
         "renewable_contribution_kwh": { "label": "Annual contribution from renewable generation (kWh)", },
         "faults_identified":          { "label": "Faults identified", },
@@ -843,11 +884,13 @@ def one_month_feedback():
           'annual_gas_start_date': {
               'label': 'Start date (mm/dd/yyy)',
               "format": "%d/%m/%Y",
-              'widget': DatePickerWidget() },
+              'widget': DatePickerWidget(),
+              "validators": [validate_date], },
           'annual_gas_end_date': {
               'label': 'End date (mm/dd/yyy)',
               "format": "%d/%m/%Y",
-              'widget': DatePickerWidget() },
+              'widget': DatePickerWidget(),
+              "validators": [validate_date], },
           'annual_elec_kwh': {
               'label': 'Total annual electricity usage in kWh',
               'description': numbers_only, },
@@ -856,11 +899,13 @@ def one_month_feedback():
           'annual_elec_start_date': {
               'label': 'Start date (mm/dd/yyy)',
               "format": "%d/%m/%Y",
-              'widget': DatePickerWidget(), },
+              'widget': DatePickerWidget(),
+              "validators": [validate_date], },
           'annual_elec_end_date': {
               'label': 'End date (mm/dd/yyy)',
               "format": "%d/%m/%Y",
-              'widget': DatePickerWidget(), },
+              'widget': DatePickerWidget(),
+              "validators": [validate_date], },
           'annual_solid_spend': {
               'label': 'Total annual spend in pounds (&pound;) on solid fuels',
               'description': 'Such as wood, coal etc. '+not_needed, },
@@ -952,12 +997,14 @@ def one_year_feedback():
               'label': 'Start date (mm/dd/yyy)',
               "format": "%d/%m/%Y",
               'widget': DatePickerWidget(),
-              'validators': [validators.InputRequired()], },
+              'validators': [validators.InputRequired(),
+                             validate_date], },
           'annual_gas_end_date': {
               'label': 'End date (mm/dd/yyy)',
               "format": "%d/%m/%Y",
               'widget': DatePickerWidget(),
-              'validators': [validators.InputRequired()], },
+              'validators': [validators.InputRequired(),
+                             validate_date], },
           'annual_elec_kwh': {
               'label': 'Total annual electricity usage in kWh',
               'description': numbers_only,
@@ -968,12 +1015,14 @@ def one_year_feedback():
               'label': 'Start date (mm/dd/yyy)',
               "format": "%d/%m/%Y",
               'widget': DatePickerWidget(),
-              'validators': [validators.InputRequired()], },
+              'validators': [validators.InputRequired(),
+                             validate_date], },
           'annual_elec_end_date': {
               'label': 'End date (mm/dd/yyy)',
               "format": "%d/%m/%Y",
               'widget': DatePickerWidget(),
-              'validators': [validators.InputRequired()], },
+              'validators': [validators.InputRequired(),
+                             validate_date], },
           'annual_solid_spend': {
               'label': 'Total annual spend in pounds (&pound;) on solid fuels',
               'description': 'Such as wood, coal etc.',
