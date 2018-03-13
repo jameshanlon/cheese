@@ -27,6 +27,8 @@ def init_logging(app):
         secure=() if app.config.get('MAIL_USE_TLS') else None, )
     mail_handler.setLevel(logging.ERROR)
     app.logger.addHandler(mail_handler)
+    # Set the app logging level.
+    app.logger.setLevel(logging.INFO)
 
 def create_app(config={}):
     app = Flask(__name__)
