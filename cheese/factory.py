@@ -11,7 +11,7 @@ def init_logging(app):
     file_handler = RotatingFileHandler(app.config['LOG_FILENAME'],
                                        backupCount=10)
     formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
-    file_handler.setLevel(logging.DEBUG)
+    file_handler.setLevel(logging.INFO)
     file_handler.setFormatter(formatter)
     app.logger.addHandler(file_handler)
     # Setup an SMTP mail handler for error-level messages
