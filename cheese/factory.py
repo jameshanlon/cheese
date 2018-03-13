@@ -1,16 +1,23 @@
+import logging
+from logging.handlers import SMTPHandler, RotatingFileHandler
 from flask import Flask
 import flask_admin
 from flask_uploads import configure_uploads, patch_request_class
 from flask_wtf.csrf import CSRFProtect
 from mixer.backend.flask import mixer
 
-def init_email_error_handler(app):
-    if app.debug:
-        return
+def init_logging(app):
+    # Add a file logging handler.
+    file_handler = RotatingFileHandler(app.config['LOG_FILENAME'],
+                                       backupCount=10)
+    formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
+    file_handler.setLevel(logging.DEBUG)
+    file_handler.setFormatter(formatter)
+    app.logger.addHandler(file_handler)
     # Setup an SMTP mail handler for error-level messages
     # Log errors using: app.logger.error('Some error message')
-    import logging
-    from logging.handlers import SMTPHandler
+    if app.debug:
+        return
     mail_handler = SMTPHandler(
         mailhost=(app.config['MAIL_SERVER'], app.config['MAIL_PORT']),
         fromaddr=app.config['MAIL_DEFAULT_SENDER'],
@@ -55,8 +62,8 @@ def create_app(config={}):
     configure_uploads(app, images)
     patch_request_class(app, app.config['MAX_IMAGE_SIZE'])
     mixer.init_app(app)
-    # Other initialisation.
-    init_email_error_handler(app)
+    # Add logging handlers.
+    init_logging(app)
     from cheese.commands import resetdb
     # Additional CLI commands.
     resetdb = app.cli.command('resetdb')(resetdb)
