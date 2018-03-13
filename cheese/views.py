@@ -14,11 +14,7 @@ import flask_admin
 from flask_admin import helpers, expose
 from flask_admin.menu import MenuLink
 from flask_admin.contrib import sqla
-from flask_user import login_required, current_user, user_registered, \
-                       user_changed_password, user_changed_username, \
-                       user_confirmed_email, user_forgot_password, \
-                       user_logged_in, user_logged_out, \
-                       user_reset_password
+from flask_user import login_required, current_user
 from flask_flatpages import FlatPages
 from flask_thumbnails import Thumbnail
 from flask_mail import Mail, Message
@@ -96,11 +92,10 @@ def init_admin(admin):
                                     category='Tables'))
 
 #===-----------------------------------------------------------------------===#
-# Signals.
+# Signal handlers.
 #===-----------------------------------------------------------------------===#
 
-@user_registered.connect_via(bp)
-def after_registered_hook(sender, user, user_invite):
+def user_registered_hook(sender, user, **extra):
     sender.logger.info("User {} registered".format(user.email))
     subject='[CHEESE] User {} registered'.format(user.email)
     message='Update their roles: '+current_app.config['URL_BASE']+'/admin/user/'
@@ -108,31 +103,24 @@ def after_registered_hook(sender, user, user_invite):
                       body=message,
                       recipients=current_app.config['ADMINS']))
 
-@user_confirmed_email.connect_via(bp)
 def user_confirmed_email_hook(sender, user, **extra):
     sender.logger.info('User {} confirmed email'.format(user.email))
 
-@user_changed_password.connect_via(bp)
 def user_changed_password_hook(sender, user, **extra):
     sender.logger.info('User {} changed password'.format(user.email))
 
-@user_changed_username.connect_via(bp)
 def user_changed_username_hook(sender, user, **extra):
     sender.logger.info('User {} changed username'.format(user.email))
 
-@user_forgot_password.connect_via(bp)
 def user_forgot_password_hook(sender, user, **extra):
     sender.logger.info('User {} forgot password'.format(user.email))
 
-@user_reset_password.connect_via(bp)
 def user_reset_password_hook(sender, user, **extra):
     sender.logger.info('User {} reset password'.format(user.email))
 
-@user_logged_in.connect_via(bp)
 def user_logged_in_hook(sender, user, **extra):
     sender.logger.info('User {} logged in'.format(user.email))
 
-@user_logged_out.connect_via(bp)
 def user_logged_out_hook(sender, user, **extra):
     sender.logger.info('User {} logged out'.format(user.email))
 

@@ -6,7 +6,34 @@ from flask_uploads import configure_uploads, patch_request_class
 from flask_wtf.csrf import CSRFProtect
 from mixer.backend.flask import mixer
 
-def init_logging(app):
+def init_signals(app):
+    # Can't do this with Blueprints, so reference app here.
+    from flask_user import user_registered, \
+                           user_changed_password, \
+                           user_changed_username, \
+                           user_confirmed_email, \
+                           user_forgot_password, \
+                           user_logged_in, \
+                           user_logged_out, \
+                           user_reset_password
+    from cheese.views import user_registered_hook, \
+                             user_changed_password_hook, \
+                             user_changed_username_hook, \
+                             user_confirmed_email_hook, \
+                             user_forgot_password_hook, \
+                             user_logged_in_hook, \
+                             user_logged_out_hook, \
+                             user_reset_password_hook
+    user_registered_hook       = user_registered.connect_via(app)(user_registered_hook)
+    user_confirmed_email_hook  = user_confirmed_email.connect_via(app)(user_confirmed_email_hook)
+    user_changed_password_hook = user_changed_password.connect_via(app)(user_changed_password_hook)
+    user_changed_username_hook = user_changed_username.connect_via(app)(user_changed_username_hook)
+    user_forgot_password_hook  = user_forgot_password.connect_via(app)(user_forgot_password_hook)
+    user_reset_password_hook   = user_reset_password.connect_via(app)(user_reset_password_hook)
+    user_logged_in_hook        = user_logged_in.connect_via(app)(user_logged_in_hook)
+    user_logged_out_hook       = user_logged_out.connect_via(app)(user_logged_out_hook)
+
+def init_file_logging(app):
     # Add a file logging handler.
     file_handler = RotatingFileHandler(app.config['LOG_FILENAME'],
                                        backupCount=10)
@@ -14,6 +41,8 @@ def init_logging(app):
     file_handler.setLevel(logging.INFO)
     file_handler.setFormatter(formatter)
     app.logger.addHandler(file_handler)
+
+def init_mail_logging(app):
     # Setup an SMTP mail handler for error-level messages
     # Log errors using: app.logger.error('Some error message')
     if app.debug:
@@ -27,8 +56,6 @@ def init_logging(app):
         secure=() if app.config.get('MAIL_USE_TLS') else None, )
     mail_handler.setLevel(logging.ERROR)
     app.logger.addHandler(mail_handler)
-    # Set the app logging level.
-    app.logger.setLevel(logging.INFO)
 
 def create_app(config={}):
     app = Flask(__name__)
@@ -64,9 +91,13 @@ def create_app(config={}):
     configure_uploads(app, images)
     patch_request_class(app, app.config['MAX_IMAGE_SIZE'])
     mixer.init_app(app)
+    # Register signals.
+    init_signals(app)
     # Add logging handlers.
-    init_logging(app)
-    from cheese.commands import resetdb
+    init_file_logging(app)
+    init_mail_logging(app)
+    app.logger.setLevel(logging.INFO)
     # Additional CLI commands.
+    from cheese.commands import resetdb
     resetdb = app.cli.command('resetdb')(resetdb)
     return app
