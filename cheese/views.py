@@ -139,7 +139,7 @@ def view_string_html_formatter(view, context, model, name):
 
 
 def has_edit_permission():
-    if not current_user.is_authenticated():
+    if not current_user.is_authenticated:
         return False
     return current_user.has_role('admin', 'manager')
 
@@ -167,7 +167,7 @@ class AdminModelView(sqla.ModelView):
     can_export = True
     can_view_details = True
     def is_accessible(self):
-        if not current_user.is_authenticated():
+        if not current_user.is_authenticated:
             return False
         return current_user.has_role('admin')
 
