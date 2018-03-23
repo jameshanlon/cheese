@@ -9,7 +9,8 @@ FLATPAGES_EXTENSION    = '.md'
 SYSTEM_ERROR_SUBJECT_LINE = 'CHEESE webiste error'
 ADMINS                 = os.environ['CHEESE_ADMINS'].split(';')
 WATCHERS               = os.environ['CHEESE_WATCHERS'].split(';')
-LOG_FILENAME           = 'cheese.log'
+LOG_FILENAME_INFO      = 'cheese.log'
+LOG_FILENAME_ERROR     = 'cheese-error.log'
 # Media
 MEDIA_FOLDER           = 'cheese/'
 MEDIA_URL              = '/'
