@@ -77,12 +77,18 @@ you again to ask you to calculate the same figures for comparison.
 For the pre-survey use figures, please retrieve energy bills (electricity, gas
 and possibly solid fuel) for the year period before your survey, or as close as
 you have records for. For each type of energy, we need to know the total
-[kilowatt hours (kWh) of energy](https://www.ovoenergy.com/guides/energy-guides/what-is-a-kwh-kw-and-kwh-explained.html)
+[kilowatt hours (kWh) of
+energy](https://www.ovoenergy.com/guides/energy-guides/what-is-a-kwh-kw-and-kwh-explained.html)
 you have used. Please look through your bills and calculate the total
 kilowatt-hours figures to have them ready with the start and end dates of their
-period. [USwitch has some good information](https://www.uswitch.com/gas-electricity/guides/energy-bills/) on
-understanding your energy bills and the figures, but if you are not sure how to
-calculate these totals, then we can calculate them after the survey with you.
+period. For help with understanding gas and electricity bills from, there are
+useful guides from:
+
+ - [Centre for Sustainable Energy](https://www.cse.org.uk/downloads/advice-leaflets/fuel-poverty/energy-advice/advice-leaflet-understanding-your-gas-or-electricity-bill.pdf) (PDF)
+ - [USwitch](https://www.uswitch.com/gas-electricity/guides/energy-bills/)
+
+If you are not sure how to calculate these totals, then we can calculate them
+after the survey with you.
 
 It is important that we collect energy use figures that are based on meter
 readings, rather than estimates made by the energy provider, so that our
