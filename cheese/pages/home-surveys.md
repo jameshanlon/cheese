@@ -63,7 +63,11 @@ again after a month and after a year to see if your energy use has changed!
 Below are our prices for various sizes of home; note that rooms means
 reception rooms plus bedrooms.
 
-We do offer **free surveys** to households on low incomes.
+We do offer **free surveys** to households on low incomes. We assess
+eligibility for free surveys on a case-by-case basis. It will be useful for us
+to know whether you are receiving benefits and whether you meet the [Minimum
+Income Standard](http://www.lboro.ac.uk/research/crsp/mis/), which you can find
+out using an [online calculator](http://www.minimumincome.org.uk/).
 
 <table class="table">
   <thead>
@@ -99,6 +103,14 @@ We do offer **free surveys** to households on low incomes.
 
 \* We generally only survey large houses at weekends, though there may be some
 limited availability for surveying large houses on other days.
+
+**A note on our pricing**: The CHEESE project is a not-for-profit volunteer-run
+organisation, which allows us to provide surveys at very low cost. Our highest
+charge is less than half the true cost of delivering the survey if we were to
+factor in the true cost of staff time and other overheads. For free surveys, we
+additionally rely on grant funding to make up the different. The overwhelming
+response that we get is that our surveys are fascinating and exceptionally good
+value.
 
 <div class="notice lead">
   <a href="/apply-for-a-survey">Apply for a survey</a> now!
