@@ -25,10 +25,10 @@ Our central office management team consists of six people:
 - James Hanlon.
 - Susan Nicholls.
 
-## Constitution
-
-For more information on the structure and organisation of the CHEESE Project,
-please read our [constitution document (PDF)](/static/files/CHEESE-Constitution-17August2016.pdf).
+In February 2018, the CHEESE project was granted Community Interest Company
+(CIC) status. For more information on the structure and organisation of the
+CHEESE Project, please read our [articles of association
+(PDF)](/static/files/CHEESE-CIC-articles-of-association-2018-03-09.pdf).
 
 <a name="funding"></a>
 # Funding
