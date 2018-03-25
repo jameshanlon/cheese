@@ -1084,9 +1084,14 @@ def one_year_feedback():
           'wellbeing_improvement': {
               'label': 'Have the actions you\'ve taken made your house feel warmer?',
               'description': 'Perhaps even if you haven\'t saved any money on your bills!', },
+          'behaviour_temperature': {
+              'label': 'Has the period and temperature you use the heating for changed, and if so, how?',
+              'validators': [validators.required()], },
+          'behaviour_space': {
+              'label': 'Do you use space in your home differently now, and if so, how?',
+              'validators': [validators.required()], },
           'behaviour_changes': {
-              'label': 'Do you think your behaviour has changed at all after having had the survey? And, if so, how?',
-              'description': 'Such as the period and temperature you use the heating for, or the way you use the space in your home.',
+              'label': 'How else has your behaviour changed after the survey?',
               'validators': [validators.required()], },
           'feedback':
             { 'label': 'Lastly, do you have any other feedback on the CHEESE Project?',

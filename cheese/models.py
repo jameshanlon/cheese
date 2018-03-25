@@ -343,6 +343,8 @@ class YearFeedback(db.Model):
     total_spent_local      = db.Column(db.Float)
     planned_work           = db.Column(db.Text)
     wellbeing_improvement  = db.Column(db.Text)
+    behaviour_temperature  = db.Column(db.Text)
+    behaviour_space        = db.Column(db.Text)
     behaviour_changes      = db.Column(db.Text)
     feedback               = db.Column(db.Text)
     notes                  = db.Column(db.Text)
