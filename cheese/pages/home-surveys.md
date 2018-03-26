@@ -108,7 +108,7 @@ limited availability for surveying large houses on other days.
 organisation, which allows us to provide surveys at very low cost. Our highest
 charge is less than half the true cost of delivering the survey if we were to
 factor in the true cost of staff time and other overheads. For free surveys, we
-additionally rely on grant funding to make up the different. The overwhelming
+additionally rely on grant funding to make up the difference. The overwhelming
 response that we get is that our surveys are fascinating and exceptionally good
 value.
 
