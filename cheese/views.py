@@ -218,8 +218,7 @@ class CheeseAdminIndexView(flask_admin.AdminIndexView):
             query = query.filter(Surveys.survey_request_date < end)
         for name in active_filters:
 	    if name == 'successful_lead':
-	        query = query.filter((Surveys.lead_status == 'Successful') &
-		                     (Surveys.result == None))
+	        query = query.filter(Surveys.lead_status == 'Successful')
 	    if name == 'possible_lead':
 	        query = query.filter((Surveys.lead_status == 'Possible') &
 		                     (Surveys.result == None))
