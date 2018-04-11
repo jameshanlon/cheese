@@ -193,7 +193,8 @@ class GeneralModelView(sqla.ModelView):
 
 
 class CheeseAdminIndexView(flask_admin.AdminIndexView):
-    filters = ['possible_lead',
+    filters = ['successful_lead',
+               'possible_lead',
                'dead_lead',
                'free_survey',
                'paid_survey',
@@ -216,6 +217,9 @@ class CheeseAdminIndexView(flask_admin.AdminIndexView):
             query = query.filter(Surveys.survey_request_date >= start)
             query = query.filter(Surveys.survey_request_date < end)
         for name in active_filters:
+	    if name == 'successful_lead':
+	        query = query.filter((Surveys.lead_status == 'Successful') &
+		                     (Surveys.result == None))
 	    if name == 'possible_lead':
 	        query = query.filter((Surveys.lead_status == 'Possible') &
 		                     (Surveys.result == None))
@@ -329,12 +333,20 @@ class CheeseAdminIndexView(flask_admin.AdminIndexView):
         num_phases = len(current_app.config['PHASE_START_DATES'])
         phases = [str(x+1) for x in range(num_phases)]
         active_phase, active_filters, reverse, surveys = self.get_surveys()
+        active_phase_start_date = None
+        active_phase_end_date = None
+        if active_phase:
+            active_phase_start_date = current_app.config['PHASE_START_DATES'][int(active_phase)-1]
+            active_phase_end_date = active_phase_start_date + datetime.timedelta(365.25)
         export_filename = 'cheese-surveys-'+datetime.datetime.now().strftime("%Y%m%d-%H%M%S")+'.csv'
         return self.render('admin/overview.html',
                            surveys=surveys,
                            reverse=(1 if reverse else 0),
                            phases=phases,
                            active_phase=active_phase,
+                           active_phase_start_date=active_phase_start_date,
+                           active_phase_end_date=active_phase_end_date,
+                           phase_start_dates=current_app.config['PHASE_START_DATES'],
                            filters=self.filters,
                            active_filters=active_filters,
                            export_filename=export_filename,

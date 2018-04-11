@@ -2,6 +2,7 @@
 {% import 'admin/macros.html' as macros %}
 {% block body %}
 {{ super() }}
+<!--Survey count and CSV export button-->
 <div class="pull-right">
   <p>
     {{surveys|length}} surveys<br/>
@@ -12,25 +13,16 @@
     </a>
   </p>
 </div>
-<!--<p>
-<strong>Phases:</strong>
-{% for phase in phases %}
-  {% if phase == active_phase %}
-    <a href="{{remove_from_query(phase=phase)}}">
-      <button type="button" class="btn btn-primary btn-xs">
-        Phase {{phase|format_db_name}}
-      </button>
-    </a>
-  {% else %}
-    <a href="{{modify_query(phase=phase)}}">
-      <button type="button" class="btn btn-default btn-xs">
-        Phase {{phase|format_db_name}}
-      </button>
-    </a>
-  {% endif %}
-{% endfor %}
-</p>-->
 <p>
+<!--Active phase-->
+{% if active_phase %}
+<p>
+Displaying <b>phase {{active_phase}} surveys</b>, between
+{{active_phase_start_date.strftime('%d %b %y')}} and
+{{active_phase_end_date.strftime('%d %b %y')}}.
+</p>
+{% endif %}
+<!--Filters-->
 <strong>Filters:</strong>
 {% for filter in filters %}
   {% if filter in active_filters %}
@@ -48,6 +40,7 @@
   {% endif %}
 {% endfor %}
 </p>
+<!--Table-->
 <table class="table table-condensed table-hover survey-overview-table">
   <thead>
     <tr>
@@ -89,6 +82,9 @@
         </div>
       {% endif %}
     {%- endmacro %}
+    {% if surveys|length == 0 %}
+      <tr><td colspan="11">No surveys match the criteria.</td></tr>
+    {% endif %}
     {% for survey in surveys %}
     <tr>
       <td class="survey-overview-col1">
