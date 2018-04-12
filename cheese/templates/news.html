@@ -1,0 +1,10 @@
+{% import 'macros.html' as macros %}
+{% extends "base.html" %}
+{% block content %}
+<h2>News</h2>
+<div class="article-list">
+{% for article in articles %}
+  {{ macros.article_short(article) }}
+{% endfor %}
+</div>
+{% endblock %}

@@ -59,3 +59,31 @@
     {% endfor %}
   </div>
 {%- endmacro %}
+
+{% macro article_short(article) %}
+  <div class="article-short">
+    <a href="/news/{{article.path}}"><h3>{{article.title}}</h3></a>
+    <p class="article-date">{{article.date_str}}</p>
+    {% set body = article.html|safe|striptags %}
+    {% if body|length > 500 %}
+      <p>{{body|truncate(500)|safe}}
+        <a href="/news/{{article.path}}">read more &#187;</a></p>
+    {% else %}
+      <p>{{article.html|safe}}</p>
+    {% endif %}
+  </div>
+{%- endmacro %}
+
+{% macro article_short_no_tags(article) %}
+  <div class="article-short">
+    <a href="/news/{{article.path}}"><h3>{{article.title}}</h3></a>
+    <p class="article-date">{{article.date_str}}</p>
+    {% set body = article.html|safe|striptags %}
+    {% if body|length > 500 %}
+      <p>{{body|truncate(500)|striptags|safe}}
+        <a href="/news/{{article.path}}">read more &#187;</a></p>
+    {% else %}
+      <p>{{article.html|striptags|safe}}</p>
+    {% endif %}
+  </div>
+{%- endmacro %}

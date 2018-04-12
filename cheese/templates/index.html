@@ -1,3 +1,4 @@
+{% import 'macros.html' as macros %}
 {% extends "base.html" %}
 {% block content %}
 
@@ -59,26 +60,17 @@
 </div>
 
 <div class="pull-right">
-<a class="twitter-timeline" data-width="300" data-height="650" data-theme="light"
+<a class="twitter-timeline" data-width="300" data-height="750" data-theme="light"
    href="https://twitter.com/CHEESEBristol">
   Tweets by @CHEESEBristol</a>
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 </div>
 
-<div class="blog-list">
-<h2>The CHEESE blog</h2>
-{% for item in articles %}
-  <div class="article-short">
-    <a href="/blog/{{item.path}}"><h3>{{item.title}}</h3></a>
-    <p class="article-date">{{item.date_str}}</p>
-    {% set body = item.html|safe|striptags %}
-    {% if body|length > 500 %}
-      {{body|truncate(500)}}
-    {% else %}
-      {{item.html|safe}}
-    {% endif %}
-    <p><a href="/blog/{{item.path}}">Read more &#187;</a></p>
-  </div>
+<h2>Latest news</h2>
+
+<div class="article-list">
+{% for article in articles %}
+  {{ macros.article_short_no_tags(article) }}
 {% endfor %}
 </div>
 

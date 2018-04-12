@@ -1170,8 +1170,11 @@ def page(path):
     template = page.meta.get('template', 'page.html')
     return render_template(template, page=page)
 
+@bp.route('/news')
+def news():
+    return render_template('news.html', articles=get_articles())
 
-@bp.route('/blog/<path:path>')
+@bp.route('/news/<path:path>')
 def article(path):
     page = pages.get_or_404(path)
     if not 'article' in page.meta:

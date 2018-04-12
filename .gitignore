@@ -2,6 +2,8 @@ CONFIG
 docker-compose.yml
 *.pyc
 *.sqlite
+cheese.log
+cheese-error.log
 cheese/static/images/thumbs
 cheese/static/uploads
 cheese/static/export
@@ -9,3 +11,4 @@ env/
 test.db
 flask/mysql.cnf
 .DS_Store
+.cache
