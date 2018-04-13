@@ -25,9 +25,13 @@ Our central office management team consists of six people:
 - James Hanlon.
 - Susan Nicholls.
 
-In February 2018, the CHEESE project was granted Community Interest Company
-(CIC) status. For more information on the structure and organisation of the
-CHEESE Project, please read our [articles of association
+## CIC status
+
+In February 2018, the CHEESE Project was granted Community Interest Company
+(CIC) status.
+
+For more information on the structure and organisation of the CHEESE Project,
+please read our [articles of association
 (PDF)](/static/files/CHEESE-CIC-articles-of-association-2018-03-09.pdf).
 
 <a name="funding"></a>
@@ -53,3 +57,4 @@ For phase three of the project, the CHEESE Project has so far received:
  - £5,000 from the [Megawatt Community Energy Fund](http://quartetcf.org.uk/grant-programmes/megawatt-community-energy-large-and-small-grants/).
  - £5,000 from [The Funding Network (TFN)](https://www.thefundingnetwork.org.uk/events/tfn-bristol/1310).
  - £1,000 from [The Naturesave Trust](http://www.naturesave.co.uk/the-naturesave-trust/).
+ - £10,000 from the [Bristol Community Energy Fund](http://www.bristolcommunityenergy.co.uk/).
