@@ -1182,38 +1182,15 @@ def article(path):
     return render_template('article.html', page=page,
                            path=current_app.config['URL_BASE']+request.path)
 
-
-@bp.route('/home-surveys')
-def home_surveys():
+def flatpage_template():
     # Flat page with template code.
-    page = pages.get('home-surveys')
+    print request.url_rule.rule
+    page = pages.get(request.url_rule.rule[1:])
     page.html = render_template_string(page.html)
     template = page.meta.get('template', 'page.html')
     return render_template(template, page=page)
 
-
-@bp.route('/pre-survey-guide')
-def pre_survey_guide():
-    # Flat page with template code.
-    page = pages.get('pre-survey-guide')
-    page.html = render_template_string(page.html)
-    template = page.meta.get('template', 'page.html')
-    return render_template(template, page=page)
-
-
-@bp.route('/cheese-box')
-def cheese_box():
-    # Flat page with template code.
-    page = pages.get('cheese-box')
-    page.html = render_template_string(page.html)
-    template = page.meta.get('template', 'page.html')
-    return render_template(template, page=page)
-
-
-@bp.route('/overview')
-def overview():
-    # Flat page with template code.
-    page = pages.get('overview')
-    page.html = render_template_string(page.html)
-    template = page.meta.get('template', 'page.html')
-    return render_template(template, page=page)
+home_surveys      = bp.route('/home-surveys')(flatpage_template)
+pre_surevey_guide = bp.route('/pre-survey-guide')(flatpage_template)
+cheese_box        = bp.route('/cheese-box')(flatpage_template)
+overview          = bp.route('/overview')(flatpage_template)
