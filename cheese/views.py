@@ -1217,12 +1217,3 @@ def overview():
     page.html = render_template_string(page.html)
     template = page.meta.get('template', 'page.html')
     return render_template(template, page=page)
-
-
-@bp.route('/events')
-def events():
-    # Flat page with template code.
-    page = pages.get('events')
-    page.html = render_template_string(page.html)
-    template = page.meta.get('template', 'page.html')
-    return render_template(template, page=page)
