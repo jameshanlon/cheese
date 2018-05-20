@@ -1,13 +1,5 @@
 
-<div class="splash">
-<p>The CHEESE Project aims to reduce domestic energy losses, at low cost,
-by up to a third. This saves money and reduces our carbon emissions.
-It improves the comfort and health of low income families, helping them to
-avoid fuel poverty.
-</p>
-</div>
-
-## Overview
+# Overview
 
 Most of the buildings in which we live are [thermally
 inefficient](https://en.wikipedia.org/wiki/Energy_efficiency_in_British_housing).
@@ -38,7 +30,7 @@ work.
 
 ## Our achievements and plans
 
-<a name="pilot"></a>
+<a class="anchor" name="pilot"></a>
 ### The pilot
 
 In the 2015/16 winter we completed a successful pilot of the CHEESE Project in
@@ -64,22 +56,22 @@ at the Bristol Green Capital Partnership Green Volunteers' Awards 2016.
 
 <div class="thumbs">
 <a data-lightbox="achievements" href="static/images/heatview.png">
-  <img src="{{'static/images/heatview.png'|thumbnail('100x100')}}">
+  <img src="{{'static/images/heatview.png'|thumbnail('180x180')}}" class="img-thumbnail">
 </a>
 <a data-lightbox="achievements" href="static/images/heatview-image.png">
-  <img src="{{'static/images/heatview-image.png'|thumbnail('100x100')}}">
+  <img src="{{'static/images/heatview-image.png'|thumbnail('180x180')}}" class="img-thumbnail">
 </a>
 <a data-lightbox="achievements" href="static/images/2016-03-green-volunteers-award/award.jpg"
    data-title="The Volunteers for Energy award!">
-  <img src="{{'static/images/2016-03-green-volunteers-award/award.jpg'|thumbnail('100x100')}}">
+  <img src="{{'static/images/2016-03-green-volunteers-award/award.jpg'|thumbnail('180x180')}}" class="img-thumbnail">
 </a>
 <a data-lightbox="achievements" href="static/images/2016-03-green-volunteers-award/mike-jeremy.jpg"
    data-title="Mareike Schmidt, Bristol City Council, with Mike and Jeremy from CHEESE.">
-  <img src="{{'static/images/2016-03-green-volunteers-award/mike-jeremy.jpg'|thumbnail('100x100')}}">
+  <img src="{{'static/images/2016-03-green-volunteers-award/mike-jeremy.jpg'|thumbnail('180x180')}}" class="img-thumbnail">
 </a>
 </div>
 
-<a name="phase-two"></a>
+<a class="anchor" name="phase-two"></a>
 ### Phase two
 
 Based on the success of our pilot, we developed the CHEESE Project so that it

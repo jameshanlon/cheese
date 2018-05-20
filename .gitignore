@@ -2,6 +2,8 @@ CONFIG
 docker-compose.yml
 *.pyc
 *.sqlite
+*.!*
+*.bak
 cheese.log
 cheese-error.log
 cheese/static/images/thumbs

@@ -1,10 +1,10 @@
 
 # Energy Tracers wanted!
 
-<div class="pull-left"><img src="/static/images/ETlogo.png"></div>
+<div class="float-right"><img src="/static/images/ETlogo.png"></div>
 
-<div class="lead">We are looking for enthusiastic people to train to become
-CHEESE Energy Tracers.</div>
+**We are looking for enthusiastic people to train to become
+CHEESE Energy Tracers.**
 
 Licensed Energy Tracers conduct [thermal-imaging surveys of domestic
 buildings](/home-surveys) to identify areas of poor thermal efficiency. They

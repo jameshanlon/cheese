@@ -59,9 +59,7 @@ for us to demonstrate the effectivness of what we do.</p>
     {{ macros.render_form_field(form.cheese_box) }}
     {{ macros.render_form_field(form.feedback) }}
     <label></label>
-    <p><strong>Please note:</strong> {% include 'privacy-statement.html' %}
-    By submitting this form you agree to these terms and to us retaining your
-    contact details.</p>
+    <p>{% include 'privacy-statement.html' %}</p>
     <button class="btn" type="submit">Submit</button>
   </form>
 </div>

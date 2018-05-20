@@ -1,5 +1,5 @@
 
-## Media coverage
+# Media coverage
 
 - **[RCAS: A Visit from the CHEESE Team](/static/files/RCAS-a-visit-from-CHEESE.pdf)
   (PDF), December 2017**. After his CHEESE survey, Peter Wilde of the Redland and Cotham

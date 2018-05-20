@@ -26,7 +26,7 @@ For reference, the consultation document can be [accessed here (PDF)][beis-docum
 - [Q7. Do you think there are any other important lessons to learn from past attempts to stimulate the market?](#q7)
 - [Q38. Are there other ways that Government could help improve access to data energy efficiency and performance of homes for research purposes?](#q38)
 
-<a name="background"></a>
+<a class="anchor" name="background"></a>
 ## Background: The value of thermal imaging as a tool to incentivise energy efficiency
 
 There is very little focus on TI in the consultation document, perhaps because
@@ -65,7 +65,7 @@ in the building and retrofit industries.
 
 ## Answers to consultation questions
 
-<a name="q1"></a>
+<a class="anchor" name="q1"></a>
 ### Qu. 1. What information do you have on current rates of delivery of measures outside of Government programmes, including through DIY etc.?
 
 In answer to your request for installation rates of remedial measures (para.
@@ -105,7 +105,7 @@ Other groups using TI to improve energy efficiency include the University of
 Plymouth and Brian Harper of Transition Malvern Hills, who should have more
 data.
 
-<a name="q2"></a>
+<a class="anchor" name="q2"></a>
 ### Qu.2. What information do you have on the remaining potential for energy efficiency improvements and what savings could be expected from these measures?
 
 **Potential for energy efficiency improvements in Bristol**
@@ -137,7 +137,7 @@ after retrofit, but we have not yet been operating for long enough to assess
 long-term energy savings from our surveys. We expect to have preliminary
 figures by June 2018.
 
-<a name="q3"></a>
+<a class="anchor" name="q3"></a>
 ### Qu.3. Do you agree with our assessment of the current market for energy efficiency amongst owner occupiers, including the trigger points and supply chain relationships?
 
 We agree with the trigger points. Householders regularly tell us that they will
@@ -148,7 +148,7 @@ low-cost solutions, but this incentivises them to make longer-term and more
 costly improvements, such as double-glazing or SWI, where the payback is
 longer.
 
-<a name="q4"></a>
+<a class="anchor" name="q4"></a>
 ### Qu 4. Do you agree that it makes sense to prioritise those groups most likely to be open to investing in energy efficiency? And do you agree with our assessment of who those groups are most likely to be?
 
 **Groups most likely to be open to investing in energy efficiency**
@@ -176,13 +176,13 @@ The comfort and health benefits of a warmer home also need to be emphasised.
 
 [anderson-50pc]: https://www.youtube.com/watch?v=ZF1zNpzf8RM
 
-<a name="q5"></a>
+<a class="anchor" name="q5"></a>
 ### Qu.5. Do you agree with our assessment of the current barriers to market growth?
 
 Yes, as far as they go, but there are significant barriers that have not been
 adequately addressed (see answer to qu. 6).
 
-<a name="q6"></a>
+<a class="anchor" name="q6"></a>
 ### Qu.6. Are there other barriers that you think we should be addressing?
 
 Yes. we believe there are three specific barriers that should be addressed:
@@ -341,7 +341,7 @@ learning how other European countries, such as Germany and the Scandinavian
 countries, achieve better building standards than in the UK, so that we can
 implement appropriate changes based on proven good practice.
 
-<a name="q7"></a>
+<a class="anchor" name="q7"></a>
 ### Qu.7. Do you think there are any other important lessons to learn from past attempts to stimulate the market?
 
 Inconsistent messages from successive Governments and ‘stop-go’ incentives have
@@ -399,7 +399,7 @@ is for a social good rather than primarily for carbon savings.
 - Remove VAT from retrofitting and energy-saving products. Members of the
 project would be happy to enter a dialogue with BEIS on these themes.
 
-<a name="q38"></a>
+<a class="anchor" name="q38"></a>
 ### Qu.38. Are there other ways that Government could help improve access to data energy efficiency and performance of homes for research purposes?
 
 Members of The C.H.E.E.S.E. Project would be happy to enter into a dialogue

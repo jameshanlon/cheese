@@ -1,5 +1,5 @@
 
-## Volunteering with CHEESE
+# Volunteering with CHEESE
 
 The CHEESE Project operates on a very small budget and depends on the work of
 volunteers for its continued organisation and management. If you are interested

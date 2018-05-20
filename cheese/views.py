@@ -856,12 +856,18 @@ class ApplySurveyForm(FlaskForm):
         fields.BooleanField('I live in a low-income household and ' \
             +'would like to be considered for a free survey.')
     agree_to_requirements = \
-        fields.BooleanField('I agree to make the  ' \
+        fields.BooleanField('I <strong>agree</strong> to make the  ' \
             +'<a href="/pre-survey-guide#preparation" target="_blank">'
             +'necessary preparations</a> for the survey and am happy ' \
             +'to <a href="/pre-survey-guide#follow-ups" target="_blank"> ' \
             +'report my progress after one month and one year</a>.',
             validators=[validators.required()])
+    photo_release = \
+        fields.BooleanField('I <strong>agree</strong> to any of the ' \
+            +'still photos to be taken during my survey that do not ' \
+            +'clearly identify a specific person or place to be used in a ' \
+            +'publicly-accessible record on thermal faults and energy ' \
+            +'efficiency.')
 
 
 @bp.route('/apply-for-a-survey', methods=['GET', 'POST'])
@@ -981,8 +987,8 @@ def one_month_feedback():
               'label': 'Are you likely to recommend the survey to a friend or neighbour? (1: unlikely, to 5: definitely)',
               'widget': OneToFiveWidget(), },
           'cheese_box': {
-              'label': 'Did you find your <a href="/cheese-box">CHEESE box</a> useful?',
-              'description': 'We would be interested to know what you found useful and what you didn\'t.',
+              'label': 'Can you explain your <a href="/cheese-box">CHEESE box</a> score?',
+              'description': 'We would be interested to know specifically what you found useful and what you didn\'t.',
               'validators': [validators.required()], },
           'feedback': {
               'label': 'Do you have any feedback?',

@@ -198,6 +198,7 @@ class Surveys(db.Model):
     lead_status               = db.Column(db.Enum(*SURVEY_LEAD_STATUSES))
     survey_request_date       = db.Column(db.Date,
                                           default=datetime.datetime.utcnow)
+    photo_release             = db.Column(db.Boolean, default=False)
     building_type             = db.Column(db.Enum(*BUILDING_TYPES))
     num_main_rooms            = db.Column(db.Integer)
     can_heat_comfortably      = db.Column(db.Boolean, default=False)
@@ -255,8 +256,6 @@ class Results(db.Model):
     water_heating_type         = db.relationship('WaterHeatingTypes')
     cooking_type_id            = db.Column(db.Integer, db.ForeignKey('cooking_types.id'))
     cooking_type               = db.relationship('CookingTypes')
-    occupation_type_id         = db.Column(db.Integer, db.ForeignKey('occupation_types.id'))
-    occupation_type            = db.relationship('OccupationTypes')
     depth_loft_insulation      = db.Column(db.String(150))
     number_open_fireplaces     = db.Column(db.String(150))
     double_glazing             = db.Column(db.String(150))

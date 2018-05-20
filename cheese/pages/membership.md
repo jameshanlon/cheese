@@ -1,5 +1,5 @@
 
-## Membership
+# Membership
 
 We are currently working on content for this page, but in the mean time, if you
 are interested in becoming a member of the CHEESE Project then please fill in

@@ -1,12 +1,24 @@
+{% macro render_form_description(d) -%}
+  {% if d %}
+    <p class="text-muted">{{ d | safe }}</p>
+  {% endif %}
+{%- endmacro %}
+
 {% macro render_form_field_base(f) -%}
   <div class="form-group">
-    {{ f.label(class_="control-label") }}
-    {% if f.description %}
-      <p class="help-block">{{ f.description | safe }}</p>
-    {% endif %}
     {% if f.type == "FileField" or f.name.endswith('_1to5') %}
+      {{ f.label(class_="control-label") }}
+      {{ render_form_description(f.description) }}
       {{ f }}
+    {% elif f.type == "BooleanField" %}
+      <div class="form-check">
+        {{ f(class="form-check-input") }}
+        {{ f.label(class_="form-check-label") }}
+        {{ render_form_description(f.description) }}
+      </div>
     {% else %}
+      {{ f.label(class_="control-label") }}
+      {{ render_form_description(f.description) }}
       {{ f(class_="form-control") }}
     {% endif %}
   </div>
@@ -17,7 +29,7 @@
     <div class="form-group has-error">
       {{ render_form_field_base(f) }}
       {% for e in f.errors %}
-        <span class="help-block">{{ e }}</span>
+        <span class="text-muted">{{ e }}</span>
       {% endfor %}
     </div>
   {% else %}
@@ -26,9 +38,9 @@
 {%- endmacro %}
 
 {% macro form_section(name) -%}
-  <div class="panel panel-default">
-  <div class="panel-heading">{{name}}</div>
-  <div class="panel-body">
+  <div class="card mb-3">
+  <div class="card-header">{{name}}</div>
+  <div class="card-body">
 {%- endmacro %}
 
 {% macro end_form_section() -%}

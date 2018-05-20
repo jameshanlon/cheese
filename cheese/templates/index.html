@@ -1,51 +1,51 @@
 {% import 'macros.html' as macros %}
 {% extends "base.html" %}
-{% block content %}
-
+{% block jumbo %}
 <div class="jumbotron">
   <div class="big-text">
     Save money and improve the comfort
     of your home with a CHEESE survey
   </div>
-  <p>CHEESE thermal-imaging home surveys identify where your home
-  is losing heat and we will suggest remedies to reduce your energy use and
-  bills. If you are on a low income you can have a more comfortable, healthier,
-  home without higher bills. Read more about
+  <div class="container">
+  <p>Cold homes energy efficiency survey experts (CHEESE) thermal-imaging home
+  surveys identify where your home is losing heat and we will suggest remedies
+  to reduce your energy use and bills. If you are on a low income you can have
+  a more comfortable, healthier, home without higher bills. Read more about
   <a href="/home-surveys">how a survey works</a>, and if you live in Bristol
   <a href="/apply-for-a-survey">apply for a survey now</a>.
   <div class="banner-imgs">
     <div style="display:inline-block">
     <a data-lightbox="splash" href="static/images/thermal6.jpg"
        data-title="Draught between floorboards">
-      <img src="{{'static/images/thermal6.jpg'|thumbnail('110x171')}}">
+      <img src="{{'static/images/thermal6.jpg'|thumbnail('200x200')}}">
     </a>
     <div class="imgcaption">Draught between floorboards</div>
     </div>
     <div style="display:inline-block;">
     <a data-lightbox="splash" href="static/images/thermal7.jpg"
        data-title="Missing cavity wall insulation">
-      <img src="{{'static/images/thermal7.jpg'|thumbnail('110x171')}}">
+      <img src="{{'static/images/thermal7.jpg'|thumbnail('200x200')}}">
     </a>
     <div class="imgcaption">Missing cavity wall insulation</div>
     </div>
     <div style="display:inline-block;">
     <a data-lightbox="splash" href="static/images/thermal8.jpg"
        data-title="Cold bathroom vent">
-      <img src="{{'static/images/thermal8.jpg'|thumbnail('110x171')}}">
+      <img src="{{'static/images/thermal8.jpg'|thumbnail('200x200')}}">
     </a>
     <div class="imgcaption">Cold bathroom vent</div>
     </div>
     <div style="display:inline-block;">
     <a data-lightbox="splash" href="static/images/thermal9.jpg"
        data-title="Cold loft entrance">
-      <img src="{{'static/images/thermal9.jpg'|thumbnail('110x171')}}">
+      <img src="{{'static/images/thermal9.jpg'|thumbnail('200x200')}}">
     </a>
     <div class="imgcaption">Cold loft entrance</div>
     </div>
     <div style="display:inline-block;">
     <a data-lightbox="splash" href="static/images/thermal10.jpg"
        data-title="Poorly fitted window">
-      <img src="{{'static/images/thermal10.jpg'|thumbnail('110x171')}}">
+      <img src="{{'static/images/thermal10.jpg'|thumbnail('200x200')}}">
     </a>
     <div class="imgcaption">Poorly fitted window</div>
     </div>
@@ -57,17 +57,20 @@
         Cold <img src="static/images/rainbow.jpg"> Hot
       </div>
   </div>
+  <p><a class="btn btn-primary btn-md float-right" href="/apply-for-a-survey" role="button">
+    Apply for a survey &raquo;</a></p>
+  </div>
 </div>
-
-<div class="pull-right">
-<a class="twitter-timeline" data-width="300" data-height="750" data-theme="light"
-   href="https://twitter.com/CHEESEBristol">
-  Tweets by @CHEESEBristol</a>
-<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+{% endblock %}
+{% block content %}
+<div class="float-right">
+  <a class="twitter-timeline" data-width="300" data-height="750" data-theme="light"
+     href="https://twitter.com/CHEESEBristol">
+    Tweets by @CHEESEBristol</a>
+  <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 </div>
 
 <h2>Latest news</h2>
-
 <div class="article-list">
 {% for article in articles %}
   {{ macros.article_short_no_tags(article) }}
@@ -75,7 +78,6 @@
 </div>
 
 <h2>Thanks to our funders</h2>
-
 <div class="text-center">
 <a href="http://quartetcf.org.uk/grant-programmes/megawatt-community-energy-large-and-small-grants/">
   <img width="160px" src="/static/images/quartet-logo.png"></a>
@@ -83,7 +85,6 @@
   <img width="160px" src="/static/images/BEC-logo.jpg"></a>
 <a href="https://www.thefundingnetwork.org.uk/events/tfn-bristol/1310">
   <img width="160px" src="/static/images/TFN-logo.png"></a>
-<br>
 <a href="http://www.naturesave.co.uk/the-naturesave-trust/">
   <img width="160px" src="/static/images/naturesave-logo.jpg"></a>
 <a href="https://www.bristolcommunityenergy.co.uk/">

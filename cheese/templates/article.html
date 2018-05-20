@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
-<div class='pull-right'>
+<h1>{{page.meta.title}}</h1>
+<div class='float-right'>
 <a href="https://twitter.com/share" class="twitter-share-button"
    data-show-count="false"
    data-text="The CHEESE Project: {{page.meta.title}}"
@@ -9,7 +10,6 @@
      data-href="{{path}}"
      data-layout="button"></div>
 </div>
-<h1>{{page.meta.title}}</h1>
 <p>{{page.meta.date.strftime('%B %Y')}}</p>
 {{page}}
 {% endblock %}

@@ -34,7 +34,7 @@ For more information on the structure and organisation of the CHEESE Project,
 please read our [articles of association
 (PDF)](/static/files/CHEESE-CIC-articles-of-association-2018-03-09.pdf).
 
-<a name="funding"></a>
+<a class="anchor" name="funding"></a>
 # Funding
 
 The CHEESE pilot project was setup in November 2014 with funding from [Bristol

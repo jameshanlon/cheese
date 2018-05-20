@@ -1,12 +1,12 @@
 
-# Home thermal-imaging surveys
-
-<div class="pull-right">
+<div class="float-right">
   <a data-lightbox="bay-window" href="static/images/thermal13.jpg"
      data-title="Thermal image of a bay window.">
-    <img src="{{'static/images/thermal13.jpg'|thumbnail('180x180')}}">
+    <img src="{{'static/images/thermal13.jpg'|thumbnail('250x250')}}">
   </a>
 </div>
+
+# Home thermal-imaging surveys
 
 **Our internal thermal-imaging surveys aim to improve the comfort and energy
 efficiency of your home, to you save money on your bills and to reduce your
@@ -57,7 +57,7 @@ will ask you to complete a short questionnaire after the survey to obtain
 feedback and to learn how effective the survey was for you. We will follow up
 again after a month and after a year to see if your energy use has changed!
 
-<a name="pricing"></a>
+<a class="anchor" name="pricing"></a>
 ## Pricing
 
 Below are our prices for various sizes of home; note that rooms means

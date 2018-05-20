@@ -4,10 +4,10 @@
 
 <h1>Apply for a home survey</h1>
 
-<!--<div class="notice lead">
-<p>The 2016/17 surveying season has now finished, but you can still apply for a
-survey next winter, between November 2017 and April 2018.</p>
-</div>-->
+<div class="notice lead">
+The 2017/18 surveying season has now finished, but you can still apply for a
+survey next winter, between November 2018 and April 2019.
+</div>
 
 <p>Please complete the form below to apply for a survey, but before you do, we
 ask that you read through the <a href="/pre-survey-guide">survey preparation
@@ -49,8 +49,19 @@ href="mailto:surveys@cheeseproject.co.uk">surveys@cheeseproject.co.uk</a>.</p>
     {{ macros.end_form_section() }}
     {{ macros.render_form_field(form.referral) }}
     {{ macros.render_form_field(form.availability) }}
+    <p>As part of the overall aims of the CHEESE Project, we are compiling
+    information on common thermal faults and energy-efficiency measures. We
+    collect anonymised thermal photos during surveys to use as examples, but
+    we need your permission to use them publicly (more details <a
+      href="/privacy-notice#processing-data">here</a>):</p>
+    {{ macros.render_form_field(form.photo_release) }}
+    <p>Having a CHEESE survey requires some preparation beforehand to ensure
+    the survey can be performed effectively, and to measure the impact of what
+    the project is doing, we will ask you to report your progress one
+    month and one year after the survey.</p>
     {{ macros.render_form_field(form.agree_to_requirements) }}
     <label></label>
+    <p>{% include 'privacy-statement.html' %}</p>
     <button class="btn" type="submit">Submit</button>
   </form>
 </div>

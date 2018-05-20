@@ -1,10 +1,10 @@
 
-# The CHEESE energy-saving box
-
-<div class="pull-right">
+<div class="float-right">
   <img src="{{'static/images/CHEESE-box.jpg'|thumbnail('220x220')}}"
        alt="A CHEESE energy-saving box!">
 </div>
+
+# The CHEESE energy-saving box
 
 Your CHEESE survey has made visible how heat (and the energy it embodies) moves
 around your home, and ultimately how it escapes. Heating is only part of the
@@ -24,40 +24,42 @@ see how...
 5. [Your annual energy use](#annual-energy-use)
 6. [Resources](#resources)
 
-## What's in the box? <a name="contents"></a>
+<a class="anchor" name="contents"></a>
+## What's in the box?
 
 <div class="container-fluid">
 <div class="row">
-  <div class="col-xs-3 vcenter"><img src="/static/images/elite-monitor.jpg"></div><!--
-  --><div class="col-xs-8 vcenter"><strong>Whole-home electricity monitor</strong>.
+  <div class="col-sm-2 my-auto"><img src="/static/images/elite-monitor.jpg"></div><!--
+  --><div class="col-sm-9 my-auto"><strong>Whole-home electricity monitor</strong>.
     This allows you to see the total amount of electricity you are using in your
     home in real time.
     </div>
 </div>
 <div class="row">
-  <div class="col-xs-3 vcenter"><img src="/static/images/plug-monitor.jpg"></div><!--
-  --><div class="col-xs-8 vcenter"><strong>Single-appliance plug monitor</strong>.
+  <div class="col-sm-2 my-auto"><img src="/static/images/plug-monitor.jpg"></div><!--
+  --><div class="col-sm-9 my-auto"><strong>Single-appliance plug monitor</strong>.
     With this you can monitor the amount of electricity that particular appliances
     use.
     </div>
 </div>
 <div class="row">
-  <div class="col-xs-3 vcenter"><img src="/static/images/thermometer.jpg"></div><!--
-  --><div class="col-xs-8 vcenter"><strong>Two thermometers</strong>.
+  <div class="col-sm-2 my-auto"><img src="/static/images/thermometer.jpg"></div><!--
+  --><div class="col-sm-9 my-auto"><strong>Two thermometers</strong>.
     You can use these to monitor the temperature of rooms and, by placing one outside,
     the effect of weather on your energy use.
     </div>
 </div>
 <div class="row">
-  <div class="col-xs-3 vcenter"><img src="/static/images/eco-manual.jpg"></div><!--
-  --><div class="col-xs-8 vcenter"><strong>Haynes Eco-House Manual.</strong>.
+  <div class="col-sm-2 my-auto"><img src="/static/images/eco-manual.jpg"></div><!--
+  --><div class="col-sm-9 my-auto"><strong>Haynes Eco-House Manual.</strong>.
     This is a practical guide to all aspects of home retrofitting, from heating and
     electrical systems through to building materials and outdoor space.
     </div>
 </div>
 </div>
 
-## What happens next? <a name="next-steps"></a>
+<a class="anchor" name="next-steps"></a>
+## What happens next?
 
 **Now**: You have the CHEESE energy-saving box for between two and four weeks to
 further investigate how you use energy.
@@ -73,11 +75,12 @@ for the year, so that we can compare it to the previous year before the survey.
 This is important to enable us and our funders to monitor how much energy is
 being saved by householders taking action following a CHEESE Project survey.
 
-## Getting started <a name="getting-started"></a>
+<a class="anchor" name="getting-started"></a>
+## Getting started
 
 ### Whole-home electricity monitor
 
-<div class="pull-right">
+<div class="float-right">
 <a data-lightbox="monitor-transmitter" href="static/images/monitor-transmitter.jpg"
    data-title="The transmitter for the Efergy monitor with its clip around a main supply cable.">
   <img src="{{'static/images/monitor-transmitter.jpg'|thumbnail('220x220')}}">
@@ -115,7 +118,7 @@ investigate by turning things off for a short period and checking the change.
 
 ### Single-device plug monitor
 
-<div class="pull-right">
+<div class="float-right">
 <a data-lightbox="plug-monitor" href="static/images/plug-monitor-in-use.jpg"
    data-title="The plug monitor being used to meaure the consumption of a toaster.">
   <img src="{{'static/images/plug-monitor-in-use.jpg'|thumbnail('220x220')}}"
@@ -163,7 +166,8 @@ payback period of different remedies. This will hopefully give you lots of
 ideas and a starting point for taking action in your home. You may find the
 section on draught proofing particularly useful.
 
-## Recording your energy use <a name="recording-energy-use"></a>
+<a class="anchor" name="recording-energy-use"></a>
+## Recording your energy use
 
 Because typical electricity and gas bills are issued quarterly or annually,
 they make it difficult to track energy use. You can easily record your total
@@ -182,7 +186,7 @@ can easily be read, and another inside.
 
 ### Electricity
 
-<div class="pull-right">
+<div class="float-right">
 <a data-lightbox="electricity-meter" href="static/images/electricity-meter.jpg"
    data-title="An example of an electricity meter.">
   <img src="{{'static/images/electricity-meter.jpg'|thumbnail('220x220')}}">
@@ -202,7 +206,7 @@ rate, but record both numbers using two rows of the form.
 
 ### Gas
 
-<div class="pull-right">
+<div class="float-right">
 <a data-lightbox="gas-meter" href="static/images/gas-meter.jpg"
    data-title="An example of a metric gas meter.">
   <img src="{{'static/images/gas-meter.jpg'|thumbnail('220x220')}}">
@@ -232,7 +236,8 @@ conversion required](www.gov.uk/guidance/gas-meter-readings-and-bill-calculation
 USwitch has information on [how to read your energy bill and extract the
 important information](www.uswitch.com/gas-electricity/guides/energy-bills).
 
-## Your annual energy use <a name="annual-energy-use"></a>
+<a class="anchor" name="annual-energy-use"></a>
+## Your annual energy use
 
 As part of the data recording for the CHEESE Project, we collect the total
 annual energy use for your home in kWh before the survey, and then for the year
@@ -275,7 +280,8 @@ of home. You should be aiming to be below average!
   <a href="www.ukpower.co.uk/home_energy/average-energy-bill">UK Power</a>.</caption>
 </table>
 
-## Resources <a name="resources"></a>
+<a class="anchor" name="resources"></a>
+## Resources
 
 You can download the electricity and gas record forms as a spreadsheet or to
 print:

@@ -7,19 +7,16 @@ we will follow up with your progress afterwards.
 
 ## Contents
 
-1. [Confidentiality](#confidentiality)
-2. [Payment](#payment)
-3. [Preparation](#preparation)
-4. [Previous energy use](#previous-energy-use)
-5. [During the survey](#during)
-6. [Follow ups after the survey](#follow-ups)
-7. [Subsequently](#subsequently)
+1. [Payment](#payment)
+2. [Preparation](#preparation)
+3. [Previous energy use](#previous-energy-use)
+4. [During the survey](#during)
+5. [Follow ups after the survey](#follow-ups)
+6. [Subsequently](#subsequently)
+7. [Privacy](#privacy)
 
-## Confidentiality <a name="confidentiality"></a>
-
-{% include 'privacy-statement.html' %}
-
-## Payment <a name="payment"></a>
+<a class="anchor" name="payment"></a>
+## Payment
 
 To save administration time for our largely volunteer staff, we do ask that you
 pay in advance for your survey. This is priced according to the number of
@@ -31,7 +28,8 @@ account number 65811564 with your name as reference. Cheques should be posted
 to: Mike Andrews, General Manager, The CHEESE Project, 28 Seawalls, Seawalls
 Road, Sneyd Park, Bristol BS9 1PG.
 
-## Preparation for the survey <a name="preparation"></a>
+<a class="anchor" name="preparation"></a>
+## Preparation for the survey
 
 In order for us to conduct an efficient and successful survey, we need you to
 make some preparations around your home before the survey:
@@ -66,7 +64,8 @@ make some preparations around your home before the survey:
     * Switch off the central heating.
     * Open all curtains and blinds.
 
-## Previous energy use <a name="previous-energy-use"></a>
+<a class="anchor" name="previous-energy-use"></a>
+## Previous energy use
 
 It is important for us to record data on energy use so that we can measure the
 impact of our surveys. We want to compare your energy use before the survey
@@ -95,7 +94,8 @@ readings, rather than estimates made by the energy provider, so that our
 analyses are accurate. If you do not have meter readings available, then we can
 mark the figure as an estimate.
 
-## During the survey <a name="during"></a>
+<a class="anchor" name="during"></a>
+## During the survey
 
 Please note:
 
@@ -136,7 +136,8 @@ Please note:
   your incoming electricity supply. The kit will be collected about a month after
   the survey.
 
-## Follow ups after the survey<a name="follow-ups"></a>
+<a class="anchor" name="follow-ups"></a>
+## Follow ups after the survey
 
 ### One month
 
@@ -170,9 +171,20 @@ As with the one-month feedback form, the [one-year feedback
 form](/one-year-feedback) can be completed by you or by an Energy Tracer on
 your behalf.
 
-### Subsequently <a name="subsequently"></a>
+<a class="anchor" name="subsequently"></a>
+### Subsequently
 
 We find that following a CHEESE survey, people may continue to take action for
 years afterwards, reviewing the video again and again as they gradually deal
 with the problems it reveals. We will always be glad to hear of your progress
 in retrofitting and energy/money saving.
+
+<a class="anchor" name="privacy"></a>
+## Privacy
+
+Collection of some personal data is necessary for the operation of the project,
+so that we can find out what action has been taken after a survey, and the
+effects of these actions, and so we can collect data city-wide on building
+faults and energy savings. We limit this collection to what is absolutely
+necessary, and are transparent in the ways we process and store personal data.
+Please read our [privacy notice](/privacy-notice) for more information.
