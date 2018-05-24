@@ -55,10 +55,7 @@ nav {
 
 /* Fix the width to be 768px.
 @media (max-width: 768px) {
-  // Adjust the size of the logo and main banner.
-  #logo img {
-    max-width:320px;
-  }
+  // Adjust the size of the banner.
   .jumbotron img {
     max-width:100px;
   }
