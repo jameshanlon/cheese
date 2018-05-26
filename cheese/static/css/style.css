@@ -123,7 +123,6 @@ nav {
 }
 
 .caption {
-  margin-top:-0.2em;
   font-size:1.2em;
   text-align:center;
 }
@@ -131,7 +130,7 @@ nav {
 .imgcaption {
   margin-top:0.4em;
   font-size:0.9em;
-  width: 110px;
+  width: 180px;
 }
 
 .video {
