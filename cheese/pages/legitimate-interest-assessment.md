@@ -50,7 +50,7 @@ Climate change is one of the most significant threats to the delicate ecosystem
 in which we all live. With current levels of emissions, it is
 [expected][ipcc-2013-physical-basis] that global temperatures will increase by
 2 to 4 degrees centigrade, which will result in significant changes in the sea
-level. habitability of huge areas of the planet and the frequency of extreme
+level, habitability of huge areas of the planet and the frequency of extreme
 weather events.
 
 It is [estimated][gov-fuel-poverty-2017] that 11% of UK households are in fuel
@@ -118,8 +118,8 @@ freedoms and assess whether this overrides your legitimate interests.
 #### What is the nature of your relationship with the individual?
 
 The individual is someone concerned about their energy use and thus the
-recipient of a survey. Surveys are typically is paid for but in some cases
-provided for free. As part of the application for a survey, the individual
+recipient of a survey. Surveys are typically paid for but in some cases
+are provided for free. As part of the application for a survey, the individual
 agrees to report on their progress after one month and one year.
 
 ### Reasonable expectations

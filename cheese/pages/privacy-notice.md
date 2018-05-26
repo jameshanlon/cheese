@@ -6,13 +6,13 @@ that aims to reduce domestic energy losses at low cost by providing thermal
 imaging surveys, to tackle the problems of climate change and fuel poverty.
 Read more about the aims and achievements of the project [here](/overview).
 
-Collection and analysis of data, some of which is personal is an important
+Collection and analysis of data, some of which is personal, is an important
 aspect of the CHEESE Project. We strive to limit the privacy impact of our data
 collection and processing, doing only what is necessary for the aims of the
 project, and doing so transparently.
 
 This privacy notice sets out, in line with the [General Data Protection
-Regulation (GPDR)][gdpr-overview], what data we collect, why is is necessary
+Regulation (GPDR)][gdpr-overview], what data we collect, why is necessary
 for us to collect it, how we manage it and how the law protects your privacy
 rights. If you have any questions or comments about this privacy notice,
 including any requests to exercise your legal rights, then please get in touch
@@ -75,7 +75,7 @@ the data.
 
   - **One-month and one-year follow ups**. One month after the survey, we
     collect from householder what remedial work they are planning, what work
-they have already done (if any) and their satisfaction with with the survey.
+they have already done (if any) and their satisfaction with the survey.
 One year after the survey, we collect up-to-date annual energy consumption
 figures to compare with the previous ones, details of any remedial work they
 have done (including contractors used, approximate spends on DIY vs.
@@ -99,12 +99,15 @@ details of the faults identified, to add to our record of common thermal faults
 and remedies (reason 1 for collecting data). We only choose photos that:
 
   - clearly display a building construction fault;
-  - clearly display a the effect of insulation or draught proofing; or
+  - clearly display the effect of insulation or draught proofing; or
   - show anything else of interest or out of the ordinary.
 
 We do not use any photos that clearly identify a specific person or place, and
-where photos do contain features of a home, they are only recognisable by
-the householder or their friends or family.
+where photos do contain features of a home, they are only recognisable by the
+householder or their friends or family. The collection of common faults and
+remedies will be made publically available via our website. You may request an
+image taken during your survey be removed from the collection; please see the
+section on [your rights](#individual-rights) for details on how to do this. 
 
 Lastly, we use the **survey results** and **one-month and one-year follow up
 data** to perform an analysis of the effectiveness of our methods (reason 2 for
@@ -156,20 +159,21 @@ collaboration and processing of our data freely available.
 
 We may store our data on cloud storage services like Dropbox, Google Drive, or
 Amazon Webservices, but we will do so only when the service complies with the
-GDPR.
+GDPR. Furthermore, these services are only accessible only by password-based
+authentication and are not available to the general public.
 
 <a class="anchor" name="security-measures"></a>
 ## How do we keep your data safe?
 
 We take necessary measures to ensure the security of the personal data we hold
-from being accidentally lost, used or accessed in an unauthorised way, altered or
-disclosed. These measured include limiting access to only staff of the CHEESE
-Project via password-based authentication, we keep the webserver that stores
-our data operational with basic security measures and up-to-date with the
-latest security patches, and access to the website is secured with SSL so that
-any personal data is encrypted and cannot be intercepted by a third party. We
-review our security policy regularly to ensure it remains effective and to
-highlight areas for improvement.
+from being accidentally lost, used or accessed in an unauthorised way, altered
+or disclosed. These measures include limiting access to only staff of the
+CHEESE Project via password-based authentication, we keep the webserver that
+stores our data operational with basic security measures and up-to-date with
+the latest security patches, and access to the website is secured with SSL (an
+encrypted connection) so that any personal data is encrypted and cannot be
+intercepted by a third party. We review our security policy regularly to ensure
+it remains effective and to highlight areas for improvement.
 
 <a class="anchor" name="individual-rights"></a>
 ## What rights do I have over my data?
@@ -185,7 +189,8 @@ spreadsheet file.
     you is accurate. If you believe any is incorrect, then please inform us so
 that we can correct it.
 
-  - **Delete your data**. We can delete all personal data that we hold on you.
+  - **Delete your data**. You have the right for any or all of your personal
+    data that we hold on you to be deleted.
 
 In some circumstances you can:
 
@@ -203,7 +208,7 @@ your data. This may involve deleting your data permanently.
 
 If you wish to exercise any of your legal rights, then please email
 [info@cheeseproject.co.uk](mailto:info@cheeseproject.co.uk) with the details of
-your request. We may need to ask for specific information from your in order to
+your request. We may need to ask for specific information from you in order to
 confirm your identity.
 
 [gdpr-individual-rights]: https://ico.org.uk/for-organisations/guide-to-the-general-data-protection-regulation-gdpr/individual-rights

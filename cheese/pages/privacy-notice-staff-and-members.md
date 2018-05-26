@@ -60,7 +60,8 @@ we use only the minimum amount of data that is necessary to do so.
 <a class="anchor" name="sharing-data"></a>
 ## Who do we share your data with?
 
-We do not share staff or member personal data with any third parties.
+We do not share staff or member personal data with any third parties, other
+than for the legal requirements of listing by Companies House.
 
 <a class="anchor" name="security-measures"></a>
 ## How do we keep your data safe?
