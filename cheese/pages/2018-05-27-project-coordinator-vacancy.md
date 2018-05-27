@@ -31,7 +31,7 @@ self-employed contract. Payment against invoice.
 
   - Assist with bids and reports to Lottery/Quartet and other funders.
 
-  - Set up and oversee follow-up visits by Energy Tracers and Energy Champions.
+  - Set up and oversee follow-up visits.
 
   - Supervise retrieval of CHEESE energy boxes.
 
