@@ -72,7 +72,6 @@ Desirable:
 
   - Experience of non-profit sector.
 
-If you are interested in this role then please contact Mike Andrews via email
-([mike.andrews@cantab.net](mailto:mike.andrews@cantab.net)) or telephone on
-0117 9682140 with CV including relevant experience, and a statement why you
-think you are suitable.
+If you are interested in this role then please contact us via email
+([info@cheeseproject.co.uk](mailto:info@cheeseproject.co.uk)) with your CV,
+including relevant experience, and a statement why you think you are suitable.
