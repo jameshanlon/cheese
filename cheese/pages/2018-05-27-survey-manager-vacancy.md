@@ -8,7 +8,7 @@ may be extended or increased if further funding becomes available. Due to the
 nature of our surveys it will involve, at times, working during the evening and
 at weekends. There is a six week (15 day) probationary period.
 
-Pay £136 per day for 8-hour day, flexi-time. (£17/hour.) Freelance,
+Pay is £136 per day for 8-hour day, flexi-time, £17/hour. Freelance,
 self-employed contract. Payment against invoice.
 
 ## Duties
@@ -75,3 +75,5 @@ Desirable:
 If you are interested in this role then please contact us via email
 ([info@cheeseproject.co.uk](mailto:info@cheeseproject.co.uk)) with your CV,
 including relevant experience, and a statement why you think you are suitable.
+The closing date for applications is 7th September.
+
