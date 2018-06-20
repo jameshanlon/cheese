@@ -198,6 +198,7 @@ class Surveys(db.Model):
     lead_status               = db.Column(db.Enum(*SURVEY_LEAD_STATUSES))
     survey_request_date       = db.Column(db.Date,
                                           default=datetime.datetime.utcnow)
+    phase                     = db.Column(db.Integer, default=-1)
     photo_release             = db.Column(db.Boolean, default=False)
     building_type             = db.Column(db.Enum(*BUILDING_TYPES))
     num_main_rooms            = db.Column(db.Integer)

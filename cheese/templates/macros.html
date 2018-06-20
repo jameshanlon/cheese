@@ -4,37 +4,45 @@
   {% endif %}
 {%- endmacro %}
 
-{% macro render_form_field_base(f) -%}
+{% macro render_form_errors(f) -%}
+  {% for e in f.errors %}
+    <div class="invalid-feedback">{{ e }}</div>
+  {% endfor %}
+{%- endmacro %}
+
+{% macro render_form_field(f) -%}
   <div class="form-group">
     {% if f.type == "FileField" or f.name.endswith('_1to5') %}
       {{ f.label(class_="control-label") }}
       {{ render_form_description(f.description) }}
-      {{ f }}
+      {% if f.errors %}
+        {{ f(class_="is-invalid") }}
+      {% else %}
+        {{ f }}
+      {% endif %}
+      {{ render_form_errors(f) }}
     {% elif f.type == "BooleanField" %}
       <div class="form-check">
-        {{ f(class="form-check-input") }}
+        {% if f.errors %}
+          {{ f(class_="form-check-input is-invalid") }}
+        {% else %}
+          {{ f(class_="form-check-input") }}
+        {% endif %}
         {{ f.label(class_="form-check-label") }}
         {{ render_form_description(f.description) }}
+        {{ render_form_errors(f) }}
       </div>
     {% else %}
       {{ f.label(class_="control-label") }}
       {{ render_form_description(f.description) }}
-      {{ f(class_="form-control") }}
+      {% if f.errors %}
+        {{ f(class_="form-control is-invalid") }}
+      {% else %}
+        {{ f(class_="form-control") }}
+      {% endif %}
+      {{ render_form_errors(f) }}
     {% endif %}
   </div>
-{%- endmacro %}
-
-{% macro render_form_field(f) -%}
-  {% if f.errors %}
-    <div class="form-group has-error">
-      {{ render_form_field_base(f) }}
-      {% for e in f.errors %}
-        <span class="text-muted">{{ e }}</span>
-      {% endfor %}
-    </div>
-  {% else %}
-    {{ render_form_field_base(f) }}
-  {% endif %}
 {%- endmacro %}
 
 {% macro form_section(name) -%}

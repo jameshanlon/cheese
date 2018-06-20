@@ -3,6 +3,7 @@ import random
 from mixer.backend.flask import mixer
 from cheese.models import db, user_manager, User, Role, Surveys, Results, \
                           MonthFeedback, YearFeedback
+from cheese.settings import PHASE_START_DATES, NUM_PHASES
 
 def resetdb():
     "Create a test database"
@@ -28,10 +29,12 @@ def resetdb():
     def get_random_box_number():
         return random.randrange(100)
     def get_random_date():
-        start = datetime.date(2015, 5, 1)
-        end = datetime.date(2018, 5, 1)
+        start = PHASE_START_DATES[0]
+        end = PHASE_START_DATES[-1]
         delta = end - start
         return start + datetime.timedelta(random.randrange(delta.days))
+    def get_random_phase():
+        return random.randint(1, NUM_PHASES)
     mixer.cycle(10).blend(User)
     mixer.cycle(50).blend(Surveys,
                           name=mixer.RANDOM,
@@ -39,6 +42,7 @@ def resetdb():
                           free_survey_consideration=mixer.RANDOM,
                           lead_status=mixer.RANDOM,
                           survey_request_date=get_random_date,
+                          phase=get_random_phase,
                           survey_date=get_random_date,
                           address_line=mixer.RANDOM,
                           availability=mixer.RANDOM,

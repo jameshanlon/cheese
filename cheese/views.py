@@ -7,6 +7,7 @@ from cheese.models import db, WARDS, BUILDING_TYPES, Surveys, Results, \
                           MonthFeedback, YearFeedback, \
                           ThermalImage, Inventory, Kits, \
                           User, UserInvitation, Role
+from cheese.settings import NUM_PHASES
 from flask import Blueprint, current_app, url_for, redirect, render_template, \
                   render_template_string, request, flash, Markup, \
                   send_from_directory
@@ -61,9 +62,9 @@ class OneToFiveWidget(widgets.Input):
         return Markup(html.format(field.name, self.html_params(**kwargs)))
 
 def init_admin(admin):
-    admin.add_menu_item(MenuLink(name='Phase 3', url='/admin?phase=3'))
-    admin.add_menu_item(MenuLink(name='Phase 2', url='/admin?phase=2'))
-    admin.add_menu_item(MenuLink(name='Phase 1', url='/admin?phase=1'))
+    for phase in reversed(range(1, NUM_PHASES+1)):
+        admin.add_menu_item(MenuLink(name='Phase {}'.format(phase), \
+                                     url='/admin?phase={}'.format(phase)))
     admin.add_view(UserView(User, db.session,
                             name='Users',
                             category='Tables'))
@@ -192,6 +193,17 @@ class GeneralModelView(sqla.ModelView):
         return has_edit_permission()
 
 
+def get_survey_phase(date):
+    phase = 1
+    print date
+    for start, end in zip(current_app.config['PHASE_START_DATES'][:-1], \
+                          current_app.config['PHASE_START_DATES'][1:]):
+        if date >= start and date < end:
+            return phase
+        phase += 1
+    return phase
+
+
 class CheeseAdminIndexView(flask_admin.AdminIndexView):
     filters = ['successful_lead',
                'possible_lead',
@@ -212,19 +224,16 @@ class CheeseAdminIndexView(flask_admin.AdminIndexView):
     def filter_query(self, active_phase, active_filters):
         query = Surveys.query;
         if active_phase:
-            start = current_app.config['PHASE_START_DATES'][int(active_phase)-1]
-            end = start + datetime.timedelta(365.25)
-            query = query.filter(Surveys.survey_request_date >= start)
-            query = query.filter(Surveys.survey_request_date < end)
+            query = query.filter(Surveys.phase==active_phase)
         for name in active_filters:
-	    if name == 'successful_lead':
-	        query = query.filter(Surveys.lead_status == 'Successful')
-	    if name == 'possible_lead':
-	        query = query.filter((Surveys.lead_status == 'Possible') &
-		                     (Surveys.result == None))
-	    if name == 'dead_lead':
-	        query = query.filter((Surveys.lead_status == 'Dead') &
-		                     (Surveys.result == None))
+            if name == 'successful_lead':
+                query = query.filter(Surveys.lead_status == 'Successful')
+            if name == 'possible_lead':
+                query = query.filter((Surveys.lead_status == 'Possible') &
+                                     (Surveys.result == None))
+            if name == 'dead_lead':
+                query = query.filter((Surveys.lead_status == 'Dead') &
+                                     (Surveys.result == None))
             if name == 'free_survey':
                 query = query.filter(Surveys.free_survey_consideration == True)
             if name == 'paid_survey':
@@ -267,8 +276,8 @@ class CheeseAdminIndexView(flask_admin.AdminIndexView):
             return sort_surveys(lambda x: x.ward.lower())
         elif sort == 'request_date':
             return sort_surveys(lambda x:
-		     x.survey_request_date if x.survey_request_date \
-					   else earliest_date)
+             x.survey_request_date if x.survey_request_date \
+                       else earliest_date)
         elif sort == 'survey_date':
             return sort_by_planned_survey_date()
         elif sort == 'fee_paid':
@@ -353,13 +362,13 @@ class CheeseAdminIndexView(flask_admin.AdminIndexView):
 
     @expose('/export/<filename>')
     def export(self, filename):
-	export_headers = ['name',
-			  'address_line',
-			  'postcode',
-			  'ward',
-			  'email',
-			  'telephone',
-			  'mobile',
+        export_headers = ['name',
+                          'address_line',
+                          'postcode',
+                          'ward',
+                          'email',
+                          'telephone',
+                          'mobile',
                           'survey_date', ]
         _, _, _, surveys = self.get_surveys()
         path = current_app.config['EXPORT_PATH']+'/'+filename
@@ -878,6 +887,7 @@ def apply_for_a_survey():
         survey = Surveys()
         form.populate_obj(survey)
         survey.signed_up_via = 'The CHEESE website'
+        survey.phase = get_survey_phase(datetime.datetime.utcnow().date())
         db.session.add(survey)
         db.session.commit()
         # Send email to applicant.
