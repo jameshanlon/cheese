@@ -149,6 +149,24 @@ class UserRoles(db.Model):
     role_id = db.Column(db.Integer(), db.ForeignKey('role.id', ondelete='CASCADE'))
 
 
+class Member(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    application_date            = db.Column(db.Date,
+                                            default=datetime.datetime.utcnow)
+    registration_date           = db.Column(db.Date)
+    name                        = db.Column(db.String(250))
+    address                     = db.Column(db.String(500))
+    email                       = db.Column(db.String(100))
+    telephone                   = db.Column(db.String(20))
+    representative_1_name       = db.Column(db.String(100))
+    representative_1_email      = db.Column(db.String(100))
+    representative_1_telephone  = db.Column(db.String(100))
+    representative_2_name       = db.Column(db.String(100))
+    representative_2_email      = db.Column(db.String(100))
+    representative_2_telephone  = db.Column(db.String(100))
+    notes                       = db.Column(db.Text)
+
+
 class Inventory(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name                = db.Column(db.String(200))

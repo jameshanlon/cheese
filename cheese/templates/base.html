@@ -111,8 +111,9 @@
     <main class="container" role="main">
       {% with messages = get_flashed_messages() %}
         {% if messages %}
+          <div class="pt-3"></div>
           {% for message in messages %}
-            <div class="alert alert-success">{{ message }}</div>
+            <div class="alert alert-success" role="alert">{{ message }}</div>
           {% endfor %}
         {% endif %}
       {% endwith %}

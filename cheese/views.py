@@ -6,7 +6,7 @@ import string
 from cheese.models import db, WARDS, BUILDING_TYPES, Surveys, Results, \
                           MonthFeedback, YearFeedback, \
                           ThermalImage, Inventory, Kits, \
-                          User, UserInvitation, Role
+                          User, Member, UserInvitation, Role
 from cheese.settings import NUM_PHASES
 from flask import Blueprint, current_app, url_for, redirect, render_template, \
                   render_template_string, request, flash, Markup, \
@@ -68,6 +68,9 @@ def init_admin(admin):
     admin.add_view(UserView(User, db.session,
                             name='Users',
                             category='Tables'))
+    admin.add_view(MemberView(Member, db.session,
+                              name='Members',
+                              category='Tables'))
     admin.add_view(AdminModelView(UserInvitation, db.session,
                                   name='Invitations',
                                   category='Tables'))
@@ -405,6 +408,11 @@ class UserView(AdminModelView):
     column_list = ['email', 'roles']
 
 
+class MemberView(AdminModelView):
+    column_list = ['name',
+                   'registration_date']
+
+
 class SurveysView(GeneralModelView):
     all_cols = set([
         'name',
@@ -666,6 +674,7 @@ class ThermalImageView(GeneralModelView):
                                                                 thumb_filename))
     column_formatters = { 'filename': _list_thumbnail, }
     column_exclude_list = ['date', ]
+
 
 #===-----------------------------------------------------------------------===#
 # Restricted pages.
@@ -1149,6 +1158,55 @@ def one_year_feedback():
         return redirect(url_for('cheese.one_year_feedback'))
     return render_template('one-year-feedback.html', form=form)
 
+
+@bp.route('/apply-for-membership', methods=['GET', 'POST'])
+def apply_for_membership():
+    MembershipForm = model_form(Member, db_session=db.session,
+        exclude=['application_date', 'registration_date', 'notes'],
+        field_args={
+          'name': {
+            'label': 'Organisation name or name of individual if individual membership*',
+            'validators': [validators.required()], },
+          'address': {
+            'label': 'Address*',
+            'validators': [validators.required()], },
+          'email': {
+            'label': 'Contact email address*',
+            'description': 'This will act as the primary point of contact',
+            'validators': [validators.required()], },
+          'telephone': {
+            'label': 'Contact telephone number', },
+          'representative_1_name': {
+            'label': 'Name', },
+          'representative_1_email': {
+            'label': 'Contact email address', },
+          'representative_1_telephone': {
+            'label': 'Contact telephone number', },
+          'representative_2_name': {
+            'label': 'Name', },
+          'representative_2_email': {
+            'label': 'Contact email address', },
+          'representative_2_telephone': {
+            'label': 'Contact telephone number', },
+           })
+    member = Member()
+    form = MembershipForm(request.form, member)
+    if request.method=='POST' and helpers.validate_form_on_submit(form):
+        form.populate_obj(member)
+        db.session.add(member)
+        db.session.commit()
+        # Send watchers email.
+        subject = '[CHEESE] New application for member'
+        message = 'From '+member.name+', '+member.address \
+                  + ' at '+str(datetime.datetime.today())+': ' \
+                  + current_app.config['URL_BASE']+str(url_for('member.details_view', id=member.id))
+        mail.send(Message(subject=subject,
+                          body=message,
+                          recipients=current_app.config['WATCHERS']))
+        # Flash success message.
+        flash('Your membership application was submitted successfully, thank you.')
+        return redirect(url_for('cheese.apply_for_membership'))
+    return render_template('apply-for-membership.html', form=form)
 
 
 def get_articles():

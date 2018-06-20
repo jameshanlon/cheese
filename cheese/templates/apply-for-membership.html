@@ -1,0 +1,38 @@
+{% import 'macros.html' as macros %}
+{% extends "base.html" %}
+{% block content %}
+
+<h1>Join the C.H.E.E.S.E. Project CIC</h1>
+
+<div id="one-month-feedback" style="padding-top:1.2em">
+  <form method="POST" action="" enctype="multipart/form-data">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+    {{ macros.render_form_field(form.name) }}
+    {{ macros.render_form_field(form.address) }}
+    {{ macros.render_form_field(form.email) }}
+    {{ macros.render_form_field(form.telephone) }}
+		<p>Each organisation member will be allocated two votes. Please nominate two
+		representatives to be held on record. These can be changed at any time, up to
+		and including AGMs where voting takes place. Each individual member will have
+		one vote; individual members do not need to complete the section below.
+    {{ macros.form_section('Voting representative 1 (for organisations only)') }}
+    {{ macros.render_form_field(form.representative_1_name) }}
+    {{ macros.render_form_field(form.representative_1_email) }}
+    {{ macros.render_form_field(form.representative_1_telephone) }}
+    {{ macros.end_form_section() }}
+    {{ macros.form_section('Voting representative 2 (for organisations only)') }}
+    {{ macros.render_form_field(form.representative_2_name) }}
+    {{ macros.render_form_field(form.representative_2_email) }}
+    {{ macros.render_form_field(form.representative_2_telephone) }}
+    {{ macros.end_form_section() }}
+    <label>* required fields</label>
+		<p> Your application will be considered by the board at our next board meeting.
+		Should we have any questions about your eligibility to become a member we will
+		request further information from you. Once you or your organisation is accepted
+		we will email you a notification.</p>
+    <p>{% include 'privacy-statement.html' %}</p>
+    <button class="btn" type="submit">Submit my application</button>
+  </form>
+</div>
+
+{% endblock %}
