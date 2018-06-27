@@ -1,5 +1,13 @@
 
+{% import 'macros.html' as macros %}
+
 # Media coverage
+
+<div class="float-right">{{ macros.gallery('2018-04-community-health-news') }}</div>
+
+- **Bristol Community Health News**. The 2018 winter edition of Bristol
+  Community Health news provided some tips on keeping warm this winter. CHEESE
+  is suggested as a way to identify improvements that can be made to a home.
 
 - **[RCAS: A Visit from the CHEESE Team](/static/files/RCAS-a-visit-from-CHEESE.pdf)
   (PDF), December 2017**. After his CHEESE survey, Peter Wilde of the Redland and Cotham
