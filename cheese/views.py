@@ -176,6 +176,19 @@ class AdminModelView(sqla.ModelView):
         return current_user.has_role('admin')
 
 
+class ManagerModelView(sqla.ModelView):
+    """
+    Managers have access to views such as members.
+    """
+    page_size = 100
+    can_export = True
+    can_view_details = True
+    def is_accessible(self):
+        if not current_user.is_authenticated:
+            return False
+        return current_user.has_role('admin', 'manager')
+
+
 class GeneralModelView(sqla.ModelView):
     """
     All authenticated users can view the database, but not make changes.
@@ -408,7 +421,7 @@ class UserView(AdminModelView):
     column_list = ['email', 'roles']
 
 
-class MemberView(AdminModelView):
+class MemberView(ManagerModelView):
     column_list = ['name',
                    'registration_date']
 
