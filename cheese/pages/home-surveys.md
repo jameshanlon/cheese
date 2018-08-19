@@ -79,24 +79,19 @@ out using an [online calculator](http://www.minimumincome.org.uk/).
   </thead>
   <tbody>
     <tr>
-      <td>1 to 3 room flat/maisonette</td>
-      <td>2 hours</td>
-      <td>&pound;60</td>
-    </tr>
-    <tr>
-      <td>3 to 5 room house</td>
+      <td>3 to 5 room home</td>
       <td>2.5 hours</td>
-      <td>&pound;70</td>
+      <td>&pound;75</td>
     </tr>
     <tr>
-      <td>6 to 8 room house*</td>
+      <td>6 to 8 room home*</td>
       <td>2.5 to 3 hours</td>
-      <td>&pound;100</td>
+      <td>&pound;120</td>
     </tr>
     <tr>
       <td>Over 8 rooms*</td>
       <td>Over 3 hours</td>
-      <td>&pound;120</td>
+      <td>&pound;150</td>
     </tr>
   </tbody>
 </table>
