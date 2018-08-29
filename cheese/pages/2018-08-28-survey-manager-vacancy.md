@@ -5,7 +5,7 @@ title: Job vacancy for a thermal-imaging Survey Manager
 **To manage thermal image surveys of the interior of homes**
 
 Commencing early October 2018 in Bristol, this role is for 2-3 days/week until
-end April 2019 (with two unpaid weeks leave over Christmas/New Year). This
+end April 2019 (with two paid weeks leave over Christmas/New Year). This
 period may be extended or increased if further funding becomes available. Due
 to the nature of our surveys it will involve, at times, working during the
 evening and at weekends. There is a six week (15 day) probationary period.
