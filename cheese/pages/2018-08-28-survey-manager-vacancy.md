@@ -89,6 +89,8 @@ Desirable:
 
   - Experience of not-for-profit sector.
 
+## How to apply
+
 If you are interested in this role then please complete our application
 form ([PDF to print](/static/files/CHEESE-job-application-form.pdf) or [DOCX to fill
 in](/static/files/CHEESE-job-application-form.docx))
