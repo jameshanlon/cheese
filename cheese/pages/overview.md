@@ -109,6 +109,7 @@ In winter 2017/18 we want to increase the scale of the CHEESE Project to reach
 even more homes, and we are keen to establish further partnerships in Bristol,
 and possibly elsewhere in the UK, to enable us to do this.
 
+<a class="anchor" name="who-we-work-with"></a>
 ## Who we work with
 
 We work closely with community groups in Bristol. We have a number of segments,
