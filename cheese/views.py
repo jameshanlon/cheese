@@ -904,6 +904,12 @@ class ApplySurveyForm(FlaskForm):
 @bp.route('/apply-for-a-survey', methods=['GET', 'POST'])
 def apply_for_a_survey():
     form = ApplySurveyForm(request.form)
+    today = datetime.date.today()
+    notice = ''
+    if (today.month > 3 and today.month < 9): # Display notice April to August
+      notice = """The {}/{} surveying season has now finished, but you can still apply
+      for a survey next winter, between November {} and April {}.""".format(
+        today.year-1, today.year, today.year, today.year+1)
     if request.method=='POST' and helpers.validate_form_on_submit(form):
         # Add to db.
         survey = Surveys()
@@ -936,7 +942,7 @@ def apply_for_a_survey():
         # Success page.
         page = pages.get('application-successful')
         return render_template('page.html', page=page)
-    return render_template('apply-for-a-survey.html', form=form)
+    return render_template('apply-for-a-survey.html', form=form, notice=notice)
 
 
 @bp.route('/one-month-feedback', methods=['GET', 'POST'])

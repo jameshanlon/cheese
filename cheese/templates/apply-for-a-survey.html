@@ -4,10 +4,11 @@
 
 <h1>Apply for a home survey</h1>
 
+{% if notice %}
 <div class="notice lead">
-The 2017/18 surveying season has now finished, but you can still apply for a
-survey next winter, between November 2018 and April 2019.
+  {{ notice }}
 </div>
+{% endif %}
 
 <p>Please complete the form below to apply for a survey, but before you do, we
 ask that you read through the <a href="/pre-survey-guide">survey preparation
