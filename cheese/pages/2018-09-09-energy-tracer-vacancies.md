@@ -2,18 +2,21 @@ article:
 date: 2018-09-09
 title: Job vacancies for part-time thermal-imaging surveyors, with free training
 
-**To conduct thermal image surveys of the interior of homes in Bristol**
+<p class="lead">We are looking for enthusiastic, sustainably-minded people to
+train as CHEESE Energy Tracers to conduct thermal image surveys of the interior
+of homes in Bristol this winter.</p>
 
 Commencing with a course over the weekend of October 20th/21st 2018 in Bristol,
 this opportunity begins with free training to a CPD standard in our unique
-method of thermal surveying. We are offering part time work, according to your
-availability, daytime, evenings and weekends until the end of March 2019 (with
-two weeks leave over Christmas/New Year). There may be an opportunity to
-continue the work the following cold season (October 2019 to 31 March 2020).
-Due to the availability of householders and the nature of our surveys it will
-involve, at times, working during the evening and at weekends. It will be
-desirable for you to commit to an average of at least two surveys per week,
-lasting about 3 hours.
+method of thermal surveying.
+
+We are offering part time work, according to your availability, daytime,
+evenings and weekends until the end of March 2019 (with two weeks leave over
+Christmas/New Year). There may be an opportunity to continue the work the
+following cold season (October 2019 to 31 March 2020). Due to the availability
+of householders and the nature of our surveys it will involve, at times,
+working during the evening and at weekends. It will be desirable for you to
+commit to an average of at least two surveys per week, lasting about 3 hours.
 
 Pay for the role equates to around £15 per hour. Depending on the size of the
 home, surveys take between 2.5 to 4 hours, and payment per survey is from £50
@@ -24,7 +27,7 @@ against your invoice.
 ## Key responsibilities
 
  - To work as instructed and to a schedule agreed with the Survey Manager, and
-   the Directors' Management Committee of the Project. 
+   the Directors' Management Committee of the project.
 
  - Contact and liaise with customers, providing excellent customer service.
 

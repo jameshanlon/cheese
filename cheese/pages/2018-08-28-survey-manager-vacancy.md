@@ -2,7 +2,8 @@ article:
 date: 2018-08-28
 title: Job vacancy for a thermal-imaging Survey Manager
 
-**To manage thermal image surveys of the interior of homes**
+<p class="lead">We are looking for a motivated, organised individual to
+manage our thermal-imaging surveys of the interior of homes this winter.</p>
 
 Commencing early October 2018 in Bristol, this role is for 2-3 days/week until
 end April 2019 (with two paid weeks leave over Christmas/New Year). This
