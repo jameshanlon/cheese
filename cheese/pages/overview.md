@@ -156,5 +156,6 @@ We are a also a member of [Bristol Energy Network](http://www.bristolenergynetwo
 For more detail on the current progress, status and plans for the CHEESE
 Project, please see our progress report documents:
 
-- [CHEESE progress report January 2017 (PDF)](/static/files/CHEESE-progress-Jan17.pdf).
+- [CHEESE progress report September 2018 (PDF)](/static/files/CHEESE-progress-Sep18.pdf).
 - [CHEESE progress report June 2017 (PDF)](/static/files/CHEESE-progress-Jun17.pdf).
+- [CHEESE progress report January 2017 (PDF)](/static/files/CHEESE-progress-Jan17.pdf).
