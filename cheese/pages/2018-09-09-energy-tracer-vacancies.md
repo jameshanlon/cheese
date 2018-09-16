@@ -84,7 +84,7 @@ form ([PDF to print](/static/files/CHEESE-job-application-form.pdf) or [DOCX to 
 in](/static/files/CHEESE-job-application-form.docx))
 and send it to Mike Andrews via email at
 ([jobs@cheeseproject.co.uk](mailto:jobs@cheeseproject.co.uk)).
-The closing date for applications is Tuesday 25 September, 2018.
+The closing date for applications is Sunday 7th October, 2018.
 
 **PLEASE NOTE: please do not send in CVs and we will not accept applications
 from agencies**
