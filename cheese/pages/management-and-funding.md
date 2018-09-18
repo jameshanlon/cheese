@@ -1,38 +1,44 @@
 
+<a class="anchor" name="management"></a>
 # Management and organisation
 
-The CHEESE Project was setup in 2015, Bristol's Green Capital year, by a
-small group of local people concerned about climate change and who wanted to
-make Bristol a truly sustainable city.
+The CHEESE Project was setup in 2015, Bristol's Green Capital year, by a small
+group of local people concerned about climate change and who wanted to make
+Bristol a truly sustainable city. In February 2018, the CHEESE Project was
+granted Community Interest Company (CIC) status. For more information on the
+structure and organisation of the CHEESE Project, please read our [articles of
+association (PDF)](/static/files/CHEESE-CIC-articles-of-association-2018-03-09.pdf).
 
-The Project is organised by a *central office* but it operates through
-*community segments* and *city partners* who carry out the internal
-and external surveys. Community segments are partner associations based in
-Bristol city wards and city partners replicate the CHEESE Project, in
-coordination with Bristol, in other cities.
-
-We currently have three community segments in Bristol:
-
-- [Ambition Lawrence Weston](http://www.ambitionlw.org)
-- [Easton Energy Group](http://www.eastonenergygroup.org)
-- [Bishopston, Cotham, Redland Energy Group](https://www.facebook.com/BCR.EnergyGroup)
-
+The project is organised by a *central office* but it operates through
+*community segments* and *city partners* who carry out the internal and
+external surveys Community segments are partner associations based in Bristol
+city wards and city partners replicate the CHEESE Project, in coordination with
+Bristol, in other cities (more details on [who we work with here](/partners)).
 Our central office management team consists of six people:
 
-- Michael Alford Andrews, General manager.
-- Jeremy Birch, Technical manager.
-- David Tudgey, Community and development manager.
-- James Hanlon.
+- Michael Alford Andrews, General Manager;
+- Jeremy Birch, Technical Manager;
+- David Tudgey, Community and Development Manager;
+- Brian Harper;
+- James Hanlon;
 - Susan Nicholls.
 
-## CIC status
-
-In February 2018, the CHEESE Project was granted Community Interest Company
-(CIC) status.
-
-For more information on the structure and organisation of the CHEESE Project,
-please read our [articles of association
-(PDF)](/static/files/CHEESE-CIC-articles-of-association-2018-03-09.pdf).
+<figure class="figure">
+<img src="{{'static/images/people/mike.jpg'|thumbnail('200x200')}}">
+<figcaption class="figure-caption text-center">Mike</figcaption>
+</figure>
+<figure class="figure">
+<img src="{{'static/images/people/brian-and-jamie.jpg'|thumbnail('200x200')}}">
+<figcaption class="figure-caption text-center">Jamie and Brian</figcaption>
+</figure>
+<figure class="figure">
+<img src="{{'static/images/people/dave-and-sue.jpg'|thumbnail('300x200')}}">
+<figcaption class="figure-caption text-center">Sue and Dave</figcaption>
+</figure>
+<figure class="figure">
+<img src="{{'static/images/people/jeremy.jpg'|thumbnail('200x200')}}">
+<figcaption class="figure-caption text-center">Jeremy</figcaption>
+</figure>
 
 <a class="anchor" name="funding"></a>
 # Funding
