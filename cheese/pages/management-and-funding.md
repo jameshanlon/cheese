@@ -4,24 +4,29 @@
 
 The CHEESE Project was setup in 2015, Bristol's Green Capital year, by a small
 group of local people concerned about climate change and who wanted to make
-Bristol a truly sustainable city. In February 2018, the CHEESE Project was
-granted Community Interest Company (CIC) status. For more information on the
-structure and organisation of the CHEESE Project, please read our [articles of
-association (PDF)](/static/files/CHEESE-CIC-articles-of-association-2018-03-09.pdf).
+Bristol a truly sustainable city. It was formally founded as an unincorporated
+association in August 2016, governed by a five-member volunteer management
+committee working to a [formal
+constisution (PDF)](/static/files/CHEESE-Constitution-2016-08-17.pdf). In February
+2018, the CHEESE Project was granted Community Interest Company (CIC) status.
+For more information on the structure and organisation of the CHEESE Project,
+please read our [articles of association
+(PDF)](/static/files/CHEESE-CIC-articles-of-association-2018-03-09.pdf).
 
-The project is organised by a *central office* but it operates through
+The project is organised by a *central office* and operates through
 *community segments* and *city partners* who carry out the internal and
-external surveys Community segments are partner associations based in Bristol
+external surveys. Community segments are partner associations based in Bristol
 city wards and city partners replicate the CHEESE Project, in coordination with
 Bristol, in other cities (more details on [who we work with here](/partners)).
+
 Our central office management team consists of six people:
 
 - Michael Alford Andrews, General Manager;
 - Jeremy Birch, Technical Manager;
 - David Tudgey, Community and Development Manager;
-- Brian Harper;
-- James Hanlon;
-- Susan Nicholls.
+- Brian Harper, Director;
+- James Hanlon, Director;
+- Susan Nicholls, Director.
 
 <figure class="figure">
 <img src="{{'static/images/people/mike.jpg'|thumbnail('200x200')}}">
