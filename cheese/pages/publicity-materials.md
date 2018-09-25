@@ -8,12 +8,12 @@ project.
 
 A double-sided A5 leaflet:
 
-- General version: [PDF](/static/files/publicity-materials/CHEESE-flyer.pdf) format.
-- Ambition Lawrence Weston (AWL) version: [PDF](/static/files/publicity-materials/CHEESE-flyer-AWL.pdf) format.
-- Easton Energy Group (EEG) version: [PDF](/static/files/publicity-materials/CHEESE-flyer-Easton.pdf) format.
+- General version: [PDF]({{url_for('.assets', filename='files/publicity-materials/CHEESE-flyer.pdf')}}) format.
+- Ambition Lawrence Weston (AWL) version: [PDF]({{url_for('.assets', filename='files/publicity-materials/CHEESE-flyer-AWL.pdf')}}) format.
+- Easton Energy Group (EEG) version: [PDF]({{url_for('.assets', filename='files/publicity-materials/CHEESE-flyer-Easton.pdf')}}) format.
 
 ## Graphics
 
-- The CHEESE logo: [PNG](/static/files/publicity-materials/CHEESE-logo.png) format.
-- The CHEESE house: [PNG](/static/files/publicity-materials/CHEESE-house.png) format.
-- The CHEESE banner: [PDF](/static/files/publicity-materials/CHEESE-banner.pdf) format.
+- The CHEESE logo: [PNG]({{url_for('.assets', filename='files/publicity-materials/CHEESE-logo.png')}}) format.
+- The CHEESE house: [PNG]({{url_for('.assets', filename='files/publicity-materials/CHEESE-house.png')}}) format.
+- The CHEESE banner: [PDF]({{url_for('.assets', filename='files/publicity-materials/CHEESE-banner.pdf')}}) format.

@@ -18,37 +18,37 @@
   </p>
   <div class="banner-imgs">
     <div style="display:inline-block">
-    <a data-lightbox="splash" href="static/images/thermal6.jpg"
+    <a data-lightbox="splash" href="{{url_for('.assets', filename='images/thermal6.jpg')}}"
        data-title="Draught between floorboards">
-      <img src="{{'static/images/thermal6.jpg'|thumbnail('200x200')}}">
+      <img src="{{'images/thermal6.jpg'|thumbnail('200x200')}}">
     </a>
     <div class="imgcaption">Draught between floorboards</div>
     </div>
     <div style="display:inline-block;">
-    <a data-lightbox="splash" href="static/images/thermal7.jpg"
+    <a data-lightbox="splash" href="{{url_for('.assets', filename='images/thermal7.jpg')}}"
        data-title="Missing cavity wall insulation">
-      <img src="{{'static/images/thermal7.jpg'|thumbnail('200x200')}}">
+      <img src="{{'images/thermal7.jpg'|thumbnail('200x200')}}">
     </a>
     <div class="imgcaption">Missing cavity wall insulation</div>
     </div>
     <div style="display:inline-block;">
-    <a data-lightbox="splash" href="static/images/thermal8.jpg"
+    <a data-lightbox="splash" href="{{url_for('.assets', filename='images/thermal8.jpg')}}"
        data-title="Cold bathroom vent">
-      <img src="{{'static/images/thermal8.jpg'|thumbnail('200x200')}}">
+      <img src="{{'images/thermal8.jpg'|thumbnail('200x200')}}">
     </a>
     <div class="imgcaption">Cold bathroom vent</div>
     </div>
     <div style="display:inline-block;">
-    <a data-lightbox="splash" href="static/images/thermal9.jpg"
+    <a data-lightbox="splash" href="{{url_for('.assets', filename='images/thermal9.jpg')}}"
        data-title="Cold loft entrance">
-      <img src="{{'static/images/thermal9.jpg'|thumbnail('200x200')}}">
+      <img src="{{'images/thermal9.jpg'|thumbnail('200x200')}}">
     </a>
     <div class="imgcaption">Cold loft entrance</div>
     </div>
     <div style="display:inline-block;">
-    <a data-lightbox="splash" href="static/images/thermal10.jpg"
+    <a data-lightbox="splash" href="{{url_for('.assets', filename='images/thermal10.jpg')}}"
        data-title="Poorly fitted window">
-      <img src="{{'static/images/thermal10.jpg'|thumbnail('200x200')}}">
+      <img src="{{'images/thermal10.jpg'|thumbnail('200x200')}}">
     </a>
     <div class="imgcaption">Poorly fitted window</div>
     </div>
@@ -57,7 +57,7 @@
       These are some common faults shown up by CHEESE thermal image
       surveys,<br>where red and white is hottest and blue and black coldest.
       <div style="text-align:center; padding-top:0.4em">
-        Cold <img src="static/images/rainbow.jpg"> Hot
+        Cold <img src="{{url_for('.assets', filename='images/rainbow.jpg')}}"> Hot
       </div>
   </div>
   <p><a class="btn btn-primary btn-md float-right" href="/apply-for-a-survey" role="button">
@@ -83,15 +83,15 @@
 <h2>Thanks to our funders</h2>
 <div class="text-center">
 <a href="http://quartetcf.org.uk/grant-programmes/megawatt-community-energy-large-and-small-grants/">
-  <img width="160px" src="/static/images/quartet-logo.png"></a>
+  <img width="160px" src="{{url_for('.assets', filename='images/quartet-logo.png')}}"></a>
 <a href="http://www.bristolenergy.coop">
-  <img width="160px" src="/static/images/BEC-logo.jpg"></a>
+  <img width="160px" src="{{url_for('.assets', filename='images/BEC-logo.jpg')}}"></a>
 <a href="https://www.thefundingnetwork.org.uk/events/tfn-bristol/1310">
-  <img width="160px" src="/static/images/TFN-logo.png"></a>
+  <img width="160px" src="{{url_for('.assets', filename='images/TFN-logo.png')}}"></a>
 <a href="http://www.naturesave.co.uk/the-naturesave-trust/">
-  <img width="160px" src="/static/images/naturesave-logo.jpg"></a>
+  <img width="160px" src="{{url_for('.assets', filename='images/naturesave-logo.jpg')}}"></a>
 <a href="https://www.bristolcommunityenergy.co.uk/">
-  <img width="160px" src="/static/images/BCEF-logo.png"></a>
+  <img width="160px" src="{{url_for('.assets', filename='images/BCEF-logo.png')}}"></a>
 </div>
 
 <a href="/management-and-funding#funding">More details of our management and

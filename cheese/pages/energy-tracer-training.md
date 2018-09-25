@@ -1,7 +1,7 @@
 
 # Energy Tracers wanted!
 
-<div class="float-right"><img src="/static/images/ETlogo.png"></div>
+<div class="float-right"><img src="{{url_for('.assets', filename='images/ETlogo.png')}}"></div>
 
 **We are looking for enthusiastic people to train to become
 CHEESE Energy Tracers.**

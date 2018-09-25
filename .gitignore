@@ -6,9 +6,9 @@ docker-compose.yml
 *.bak
 cheese.log
 cheese-error.log
-cheese/static/images/thumbs
 cheese/static/uploads
 cheese/static/export
+cheese/static/thumbs
 env/
 test.db
 flask/mysql.cnf

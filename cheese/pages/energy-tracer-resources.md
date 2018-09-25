@@ -5,7 +5,7 @@ Welcome to the resources page for Energy Tracers.
 
 ## Survey materials
 
-- [Results paper form to print (PDF)](/static/files/CHEESE-survey-results-form.pdf)
+- [Results paper form to print (PDF)]({{url_for('.assets', filename='files/CHEESE-survey-results-form.pdf')}})
 - [Whereabouts of surveying equipment spreadsheet (Google Docs)](https://docs.google.com/spreadsheets/d/1YZ8ttMmJUeJ_Iwv0NzLnqQlHjP_t4F1Ds9FknTH2TEY/edit?usp=sharing)
 
 ## Survey results
@@ -22,8 +22,8 @@ Welcome to the resources page for Energy Tracers.
 
 ## Invoicing
 
-- [Invoice proforma for payment of expenses (Word.docx)](/static/files/CHEESE-invoice-proforma-For-payment-of-expenses.docx)
-- [Invoice proforma for payment of survey fees (Word.docx)](/static/files/CHEESE-invoice-proforma-For-payment-of-survey-fees.docx)
+- [Invoice proforma for payment of expenses (Word.docx)]({{url_for('.assets', filename='files/CHEESE-invoice-proforma-For-payment-of-expenses.docx')}})
+- [Invoice proforma for payment of survey fees (Word.docx)]({{url_for('.assets', filename='files/CHEESE-invoice-proforma-For-payment-of-survey-fees.docx')}})
 
 ## References
 

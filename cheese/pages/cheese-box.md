@@ -1,6 +1,6 @@
 
 <div class="float-right">
-  <img src="{{'static/images/CHEESE-box.jpg'|thumbnail('220x220')}}"
+  <img src="/assets/images/CHEESE-box.jpg"
        alt="A CHEESE energy-saving box!">
 </div>
 
@@ -29,28 +29,28 @@ see how...
 
 <div class="container-fluid">
 <div class="row">
-  <div class="col-sm-2 my-auto"><img src="/static/images/elite-monitor.jpg"></div><!--
+  <div class="col-sm-2 my-auto"><img src="/assets/images/elite-monitor.jpg"></div><!--
   --><div class="col-sm-9 my-auto"><strong>Whole-home electricity monitor</strong>.
     This allows you to see the total amount of electricity you are using in your
     home in real time.
     </div>
 </div>
 <div class="row">
-  <div class="col-sm-2 my-auto"><img src="/static/images/plug-monitor.jpg"></div><!--
+  <div class="col-sm-2 my-auto"><img src="/assets/images/plug-monitor.jpg"></div><!--
   --><div class="col-sm-9 my-auto"><strong>Single-appliance plug monitor</strong>.
     With this you can monitor the amount of electricity that particular appliances
     use.
     </div>
 </div>
 <div class="row">
-  <div class="col-sm-2 my-auto"><img src="/static/images/thermometer.jpg"></div><!--
+  <div class="col-sm-2 my-auto"><img src="/assets/images/thermometer.jpg"></div><!--
   --><div class="col-sm-9 my-auto"><strong>Two thermometers</strong>.
     You can use these to monitor the temperature of rooms and, by placing one outside,
     the effect of weather on your energy use.
     </div>
 </div>
 <div class="row">
-  <div class="col-sm-2 my-auto"><img src="/static/images/eco-manual.jpg"></div><!--
+  <div class="col-sm-2 my-auto"><img src="/assets/images/eco-manual.jpg"></div><!--
   --><div class="col-sm-9 my-auto"><strong>Haynes Eco-House Manual.</strong>.
     This is a practical guide to all aspects of home retrofitting, from heating and
     electrical systems through to building materials and outdoor space.
@@ -81,9 +81,9 @@ being saved by householders taking action following a CHEESE Project survey.
 ### Whole-home electricity monitor
 
 <div class="float-right">
-<a data-lightbox="monitor-transmitter" href="static/images/monitor-transmitter.jpg"
+<a data-lightbox="monitor-transmitter" href="/assets/images/monitor-transmitter.jpg"
    data-title="The transmitter for the Efergy monitor with its clip around a main supply cable.">
-  <img src="{{'static/images/monitor-transmitter.jpg'|thumbnail('220x220')}}">
+  <img src="{{'/assets/images/monitor-transmitter.jpg'|thumbnail('220x220')}}">
 </a>
 </div>
 
@@ -119,9 +119,9 @@ investigate by turning things off for a short period and checking the change.
 ### Single-device plug monitor
 
 <div class="float-right">
-<a data-lightbox="plug-monitor" href="static/images/plug-monitor-in-use.jpg"
+<a data-lightbox="plug-monitor" href="/assets/images/plug-monitor-in-use.jpg"
    data-title="The plug monitor being used to meaure the consumption of a toaster.">
-  <img src="{{'static/images/plug-monitor-in-use.jpg'|thumbnail('220x220')}}"
+  <img src="{{/assets/images/plug-monitor-in-use.jpg|thumbnail('220x220')}}"
        alt="">
 </a>
 </div>
@@ -189,7 +189,7 @@ can easily be read, and another inside.
 <div class="float-right">
 <a data-lightbox="electricity-meter" href="static/images/electricity-meter.jpg"
    data-title="An example of an electricity meter.">
-  <img src="{{'static/images/electricity-meter.jpg'|thumbnail('220x220')}}">
+  <img src="{{'/assets/images/electricity-meter.jpg'|thumbnail('220x220')}}">
 </a>
 </div>
 

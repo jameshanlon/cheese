@@ -55,19 +55,19 @@ Award](http://bristolgreencapital.org/winners-announced-in-the-green-volunteers-
 at the Bristol Green Capital Partnership Green Volunteers' Awards 2016.
 
 <div class="thumbs">
-<a data-lightbox="achievements" href="static/images/heatview.png">
-  <img src="{{'static/images/heatview.png'|thumbnail('180x180')}}" class="img-thumbnail">
+<a data-lightbox="achievements" href="{{url_for('.assets', filename='images/heatview.png')}}">
+  <img src="{{'images/heatview.png'|thumbnail('180x180')}}" class="img-thumbnail">
 </a>
-<a data-lightbox="achievements" href="static/images/heatview-image.png">
-  <img src="{{'static/images/heatview-image.png'|thumbnail('180x180')}}" class="img-thumbnail">
+<a data-lightbox="achievements" href="{{url_for('.assets', filename='images/heatview-image.png')}}">
+  <img src="{{'images/heatview-image.png'|thumbnail('180x180')}}" class="img-thumbnail">
 </a>
-<a data-lightbox="achievements" href="static/images/2016-03-green-volunteers-award/award.jpg"
+<a data-lightbox="achievements" href="{{url_for('.assets', filename='images/2016-03-green-volunteers-award/award.jpg')}}"
    data-title="The Volunteers for Energy award!">
-  <img src="{{'static/images/2016-03-green-volunteers-award/award.jpg'|thumbnail('180x180')}}" class="img-thumbnail">
+  <img src="{{'images/2016-03-green-volunteers-award/award.jpg'|thumbnail('180x180')}}" class="img-thumbnail">
 </a>
-<a data-lightbox="achievements" href="static/images/2016-03-green-volunteers-award/mike-jeremy.jpg"
+<a data-lightbox="achievements" href="{{url_for('.assets', filename='images/2016-03-green-volunteers-award/mike-jeremy.jpg')}}"
    data-title="Mareike Schmidt, Bristol City Council, with Mike and Jeremy from CHEESE.">
-  <img src="{{'static/images/2016-03-green-volunteers-award/mike-jeremy.jpg'|thumbnail('180x180')}}" class="img-thumbnail">
+  <img src="{{'images/2016-03-green-volunteers-award/mike-jeremy.jpg'|thumbnail('180x180')}}" class="img-thumbnail">
 </a>
 </div>
 
@@ -114,6 +114,6 @@ and possibly elsewhere in the UK, to enable us to do this.
 For more detail on the current progress, status and plans for the CHEESE
 Project, please see our progress report documents:
 
-- [CHEESE progress report September 2018 (PDF)](/static/files/CHEESE-progress-Sep18.pdf).
-- [CHEESE progress report June 2017 (PDF)](/static/files/CHEESE-progress-Jun17.pdf).
-- [CHEESE progress report January 2017 (PDF)](/static/files/CHEESE-progress-Jan17.pdf).
+- [CHEESE progress report September 2018 (PDF)]({{url_for('.assets', filename='files/CHEESE-progress-Sep18.pdf')}}).
+- [CHEESE progress report June 2017 (PDF)]({{url_for('.assets', filename='files/CHEESE-progress-Jun17.pdf')}}).
+- [CHEESE progress report January 2017 (PDF)]({{url_for('.assets', filename='files/CHEESE-progress-Jan17.pdf')}}).

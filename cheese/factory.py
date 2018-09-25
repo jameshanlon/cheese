@@ -1,8 +1,8 @@
 import logging
+import os
 from logging.handlers import SMTPHandler, RotatingFileHandler
 from flask import Flask
 import flask_admin
-from flask_uploads import configure_uploads, patch_request_class
 from flask_wtf.csrf import CSRFProtect
 from mixer.backend.flask import mixer
 
@@ -98,13 +98,11 @@ def create_app(config={}):
                               template_mode='bootstrap3')
     init_admin(admin)
     # Flask extensions.
-    from cheese.views import mail, images, pages, thumb
+    from cheese.views import mail, pages, s3
     mail.init_app(app)
     pages.init_app(app)
-    thumb.init_app(app)
-    configure_uploads(app, images)
-    patch_request_class(app, app.config['MAX_IMAGE_SIZE'])
     mixer.init_app(app)
+    s3.init_app(app)
     # Register signals.
     init_signals(app)
     # Add logging handlers.

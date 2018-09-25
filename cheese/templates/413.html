@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% block title %}Payload too large{% endblock %}
+{% block content %}
+  <h1>Payload too large</h1>
+  <p>The file payload was too large, please try again with a smaller file.</p>
+  <p><a href="{{ url_for('cheese.index') }}">Return home.</a>
+{% endblock %}

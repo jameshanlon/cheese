@@ -7,7 +7,8 @@ from cheese.models import db, WARDS, BUILDING_TYPES, Surveys, Results, \
                           MonthFeedback, YearFeedback, \
                           ThermalImage, Inventory, Kits, \
                           User, Member, UserInvitation, Role
-from cheese.settings import NUM_PHASES
+from cheese.settings import NUM_PHASES, IMAGE_UPLOAD_FORMATS
+from cheese.s3 import S3
 from flask import Blueprint, current_app, url_for, redirect, render_template, \
                   render_template_string, request, flash, Markup, \
                   send_from_directory
@@ -17,9 +18,7 @@ from flask_admin.menu import MenuLink
 from flask_admin.contrib import sqla
 from flask_user import login_required, current_user
 from flask_flatpages import FlatPages
-from flask_thumbnails import Thumbnail
 from flask_mail import Mail, Message
-from flask_uploads import UploadSet, UploadNotAllowed, IMAGES
 from flask_wtf import FlaskForm
 from flask_wtf.file import FileField, FileAllowed, FileRequired
 from sqlalchemy.event import listens_for
@@ -31,8 +30,7 @@ from werkzeug.utils import secure_filename
 
 mail = Mail()
 pages = FlatPages()
-thumb = Thumbnail()
-images = UploadSet('images', list(IMAGES)+[x.upper() for x in IMAGES])
+s3 = S3()
 
 bp = Blueprint('cheese', __name__)
 
@@ -774,7 +772,8 @@ def submit_results():
 class UploadThermalImageForm(FlaskForm):
     image = FileField('Image file',
               validators=[FileRequired(),
-                          FileAllowed(images, 'Only images can be uploaded')])
+                          FileAllowed(IMAGE_UPLOAD_FORMATS,
+                                      'Only images can be uploaded')])
     description = fields.TextAreaField('Description of the image',
                     validators=[validators.required()])
     building_type = fields.SelectField('Building type',
@@ -795,33 +794,29 @@ def upload_thermal_image():
     form = UploadThermalImageForm()
     if request.method=='POST' and form.validate_on_submit():
         image = request.files.get('image')
-        try:
-            filename = random_string(10)+'_'+secure_filename(image.filename)
-            filename = images.save(image, name=filename)
-        except UploadNotAllowed:
-            flash('The uploaded file is not allowed')
-        else:
-            thermal_image = ThermalImage()
-            thermal_image.filename = filename
-            for f in ['description',
-                      'building_type',
-                      'year_of_construction',
-                      'keywords', ]:
-                    setattr(thermal_image, f, request.form.get(f))
-            setattr(thermal_image, 'user', User.query.get(current_user.get_id()))
-            db.session.add(thermal_image)
-            db.session.commit()
-            # Send watchers email.
-            subject = '[CHEESE] New themrmal image'
-            message = 'From '+str(thermal_image.user) \
-                      + ' at '+str(datetime.datetime.today())+': ' \
-                      + current_app.config['URL_BASE']+str(url_for('thermalimage.details_view', id=thermal_image.id))
-            mail.send(Message(subject=subject,
-                              body=message,
-                              recipients=current_app.config['WATCHERS']))
-            # Flash success message.
-            flash('The thermal image has been submitted successfully.')
-            return redirect(url_for('cheese.upload_thermal_image'))
+        filename = random_string(10)+'_'+secure_filename(image.filename)
+        s3.upload_fileobj_thermal_image(image, filename)
+        thermal_image = ThermalImage()
+        thermal_image.filename = filename
+        for f in ['description',
+                  'building_type',
+                  'year_of_construction',
+                  'keywords', ]:
+                setattr(thermal_image, f, request.form.get(f))
+        setattr(thermal_image, 'user', User.query.get(current_user.get_id()))
+        db.session.add(thermal_image)
+        db.session.commit()
+        # Send watchers email.
+        subject = '[CHEESE] New themrmal image'
+        message = 'From '+str(thermal_image.user) \
+                  + ' at '+str(datetime.datetime.today())+': ' \
+                  + current_app.config['URL_BASE']+str(url_for('thermalimage.details_view', id=thermal_image.id))
+        mail.send(Message(subject=subject,
+                          body=message,
+                          recipients=current_app.config['WATCHERS']))
+        # Flash success message.
+        flash('The thermal image has been submitted successfully.')
+        return redirect(url_for('cheese.upload_thermal_image'))
     return render_template('upload-thermal-image.html', form=form)
 
 
@@ -1240,12 +1235,22 @@ def get_articles():
 
 
 @bp.errorhandler(404)
-def page_not_found(e):
+def page_not_found(error):
     return render_template('404.html'), 404
 
+@bp.errorhandler(413)
+def request_entity_too_large(error):
+    return render_template('413.html'), 413
+
 @bp.route('/robots.txt')
-def static_from_root():
+def rom_root():
     return send_from_directory(current_app.static_folder, request.path[1:])
+
+# For debug deployment only. Will be overridden by Nginx rule in production.
+@bp.route('/assets/<path:filename>')
+def assets(filename):
+    url = current_app.config['S3_PREFIX']+'/'+filename
+    return redirect(url, code=302)
 
 @bp.route('/')
 def index():
@@ -1253,7 +1258,6 @@ def index():
     if len(articles) >= 3:
         articles = articles[:3]
     return render_template('index.html', articles=articles)
-
 
 @bp.route('/<path:path>')
 def page(path):
@@ -1290,3 +1294,4 @@ overview               = bp.route('/overview')(flatpage_template)
 partners               = bp.route('/partners')(flatpage_template)
 management_and_funding = bp.route('/management-and-funding')(flatpage_template)
 media_coverage         = bp.route('/media-coverage')(flatpage_template)
+publicity_materials    = bp.route('/publicity-materials')(flatpage_template)

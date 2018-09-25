@@ -43,5 +43,5 @@ def get_date_now():
 
 @bp.app_template_global()
 def image_list(directory, ext='.jpg'):
-    return ['static/images/'+directory+'/'+os.path.basename(x) \
+    return ['images/'+directory+'/'+os.path.basename(x) \
               for x in glob.glob(current_app.config['IMAGES_DIR']+'/'+directory+'/*'+ext)]

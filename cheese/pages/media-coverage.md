@@ -9,7 +9,7 @@
   Community Health news provided some tips on keeping warm this winter. CHEESE
   is suggested as a way to identify improvements that can be made to a home.
 
-- **[RCAS: A Visit from the CHEESE Team](/static/files/RCAS-a-visit-from-CHEESE.pdf)
+- **[RCAS: A Visit from the CHEESE Team]({{url_for('.assets', filename='files/RCAS-a-visit-from-CHEESE.pdf')}})
   (PDF), December 2017**. After his CHEESE survey, Peter Wilde of the Redland and Cotham
   Amenities Society wrote up a short piece in their magazine on the project and results of
   the survey of his Victorian house, concluding "We highly reccommend this approach which

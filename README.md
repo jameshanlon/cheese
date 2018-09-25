@@ -138,6 +138,16 @@ cheeseproject.co.uk.crt       cheeseproject.co.uk.csr
 cheeseproject.co.uk.gandi.pem cheeseproject.co.uk.key
 ```
 
+### Using S3 storage
+
+Examples:
+```
+s3cmd la --recursive s3://jwh/cheese/
+s3cmd put images/* s3://jwh/cheese/files/images
+s3cmd rm  s3://jwh/cheese/images/.*
+s3cmd setacl s3://jwh/cheese --acl-public --recursive
+```
+
 ## Misc
 
 Resize a set of images using ImageMagick to a fixed width (only shrink), eg:
