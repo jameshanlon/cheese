@@ -43,25 +43,31 @@ mysql> exit
 
 ### Populate the database
 
-To initialise a minimal database:
+To initialise a testing database:
+```
+$ docker exec -it <cheese-flask> bash
+$ cd /opt/www
+$ FLASK_APP=run.py flask resetdb command.
+```
+To initialise a new, empty database, use the commands from `resetdb()` in
+`cheese/commands.py`, eg:
 ```
 $ docker exec -it <cheese-flask> bash
 $ cd /opt/www
 $ python
->>> from cheese.init_app import app, init_app, db
->>> init_app(app)
->>> from cheese.init_app import user_manager
+>>> from cheese.factory import create_app
+>>> app = create_app({})
 >>> from cheese.models import User, Role
->>> db.drop_all()
->>> db.create_all()
->>> user = User(email="admin@cheeseproject.co.uk", \
-      password=user_manager.hash_password('admin'), \
-      is_active=True)
->>> user.roles.append(Role(name='admin'))
->>> db.session.add(user)
->>> db.session.commit()
+>>>  user = User(email="admin@cheeseproject.co.uk", \
+       password=user_manager.hash_password('admin'), \
+       is_active=True)
+>>> with app.app_context():
+...  db.drop_all()
+...  db.create_all()
+...  user.roles.append(Role(name='admin'))
+...  db.session.add(user)
+...  db.session.commit()
 ```
-Or use the `flask resetdb` command.
 
 ### Run the development server
 
