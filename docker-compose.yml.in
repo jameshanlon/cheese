@@ -43,7 +43,7 @@ services:
       - CHEESE_S3_ACCESS_KEY_ID=${CHEESE_S3_ACCESS_KEY_ID}
       - CHEESE_S3_SECRET_ACCESS_KEY=${CHEESE_S3_SECRET_ACCESS_KEY}
   cheese-db:
-    image: mysql:8.0.12
+    image: mysql:8.0
     volumes:
       - ${CHEESE_MYSQL_DATA_DIR}:/var/lib/mysql
     environment:
