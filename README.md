@@ -49,6 +49,7 @@ $ docker exec -it <cheese-flask> bash
 $ cd /opt/www
 $ FLASK_APP=run.py flask resetdb command.
 ```
+
 To initialise a new, empty database, use the commands from `resetdb()` in
 `cheese/commands.py`, eg:
 ```
@@ -68,6 +69,16 @@ $ python
 ...  db.session.add(user)
 ...  db.session.commit()
 ```
+
+To restore a local database from a backup:
+```
+mysql -u root -p < mysql-backup.sql
+```
+Or restore a database in a Docker container:
+```
+cat mysql-backup.sql | docker exec -i flask_container_1 mysql -h database_container_1
+```
+The `-h` host parameter may not be necessary.
 
 ### Run the development server
 
