@@ -1,4 +1,4 @@
-cffi==1.10.0
+cffi==1.11.5
 uwsgi==2.0.15
 MySQL-python==1.2.5
 pillow==4.1.1
