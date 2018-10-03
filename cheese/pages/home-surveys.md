@@ -1,8 +1,8 @@
 
 <div class="float-right">
-  <a data-lightbox="bay-window" href="static/images/thermal13.jpg"
+  <a data-lightbox="bay-window" href="{{url_for('.assets', filename='images/thermal13.jpg')}}"
      data-title="Thermal image of a bay window.">
-    <img src="{{'static/images/thermal13.jpg'|thumbnail('250x250')}}">
+    <img src="{{'images/thermal13.jpg'|thumbnail('250x250')}}">
   </a>
 </div>
 

@@ -24,7 +24,7 @@ is part of an effort to document the experience of the CHEESE Project.</p>
 </p>
 
 {% macro get_path(filename) -%}
-  static/uploads/{{filename}}
+  {{url_for('.assets', filename='/uploads/'+filename)}}
 {%- endmacro %}
 
 {% if keyword %}
