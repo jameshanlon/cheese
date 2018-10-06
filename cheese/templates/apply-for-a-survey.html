@@ -51,8 +51,9 @@ touch by emailing
     {{ macros.render_form_field(form.expected_benefit) }}
     {{ macros.render_form_field(form.free_survey_consideration) }}
     {{ macros.end_form_section() }}
-    {{ macros.render_form_field(form.referral) }}
     {{ macros.render_form_field(form.availability) }}
+    {{ macros.render_form_field(form.referral) }}
+    <label>* required fields</label>
     <p>As part of the overall aims of the CHEESE Project, we are compiling
     information on common thermal faults and energy-efficiency measures. We
     collect anonymised thermal photos during surveys to use as examples, but
@@ -64,7 +65,6 @@ touch by emailing
     the project is doing, we will ask you to report your progress one
     month and one year after the survey.</p>
     {{ macros.render_form_field(form.agree_to_requirements) }}
-    <label></label>
     <p>{% include 'privacy-statement.html' %}</p>
     <button class="btn" type="submit">Submit</button>
   </form>

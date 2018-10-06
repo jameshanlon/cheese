@@ -3,11 +3,20 @@ import datetime
 import os
 import random
 import string
-from cheese.models import db, WARDS, BUILDING_TYPES, Surveys, Results, \
-                          MonthFeedback, YearFeedback, \
+from cheese.models import db, WARDS, BUILDING_TYPES, BuildingTypes, \
+                          WallConstructionTypes, OccupationTypes, \
+                          SpaceHeatingTypes, WaterHeatingTypes, CookingTypes, \
+                          Surveys, Results, MonthFeedback, YearFeedback, \
                           ThermalImage, Inventory, Kits, \
                           User, Member, UserInvitation, Role
-from cheese.settings import NUM_PHASES, IMAGE_UPLOAD_FORMATS
+from cheese.forms import ApplySurveyForm, \
+                         create_submit_results_form, \
+                         UploadThermalImageForm, \
+                         OneMonthFeedbackForm, \
+                         OneYearFeedbackForm, \
+                         MembershipForm, \
+                         validate_date
+from cheese.settings import NUM_PHASES
 from cheese.s3 import S3
 from flask import Blueprint, current_app, url_for, redirect, render_template, \
                   render_template_string, request, flash, Markup, \
@@ -18,14 +27,10 @@ from flask_admin.menu import MenuLink
 from flask_admin.contrib import sqla
 from flask_user import login_required, current_user
 from flask_flatpages import FlatPages
-from flask_mail import Mail, Message
 from flask_wtf import FlaskForm
-from flask_wtf.file import FileField, FileAllowed, FileRequired
+from flask_mail import Mail, Message
 from sqlalchemy.event import listens_for
 from sqlalchemy.inspection import inspect
-from wtforms import fields, validators, widgets
-from wtforms.fields.html5 import EmailField
-from wtforms_sqlalchemy.orm import model_form
 from werkzeug.utils import secure_filename
 
 mail = Mail()
@@ -34,30 +39,6 @@ s3 = S3()
 
 bp = Blueprint('cheese', __name__)
 
-
-class DatePickerWidget(widgets.TextInput):
-    """ A custom date picker widget, using Bootstrap-datetimepicker. """
-    def __call__(self, field, **kwargs):
-        html = """<div class='input-group date' id='datetimepicker'>
-                    <input type='text' class='form-control' %s/>
-                      <span class='input-group-addon'>
-                        <span class='glyphicon glyphicon-calendar'></span>
-                      </span>
-                   </div>"""
-        return Markup(html % (self.html_params(name=field.name, **kwargs)))
-
-
-class OneToFiveWidget(widgets.Input):
-    """ A custom widget for 1-to-5 ratings. """
-    def __call__(self, field, **kwargs):
-        html = """<div class="rating-1to5">
-                  <span><input type="radio" name="{0}" value="1" {1}>1</span>
-                  <span><input type="radio" name="{0}" value="2" {1}>2</span>
-                  <span><input type="radio" name="{0}" value="3" {1}>3</span>
-                  <span><input type="radio" name="{0}" value="4" {1}>4</span>
-                  <span><input type="radio" name="{0}" value="5" {1}>5</span>
-                  </div>"""
-        return Markup(html.format(field.name, self.html_params(**kwargs)))
 
 def init_admin(admin):
     for phase in reversed(range(1, NUM_PHASES+1)):
@@ -144,21 +125,6 @@ def has_edit_permission():
     if not current_user.is_authenticated:
         return False
     return current_user.has_role('admin', 'manager')
-
-
-def validate_date(form, field):
-    """
-    Check whether date format is supported by strftime(), avoiding:
-      ValueError: year=X is before 1900; the datetime strftime() methods require year >= 1900
-    See FlaskAdmin issue: https://github.com/flask-admin/flask-admin/issues/987
-    """
-    if field.data:
-        try:
-            field.data.strftime('%d.%m.%Y')
-        except ValueError:
-            field.errors.append('Year must be >= 1900')
-            return False
-    return True
 
 
 class AdminModelView(sqla.ModelView):
@@ -326,7 +292,7 @@ class CheeseAdminIndexView(flask_admin.AdminIndexView):
 
     def get_delete_form(self):
         class DeleteForm(FlaskForm):
-            id = fields.HiddenField(validators=[validators.required()])
+            id = fields.HiddenField(validators=[Required()])
             url = fields.HiddenField()
         return DeleteForm()
 
@@ -694,61 +660,7 @@ class ThermalImageView(GeneralModelView):
 @bp.route('/submit-results', methods=['GET', 'POST'])
 @login_required
 def submit_results():
-    ResultsForm = model_form(Results, db_session=db.session, field_args={
-        "survey":                     { "label": "Survey (type to search)", },
-        "lead_surveyor":              { "label": "Lead surveyor", },
-        "assistant_surveyor":         { "label": "Assistant surveyor", },
-        "householders_name":          { "label": "Householder's name", },
-        "address_line":               { "label": "Address line", },
-        "survey_date":                { "label": "Survey date (dd/mm/yyyy)",
-                                        "format": "%d/%m/%Y",
-                                        "widget": DatePickerWidget(),
-                                        "validators": [validate_date], },
-        "external_temperature":       { "label": "External temperature (C)", },
-        "loaned_cheese_box":          { "label": "CHEESE box loaned?", },
-        "cheese_box_number":          { "label": "CHEESE box number", },
-        "building_type" :             { "label": "Building type", },
-        "year_of_construction":       { "label": "Year of construction", },
-        "wall_construction":          { "label": "Wall construction", },
-        "occupation_type":            { "label": "Occupation type", },
-        "primary_heating_type":       { "label": "Primary heating type", },
-        "secondary_heating_type":     { "label": "Secondary heating type", },
-        "water_heating_type":         { "label": "Primary water heating type", },
-        "cooking_type":               { "label": "Primary cooking type", },
-        "depth_loft_insulation":      { "label": "Depth of loft insulation (mm)", },
-        "number_open_fireplaces":     { "label": "Number of open fireplaces", },
-        "double_glazing":             { "label": "Amount of double glazing (%)", },
-        "num_occupants":              { "label": "Number of occupants", },
-        "annual_gas_kwh":             { "label": "Annual consumption (kWh)", },
-        "annual_gas_estimated":       { "label": "Is the value based on estimated use?", },
-        "annual_gas_start_date":      { "label": "Start date (dd/mm/yyy)",
-                                        "format": "%d/%m/%Y",
-                                        "widget": DatePickerWidget(),
-                                        "validators": [validators.Optional(),
-                                                       validate_date], },
-        "annual_gas_end_date":        { "label": "End date (dd/mm/yyy)",
-                                        "format": "%d/%m/%Y",
-                                        "widget": DatePickerWidget(),
-                                        "validators": [validators.Optional(),
-                                                       validate_date], },
-        "annual_elec_kwh":            { "label": "Annual consumption (kWh)", },
-        "annual_elec_estimated":      { "label": "Is the value based on estimated use??", },
-        "annual_elec_start_date":     { "label": "Start date (dd/mm/yyy)",
-                                        "format": "%d/%m/%Y",
-                                        "widget": DatePickerWidget(),
-                                        "validators": [validators.Optional(),
-                                                       validate_date], },
-        "annual_elec_end_date":       { "label": "End date (dd/mm/yyy)",
-                                        "format": "%d/%m/%Y",
-                                        "widget": DatePickerWidget(),
-                                        "validators": [validators.Optional(),
-                                                       validate_date], },
-        "annual_solid_spend":         { "label": "Annual spend on solid fuels (&pound;)", },
-        "renewable_contribution_kwh": { "label": "Annual contribution from renewable generation (kWh)", },
-        "faults_identified":          { "label": "Faults identified", },
-        }, exclude=['date'])
-    results = Results()
-    form = ResultsForm(request.form, results)
+    form = create_submit_results_form(db.session, request.form)
     if request.method=='POST' and helpers.validate_form_on_submit(form):
         form.populate_obj(results)
         db.session.add(results)
@@ -767,23 +679,6 @@ def submit_results():
     return render_template('submit-results.html', form=form)
 
 
-# Unfortunately, model_form can't be used here because we need a FlaskForm for
-# it to be validated properly with a FileField.
-class UploadThermalImageForm(FlaskForm):
-    image = FileField('Image file',
-              validators=[FileRequired(),
-                          FileAllowed(IMAGE_UPLOAD_FORMATS,
-                                      'Only images can be uploaded')])
-    description = fields.TextAreaField('Description of the image',
-                    validators=[validators.required()])
-    building_type = fields.SelectField('Building type',
-            choices=[choice('')]+[choice(x) for x in BUILDING_TYPES],
-            default='', validators=[validators.required()])
-    year_of_construction = fields.IntegerField('Year of construction',
-            validators=[validators.required()])
-    keywords = fields.StringField("Keywords (separated by commas ',')",
-                                  validators=[validators.required()])
-
 def random_string(length):
     return ''.join(random.choice(string.ascii_uppercase + string.digits) \
                 for _ in range(length))
@@ -791,7 +686,7 @@ def random_string(length):
 @bp.route('/upload-thermal-image', methods=['GET', 'POST'])
 @login_required
 def upload_thermal_image():
-    form = UploadThermalImageForm()
+    form = UploadThermalImageForm(request.form)
     if request.method=='POST' and form.validate_on_submit():
         image = request.files.get('image')
         filename = random_string(10)+'_'+secure_filename(image.filename)
@@ -845,57 +740,6 @@ def collected_thermal_images():
 # Public pages.
 #===-----------------------------------------------------------------------===#
 
-class ApplySurveyForm(FlaskForm):
-    name = fields.StringField(validators=[validators.required(),
-                                          validators.Length(max=100)])
-    address_line = fields.StringField(validators=[validators.required(),
-                                                  validators.Length(max=100)])
-    postcode = fields.StringField(validators=[validators.required(),
-                                              validators.Length(max=10)])
-    ward = fields.SelectField('Ward',
-               choices=[choice('')]+[choice(x) for x in WARDS],
-               default='', validators=[validators.required(),
-                                       validators.Length(max=50)])
-    email = EmailField(validators=[validators.required(),
-                                   validators.Email(),
-                                   validators.Length(max=100)])
-    telephone = fields.StringField(validators=[validators.required(),
-                                               validators.Length(max=20)])
-    mobile = fields.StringField(validators=[validators.required(),
-                                            validators.Length(max=20)])
-    availability = fields.TextAreaField(validators=[validators.required()])
-    building_type = fields.SelectField('Building type',
-            choices=[choice('')]+[choice(x) for x in BUILDING_TYPES],
-            default='', validators=[validators.required()])
-    num_main_rooms = fields.IntegerField('Number of main rooms ' \
-                                         +'(reception + living + bedroom)')
-    can_heat_comfortably = \
-        fields.BooleanField('Can you heat your home to a comfortable ' \
-                            +'temperature in the winter?')
-    expected_benefit = fields.TextAreaField('How do you think you will ' \
-                                            + 'benefit from a survey?',
-                                        validators=[validators.required()])
-    referral = fields.StringField('How did you hear about CHEESE?',
-                                  validators=[validators.required(),
-                                              validators.Length(max=250)])
-    free_survey_consideration = \
-        fields.BooleanField('I live in a low-income household and ' \
-            +'would like to be considered for a free survey.')
-    agree_to_requirements = \
-        fields.BooleanField('I <strong>agree</strong> to make the  ' \
-            +'<a href="/pre-survey-guide#preparation" target="_blank">'
-            +'necessary preparations</a> for the survey and am happy ' \
-            +'to <a href="/pre-survey-guide#follow-ups" target="_blank"> ' \
-            +'report my progress after one month and one year</a>.',
-            validators=[validators.required()])
-    photo_release = \
-        fields.BooleanField('I <strong>agree</strong> to any of the ' \
-            +'still photos to be taken during my survey that do not ' \
-            +'clearly identify a specific person or place to be used in a ' \
-            +'publicly-accessible record on thermal faults and energy ' \
-            +'efficiency.')
-
-
 @bp.route('/apply-for-a-survey', methods=['GET', 'POST'])
 def apply_for_a_survey():
     form = ApplySurveyForm(request.form)
@@ -907,6 +751,7 @@ def apply_for_a_survey():
         today.year-1, today.year, today.year, today.year+1)
     if request.method=='POST' and helpers.validate_form_on_submit(form):
         # Add to db.
+        print "blah"
         survey = Surveys()
         form.populate_obj(survey)
         survey.signed_up_via = 'The CHEESE website'
@@ -940,105 +785,13 @@ def apply_for_a_survey():
     return render_template('apply-for-a-survey.html', form=form, notice=notice)
 
 
+
 @bp.route('/one-month-feedback', methods=['GET', 'POST'])
 def one_month_feedback():
-    not_needed = 'We only need this if we didn\'t collect this during the survey.'
-    numbers_only = 'Only use digits and (optionally) a decimal point, no other punctuation or symbols.'
-    MonthFeedbackForm = model_form(MonthFeedback, db_session=db.session,
-        exclude=['date', 'submitted_by', 'survey', 'notes'],
-        field_args={
-          'householders_name': {
-               'label': 'Name',
-               'validators': [validators.required()], },
-          'address': {
-               'label': 'Address',
-               'validators': [validators.required()], },
-          'annual_gas_kwh': {
-              'label': 'Total annual gas use in kWh',
-              'description': numbers_only, },
-          'annual_gas_estimated': {
-              'label': 'Is this figure based on estimated use (rather than meter readings)?', },
-          'annual_gas_start_date': {
-              'label': 'Start date (mm/dd/yyy)',
-              "format": "%d/%m/%Y",
-              'widget': DatePickerWidget(),
-              "validators": [validators.Optional(),
-                             validate_date], },
-          'annual_gas_end_date': {
-              'label': 'End date (mm/dd/yyy)',
-              "format": "%d/%m/%Y",
-              'widget': DatePickerWidget(),
-              "validators": [validators.Optional(),
-                             validate_date], },
-          'annual_elec_kwh': {
-              'label': 'Total annual electricity usage in kWh',
-              'description': numbers_only, },
-          'annual_elec_estimated': {
-              'label': 'Is this figure based on estimated use (rather than meter readings)?', },
-          'annual_elec_start_date': {
-              'label': 'Start date (mm/dd/yyy)',
-              "format": "%d/%m/%Y",
-              'widget': DatePickerWidget(),
-              "validators": [validators.Optional(),
-                             validate_date], },
-          'annual_elec_end_date': {
-              'label': 'End date (mm/dd/yyy)',
-              "format": "%d/%m/%Y",
-              'widget': DatePickerWidget(),
-              "validators": [validators.Optional(),
-                             validate_date], },
-          'annual_solid_spend': {
-              'label': 'Total annual spend in pounds (&pound;) on solid fuels',
-              'description': 'Such as wood, coal etc. '+not_needed, },
-          'renewable_contrib_kwh': {
-              'label': 'Total annual contribution of any renewable generation in kWh',
-              'description': 'Such as from solar PV or a ground-source heat pump.<br>'+not_needed, },
-          'completed_actions': {
-              'label': 'Have you already taken action to improve the thermal efficiency of your home?',
-              'description': 'If so, then what have you done?',
-              'validators': [validators.required()], },
-          'planned_actions': {
-              'label': 'What you are planning to do to in the next few years improve the thermal efficiency of your home?',
-              'description': 'This can be anything from draught proofing to installing external wall insulation.',
-              'validators': [validators.required()], },
-          'satisfaction_1to5': {
-              'label': 'How satisified were you with the survey overall? (1: least, to 5: most)',
-              'widget': OneToFiveWidget(), },
-          'cheese_box_1to5': {
-              'label': 'How useful did you find the CHEESE box? (1: least, to 5: most)',
-              'widget': OneToFiveWidget(), },
-          'survey_video_1to5': {
-              'label': 'How useful have you find the survey video? (1: not at all, to 5: very)',
-              'widget': OneToFiveWidget(), },
-          'surveyor_conduct_1to5': {
-              'label': 'How was the conduct of the surveyor? (1: poor, to 5: excellent)',
-              'widget': OneToFiveWidget(), },
-          'survey_value_1to5': {
-              'label': 'Was the survey good value for money? (1: disagree, to 5: agree)',
-              'widget': OneToFiveWidget(), },
-          'recommend_1to5': {
-              'label': 'Are you likely to recommend the survey to a friend or neighbour? (1: unlikely, to 5: definitely)',
-              'widget': OneToFiveWidget(), },
-          'cheese_box': {
-              'label': 'Can you explain your <a href="/cheese-box">CHEESE box</a> score?',
-              'description': 'We would be interested to know specifically what you found useful and what you didn\'t.',
-              'validators': [validators.required()], },
-          'feedback': {
-              'label': 'Do you have any feedback?',
-              'description': 'We would like to hear what you think about:'
-                              +' the organisation of the survey,'
-                              +' the conduct of the Energy Tracers,'
-                              +' the results of the survey and suggested remedies,'
-                              +' the overall value for money of the survey,'
-                              +' your overall satisfaction,'
-                              +' and anything else at all you would like to let us know.',
-              'validators': [validators.required()], },
-          }
-        )
-    follow_up = MonthFeedback()
-    form = MonthFeedbackForm(request.form, follow_up)
+    form = OneMonthFeedbackForm(request.form)
     if request.method=='POST' and helpers.validate_form_on_submit(form):
-        form.populate_obj(follow_up)
+        month_feedback = MonthFeedback()
+        form.populate_obj(month_feedback)
         follow_up.submitted_by = 'Submitted from the website'
         db.session.add(follow_up)
         db.session.commit()
@@ -1058,104 +811,10 @@ def one_month_feedback():
 
 @bp.route('/one-year-feedback', methods=['GET', 'POST'])
 def one_year_feedback():
-    numbers_only = 'Only use digits and (optionally) a decimal point, no other punctuation or symbols.'
-    YearFeedbackForm = model_form(YearFeedback, db_session=db.session,
-        exclude=['date', 'submitted_by', 'survey', 'notes'],
-        field_args={
-          'householders_name': {
-              'label': 'Name',
-              'validators': [validators.required()], },
-          'address': {
-              'label': 'Address',
-              'validators': [validators.required()], },
-          'annual_gas_kwh': {
-              'label': 'Total annual gas use in kWh',
-              'description': numbers_only,
-              'validators': [validators.InputRequired()], },
-          'annual_gas_estimated': {
-              'label': 'Is this figure based on estimated use (rather than meter readings)?', },
-          'annual_gas_start_date': {
-              'label': 'Start date (mm/dd/yyy)',
-              "format": "%d/%m/%Y",
-              'widget': DatePickerWidget(),
-              'validators': [validators.InputRequired(),
-                             validate_date], },
-          'annual_gas_end_date': {
-              'label': 'End date (mm/dd/yyy)',
-              "format": "%d/%m/%Y",
-              'widget': DatePickerWidget(),
-              'validators': [validators.InputRequired(),
-                             validate_date], },
-          'annual_elec_kwh': {
-              'label': 'Total annual electricity usage in kWh',
-              'description': numbers_only,
-              'validators': [validators.InputRequired()], },
-          'annual_elec_estimated': {
-              'label': 'Is this figure based on estimated use (rather than meter readings)?', },
-          'annual_elec_start_date': {
-              'label': 'Start date (mm/dd/yyy)',
-              "format": "%d/%m/%Y",
-              'widget': DatePickerWidget(),
-              'validators': [validators.InputRequired(),
-                             validate_date], },
-          'annual_elec_end_date': {
-              'label': 'End date (mm/dd/yyy)',
-              "format": "%d/%m/%Y",
-              'widget': DatePickerWidget(),
-              'validators': [validators.InputRequired(),
-                             validate_date], },
-          'annual_solid_spend': {
-              'label': 'Total annual spend in pounds (&pound;) on solid fuels',
-              'description': 'Such as wood, coal etc.',
-              'validators': [validators.InputRequired()], },
-          'renewable_contrib_kwh': {
-              'label': 'Total annual contribution of any renewable generation in kWh',
-              'description': 'Such as from solar PV or a ground-source heat pump.',
-              'validators': [validators.InputRequired()], },
-          'diy_work' : {
-              'label': 'What work have you done yourself?',
-              'validators': [validators.required()], },
-          'prof_work': {
-              'label': 'What work have you paid for to be done professionally?',
-              'validators': [validators.required()], },
-          'contractors_used': {
-              'label': 'If you had work done professionally, which contractors did you use?',
-              'description': 'And were these contractors based in Bristol or from further afield?', },
-          'total_spent': {
-              'label': 'Approximately how much have you spent in total on energy improvements to your home?',
-              'description': 'Only answer this if you feel comfortable to.', },
-          'total_spent_diy': {
-              'label': 'Approximately how much did you spend on DIY?', },
-          'total_spent_local': {
-              'label': 'Approximately how much did you spend on local contractors?', },
-          'planned_work': {
-              'label': 'Do you have any further work planned? And, if so, what?',
-              'validators': [validators.required()], },
-          'wellbeing_improvement': {
-              'label': 'Have the actions you\'ve taken made your house feel warmer?',
-              'description': 'Perhaps even if you haven\'t saved any money on your bills!', },
-          'behaviour_temperature': {
-              'label': 'Has the period and temperature you use the heating for changed, and if so, how?',
-              'validators': [validators.required()], },
-          'behaviour_space': {
-              'label': 'Do you use space in your home differently now, and if so, how?',
-              'validators': [validators.required()], },
-          'behaviour_changes': {
-              'label': 'How else has your behaviour changed after the survey?',
-              'validators': [validators.required()], },
-          'feedback':
-            { 'label': 'Lastly, do you have any other feedback on the CHEESE Project?',
-              'description': 'We would like to hear what you think about:'
-                              +' how useful the survey was,'
-                              +' how useful the <a href="/cheese-box">CHEESE box</a> was,'
-                              +' your overall satisfaction,'
-                              +' and anything else at all you would like to let us know.', },
-          }
-        )
-    follow_up = YearFeedback()
-    form = YearFeedbackForm(request.form, follow_up)
+    form = OneYearFeedbackForm(request.form)
     if request.method=='POST' and helpers.validate_form_on_submit(form):
-        form.populate_obj(follow_up)
+        year_feedback = YearFeedback()
+        form.populate_obj(year_feedback)
         follow_up.submitted_by = 'Submitted from the website'
         db.session.add(follow_up)
         db.session.commit()
@@ -1175,40 +834,15 @@ def one_year_feedback():
 
 @bp.route('/apply-for-membership', methods=['GET', 'POST'])
 def apply_for_membership():
-    MembershipForm = model_form(Member, db_session=db.session,
-        exclude=['application_date', 'registration_date', 'notes'],
-        field_args={
-          'name': {
-            'label': 'Organisation name or name of individual if individual membership*',
-            'validators': [validators.required()], },
-          'address': {
-            'label': 'Address*',
-            'validators': [validators.required()], },
-          'email': {
-            'label': 'Contact email address*',
-            'description': 'This will act as the primary point of contact',
-            'validators': [validators.required()], },
-          'telephone': {
-            'label': 'Contact telephone number', },
-          'representative_1_name': {
-            'label': 'Name', },
-          'representative_1_email': {
-            'label': 'Contact email address', },
-          'representative_1_telephone': {
-            'label': 'Contact telephone number', },
-          'representative_2_name': {
-            'label': 'Name', },
-          'representative_2_email': {
-            'label': 'Contact email address', },
-          'representative_2_telephone': {
-            'label': 'Contact telephone number', },
-           })
-    member = Member()
-    form = MembershipForm(request.form, member)
+    form = MembershipForm(request.form)
     if request.method=='POST' and helpers.validate_form_on_submit(form):
+        member = Member()
         form.populate_obj(member)
+        print '2'
         db.session.add(member)
+        print '3'
         db.session.commit()
+        print '4'
         # Send watchers email.
         subject = '[CHEESE] New application for member'
         message = 'From '+member.name+', '+member.address \

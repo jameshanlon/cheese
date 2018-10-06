@@ -2,7 +2,10 @@ import datetime
 import random
 from mixer.backend.flask import mixer
 from cheese.models import db, user_manager, User, Role, Surveys, Results, \
-                          MonthFeedback, YearFeedback
+                          MonthFeedback, YearFeedback, Wards, \
+                          BuildingTypes, WallConstructionTypes, \
+                          OccupationTypes, SpaceHeatingTypes, \
+                          WaterHeatingTypes, CookingTypes
 from cheese.settings import PHASE_START_DATES, NUM_PHASES
 
 def resetdb():
@@ -76,6 +79,13 @@ def resetdb():
                           behaviour_changes=mixer.RANDOM,
                           feedback=mixer.RANDOM,
                           notes=mixer.RANDOM)
+    mixer.cycle(10).blend(Wards)
+    mixer.cycle(10).blend(BuildingTypes)
+    mixer.cycle(10).blend(WallConstructionTypes)
+    mixer.cycle(10).blend(OccupationTypes)
+    mixer.cycle(10).blend(SpaceHeatingTypes)
+    mixer.cycle(10).blend(WaterHeatingTypes)
+    mixer.cycle(10).blend(CookingTypes)
     # Remove duplicate references (where there should only be one).
     for s in Surveys.query.all():
       if len(s.result) > 1:

@@ -10,10 +10,9 @@ SQLAlchemy-Utils==0.33.5
 requests==2.19.1
 boto3==1.9.14
 Markdown==2.6.11
-WTForms==2.1
-WTForms-Alchemy==0.16.1
+WTForms==2.2.1
+WTForms-Alchemy==0.16.7
 WTForms-Components==0.10.2
-WTForms-SQLAlchemy==0.1
 Flask==1.0.2
 Flask-Admin==1.5.0
 Flask-BasicAuth==0.2.0
