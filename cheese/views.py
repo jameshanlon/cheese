@@ -661,21 +661,24 @@ class ThermalImageView(GeneralModelView):
 @login_required
 def submit_results():
     form = create_submit_results_form(db.session, request.form)
-    if request.method=='POST' and helpers.validate_form_on_submit(form):
-        form.populate_obj(results)
-        db.session.add(results)
-        db.session.commit()
-        # Send watchers email.
-        subject = '[CHEESE] New survey result'
-        message = 'For '+results.householders_name+', '+results.address_line \
-                  + ' at '+str(datetime.datetime.today())+': ' \
-                  + current_app.config['URL_BASE']+str(url_for('results.details_view', id=results.id))
-        mail.send(Message(subject=subject,
-                          body=message,
-                          recipients=current_app.config['WATCHERS']))
-        # Flash success message.
-        flash('Survey result submitted successfully.')
-        return redirect(url_for('cheese.submit_results'))
+    if request.method=='POST':
+        if helpers.validate_form_on_submit(form):
+            form.populate_obj(results)
+            db.session.add(results)
+            db.session.commit()
+            # Send watchers email.
+            subject = '[CHEESE] New survey result'
+            message = 'For '+results.householders_name+', '+results.address_line \
+                      + ' at '+str(datetime.datetime.today())+': ' \
+                      + current_app.config['URL_BASE']+str(url_for('results.details_view', id=results.id))
+            mail.send(Message(subject=subject,
+                              body=message,
+                              recipients=current_app.config['WATCHERS']))
+            # Flash success message.
+            flash('Survey result submitted successfully.')
+            return redirect(url_for('cheese.submit_results'))
+        else:
+            flash('There were problems with your form.', 'error')
     return render_template('submit-results.html', form=form)
 
 
@@ -749,39 +752,41 @@ def apply_for_a_survey():
       notice = """The {}/{} surveying season has now finished, but you can still apply
       for a survey next winter, between November {} and April {}.""".format(
         today.year-1, today.year, today.year, today.year+1)
-    if request.method=='POST' and helpers.validate_form_on_submit(form):
-        # Add to db.
-        print "blah"
-        survey = Surveys()
-        form.populate_obj(survey)
-        survey.signed_up_via = 'The CHEESE website'
-        survey.phase = get_survey_phase(datetime.datetime.utcnow().date())
-        db.session.add(survey)
-        db.session.commit()
-        # Send email to applicant.
-        subject = 'Request for a CHEESE survey'
-        message =  'Dear '+form.name.data+',\n\n'
-        message += 'Thank you for your survey request.\n\n'
-        message += 'We will be in touch soon when we have some prospective '
-        message += 'dates for the survey.\n\n'
-        message += 'In the mean time, please get in touch if you have any '
-        message += 'questions.\n\n'
-        message += 'Many thanks,\nThe CHEESE Project team\n\n'
-        message += 'www.cheeseproject.co.uk\ninfo@cheeseproject.co.uk'
-        mail.send(Message(subject=subject,
-                          body=message,
-                          recipients=[form.email.data]))
-        # Send watchers email.
-        subject = '[CHEESE] New request for a survey'
-        message = 'From '+survey.name+', '+survey.address_line \
-                  + ' at '+str(datetime.datetime.today())+': ' \
-                  + current_app.config['URL_BASE']+str(url_for('surveys.details_view', id=survey.id))
-        mail.send(Message(subject=subject,
-                          body=message,
-                          recipients=current_app.config['WATCHERS']))
-        # Success page.
-        page = pages.get('application-successful')
-        return render_template('page.html', page=page)
+    if request.method=='POST':
+        if helpers.validate_form_on_submit(form):
+            # Add to db.
+            survey = Surveys()
+            form.populate_obj(survey)
+            survey.signed_up_via = 'The CHEESE website'
+            survey.phase = get_survey_phase(datetime.datetime.utcnow().date())
+            db.session.add(survey)
+            db.session.commit()
+            # Send email to applicant.
+            subject = 'Request for a CHEESE survey'
+            message =  'Dear '+form.name.data+',\n\n'
+            message += 'Thank you for your survey request.\n\n'
+            message += 'We will be in touch soon when we have some prospective '
+            message += 'dates for the survey.\n\n'
+            message += 'In the mean time, please get in touch if you have any '
+            message += 'questions.\n\n'
+            message += 'Many thanks,\nThe CHEESE Project team\n\n'
+            message += 'www.cheeseproject.co.uk\ninfo@cheeseproject.co.uk'
+            mail.send(Message(subject=subject,
+                              body=message,
+                              recipients=[form.email.data]))
+            # Send watchers email.
+            subject = '[CHEESE] New request for a survey'
+            message = 'From '+survey.name+', '+survey.address_line \
+                      + ' at '+str(datetime.datetime.today())+': ' \
+                      + current_app.config['URL_BASE']+str(url_for('surveys.details_view', id=survey.id))
+            mail.send(Message(subject=subject,
+                              body=message,
+                              recipients=current_app.config['WATCHERS']))
+            # Success page.
+            page = pages.get('application-successful')
+            return render_template('page.html', page=page)
+        else:
+            flash('There were problems with your form.', 'error')
     return render_template('apply-for-a-survey.html', form=form, notice=notice)
 
 
@@ -789,71 +794,77 @@ def apply_for_a_survey():
 @bp.route('/one-month-feedback', methods=['GET', 'POST'])
 def one_month_feedback():
     form = OneMonthFeedbackForm(request.form)
-    if request.method=='POST' and helpers.validate_form_on_submit(form):
-        month_feedback = MonthFeedback()
-        form.populate_obj(month_feedback)
-        follow_up.submitted_by = 'Submitted from the website'
-        db.session.add(follow_up)
-        db.session.commit()
-        # Send watchers email.
-        subject = '[CHEESE] New one-month response'
-        message = 'From '+follow_up.householders_name+', '+follow_up.address \
-                  + ' at '+str(datetime.datetime.today())+': ' \
-                  + current_app.config['URL_BASE']+str(url_for('monthfeedback.details_view', id=follow_up.id))
-        mail.send(Message(subject=subject,
-                          body=message,
-                          recipients=current_app.config['WATCHERS']))
-        # Flash success message.
-        flash('Your one month feedback was submitted successfully, thank you.')
-        return redirect(url_for('cheese.one_month_feedback'))
+    if request.method=='POST':
+        if helpers.validate_form_on_submit(form):
+            month_feedback = MonthFeedback()
+            form.populate_obj(month_feedback)
+            month_feedback.submitted_by = 'Submitted from the website'
+            db.session.add(month_feedback)
+            db.session.commit()
+            # Send watchers email.
+            subject = '[CHEESE] New one-month response'
+            message = 'From '+month_feedback.householders_name+', '+month_feedback.address \
+                + ' at '+str(datetime.datetime.today())+': ' \
+                + current_app.config['URL_BASE']+str(url_for('monthfeedback.details_view', id=month_feedback.id))
+            mail.send(Message(subject=subject,
+                              body=message,
+                              recipients=current_app.config['WATCHERS']))
+            # Flash success message.
+            flash('Your one-month feedback was submitted successfully, thank you.')
+            return redirect(url_for('cheese.one_month_feedback'))
+        else:
+            flash('There were problems with your form.', 'error')
     return render_template('one-month-feedback.html', form=form)
 
 
 @bp.route('/one-year-feedback', methods=['GET', 'POST'])
 def one_year_feedback():
     form = OneYearFeedbackForm(request.form)
-    if request.method=='POST' and helpers.validate_form_on_submit(form):
-        year_feedback = YearFeedback()
-        form.populate_obj(year_feedback)
-        follow_up.submitted_by = 'Submitted from the website'
-        db.session.add(follow_up)
-        db.session.commit()
-        # Send watchers email.
-        subject = '[CHEESE] New one-year response'
-        message = 'From '+follow_up.householders_name+', '+follow_up.address \
-                  + ' at '+str(datetime.datetime.today())+': ' \
-                  + current_app.config['URL_BASE']+str(url_for('yearfeedback.details_view', id=follow_up.id))
-        mail.send(Message(subject=subject,
-                          body=message,
-                          recipients=current_app.config['WATCHERS']))
-        # Flash success message.
-        flash('Your one year feedback was submitted successfully, thank you.')
-        return redirect(url_for('cheese.one_year_feedback'))
+    if request.method=='POST':
+        if helpers.validate_form_on_submit(form):
+            year_feedback = YearFeedback()
+            form.populate_obj(year_feedback)
+            year_feedback.submitted_by = 'Submitted from the website'
+            db.session.add(year_feedback)
+            db.session.commit()
+            # Send watchers email.
+            subject = '[CHEESE] New one-year response'
+            message = 'From '+year_feedback.householders_name+', '+year_feedback.address \
+                + ' at '+str(datetime.datetime.today())+': ' \
+                + current_app.config['URL_BASE']+str(url_for('yearfeedback.details_view', id=year_feedback.id))
+            mail.send(Message(subject=subject,
+                              body=message,
+                              recipients=current_app.config['WATCHERS']))
+            # Flash success message.
+            flash('Your one-year feedback was submitted successfully, thank you.')
+            return redirect(url_for('cheese.one_year_feedback'))
+        else:
+            flash('There were problems with your form.', 'error')
     return render_template('one-year-feedback.html', form=form)
 
 
 @bp.route('/apply-for-membership', methods=['GET', 'POST'])
 def apply_for_membership():
     form = MembershipForm(request.form)
-    if request.method=='POST' and helpers.validate_form_on_submit(form):
-        member = Member()
-        form.populate_obj(member)
-        print '2'
-        db.session.add(member)
-        print '3'
-        db.session.commit()
-        print '4'
-        # Send watchers email.
-        subject = '[CHEESE] New application for member'
-        message = 'From '+member.name+', '+member.address \
-                  + ' at '+str(datetime.datetime.today())+': ' \
-                  + current_app.config['URL_BASE']+str(url_for('member.details_view', id=member.id))
-        mail.send(Message(subject=subject,
-                          body=message,
-                          recipients=current_app.config['WATCHERS']))
-        # Flash success message.
-        flash('Your membership application was submitted successfully, thank you.')
-        return redirect(url_for('cheese.apply_for_membership'))
+    if request.method=='POST':
+        if helpers.validate_form_on_submit(form):
+            member = Member()
+            form.populate_obj(member)
+            db.session.add(member)
+            db.session.commit()
+            # Send watchers email.
+            subject = '[CHEESE] New application for member'
+            message = 'From '+member.name+', '+member.address \
+                + ' at '+str(datetime.datetime.today())+': ' \
+                + current_app.config['URL_BASE']+str(url_for('member.details_view', id=member.id))
+            mail.send(Message(subject=subject,
+                              body=message,
+                              recipients=current_app.config['WATCHERS']))
+            # Flash success message.
+            flash('Your membership application was submitted successfully, thank you.')
+            return redirect(url_for('cheese.apply_for_membership'))
+        else:
+            flash('There were problems with your form.', 'error')
     return render_template('apply-for-membership.html', form=form)
 
 

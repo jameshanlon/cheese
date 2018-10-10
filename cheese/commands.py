@@ -16,7 +16,7 @@ def resetdb():
     db.session.add(admin_role)
     db.session.add(Role(name='manager'))
     db.session.add(Role(name='surveyor'))
-    admin_user = User(email='admin@cheese.com',
+    admin_user = User(email='admin@cheeseproject.co.uk',
                       active=True,
                       password=user_manager.hash_password('admin'))
     admin_user.roles.append(admin_role)

@@ -96,6 +96,8 @@ uwsgi --http 0.0.0.0:9000 --manage-script-name --wsgi-file run.py --callable app
 ### Run the unit tests
 
 ```
+$ source env/bin/activate
+$ source CONFIG
 $ pytest
 ...
 ```

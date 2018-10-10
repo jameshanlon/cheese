@@ -185,12 +185,12 @@ class SubmitResultsForm(FlaskForm):
                                              validators=[Optional()])
     renewable_contribution_kwh = fields.DecimalField('Annual contribution from renewable generation (kWh)',
                                                      validators=[Optional()])
-    faults_identified = fields.TextField('Faults identified*',
-                                         validators=[Required()])
-    recommendations = fields.TextField('Recommendations*',
-                                       validators=[Required()])
-    notes = fields.TextField('Notes',
-                             validators=[Optional()])
+    faults_identified = fields.TextAreaField('Faults identified*',
+                                        validators=[Required()])
+    recommendations = fields.TextAreaField('Recommendations*',
+                                      validators=[Required()])
+    notes = fields.TextAreaField('Notes',
+                            validators=[Optional()])
 
 
 def create_submit_results_form(db_session, formdata):
@@ -251,7 +251,7 @@ class UploadThermalImageForm(FlaskForm):
                           FileAllowed(IMAGE_UPLOAD_FORMATS,
                                       'Only images can be uploaded')])
     description = fields.TextAreaField('Description of the image*',
-                    validators=[Required()])
+                                       validators=[Required()])
     building_type = fields.SelectField('Building type*',
             choices=[choice('')]+[choice(x) for x in BUILDING_TYPES],
             default='', validators=[Required()])
@@ -302,42 +302,49 @@ class OneMonthFeedbackForm(FlaskForm):
                                              validators=[Optional()])
     renewable_contrib_kwh = fields.DecimalField('Annual contribution from renewable generation (kWh)',
                                                 validators=[Optional()])
-    completed_actions = fields.TextField('Have you already taken action to improve the thermal efficiency of your home?*',
-                                         description='If so, then what have you done?',
-                                         validators=[Required()])
-    planned_actions = fields.TextField('What you are planning to do to in the next few years improve the thermal efficiency of your home?*',
-                                       description='This can be anything from draught proofing to installing external wall insulation.',
-                                       validators=[Required()])
+    completed_actions = fields.TextAreaField('Have you already taken action to improve the thermal efficiency of your home?*',
+                                             description='If so, then what have you done?',
+                                             validators=[Required()])
+    planned_actions = fields.TextAreaField('What you are planning to do to in the next few years improve the thermal efficiency of your home?*',
+                                           description='This can be anything from draught proofing to installing external wall insulation.',
+                                           validators=[Required()])
+    choices_1_to_5 = [choice(str(x)) for x in range(1,6)]
     satisfaction_1to5 = fields.RadioField('How satisified were you with the survey overall? (1: least, to 5: most)*',
                                           widget=OneToFiveWidget(),
+                                          choices=choices_1_to_5,
                                           validators=[Required()])
     cheese_box_1to5 = fields.RadioField('How useful did you find the CHEESE box? (1: least, to 5: most)*',
                                         widget=OneToFiveWidget(),
+                                        choices=choices_1_to_5,
                                         validators=[Required()])
     survey_video_1to5 = fields.RadioField('How useful have you find the survey video? (1: not at all, to 5: very)*',
                                           widget=OneToFiveWidget(),
+                                          choices=choices_1_to_5,
                                           validators=[Required()])
     surveyor_conduct_1to5 = fields.RadioField('How was the conduct of the surveyor? (1: poor, to 5: excellent)*',
                                               widget=OneToFiveWidget(),
+                                              choices=choices_1_to_5,
                                               validators=[Required()])
     survey_value_1to5 = fields.RadioField('Was the survey good value for money? (1: disagree, to 5: agree)*',
                                           widget=OneToFiveWidget(),
+                                          choices=choices_1_to_5,
                                           validators=[Required()])
     recommend_1to5 = fields.RadioField('Are you likely to recommend the survey to a friend or neighbour? (1: unlikely, to 5: definitely)*',
                                        widget=OneToFiveWidget(),
+                                       choices=choices_1_to_5,
                                        validators=[Required()])
-    cheese_box = fields.TextField('Can you explain your <a href="/cheese-box">CHEESE box</a> score?*',
-                                  description='We would be interested to know specifically what you found useful and what you didn\'t.',
-                                  validators=[Required()])
-    feedback = fields.TextField('Do you have any feedback?',
-                                description='We would like to hear what you think about:'
-                                              +' the organisation of the survey,'
-                                              +' the conduct of the Energy Tracers,'
-                                              +' the results of the survey and suggested remedies,'
-                                              +' the overall value for money of the survey,'
-                                              +' your overall satisfaction,'
-                                              +' and anything else at all you would like to let us know.',
-                                validators=[Optional()])
+    cheese_box = fields.TextAreaField('Can you explain your <a href="/cheese-box">CHEESE box</a> score?*',
+                                      description='We would be interested to know specifically what you found useful and what you didn\'t.',
+                                      validators=[Required()])
+    feedback = fields.TextAreaField('Do you have any feedback?',
+                                    description='We would like to hear what you think about:'
+                                                   +' the organisation of the survey,'
+                                                   +' the conduct of the Energy Tracers,'
+                                                   +' the results of the survey and suggested remedies,'
+                                                   +' the overall value for money of the survey,'
+                                                   +' your overall satisfaction,'
+                                                   +' and anything else at all you would like to let us know.',
+                                    validators=[Optional()])
 
 
 class OneYearFeedbackForm(FlaskForm):
@@ -380,13 +387,13 @@ class OneYearFeedbackForm(FlaskForm):
                                              validators=[Optional()])
     renewable_contrib_kwh = fields.DecimalField('Annual contribution from renewable generation (kWh)',
                                                 validators=[Optional()])
-    diy_work = fields.TextField('What work have you done yourself?*',
-                                validators=[Required()])
-    prof_work = fields.TextField('What work have you paid for to be done professionally?*',
-                                 validators=[Required()])
-    contractors_used = fields.TextField('If you had work done professionally, which contractors did you use?',
-                                        description='And were these contractors based in Bristol or from further afield?',
-                                        validators=[Optional()])
+    diy_work = fields.TextAreaField('What work have you done yourself?*',
+                                    validators=[Required()])
+    prof_work = fields.TextAreaField('What work have you paid for to be done professionally?*',
+                                     validators=[Required()])
+    contractors_used = fields.TextAreaField('If you had work done professionally, which contractors did you use?',
+                                            description='And were these contractors based in Bristol or from further afield?',
+                                            validators=[Optional()])
     total_spent = fields.DecimalField('Approximately how much have you spent in total on energy improvements to your home?',
                                       description='Only answer this if you feel comfortable to.',
                                       validators=[Optional()])
@@ -394,24 +401,24 @@ class OneYearFeedbackForm(FlaskForm):
                                           validators=[Optional()])
     total_spent_local = fields.DecimalField('Approximately how much did you spend on local contractors?',
                                             validators=[Optional()])
-    planned_work = fields.TextField('Do you have any further work planned? And, if so, what?*',
-                                    validators=[Required()])
-    wellbeing_improvement = fields.TextField('Have the actions you\'ve taken made your house feel warmer?',
-                                             description='Perhaps even if you haven\'t saved any money on your bills!',
-                                             validators=[Optional()])
-    behaviour_temperature = fields.TextField('Has the period and temperature you use the heating for changed, and if so, how?*',
+    planned_work = fields.TextAreaField('Do you have any further work planned? And, if so, what?*',
+                                        validators=[Required()])
+    wellbeing_improvement = fields.TextAreaField('Have the actions you\'ve taken made your house feel warmer?',
+                                                 description='Perhaps even if you haven\'t saved any money on your bills!',
+                                                 validators=[Optional()])
+    behaviour_temperature = fields.TextAreaField('Has the period and temperature you use the heating for changed, and if so, how?*',
+                                                 validators=[Required()])
+    behaviour_space = fields.TextAreaField('Do you use space in your home differently now, and if so, how?*',
+                                           validators=[Required()])
+    behaviour_changes = fields.TextAreaField('How else has your behaviour changed after the survey?*',
                                              validators=[Required()])
-    behaviour_space = fields.TextField('Do you use space in your home differently now, and if so, how?*',
-                                       validators=[Required()])
-    behaviour_changes = fields.TextField('How else has your behaviour changed after the survey?*',
-                                         validators=[Required()])
-    feedback = fields.TextField('Lastly, do you have any other feedback on the CHEESE Project?',
-                                description='We would like to hear what you think about:'
-                                              +' how useful the survey was,'
-                                              +' how useful the <a href="/cheese-box">CHEESE box</a> was,'
-                                              +' your overall satisfaction,'
-                                              +' and anything else at all you would like to let us know.',
-                                validators=[Optional()])
+    feedback = fields.TextAreaField('Lastly, do you have any other feedback on the CHEESE Project?',
+                                    description='We would like to hear what you think about:'
+                                                  +' how useful the survey was,'
+                                                  +' how useful the <a href="/cheese-box">CHEESE box</a> was,'
+                                                  +' your overall satisfaction,'
+                                                  +' and anything else at all you would like to let us know.',
+                                    validators=[Optional()])
 
 class MembershipForm(FlaskForm):
     name = fields.StringField('Organisation name or name of individual if individual membership*',
