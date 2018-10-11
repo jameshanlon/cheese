@@ -12,10 +12,11 @@ def app():
       FLASK_DEBUG=True,
       WTF_CSRF_ENABLED = False,
       SQLALCHEMY_DATABASE_URI = 'sqlite:///' + \
-          str(tempfile.NamedTemporaryFile(suffix='.db')),
+          tempfile.NamedTemporaryFile(suffix='.db').name,
       MAIL_SUPPRESS_SEND = True, )
     app = create_app(config)
     app.testing = True
+    print 'Using db '+app.config['SQLALCHEMY_DATABASE_URI']
     with app.app_context():
         resetdb()
     return app
@@ -24,7 +25,21 @@ def app():
 def client(app):
     return app.test_client()
 
+def login(client, username, password):
+    return client.post('/user/sign-in',
+                       data=dict(email=username,
+                                 password=password),
+                       follow_redirects=True)
+
+def logout(client):
+    return client.get('/user/sign-out', follow_redirects=True)
+
 # TODO: test /upload-thermal-image (without writing to S3 storage?)
+
+def test_user_login(client, app):
+    rv = login(client, 'admin@cheeseproject.co.uk', 'admin')
+    assert b'Incorrect Password' not in rv.data
+    rv = logout(client)
 
 # Tests the form submits with valid input data.
 def test_apply_for_survey_form(client, app):
@@ -50,47 +65,45 @@ def test_apply_for_survey_form(client, app):
 
 # Tests the form submits with valid input data.
 def test_submit_results_form(client, app):
-    with app.test_request_context():
-        # Login to access page.
-        user = db.session.query(User).get(1)
-        login_user(user)
-        rv = client.post('/submit-results', data=dict(
-                 survey                     = 1,
-                 lead_surveyor              = 'lead_surveyor',
-                 assistant_surveyor         = 'assistant_surveyor',
-                 householders_name          = 'householders_name',
-                 address_line               = 'address_line',
-                 survey_date                = 'survey_date',
-                 external_temperature       = 123.456,
-                 loaned_cheese_box          = True,
-                 cheese_box_number          = 42,
-                 year_of_construction       = 1970,
-                 building_type              = 1,
-                 wall_construction_type     = 1,
-                 occupation_type            = 1,
-                 primary_heating_type       = 1,
-                 secondary_heating_type     = 1,
-                 water_heating_type         = 1,
-                 cooking_type               = 1,
-                 depth_loft_insulation      = "10%",
-                 number_open_fireplaces     = "50%",
-                 double_glazing             = "100%",
-                 num_occupants              = 10,
-                 annual_gas_kwh             = 124.456,
-                 annual_gas_estimated       = True,
-                 annual_gas_start_date      = '30/09/2018',
-                 annual_gas_end_date        = '01/10/2019',
-                 annual_elec_kwh            = 123.456,
-                 annual_elec_estimated      = True,
-                 annual_elec_start_date     = '30/09/2018',
-                 annual_elec_end_date       = '01/10/2019',
-                 annual_solid_spend         = 123.456,
-                 renewable_contribution_kwh = 123.456,
-                 faults_identified          = 'text',
-                 recommendations            = 'text',
-               ), follow_redirects=True)
-        print rv.data
-        assert b'Survey result submitted successfully' in rv.data
+    login(client, 'admin@cheeseproject.co.uk', 'admin')
+    rv = client.post('/submit-results', data=dict(
+	     survey                     = 1,
+	     lead_surveyor              = 'lead_surveyor',
+	     assistant_surveyor         = 'assistant_surveyor',
+	     householders_name          = 'householders_name',
+	     address_line               = 'address_line',
+	     survey_date                = '01/09/2018',
+	     external_temperature       = 123.456,
+	     loaned_cheese_box          = True,
+	     cheese_box_number          = 'Box 42',
+	     year_of_construction       = 1970,
+	     building_type              = '1',
+	     wall_construction_type     = '1',
+	     occupation_type            = '1',
+	     primary_heating_type       = '1',
+	     secondary_heating_type     = '1',
+	     water_heating_type         = '1',
+	     cooking_type               = '1',
+	     depth_loft_insulation      = "10%",
+	     number_open_fireplaces     = "50%",
+	     double_glazing             = "100%",
+	     num_occupants              = 10,
+	     annual_gas_kwh             = 124.456,
+	     annual_gas_estimated       = True,
+	     annual_gas_start_date      = '30/09/2018',
+	     annual_gas_end_date        = '01/10/2019',
+	     annual_elec_kwh            = 123.456,
+	     annual_elec_estimated      = True,
+	     annual_elec_start_date     = '30/09/2018',
+	     annual_elec_end_date       = '01/10/2019',
+	     annual_solid_spend         = 123.456,
+	     renewable_contribution_kwh = 123.456,
+	     faults_identified          = 'faults_identified',
+	     recommendations            = 'recommendations',
+	   ), follow_redirects=True)
+    print rv.data
+    assert b'Survey result submitted successfully' in rv.data
+    logout(client)
 
 # Tests the form submits with valid input data.
 def test_month_feedback_form(client, app):

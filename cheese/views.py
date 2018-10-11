@@ -663,6 +663,7 @@ def submit_results():
     form = create_submit_results_form(db.session, request.form)
     if request.method=='POST':
         if helpers.validate_form_on_submit(form):
+            results = Results()
             form.populate_obj(results)
             db.session.add(results)
             db.session.commit()
@@ -909,6 +910,13 @@ def page(path):
     page = pages.get_or_404(path)
     if 'article' in page.meta:
         return render_template('404.html'), 404
+    template = page.meta.get('template', 'page.html')
+    return render_template(template, page=page)
+
+@bp.route('/energy-tracer-resources')
+@login_required
+def energy_tracer_resources():
+    page = pages.get_or_404('energy-tracer-resources')
     template = page.meta.get('template', 'page.html')
     return render_template(template, page=page)
 

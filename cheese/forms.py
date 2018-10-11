@@ -133,25 +133,25 @@ class SubmitResultsForm(FlaskForm):
     address_line = fields.StringField('Address line',
                                       validators=[Length(max=100)])
     survey_date = fields.DateField('Survey date (dd/mm/yyyy)*',
-           format='%d/%m/%Y"',
-           validators=[Required(),
-                 validate_date],
-           widget=DatePickerWidget())
+                                   format='%d/%m/%Y',
+                                   validators=[Required(),
+                                               validate_date],
+                                   widget=DatePickerWidget())
     external_temperature = fields.DecimalField('External temperature (C)',
                                                validators=[Optional()])
     loaned_cheese_box = fields.BooleanField('CHEESE box loaned?',
-                                            validators=[Required()])
-    cheese_box_number = fields.DecimalField('CHEESE box number',
                                             validators=[Optional()])
-    year_of_construction = fields.DecimalField('Year of construction',
-                                               validators=[Optional()])
-    depth_loft_insulation = fields.DecimalField('Depth of loft insulation (mm)',
-                                                validators=[Optional()])
-    number_open_fireplaces = fields.DecimalField('Number of open fireplaces',
-                                                 validators=[Optional()])
-    double_glazing = fields.DecimalField('Amount of double glazing (%)',
+    cheese_box_number = fields.TextField('CHEESE box number',
                                          validators=[Optional()])
-    num_occupants = fields.DecimalField('Number of occupants',
+    year_of_construction = fields.IntegerField('Year of construction',
+                                               validators=[Optional()])
+    depth_loft_insulation = fields.TextField('Depth of loft insulation (mm)',
+                                             validators=[Optional()])
+    number_open_fireplaces = fields.TextField('Number of open fireplaces',
+                                              validators=[Optional()])
+    double_glazing = fields.TextField('Amount of double glazing (%)',
+                                      validators=[Optional()])
+    num_occupants = fields.IntegerField('Number of occupants',
                                         validators=[Optional()])
     annual_gas_kwh = fields.DecimalField('Annual consumption (kWh',
                                          validators=[Optional()])
