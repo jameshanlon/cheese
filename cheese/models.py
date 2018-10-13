@@ -6,99 +6,57 @@ from flask_sqlalchemy import SQLAlchemy
 db = SQLAlchemy()
 migrate = Migrate(compare_type=True)
 
-# TODO: remove these and use reference tables for enumerated values.
-WARDS = [
-    'Bishopston',
-    'Cotham',
-    'Easton',
-    'Filwood (Knowle West)',
-    'Lawrence Weston',
-    'Redland',
-    'Other', ]
-BUILDING_TYPES = [
-    'Flat',
-    'Maisonette',
-    'Mid terrace',
-    'End terrace',
-    'Semi-detatched',
-    'Detatched',
-    'Other', ]
-WALL_CONSTRUCTION_TYPES = [
-    'Solid brick',
-    'Insulated cavity',
-    'Uninsulated cavity',
-    'Stone',
-    'Timber',
-    'Other', ]
-OCCUPATION_TYPES = [
-    'Owned',
-    'Rented privately',
-    'Rented council',
-    'Rented housing association',
-    'Other', ]
-WATER_HEATING_TYPES = [
-    'Unknown',
-    'Gas',
-    'Electricity',
-    'Solar',
-    'Shared/municipal',
-    'Heat pump',
-    'Other', ]
-COOKING_TYPES = [
-    'Unknown',
-    'Gas',
-    'Electricity',
-    'Other', ]
-SURVEY_LEAD_STATUSES = [
-    'Possible',
-    'Successful',
-    'Dead', ]
-
-
 class Wards(db.Model):
-    id    = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(255), nullable=False, unique=True)
     def __repr__(self):
         return self.name
 
 
 class BuildingTypes(db.Model):
-    id    = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(255), nullable=False, unique=True)
     def __repr__(self):
         return self.name
 
 
 class WallConstructionTypes(db.Model):
-    id    = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(255), nullable=False, unique=True)
     def __repr__(self):
         return self.name
 
 
 class OccupationTypes(db.Model):
-    id    = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(255), nullable=False, unique=True)
     def __repr__(self):
         return self.name
 
 
 class SpaceHeatingTypes(db.Model):
-    id    = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(255), nullable=False, unique=True)
     def __repr__(self):
         return self.name
 
 
 class WaterHeatingTypes(db.Model):
-    id    = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(255), nullable=False, unique=True)
     def __repr__(self):
         return self.name
 
 
 class CookingTypes(db.Model):
-    id    = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(255), nullable=False, unique=True)
+    def __repr__(self):
+        return self.name
+
+
+class SurveyLeadStatuses(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(255), nullable=False, unique=True)
     def __repr__(self):
         return self.name
@@ -213,12 +171,14 @@ class Surveys(db.Model):
     telephone                 = db.Column(db.String(20))
     mobile                    = db.Column(db.String(20))
     reference                 = db.Column(db.String(8))
-    lead_status               = db.Column(db.Enum(*SURVEY_LEAD_STATUSES))
+    lead_status_id            = db.Column(db.Integer, db.ForeignKey('lead_status.id'))
+    lead_status               = db.relationship('SurveyLeadStatuses')
     survey_request_date       = db.Column(db.Date,
                                           default=datetime.datetime.utcnow)
     phase                     = db.Column(db.Integer, default=-1)
     photo_release             = db.Column(db.Boolean, default=False)
-    building_type             = db.Column(db.Enum(*BUILDING_TYPES))
+    building_type_id          = db.Column(db.Integer, db.ForeignKey('building_types.id'))
+    building_type             = db.relationship('BuildingTypes')
     num_main_rooms            = db.Column(db.Integer)
     can_heat_comfortably      = db.Column(db.Boolean, default=False)
     expected_benefit          = db.Column(db.Text)
@@ -378,7 +338,8 @@ class ThermalImage(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     filename             = db.Column(db.Unicode(100))
     description          = db.Column(db.UnicodeText)
-    building_type        = db.Column(db.Enum(*BUILDING_TYPES))
+    building_type_id     = db.Column(db.Integer, db.ForeignKey('building_types.id'))
+    building_type        = db.relationship('BuildingTypes')
     year_of_construction = db.Column(db.Integer)
     keywords             = db.Column(db.String(150))
     submitted_by         = db.Column(db.Unicode(50)) # To remove.
