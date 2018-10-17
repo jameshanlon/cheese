@@ -1,6 +1,7 @@
 import datetime
 import os
 
+DEBUG = False
 if 'FLASK_ENV' in os.environ and os.environ['FLASK_ENV'] == 'development':
   DEBUG = True
 
