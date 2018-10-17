@@ -92,31 +92,31 @@ def init_admin(admin):
     admin.add_view(UserView(User, db.session,
                             name='Users',
                             category='Admin'))
-    admin.add_view(AdminModelView(Role, db.session,
-                                  name='Roles',
-                                  category='Admin'))
     admin.add_view(AdminModelView(UserInvitation, db.session,
                                   name='Invitations',
                                   category='Admin'))
-    admin.add_view(AdminModelView(BuildingTypes, db.session,
-                                  name='Building types',
-                                  category='Admin'))
-    admin.add_view(AdminModelView(WallConstructionTypes, db.session,
-                                  name='Wall construction types',
-                                  category='Admin'))
-    admin.add_view(AdminModelView(OccupationTypes, db.session,
-                                  name='Occupation types',
-                                  category='Admin'))
-    admin.add_view(AdminModelView(SpaceHeatingTypes, db.session,
-                                  name='Space heating types',
-                                  category='Admin'))
-    admin.add_view(AdminModelView(WaterHeatingTypes, db.session,
-                                  name='Water heating types',
-                                  category='Admin'))
-    admin.add_view(AdminModelView(CookingTypes, db.session,
-                                  name='Cooking types',
-                                  category='Admin'))
-    admin.add_view(AdminModelView(Wards, db.session,
+    admin.add_view(EnumModelView(Role, db.session,
+                                 name='Roles',
+                                 category='Admin'))
+    admin.add_view(EnumModelView(BuildingTypes, db.session,
+                                 name='Building types',
+                                 category='Admin'))
+    admin.add_view(EnumModelView(WallConstructionTypes, db.session,
+                                 name='Wall construction types',
+                                 category='Admin'))
+    admin.add_view(EnumModelView(OccupationTypes, db.session,
+                                 name='Occupation types',
+                                 category='Admin'))
+    admin.add_view(EnumModelView(SpaceHeatingTypes, db.session,
+                                 name='Space heating types',
+                                 category='Admin'))
+    admin.add_view(EnumModelView(WaterHeatingTypes, db.session,
+                                 name='Water heating types',
+                                 category='Admin'))
+    admin.add_view(EnumModelView(CookingTypes, db.session,
+                                 name='Cooking types',
+                                 category='Admin'))
+    admin.add_view(EnumModelView(Wards, db.session,
                                   name='Wards',
                                   category='Admin'))
 
@@ -434,6 +434,10 @@ class UserView(AdminModelView):
 class MemberView(ManagerModelView):
     column_list = ['name',
                    'registration_date']
+
+
+class EnumModelView(AdminModelView):
+    can_delete = False
 
 
 class SurveysView(GeneralModelView):
