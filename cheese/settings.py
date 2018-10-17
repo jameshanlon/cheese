@@ -57,6 +57,9 @@ else:
     SQLALCHEMY_DATABASE_URI = \
         'mysql://'+MYSQL_USER+':'+MYSQL_PASSWORD \
             +'@'+MYSQL_HOST+'/'+MYSQL_DATABASE
+    # Make sure MySQL connections are recycled (in wait_timeout period).
+    # See https://stackoverflow.com/questions/19052973/operationalerror-mysql-connection-not-available
+    SQLALCHEMY_POOL_RECYCLE = 3600
 # Flask-User settings
 USER_APP_NAME               = APP_NAME
 USER_ENABLE_CHANGE_PASSWORD = True

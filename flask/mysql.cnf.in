@@ -8,4 +8,4 @@ password = ${CHEESE_MYSQL_PASSWORD}
 database = ${CHEESE_MYSQL_DATABASE}
 
 [mysqld]
-max_allowed_packet=256M
+max_allowed_packet = 256M
