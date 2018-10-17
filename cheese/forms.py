@@ -119,10 +119,14 @@ def create_apply_survey_form(db_session, formdata):
       return db_session.query(BuildingTypes).all()
     ward = QuerySelectField('Ward*',
                             validators=[Required()],
-                            query_factory=ward_choices)
+                            query_factory=ward_choices,
+                            allow_blank=True,
+                            blank_text=u'Please select...',)
     building_type = QuerySelectField('Building type',
                                      validators=[Optional()],
-                                     query_factory=building_type_choices)
+                                     query_factory=building_type_choices,
+                                     allow_blank=True,
+                                     blank_text=u'Please select...',)
     setattr(ApplySurveyForm, 'ward', ward)
     setattr(ApplySurveyForm, 'building_type', building_type)
     return ApplySurveyForm(formdata)
@@ -219,28 +223,44 @@ def create_submit_results_form(db_session, formdata):
       return db_session.query(CookingTypes).all()
     survey = QuerySelectField('Survey*',
                                validators=[Required()],
-                               query_factory=survey_choices)
+                               query_factory=survey_choices,
+                               allow_blank=True,
+                               blank_text=u'Please select...')
     building_type = QuerySelectField('Building type',
                                      validators=[Optional()],
-                                     query_factory=building_type_choices)
+                                     query_factory=building_type_choices,
+                                     allow_blank=True,
+                                     blank_text=u'Please select...')
     wall_construction_type = QuerySelectField('Wall construction',
                                               validators=[Optional()],
-                                              query_factory=wall_construction_type_choices)
+                                              query_factory=wall_construction_type_choices,
+                                              allow_blank=True,
+                                              blank_text=u'Please select...',)
     occupation_type = QuerySelectField('Occupation type',
                                        validators=[Optional()],
-                                       query_factory=occupation_type_choices)
+                                       query_factory=occupation_type_choices,
+                                       allow_blank=True,
+                                       blank_text=u'Please select...',)
     primary_heating_type = QuerySelectField('Primary heating type',
                                             validators=[Optional()],
-                                            query_factory=space_heating_type_choices)
+                                            query_factory=space_heating_type_choices,
+                                            allow_blank=True,
+                                            blank_text=u'Please select...',)
     secondary_heating_type = QuerySelectField('Secondary heating type',
                                               validators=[Optional()],
-                                              query_factory=space_heating_type_choices)
+                                              query_factory=space_heating_type_choices,
+                                              allow_blank=True,
+                                              blank_text=u'Please select...',)
     water_heating_type = QuerySelectField('Water heating type',
                                           validators=[Optional()],
-                                          query_factory=water_heating_type_choices)
+                                          query_factory=water_heating_type_choices,
+                                          allow_blank=True,
+                                          blank_text=u'Please select...',)
     cooking_type = QuerySelectField('Cooking type',
                                     validators=[Optional()],
-                                    query_factory=cooking_type_choices)
+                                    query_factory=cooking_type_choices,
+                                    allow_blank=True,
+                                    blank_text=u'Please select...',)
     setattr(SubmitResultsForm, 'survey',                 survey)
     setattr(SubmitResultsForm, 'building_type',          building_type)
     setattr(SubmitResultsForm, 'wall_construction_type', wall_construction_type)
@@ -271,7 +291,9 @@ def create_upload_thermal_image_form(db_session, formdata):
       return db_session.query(BuildingTypes).all()
     building_type = QuerySelectField('Building type',
                                      validators=[Optional()],
-                                     query_factory=building_type_choices)
+                                     query_factory=building_type_choices,
+                                     allow_blank=True,
+                                     blank_text=u'Please select...',)
     setattr(UploadThermalImageForm, 'building_type', building_type)
     return UploadThermalImageForm(formdata)
 
