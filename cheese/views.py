@@ -10,6 +10,7 @@ from cheese.models import db, \
                           SpaceHeatingTypes, \
                           WaterHeatingTypes, \
                           CookingTypes, \
+                          Wards, \
                           Surveys, \
                           Results, \
                           MonthFeedback, \
@@ -66,35 +67,58 @@ def init_admin(admin):
     for phase in reversed(range(1, NUM_PHASES+1)):
         admin.add_menu_item(MenuLink(name='Phase {}'.format(phase), \
                                      url='/admin?phase={}'.format(phase)))
-    admin.add_view(UserView(User, db.session,
-                            name='Users',
-                            category='Tables'))
+    # Tables.
     admin.add_view(MemberView(Member, db.session,
                               name='Members',
-                              category='Tables'))
-    admin.add_view(AdminModelView(UserInvitation, db.session,
-                                  name='Invitations',
-                                  category='Tables'))
-    admin.add_view(AdminModelView(Role, db.session,
-                                  name='Roles',
-                                  category='Tables'))
+                              category='Records'))
     admin.add_view(SurveysView(Surveys, db.session,
-                               category='Tables'))
+                               category='Records'))
     admin.add_view(ResultsView(Results, db.session,
-                               category='Tables'))
+                               category='Records'))
     admin.add_view(MonthFeedbackView(MonthFeedback, db.session,
                                      name='1 month feedback',
-                                     category='Tables'))
+                                     category='Records'))
     admin.add_view(YearFeedbackView(YearFeedback, db.session,
                                     name='1 year feedback',
-                                    category='Tables'))
-    admin.add_view(InventoryView(Inventory, db.session,
-                                 category='Tables'))
-    admin.add_view(KitsView(Kits, db.session,
-                            category='Tables'))
+                                    category='Records'))
     admin.add_view(ThermalImageView(ThermalImage, db.session,
                                     name='Thermal images',
-                                    category='Tables'))
+                                    category='Records'))
+    admin.add_view(InventoryView(Inventory, db.session,
+                                 category='Records'))
+    admin.add_view(KitsView(Kits, db.session,
+                            category='Records'))
+    # Admin.
+    admin.add_view(UserView(User, db.session,
+                            name='Users',
+                            category='Admin'))
+    admin.add_view(AdminModelView(Role, db.session,
+                                  name='Roles',
+                                  category='Admin'))
+    admin.add_view(AdminModelView(UserInvitation, db.session,
+                                  name='Invitations',
+                                  category='Admin'))
+    admin.add_view(AdminModelView(BuildingTypes, db.session,
+                                  name='Building types',
+                                  category='Admin'))
+    admin.add_view(AdminModelView(WallConstructionTypes, db.session,
+                                  name='Wall construction types',
+                                  category='Admin'))
+    admin.add_view(AdminModelView(OccupationTypes, db.session,
+                                  name='Occupation types',
+                                  category='Admin'))
+    admin.add_view(AdminModelView(SpaceHeatingTypes, db.session,
+                                  name='Space heating types',
+                                  category='Admin'))
+    admin.add_view(AdminModelView(WaterHeatingTypes, db.session,
+                                  name='Water heating types',
+                                  category='Admin'))
+    admin.add_view(AdminModelView(CookingTypes, db.session,
+                                  name='Cooking types',
+                                  category='Admin'))
+    admin.add_view(AdminModelView(Wards, db.session,
+                                  name='Wards',
+                                  category='Admin'))
 
 #===-----------------------------------------------------------------------===#
 # Signal handlers.
