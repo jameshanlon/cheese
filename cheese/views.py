@@ -3,23 +3,44 @@ import datetime
 import os
 import random
 import string
-from cheese.models import db, WARDS, BUILDING_TYPES, BuildingTypes, \
-                          WallConstructionTypes, OccupationTypes, \
-                          SpaceHeatingTypes, WaterHeatingTypes, CookingTypes, \
-                          Surveys, Results, MonthFeedback, YearFeedback, \
-                          ThermalImage, Inventory, Kits, \
-                          User, Member, UserInvitation, Role
+from cheese.models import db, \
+                          BuildingTypes, \
+                          WallConstructionTypes, \
+                          OccupationTypes, \
+                          SpaceHeatingTypes, \
+                          WaterHeatingTypes, \
+                          CookingTypes, \
+                          Surveys, \
+                          Results, \
+                          MonthFeedback, \
+                          YearFeedback, \
+                          ThermalImage, \
+                          Inventory, \
+                          Kits, \
+                          User, \
+                          Member, \
+                          UserInvitation, \
+                          Role
 from cheese.forms import ApplySurveyForm, \
-                         create_submit_results_form, \
                          UploadThermalImageForm, \
                          OneMonthFeedbackForm, \
                          OneYearFeedbackForm, \
                          MembershipForm, \
+                         create_upload_thermal_image_form, \
+                         create_apply_survey_form, \
+                         create_submit_results_form, \
                          validate_date
 from cheese.settings import NUM_PHASES
 from cheese.s3 import S3
-from flask import Blueprint, current_app, url_for, redirect, render_template, \
-                  render_template_string, request, flash, Markup, \
+from flask import Blueprint, \
+                  current_app, \
+                  url_for, \
+                  redirect, \
+                  render_template, \
+                  render_template_string, \
+                  request, \
+                  flash, \
+                  Markup, \
                   send_from_directory
 import flask_admin
 from flask_admin import helpers, expose
@@ -32,6 +53,7 @@ from flask_mail import Mail, Message
 from sqlalchemy.event import listens_for
 from sqlalchemy.inspection import inspect
 from werkzeug.utils import secure_filename
+from wtforms import fields, validators
 
 mail = Mail()
 pages = FlatPages()
@@ -292,7 +314,7 @@ class CheeseAdminIndexView(flask_admin.AdminIndexView):
 
     def get_delete_form(self):
         class DeleteForm(FlaskForm):
-            id = fields.HiddenField(validators=[Required()])
+            id = fields.HiddenField(validators=[validators.Required()])
             url = fields.HiddenField()
         return DeleteForm()
 
@@ -690,32 +712,37 @@ def random_string(length):
 @bp.route('/upload-thermal-image', methods=['GET', 'POST'])
 @login_required
 def upload_thermal_image():
-    form = UploadThermalImageForm(request.form)
-    if request.method=='POST' and form.validate_on_submit():
-        image = request.files.get('image')
-        filename = random_string(10)+'_'+secure_filename(image.filename)
-        s3.upload_fileobj_thermal_image(image, filename)
-        thermal_image = ThermalImage()
-        thermal_image.filename = filename
-        for f in ['description',
-                  'building_type',
-                  'year_of_construction',
-                  'keywords', ]:
-                setattr(thermal_image, f, request.form.get(f))
-        setattr(thermal_image, 'user', User.query.get(current_user.get_id()))
-        db.session.add(thermal_image)
-        db.session.commit()
-        # Send watchers email.
-        subject = '[CHEESE] New themrmal image'
-        message = 'From '+str(thermal_image.user) \
-                  + ' at '+str(datetime.datetime.today())+': ' \
-                  + current_app.config['URL_BASE']+str(url_for('thermalimage.details_view', id=thermal_image.id))
-        mail.send(Message(subject=subject,
-                          body=message,
-                          recipients=current_app.config['WATCHERS']))
-        # Flash success message.
-        flash('The thermal image has been submitted successfully.')
-        return redirect(url_for('cheese.upload_thermal_image'))
+    form = create_upload_thermal_image_form(db.session, request.form)
+    if request.method=='POST':
+        print request.form
+        if form.validate_on_submit():
+            image = request.files.get('image_file')
+            filename = random_string(10)+'_'+secure_filename(image.filename)
+            s3.upload_fileobj_thermal_image(image, filename)
+            thermal_image = ThermalImage()
+            thermal_image.filename = filename
+            for f in ['description',
+                      'building_type',
+                      'year_of_construction',
+                      'keywords', ]:
+                    setattr(thermal_image, f, request.form.get(f))
+            setattr(thermal_image, 'user', User.query.get(current_user.get_id()))
+            db.session.add(thermal_image)
+            db.session.commit()
+            # Send watchers email.
+            subject = '[CHEESE] New themrmal image'
+            message = 'From '+str(thermal_image.user) \
+                      + ' at '+str(datetime.datetime.today())+': ' \
+                      + current_app.config['URL_BASE']+str(url_for('thermalimage.details_view', id=thermal_image.id))
+            mail.send(Message(subject=subject,
+                              body=message,
+                              recipients=current_app.config['WATCHERS']))
+            # Flash success message.
+            flash('The thermal image has been submitted successfully.')
+            return redirect(url_for('cheese.upload_thermal_image'))
+        else:
+            print form.errors
+            flash('There were problems with your form.', 'error')
     return render_template('upload-thermal-image.html', form=form)
 
 
@@ -746,7 +773,7 @@ def collected_thermal_images():
 
 @bp.route('/apply-for-a-survey', methods=['GET', 'POST'])
 def apply_for_a_survey():
-    form = ApplySurveyForm(request.form)
+    form = create_apply_survey_form(db.session, request.form)
     today = datetime.date.today()
     notice = ''
     if (today.month > 3 and today.month < 9): # Display notice April to August

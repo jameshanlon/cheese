@@ -20,6 +20,16 @@ we have collected so far.</p>
 description of what the image illustrates and your name. <strong>Do not upload
 any images that identify a specific person or place.</strong></p>
 
-{{ macros.render_form(form, 'survey_form') }}
+<div id="upload-thermal-image" style="padding-top:1.2em">
+  <form method="POST" action="" enctype="multipart/form-data">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+    {{ macros.render_form_field(form.description) }}
+    {{ macros.render_form_field(form.year_of_construction) }}
+    {{ macros.render_form_field(form.keywords) }}
+    {{ macros.render_form_field(form.image_file) }}
+    <label></label>
+    <button class="btn" type="submit">Submit</button>
+  </form>
+</div>
 
 {% endblock %}

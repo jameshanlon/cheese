@@ -14,7 +14,10 @@ class S3(object):
                         endpoint_url=app.config['S3_ENDPOINT_URL'],
                         aws_access_key_id=app.config['S3_ACCESS_KEY_ID'],
                         aws_secret_access_key=app.config['S3_SECRET_ACCESS_KEY'])
-    def upload_fileobj_thermal_image(image, filename):
-        self.client.upload_fileobj(image,
-                                   current_app.config['S3_BUCKET'],
-                                   'uploads/'+filename)
+    def upload_fileobj_thermal_image(self, image, filename):
+        if not current_app.config('DEBUG'):
+            self.client.upload_fileobj(image,
+                                       current_app.config['S3_BUCKET'],
+                                       'uploads/'+filename)
+        else:
+            current_app.logger.info('Image upload disabled for development')

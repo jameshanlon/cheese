@@ -12,7 +12,12 @@
 
 {% macro render_form_field(f) -%}
   <div class="form-group">
-    {% if f.type == "FileField" or f.name.endswith('_1to5') %}
+    {% if f.type == "FileField" %}
+      {{ render_form_description(f.description) }}
+      {{ f.label }}
+      {{ f(class_="form-control-file") }}
+      {{ render_form_errors(f) }}
+    {% elif f.name.endswith('_1to5') %}
       {{ f.label(class_="control-label") }}
       {{ render_form_description(f.description) }}
       {% if f.errors %}

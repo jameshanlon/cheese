@@ -41,7 +41,7 @@ def resetdb():
     mixer.cycle(10).blend(User)
     mixer.cycle(50).blend(Surveys,
                           name=mixer.RANDOM,
-                          ward=get_random_ward,
+                          ward=mixer.RANDOM,
                           free_survey_consideration=mixer.RANDOM,
                           lead_status=mixer.RANDOM,
                           survey_request_date=get_random_date,

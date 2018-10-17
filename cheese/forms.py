@@ -1,6 +1,5 @@
-from cheese.models import WARDS, \
-                          BUILDING_TYPES, \
-                          Surveys, \
+from cheese.models import Surveys, \
+                          Wards, \
                           BuildingTypes, \
                           WallConstructionTypes, \
                           OccupationTypes, \
@@ -69,10 +68,6 @@ class ApplySurveyForm(FlaskForm):
     postcode = fields.StringField('Post code*',
                                   validators=[Required(),
                                               Length(max=10)])
-    ward = fields.SelectField('Ward*',
-               choices=[choice('')]+[choice(x) for x in WARDS],
-               default='', validators=[Required(),
-                                       Length(max=50)])
     email = EmailField('Email address*',
                        validators=[Required(),
                                    validators.Email(),
@@ -85,9 +80,6 @@ class ApplySurveyForm(FlaskForm):
                                             Length(max=20)])
     availability = fields.TextAreaField('Your availability*',
                                         validators=[Required()])
-    building_type = fields.SelectField('Building type*',
-            choices=[choice('')]+[choice(x) for x in BUILDING_TYPES],
-            default='', validators=[Required()])
     num_main_rooms = fields.IntegerField('Number of main rooms ' \
                                          +'(reception + living + bedroom)*',
                                          validators=[Required()])
@@ -119,6 +111,21 @@ class ApplySurveyForm(FlaskForm):
             +'publicly-accessible record on thermal faults and energy ' \
             +'efficiency.')
 
+def create_apply_survey_form(db_session, formdata):
+    """ Dynamicaly create a form to apply for a survey. """
+    def ward_choices():
+      return db_session.query(Wards).all()
+    def building_type_choices():
+      return db_session.query(BuildingTypes).all()
+    ward = QuerySelectField('Ward*',
+                            validators=[Required()],
+                            query_factory=ward_choices)
+    building_type = QuerySelectField('Building type',
+                                     validators=[Optional()],
+                                     query_factory=building_type_choices)
+    setattr(ApplySurveyForm, 'ward', ward)
+    setattr(ApplySurveyForm, 'building_type', building_type)
+    return ApplySurveyForm(formdata)
 
 class SubmitResultsForm(FlaskForm):
     lead_surveyor = fields.StringField('Lead surveyor*',
@@ -246,19 +253,27 @@ def create_submit_results_form(db_session, formdata):
 
 
 class UploadThermalImageForm(FlaskForm):
-    image = FileField('Image file',
-              validators=[FileRequired(),
-                          FileAllowed(IMAGE_UPLOAD_FORMATS,
-                                      'Only images can be uploaded')])
+    image_file = FileField('Image file',
+                           validators=[FileRequired(),
+                                       FileAllowed(IMAGE_UPLOAD_FORMATS,
+                                                   'Only images can be uploaded')])
     description = fields.TextAreaField('Description of the image*',
                                        validators=[Required()])
-    building_type = fields.SelectField('Building type*',
-            choices=[choice('')]+[choice(x) for x in BUILDING_TYPES],
-            default='', validators=[Required()])
     year_of_construction = fields.IntegerField('Year of construction*',
-            validators=[Required()])
+                                               validators=[Required()])
     keywords = fields.StringField("Keywords (separated by commas ',')*",
                                   validators=[Required()])
+
+
+def create_upload_thermal_image_form(db_session, formdata):
+    """ Dynamicaly create a form to apply for a survey. """
+    def building_type_choices():
+      return db_session.query(BuildingTypes).all()
+    building_type = QuerySelectField('Building type',
+                                     validators=[Optional()],
+                                     query_factory=building_type_choices)
+    setattr(UploadThermalImageForm, 'building_type', building_type)
+    return UploadThermalImageForm(formdata)
 
 
 class OneMonthFeedbackForm(FlaskForm):

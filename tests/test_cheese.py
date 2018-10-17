@@ -1,8 +1,9 @@
 import os
 import pytest
 import tempfile
+from io import BytesIO
 from cheese.factory import create_app
-from cheese.models import db, User, WARDS, BUILDING_TYPES
+from cheese.models import db, User
 from cheese.commands import resetdb
 from flask_login import login_user
 
@@ -34,10 +35,11 @@ def login(client, username, password):
 def logout(client):
     return client.get('/user/sign-out', follow_redirects=True)
 
-# TODO: test /upload-thermal-image (without writing to S3 storage?)
+def admin_login(client):
+    return login(client, 'admin@cheeseproject.co.uk', 'admin')
 
 def test_user_login(client, app):
-    rv = login(client, 'admin@cheeseproject.co.uk', 'admin')
+    rv = admin_login(client)
     assert b'Incorrect Password' not in rv.data
     rv = logout(client)
 
@@ -47,13 +49,13 @@ def test_apply_for_survey_form(client, app):
              name                      = 'name',
              address_line              = 'address_line',
              postcode                  = 'postcode',
-             ward                      = WARDS[0],
+             ward                      = 1,
              email                     = 'name@domain.com',
              telephone                 = '1234567',
              mobile                    = '1234567',
              availability              = 'availability',
-             building_type             = BUILDING_TYPES[0],
-             num_main_rooms            ='1',
+             building_type             = 1,
+             num_main_rooms            = '1',
              can_heat_comfortably      = True,
              expected_benefit          = 'expected_benefit',
              referral                  = 'referral',
@@ -65,7 +67,7 @@ def test_apply_for_survey_form(client, app):
 
 # Tests the form submits with valid input data.
 def test_submit_results_form(client, app):
-    login(client, 'admin@cheeseproject.co.uk', 'admin')
+    rv = admin_login(client)
     rv = client.post('/submit-results', data=dict(
 	     survey                     = 1,
 	     lead_surveyor              = 'lead_surveyor',
@@ -101,7 +103,6 @@ def test_submit_results_form(client, app):
 	     faults_identified          = 'faults_identified',
 	     recommendations            = 'recommendations',
 	   ), follow_redirects=True)
-    print rv.data
     assert b'Survey result submitted successfully' in rv.data
     logout(client)
 
@@ -181,3 +182,15 @@ def test_membership_form(client, app):
              notes                       = 'notes',
            ), follow_redirects=True)
     assert b'Your membership application was submitted successfully' in rv.data
+
+def test_upload_thermal_image(client, app):
+    rv = admin_login(client)
+    rv = client.post('/upload-thermal-image', content_type='multipart/form-data', data=dict(
+          image_file           = (BytesIO(b'blah'), 'img.jpg'),
+          description          = 'description',
+          year_of_construction = 1970,
+          keywords             = 'keywords',
+        ), follow_redirects=True)
+    logout(client)
+    print rv.data
+    assert b'The thermal image has been submitted successfully' in rv.data
