@@ -11,6 +11,7 @@ from cheese.models import db, \
                           WaterHeatingTypes, \
                           CookingTypes, \
                           Wards, \
+                          SurveyLeadStatuses, \
                           Surveys, \
                           Results, \
                           MonthFeedback, \
@@ -248,17 +249,19 @@ class CheeseAdminIndexView(flask_admin.AdminIndexView):
                'no_one_year']
 
     def filter_query(self, active_phase, active_filters):
+        def lead_status_id(name):
+            return SurveyLeadStatuses.query.filter(SurveyLeadStatuses.name==name).first().id
         query = Surveys.query;
         if active_phase:
             query = query.filter(Surveys.phase==active_phase)
         for name in active_filters:
             if name == 'successful_lead':
-                query = query.filter(Surveys.lead_status == 'Successful')
+                query = query.filter(Surveys.lead_status_id == lead_status_id('Successful'))
             if name == 'possible_lead':
-                query = query.filter((Surveys.lead_status == 'Possible') &
+                query = query.filter((Surveys.lead_status_id == lead_status_id('Possible')) &
                                      (Surveys.result == None))
             if name == 'dead_lead':
-                query = query.filter((Surveys.lead_status == 'Dead') &
+                query = query.filter((Surveys.lead_status_id == lead_status_id('Dead')) &
                                      (Surveys.result == None))
             if name == 'free_survey':
                 query = query.filter(Surveys.free_survey_consideration == True)

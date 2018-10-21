@@ -1,15 +1,29 @@
 import datetime
 import random
 from mixer.backend.flask import mixer
-from cheese.models import db, user_manager, User, Role, Surveys, Results, \
-                          MonthFeedback, YearFeedback, Wards, \
-                          BuildingTypes, WallConstructionTypes, \
-                          OccupationTypes, SpaceHeatingTypes, \
-                          WaterHeatingTypes, CookingTypes
+from cheese.models import db, \
+                          user_manager, \
+                          User, \
+                          Role, \
+                          Surveys, \
+                          Results, \
+                          MonthFeedback, \
+                          YearFeedback, \
+                          Wards, \
+                          BuildingTypes, \
+                          WallConstructionTypes, \
+                          OccupationTypes, \
+                          SpaceHeatingTypes, \
+                          WaterHeatingTypes, \
+                          CookingTypes, \
+                          SurveyLeadStatuses
 from cheese.settings import PHASE_START_DATES, NUM_PHASES
 
 def resetdb():
     "Create a test database"
+    names = ['Jim', 'Bob', 'Sarah', 'Sue']
+    wards = ['Easton', 'AWL', 'BCR', 'WOT']
+    lead_statuses = ['Successful', 'Possible', 'Dead']
     db.drop_all()
     db.create_all()
     admin_role = Role(name='admin')
@@ -21,10 +35,12 @@ def resetdb():
                       password=user_manager.hash_password('admin'))
     admin_user.roles.append(admin_role)
     db.session.add(admin_user)
+    for x in lead_statuses:
+        lead_status = SurveyLeadStatuses()
+        lead_status.name = x
+        db.session.add(lead_status)
     db.session.commit()
     # Generate some random entries.
-    names = ['Jim', 'Bob', 'Sarah', 'Sue']
-    wards = ['Easton', 'AWL', 'BCR', 'WOT']
     def get_random_name():
         return random.choice(names)
     def get_random_ward():
@@ -43,7 +59,7 @@ def resetdb():
                           name=mixer.RANDOM,
                           ward=mixer.RANDOM,
                           free_survey_consideration=mixer.RANDOM,
-                          lead_status=mixer.RANDOM,
+                          lead_status=mixer.SELECT,
                           survey_request_date=get_random_date,
                           phase=get_random_phase,
                           survey_date=get_random_date,
