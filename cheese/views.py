@@ -972,6 +972,7 @@ def page(path):
 @login_required
 def energy_tracer_resources():
     page = pages.get_or_404('energy-tracer-resources')
+    page.html = render_template_string(page.html)
     template = page.meta.get('template', 'page.html')
     return render_template(template, page=page)
 
