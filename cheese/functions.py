@@ -1,6 +1,7 @@
 import datetime
 import glob
 import os
+from cheese.views import s3
 from flask import Blueprint, current_app, request
 from werkzeug import url_encode
 
@@ -42,6 +43,8 @@ def get_date_now():
     return datetime.datetime.now()
 
 @bp.app_template_global()
-def image_list(directory, ext='.jpg'):
-    return ['images/'+directory+'/'+os.path.basename(x) \
-              for x in glob.glob(current_app.config['IMAGES_DIR']+'/'+directory+'/*'+ext)]
+def image_list(directory):
+    files = s3.list_directory('images/'+directory)
+    files = [x for x in files if \
+              x.endswith(tuple(current_app.config['IMAGE_FORMATS']))]
+    return files

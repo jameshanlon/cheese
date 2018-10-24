@@ -1,4 +1,5 @@
 import boto3
+from flask import current_app
 
 class S3(object):
     def __init__(self, app=None):
@@ -21,3 +22,15 @@ class S3(object):
                                        'uploads/'+filename)
         else:
             current_app.logger.info('Image upload disabled for development')
+    def list_directory(self, key_prefix):
+        response = self.client.list_objects(
+                       Bucket=current_app.config['S3_BUCKET'],
+                       Prefix=current_app.config['S3_PREFIX']+'/'+key_prefix)
+        result = []
+        for key in response['Contents']:
+            key = key['Key']
+            if key == current_app.config['S3_PREFIX']+'/'+key_prefix+'/':
+                continue # Skip the directory key prefix
+            key = key.replace(current_app.config['S3_PREFIX']+'/', '')
+            result.append(key)
+        return result

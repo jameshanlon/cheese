@@ -953,7 +953,7 @@ def static_from_root():
 # For debug deployment only. Will be overridden by Nginx rule in production.
 @bp.route('/assets/<path:filename>')
 def assets(filename):
-    url = current_app.config['S3_PREFIX']+'/'+filename
+    url = current_app.config['S3_URL_PREFIX']+'/'+filename
     return redirect(url, code=302)
 
 @bp.route('/')

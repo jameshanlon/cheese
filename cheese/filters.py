@@ -10,7 +10,7 @@ def format_db_name(name):
 
 @bp.app_template_filter('url_for_asset')
 def url_for_asset(filename):
-    return current_app.config['S3_PREFIX']+'/'+filename
+    return current_app.config['S3_URL_PREFIX']+'/'+filename
 
 @bp.app_template_filter('thumbnail')
 def thumbnail(filename, size):

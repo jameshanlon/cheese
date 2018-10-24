@@ -14,7 +14,7 @@ def get_thumbnail(filepath, size):
     Return a URL of a thumbnail for an image at a URL. Generate the thumbnail
     if it doesn't already exist.
     """
-    image_url = current_app.config['S3_PREFIX'] + '/' + filepath
+    image_url = current_app.config['S3_URL_PREFIX'] + '/' + filepath
     thumb_filename = os.path.splitext(filepath)[0] + '_' + size + os.path.splitext(filepath)[1]
     thumb_path = os.path.join(current_app.config['THUMBNAIL_ROOT'], thumb_filename)
     thumb_dir = os.path.dirname(thumb_path)
@@ -26,6 +26,9 @@ def get_thumbnail(filepath, size):
     if not os.path.exists(thumb_dir):
         os.makedirs(thumb_dir)
     response = requests.get(image_url)
+    if response.status_code != 200:
+        current_app.logger('Image for thumbnail not found:' + image_url)
+        return image_url
     image = Image.open(BytesIO(response.content))
     # Resize the image upto a maximum x OR y dimension.
     image.thumbnail(parse_size(size), Image.ANTIALIAS)

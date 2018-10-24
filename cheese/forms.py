@@ -6,7 +6,7 @@ from cheese.models import Surveys, \
                           SpaceHeatingTypes, \
                           WaterHeatingTypes, \
                           CookingTypes
-from cheese.settings import IMAGE_UPLOAD_FORMATS
+from cheese.settings import IMAGE_FORMATS
 from flask import Markup
 from flask_wtf import FlaskForm
 from flask_wtf.file import FileField, FileAllowed, FileRequired
@@ -275,7 +275,7 @@ def create_submit_results_form(db_session, formdata):
 class UploadThermalImageForm(FlaskForm):
     image_file = FileField('Image file',
                            validators=[FileRequired(),
-                                       FileAllowed(IMAGE_UPLOAD_FORMATS,
+                                       FileAllowed(IMAGE_FORMATS,
                                                    'Only images can be uploaded')])
     description = fields.TextAreaField('Description of the image*',
                                        validators=[Required()])

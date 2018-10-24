@@ -16,8 +16,9 @@ WATCHERS                         = os.environ['CHEESE_WATCHERS'].split(';')
 LOG_FILENAME_INFO                = 'cheese.log'
 LOG_FILENAME_ERROR               = 'cheese-error.log'
 # S3
-S3_BUCKET                        = 'cheese'
-S3_PREFIX                        = os.environ['CHEESE_S3_PREFIX']
+S3_BUCKET                        = 'jwh'
+S3_PREFIX                        = 'cheese'
+S3_URL_PREFIX                    = os.environ['CHEESE_S3_URL_PREFIX']
 S3_REGION                        = os.environ['CHEESE_S3_REGION']
 S3_ENDPOINT_URL                  = os.environ['CHEESE_S3_ENDPOINT_URL']
 S3_ACCESS_KEY_ID                 = os.environ['CHEESE_S3_ACCESS_KEY_ID']
@@ -30,7 +31,7 @@ EXPORT_DIR                       = 'static/export'
 EXPORT_PATH                      = 'cheese/'+EXPORT_DIR
 IMAGES_DIR                       = 'cheese/static/images'
 THUMB_SIZE                       = '200x200'
-IMAGE_UPLOAD_FORMATS             = ['.jpg', '.jpe', '.jpeg', '.png', '.gif', '.bmp']
+IMAGE_FORMATS                    = ['.jpg', '.jpe', '.jpeg', '.png', '.gif', '.bmp']
 # Flask-Uploads
 UPLOADED_IMAGES_URL              = 'static/uploads'
 UPLOADED_IMAGES_DEST             = 'cheese/'+UPLOADED_IMAGES_URL
