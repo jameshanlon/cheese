@@ -26,7 +26,7 @@ export CHEESE_ADMINS=
 # List of watchers to be notified of events ("name" <email>; ...)
 export CHEESE_WATCHERS=
 # S3 space URL
-export CHEESE_S3_PREFIX=
+export CHEESE_S3_URL_PREFIX=
 export CHEESE_S3_REGION=
 export CHEESE_S3_ENDPOINT_URL=
 export CHEESE_S3_ACCESS_KEY_ID=
