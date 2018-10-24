@@ -25,8 +25,8 @@ See [our pricing for various sizes of homes](/home-surveys#pricing).
 
 Please make on-line payments to **The CHEESE Project**. Sort code 089299,
 account number 65811564 with your name as reference. Cheques should be posted
-to: Mike Andrews, General Manager, The CHEESE Project, 28 Seawalls, Seawalls
-Road, Sneyd Park, Bristol BS9 1PG.
+to: Mike Andrews, Managing Director, The C.H.E.E.S.E. Project CIC, 28 Seawalls,
+Seawalls Road, Sneyd Park, Bristol BS9 1PG.
 
 <a class="anchor" name="preparation"></a>
 ## Preparation for the survey

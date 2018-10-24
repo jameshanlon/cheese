@@ -21,7 +21,7 @@ Bristol, in other cities (more details on [who we work with here](/partners)).
 
 Our central office management team consists of six people:
 
-- Michael Alford Andrews, General Manager;
+- Michael Alford Andrews, Managing Director;
 - Jeremy Birch, Technical Manager;
 - David Tudgey, Community and Development Manager;
 - Brian Harper, Director;
