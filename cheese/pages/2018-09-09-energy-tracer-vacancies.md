@@ -2,6 +2,11 @@ article:
 date: 2018-09-09
 title: Job vacancies for part-time thermal-imaging surveyors, with free training
 
+<div class="alert alert-warning">
+The deadline for this opportunity has now passed, and we are no longer accepting
+applications.
+</div>
+
 <p class="lead">We are looking for enthusiastic, sustainably-minded people to
 train as CHEESE Energy Tracers to conduct thermal image surveys of the interior
 of homes in Bristol this winter.</p>

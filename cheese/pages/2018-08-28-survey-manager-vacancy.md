@@ -2,6 +2,11 @@ article:
 date: 2018-08-28
 title: Job vacancy for a thermal-imaging Survey Manager
 
+<div class="alert alert-warning">
+The deadline for this opportunity has now passed, and we are no longer accepting
+applications.
+</div>
+
 <p class="lead">We are looking for a motivated, organised individual to
 manage our thermal-imaging surveys of the interior of homes this winter.</p>
 
