@@ -33,6 +33,7 @@ from cheese.forms import ApplySurveyForm, \
                          create_submit_results_form, \
                          validate_date
 from cheese.settings import NUM_PHASES
+from cheese.thumbnail import get_thumbnail
 from cheese.s3 import S3
 from flask import Blueprint, \
                   current_app, \
@@ -684,12 +685,8 @@ class KitsView(GeneralModelView):
 @listens_for(ThermalImage, 'after_delete')
 def del_thermal_image(mapper, connection, target):
     if target.filename:
-        try:
-            filename = os.path.join(current_app.config['UPLOADED_IMAGES_DEST'],
-                                    target.filename)
-            os.remove(filename)
-        except OSError:
-            pass
+        key = current_app.config['UPLOADED_IMAGES_PREFIX']+'/'+target.filename
+        s3.delete_thermal_image(key)
 
 
 class ThermalImageView(GeneralModelView):
@@ -697,10 +694,10 @@ class ThermalImageView(GeneralModelView):
     def _list_thumbnail(view, context, model, name):
         if not model.filename:
             return ''
-        filename = os.path.join(current_app.config['UPLOADED_IMAGES_URL'],
-                                model.filename)
-        thumb_filename = thumb.thumbnail(filename, '100x100')
-        return Markup('<a href="/{}"><img src="{}"></a>'.format(filename,
+        key = current_app.config['UPLOADED_IMAGES_PREFIX']+'/'+model.filename
+        url = current_app.config['UPLOADED_IMAGES_URL']+'/'+model.filename
+        thumb_filename = get_thumbnail(key, '100x100')
+        return Markup('<a href="/{}"><img src="{}"></a>'.format(url,
                                                                 thumb_filename))
     column_formatters = { 'filename': _list_thumbnail, }
     column_exclude_list = ['date', ]
@@ -743,15 +740,14 @@ def random_string(length):
 @bp.route('/upload-thermal-image', methods=['GET', 'POST'])
 @login_required
 def upload_thermal_image():
-    form = create_upload_thermal_image_form(db.session, request.form)
+    form = create_upload_thermal_image_form(db.session)
     if request.method=='POST':
-        print request.form
         if form.validate_on_submit():
             image = request.files.get('image_file')
             filename = random_string(10)+'_'+secure_filename(image.filename)
             s3.upload_fileobj_thermal_image(image, filename)
             thermal_image = ThermalImage()
-            thermal_image.filename = filename
+            thermal_image.filename = unicode(filename)
             for f in ['description',
                       'building_type',
                       'year_of_construction',
@@ -772,7 +768,6 @@ def upload_thermal_image():
             flash('The thermal image has been submitted successfully.')
             return redirect(url_for('cheese.upload_thermal_image'))
         else:
-            print form.errors
             flash('There were problems with your form.', 'error')
     return render_template('upload-thermal-image.html', form=form)
 

@@ -285,8 +285,14 @@ class UploadThermalImageForm(FlaskForm):
                                   validators=[Required()])
 
 
-def create_upload_thermal_image_form(db_session, formdata):
-    """ Dynamicaly create a form to apply for a survey. """
+def create_upload_thermal_image_form(db_session, formdata=None):
+    """
+    Dynamicaly create a form to apply for a survey. Note that the FlaskForm is
+    not initialised with formdata since this prevents the underlying
+    FileStorage object from being initialised and the POSTed image data being
+    ignored. See
+    https://stackoverflow.com/questions/19203343/flask-wtf-filefield-does-not-set-data-attribute-to-an-instance-of-werkzeug-files
+    """
     def building_type_choices():
       return db_session.query(BuildingTypes).all()
     building_type = QuerySelectField('Building type',
@@ -295,7 +301,7 @@ def create_upload_thermal_image_form(db_session, formdata):
                                      allow_blank=True,
                                      blank_text=u'Please select...',)
     setattr(UploadThermalImageForm, 'building_type', building_type)
-    return UploadThermalImageForm(formdata)
+    return UploadThermalImageForm()
 
 
 class OneMonthFeedbackForm(FlaskForm):

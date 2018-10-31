@@ -27,7 +27,7 @@ def get_thumbnail(filepath, size):
         os.makedirs(thumb_dir)
     response = requests.get(image_url)
     if response.status_code != 200:
-        current_app.logger('Image for thumbnail not found:' + image_url)
+        current_app.logger.warning('Image for thumbnail not found:' + image_url)
         return image_url
     image = Image.open(BytesIO(response.content))
     # Resize the image upto a maximum x OR y dimension.

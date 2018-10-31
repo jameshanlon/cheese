@@ -31,10 +31,10 @@ EXPORT_DIR                       = 'static/export'
 EXPORT_PATH                      = 'cheese/'+EXPORT_DIR
 IMAGES_DIR                       = 'cheese/static/images'
 THUMB_SIZE                       = '200x200'
-IMAGE_FORMATS                    = ['.jpg', '.jpe', '.jpeg', '.png', '.gif', '.bmp']
-# Flask-Uploads
-UPLOADED_IMAGES_URL              = 'static/uploads'
-UPLOADED_IMAGES_DEST             = 'cheese/'+UPLOADED_IMAGES_URL
+IMAGE_FORMATS                    = ['jpg', 'jpe', 'jpeg', 'png', 'gif', 'bmp']
+# Uploads
+UPLOADED_IMAGES_URL              = 'assets/uploads'
+UPLOADED_IMAGES_PREFIX           = 'uploads'
 # Flask-Mail
 MAIL_SERVER                      = os.environ['CHEESE_SMTP_SERVER']
 MAIL_USERNAME                    = os.environ['CHEESE_SMTP_USERNAME']
