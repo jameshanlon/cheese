@@ -23,10 +23,6 @@ is part of an effort to document the experience of the CHEESE Project.</p>
 {% endfor %}
 </p>
 
-{% macro get_path(filename) -%}
-  {{url_for('.assets', filename='/uploads/'+filename)}}
-{%- endmacro %}
-
 {% if keyword %}
   <p>Showing {{images|length}} images with the keyword '{{keyword}}'
   (<a href="?keyword=">view all</a>)</p>
@@ -46,8 +42,8 @@ is part of an effort to document the experience of the CHEESE Project.</p>
 {% for image in images %}
   <tr>
     <td>
-      <a href="{{get_path(image.filename)}}">
-        <img src="{{get_path(image.filename)|thumbnail('100x100')}}">
+      <a href="{{url_for('.assets', filename='uploads/'+filename)}}">
+        <img src="{{'uploads'+image.filename|thumbnail('100x100')}}">
       </a>
     </td>
     <td>
