@@ -42,8 +42,8 @@ is part of an effort to document the experience of the CHEESE Project.</p>
 {% for image in images %}
   <tr>
     <td>
-      <a href="{{url_for('.assets', filename='uploads/'+filename)}}">
-        <img src="{{'uploads'+image.filename|thumbnail('100x100')}}">
+      <a href="{{url_for('.assets', filename='uploads/'+image.filename)}}">
+	<img src="{{('uploads/'+image.filename)|thumbnail('100x100')}}">
       </a>
     </td>
     <td>
