@@ -27,7 +27,7 @@ Additional to this we pay a 'Finders fee' of £5.00 for anyone who recruits a ne
 Please note that the payment includes the 1-month follow-up and collection of
 the CHEESE Box (if any is issued).
 
-## Trainee ETs.
+## Trainee ETs
 
 The training system is that you will (usually on one day) observe one survey
 with Brian as a pair, then take it in turns to lead a survey under supervision.
