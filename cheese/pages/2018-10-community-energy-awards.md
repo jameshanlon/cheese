@@ -18,5 +18,9 @@ to tackle fuel poverty head on.
 The award is also recognition for all the hard work of the team, and a great
 way to kick off this winter's survey season!
 
+**UPDATE (11 November 2018)**: Community Energy England have published a case study
+on CHEESE, as the receipient of the Community Energy & Carbon Saving Award,
+which you can [read here](https://communityenergyengland.org/pages/c-h-e-e-s-e-2018-community-energy-carbon-saving-award-winner-case-study/).
+
 {% import 'macros.html' as macros %}
 {{ macros.gallery('2018-10-community-energy-awards') }}
