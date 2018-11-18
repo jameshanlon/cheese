@@ -61,9 +61,10 @@ again after a month and after a year to see if your energy use has changed!
 ## Pricing
 
 Below are our prices for various sizes of home. Please note that **main rooms**
-means any large space in the house, including living rooms, kitchens, dining
-rooms, bedrooms and conservatories, but not bathrooms or utility spaces, for
-example.
+means any large room: including living rooms, dining rooms, kitchen-dining
+rooms, bedrooms and conservatories, but not bathrooms, separate kitchens,
+utility spaces or garages. Two living rooms which have been 'knocked-through'
+into one room will be charged as two rooms.
 
 We do offer **free surveys** to households on low incomes. We assess
 eligibility for free surveys on a case-by-case basis. It will be useful for us
