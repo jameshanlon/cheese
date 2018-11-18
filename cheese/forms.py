@@ -81,7 +81,8 @@ class ApplySurveyForm(FlaskForm):
     availability = fields.TextAreaField('Your availability*',
                                         validators=[Required()])
     num_main_rooms = fields.IntegerField('Number of main rooms ' \
-                                         +'(reception + living + bedroom)*',
+                                         +'(please see <a href="/home-surveys#pricing">pricing details</a>' \
+                                         +', this will be confirmed during the survey)*',
                                          validators=[Required()])
     can_heat_comfortably = \
         fields.BooleanField('Can you heat your home to a comfortable ' \

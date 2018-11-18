@@ -60,8 +60,10 @@ again after a month and after a year to see if your energy use has changed!
 <a class="anchor" name="pricing"></a>
 ## Pricing
 
-Below are our prices for various sizes of home; note that rooms means
-reception rooms plus bedrooms.
+Below are our prices for various sizes of home. Please note that **main rooms**
+means any large space in the house, including living rooms, kitchens, dining
+rooms, bedrooms and conservatories, but not bathrooms or utility spaces, for
+example.
 
 We do offer **free surveys** to households on low incomes. We assess
 eligibility for free surveys on a case-by-case basis. It will be useful for us
@@ -79,17 +81,17 @@ out using an [online calculator](http://www.minimumincome.org.uk/).
   </thead>
   <tbody>
     <tr>
-      <td>3 to 5 room home</td>
+      <td>3 to 5 main rooms</td>
       <td>2.5 hours</td>
       <td>&pound;75</td>
     </tr>
     <tr>
-      <td>6 to 8 room home*</td>
+      <td>6 to 8 main rooms*</td>
       <td>2.5 to 3 hours</td>
       <td>&pound;120</td>
     </tr>
     <tr>
-      <td>Over 8 rooms*</td>
+      <td>Over 8 main rooms*</td>
       <td>Over 3 hours</td>
       <td>&pound;150</td>
     </tr>
