@@ -4,6 +4,88 @@
 On this page, we've collected some representative feedback from customers who've had
 a internal home survey.
 
+## From the 2018/19 surveying season (phase 4)
+
+- *"I would highly recommend having a survey done by The CHEESE Project. It is
+  so interesting and incredibly useful if you want to locate all those hidden
+draughts, warm up your home and reduce your heating costs. The surveyor was
+very friendly and patiently spent hours identifying all the heat loss spots in
+our house, and even provided us with a video of the survey, plus a list of easy
+remedies for us to carry out. 10/10 from me!"*
+
+## From the 2017/18 surveying season (phase 3)
+
+- *"The survey itself was great and the surveyors clearly have a lot of
+  knowledge. The fact that the homeowner and tenant go around and look at all
+the areas of the home is really valuable in having an understanding of the
+recommendations rather than just a written or verbal report."*
+
+- *"I loved the enthusiasm and commitment all the volunteers demonstrated when
+  they visited the house. I really appreciate people being willing to do this
+in their own time. Found it interesting and educational."*
+
+- *"I think this is a great project and an opportunity for everyone to look at
+  the ways to reduce their energy costs.*"
+
+- *"Excellent survey, very nice people, thanks so much."*
+
+- *"The survey was carried out in a very professional manner with everything
+  being explained clearly."*
+
+- *"Many thanks, was glad to be a part of this process. Efficient and whole
+  project done in good spirit. The survey has made me more aware of drafts and
+meant that we used room space more efficiently during colder weather. It was
+both reassuring and somewhat alarming to hear that our energy consumption
+levels were way below the national average. This project feels like a step in
+the right direction to awareness of our natural surroundings/better use of
+resources."*
+
+- *"I found the survey helpful and seeing the tablet images helped to follow the
+issues the surveyors were talking about."*
+
+- *"The team were very informative and highly skilled."*
+
+- *"It was very interesting to see the presence of draughts that I was not at
+  all aware of, and cheering that the draught-proofing solution is relatively
+inexpensive and has a large impact."*
+
+- *"I was very happy with every aspect of the survey, especially the
+  helpfulness of the people who conducted it."*
+
+- *"Really good value for money for the survey and then left with monitoring
+  equipment to make changes in own time."*
+
+- *"Really helpful and imformative. Was very surprised by some of the results."*
+
+- *"The two surveyors did a very thorough and detailed survey of my home, it
+  was great to be able to follow them with an iPad to see real time all the
+various cold spots, many not where I had imagined, heat loss was not through
+the ceiling into the loft but in many other small places that could easily be
+fixed."*
+
+- *"An excellent, value for money survey which really helped us to understand
+  which bits of our home were leaking energy."*
+
+- *"From the outset everyone involved with the survey was friendly polite and
+  helpful. All instructions were clear and easy to follow and the
+recommendations were mostly low cost and easy for me to carry out myself. I
+very much appreciated the fact that the surveyors did some additional research
+re the vent and sent it after the survey was complete. Survey video was
+brilliant for pinpointing exactly where I had to refit loft insulation. The
+entire process is fascinating and informative and really helps you understand
+the true energy efficiency of your home. I would highly recommend this
+survey."*
+
+- "*The survey felt rigorous and a robust test of the house's thermal
+  performance. The surveyor was professional and knowledgeable.*"
+
+- *"The guys that came round were really friendly and approachable and a
+  pleasure to have in my home. I would highly recommend the project."*
+
+- *"The organisation was good, the survey was great with friendly enthusiastic
+  surveyors and no problems, and even the box collection has been easy and
+enjoyable."*
+
 ## From the 2016/17 surveying season (phase 2)
 
 - *"A really valuable service, represented excellent value for money. The friendly,
@@ -43,8 +125,8 @@ a internal home survey.
 
 - *"The survey was well worth the money and very interesting. – It was fun!"*
 
-- *Very good to see heat loss with tenants, which helped raise energy awareness
-  with tenants, which was an important aspect for [our Housing Association].*
+- *"Very good to see heat loss with tenants, which helped raise energy awareness
+  with tenants, which was an important aspect for [our Housing Association]."*
 
 - Although the householder was initially sceptical about the value of the survey,
   they commented that it *"added loads - things never seen before and the amount
