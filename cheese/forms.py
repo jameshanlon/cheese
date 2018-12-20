@@ -154,27 +154,31 @@ class SubmitResultsForm(FlaskForm):
     loaned_cheese_box = fields.BooleanField('CHEESE box loaned?',
                                             validators=[Optional()])
     cheese_box_number = fields.TextField('CHEESE box number',
-                                         validators=[Optional()])
+					 validators=[Optional(),
+						     Length(max=25)])
     year_of_construction = fields.IntegerField('Year of construction',
                                                validators=[Optional()])
     depth_loft_insulation = fields.TextField('Depth of loft insulation (mm)',
-                                             validators=[Optional()])
+					     validators=[Optional(),
+							 Length(max=150)])
     number_open_fireplaces = fields.TextField('Number of open fireplaces',
-                                              validators=[Optional()])
+					      validators=[Optional(),
+							  Length(max=150)])
     double_glazing = fields.TextField('Amount of double glazing (%)',
-                                      validators=[Optional()])
+				      validators=[Optional(),
+						  Length(max=150)])
     num_occupants = fields.IntegerField('Number of occupants',
                                         validators=[Optional()])
     annual_gas_kwh = fields.DecimalField('Annual consumption (kWh',
                                          validators=[Optional()])
     annual_gas_estimated = fields.BooleanField('Is the value based on estimated use?',
                                                validators=[Optional()])
-    annual_gas_start_date = fields.DateField('Start date (dd/mm/yyy)',
+    annual_gas_start_date = fields.DateField('Start date (dd/mm/yyyy)',
                                              format='%d/%m/%Y',
                                              validators=[Optional(),
                                              validate_date],
                                              widget=DatePickerWidget())
-    annual_gas_end_date = fields.DateField('End date (dd/mm/yyy)',
+    annual_gas_end_date = fields.DateField('End date (dd/mm/yyyy)',
                                            format='%d/%m/%Y',
                                            validators=[Optional(),
                                            validate_date],
@@ -183,12 +187,12 @@ class SubmitResultsForm(FlaskForm):
                                            validators=[Optional()])
     annual_elec_estimated = fields.BooleanField('Is the value based on estimated use?',
                                                 validators=[Optional()])
-    annual_elec_start_date = fields.DateField('Start date (dd/mm/yyy)',
+    annual_elec_start_date = fields.DateField('Start date (dd/mm/yyyy)',
                                               format='%d/%m/%Y',
                                               validators=[Optional(),
                                               validate_date],
                                               widget=DatePickerWidget())
-    annual_elec_end_date = fields.DateField('End date (dd/mm/yyy)',
+    annual_elec_end_date = fields.DateField('End date (dd/mm/yyyy)',
                                             format='%d/%m/%Y',
                                             validators=[Optional(),
                                             validate_date],
@@ -318,12 +322,12 @@ class OneMonthFeedbackForm(FlaskForm):
                                          validators=[Optional()])
     annual_gas_estimated = fields.BooleanField('Is the value based on estimated use?',
                                                validators=[Optional()])
-    annual_gas_start_date = fields.DateField('Start date (dd/mm/yyy)',
+    annual_gas_start_date = fields.DateField('Start date (dd/mm/yyyy)',
                                              format='%d/%m/%Y',
                                              validators=[Optional(),
                                              validate_date],
                                              widget=DatePickerWidget())
-    annual_gas_end_date = fields.DateField('End date (dd/mm/yyy)',
+    annual_gas_end_date = fields.DateField('End date (dd/mm/yyyy)',
                                            format='%d/%m/%Y',
                                            validators=[Optional(),
                                            validate_date],
@@ -332,12 +336,12 @@ class OneMonthFeedbackForm(FlaskForm):
                                           validators=[Optional()])
     annual_elec_estimated = fields.BooleanField('Is the value based on estimated use?',
                                                 validators=[Optional()])
-    annual_elec_start_date = fields.DateField('Start date (dd/mm/yyy)',
+    annual_elec_start_date = fields.DateField('Start date (dd/mm/yyyy)',
                                               format='%d/%m/%Y',
                                               validators=[Optional(),
                                               validate_date],
                                               widget=DatePickerWidget())
-    annual_elec_end_date = fields.DateField('End date (dd/mm/yyy)',
+    annual_elec_end_date = fields.DateField('End date (dd/mm/yyyy)',
                                             format='%d/%m/%Y',
                                             validators=[Optional(),
                                             validate_date],
@@ -403,12 +407,12 @@ class OneYearFeedbackForm(FlaskForm):
                                          validators=[Optional()])
     annual_gas_estimated = fields.BooleanField('Is the value based on estimated use?',
                                                validators=[Optional()])
-    annual_gas_start_date = fields.DateField('Start date (dd/mm/yyy)',
+    annual_gas_start_date = fields.DateField('Start date (dd/mm/yyyy)',
                                              format='%d/%m/%Y',
                                              validators=[Optional(),
                                              validate_date],
                                              widget=DatePickerWidget())
-    annual_gas_end_date = fields.DateField('End date (dd/mm/yyy)',
+    annual_gas_end_date = fields.DateField('End date (dd/mm/yyyy)',
                                            format='%d/%m/%Y',
                                            validators=[Optional(),
                                            validate_date],
@@ -417,12 +421,12 @@ class OneYearFeedbackForm(FlaskForm):
                                           validators=[Optional()])
     annual_elec_estimated = fields.BooleanField('Is the value based on estimated use?',
                                                 validators=[Optional()])
-    annual_elec_start_date = fields.DateField('Start date (dd/mm/yyy)',
+    annual_elec_start_date = fields.DateField('Start date (dd/mm/yyyy)',
                                               format='%d/%m/%Y',
                                               validators=[Optional(),
                                               validate_date],
                                               widget=DatePickerWidget())
-    annual_elec_end_date = fields.DateField('End date (dd/mm/yyy)',
+    annual_elec_end_date = fields.DateField('End date (dd/mm/yyyy)',
                                             format='%d/%m/%Y',
                                             validators=[Optional(),
                                             validate_date],
