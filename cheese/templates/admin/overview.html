@@ -45,7 +45,7 @@ Displaying <b>phase {{active_phase}} surveys</b>, between
   <thead>
     <tr>
       <th class="survey-overview-col1">
-          <a href="{{modify_query(sort='survey',         reverse=reverse)}}">Survey</a></th>
+                              <a href="{{modify_query(sort='survey',         reverse=reverse)}}">Survey</a></th>
       <th class="text-center"><a href="{{modify_query(sort='ward',           reverse=reverse)}}">Ward</a></th>
       <th>                    <a href="{{modify_query(sort='request_date',   reverse=reverse)}}">Request date</a></th>
       <th>                    <a href="{{modify_query(sort='survey_date',    reverse=reverse)}}">Survey date</a></th>
@@ -174,14 +174,16 @@ Displaying <b>phase {{active_phase}} surveys</b>, between
         {% else %}
           <td></td>
         {% endif %}
-      {% elif survey.lead_status == 'Possible' %}
+      {% elif survey.lead_status.name == 'Possible' %}
         <td colspan="6" align="center"><b>Possible lead</b></td>
-      {% elif survey.lead_status == 'Dead' %}
+      {% elif survey.lead_status.name == 'Dead' %}
         <td colspan="6" align="center"><b>Dead lead</b></td>
-      {% elif survey.lead_status == 'Successful' %}
-        <td colspan="6" align="center"><b>Result due</b></td>
+      {% elif survey.lead_status.name == 'Successful' %}
+        <td colspan="6" align="center"><b>Successful lead, result due</b></td>
       {% else %}
-	<td colspan="6"></td>
+      <td colspan="6" align="center">
+        <strong>{{survey.lead_status}}</strong>
+      </td>
       {% endif %}
     </tr>
     {% endfor %}
