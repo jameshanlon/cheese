@@ -7,7 +7,7 @@ mixer==5.6.6
 pytest==3.3
 SQLAlchemy==1.2.12
 SQLAlchemy-Utils==0.33.5
-requests==2.21.1
+requests==2.16.0
 boto3==1.9.14
 Markdown==2.6.11
 WTForms==2.2.1
