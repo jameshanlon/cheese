@@ -80,6 +80,13 @@ cat mysql-backup.sql | docker exec -i flask_container_1 mysql -h database_contai
 ```
 The `-h` host parameter may not be necessary.
 
+Migrating to MariaDB caused an issue with MySQL connections timing
+out, giving 'MySQL has gone away error message'. See details of the
+fix on [Stack Overflow][1] and [Flask documentation][2].
+
+[1]: https://stackoverflow.com/questions/51506416/mariadb-server-times-out-client-connection-after-600-seconds
+[2]: http://flask-sqlalchemy.pocoo.org/2.3/config/#timeouts
+
 ### Run the development server
 
 ```
