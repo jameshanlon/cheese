@@ -7,14 +7,14 @@ mixer==5.6.6
 pytest==3.3
 SQLAlchemy==1.2.12
 SQLAlchemy-Utils==0.33.5
-requests==2.19.1
+requests==2.21.1
 boto3==1.9.14
 Markdown==2.6.11
 WTForms==2.2.1
 WTForms-Alchemy==0.16.7
 WTForms-Components==0.10.2
 Flask==1.0.2
-Flask-Admin==1.5.2
+Flask-Admin==1.5.3
 Flask-BasicAuth==0.2.0
 Flask-FlatPages==0.6
 Flask-Login==0.4.1
