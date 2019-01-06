@@ -29,19 +29,19 @@ Our central office management team consists of six people:
 - Susan Nicholls, Director.
 
 <figure class="figure">
-<img src="{{'images/people/mike.jpg'|thumbnail('200x200')}}">
+<img src="{{'images/people/mike-2.jpg'|thumbnail('247x247')}}">
 <figcaption class="figure-caption text-center">Mike</figcaption>
 </figure>
 <figure class="figure">
-<img src="{{'images/people/brian-and-jamie.jpg'|thumbnail('200x200')}}">
+<img src="{{'images/people/brian-and-jamie.jpg'|thumbnail('300x300')}}">
 <figcaption class="figure-caption text-center">Jamie and Brian</figcaption>
 </figure>
 <figure class="figure">
-<img src="{{'images/people/dave-and-sue.jpg'|thumbnail('300x200')}}">
+<img src="{{'images/people/dave-and-sue.jpg'|thumbnail('300x300')}}">
 <figcaption class="figure-caption text-center">Sue and Dave</figcaption>
 </figure>
 <figure class="figure">
-<img src="{{'images/people/jeremy.jpg'|thumbnail('200x200')}}">
+<img src="{{'images/people/jeremy.jpg'|thumbnail('300x300')}}">
 <figcaption class="figure-caption text-center">Jeremy</figcaption>
 </figure>
 
