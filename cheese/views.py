@@ -792,6 +792,15 @@ def collected_thermal_images():
                            keyword=keyword,
                            images=images)
 
+@bp.route('/customer-feedback')
+@login_required
+def customer_feedback():
+    month_feedback = MonthFeedback.query.all()
+    num_phases = len(current_app.config['PHASE_START_DATES'])
+    phases = reversed([x+1 for x in range(num_phases)])
+    return render_template('customer-feedback.html',
+                           month_feedback=month_feedback,
+                           phases=phases)
 
 #===-----------------------------------------------------------------------===#
 # Public pages.

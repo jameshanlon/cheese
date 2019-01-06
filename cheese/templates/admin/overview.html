@@ -89,7 +89,7 @@ Displaying <b>phase {{active_phase}} surveys</b>, between
     <tr>
       <td class="survey-overview-col1">
         {{ edit_button('surveys', survey.id) }}
-        <a href="/admin/survey/{{survey.id}}">
+        <a href="{{url_for('admin.survey', survey_id=survey.id)}}">
           {{survey.name}}<br>
           {{survey.address_line}}</a>
       </td>
@@ -141,7 +141,7 @@ Displaying <b>phase {{active_phase}} surveys</b>, between
         <td class="text-center" {{cell_bg(survey.result)}}>
           {{ edit_button('results', survey.result[0].id, edit_permission) }}
           {{ details_button('results', survey.result[0].id) }}
-          <a href="/admin/survey/{{survey.id}}#result">
+          <a href="{{url_for('admin.survey', survey_id=survey.id)}}#result">
             {{ macros.render_boolean(survey.result) }}</a>
         </td>
         <!--Month feedback-->
@@ -149,7 +149,7 @@ Displaying <b>phase {{active_phase}} surveys</b>, between
           <td class="text-center green-bg">
             {{ edit_button('month_feedback', survey.month_feedback[0].id, edit_permission) }}
             {{ details_button('month_feedback', survey.month_feedback[0].id) }}
-            <a href="/admin/survey/{{survey.id}}#month-feedback">
+            <a href="{{url_for('admin.survey', survey_id=survey.id)}}#month-feedback">
               {{ macros.render_boolean(survey.month_feedback) }}</a>
           </td>
         {% elif survey.survey_date %}
@@ -164,7 +164,7 @@ Displaying <b>phase {{active_phase}} surveys</b>, between
           <td class="text-center green-bg">
             {{ edit_button('year_feedback', survey.year_feedback[0].id, edit_permission) }}
             {{ details_button('year_feedback', survey.year_feedback[0].id) }}
-            <a href="/admin/survey/{{survey.id}}#year-feedback">
+            <a href="{{url_for('admin.survey', survey_id=survey.id)}}#year-feedback">
               {{ macros.render_boolean(survey.year_feedback) }}</a>
           </td>
         {% elif survey.survey_date %}
