@@ -1,25 +1,25 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h1>Customer feedback</h1>
+<h1>Customer feedback at one month</h1>
+
+{% for f in month_feedback if f.survey.phase == None %}
+  <p><a href="{{url_for('admin.survey', survey_id=f.survey.id)}}">
+    Survey {{f.survey.id}}</a> does not have it's phase number set.</p>
+{% endfor %}
 
 {% for x in phases %}
   <h2>Phase {{x}}</h2>
   {% for f in month_feedback if f.survey.phase == x %}
     <p>
       <a href="{{url_for('admin.survey', survey_id=f.survey.id)}}">{{f.survey.name}}</a>,
-      {% if survey.survey_date %}
+      {% if f.survey.survey_date %}
         {{f.survey.survey_date.strftime('%d %b %Y')}}
       {% else %}
         (survey date not set)
       {% endif %}
     </p>
     <p>{{f.feedback}}</p>
-  {% endfor %}
-  <!--Surveys wihout phases-->
-  {% for f in month_feedback if f.survey.phase == None %}
-    <p><a href="{{url_for('admin.survey', survey_id=f.survey.id)}}">
-      Survey {{survey.id}}</a> does not have it's phase number set.</p>
   {% endfor %}
 {% endfor %}
 
