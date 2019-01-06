@@ -3,6 +3,7 @@ import datetime
 import os
 import random
 import string
+from collections import defaultdict
 from cheese.models import db, \
                           BuildingTypes, \
                           WallConstructionTypes, \
@@ -223,7 +224,6 @@ class GeneralModelView(sqla.ModelView):
 
 def get_survey_phase(date):
     phase = 1
-    print date
     for start, end in zip(current_app.config['PHASE_START_DATES'][:-1], \
                           current_app.config['PHASE_START_DATES'][1:]):
         if date >= start and date < end:
@@ -231,6 +231,8 @@ def get_survey_phase(date):
         phase += 1
     return phase
 
+def lead_status_id(name):
+    return SurveyLeadStatuses.query.filter(SurveyLeadStatuses.name==name).first().id
 
 class CheeseAdminIndexView(flask_admin.AdminIndexView):
     filters = ['successful_lead',
@@ -250,8 +252,6 @@ class CheeseAdminIndexView(flask_admin.AdminIndexView):
                'no_one_year']
 
     def filter_query(self, active_phase, active_filters):
-        def lead_status_id(name):
-            return SurveyLeadStatuses.query.filter(SurveyLeadStatuses.name==name).first().id
         query = Surveys.query;
         if active_phase:
             query = query.filter(Surveys.phase==active_phase)
@@ -801,6 +801,33 @@ def customer_feedback():
     return render_template('customer-feedback.html',
                            month_feedback=month_feedback,
                            phases=phases)
+
+@bp.route('/survey-statistics')
+@login_required
+def survey_stats():
+    class Stats(object):
+        pass
+    num_phases = len(current_app.config['PHASE_START_DATES'])
+    phases = [x+1 for x in reversed(range(num_phases))]
+    stats = defaultdict(Stats)
+    for phase in phases:
+        num_surveys   = len(Surveys.query.filter(Surveys.phase==phase).all())
+        num_dead      = len(Surveys.query.filter(Surveys.lead_status_id==lead_status_id('Dead')).all())
+        num_possible  = len(Surveys.query.filter(Surveys.lead_status_id==lead_status_id('Possible')).all())
+        num_free      = len(Surveys.query.filter(Surveys.free_survey_consideration==True).all())
+        num_results   = len(Surveys.query.filter(Surveys.phase==phase).filter(Surveys.result!=None).all())
+        num_one_month = len(Surveys.query.filter(Surveys.phase==phase).filter(Surveys.month_feedback!=None).all())
+        num_one_year  = len(Surveys.query.filter(Surveys.phase==phase).filter(Surveys.year_feedback!=None).all())
+        setattr(stats[phase], 'num_surveys', num_surveys)
+        setattr(stats[phase], 'num_dead', num_dead)
+        setattr(stats[phase], 'num_possible', num_possible)
+        setattr(stats[phase], 'num_free', num_free)
+        setattr(stats[phase], 'num_results', num_results)
+        setattr(stats[phase], 'num_one_month', num_one_month)
+        setattr(stats[phase], 'num_one_year', num_one_year)
+    return render_template('survey-statistics.html',
+                           phases=phases,
+                           stats=stats)
 
 #===-----------------------------------------------------------------------===#
 # Public pages.

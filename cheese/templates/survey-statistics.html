@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1>Survey statistics</h1>
+
+{% for phase in phases %}
+  <h2>Phase {{phase}}</h2>
+  <p>
+    {{stats[phase].num_surveys}} surveys ({{stats[phase].num_free}} free surveys, {{stats[phase].num_possible}} possible leads, {{stats[phase].num_dead}} dead leads)<br/>
+    {{stats[phase].num_results}} results collected<br/>
+    {{stats[phase].num_one_month}} one-month feedback received<br/>
+    {{stats[phase].num_one_year}} one-year feedback received<br/>
+  </p>
+{% endfor %}
+
+{% endblock %}

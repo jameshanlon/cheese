@@ -4,7 +4,7 @@
 <h1>Customer feedback</h1>
 
 {% for x in phases %}
-  <h1>Phase {{x}}</h1>
+  <h2>Phase {{x}}</h2>
   {% for f in month_feedback if f.survey.phase == x %}
     <p>
       <a href="{{url_for('admin.survey', survey_id=f.survey.id)}}">{{f.survey.name}}</a>,
@@ -15,4 +15,3 @@
 {% endfor %}
 
 {% endblock %}
-

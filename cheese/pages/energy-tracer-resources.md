@@ -14,6 +14,7 @@ Welcome to the resources page for Energy Tracers.
 - [Submit one-month feedback](/one-month-feedback)
 - [Submit one-year feedback](/one-year-feedback)
 - [Read customer feedback](/customer-feedback)
+- [Survey statistics](/survey-statistics)
 - [CHEESE database](/admin)
 
 ## Thermal images
