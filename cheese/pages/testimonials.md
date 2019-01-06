@@ -18,6 +18,9 @@ remedies for us to carry out. 10/10 from me!"*
 property & hopefully save money on fuel usage. Peace of mind that mum(93) is as
 warm as she can be."*
 
+- *"Thanks for a great service. Its an amazing eye-opener. I’m supposed to know
+  about this stuff but you have pointed out lots of improvements I can make."*
+
 ## From the 2017/18 surveying season (phase 3)
 
 - *"The survey itself was great and the surveyors clearly have a lot of
