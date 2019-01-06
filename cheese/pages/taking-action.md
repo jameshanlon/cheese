@@ -26,6 +26,18 @@ development, and more content will be added in due course!)
   detailed guides for many different DIY projects around the home. There is
   also a collection of video guides.
 
+## Technical information
+
+- Moisture and damp:
+
+    * [Moisture guidance for existing homeowners (YouTube)](https://www.youtube.com/watch?v=aBWlXLMnqBk)
+
+- Insulation:
+
+    * [Problems resulting from absent insulation (Tony Cowling, UKCMB)](http://www.ukcmb.org/tony-cowling)
+    * [Avoidance and diagnosis of problems associated with internal wall insulation (UKCMB)](http://www.ukcmb.org/ukcmb-news/avoidance-and-diagnosis-of-problems-associated-with-internal-wall-insulation)
+    * [Understanding best practice in deploying external solid-wall insulation and internal wall insulation in the UK (Gov.uk)](https://www.gov.uk/government/publications/understanding-best-practice-in-deploying-external-solid-wall-insulation-and-internal-wall-insulation-in-the-uk)
+
 ## Finding tradesmen
 
 - [The Green Register](https://www.greenregister.org.uk/search) allows you to
