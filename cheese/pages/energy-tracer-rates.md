@@ -1,6 +1,9 @@
 
 # Rates of pay for Energy Tracers
 
+Please note these rates are effective from the start of the 2018/19 winter
+survey season.
+
 ## Qualified ETs
 
 Up to 5 main rooms, expected 2 hours per survey:
