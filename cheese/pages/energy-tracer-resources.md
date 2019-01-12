@@ -5,8 +5,10 @@ Welcome to the resources page for Energy Tracers.
 
 ## Survey materials
 
-- [Results paper form to print (PDF)]({{url_for('.assets', filename='files/CHEESE-survey-results-form.pdf')}})
-- [Whereabouts of surveying equipment spreadsheet (Google Docs)](https://docs.google.com/spreadsheets/d/1YZ8ttMmJUeJ_Iwv0NzLnqQlHjP_t4F1Ds9FknTH2TEY/edit?usp=sharing)
+- Results paper form to print
+  ([PDF]({{url_for('.assets', filename='files/CHEESE-survey-results-form.pdf')}}))
+- Whereabouts of surveying equipment spreadsheet
+  ([Google Docs](https://docs.google.com/spreadsheets/d/1YZ8ttMmJUeJ_Iwv0NzLnqQlHjP_t4F1Ds9FknTH2TEY/edit?usp=sharing))
 
 ## Survey results
 
@@ -24,14 +26,19 @@ Welcome to the resources page for Energy Tracers.
 
 ## Invoicing
 
-- [Invoice proforma for payment of expenses (Word.docx)]({{url_for('.assets', filename='files/CHEESE-invoice-proforma-For-payment-of-expenses.docx')}})
-- [Invoice proforma for payment of survey fees (Word.docx)]({{url_for('.assets', filename='files/CHEESE-invoice-proforma-For-payment-of-survey-fees.docx')}})
+- Invoice proforma for payment of expenses
+  ([Word.docx]({{url_for('.assets', filename='files/CHEESE-invoice-proforma-For-payment-of-expenses.docx')}}),
+   [PDF]({{url_for('.assets', filename='files/CHEESE-invoice-proforma-For-payment-of-expenses.pdf')}}))
+- Invoice proforma for payment of survey fees
+  ([Word.docx]({{url_for('.assets', filename='files/CHEESE-invoice-proforma-For-payment-of-survey-fees.docx')}}),
+   [PDF]({{url_for('.assets', filename='files/CHEESE-invoice-proforma-For-payment-of-survey-fees.pdf')}}))
 
 ## References
 
-- [The CHEESE internal survey process (PDF)]({{url_for('.assets', filename='files/CHEESE-survey-process-Dec18.pdf')}})
-  [(Google Docs)](https://docs.google.com/document/d/1Sjv-Pw7hjiK7UIOEXjgTIBX61NdtVOpW0WfN4TtEwRE/edit#heading=h.u10mdns3jps9)
-- [The CHEESE thermal imaging application guide (PDF)](http://www.heatview.co.uk/training/cheese_howto.pdf)
+- The CHEESE internal survey process
+  ([Google Docs](https://docs.google.com/document/d/1Sjv-Pw7hjiK7UIOEXjgTIBX61NdtVOpW0WfN4TtEwRE/edit#heading=h.u10mdns3jps9),
+   [PDF]({{url_for('.assets', filename='files/CHEESE-survey-process-Dec18.pdf')}}))
+- The CHEESE thermal imaging application guide ([PDF](http://www.heatview.co.uk/training/cheese_howto.pdf))
 - [Training videos for the CHEESE app](http://www.heatview.co.uk/training/)
 - [Rates of pay for Energy Tracers](/energy-tracer-rates)
 
