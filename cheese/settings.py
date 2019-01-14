@@ -61,6 +61,9 @@ else:
     # Make sure MySQL connections are recycled (in wait_timeout period).
     # See https://stackoverflow.com/questions/19052973/operationalerror-mysql-connection-not-available
     SQLALCHEMY_POOL_RECYCLE = 500
+# Flask-WTF
+RECAPTCHA_PUBLIC_KEY  = os.environ['CHEESE_RECAPTCHA_PUBLIC_KEY']
+RECAPTCHA_PRIVATE_KEY = os.environ['CHEESE_RECAPTCHA_PRIVATE_KEY']
 # Flask-User settings
 USER_APP_NAME               = APP_NAME
 USER_ENABLE_CHANGE_PASSWORD = True

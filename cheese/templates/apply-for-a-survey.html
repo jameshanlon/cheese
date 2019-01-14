@@ -55,6 +55,7 @@ touch by emailing
     {{ macros.render_form_field(form.expected_benefit) }}
     {{ macros.render_form_field(form.free_survey_consideration) }}
     {{ macros.end_form_section() }}
+    {{ macros.render_form_field(form.special_considerations) }}
     {{ macros.render_form_field(form.availability) }}
     {{ macros.render_form_field(form.referral) }}
     <label>* required fields</label>
@@ -80,6 +81,7 @@ touch by emailing
     limitations.</p>
     
     <p>{% include 'privacy-statement.html' %}</p>
+    <p>{{ form.recaptcha }}</p>
     <button class="btn" type="submit">Submit</button>
   </form>
 </div>

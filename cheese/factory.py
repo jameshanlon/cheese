@@ -77,6 +77,8 @@ def create_app(config={}):
     app.config.from_object('cheese.settings')
     app.config.update(config)
     CSRFProtect(app)
+    if app.config['DEBUG']:
+        app.testing = True # For Flask-WTF
     # Blueprints.
     from cheese.views import bp as cheese_bp
     from cheese.filters import bp as filters_bp

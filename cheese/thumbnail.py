@@ -1,7 +1,7 @@
 import os
 import requests
 from flask import current_app
-from PIL import Image
+from PIL import Image, ExifTags
 from io import BytesIO
 
 def parse_size(size):
@@ -30,6 +30,17 @@ def get_thumbnail(filepath, size):
         current_app.logger.warning('Image for thumbnail not found:' + image_url)
         return image_url
     image = Image.open(BytesIO(response.content))
+    # Rotate if recorded in metadata.
+    # https://stackoverflow.com/questions/4228530/pil-thumbnail-is-rotating-my-image
+    for orientation in ExifTags.TAGS.keys() :
+        if ExifTags.TAGS[orientation]=='Orientation' : break
+    exif=dict(image._getexif().items())
+    if exif[orientation] == 3:
+        image=image.rotate(180, expand=True)
+    elif exif[orientation] == 6:
+        image=image.rotate(270, expand=True)
+    elif exif[orientation] == 8:
+        image=image.rotate(90, expand=True)
     # Resize the image upto a maximum x OR y dimension.
     image.thumbnail(parse_size(size), Image.ANTIALIAS)
     image.save(thumb_path)

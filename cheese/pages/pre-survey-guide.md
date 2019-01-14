@@ -97,20 +97,50 @@ mark the figure as an estimate.
 <a class="anchor" name="during"></a>
 ## During the survey
 
+<div class="float-right text-center">
+  <div class="figure">
+  <a data-lightbox="survey-pictures" href="{{url_for('.assets', filename='images/blower-door.jpg')}}"
+     data-title="A CHEESE blower door installed during a survey.">
+    <img class="figure-img img-fluid" src="{{'images/blower-door.jpg'|thumbnail('250x250')}}">
+  </a>
+  <figcaption class="figure-caption" style="width:250px; margin-bottom:10px">
+    A CHEESE blower door installed during a survey.
+  </figcaption>
+  <a data-lightbox="survey-pictures" href="{{url_for('.assets', filename='images/CHEESE-kit.jpg')}}"
+     data-title="A CHEESE thermal imaging kit.">
+    <img class="figure-img img-fluid" src="{{'images/CHEESE-kit.jpg'|thumbnail('250x250')}}">
+  </a>
+  <figcaption class="figure-caption" style="width:250px; margin-bottom:10px">
+    A CHEESE thermal imaging kit.
+  </figcaption>
+  <a data-lightbox="survey-pictures" href="{{url_for('.assets', filename='images/post-survey-debrief.jpg')}}"
+     data-title="Debriefing with the householder after a survey.">
+    <img class="figure-img img-fluid" src="{{'images/post-survey-debrief.jpg'|thumbnail('250x250')}}">
+  </a>
+  <figcaption class="figure-caption" style="width:250px; margin-bottom:10px">
+    Debriefing with the householder after a survey
+  </figcaption>
+  </div>
+</div>
+
 Please note:
 
-- For a five room house (living and bedrooms) a survey will take approximately
+- For a five-room house (living and bedrooms) a survey will take approximately
   two hours, including a de-briefing at the end. Larger houses will take
-  longer, a flat somewhat less.
+  longer, a flat somewhat less. See the [survey information](/home-surveys#pricing)
+  page for survey timings based on building size.
 
 - Two Energy Tracer surveyors will arrive. One will be the lead Tracer and they
   will usually accompanied by a trainee Tracer who will be shadowing and aiding
   them.
 
-- A blower door will be fitted to a suitable external door. This is used to
-  reduce the pressure inside of the house slightly (to induce draughts) and you
-  will not be able to use the door for between 1 and 1.5 hours. In a flat this
-  can prevent others getting access.
+- A blower door, consisting of a large fan and airtight sheet, will be fitted
+  to a suitable external door. This is used to reduce the pressure inside of
+  the house slightly to induce draughts. You will not be able to use the door
+  it is fitted to for between 1 and 1.5 hours and it will also prevent anyone
+  else having access if, for example, it is a shared doorway. Please note that
+  the fans we use are large and relatively noisy, but are essential to obtain
+  good results from the thermal imaging.
 
 - We encourage your participation and engagement throughout the survey, since
   it is led by your own knowledge of the building and because it is important
@@ -131,10 +161,10 @@ Please note:
   Centre for Sustainable Energy (CSE) on how to deal with energy saving
   opportunities.
 
-- Finally, we will lend an energy-monitoring kit (a [CHEESE Box](/cheese-box))
-  to you for one month, which includes a meter which we will fit for you to
-  your incoming electricity supply. The kit will be collected about a month after
-  the survey.
+- Finally, we will optionally lend an energy-monitoring kit (a [CHEESE
+  Box](/cheese-box)) to you for one month, which includes a meter which we will
+  fit for you to your incoming electricity supply. We will arrange a suitable
+  time with you to return and collect the box.
 
 <a class="anchor" name="follow-ups"></a>
 ## Follow ups after the survey

@@ -17,10 +17,26 @@ for us to demonstrate the effectivness of what we do.</p>
     <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
     {{ macros.render_form_field(form.householders_name) }}
     {{ macros.render_form_field(form.address) }}
+
     {{ macros.form_section('Remedial work') }}
+    {{ macros.render_form_field(form.any_completed_actions) }}
     {{ macros.render_form_field(form.completed_actions) }}
+    {{ macros.render_form_field(form.any_planned_work) }}
     {{ macros.render_form_field(form.planned_actions) }}
     {{ macros.end_form_section() }}
+
+    {{ macros.form_section('Your wellbeing') }}
+    {{ macros.render_form_field(form.any_wellbeing_improvement) }}
+    {{ macros.render_form_field(form.wellbeing_improvement) }}
+    {{ macros.end_form_section() }}
+
+    {{ macros.form_section('Changes in behaviour') }}
+    {{ macros.render_form_field(form.any_behaviour_change) }}
+    {{ macros.render_form_field(form.behaviour_temperature) }}
+    {{ macros.render_form_field(form.behaviour_space) }}
+    {{ macros.render_form_field(form.behaviour_changes) }}
+    {{ macros.end_form_section() }}
+
     {{ macros.form_section('Your electricity use') }}
     <p>Please provide details of your total annual electricity use for the year
     period before your survey in the fields below. For help with calculating the
@@ -33,6 +49,7 @@ for us to demonstrate the effectivness of what we do.</p>
     {{ macros.render_form_field(form.annual_elec_start_date) }}
     {{ macros.render_form_field(form.annual_elec_end_date) }}
     {{ macros.end_form_section() }}
+
     {{ macros.form_section('Your gas use') }}
     <p>Please provide details of your total annual gas use for the year
     period before your survey in the fields below. For help with calculating the
@@ -45,10 +62,12 @@ for us to demonstrate the effectivness of what we do.</p>
     {{ macros.render_form_field(form.annual_gas_start_date) }}
     {{ macros.render_form_field(form.annual_gas_end_date) }}
     {{ macros.end_form_section() }}
+
     {{ macros.form_section('Other energy use') }}
     {{ macros.render_form_field(form.annual_solid_spend) }}
     {{ macros.render_form_field(form.renewable_contrib_kwh) }}
     {{ macros.end_form_section() }}
+
     {{ macros.form_section('Feedback to us') }}
     {{ macros.render_form_field(form.satisfaction_1to5) }}
     {{ macros.render_form_field(form.cheese_box_1to5) }}
@@ -58,10 +77,15 @@ for us to demonstrate the effectivness of what we do.</p>
     {{ macros.render_form_field(form.recommend_1to5) }}
     {{ macros.render_form_field(form.cheese_box) }}
     {{ macros.render_form_field(form.feedback) }}
+    {{ macros.end_form_section() }}
+
     <label>* required fields</label>
     <p>{% include 'privacy-statement.html' %}</p>
+    <p>{{ form.recaptcha }}</p>
+    <div class="notice">
+      <p>{% include 'promotion-note.html' %}</p>
+    </div>
     <button class="btn" type="submit">Submit</button>
   </form>
 </div>
-
 {% endblock %}

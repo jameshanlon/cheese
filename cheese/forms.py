@@ -1,3 +1,4 @@
+import datetime
 from cheese.models import Surveys, \
                           Wards, \
                           BuildingTypes, \
@@ -8,12 +9,12 @@ from cheese.models import Surveys, \
                           CookingTypes
 from cheese.settings import IMAGE_FORMATS
 from flask import Markup
-from flask_wtf import FlaskForm
+from flask_wtf import FlaskForm, RecaptchaField
 from flask_wtf.file import FileField, FileAllowed, FileRequired
 from wtforms import fields, validators, widgets
 from wtforms.ext.sqlalchemy.fields import QuerySelectField
 from wtforms.fields.html5 import EmailField
-from wtforms.validators import Length, Optional, Required
+from wtforms.validators import Length, Optional, Required, InputRequired, NumberRange
 
 
 def choice(string):
@@ -33,6 +34,29 @@ def validate_date(form, field):
             field.errors.append('Year must be >= 1900')
             return False
     return True
+
+
+class RequiredIf(InputRequired):
+    """
+    Validator which makes a field required if another field is set and has a truthy value.
+    Sources:
+        - http://wtforms.simplecodes.com/docs/1.0.1/validators.html
+        - http://stackoverflow.com/questions/8463209/how-to-make-a-field-conditionally-optional-in-wtforms
+    """
+    field_flags = ('requiredif',)
+
+    def __init__(self, other_field_name, message=None, *args, **kwargs):
+        self.other_field_name = other_field_name
+        self.message = message
+
+    def __call__(self, form, field):
+        other_field = form[self.other_field_name]
+        if other_field is None:
+            raise Exception('no field named "%s" in form' % self.other_field_name)
+        if bool(other_field.data):
+            super(RequiredIf, self).__call__(form, field)
+        else:
+            Optional().__call__(form, field)
 
 
 class DatePickerWidget(widgets.TextInput):
@@ -59,6 +83,7 @@ class OneToFiveWidget(widgets.Input):
 
 
 class ApplySurveyForm(FlaskForm):
+    recaptcha = RecaptchaField()
     name = fields.StringField('Name*',
                               validators=[Required(),
                                           Length(max=100)])
@@ -78,12 +103,21 @@ class ApplySurveyForm(FlaskForm):
     mobile = fields.StringField('Mobile',
                                 validators=[Optional(),
                                             Length(max=20)])
-    availability = fields.TextAreaField('Your availability*',
+    availability = fields.TextAreaField('What is your availability to schedule the survey?*',
+                                        description='Please see the <a href="/home-surveys">survey information</a> for the expected duration of your survey.',
                                         validators=[Required()])
+    special_considerations = fields.TextAreaField('Do you have any special requirements that we need to be aware of during the survey?',
+                                                  description='<ul class="text-muted">' \
+                                                              +'<li>Do you have any illnesses or disabilities?</li>' \
+                                                              +'<li>Will you be able to accompany the surveyor around your home for two to three hours during the survey?</li>' \
+                                                              +'<li>Do you have any pets that will be present in your home during the survey?</li>' \
+                                                              +'</ul>',
+                                                  validators=[Required()])
     num_main_rooms = fields.IntegerField('Number of main rooms ' \
                                          +'(please see <a href="/home-surveys#pricing">pricing details</a>' \
                                          +', this will be confirmed during the survey)*',
-                                         validators=[Required()])
+                                         validators=[Required(),
+                                                     NumberRange(min=1, max=100)])
     can_heat_comfortably = \
         fields.BooleanField('Can you heat your home to a comfortable ' \
                             +'temperature in the winter?',
@@ -154,24 +188,27 @@ class SubmitResultsForm(FlaskForm):
     loaned_cheese_box = fields.BooleanField('CHEESE box loaned?',
                                             validators=[Optional()])
     cheese_box_number = fields.TextField('CHEESE box number',
-					 validators=[Optional(),
-						     Length(max=25)])
+                                         validators=[Optional(),
+                                                     Length(max=25)])
     year_of_construction = fields.IntegerField('Year of construction',
-                                               validators=[Optional()])
+                                               validators=[Optional(),
+                                                           NumberRange(min=1000,
+                                                                       max=datetime.datetime.now().year)])
     depth_loft_insulation = fields.TextField('Depth of loft insulation (mm)',
-					     validators=[Optional(),
-							 Length(max=150)])
+                                             validators=[Optional(),
+                                                         Length(max=150)])
     number_open_fireplaces = fields.TextField('Number of open fireplaces',
-					      validators=[Optional(),
-							  Length(max=150)])
+                                              validators=[Optional(),
+                                                          Length(max=150)])
     double_glazing = fields.TextField('Amount of double glazing (%)',
-				      validators=[Optional(),
-						  Length(max=150)])
+                                      validators=[Optional(),
+                                                  Length(max=150)])
     num_occupants = fields.IntegerField('Number of occupants',
-                                        validators=[Optional()])
+                                        validators=[Optional(),
+                                                    NumberRange(min=1, max=100)])
     annual_gas_kwh = fields.DecimalField('Annual consumption (kWh',
                                          validators=[Optional()])
-    annual_gas_estimated = fields.BooleanField('Is the value based on estimated use?',
+    annual_gas_estimated = fields.BooleanField('(yes / no) Is the value based on estimated use?',
                                                validators=[Optional()])
     annual_gas_start_date = fields.DateField('Start date (dd/mm/yyyy)',
                                              format='%d/%m/%Y',
@@ -185,7 +222,7 @@ class SubmitResultsForm(FlaskForm):
                                            widget=DatePickerWidget())
     annual_elec_kwh = fields.DecimalField('Annual consumption (kWh',
                                            validators=[Optional()])
-    annual_elec_estimated = fields.BooleanField('Is the value based on estimated use?',
+    annual_elec_estimated = fields.BooleanField('(yes / no) Is the value based on estimated use?',
                                                 validators=[Optional()])
     annual_elec_start_date = fields.DateField('Start date (dd/mm/yyyy)',
                                               format='%d/%m/%Y',
@@ -285,7 +322,9 @@ class UploadThermalImageForm(FlaskForm):
     description = fields.TextAreaField('Description of the image*',
                                        validators=[Required()])
     year_of_construction = fields.IntegerField('Year of construction*',
-                                               validators=[Required()])
+                                               validators=[Required(),
+                                                           NumberRange(min=1000,
+                                                                       max=datetime.datetime.now().year)])
     keywords = fields.StringField("Keywords (separated by commas ',')*",
                                   validators=[Required()])
 
@@ -312,15 +351,16 @@ def create_upload_thermal_image_form(db_session, formdata=None):
 class OneMonthFeedbackForm(FlaskForm):
     not_needed = 'We only need this if we didn\'t collect this during the survey.'
     numbers_only = 'Only use digits and (optionally) a decimal point, no other punctuation or symbols.'
+    recaptcha = RecaptchaField()
     householders_name = fields.StringField('Householder\'s name*',
                                            validators=[Required(),
                                                        Length(max=50)])
     address = fields.StringField('Address*',
                                  validators=[Required(),
                                              Length(max=100)])
-    annual_gas_kwh = fields.DecimalField('Annual consumption (kWh',
+    annual_gas_kwh = fields.DecimalField('Annual consumption (kWh)',
                                          validators=[Optional()])
-    annual_gas_estimated = fields.BooleanField('Is the value based on estimated use?',
+    annual_gas_estimated = fields.BooleanField('(yes / no) Is the value based on estimated use?',
                                                validators=[Optional()])
     annual_gas_start_date = fields.DateField('Start date (dd/mm/yyyy)',
                                              format='%d/%m/%Y',
@@ -332,9 +372,9 @@ class OneMonthFeedbackForm(FlaskForm):
                                            validators=[Optional(),
                                            validate_date],
                                            widget=DatePickerWidget())
-    annual_elec_kwh = fields.DecimalField('Annual consumption (kWh',
+    annual_elec_kwh = fields.DecimalField('Annual consumption (kWh)',
                                           validators=[Optional()])
-    annual_elec_estimated = fields.BooleanField('Is the value based on estimated use?',
+    annual_elec_estimated = fields.BooleanField('(yes / no) Is the value based on estimated use?',
                                                 validators=[Optional()])
     annual_elec_start_date = fields.DateField('Start date (dd/mm/yyyy)',
                                               format='%d/%m/%Y',
@@ -350,12 +390,27 @@ class OneMonthFeedbackForm(FlaskForm):
                                              validators=[Optional()])
     renewable_contrib_kwh = fields.DecimalField('Annual contribution from renewable generation (kWh)',
                                                 validators=[Optional()])
-    completed_actions = fields.TextAreaField('Have you already taken action to improve the thermal efficiency of your home?*',
-                                             description='If so, then what have you done?',
-                                             validators=[Required()])
-    planned_actions = fields.TextAreaField('What you are planning to do to in the next few years improve the thermal efficiency of your home?*',
+    any_completed_actions = fields.BooleanField('(yes / no) Have you already taken action to improve the thermal efficiency of your home?',
+                                                validators=[Optional()])
+    completed_actions = fields.TextAreaField('If so, then what have you done? And have you done the work yourself or has it been done professionally?',
+                                             validators=[RequiredIf('any_completed_actions')])
+    any_planned_work = fields.BooleanField('(yes / no) Are you are planning to do to in the next few years improve the thermal efficiency of your home?',
+                                           validators=[Optional()])
+    planned_actions = fields.TextAreaField('If so, then what are you planning?',
                                            description='This can be anything from draught proofing to installing external wall insulation.',
-                                           validators=[Required()])
+                                           validators=[RequiredIf('any_planned_work')])
+    any_wellbeing_improvement = fields.BooleanField('(yes / no) Have the actions you\'ve taken made your house feel warmer?',
+                                                    validators=[Optional()])
+    wellbeing_improvement = fields.TextAreaField('If so, then how? (Even if perhaps you haven\'t saved money on your bills.)',
+                                                 validators=[RequiredIf('any_wellbeing_improvement')])
+    any_behaviour_change = fields.BooleanField('(yes / no) Has your behaviour changed as a result of your survey?',
+                                               validators=[Optional()])
+    behaviour_temperature = fields.TextAreaField('How has the period and temperature you use the heating for changed? (if at all)',
+                                                 validators=[RequiredIf('any_behaviour_change')])
+    behaviour_space = fields.TextAreaField('How do you use space in your home differently? (if at all)',
+                                           validators=[RequiredIf('any_behaviour_change')])
+    behaviour_changes = fields.TextAreaField('In what other ways has your behaviour changed after the survey?',
+                                             validators=[RequiredIf('any_behaviour_change')])
     choices_1_to_5 = [choice(str(x)) for x in range(1,6)]
     satisfaction_1to5 = fields.RadioField('How satisified were you with the survey overall? (1: least, to 5: most)*',
                                           widget=OneToFiveWidget(),
@@ -397,15 +452,16 @@ class OneMonthFeedbackForm(FlaskForm):
 
 class OneYearFeedbackForm(FlaskForm):
     numbers_only = 'Only use digits and (optionally) a decimal point, no other punctuation or symbols.'
+    recaptcha = RecaptchaField()
     householders_name = fields.StringField('Householder\'s name*',
                                            validators=[Required(),
                                                        Length(max=50)])
     address = fields.StringField('Address*',
                                  validators=[Required(),
                                              Length(max=100)])
-    annual_gas_kwh = fields.DecimalField('Annual consumption (kWh',
+    annual_gas_kwh = fields.DecimalField('Annual consumption (kWh)',
                                          validators=[Optional()])
-    annual_gas_estimated = fields.BooleanField('Is the value based on estimated use?',
+    annual_gas_estimated = fields.BooleanField('(yes / no) Is the value based on estimated use?',
                                                validators=[Optional()])
     annual_gas_start_date = fields.DateField('Start date (dd/mm/yyyy)',
                                              format='%d/%m/%Y',
@@ -417,9 +473,9 @@ class OneYearFeedbackForm(FlaskForm):
                                            validators=[Optional(),
                                            validate_date],
                                            widget=DatePickerWidget())
-    annual_elec_kwh = fields.DecimalField('Annual consumption (kWh',
+    annual_elec_kwh = fields.DecimalField('Annual consumption (kWh)',
                                           validators=[Optional()])
-    annual_elec_estimated = fields.BooleanField('Is the value based on estimated use?',
+    annual_elec_estimated = fields.BooleanField('(yes / no) Is the value based on estimated use?',
                                                 validators=[Optional()])
     annual_elec_start_date = fields.DateField('Start date (dd/mm/yyyy)',
                                               format='%d/%m/%Y',
@@ -435,31 +491,43 @@ class OneYearFeedbackForm(FlaskForm):
                                              validators=[Optional()])
     renewable_contrib_kwh = fields.DecimalField('Annual contribution from renewable generation (kWh)',
                                                 validators=[Optional()])
+    any_completed_actions = fields.BooleanField('(yes / no) Have you taken action since your survey ' \
+                                                +'to improve the thermal efficiency of your home?*',
+                                                validators=[Optional()])
     diy_work = fields.TextAreaField('What work have you done yourself?*',
-                                    validators=[Required()])
-    prof_work = fields.TextAreaField('What work have you paid for to be done professionally?*',
-                                     validators=[Required()])
+                                    validators=[RequiredIf('any_completed_actions')])
+    prof_work = fields.TextAreaField('And, what work, if any, have you paid for to be done professionally?*',
+                                     validators=[RequiredIf('any_completed_actions')])
     contractors_used = fields.TextAreaField('If you had work done professionally, which contractors did you use?',
                                             description='And were these contractors based in Bristol or from further afield?',
-                                            validators=[Optional()])
-    total_spent = fields.DecimalField('Approximately how much have you spent in total on energy improvements to your home?',
+                                            validators=[Optional('any_completed_actions')])
+    total_spent = fields.DecimalField('Approximately how much have you spent in total on energy improvements to your home? (&pound;)',
                                       description='Only answer this if you feel comfortable to.',
                                       validators=[Optional()])
-    total_spent_diy = fields.DecimalField('Approximately how much did you spend on DIY?',
+    total_spent_diy = fields.DecimalField('Approximately how much did you spend on DIY? (&pound;)',
                                           validators=[Optional()])
-    total_spent_local = fields.DecimalField('Approximately how much did you spend on local contractors?',
+    total_spent_local = fields.DecimalField('Approximately how much did you spend on local contractors? (&pound;)',
                                             validators=[Optional()])
-    planned_work = fields.TextAreaField('Do you have any further work planned? And, if so, what?*',
-                                        validators=[Required()])
-    wellbeing_improvement = fields.TextAreaField('Have the actions you\'ve taken made your house feel warmer?',
-                                                 description='Perhaps even if you haven\'t saved any money on your bills!',
-                                                 validators=[Optional()])
-    behaviour_temperature = fields.TextAreaField('Has the period and temperature you use the heating for changed, and if so, how?*',
-                                                 validators=[Required()])
-    behaviour_space = fields.TextAreaField('Do you use space in your home differently now, and if so, how?*',
-                                           validators=[Required()])
-    behaviour_changes = fields.TextAreaField('How else has your behaviour changed after the survey?*',
-                                             validators=[Required()])
+    non_homeowner_work = fields.TextAreaField('If you are a low-income household or do not own your home, have you asked ' \
+                                              +'the council, your housing association or your landlord to make any changes ' \
+                                              +'to your home following the survey?  If so, what was their response?',
+                                              validators=[Optional()])
+    any_planned_work = fields.BooleanField('(yes / no) Do you have any future work planned?',
+                                           validators=[Optional()])
+    planned_work = fields.TextAreaField('If so, what are you planning?*',
+                                        validators=[RequiredIf('any_planned_work')])
+    any_wellbeing_improvement = fields.BooleanField('(yes / no) Have the actions you\'ve taken made your house feel warmer?',
+                                                    validators=[Optional()])
+    wellbeing_improvement = fields.TextAreaField('If so, then how? (Even if perhaps you haven\'t saved money on your bills.)',
+                                                 validators=[RequiredIf('any_wellbeing_improvement')])
+    any_behaviour_change = fields.BooleanField('(yes / no) Has your behaviour changed as a result of your survey?',
+                                               validators=[Optional()])
+    behaviour_temperature = fields.TextAreaField('How has the period and temperature you use the heating for changed? (if at all)',
+                                                 validators=[RequiredIf('any_behaviour_change')])
+    behaviour_space = fields.TextAreaField('How do you use space in your home differently? (if at all)',
+                                           validators=[RequiredIf('any_behaviour_change')])
+    behaviour_changes = fields.TextAreaField('In what other ways has your behaviour changed after the survey?',
+                                             validators=[RequiredIf('any_behaviour_change')])
     feedback = fields.TextAreaField('Lastly, do you have any other feedback on the CHEESE Project?',
                                     description='We would like to hear what you think about:'
                                                   +' how useful the survey was,'
@@ -469,6 +537,7 @@ class OneYearFeedbackForm(FlaskForm):
                                     validators=[Optional()])
 
 class MembershipForm(FlaskForm):
+    recaptcha = RecaptchaField()
     name = fields.StringField('Organisation name or name of individual if individual membership*',
                               validators=[Required(),
                                           Length(max=250)])

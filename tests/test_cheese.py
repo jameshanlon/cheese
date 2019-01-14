@@ -60,6 +60,7 @@ def test_apply_for_survey_form(client, app):
              expected_benefit          = 'expected_benefit',
              referral                  = 'referral',
              free_survey_consideration = True,
+             special_considerations    = 'special_considerations',
              agree_to_requirements     = True,
              photo_release             = True,
           ), follow_redirects=True)
@@ -106,64 +107,148 @@ def test_submit_results_form(client, app):
     assert b'Survey result submitted successfully' in rv.data
     logout(client)
 
-# Tests the form submits with valid input data.
+ONE_MONTH_REQ_FIELDS = dict(householders_name     = 'householders_name',
+                            address               = 'address',
+                            satisfaction_1to5     = '5',
+                            cheese_box_1to5       = '5',
+                            survey_video_1to5     = '5',
+                            surveyor_conduct_1to5 = '5',
+                            survey_value_1to5     = '5',
+                            recommend_1to5        = '5',
+                            cheese_box            = 'cheese_box', )
+
 def test_month_feedback_form(client, app):
-    rv = client.post('/one-month-feedback', data=dict(
-             submitted_by           = 'submitted_by',
-             householders_name      = 'householders_name',
-             address                = 'address',
-             annual_gas_kwh         = 123.456,
-             annual_gas_estimated   = True,
-             annual_gas_start_date  = '30/09/2018',
-             annual_gas_end_date    = '01/10/2019',
-             annual_elec_kwh        = 123.456,
-             annual_elec_estimated  = True,
-             annual_elec_start_date = '30/09/2018',
-             annual_elec_end_date   = '01/10/2019',
-             annual_solid_spend     = 123.456,
-             renewable_contrib_kwh  = 123.456,
-             completed_actions      = 'completed_actions',
-             planned_actions        = 'planned_actions',
-             cheese_box             = '5',
-             satisfaction_1to5      = '5',
-             cheese_box_1to5        = '5',
-             survey_video_1to5      = '5',
-             surveyor_conduct_1to5  = '5',
-             survey_value_1to5      = '5',
-             recommend_1to5         = '5',
-             feedback               = 'feedback',
-           ), follow_redirects=True)
+    # Test the form submits with valid input data.
+    data = dict(submitted_by              = 'submitted_by',
+                annual_gas_kwh            = 123.456,
+                annual_gas_estimated      = 'True',
+                annual_gas_start_date     = '30/09/2018',
+                annual_gas_end_date       = '01/10/2019',
+                annual_elec_kwh           = 123.456,
+                annual_elec_estimated     = 'True',
+                annual_elec_start_date    = '30/09/2018',
+                annual_elec_end_date      = '01/10/2019',
+                annual_solid_spend        = 123.456,
+                renewable_contrib_kwh     = 123.456,
+                any_completed_actions     = 'True',
+                completed_actions         = 'completed_actions',
+                any_wellbeing_improvement = 'True',
+                wellbeing_improvement     = 'wellbeing_improvement',
+                any_planned_work          = 'True',
+                planned_actions           = 'planned_actions',
+                any_behaviour_change      = 'True',
+                behaviour_temperature     = 'behaviour_temperature',
+                behaviour_space           = 'behaviour_space',
+                behaviour_changes         = 'behaviour_changes',
+                feedback                  = 'feedback', )
+    data.update(ONE_MONTH_REQ_FIELDS)
+    rv = client.post('/one-month-feedback', data=data, follow_redirects=True)
     assert b'Your one-month feedback was submitted successfully' in rv.data
 
-# Tests the form submits with valid input data.
+def test_month_feedback_form_req(client, app):
+    # Only required data.
+    data = dict()
+    data.update(ONE_MONTH_REQ_FIELDS)
+    rv = client.post('/one-month-feedback', data=data, follow_redirects=True)
+    assert b'Your one-month feedback was submitted successfully' in rv.data
+
+def test_month_feedback_form_completed_actions_requiredif(client, app):
+    data = dict()
+    data.update(ONE_MONTH_REQ_FIELDS)
+    data['any_completed_actions'] = 'True'
+    rv = client.post('/one-month-feedback', data=data, follow_redirects=True)
+    assert rv.data.count(b'This field is required') == 1
+
+def test_month_feedback_form_wellbeing_requiredif(client, app):
+    data = dict()
+    data.update(ONE_MONTH_REQ_FIELDS)
+    data['any_wellbeing_improvement'] = 'True'
+    rv = client.post('/one-month-feedback', data=data, follow_redirects=True)
+    assert rv.data.count(b'This field is required') == 1
+
+def test_month_feedback_form_planned_work_requiredif(client, app):
+    data = dict()
+    data.update(ONE_MONTH_REQ_FIELDS)
+    data['any_planned_work'] = 'True'
+    rv = client.post('/one-month-feedback', data=data, follow_redirects=True)
+    assert rv.data.count(b'This field is required') == 1
+
+def test_month_feedback_form_behaviour_requiredif(client, app):
+    data = dict()
+    data.update(ONE_MONTH_REQ_FIELDS)
+    data['any_behaviour_change'] = 'True'
+    rv = client.post('/one-month-feedback', data=data, follow_redirects=True)
+    assert rv.data.count(b'This field is required') == 3
+
+ONE_YEAR_REQ_FIELDS = dict(householders_name = 'householders_name',
+                           address           = 'address', )
+
 def test_year_feedback_form(client, app):
-    rv = client.post('/one-year-feedback', data=dict(
-             householders_name      = 'householders_name',
-             address                = 'address',
-             annual_gas_kwh         = 123.456,
-             annual_gas_estimated   = True,
-             annual_gas_start_date  = '30/09/2018',
-             annual_gas_end_date    = '01/10/2019',
-             annual_elec_kwh        = 123.456,
-             annual_elec_estimated  = True,
-             annual_elec_start_date = '30/09/2018',
-             annual_elec_end_date   = '01/10/2019',
-             annual_solid_spend     = 123.456,
-             renewable_contrib_kwh  = 123.456,
-             diy_work               = 'diy_work',
-             prof_work              = 'prof_work',
-             contractors_used       = 'contractors_used',
-             total_spent            = 123.456,
-             total_spent_diy        = 123.456,
-             total_spent_local      = 123.456,
-             planned_work           = 'planned_work',
-             wellbeing_improvement  = 'wellbeing_improvement',
-             behaviour_temperature  = 'behaviour_temperature',
-             behaviour_space        = 'behaviour_space',
-             behaviour_changes      = 'behaviour_changes',
-             feedback               = 'feedback',
-           ), follow_redirects=True)
+   # Test the form submits with all valid input data.
+    data = dict(annual_gas_kwh            = 123.456,
+                annual_gas_estimated      = 'True',
+                annual_gas_start_date     = '30/09/2018',
+                annual_gas_end_date       = '01/10/2019',
+                annual_elec_kwh           = 123.456,
+                annual_elec_estimated     = 'True',
+                annual_elec_start_date    = '30/09/2018',
+                annual_elec_end_date      = '01/10/2019',
+                annual_solid_spend        = 123.456,
+                renewable_contrib_kwh     = 123.456,
+                any_completed_actions     = 'True',
+                diy_work                  = 'diy_work',
+                prof_work                 = 'prof_work',
+                contractors_used          = 'contractors_used',
+                total_spent               = 123.456,
+                total_spent_diy           = 123.456,
+                total_spent_local         = 123.456,
+                any_planned_work          = 'True',
+                planned_work              = 'planned_work',
+                any_wellbeing_improvement = 'True',
+                wellbeing_improvement     = 'wellbeing_improvement',
+                any_behaviour_change      = 'True',
+                behaviour_temperature     = 'behaviour_temperature',
+                behaviour_space           = 'behaviour_space',
+                behaviour_changes         = 'behaviour_changes',
+                feedback                  = 'feedback', )
+    data.update(ONE_YEAR_REQ_FIELDS)
+    rv = client.post('/one-year-feedback', data=data, follow_redirects=True)
     assert b'Your one-year feedback was submitted successfully' in rv.data
+
+def test_year_feedback_form_req(client, app):
+    # Only required fields.
+    data = dict()
+    data.update(ONE_YEAR_REQ_FIELDS)
+    rv = client.post('/one-year-feedback', data=data, follow_redirects=True)
+    assert b'Your one-year feedback was submitted successfully' in rv.data
+
+def test_year_feedback_form_completed_actions_requiredif(client, app):
+    data = dict()
+    data.update(ONE_YEAR_REQ_FIELDS)
+    data['any_completed_actions'] = 'True'
+    rv = client.post('/one-year-feedback', data=data, follow_redirects=True)
+    assert rv.data.count(b'This field is required') == 2
+
+def test_year_feedback_form_wellbeing_requiredif(client, app):
+    data = dict()
+    data.update(ONE_YEAR_REQ_FIELDS)
+    data['any_wellbeing_improvement'] = 'True'
+    rv = client.post('/one-year-feedback', data=data, follow_redirects=True)
+    assert rv.data.count(b'This field is required') == 1
+
+def test_year_feedback_form_planned_work_requiredif(client, app):
+    data = dict()
+    data.update(ONE_YEAR_REQ_FIELDS)
+    data['any_planned_work'] = 'True'
+    rv = client.post('/one-year-feedback', data=data, follow_redirects=True)
+    assert rv.data.count(b'This field is required') == 1
+
+def test_year_feedback_form_behaviour_requiredif(client, app):
+    data = dict()
+    data.update(ONE_YEAR_REQ_FIELDS)
+    data['any_behaviour_change'] = 'True'
+    rv = client.post('/one-year-feedback', data=data, follow_redirects=True)
+    assert rv.data.count(b'This field is required') == 3
 
 # Tests the form submits with valid input data.
 def test_membership_form(client, app):
