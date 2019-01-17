@@ -392,7 +392,7 @@ class OneMonthFeedbackForm(FlaskForm):
                                                 validators=[Optional()])
     completed_actions = fields.TextAreaField('If so, then what have you done? And have you done the work yourself or has it been done professionally?',
                                              validators=[RequiredIf('any_completed_actions')])
-    any_planned_work = fields.BooleanField('(yes / no) Are you are planning to do to in the next few years improve the thermal efficiency of your home?',
+    any_planned_work = fields.BooleanField('(yes / no) Are you planning to do remedial work in the next few years?',
                                            validators=[Optional()])
     planned_actions = fields.TextAreaField('If so, then what are you planning?',
                                            description='This can be anything from draught proofing to installing external wall insulation.',
