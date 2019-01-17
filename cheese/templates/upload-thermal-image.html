@@ -25,6 +25,7 @@ any images that identify a specific person or place.</strong></p>
     <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
     {{ macros.render_form_field(form.image_file) }}
     {{ macros.render_form_field(form.description) }}
+    {{ macros.render_form_field(form.building_type) }}
     {{ macros.render_form_field(form.year_of_construction) }}
     {{ macros.render_form_field(form.keywords) }}
     <label></label>
