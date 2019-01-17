@@ -134,15 +134,29 @@ Create the migration and run the upgrade from in the container.
 ```
 $ docker exec -it <continer-name> bash
 $ cd /opt/www
-$ flask db migrate
+$ FLASK_APP=run.py flask db migrate
 ...
-$ flask db upgrade
+$ FLASK_APP=run.py flask db upgrade
 ...
 $ exit
 ```
 Then commit the new migration Python script.
 
 ### Setup SSL
+
+Install and run certbot to use Lets Encrypt the quick and easy way
+(assuming Debian Jessie). Currently this needs to be done any time
+the proxy container is rebuilt.
+```
+$ docker exec -it <proxy-containter> bash
+$ apt-get install wget
+$ wget https://dl.eff.org/certbot-auto
+$ chmod a+x certbot-auto
+$ ./certbot-auto --nginx
+```
+More details at https://certbot.eff.org/lets-encrypt
+
+#### Old method
 
 Generate a certificate signing request:
 ```
