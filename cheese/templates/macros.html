@@ -20,12 +20,14 @@
     {% elif f.name.endswith('_1to5') %}
       {{ f.label(class_="control-label") }}
       {{ render_form_description(f.description) }}
-      {% if f.errors %}
-        {{ f(class_="is-invalid") }}
-      {% else %}
-        {{ f }}
-      {% endif %}
-      {{ render_form_errors(f) }}
+      <div class="rating-1to5 form-inline">
+        {% if f.errors %}
+          {{ f(class_="form-check-input is-invalid") }}
+        {% else %}
+          {{ f(class_="form-check-input") }}
+        {% endif %}
+        {{ render_form_errors(f) }}
+      </div>
     {% elif f.type == "BooleanField" %}
       <div class="form-check">
         {% if f.errors %}
