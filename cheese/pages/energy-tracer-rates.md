@@ -44,3 +44,34 @@ being satisfactory, you will be considered to be qualified on the practical
 surveys and will be paid the rates as above.
 
 You are, from the start, eligible for the 'Finder's fee'.
+
+## Expenses
+
+You can claim for Bristol bus tickets for CHEESE business that you would not
+otherwise have had to purchase.
+
+You can claim mileage at 45 pence per mile if it is necessary to use your car
+on CHEESE business, such as during surveying to carry surveying equipment.
+
+If you have to get a train for CHEESE surveying business, that you would not
+otherwise have to get, you can claim for the cheapest return ticket available
+at the time of booking, but please get permission in advance from Maddy
+Longhurst or Mike Andrews.
+
+If it is unavoidable, for example if neither Energy Tracer on a survey has
+access to a car, then you can claim for car-club car hire costs incurred on
+CHEESE business, but the amount must be agreed in advance with Maddy Longhurst
+or Mike Andrews.
+
+## Invoicing
+
+Please complete invoices for all pay and expense claims and email copies to
+Maddy Longhurst and Mike Andrews.
+
+- Invoice proforma for payment of expenses
+  ([Word.docx]({{url_for('.assets', filename='files/CHEESE-invoice-proforma-For-payment-of-expenses.docx')}}),
+   [PDF]({{url_for('.assets', filename='files/CHEESE-invoice-proforma-For-payment-of-expenses.pdf')}}))
+
+- Invoice proforma for payment of survey fees
+  ([Word.docx]({{url_for('.assets', filename='files/CHEESE-invoice-proforma-For-payment-of-survey-fees.docx')}}),
+   [PDF]({{url_for('.assets', filename='files/CHEESE-invoice-proforma-For-payment-of-survey-fees.pdf')}}))
