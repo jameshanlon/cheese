@@ -12,4 +12,8 @@
 </div>
 <p>{{page.meta.date.strftime('%B %Y')}}</p>
 {{page}}
+{% import 'macros.html' as macros %}
+{% if 'gallery' in page.meta %}
+  {{ macros.gallery(page.meta['gallery']) }}
+{% endif %}
 {% endblock %}

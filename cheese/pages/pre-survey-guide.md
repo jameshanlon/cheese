@@ -5,6 +5,8 @@ This page describes what you need to do to prepare for a Cold Homes Energy
 Efficiency Survey Experts (CHEESE) survey, what will happen on the day, and how
 we will follow up with your progress afterwards.
 
+{% import 'macros.html' as macros %}
+
 ## Contents
 
 1. [Payment](#payment)
@@ -100,27 +102,18 @@ mark the figure as an estimate.
 
 <div class="float-right text-center">
   <div class="figure">
-  <a data-lightbox="survey-pictures" href="{{url_for('.assets', filename='images/blower-door.jpg')}}"
-     data-title="A CHEESE blower door installed during a survey.">
-    <img class="figure-img img-fluid" src="{{'images/blower-door.jpg'|thumbnail('250x250')}}">
-  </a>
-  <figcaption class="figure-caption" style="width:250px; margin-bottom:10px">
-    A CHEESE blower door installed during a survey.
-  </figcaption>
-  <a data-lightbox="survey-pictures" href="{{url_for('.assets', filename='images/CHEESE-kit.jpg')}}"
-     data-title="A CHEESE thermal imaging kit.">
-    <img class="figure-img img-fluid" src="{{'images/CHEESE-kit.jpg'|thumbnail('250x250')}}">
-  </a>
-  <figcaption class="figure-caption" style="width:250px; margin-bottom:10px">
-    A CHEESE thermal imaging kit.
-  </figcaption>
-  <a data-lightbox="survey-pictures" href="{{url_for('.assets', filename='images/post-survey-debrief.jpg')}}"
-     data-title="Debriefing with the householder after a survey.">
-    <img class="figure-img img-fluid" src="{{'images/post-survey-debrief.jpg'|thumbnail('250x250')}}">
-  </a>
-  <figcaption class="figure-caption" style="width:250px; margin-bottom:10px">
-    Debriefing with the householder after a survey
-  </figcaption>
+    {{ macros.fig_thumbnail('images/blower-door.jpg', '250x250', 'survey-pictures') }}
+    <figcaption class="figure-caption" style="width:250px; margin-bottom:10px">
+      A CHEESE blower door installed during a survey.
+    </figcaption>
+    {{ macros.fig_thumbnail('images/CHEESE-kit.jpg', '250x250', 'survey-pictures') }}
+    <figcaption class="figure-caption" style="width:250px; margin-bottom:10px">
+      A CHEESE thermal imaging kit.
+    </figcaption>
+    {{ macros.fig_thumbnail('images/post-survey-debrief.jpg', '250x250', 'survey-pictures') }}
+    <figcaption class="figure-caption" style="width:250px; margin-bottom:10px">
+      Debriefing with the householder after a survey
+    </figcaption>
   </div>
 </div>
 

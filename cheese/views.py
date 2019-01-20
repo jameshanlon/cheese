@@ -1022,6 +1022,8 @@ def article(path):
     page = pages.get_or_404(path)
     if not 'article' in page.meta:
         return render_template('404.html'), 404
+    page.html = render_template_string(page.html)
+    page.date_str = page.meta['date'].strftime('%B %Y')
     return render_template('article.html', page=page,
                            path=current_app.config['URL_BASE']+request.path)
 

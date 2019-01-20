@@ -1,6 +1,7 @@
 article:
 date: 2018-10-24
 title: Community Energy Awards
+gallery: 2018-10-community-energy-awards
 
 We are delighted to have won the national 'Community Energy and Carbon Saving
 Award', for "The most inspiring energy conservation and/or management project".
@@ -21,6 +22,3 @@ way to kick off this winter's survey season!
 **UPDATE (11 November 2018)**: Community Energy England have published a case study
 on CHEESE, as the receipient of the Community Energy & Carbon Saving Award,
 which you can [read here](https://communityenergyengland.org/pages/c-h-e-e-s-e-2018-community-energy-carbon-saving-award-winner-case-study/).
-
-{% import 'macros.html' as macros %}
-{{ macros.gallery('2018-10-community-energy-awards') }}

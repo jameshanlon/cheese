@@ -1,6 +1,7 @@
 article:
 date: 2017-10-21
 title: Second Energy Tracer Training weekend
+gallery: 2017-10-training
 
 Our second Energy Tracer training weekend was held on 21st/22nd October, again
 at the [Ambition Lawrence Weston](http://www.ambitionlw.org/) youth centre. The
@@ -9,6 +10,3 @@ building construction on Saturday, and were introduced to the CHEESE thermal
 imaging equipment and hands-on experience with some practice surveying on
 Sunday. We also held a refresher session for existing Energy Tracers on Sunday
 to prepare them for the upcoming survey season.
-
-{% import 'macros.html' as macros %}
-{{ macros.gallery('2017-10-training') }}

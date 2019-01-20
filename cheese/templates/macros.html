@@ -89,7 +89,13 @@
 
 {% macro thumbnail(image, size, group) -%}
   <a data-lightbox="{{group}}" href="{{url_for('.assets', filename=image)}}">
-    <img src="{{image|thumbnail(size)}}" class="img-thumbnail">
+    <img class="img-fluid rounded" src="{{image|thumbnail(size)}}">
+  </a>
+{%- endmacro %}
+
+{% macro fig_thumbnail(image, size, group) -%}
+  <a data-lightbox="{{group}}" href="{{url_for('.assets', filename=image)}}">
+    <img class="figure-img img-fluid rounded" src="{{image|thumbnail(size)}}">
   </a>
 {%- endmacro %}
 
@@ -98,11 +104,14 @@
     <a href="/news/{{article.path}}"><h3>{{article.title}}</h3></a>
     <p class="article-date">{{article.date_str}}</p>
     {% set body = article.html|safe|striptags %}
-    {% if body|length > 500 %}
-      <p>{{body|truncate(500)|safe}}
+    {% if body|length > 600 %}
+      <p>{{body|truncate(600)|safe}}
         <a href="/news/{{article.path}}">read more &#187;</a></p>
     {% else %}
       <p>{{article.html|safe}}</p>
+    {% endif %}
+    {% if 'gallery' in article.meta %}
+      {{ gallery(article.meta['gallery']) }}
     {% endif %}
   </div>
 {%- endmacro %}
