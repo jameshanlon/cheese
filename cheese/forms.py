@@ -206,7 +206,7 @@ class SubmitResultsForm(FlaskForm):
                                                     NumberRange(min=1, max=100)])
     annual_gas_kwh = fields.DecimalField('Annual consumption (kWh',
                                          validators=[Optional()])
-    annual_gas_estimated = fields.BooleanField('(yes / no) Is the value based on estimated use?',
+    annual_gas_estimated = fields.BooleanField('(tick for yes) Is the value based on estimated use?',
                                                validators=[Optional()])
     annual_gas_start_date = fields.DateField('Start date (dd/mm/yyyy)',
                                              format='%d/%m/%Y',
@@ -220,7 +220,7 @@ class SubmitResultsForm(FlaskForm):
                                            widget=DatePickerWidget())
     annual_elec_kwh = fields.DecimalField('Annual consumption (kWh',
                                            validators=[Optional()])
-    annual_elec_estimated = fields.BooleanField('(yes / no) Is the value based on estimated use?',
+    annual_elec_estimated = fields.BooleanField('(tick for yes) Is the value based on estimated use?',
                                                 validators=[Optional()])
     annual_elec_start_date = fields.DateField('Start date (dd/mm/yyyy)',
                                               format='%d/%m/%Y',
@@ -358,7 +358,7 @@ class OneMonthFeedbackForm(FlaskForm):
                                              Length(max=100)])
     annual_gas_kwh = fields.DecimalField('Annual consumption (kWh)',
                                          validators=[Optional()])
-    annual_gas_estimated = fields.BooleanField('(yes / no) Is the value based on estimated use?',
+    annual_gas_estimated = fields.BooleanField('(tick for yes) Is the value based on estimated use?',
                                                validators=[Optional()])
     annual_gas_start_date = fields.DateField('Start date (dd/mm/yyyy)',
                                              format='%d/%m/%Y',
@@ -372,7 +372,7 @@ class OneMonthFeedbackForm(FlaskForm):
                                            widget=DatePickerWidget())
     annual_elec_kwh = fields.DecimalField('Annual consumption (kWh)',
                                           validators=[Optional()])
-    annual_elec_estimated = fields.BooleanField('(yes / no) Is the value based on estimated use?',
+    annual_elec_estimated = fields.BooleanField('(tick for yes) Is the value based on estimated use?',
                                                 validators=[Optional()])
     annual_elec_start_date = fields.DateField('Start date (dd/mm/yyyy)',
                                               format='%d/%m/%Y',
@@ -388,20 +388,20 @@ class OneMonthFeedbackForm(FlaskForm):
                                              validators=[Optional()])
     renewable_contrib_kwh = fields.DecimalField('Annual contribution from renewable generation (kWh)',
                                                 validators=[Optional()])
-    any_completed_actions = fields.BooleanField('(yes / no) Have you already taken action to improve the thermal efficiency of your home?',
+    any_completed_actions = fields.BooleanField('(tick for yes) Have you already taken action to improve the thermal efficiency of your home?',
                                                 validators=[Optional()])
     completed_actions = fields.TextAreaField('If so, then what have you done? And have you done the work yourself or has it been done professionally?',
                                              validators=[RequiredIf('any_completed_actions')])
-    any_planned_work = fields.BooleanField('(yes / no) Are you planning to do remedial work in the next few years?',
+    any_planned_work = fields.BooleanField('(tick for yes) Are you planning to do remedial work in the next few years?',
                                            validators=[Optional()])
     planned_actions = fields.TextAreaField('If so, then what are you planning?',
                                            description='This can be anything from draught proofing to installing external wall insulation.',
                                            validators=[RequiredIf('any_planned_work')])
-    any_wellbeing_improvement = fields.BooleanField('(yes / no) Have the actions you\'ve taken made your house feel warmer?',
+    any_wellbeing_improvement = fields.BooleanField('(tick for yes) Have the actions you\'ve taken made your house feel warmer?',
                                                     validators=[Optional()])
     wellbeing_improvement = fields.TextAreaField('If so, then how? (Even if perhaps you haven\'t saved money on your bills.)',
                                                  validators=[RequiredIf('any_wellbeing_improvement')])
-    any_behaviour_change = fields.BooleanField('(yes / no) Has your behaviour changed as a result of your survey?',
+    any_behaviour_change = fields.BooleanField('(tick for yes) Has your behaviour changed as a result of your survey?',
                                                validators=[Optional()])
     behaviour_temperature = fields.TextAreaField('How has the period and temperature you use the heating for changed? (if at all)',
                                                  validators=[RequiredIf('any_behaviour_change')])
@@ -459,7 +459,7 @@ class OneYearFeedbackForm(FlaskForm):
                                              Length(max=100)])
     annual_gas_kwh = fields.DecimalField('Annual consumption (kWh)',
                                          validators=[Optional()])
-    annual_gas_estimated = fields.BooleanField('(yes / no) Is the value based on estimated use?',
+    annual_gas_estimated = fields.BooleanField('(tick for yes) Is the value based on estimated use?',
                                                validators=[Optional()])
     annual_gas_start_date = fields.DateField('Start date (dd/mm/yyyy)',
                                              format='%d/%m/%Y',
@@ -473,7 +473,7 @@ class OneYearFeedbackForm(FlaskForm):
                                            widget=DatePickerWidget())
     annual_elec_kwh = fields.DecimalField('Annual consumption (kWh)',
                                           validators=[Optional()])
-    annual_elec_estimated = fields.BooleanField('(yes / no) Is the value based on estimated use?',
+    annual_elec_estimated = fields.BooleanField('(tick for yes) Is the value based on estimated use?',
                                                 validators=[Optional()])
     annual_elec_start_date = fields.DateField('Start date (dd/mm/yyyy)',
                                               format='%d/%m/%Y',
@@ -489,7 +489,7 @@ class OneYearFeedbackForm(FlaskForm):
                                              validators=[Optional()])
     renewable_contrib_kwh = fields.DecimalField('Annual contribution from renewable generation (kWh)',
                                                 validators=[Optional()])
-    any_completed_actions = fields.BooleanField('(yes / no) Have you taken action since your survey ' \
+    any_completed_actions = fields.BooleanField('(tick for yes) Have you taken action since your survey ' \
                                                 +'to improve the thermal efficiency of your home?*',
                                                 validators=[Optional()])
     diy_work = fields.TextAreaField('What work have you done yourself?*',
@@ -510,15 +510,15 @@ class OneYearFeedbackForm(FlaskForm):
                                               +'the council, your housing association or your landlord to make any changes ' \
                                               +'to your home following the survey?  If so, what was their response?',
                                               validators=[Optional()])
-    any_planned_work = fields.BooleanField('(yes / no) Do you have any future work planned?',
+    any_planned_work = fields.BooleanField('(tick for yes) Do you have any future work planned?',
                                            validators=[Optional()])
     planned_work = fields.TextAreaField('If so, what are you planning?*',
                                         validators=[RequiredIf('any_planned_work')])
-    any_wellbeing_improvement = fields.BooleanField('(yes / no) Have the actions you\'ve taken made your house feel warmer?',
+    any_wellbeing_improvement = fields.BooleanField('(tick for yes) Have the actions you\'ve taken made your house feel warmer?',
                                                     validators=[Optional()])
     wellbeing_improvement = fields.TextAreaField('If so, then how? (Even if perhaps you haven\'t saved money on your bills.)',
                                                  validators=[RequiredIf('any_wellbeing_improvement')])
-    any_behaviour_change = fields.BooleanField('(yes / no) Has your behaviour changed as a result of your survey?',
+    any_behaviour_change = fields.BooleanField('(tick for yes) Has your behaviour changed as a result of your survey?',
                                                validators=[Optional()])
     behaviour_temperature = fields.TextAreaField('How has the period and temperature you use the heating for changed? (if at all)',
                                                  validators=[RequiredIf('any_behaviour_change')])
