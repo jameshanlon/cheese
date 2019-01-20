@@ -67,11 +67,12 @@ make some preparations around your home before the survey:
 <a class="anchor" name="previous-energy-use"></a>
 ## Previous energy use
 
-It is important for us to record data on energy use so that we can measure the
-impact of our surveys. We want to compare your energy use before the survey
-with it afterwards. To do this, we ask you to find out your total energy use
-for the year before your survey. One year after your survey, we will contact
-you again to ask you to calculate the same figures for comparison.
+It is very important for us to record data on energy use so that we can measure
+whether energy is being saved, and how much. We want to compare your energy use
+before the survey with it afterwards. To do this, we ask you to find out your
+total energy use for the year before your survey. One year after your survey,
+we will contact you again to ask you to calculate the same figures for
+comparison.
 
 For the pre-survey use figures, please retrieve energy bills (electricity, gas
 and possibly solid fuel) for the year period before your survey, or as close as
