@@ -87,6 +87,12 @@
   </div>
 {%- endmacro %}
 
+{% macro thumbnail(image, size, group) -%}
+  <a data-lightbox="{{group}}" href="{{url_for('.assets', filename=image)}}">
+    <img src="{{image|thumbnail(size)}}" class="img-thumbnail">
+  </a>
+{%- endmacro %}
+
 {% macro article_short(article) %}
   <div class="article-short">
     <a href="/news/{{article.path}}"><h3>{{article.title}}</h3></a>
