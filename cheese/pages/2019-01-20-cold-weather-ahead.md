@@ -1,6 +1,8 @@
 article:
 date: 2019-01-20
 title: The weather forecast is cold cold and more cold
+image: images/2019-01-cold-weather-ahead/cold-window.png
+author: Maddy Longhurst
 
 {% import 'macros.html' as macros %}
 

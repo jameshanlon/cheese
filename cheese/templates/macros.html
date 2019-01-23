@@ -100,15 +100,20 @@
 {%- endmacro %}
 
 {% macro article_short(article) %}
-  <div class="article-short">
+  <div class="article-short clearfix">
     <a href="/news/{{article.path}}"><h3>{{article.title}}</h3></a>
+    {% if 'image' in article.meta %}
+      <div class="float-right">
+	{{ thumbnail(article.meta['image'], '180x180', article.title) }}
+      </div>
+    {% endif %}
     <p class="article-date">{{article.date_str}}</p>
     {% set body = article.html|safe|striptags %}
     {% if body|length > 600 %}
-      <p>{{body|truncate(600)|safe}}
+      <p>{{body|truncate(600)|safe|striptags}}
         <a href="/news/{{article.path}}">read more &#187;</a></p>
     {% else %}
-      <p>{{article.html|safe}}</p>
+      <p>{{article.html|safe|striptags}}</p>
     {% endif %}
     {% if 'gallery' in article.meta %}
       {{ gallery(article.meta['gallery']) }}

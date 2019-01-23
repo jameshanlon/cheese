@@ -10,7 +10,12 @@
      data-href="{{path}}"
      data-layout="button"></div>
 </div>
-<p>{{page.meta.date.strftime('%B %Y')}}</p>
+<p>
+  {% if 'author' in page.meta %}
+    {{page.meta.author}},
+  {% endif %}
+  {{page.meta.date.strftime('%B %Y')}}
+</p>
 {{page}}
 {% import 'macros.html' as macros %}
 {% if 'gallery' in page.meta %}
