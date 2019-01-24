@@ -107,7 +107,12 @@
 	{{ thumbnail(article.meta['image'], '180x180', article.title) }}
       </div>
     {% endif %}
-    <p class="article-date">{{article.date_str}}</p>
+    <p class="article-date">
+      {% if 'author' in article.meta %}
+        {{ article.meta.author }},
+      {% endif %}
+      {{article.date_str}}
+    </p>
     {% set body = article.html|safe|striptags %}
     {% if body|length > 600 %}
       <p>{{body|truncate(600)|safe|striptags}}
