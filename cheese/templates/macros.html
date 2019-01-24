@@ -129,7 +129,12 @@
 {% macro article_short_no_tags(article) %}
   <div class="article-short">
     <a href="/news/{{article.path}}"><h3>{{article.title}}</h3></a>
-    <p class="article-date">{{article.date_str}}</p>
+    <p class="article-date">
+      {% if 'author' in article.meta %}
+	{{ article.meta.author }},
+      {% endif %}
+      {{article.date_str}}
+    </p>
     {% set body = article.html|safe|striptags %}
     {% if body|length > 500 %}
       <p>{{body|truncate(500)|striptags|safe}}
