@@ -1,6 +1,6 @@
 article:
 date: 2019-01-23
-title: Bristol Green Capital's 'Our Future' report is newly out, and C.H.E.E.S.E. is ready to act
+title: Bristol Green Capital's 'Our Future' report is newly out and C.H.E.E.S.E. is ready to act
 image: images/2019-01-our-future-report/our-future.png
 author: Maddy Longhurst
 
@@ -18,7 +18,8 @@ Future' lays out the following targets for the city to achieve:
 
  - Make all existing buildings energy efficient by 2030.
 
-The CHEESE Project has a big part to play in helping to achieve these targets.
+The C.H.E.E.S.E. Project has a big part to play in helping to achieve these
+targets.
 
 **[Please contact us](mailto:info@cheeseproject.co.uk) if you're a social or
 private landlord and would like to talk to us about partnering to survey a
@@ -78,7 +79,7 @@ efficiency should be concentrated on those households at risk of fuel poverty.
 At the same time there needs to be a scaling-up of support services to
 vulnerable people and greater integration with health and social care.
 
-**Key indicator**: % of households in fuel poverty
+**Key indicator**: % of households in fuel poverty.
 
 **[Please contact us](mailto:info@cheeseproject.co.uk) if you're a social or
 private landlord and would like to talk to us about partnering to survey a
