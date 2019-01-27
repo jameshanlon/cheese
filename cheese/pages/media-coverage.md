@@ -3,9 +3,20 @@
 
 # Media coverage
 
-<div class="float-right">{{ macros.gallery('2018-04-community-health-news') }}</div>
+<div class="float-right">
+{{ macros.thumbnail('images/2018-12-bristol247-article/CHEESE-Bristol247.jpg', '220x220', 'media-coverage') }}
+</div>
 
-- **Bristol Community Health News**. The 2018 winter edition of Bristol
+- **Bristol 24/7**, December 2018. The New Year print edition of the [Bristol 24/7
+  magazine](https://www.bristol247.co.uk) features an article on CHEESE
+entitled *Home remedy*. It gives an overview of the project and describes how
+one of our surveys is conducted.
+
+<div class="float-right">
+{{ macros.thumbnail('images/2018-04-community-health-news/CHEESE-Bristol-community-health-news.jpg', '220x220', 'media-coverage') }}
+</div>
+
+- **Bristol Community Health News**, April 2018. The 2018 winter edition of Bristol
   Community Health news provided some tips on keeping warm this winter. CHEESE
   is suggested as a way to identify improvements that can be made to a home.
 
@@ -20,6 +31,10 @@
   June 2017**. The article introduces Brian Harper's lifelong interest in
   thermal imaging and how his work in Malvern provided the basis for
   establishing the CHEESE project in Bristol.
+
+<div class="float-right">
+{{ macros.thumbnail('images/2017-01-bristol-cable-energy-gaps/bristols-energy-gaps.jpg', '220x220', 'media-coverage') }}
+</div>
 
 - **[Bristol Cable: Plugging Bristol's energy
   gaps](https://thebristolcable.org/2017/01/energy-gaps/), January 2017**.
