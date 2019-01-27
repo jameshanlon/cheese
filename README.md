@@ -154,6 +154,11 @@ $ wget https://dl.eff.org/certbot-auto
 $ chmod a+x certbot-auto
 $ ./certbot-auto --nginx
 ```
+To renew:
+```
+$ docker exec -it <proxy-containter> bash
+$ ./certbot renew --pre-hook "service nginx stop" --post-hook "service nginx start"
+```
 More details at https://certbot.eff.org/lets-encrypt
 
 #### Old method
