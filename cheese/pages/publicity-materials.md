@@ -22,7 +22,7 @@ A double-sided A5 leaflet:
 
 - The CHEESE logo: [PNG]({{url_for('.assets', filename='files/publicity-materials/CHEESE-logo.png')}}) format.
 
-{{ macros.thumbnail('files/publicity-materials/cheese-logo.png', '300x300', 'logo') }}
+{{ macros.thumbnail('files/publicity-materials/CHEESE-logo.png', '300x300', 'logo') }}
 
 - The CHEESE house: [PNG]({{url_for('.assets', filename='files/publicity-materials/CHEESE-house.png')}}) format.
 
