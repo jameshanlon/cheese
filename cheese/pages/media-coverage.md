@@ -4,7 +4,14 @@
 # Media coverage
 
 <div class="float-right">
-{{ macros.thumbnail('images/2018-12-bristol247-article/CHEESE-Bristol247.jpg', '220x220', 'media-coverage') }}
+{{ macros.thumbnail('images/2019-01-CHEESE-StGeorgeAndRedfieldVoice.jpg', '140x140', 'media-coverage') }}
+</div>
+
+- **St George and Redfield Voice**, January 2019. A great overview of our work
+  for the residents of St George and Redfield.
+
+<div class="float-right">
+{{ macros.thumbnail('images/2018-12-bristol247-article/CHEESE-Bristol247.jpg', '140x140', 'media-coverage') }}
 </div>
 
 - **Bristol 24/7**, December 2018. The New Year print edition of the [Bristol 24/7
@@ -13,7 +20,7 @@ entitled *Home remedy*. It gives an overview of the project and describes how
 one of our surveys is conducted.
 
 <div class="float-right">
-{{ macros.thumbnail('images/2018-04-community-health-news/CHEESE-Bristol-community-health-news.jpg', '220x220', 'media-coverage') }}
+{{ macros.thumbnail('images/2018-04-community-health-news/CHEESE-Bristol-community-health-news.jpg', '140x140', 'media-coverage') }}
 </div>
 
 - **Bristol Community Health News**, April 2018. The 2018 winter edition of Bristol
@@ -33,7 +40,7 @@ one of our surveys is conducted.
   establishing the CHEESE project in Bristol.
 
 <div class="float-right">
-{{ macros.thumbnail('images/2017-01-bristol-cable-energy-gaps/bristols-energy-gaps.jpg', '220x220', 'media-coverage') }}
+{{ macros.thumbnail('images/2017-01-bristol-cable-energy-gaps/bristols-energy-gaps.jpg', '140x140', 'media-coverage') }}
 </div>
 
 - **[Bristol Cable: Plugging Bristol's energy
