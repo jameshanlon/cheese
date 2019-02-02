@@ -104,7 +104,7 @@
     <a href="/news/{{article.path}}"><h3>{{article.title}}</h3></a>
     {% if 'image' in article.meta %}
       <div class="float-right">
-	{{ thumbnail(article.meta['image'], '180x180', article.title) }}
+        {{ thumbnail(article.meta['image'], '180x180', article.title) }}
       </div>
     {% endif %}
     <p class="article-date">
@@ -129,9 +129,14 @@
 {% macro article_short_no_tags(article) %}
   <div class="article-short">
     <a href="/news/{{article.path}}"><h3>{{article.title}}</h3></a>
+    {% if 'image' in article.meta %}
+      <div class="float-right">
+        {{ thumbnail(article.meta['image'], '160x160', article.title) }}
+      </div>
+    {% endif %}
     <p class="article-date">
       {% if 'author' in article.meta %}
-	{{ article.meta.author }},
+        {{ article.meta.author }},
       {% endif %}
       {{article.date_str}}
     </p>
