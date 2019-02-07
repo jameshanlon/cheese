@@ -4,12 +4,24 @@
 # Media coverage
 
 <div class="float-right">
+{{ macros.thumbnail('images/2019-01-CHEESE-Vocalise-magazine.png', '140x140', 'media-coverage') }}
+</div>
+
+- **Vocalise magazine**, January 2019.
+  [Vocalise](http://www.vocalisemagazine.org.uk/) is the community magazine for
+  St Pauls, Montpellier and St Werburghs in Bristol. The winter edition
+features a double-page spread of common faults and remedies identified by
+CHEESE surveys.
+
+<div class="clearfix"></div>
+<div class="float-right">
 {{ macros.thumbnail('images/2019-01-CHEESE-StGeorgeAndRedfieldVoice.jpg', '140x140', 'media-coverage') }}
 </div>
 
 - **St George and Redfield Voice**, January 2019. A great overview of our work
   for the residents of St George and Redfield.
 
+<div class="clearfix"></div>
 <div class="float-right">
 {{ macros.thumbnail('images/2018-12-bristol247-article/CHEESE-Bristol247.jpg', '140x140', 'media-coverage') }}
 </div>
@@ -19,6 +31,7 @@
 entitled *Home remedy*. It gives an overview of the project and describes how
 one of our surveys is conducted.
 
+<div class="clearfix"></div>
 <div class="float-right">
 {{ macros.thumbnail('images/2018-04-community-health-news/CHEESE-Bristol-community-health-news.jpg', '140x140', 'media-coverage') }}
 </div>
