@@ -11,7 +11,8 @@ author: Maddy Longhurst
 </div>
 
 We are thrilled to have been nominated for the Climate Coalition's [Green Heart
-Hero Award](https://www.theclimatecoalition.org/greenhearthero).
+Hero Award](https://www.theclimatecoalition.org/greenhearthero), for the most
+inspirational community project.
 
 > Green hearts reflect the belief in the possibility of a cleaner, safer
 > future; the ambition and efforts of projects big and small that are
@@ -22,6 +23,9 @@ Hero Award](https://www.theclimatecoalition.org/greenhearthero).
 > for our communities and beyond.
 
 The award is to be presented by Clive Anderson, TV and Radio presenter, and Kay
-Burley, Sky TV news presenter, at the House of Commons on 11th March.
+Burley, Sky TV news presenter, at the House of Commons in London on 11th March.
+
+You can see details of the winners from 2018
+[here](https://www.theclimatecoalition.org/green-heart-hero-2018).
 
 Fingers crossed! And a huge thanks to whoever nominated us.
