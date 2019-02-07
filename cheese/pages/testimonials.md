@@ -6,6 +6,11 @@ a internal home survey.
 
 ## From the 2018/19 surveying season (phase 4)
 
+- *"Richard and Kirk did the survey today. I learnt a lot. Very well worth
+  doing even in a 18 year old house!! They showed me all the cold spots and
+leaks and some are really important to fix. Draughts behind plasterboard and
+inslulation cold spots. Recommended!"*
+
 - *"I would highly recommend having a survey done by The CHEESE Project. It is
   so interesting and incredibly useful if you want to locate all those hidden
 draughts, warm up your home and reduce your heating costs. The surveyor was
