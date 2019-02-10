@@ -26,6 +26,10 @@ development, and more content will be added in due course!)
   detailed guides for many different DIY projects around the home. There is
   also a collection of video guides.
 
+- [A Bristolian's guide to solid wall insulation (PDF)]({{url_for('.assets', filename='files/2015_bristolsolidwallinsulationguidance.pdf')}})
+  is a comprehensive and user-friendly guide for sold wall insulation,
+  commissioned by Bristol City Council and led by the [Sustainable and Traditional Buildings Alliance (STBA)](http://stbauk.org/).
+
 ## Technical information
 
 - Moisture and damp:
