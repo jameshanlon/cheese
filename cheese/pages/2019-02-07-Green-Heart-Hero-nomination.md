@@ -1,13 +1,14 @@
 article:
 date: 2019-02-07
 title: Climate Coalition Green Heart Hero Award nomination
-image: images/2019-02-07-Green-Heart-Hero-nomination.jpg
+image: images/2019-02-Green-Heart-Hero-nomination/maddy.jpg
 author: Maddy Longhurst 
 
 {% import 'macros.html' as macros %}
   
 <div class="float-right">
-{{ macros.thumbnail('images/2019-02-07-Green-Heart-Hero-nomination.jpg', '220x220', 'green-heart-hero') }}
+{{ macros.thumbnail('images/2019-02-Green-Heart-Hero-nomination/maddy.jpg', '220x220', 'green-heart-hero') }}
+{{ macros.thumbnail('images/2019-02-Green-Heart-Hero-nomination/jamie.jpg', '220x220', 'green-heart-hero') }}
 </div>
 
 We are thrilled to have been nominated for the Climate Coalition's [Green Heart
