@@ -121,7 +121,9 @@ We are delighted to announce that we won an important national award from Commun
 <h2>Latest news</h2>
 <div class="article-list">
 {% for article in articles %}
-  {{ macros.article_short_no_tags(article) }}
+  {% if not ('status' in article.meta and article.meta['status'] == 'draft') %}
+    {{ macros.article_short_no_tags(article) }}
+  {% endif %}
 {% endfor %}
 </div>
 

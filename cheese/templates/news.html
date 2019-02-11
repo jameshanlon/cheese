@@ -4,7 +4,9 @@
 <h1>News</h1>
 <div class="article-list">
 {% for article in articles %}
-  {{ macros.article_short(article) }}
+  {% if not ('status' in article.meta and article.meta['status'] == 'draft') %}
+    {{ macros.article_short(article) }}
+  {% endif %}
 {% endfor %}
 </div>
 {% endblock %}

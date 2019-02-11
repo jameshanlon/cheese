@@ -16,6 +16,12 @@
   {% endif %}
   {{page.meta.date.strftime('%B %Y')}}
 </p>
+
+{% if 'status' in page.meta and page.meta['status'] == 'draft' %}
+<div class="alert alert-warning" role="alert">
+PLEASE NOTE: THIS ARTICLE IS A DRAFT
+</div>
+{% endif %}
 {{page}}
 {% import 'macros.html' as macros %}
 {% if 'gallery' in page.meta %}
