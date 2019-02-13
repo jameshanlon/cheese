@@ -6,6 +6,16 @@ a internal home survey.
 
 ## From the 2018/19 surveying season (phase 4)
 
+- *"Thank you for the heat loss survey - it was both interesting and eye
+  opening, and the information and experience shared by Richard and Steve was
+very helpful. Being in a rental there's a limit to what I can do, so having
+some help prioritising was invaluable. I've blocked some of the gaps in the
+ceiling and floorboards already. Thanks to Maddy for arranging so quickly and
+seamlessly too. The monitors are very useful and I'm mid way through the book
+cover to cover having dipped in and out of it after Richard and Steve had left
+on Friday. I will complete the survey in the month and will stay in touch to
+let you know of the savings and warmth that I achieve in the next  year."*
+
 - *"Richard and Kirk did the survey today. I learnt a lot. Very well worth
   doing even in a 18 year old house!! They showed me all the cold spots and
 leaks and some are really important to fix. Draughts behind plasterboard and
