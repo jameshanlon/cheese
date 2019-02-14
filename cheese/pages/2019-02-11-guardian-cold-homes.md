@@ -21,24 +21,37 @@ We have encountered dot-and-dab in our surveys in Bristol and seen it as a
 cause of thermal faults by channelling cold airflow within a building. Cold air
 can infiltrate through insulation from the roof or at joist level and cascades
 down the back of the plasterboard to exit either at the skirting (by which time
-it will have warmed up) or to the outside. As well as being an issue in new
-builds, we have seen it as a problem in older buildings where it is used as
-part of energy-efficiency retrofit. In the worst cases, the effect can be
-likened to living in a plasterboard tent inside your home. The example images
-below show cold air from a floor cavity circulating behind plasterboard in a
-wall, between the adhesive dots and dabs.
+it will have warmed up) or to the outside. Bungalows particularly suffer
+since all their walls connect with the roof space.
+
+As well as being an issue in new builds, we have seen it as a problem in older
+buildings where it is used as part of energy-efficiency retrofit. In the worst
+cases, the effect can be likened to living in a plasterboard tent inside your
+home. The scale of the problem is concerning: approximately 3 million houses
+have been built since the 1980s when dot and dab became an industry-standard
+practice.
+
+The example images below show cold air from a floor cavity circulating
+behind plasterboard in a wall, between the adhesive dots and dabs.
 
 <div class="text-center">
 {{ macros.thumbnail('images/2019-02-11-guardian-cold-homes/dot-and-dab-1.jpg', '400x400', 'dot-and-dab') }}
 {{ macros.thumbnail('images/2019-02-11-guardian-cold-homes/dot-and-dab-2.jpg', '400x400', 'dot-and-dab') }}
 </div>
 
-The problems associated with dot and dab dry lining are avoided easily by
+The problems associated with dot-and-dab dry lining are avoided easily by
 ensuring adhesive is applied all around the edge of each sheet of plasterboard
 to provide an airtight seal to the wall. This takes much longer, so it is
 frequently omitted by house builders. Unfortunately, remedying existing
 dot and dab is not straightforward and in most cases will require the dry
-lining to be replaced.
+lining to be replaced. You can find out if your home has dot-and-dab
+plasterboard by:
+
+1. Tapping the plaster to see if there is a hollow sound with patches of solid
+   sound (although you can't confirm this way whether it's channelling cold air).
+2. Feeling a rapid cool down of the house when the wind blows.
+3. Confirming your suspicions with a CHEESE survey, or similar internal
+   thermal-imaging survey.
 
 The second issue of poor inspection standards highlighted is a principal
 motivation for why we carry out our thermal-imaging surveys. [Air tightness
@@ -52,15 +65,19 @@ sample of houses which can be specially prepared. Unfortunately, with lax
 regulations house builders are able to cut corners, leaving new homeowners [in
 the lurch][4].
 
-Thermal imaging is a powerful tool to characterise the thermal
-characteristics of a building and to spot specific thermal faults. Although it
-is unlikely that building regulations will change any time soon, surveys like
-ours can be used to empower householders to stand up to house builders and
-tradesmen when they cut corners.
+Thermal imaging is a powerful tool to characterise the thermal characteristics
+of a building and to spot specific thermal faults. Although it is unlikely that
+building regulations will change any time soon, surveys like ours can be used
+to empower householders to stand up to house builders and tradesmen when they
+cut corners.
 
 Read the full article [here][1].
+
+For more information on the defects in dot and dab, see [this Designing
+Buildings wiki article][5].
 
 [1]: https://www.theguardian.com/money/2019/feb/02/new-build-homes-why-some-owners-are-left-feeling-the-cold
 [2]: https://www.diydoctor.org.uk/projects/dot-and-dab-plasterboard.htm
 [3]: http://www.nhbc.co.uk/ProductsandServices/ConsultancyandTesting/Airleakageservices/documents/filedownload,38528,en.pdf
 [4]: https://www.theconstructionindex.co.uk/news/view/26-dissatisfied-with-their-new-build-homes
+[5]: https://www.designingbuildings.co.uk/wiki/Defects_in_dot_and_dab
