@@ -48,7 +48,11 @@ is part of an effort to document the experience of the CHEESE Project.</p>
     </td>
     <td>
       {% if image.user %}
-        {{ image.user.first_name }} {{ image.user.last_name }}
+        {% if image.user.first_name!='' and image.user.last_name!='' %}
+          {{ image.user.first_name }} {{ image.user.last_name }}
+        {% else %}
+          {{ image.user.email }}
+        {% endif %}
       {% else %}
         {{ image.submitted_by }}
       {% endif %}
