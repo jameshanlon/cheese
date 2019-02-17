@@ -1029,7 +1029,6 @@ def article(path):
 
 def flatpage_template():
     # Flat page with template code.
-    print request.url_rule.rule
     page = pages.get(request.url_rule.rule[1:])
     page.html = render_template_string(page.html)
     template = page.meta.get('template', 'page.html')
