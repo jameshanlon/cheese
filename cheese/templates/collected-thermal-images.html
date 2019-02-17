@@ -44,10 +44,10 @@ is part of an effort to document the experience of the CHEESE Project.</p>
 {% for image in images %}
   <tr>
     <td>
-      {{ macros.thumbnail('uploads/'+image.filename, '100x100', 'thermal-image') }}
+      {{ macros.thumbnail('uploads/'+image.filename, '200x200', 'thermal-image') }}
     </td>
     <td>
-      {% if image.submitted_by == None %}
+      {% if image.user %}
         {{ image.user.first_name }} {{ image.user.last_name }}
       {% else %}
         {{ image.submitted_by }}
