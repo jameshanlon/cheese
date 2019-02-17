@@ -6,13 +6,12 @@ The CHEESE Project was setup in 2015, Bristol's Green Capital year, by a small
 group of local people concerned about climate change and who wanted to make
 Bristol a truly sustainable city. It was formally founded as an unincorporated
 association in August 2016, governed by a five-member volunteer management
-committee working to a [formal constisution (PDF)][1]. In February 2018, the
+committee working to a [formal constisution (PDF)]({{url_for('.assets',
+filename='files/CHEESE-Constitution-2016-08-17.pdf')}}). In February 2018, the
 CHEESE Project was granted Community Interest Company (CIC) status. For more
 information on the structure and organisation of the CHEESE Project, please
-read our [articles of association (PDF)][2].
-
-[1]: {{url_for('.assets', filename='files/CHEESE-Constitution-2016-08-17.pdf')}}
-[2]: {{url_for('.assets', filename='files/CHEESE-CIC-articles-of-association-2018-03-09.pdf')}}
+read our [articles of association (PDF)]({{url_for('.assets',
+filename='files/CHEESE-CIC-articles-of-association-2018-03-09.pdf')}}).
 
 The project is organised by a *central office* and operates through
 *community segments* and *city partners* who carry out the internal and
