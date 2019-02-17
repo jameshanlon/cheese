@@ -1,6 +1,8 @@
 {% extends "base.html" %}
 {% block content %}
 
+{% import 'macros.html' as macros %}
+
 <h1>Collected thermal images</h1>
 
 <p>This page displays thermal images that highlight problems or solutions. It
@@ -42,9 +44,7 @@ is part of an effort to document the experience of the CHEESE Project.</p>
 {% for image in images %}
   <tr>
     <td>
-      <a href="{{url_for('.assets', filename='uploads/'+image.filename)}}">
-	<img src="{{('uploads/'+image.filename)|thumbnail('100x100')}}">
-      </a>
+      {{ macros.thumbnail('uploads/'+image.filename, '100x100', 'thermal-image') }}
     </td>
     <td>
       {% if image.submitted_by == None %}
