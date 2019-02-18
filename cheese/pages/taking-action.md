@@ -14,6 +14,8 @@ development, and more content will be added in due course!)
     * [Energy advice](https://www.cse.org.uk/resources/index/category:advice-leaflets/tag:energy-advice)
     * [Insulation & heating](https://www.cse.org.uk/resources/index/category:advice-leaflets/tag:insulation-and-heating)
     * [Renewables](https://www.cse.org.uk/resources/index/category:advice-leaflets/tag:renewables)
+    * [Love your old home](https://www.cse.org.uk/advice/advice-and-support/older-homes), making older homes warmer and cheaper to heat.
+    * [Love your old home workbook (PDF)](https://www.cse.org.uk/downloads/file/love_your_old_home_workbook_standard.pdf).
 
 - [Bristol Green Doors](https://www.bristolgreendoors.org/) unfortunately went into
   hibernation due to lack of funding in 2017, but their website has:
@@ -29,6 +31,8 @@ development, and more content will be added in due course!)
 - [A Bristolian's guide to solid wall insulation (PDF)]({{url_for('.assets', filename='files/2015_bristolsolidwallinsulationguidance.pdf')}})
   is a comprehensive and user-friendly guide for sold wall insulation,
   commissioned by Bristol City Council and led by the [Sustainable and Traditional Buildings Alliance (STBA)](http://stbauk.org/).
+
+- [Super Homes](http://www.superhomes.org.uk/) network on low-energy retrofit.
 
 ## Technical information
 
@@ -55,3 +59,17 @@ development, and more content will be added in due course!)
 - [We Care and Repair](http://www.wecr.org.uk/) provide a handyman service for
   those over 60 or disabled. They also have a small fund for an emergency free
   service for those who cannot pay.
+
+## Background information
+
+- [UWE Housing Types in Bristol](https://fet.uwe.ac.uk/conweb/house_ages/period/index.htm)
+
+- Energy Saving Trust Review of potential for carbon savings from residential energy efficiency, a report for the Committee on Climate Change
+ ([PDF](https://www.theccc.org.uk/wp-content/uploads/2013/12/Review-of-potential-for-carbon-savings-from-residential-energy-efficiency-Final-report-A-160114.pdf)).
+
+- BEIS report on energy consumption in the UK
+ ([HTML](https://data.gov.uk/dataset/26afb14b-be9a-4722-916e-10655d0edc38/energy-consumption-in-the-uk),
+  [PDF](https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/729317/Energy_Consumption_in_the_UK__ECUK__2018.pdf))
+
+- The Economics of Low Carbon Cities: A Mini-Stern Review for the City of Bristol
+ ([PDF](http://bristol.ac.uk/cabot/media/documents/bristol-low-carbon-cities-report.pdf)).
