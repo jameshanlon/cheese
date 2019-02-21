@@ -29,7 +29,8 @@ CHEESE surveys.
 - **Bristol 24/7**, December 2018. The New Year print edition of the [Bristol 24/7
   magazine](https://www.bristol247.co.uk) features an article on CHEESE
 entitled *Home remedy*. It gives an overview of the project and describes how
-one of our surveys is conducted.
+one of our surveys is conducted. This article was later published in January on the
+[Bristol 24/7 webiste](https://www.bristol247.com/lifestyle/homes-and-gardens/homes-january/).
 
 <div class="clearfix"></div>
 <div class="float-right">
