@@ -255,6 +255,9 @@ class CheeseAdminIndexView(flask_admin.AdminIndexView):
         query = Surveys.query;
         if active_phase:
             query = query.filter(Surveys.phase==active_phase)
+        if not 'dead_lead' in active_filters:
+            # Don't display dead leads unless filtered on that.
+            query = query.filter(Surveys.lead_status_id != lead_status_id('Dead'))
         for name in active_filters:
             if name == 'successful_lead':
                 query = query.filter(Surveys.lead_status_id == lead_status_id('Successful'))
