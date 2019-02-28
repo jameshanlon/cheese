@@ -257,7 +257,10 @@ class CheeseAdminIndexView(flask_admin.AdminIndexView):
             query = query.filter(Surveys.phase==active_phase)
         if not 'dead_lead' in active_filters:
             # Don't display dead leads unless filtered on that.
-            query = query.filter(Surveys.lead_status_id != lead_status_id('Dead'))
+            # Note: currently NULL lead_status_id seem to resolve to Dead, so
+            # this query excludes those surveys.
+            query = query.filter((Surveys.lead_status_id != lead_status_id('Dead')) |
+                                 (Surveys.lead_status_id == None))
         for name in active_filters:
             if name == 'successful_lead':
                 query = query.filter(Surveys.lead_status_id == lead_status_id('Successful'))
@@ -851,9 +854,12 @@ def apply_for_a_survey():
     if request.method=='POST':
         if helpers.validate_form_on_submit(form):
             # Add to db.
+            # Note that the lead_status_id should not be NULL, otherwise this
+            # will prevent the record from being displayed in the summary page.
             survey = Surveys()
             form.populate_obj(survey)
             survey.signed_up_via = 'The CHEESE website'
+            survey.lead_status_id = lead_status_id('Possible')
             survey.phase = get_survey_phase(datetime.datetime.utcnow().date())
             db.session.add(survey)
             db.session.commit()
