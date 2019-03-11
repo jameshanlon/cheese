@@ -120,9 +120,6 @@
     {% else %}
       <p>{{article.html|safe|striptags}}</p>
     {% endif %}
-    {% if 'gallery' in article.meta %}
-      {{ gallery(article.meta['gallery']) }}
-    {% endif %}
   </div>
 {%- endmacro %}
 

@@ -2,6 +2,7 @@ article:
 date: 2018-05-12
 title: CHEESE lunchtime gathering to celebrate a successful survey season
 gallery: 2018-05-lunch-gathering
+image: images/2018-05-lunch-gathering/CHEESE-lunch-gathering-0.jpg
 
 This survey season was our most successful with 91 surveys delivered. It
 is a considerable body of work and indeed should make a substantial difference

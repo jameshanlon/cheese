@@ -2,6 +2,7 @@ article:
 date: 2017-10-21
 title: Second Energy Tracer Training weekend
 gallery: 2017-10-training
+image: images/2017-10-training/2017-10-training-1.jpg
 
 Our second Energy Tracer training weekend was held on 21st/22nd October, again
 at the [Ambition Lawrence Weston](http://www.ambitionlw.org/) youth centre. The

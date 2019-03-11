@@ -2,6 +2,7 @@ article:
 date: 2018-10-24
 title: Community Energy Awards
 gallery: 2018-10-community-energy-awards
+image: images/2018-10-community-energy-awards/CEA-3.jpg
 
 We are delighted to have won the national 'Community Energy and Carbon Saving
 Award', for "The most inspiring energy conservation and/or management project".

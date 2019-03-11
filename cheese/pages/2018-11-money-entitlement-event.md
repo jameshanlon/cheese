@@ -2,6 +2,7 @@ article:
 date: 2018-11-30
 title: C.H.E.E.S.E. at Money Entitlement Event
 gallery: 2018-11-money-entitlement-event
+image: images/2018-11-money-entitlement-event/money-entitlement-2.jpg
 
 This was a free event, hosted by Karin Smyth MP on November 30th at The
 Gatehouse, Hareclive Road. It aimed to offer people a better understanding of

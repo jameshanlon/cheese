@@ -2,6 +2,7 @@ article:
 date: 2016-10-09
 title: First Energy Tracer training session
 gallery: 2016-10-training
+image: images/2016-10-training/training3.jpg
 
 We ran a successful first training session for Energy Tracers surveyors on
 9th/10th October, held at the [Ambition Lawrence

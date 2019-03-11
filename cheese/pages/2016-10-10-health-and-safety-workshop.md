@@ -2,6 +2,7 @@ article:
 date: 2016-10-10
 title: Health and Safety for home visits workshop
 gallery: 2016-11-health-safety-workshop
+image: images/2016-11-health-safety-workshop/hs-workshop-1.jpg
 
 The [Centre for Sustainable Energy](https://www.cse.org.uk/) provided a
 training session this weekend for trainee CHEESE Energy Tracers on health and

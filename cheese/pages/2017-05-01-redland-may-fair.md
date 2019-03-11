@@ -2,6 +2,7 @@ article:
 date: 2017-05-01
 title: CHEESE at Redland May Fair
 gallery: 2017-05-redland-may-fair
+image: images/2017-05-redland-may-fair/redland-fair-3.jpg
 
 This year's [Redland May Fair](http://www.rcas.org.uk/redland-fair) was hugely
 successful and attracted large crowds on a beautiful sunny day. We spoke to
