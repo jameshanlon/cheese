@@ -6,6 +6,14 @@ a internal home survey.
 
 ## From the 2018/19 surveying season (phase 4)
 
+- *"The CHEESE survey has made us much more aware of the energy we're using.
+  The surveyors were fantastic; knowledgeable, thorough, and gave practical and
+achievable advice. In fact, a lot of the suggestions made to improve the
+efficiency of our home were either very cheap or free. A video is provided to
+you of the entire survey which we found useful to refer back to. We were also
+provided with various pieces of equipment for a month to help us track and
+understand our energy use."*
+
 - *"Thank you for the heat loss survey - it was both interesting and eye
   opening, and the information and experience shared by Richard and Steve was
 very helpful. Being in a rental there's a limit to what I can do, so having
