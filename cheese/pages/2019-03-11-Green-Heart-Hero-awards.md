@@ -1,7 +1,7 @@
 article:
 date: 2019-03-11
 title: Climate Coalition Green Heart Hero Awards
-image: images/2019-03-11-Green-Heart-Hero-awards/image5.jpg
+image: images/2019-03-11-Green-Heart-Hero-awards/ghh1.jpg
 gallery: 2019-03-11-Green-Heart-Hero-awards
 author: Jamie Hanlon
 
