@@ -25,7 +25,7 @@ Our central office management team consists of seven people:
 <div class="container">
 <div class="row">
 
-<div class="col">
+<div class="col-sm">
 <figure class="figure">
 <img class="img-fluid" src="{{'images/people/mike-2.jpg'|thumbnail('247x247')}}">
 </figure>
@@ -41,7 +41,7 @@ the C.H.E.E.S.E project in 2014 and has worked pro bono since then. </p>
 <hr>
 </div>
 
-<div class="col">
+<div class="col-sm">
 <figure class="figure">
 <img class="img-fluid" src="{{'images/people/jeremy-2.jpg'|thumbnail('247x247')}}">
 </figure>
@@ -63,7 +63,7 @@ the project. </p>
 </div>
 <div class="row">
 
-<div class="col">
+<div class="col-sm">
 <figure class="figure">
 <img class="img-fluid" src="{{'images/people/brian-bike.jpg'|thumbnail('247x247')}}">
 </figure>
@@ -81,7 +81,7 @@ dramatically. Brian trains and supports staff to our own CPD qualifications.</p>
 <hr>
 </div>
 
-<div class="col">
+<div class="col-sm">
 <figure class="figure">
 <img class="img-fluid" src="{{'images/people/dave-and-sue.jpg'|thumbnail('247x247')}}">
 </figure>
@@ -103,7 +103,7 @@ Bristol.</p>
 </div>
 <div class="row">
 
-<div class="col">
+<div class="col-sm">
 <figure class="figure">
 <img class="img-fluid" src="{{'images/people/brian-and-jamie.jpg'|thumbnail('247x247')}}">
 </figure>
@@ -120,7 +120,7 @@ building processors for machine intelligence.</p>
 <hr>
 </div>
 
-<div class="col">
+<div class="col-sm">
 <figure class="figure">
 <img class="img-fluid" src="{{'images/people/dave.jpg'|thumbnail('247x247')}}">
 </figure>
@@ -133,7 +133,7 @@ building processors for machine intelligence.</p>
 </div>
 <div class="row">
 
-<div class="col">
+<div class="col-sm">
 <figure class="figure">
 <img class="img-fluid" src="{{'images/people/maddy.jpg'|thumbnail('247x247')}}">
 </figure>
@@ -153,7 +153,7 @@ is currently studying for a qualification in Community Organising.</p>
 <hr>
 </div>
 
-<div class="col">
+<div class="col-sm">
 </div>
 
 </div>
