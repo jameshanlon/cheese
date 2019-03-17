@@ -7,9 +7,10 @@ Bristol a truly sustainable city. It was formally founded as an unincorporated
 association in August 2016, governed by a five-member volunteer management
 committee working to a [formal constitution (PDF)]({{url_for('.assets',
 filename='files/CHEESE-Constitution-2016-08-17.pdf')}}). In February 2018, the
-CHEESE Project was granted Community Interest Company (CIC) status. For more
-information on the structure and organisation of the CHEESE Project, please
-read our [articles of association (PDF)]({{url_for('.assets',
+CHEESE Project was registered as a Community Interest Company (CIC), limited by
+guarantee (company number 11204415). For more information on the structure and
+organisation of the CHEESE Project, please read our [articles of association
+(PDF)]({{url_for('.assets',
 filename='files/CHEESE-CIC-articles-of-association-2018-03-09.pdf')}}).
 
 The project is organised by a *central office* and operates through
@@ -18,7 +19,8 @@ external surveys. Community segments are partner associations based in Bristol
 city wards and city partners replicate the CHEESE Project, in coordination with
 Bristol, in other cities (more details on [who we work with here](/partners)).
 
-Our central office management team consists of seven people:
+Our central office management team consists of six directors and a survey
+manager:
 
 ## The team
 
