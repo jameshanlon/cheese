@@ -757,10 +757,12 @@ def upload_thermal_image():
             for f in ['description',
                       'year_of_construction',
                       'keywords', ]:
+                if request.form.get(f):
                     setattr(thermal_image, f, request.form.get(f))
-            building_type_id = int(request.form.get('building_type'))
-            building_type = BuildingTypes.query.filter(BuildingTypes.id==building_type_id).first()
-            setattr(thermal_image, 'building_type', building_type)
+            if request.form.get('building_type'):
+                building_type_id = int(request.form.get('building_type'))
+                building_type = BuildingTypes.query.filter(BuildingTypes.id==building_type_id).first()
+                setattr(thermal_image, 'building_type', building_type)
             setattr(thermal_image, 'user', User.query.get(current_user.get_id()))
             db.session.add(thermal_image)
             db.session.commit()

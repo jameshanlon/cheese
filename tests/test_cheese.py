@@ -429,3 +429,22 @@ def test_upload_thermal_image_full(client, app):
         assert image.building_type        == BuildingTypes.query.get(1)
         assert image.year_of_construction == 1970
         assert image.filename             != None
+
+def test_upload_thermal_image_required(client, app):
+    # building_type is optional.
+    rv = admin_login(client)
+    rv = client.post('/upload-thermal-image', content_type='multipart/form-data', data=dict(
+          image_file           = (BytesIO(b'blah'), 'img.jpg'),
+          description          = 'description',
+          year_of_construction = 1970,
+          keywords             = 'keywords',
+        ), follow_redirects=True)
+    logout(client)
+    assert b'The thermal image has been submitted successfully' in rv.data
+    with app.app_context():
+        image = ThermalImage.query.limit(1).all()[0]
+        assert image.description          == 'description'
+        assert image.keywords             == 'keywords'
+        assert image.year_of_construction == 1970
+        assert image.filename             != None
+
