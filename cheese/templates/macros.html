@@ -89,13 +89,13 @@
 
 {% macro thumbnail(image, size, group) -%}
   <a data-lightbox="{{group}}" href="{{url_for('.assets', filename=image)}}">
-    <img class="img-fluid rounded" src="{{image|thumbnail(size)}}">
+    <img class="rounded" src="{{image|thumbnail(size)}}">
   </a>
 {%- endmacro %}
 
 {% macro fig_thumbnail(image, size, group) -%}
   <a data-lightbox="{{group}}" href="{{url_for('.assets', filename=image)}}">
-    <img class="figure-img img-fluid rounded" src="{{image|thumbnail(size)}}">
+    <img class="figure-img rounded" src="{{image|thumbnail(size)}}">
   </a>
 {%- endmacro %}
 
