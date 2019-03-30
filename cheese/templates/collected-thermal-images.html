@@ -59,8 +59,19 @@ is part of an effort to document the experience of the CHEESE Project.</p>
       on {{ image.date.strftime('%d-%m-%Y') }}
     </td>
     <td>{{ image.keywords }}</td>
-    <td><p>{{ image.building_type }} ({{ image.year_of_construction }})</p>
-        <p>{{ image.description }}</p></td>
+    <td>
+      <p>
+        {{ image.building_type }}
+        {% if image.year_of_construction %}
+          ({{ image.year_of_construction }})
+        {% endif %}
+      </p>
+      <p>{{ image.description }}</p>
+      <div class="pull-right" style="padding:0.2em">
+        {{ macros.edit_button('thermalimage', image.id, edit_permission) }}
+        {{ macros.details_button('thermalimage', image.id) }}
+      </div>
+    </td>
   </tr>
 {% endfor %}
 </table>

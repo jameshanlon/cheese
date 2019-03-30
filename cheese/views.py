@@ -800,7 +800,8 @@ def collected_thermal_images():
     return render_template('collected-thermal-images.html',
                            keywords=keywords,
                            keyword=keyword,
-                           images=images)
+                           images=images,
+                           edit_permission=has_edit_permission())
 
 @bp.route('/customer-feedback')
 @login_required

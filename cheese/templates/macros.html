@@ -99,7 +99,7 @@
   </a>
 {%- endmacro %}
 
-{% macro article_short(article) %}
+{% macro article_short(article) -%}
   <div class="article-short clearfix">
     <a href="/news/{{article.path}}"><h3>{{article.title}}</h3></a>
     {% if 'image' in article.meta %}
@@ -123,7 +123,7 @@
   </div>
 {%- endmacro %}
 
-{% macro article_short_no_tags(article) %}
+{% macro article_short_no_tags(article) -%}
   <div class="article-short">
     <a href="/news/{{article.path}}"><h3>{{article.title}}</h3></a>
     {% if 'image' in article.meta %}
@@ -145,4 +145,18 @@
       <p>{{article.html|striptags|safe}}</p>
     {% endif %}
   </div>
+{%- endmacro %}
+
+{% macro details_button(table, id) -%}
+  <a class="icon" href="{{url_for(table.replace('_', '')+'.details_view', id=id, url=request.path+'?'+request.query_string)}}">
+    <button type"=button" class="btn btn-secondary btn-sm">Details</button>
+  </a>
+{%- endmacro %}
+
+{% macro edit_button(table, id, edit_permission) -%}
+  {% if edit_permission %}
+    <a class="icon" href="{{url_for(table.replace('_', '')+'.edit_view', id=id, url=request.path+'?'+request.query_string)}}">
+      <button type"=button" class="btn btn-secondary btn-sm">Edit</button>
+    </a>
+  {% endif %}
 {%- endmacro %}
