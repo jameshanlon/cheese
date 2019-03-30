@@ -319,7 +319,7 @@ class UploadThermalImageForm(FlaskForm):
                                                    'Only images can be uploaded')])
     description = fields.TextAreaField('Description of the image*',
                                        validators=[Required()])
-    year_of_construction = fields.IntegerField('Year of construction*',
+    year_of_construction = fields.IntegerField('Year of construction',
                                                validators=[Optional()])
     keywords = fields.StringField("Keywords (separated by commas ',')*",
                                   validators=[Required()])
