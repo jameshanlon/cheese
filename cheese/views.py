@@ -3,6 +3,7 @@ import datetime
 import os
 import random
 import string
+import re
 from collections import defaultdict
 from cheese.models import db, \
                           BuildingTypes, \
@@ -791,8 +792,8 @@ def collected_thermal_images():
     keywords = set()
     for image in images:
         if image.keywords:
-            for k in image.keywords.split(','):
-                    keywords.add(k.strip().lower())
+            for k in re.findall(r'[^,;\s]+', image.keywords):
+                keywords.add(k.lower())
     # Filter images by keyword.
     if keyword:
              images = [x for x in images if \
