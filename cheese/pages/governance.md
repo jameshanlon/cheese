@@ -124,10 +124,17 @@ building processors for machine intelligence.</p>
 
 <div class="col-sm">
 <figure class="figure">
-<img class="img-fluid" src="{{'images/people/dave.jpg'|thumbnail('247x247')}}">
+<img class="img-fluid" src="{{'images/people/dave-1.jpg'|thumbnail('247x247')}}">
 </figure>
 <p class="lead">Dave Tudgey</p>
 <p>Director (community engagement specialist)</p>
+
+<p> David is a community energy specialist & founder of Bristol Energy Network,
+through this role has supported numerous successful community energy
+initiatives. Notably supporting The C.H.E.E.S.E Project in its early
+development stages, leading the 1st cluster of home surveys via its members &
+energy champions programme in 2015. He continues to support the project in its
+development informing strategy, funding and partnerships. </p>
 
 <hr>
 </div>
