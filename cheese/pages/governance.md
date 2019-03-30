@@ -107,7 +107,7 @@ Bristol.</p>
 
 <div class="col-sm">
 <figure class="figure">
-<img class="img-fluid" src="{{'images/people/brian-and-jamie.jpg'|thumbnail('247x247')}}">
+<img class="img-fluid" src="{{'images/people/jamie.jpg'|thumbnail('247x247')}}">
 </figure>
 <p class="lead">Jamie Hanlon</p>
 <p>Director and Company Secretary</p>
