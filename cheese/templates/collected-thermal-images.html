@@ -36,7 +36,6 @@ is part of an effort to document the experience of the CHEESE Project.</p>
 <thead>
   <tr>
     <th></th>
-    <th>Submitted by</th>
     <th>Keywords</th>
     <th>Description</th>
   </tr>
@@ -46,20 +45,12 @@ is part of an effort to document the experience of the CHEESE Project.</p>
     <td>
       {{ macros.thumbnail('uploads/'+image.filename, '200x200', 'thermal-image') }}
     </td>
-    <td>
-      {% if image.user %}
-        {% if image.user.first_name!='' and image.user.last_name!='' %}
-          {{ image.user.first_name }} {{ image.user.last_name }}
-        {% else %}
-          {{ image.user.email }}
-        {% endif %}
-      {% else %}
-        {{ image.submitted_by }}
-      {% endif %}<br>
-      on {{ image.date.strftime('%d-%m-%Y') }}
-    </td>
     <td>{{ image.keywords }}</td>
     <td>
+      <div class="float-right" style="padding:0.2em">
+        {{ macros.edit_button('thermalimage', image.id, edit_permission) }}
+        {{ macros.details_button('thermalimage', image.id) }}
+      </div>
       <p>
         {{ image.building_type }}
         {% if image.year_of_construction %}
@@ -67,10 +58,19 @@ is part of an effort to document the experience of the CHEESE Project.</p>
         {% endif %}
       </p>
       <p>{{ image.description }}</p>
-      <div class="pull-right" style="padding:0.2em">
-        {{ macros.edit_button('thermalimage', image.id, edit_permission) }}
-        {{ macros.details_button('thermalimage', image.id) }}
-      </div>
+      <p>
+        Submitted by:
+        {% if image.user %}
+          {% if image.user.first_name!='' and image.user.last_name!='' %}
+            {{ image.user.first_name }} {{ image.user.last_name }}
+          {% else %}
+            {{ image.user.email }}
+          {% endif %}
+        {% else %}
+          {{ image.submitted_by }}
+        {% endif %}
+        on {{ image.date.strftime('%d %b %Y') }}.
+      </p>
     </td>
   </tr>
 {% endfor %}
