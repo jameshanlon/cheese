@@ -179,8 +179,10 @@ def test_submit_results_form(client, app):
 ONE_MONTH_REQ_FIELDS = dict(householders_name     = 'householders_name',
                             address               = 'address',
                             satisfaction_1to5     = '5',
+                            cheese_box_1to5       = '5',
                             survey_video_1to5     = '5',
                             surveyor_conduct_1to5 = '5',
+                            survey_value_1to5     = '5',
                             recommend_1to5        = '5',
                             cheese_box            = 'cheese_box', )
 
@@ -207,8 +209,6 @@ def test_month_feedback_form_full(client, app):
                 behaviour_temperature     = 'behaviour_temperature',
                 behaviour_space           = 'behaviour_space',
                 behaviour_changes         = 'behaviour_changes',
-                cheese_box_1to5           = '5',
-                survey_value_1to5         = '5',
                 feedback                  = 'feedback', )
     data.update(ONE_MONTH_REQ_FIELDS)
     rv = client.post('/one-month-feedback', data=data, follow_redirects=True)
