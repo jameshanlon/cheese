@@ -71,15 +71,7 @@ touch by emailing
     month and one year after the survey.</p>
     {{ macros.render_form_field(form.agree_to_requirements) }}
 
-    <p>Please note that your agreement with the C.H.E.E.S.E. Project CIC is to
-    provide a thermal-imaging survey with interpretation of the thermal images
-    given by the surveyor. This is our area of expertise. We will also make
-    <i>suggestions</i> for potential remedial actions, but we regret that we
-    cannot provide <i>advice</i> on remedial work and limit our financial
-    liability to the survey fee. This is to avoid costly indemnity insurance
-    payments. By submitting this form you agree to these contractual
-    limitations.</p>
-    
+    <p>{% include 'liability-statement.html' %}</p>
     <p>{% include 'privacy-statement.html' %}</p>
     <p>{{ form.recaptcha }}</p>
     <button class="btn" type="submit">Submit</button>

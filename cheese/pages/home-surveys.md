@@ -34,9 +34,10 @@ outside.
 During the survey, a large extractor fan is fitted to an external door and run
 continuously to reduce the pressure inside the house. This causes cold air to
 be drawn in though any gaps. As we work through each room in the house we use
-the thermal imaging camera to look for cold spots. These may be caused by gaps
-to the outside through which draughts are pulled by the fan, or by poor thermal
-insulation from cold bridging or missing insulation etc.
+the thermal imaging camera to look for cold spots which point to thermal faults
+in the fabric of the building. These may be caused by gaps to the outside
+through which draughts are pulled by the fan, or by poor thermal insulation
+from cold bridging or missing insulation etc.
 
 As the householder, you are involved directly with the survey by accompanying
 the surveyor to see first hand how heat moves around your home and where it is
@@ -46,9 +47,11 @@ you afterwards on a USB memory stick, so you can review the findings at any
 point.
 
 Following the survey, a briefing is carried out on the main problems that were
-identified and how they might be remedied. We will record your current energy
-use by looking at your gas and electricity bills (you will need to [find them
-in advance](/pre-survey-guide#preparation) and you will have the opportunity to
+identified and how they might be remedied, but we cannot offer this as
+professional advice. You must always consult an expert to determine the best
+way forward. We will record your current energy use by looking at your gas and
+electricity bills (you will need to [find them in
+advance](/pre-survey-guide#preparation) and you will have the opportunity to
 borrow a *CHEESE energy monitoring and action pack* containing simple-to-use
 meters to monitor energy use and information on DIY energy-saving techniques.
 
