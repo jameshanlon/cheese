@@ -22,3 +22,7 @@ These presentations give an overview of the project:
 
 - [CHEESE overview (PDF)]({{url_for('.assets', filename='files/CHEESE-overview-March-2018.pdf')}})
 - [CHEESE overview (short version) (PDF)]({{url_for('.assets', filename='files/CHEESE-overview-March-2018-short.pdf')}})
+
+# Policy
+
+- [Equal opportunities policy](/equal-opportunities)
