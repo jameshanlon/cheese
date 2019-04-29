@@ -50,3 +50,4 @@ Welcome to the resources page for Energy Tracers.
 
 - [Privacy notice for staff and members](/privacy-notice-staff-and-members)
 - [Equal opportunities policy](/equal-opportunities)
+- [Safeguarding policy (Word.docx)]({{url_for('.assets', filename='files/CHEESE-Safeguarding-Adults-Policy-29Apr19.docx')}})
