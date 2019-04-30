@@ -17,8 +17,10 @@ development, and more content will be added in due course!)
     * [Love your old home](https://www.cse.org.uk/advice/advice-and-support/older-homes), making older homes warmer and cheaper to heat.
     * [Love your old home workbook (PDF)](https://www.cse.org.uk/downloads/file/love_your_old_home_workbook_standard.pdf).
 
-- [Bristol Green Doors](https://www.bristolgreendoors.org/) unfortunately went into
-  hibernation due to lack of funding in 2017, but their website has:
+- [Bristol Green Doors](https://www.bristolgreendoors.org/) are now led by the
+  Centre for Sustainable Energy (CSE) as part of the [Futureproof
+  project](https://www.cse.org.uk/projects/view/1357) and their website has
+  lots of useful information, such as:
 
     * [Details on individual retrofit measures](https://www.bristolgreendoors.org/research/individual-measures).
     * [Numerous case studies of retrofit projects](https://www.bristolgreendoors.org/research/installers-suppliers-trades) (click 'Search our stories')
