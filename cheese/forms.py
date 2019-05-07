@@ -72,11 +72,11 @@ class DatePickerWidget(widgets.TextInput):
 class OneToFiveWidget(widgets.Input):
     """ A custom widget for 1-to-5 ratings. """
     def __call__(self, field, **kwargs):
-        html = """<input type="radio" name="{0}" value="1" {1}><span>1</span>
-                  <input type="radio" name="{0}" value="2" {1}><span>2</span>
-                  <input type="radio" name="{0}" value="3" {1}><span>3</span>
-                  <input type="radio" name="{0}" value="4" {1}><span>4</span>
-                  <input type="radio" name="{0}" value="5" {1}><span>5</span>"""
+        html = """<div class="form-check form-check-inline"><input type="radio" name="{0}" value="1" {1}><label class="form-check-label">1</label></div>
+                  <div class="form-check form-check-inline"><input type="radio" name="{0}" value="2" {1}><label class="form-check-label">2</label></div>
+                  <div class="form-check form-check-inline"><input type="radio" name="{0}" value="3" {1}><label class="form-check-label">3</label></div>
+                  <div class="form-check form-check-inline"><input type="radio" name="{0}" value="4" {1}><label class="form-check-label">4</label></div>
+                  <div class="form-check form-check-inline"><input type="radio" name="{0}" value="5" {1}><label class="form-check-label">5</label></div>"""
         return Markup(html.format(field.name, self.html_params(**kwargs)))
 
 

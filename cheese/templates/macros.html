@@ -18,9 +18,9 @@
       {{ f(class_="form-control-file") }}
       {{ render_form_errors(f) }}
     {% elif f.name.endswith('_1to5') %}
-      {{ f.label(class_="control-label") }}
+      {{ f.label }}
       {{ render_form_description(f.description) }}
-      <div class="rating-1to5 form-inline">
+      <div class="rating-1to5 form-check">
         {% if f.errors %}
           {{ f(class_="form-check-input is-invalid") }}
         {% else %}
