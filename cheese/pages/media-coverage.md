@@ -4,10 +4,18 @@
 # Media coverage
 
 <div class="float-right">
+{{ macros.thumbnail('images/2019-04-CHEESE-Vocalise-dot-and-dab.png', '140x140', 'media-coverage') }}
+</div>
+
+- **Vocalise magazine, April 2019**. This spring edition features an article we
+  contributed on the thermal problems with dot-and-dab plasterboard.
+
+<div class="clearfix"></div>
+<div class="float-right">
 {{ macros.thumbnail('images/2019-01-CHEESE-Vocalise-magazine.png', '140x140', 'media-coverage') }}
 </div>
 
-- **Vocalise magazine**, January 2019.
+- **Vocalise magazine, January 2019**.
   [Vocalise](http://www.vocalisemagazine.org.uk/) is the community magazine for
   St Pauls, Montpellier and St Werburghs in Bristol. The winter edition
 features a double-page spread of common faults and remedies identified by
@@ -18,7 +26,7 @@ CHEESE surveys.
 {{ macros.thumbnail('images/2019-01-CHEESE-StGeorgeAndRedfieldVoice.jpg', '140x140', 'media-coverage') }}
 </div>
 
-- **St George and Redfield Voice**, January 2019. A great overview of our work
+- **St George and Redfield Voice, January 2019**. A great overview of our work
   for the residents of St George and Redfield.
 
 <div class="clearfix"></div>
@@ -26,7 +34,7 @@ CHEESE surveys.
 {{ macros.thumbnail('images/2018-12-bristol247-article/CHEESE-Bristol247.jpg', '140x140', 'media-coverage') }}
 </div>
 
-- **Bristol 24/7**, December 2018. The New Year print edition of the [Bristol 24/7
+- **Bristol 24/7, December 2018**. The New Year print edition of the [Bristol 24/7
   magazine](https://www.bristol247.co.uk) features an article on CHEESE
 entitled *Home remedy*. It gives an overview of the project and describes how
 one of our surveys is conducted. This article was later published in January on the
@@ -37,7 +45,7 @@ one of our surveys is conducted. This article was later published in January on 
 {{ macros.thumbnail('images/2018-04-community-health-news/CHEESE-Bristol-community-health-news.jpg', '140x140', 'media-coverage') }}
 </div>
 
-- **Bristol Community Health News**, April 2018. The 2018 winter edition of Bristol
+- **Bristol Community Health News, April 2018**. The 2018 winter edition of Bristol
   Community Health news provided some tips on keeping warm this winter. CHEESE
   is suggested as a way to identify improvements that can be made to a home.
 
