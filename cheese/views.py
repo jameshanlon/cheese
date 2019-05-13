@@ -266,11 +266,9 @@ class CheeseAdminIndexView(flask_admin.AdminIndexView):
             if name == 'successful_lead':
                 query = query.filter(Surveys.lead_status_id == lead_status_id('Successful'))
             if name == 'possible_lead':
-                query = query.filter((Surveys.lead_status_id == lead_status_id('Possible')) &
-                                     (Surveys.result == None))
+                query = query.filter((Surveys.lead_status_id == lead_status_id('Possible')))
             if name == 'dead_lead':
-                query = query.filter((Surveys.lead_status_id == lead_status_id('Dead')) &
-                                     (Surveys.result == None))
+                query = query.filter((Surveys.lead_status_id == lead_status_id('Dead')))
             if name == 'free_survey':
                 query = query.filter(Surveys.free_survey_consideration == True)
             if name == 'paid_survey':
