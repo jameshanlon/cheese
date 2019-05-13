@@ -3,6 +3,21 @@
 
 # Media coverage
 
+
+
+<div class="float-right">
+{{ macros.thumbnail('images/2019-05-CHEESE-HW-Voice.jpg', '140x140', 'media-coverage') }}
+</div>
+
+- **Henleaze and Westbury Voice magazine, May 2019**. CHEESE is mentioned in
+  MP Darren Jones' column: "I also recently had the privilege of welcoming
+representatives from Westbury-based CHEESE to the Climate Coalition's Green
+Heart Hero awards in Parliament to receive an award for their energy efficiency
+work. Well done to Mike and the team for all their hard work." Dislaimer: we
+didn't win an award, but we were nominated! More detail and pictures
+[here](/news/2019-03-11-Green-Heart-Hero-awards).
+
+<div class="clearfix"></div>
 <div class="float-right">
 {{ macros.thumbnail('images/2019-04-CHEESE-Vocalise-dot-and-dab.png', '140x140', 'media-coverage') }}
 </div>
