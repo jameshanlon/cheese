@@ -6,6 +6,14 @@ a internal home survey.
 
 ## From the 2018/19 surveying season (phase 4)
 
+- *"CHEESE is the single most useful intervention I have had in my home since I
+  began doing improvements when I first bought a house."*
+  (Bristol Green Doors participant)
+
+- *"It was great, I really enjoyed the process and I will be showing the video on
+  a continuous loop during the doors open weekend."*
+  (Bristol Green Doors participant)
+
 - *"The CHEESE survey has made us much more aware of the energy we're using.
   The surveyors were fantastic; knowledgeable, thorough, and gave practical and
 achievable advice. In fact, a lot of the suggestions made to improve the
