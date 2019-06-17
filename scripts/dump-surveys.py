@@ -2,24 +2,6 @@ from cheese.factory import create_app
 app=create_app({})
 from cheese.models import Surveys, Results, BuildingTypes, WallConstructionTypes, CookingTypes, OccupationTypes, SpaceHeatingTypes, CookingTypes 
 
-#def building_type(id):
-#    return BuildingTypes.query.filter(BuildingTypes.id==id).first().name
-#
-#def wall_type(id):
-#    return WallConstructionTypes.query.filter(WallConstructionTypes.id==id).first().name
-#
-#def occupation_type(id):
-#    return OccupationTypes.query.filter(OccupationTypes.id==id).first().name
-#
-#def space_heating_type(id):
-#    return SpaceHeatingTypes.query.filter(SpaceHeatingTypes.id==id).first().name
-#
-#def water_heating_type(id):
-#    return WaterHeatingTypes.query.filter(WaterHeatingTypes.id==id).first().name
-#
-#def cooking_type(id):
-#    return CookingTypes.query.filter(CookingTypes.id==id).first().name
-
 with app.app_context():
     for survey in Surveys.query.filter(Surveys.phase==4).all():
         x = Results.query.filter(Results.survey_id==survey.id).first()
@@ -32,7 +14,7 @@ with app.app_context():
         result.append(('Householder\'s name',       x.householders_name))
         result.append(('Lead surveyor',             x.lead_surveyor))
         result.append(('Assistant surveyor',        x.assistant_surveyor))
-        result.append(('Buildiing type',            x.building_type.name if x.building_type else 'Unspecified'))
+        result.append(('Building type',             x.building_type.name if x.building_type else 'Unspecified'))
         result.append(('Occupation type',           x.occupation_type.name if x.occupation_type else 'Unspecified'))
         result.append(('Number of occupants',       x.num_occupants))
         result.append(('External temperature',      x.external_temperature))
@@ -47,8 +29,11 @@ with app.app_context():
         result.append(('Double glazing',            x.double_glazing)) 
         for (name, value) in result:
             print '{:<30} {}'.format(name, value)
+        print
         print 'Faults:'
-        print x.faults_identified
-        print x.recommendations
+        print x.faults_identified.encode('utf-8')
+        print
+        print 'Recommendations:'
+        print x.recommendations.encode('utf-8')
         print '-'*50
 
