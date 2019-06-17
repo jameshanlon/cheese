@@ -1,39 +1,47 @@
 from cheese.factory import create_app
 app=create_app({})
-from cheese.models import Surveys, Results, BuildingTypes, WallConstructionTypes, CookingTypes, OccupationTypes, SpaceHeatingTypes, CookingTypes 
+from cheese.models import Surveys, Results, BuildingTypes, WallConstructionTypes, CookingTypes, OccupationTypes, SpaceHeatingTypes, CookingTypes
+
+survey_ids = [342, 426, 417, 440, 446, 461, 442, 473, 471, 476, 477, 482]
 
 with app.app_context():
-    for survey in Surveys.query.filter(Surveys.phase==4).all():
-        x = Results.query.filter(Results.survey_id==survey.id).first()
-        if x == None:
+    for survey_id in survey_ids:
+        survey = Surveys.query.get(survey_id)
+        results = Results.query.filter(Results.survey_id==survey.id).all()
+        if results == None:
             print 'No result for survey {}'.format(survey.id)
             continue
+        elif len(results) > 1:
+            print 'Multiple results for survey {}'.format(survey.id)
+            continue
+        result = results[0]
+        print '='*50
         print 'SURVEY {}'.format(survey.id)
-        result = []
-        result.append(('Survey date',               x.date))
-        result.append(('Householder\'s name',       x.householders_name))
-        result.append(('Lead surveyor',             x.lead_surveyor))
-        result.append(('Assistant surveyor',        x.assistant_surveyor))
-        result.append(('Building type',             x.building_type.name if x.building_type else 'Unspecified'))
-        result.append(('Occupation type',           x.occupation_type.name if x.occupation_type else 'Unspecified'))
-        result.append(('Number of occupants',       x.num_occupants))
-        result.append(('External temperature',      x.external_temperature))
-        result.append(('Year of construction',      x.year_of_construction)) 
-        result.append(('Wall construction type',    x.wall_construction_type.name if x.wall_construction_type else 'Unspecified')) 
-        result.append(('Primary heating type',      x.primary_heating_type.name if x.primary_heating_type else 'Unspecified')) 
-        result.append(('Secondary heating type',    x.secondary_heating_type.name if x.secondary_heating_type else 'Unspecified')) 
-        result.append(('Water heating type',        x.water_heating_type.name if x.water_heating_type else 'Unspecified')) 
-        result.append(('Cooking type',              x.cooking_type.name if x.cooking_type else 'Unspecified')) 
-        result.append(('Depth of loft insulation',  x.depth_loft_insulation))
-        result.append(('Number of open fireplaces', x.number_open_fireplaces)) 
-        result.append(('Double glazing',            x.double_glazing)) 
-        for (name, value) in result:
+        print '='*50
+        data = []
+        data.append(('Survey date',               result.date))
+        data.append(('Householder\'s name',       result.householders_name))
+        data.append(('Lead surveyor',             result.lead_surveyor))
+        data.append(('Assistant surveyor',        result.assistant_surveyor))
+        data.append(('Building type',             result.building_type.name if result.building_type else 'Unspecified'))
+        data.append(('Occupation type',           result.occupation_type.name if result.occupation_type else 'Unspecified'))
+        data.append(('Number of occupants',       result.num_occupants))
+        data.append(('External temperature',      result.external_temperature))
+        data.append(('Year of construction',      result.year_of_construction))
+        data.append(('Wall construction type',    result.wall_construction_type.name if result.wall_construction_type else 'Unspecified'))
+        data.append(('Primary heating type',      result.primary_heating_type.name if result.primary_heating_type else 'Unspecified'))
+        data.append(('Secondary heating type',    result.secondary_heating_type.name if result.secondary_heating_type else 'Unspecified'))
+        data.append(('Water heating type',        result.water_heating_type.name if result.water_heating_type else 'Unspecified'))
+        data.append(('Cooking type',              result.cooking_type.name if result.cooking_type else 'Unspecified'))
+        data.append(('Depth of loft insulation',  result.depth_loft_insulation))
+        data.append(('Number of open fireplaces', result.number_open_fireplaces))
+        data.append(('Double glazing',            result.double_glazing))
+        for (name, value) in data:
             print '{:<30} {}'.format(name, value)
         print
         print 'Faults:'
-        print x.faults_identified.encode('utf-8')
+        print result.faults_identified.encode('utf-8')
         print
         print 'Recommendations:'
-        print x.recommendations.encode('utf-8')
-        print '-'*50
-
+        print result.recommendations.encode('utf-8')
+        print
