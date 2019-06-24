@@ -448,7 +448,7 @@ class OneMonthFeedbackForm(FlaskForm):
 
 class OneYearFeedbackForm(FlaskForm):
     numbers_only = 'Only use digits and (optionally) a decimal point, no other punctuation or symbols.'
-    recaptcha = RecaptchaField()
+    #recaptcha = RecaptchaField()
     householders_name = fields.StringField('Householder\'s name*',
                                            validators=[Required(),
                                                        Length(max=50)])
