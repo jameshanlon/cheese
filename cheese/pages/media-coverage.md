@@ -3,8 +3,18 @@
 
 # Media coverage
 
+<div class="float-right">
+{{ macros.thumbnail('images/2019-07-cabot-institute-SDGs/Cabot-Institute-SDGs-cover.png', '140x140', 'media-coverage') }}
+</div>
 
+- **Cabot Institute for the Environment at the University of Bristol, Bristol
+  and the SDGs - A voluntary local review of progress, July 2019**. CHEESE is cited
+under SDG 7 (Affordable and Clean Energy, page 27), as one of the most
+significant projects tacking fuel poverty in Bristol. Read the report
+[here](https://www.bristol.ac.uk/media-library/sites/cabot-institute-2018/documents/BRISTOL%20AND%20THE%20SDGs.pdf)
+and out news item on it [here](news/2019-07-cabot-institute-sdgs).
 
+<div class="clearfix"></div>
 <div class="float-right">
 {{ macros.thumbnail('images/2019-05-CHEESE-HW-Voice.jpg', '140x140', 'media-coverage') }}
 </div>
