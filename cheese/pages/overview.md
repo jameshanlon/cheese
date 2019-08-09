@@ -30,6 +30,11 @@ work.
 
 ## Our achievements and plans
 
+<div class="alert alert-info">
+Please note: this section is out of date and is due to be updated for phases
+three and four.
+</div>
+
 <a class="anchor" name="pilot"></a>
 ### The pilot
 

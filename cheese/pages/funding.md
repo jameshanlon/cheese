@@ -2,6 +2,10 @@
 <a class="anchor" name="funding"></a>
 # Funding
 
+<div class="alert alert-info">
+Please note: this page is due to be updated for phases four and five.
+</div>
+
 The CHEESE pilot project was setup in November 2014 with funding from [Bristol
 Green Capital 2015](http://bristolgreencapital.org/) and with the support of
 [Bristol Energy Network](http://www.bristolenergynetwork.org). Two initial
