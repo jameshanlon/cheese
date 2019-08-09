@@ -36,6 +36,19 @@ didn't win an award, but we were nominated! More detail and pictures
   contributed on the thermal problems with dot-and-dab plasterboard.
 
 <div class="clearfix"></div>
+
+- **Building smart cities, the just way. A critical review of "smart" and
+  "just" initiatives in Bristol, UK**. Written by Aleksandra Michalec, Enda
+Hayes and James Longhurst and published in: the journal of Sustainable
+Cities and Society, Volume 47, 2019. This is an academic paper that references
+CHEESE as an example of a successful a community-based energy efficiency
+initiative. Please note that the text refers only to the first surveying
+season, and so is out of date, due to the long lead times in publishing in
+journals. The article is unfortunately not available
+for free, but its abstract can be viewed
+[here](https://www.sciencedirect.com/science/article/pii/S2210670717308545).
+
+<div class="clearfix"></div>
 <div class="float-right">
 {{ macros.thumbnail('images/2019-01-CHEESE-Vocalise-magazine.png', '140x140', 'media-coverage') }}
 </div>
