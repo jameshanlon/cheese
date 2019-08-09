@@ -25,6 +25,10 @@ problems as they are revealed. The survey is also filmed, capturing the
 live thermal images and commentary from the surveyor, to provide to the
 householder for future reference.-->
 
+<div class="alert alert-warning">
+<strong>Please note: our pricing is under review. See the <a href="#pricing">pricing</a> section for details.</strong>
+</div>
+
 ## How it works
 
 We perform surveys in the winter so that when a house is heated there is a
@@ -63,6 +67,26 @@ again after a month and after a year to see if your energy use has changed!
 <a class="anchor" name="pricing"></a>
 ## Pricing
 
+We are sorry to say that we have not yet secured grant funding for our November
+2019/20 season, as we have in previous seasons. So for next season, we are at
+present unable to offer free surveys, and will have to increase our prices to
+cover our costs. Costs have been subsidised by grants up until now.
+
+The average true cost to us last season of each survey was £236.00. The average
+cost of a thermal survey elsewhere is £453, and this is without the benefit of
+pressure-reduction the delivery of a video, and the refinements of our
+software-created images.
+
+We will shortly present a new pricing structure which will keep surveys as
+affordable as possible, whilst covering our own costs.
+
+Our costs cover employment of a survey manager and the time of energy tracers
+to carry out the surveys. It also covers the cost of travel, materials and (in
+some cases) report writing. All strategic management, software and hardware
+development, and website maintenance is carried out for free by a voluntary
+board of directors.
+
+<!--
 Below are our prices for various sizes of home. Please note that **main rooms**
 means any large room: including living rooms, dining rooms, kitchen-dining
 rooms, bedrooms and conservatories, but not bathrooms, separate kitchens,
@@ -116,3 +140,4 @@ value.
 <div class="notice lead">
   <a href="/apply-for-a-survey">Apply for a survey</a> now!
 </div>
+-->
