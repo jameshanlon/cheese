@@ -25,9 +25,9 @@ problems as they are revealed. The survey is also filmed, capturing the
 live thermal images and commentary from the surveyor, to provide to the
 householder for future reference.-->
 
-<div class="alert alert-warning">
+<!--<div class="alert alert-warning">
 <strong>Please note: our pricing is under review. See the <a href="#pricing">pricing</a> section for details.</strong>
-</div>
+</div>-->
 
 ## How it works
 
@@ -67,7 +67,7 @@ again after a month and after a year to see if your energy use has changed!
 <a class="anchor" name="pricing"></a>
 ## Pricing
 
-We are sorry to say that we have not yet secured grant funding for our November
+<!--We are sorry to say that we have not yet secured grant funding for our November
 2019/20 season, as we have in previous seasons. So for next season, we are at
 present unable to offer free surveys, and will have to increase our prices to
 cover our costs. Costs have been subsidised by grants up until now.
@@ -84,9 +84,36 @@ Our costs cover employment of a survey manager and the time of energy tracers
 to carry out the surveys. It also covers the cost of travel, materials and (in
 some cases) report writing. All strategic management, software and hardware
 development, and website maintenance is carried out for free by a voluntary
-board of directors.
+board of directors.-->
 
-<!--
+<!--The overwhelming response that we get is that our surveys are fascinating
+and exceptionally good value.-->
+
+<div class="alert alert-info">
+<h4 class="alert-heading">A note on our pricing</h4>
+
+<p> The C.H.E.E.S.E. project is a not-for-profit volunteer-run organisation,
+which allows us to provide surveys at very low cost. However, for the coming
+2019-2020 season, we regret that we have had to raise our charges for surveys.
+This is why:</p>
+
+<p>
+<ul>
+
+<li>The project has, in previous years, benefited greatly from grants, but
+unfortunately this season we have failed to receive any, despite six
+applications up to August 2019.</li>
+
+<li>The full cost of a survey to us in 2018-19 was £236.</li>
+
+<li>The average cost of a thermal survey elsewhere is £453, but without the
+benefits of pressure-reduction and our bespoke imaging software which we
+believe to be key advantages of C.H.E.E.S.E. surveys.</li>
+
+</ul>
+
+</div>
+
 Below are our prices for various sizes of home. Please note that **main rooms**
 means any large room: including living rooms, dining rooms, kitchen-dining
 rooms, bedrooms and conservatories, but not bathrooms, separate kitchens,
@@ -109,19 +136,31 @@ out using an [online calculator](http://www.minimumincome.org.uk/).
   </thead>
   <tbody>
     <tr>
+      <td>Flat up to 2 bedrooms</td>
+      <td>2 hours</td>
+      <td>&pound;100</td>
+    </tr>
+    <tr>
       <td>3 to 5 main rooms</td>
       <td>2.5 hours</td>
-      <td>&pound;75</td>
+      <td>&pound;150</td>
     </tr>
     <tr>
       <td>6 to 8 main rooms*</td>
       <td>2.5 to 3 hours</td>
-      <td>&pound;120</td>
+      <td>&pound;185</td>
     </tr>
     <tr>
       <td>Over 8 main rooms*</td>
       <td>Over 3 hours</td>
-      <td>&pound;150</td>
+      <td>&pound;200</td>
+    </tr>
+    <tr>
+      <td>Commercial surveys for housing associations, councils etc.<br>
+        (Additional charge for a written report</td>
+      <td>Variable</td>
+      <td>&pound;250<br>
+        &pound;100)</td>
     </tr>
   </tbody>
 </table>
@@ -129,15 +168,10 @@ out using an [online calculator](http://www.minimumincome.org.uk/).
 \* We generally only survey large houses at weekends, though there may be some
 limited availability for surveying large houses on other days.
 
-**A note on our pricing**: The CHEESE project is a not-for-profit volunteer-run
-organisation, which allows us to provide surveys at very low cost. Our highest
-charge is less than half the true cost of delivering the survey if we were to
-factor in the true cost of staff time and other overheads. For free surveys, we
-additionally rely on grant funding to make up the difference. The overwhelming
-response that we get is that our surveys are fascinating and exceptionally good
-value.
+Please also note: we do not reduce prices for Energy Tracers’ training surveys
+because, although they may take longer, the householder benefits from the extra
+expertise of the trainer for the survey.
 
 <div class="notice lead">
   <a href="/apply-for-a-survey">Apply for a survey</a> now!
 </div>
--->
