@@ -19,6 +19,19 @@ Update Python packages:
 $ pip install --upgrade -r flask/requirements.txt
 ```
 
+### Setup on OSX
+
+```
+$ brew install mysql openssl
+$ export LIBRARY_PATH=$LIBRARY_PATH:/usr/local/opt/openssl/lib/
+$ virtualenv env
+$ pip install -r flask/requirements.txt
+...
+```
+
+Troubleshooting:
+- https://stackoverflow.com/questions/12218229/my-config-h-file-not-found-when-intall-mysql-python-on-osx-10-8
+
 ### Populate CONFIG
 
 - `CHEESE_MYSQL_HOST` must be set to the name of the MySQL Docker container.
