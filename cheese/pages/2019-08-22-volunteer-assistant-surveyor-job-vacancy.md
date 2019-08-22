@@ -90,7 +90,7 @@ or
 [DOCX to fill in]({{url_for('.assets', filename='files/CHEESE-job-application-form.docx')}}))
 and send it to Mike Andrews, Managing Director, via email at
 ([jobs@cheeseproject.co.uk](mailto:jobs@cheeseproject.co.uk)).
-The closing date for applications is Wednesday 28th September, 2019.
+The closing date for applications is Wednesday 18th September, 2019.
 Interviews will be the following week.
 
 **PLEASE NOTE:** please do not send in CVs and we will not accept applications
