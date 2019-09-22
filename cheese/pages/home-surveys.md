@@ -14,7 +14,7 @@ climate impact.**
 
 The survey process is based on a unique methodology developed by Brian Harper,
 who has been working with thermal imaging for 45 years and has surveyed over
-400 homes.
+400 homes. Brian is a [director](/governance#brian-harper) of The CHEESE Project.
 
 <!--The method involves heating the house to 10 degrees above ambient
 temperature, reducing the indoor pressure and locating incoming cold draughts,
@@ -35,13 +35,14 @@ We perform surveys in the winter so that when a house is heated there is a
 large difference between the temperature inside the house compared to the
 outside.
 
-During the survey, a large extractor fan is fitted to an external door and run
-continuously to reduce the pressure inside the house. This causes cold air to
-be drawn in though any gaps. As we work through each room in the house we use
-the thermal imaging camera to look for cold spots which point to thermal faults
-in the fabric of the building. These may be caused by gaps to the outside
-through which draughts are pulled by the fan, or by poor thermal insulation
-from cold bridging or missing insulation etc.
+An Energy Tracer will come at the prearranged time. Firstly, a large extractor
+fan is fitted to an external door and run continuously to reduce the pressure
+inside the building. This causes cold air to be drawn in though any gaps. As we
+work through each room in the house we use the thermal imaging camera to look
+for cold spots which point to thermal faults in the fabric of the building.
+These may be caused by gaps to the outside through which draughts are pulled by
+the fan, or by poor thermal insulation from cold bridging or missing insulation
+etc.
 
 As the householder, you are involved directly with the survey by accompanying
 the surveyor to see first hand how heat moves around your home and where it is

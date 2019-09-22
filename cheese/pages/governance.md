@@ -64,6 +64,7 @@ the project. </p>
 </div>
 <div class="row">
 
+<a name="brian-harper"></a>
 <div class="col-sm">
 <figure class="figure">
 <img class="img-fluid" src="{{'images/people/brian-bike.jpg'|thumbnail('247x247')}}">
