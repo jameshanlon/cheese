@@ -53,6 +53,10 @@ nav {
  background-color:#ffcc00;
 }
 
+.navbar-brand {
+  color: #343a40 !important;
+}
+
 /* Fix the width to be 768px.
 @media (max-width: 768px) {
   // Adjust the size of the banner.
