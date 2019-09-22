@@ -149,6 +149,7 @@ def test_submit_results_form(client, app):
 	assert result.address_line               == 'address_line'
 	assert result.survey_date                == datetime.date(2017, 2, 1)
 	assert result.external_temperature       == 123.456
+	assert result.camera_kit_number          == 'Camera kit 17'
 	assert result.loaned_cheese_box          == True
 	assert result.cheese_box_number          == 'Box 42'
 	assert result.year_of_construction       == 1970

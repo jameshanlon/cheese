@@ -183,6 +183,9 @@ class SubmitResultsForm(FlaskForm):
                                    widget=DatePickerWidget())
     external_temperature = fields.DecimalField('External temperature (C)',
                                                validators=[Optional()])
+    camera_kit_number = fields.TextField('Camera kit number',
+                                         validators=[Optional(),
+                                                     Length(max=25)])
     loaned_cheese_box = fields.BooleanField('CHEESE box loaned?',
                                             validators=[Optional()])
     cheese_box_number = fields.TextField('CHEESE box number',

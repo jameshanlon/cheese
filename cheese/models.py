@@ -220,6 +220,7 @@ class Results(db.Model):
     address_line               = db.Column(db.String(100))
     survey_date                = db.Column(db.Date)
     external_temperature       = db.Column(db.Float)
+    camera_kit_number          = db.Column(db.String(25))
     loaned_cheese_box          = db.Column(db.Boolean, default=False)
     cheese_box_number          = db.Column(db.String(25))
     building_type_id           = db.Column(db.Integer, db.ForeignKey('building_types.id'))
