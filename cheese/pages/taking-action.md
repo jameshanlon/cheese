@@ -8,7 +8,7 @@ development, and more content will be added in due course!)
 ## General information on retrofit
 
 - The [Centre for Sustainable Energy](https://www.cse.org.uk/) provide a broad
-  colleciton of [advice
+  collection of [advice
   leaflets](https://www.cse.org.uk/resources/category:advice-leaflets/) with
   information on a variety of topics, particularly on:
     * [Energy advice](https://www.cse.org.uk/resources/index/category:advice-leaflets/tag:energy-advice)
