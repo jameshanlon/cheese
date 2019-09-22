@@ -120,11 +120,17 @@ rooms, bedrooms and conservatories, but not bathrooms, separate kitchens,
 utility spaces or garages. Two living rooms which have been 'knocked-through'
 into one room will be charged as two rooms.
 
-We do offer **free surveys** to households on low incomes. We assess
+<!--We do offer **free surveys** to households on low incomes. We assess
 eligibility for free surveys on a case-by-case basis. It will be useful for us
 to know whether you are receiving benefits and whether you meet the [Minimum
 Income Standard](http://www.lboro.ac.uk/research/crsp/mis/), which you can find
-out using an [online calculator](http://www.minimumincome.org.uk/).
+out using an [online calculator](http://www.minimumincome.org.uk/).-->
+
+Free surveys are available through our Partners
+[CHAS](http://www.chasbristol.co.uk/) and
+[WHAM](https://www.cse.org.uk/projects/view/1337) for people experiencing poor
+housing conditions and those in fuel poverty. Please just get in touch if you
+would like to refer yourself or someone else for a free survey.
 
 <table class="table">
   <thead>
@@ -168,9 +174,12 @@ out using an [online calculator](http://www.minimumincome.org.uk/).
 \* We generally only survey large houses at weekends, though there may be some
 limited availability for surveying large houses on other days.
 
-Please also note: we do not reduce prices for Energy Tracers’ training surveys
-because, although they may take longer, the householder benefits from the extra
-expertise of the trainer for the survey.
+Each year we train new Energy Tracers (ETs) and they learn on the job,
+supervised by more experienced ETs in order to gain their certificate. If you
+have your survey in November or December it may be a 'training survey'. While
+this may take a little longer you will have the benefit of both ETs experience
+and their technical and observational skills. We will let you know in advance
+if it will be a training survey.
 
 <div class="notice lead">
   <a href="/apply-for-a-survey">Apply for a survey</a> now!

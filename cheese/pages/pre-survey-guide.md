@@ -20,10 +20,10 @@ we will follow up with your progress afterwards.
 <a class="anchor" name="payment"></a>
 ## Payment
 
-To save administration time for our largely volunteer staff, we do ask that you
-pay in advance for your survey. This is priced according to the number of
-bedrooms plus living rooms, because this affects the time taken on the survey.
-See [our pricing for various sizes of homes](/home-surveys#pricing).
+All surveys are paid for in advance by bank transfer. This is priced according
+to the number of bedrooms plus living rooms, because this determines how long
+the survey takes. See [our pricing for various sizes of
+homes](/home-surveys#pricing).
 
 Please make on-line payments to **The CHEESE Project**. Sort code 08-92-99,
 account number 65849565 with your name as reference. Cheques should be posted
@@ -124,9 +124,7 @@ Please note:
   longer, a flat somewhat less. See the [survey information](/home-surveys#pricing)
   page for survey timings based on building size.
 
-- Two Energy Tracer surveyors will arrive. One will be the lead Tracer and they
-  will usually accompanied by a trainee Tracer who will be shadowing and aiding
-  them.
+- A lead Energy Tracer will carry out the survey, usually with an assistant.
 
 - A blower door, consisting of a large fan and airtight sheet, will be fitted
   to a suitable external door. This is used to reduce the pressure inside of
