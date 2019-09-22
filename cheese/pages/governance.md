@@ -141,6 +141,7 @@ development informing strategy, funding and partnerships. </p>
 </div>
 <div class="row">
 
+<a name="maddy-longhurst"></a>
 <div class="col-sm">
 <figure class="figure">
 <img class="img-fluid" src="{{'images/people/maddy.jpg'|thumbnail('247x247')}}">
