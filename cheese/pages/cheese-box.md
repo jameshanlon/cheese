@@ -1,10 +1,16 @@
 
+# The CHEESE energy-saving box
+
+<div class="alert alert-info"> Please note: as of the 2019/20 winter survey
+season, we are unfortunately no longer offering to loan our CHEESE
+energy-savings boxes. This decision is due to the organisational logicistics
+and cost overheads that we cannot maintain as a small volunteer-led project.
+We will however continue to keep this page available for reference.</div>
+
 <div class="float-right">
   <img src="{{url_for('.assets', filename='images/CHEESE-box.jpg')}}"
        alt="A CHEESE energy-saving box!">
 </div>
-
-# The CHEESE energy-saving box
 
 Your CHEESE survey has made visible how heat (and the energy it embodies) moves
 around your home, and ultimately how it escapes. Heating is only part of the

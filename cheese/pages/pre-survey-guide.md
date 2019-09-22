@@ -155,20 +155,14 @@ Please note:
   Centre for Sustainable Energy (CSE) on how to deal with energy saving
   opportunities.
 
-- Finally, we will optionally lend an energy-monitoring kit (a [CHEESE
-  Box](/cheese-box)) to you for one month, which includes a meter which we will
-  fit for you to your incoming electricity supply. We will arrange a suitable
-  time with you to return and collect the box.
-
 <a class="anchor" name="follow-ups"></a>
 ## Follow ups after the survey
 
 ### One month
 
 We will ask you to feedback on the actions you have taken (or plan to take) as
-a result of the survey, approximately one month after. 
-We would also like to hear any thoughts or comments you
-have on the survey and use of the energy-monitoring [CHEESE Box](/cheese-box).
+a result of the survey, approximately one month after. We would also like to
+hear any thoughts or comments you have on the survey.
 
 For reference, you can take a look at the [one-month feedback form
 here](/one-month-feedback). The form can be filled in by you, or by an Energy

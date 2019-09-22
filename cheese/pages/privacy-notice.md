@@ -49,14 +49,14 @@ We collect the following personal data, as part of our data collection
 activities within the project:
 
   - **Survey organisation**. Prior to the survey, we record the householder's
-    name, street address, email address, landline and mobile telephone numbers, the
-type of building they live in, the number of rooms in their home, whether they
-feel they can heat it comfortably, the benefit they expect from the survey,
-their availability (for the purposes of scheduling a date), whether they
-believe they qualify for a free survey, the fee paid, and any notes made by the
-coordinator to aid with organising the survey. After the survey, the contact
-details of the householder are possibly used to arrange collection of the
-[CHEESE box](/cheese-box) and one-month and one-year feedback.
+    name, street address, email address, landline and mobile telephone numbers,
+    the type of building they live in, the number of rooms in their home, whether
+    they feel they can heat it comfortably, the benefit they expect from the
+    survey, their availability (for the purposes of scheduling a date), whether
+    they believe they qualify for a free survey, the fee paid, and any notes made
+    by the coordinator to aid with organising the survey. After the survey, the
+    contact details of the householder are possibly used to arrange collection of
+    one-month and one-year feedback.
 
   - **Video and photos of the survey**. During the survey we record video (with
     audio of the surveyor's narration and any discussions) and take still
