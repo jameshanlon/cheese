@@ -1,49 +1,55 @@
 
-# Rates of pay for Energy Tracers
+# Rates of pay
 
-Please note these rates are effective from the start of the 2018/19 winter
+Please note these rates are effective from the start of the 2019/20 winter
 survey season.
 
-## Qualified ETs
+## Qualified ETs and assistants
 
-Up to 5 main rooms, expected 2 hours per survey:
+Flat, up to 5 main rooms, expected 2 hours per survey:
 
- - Qualified surveyor: £50.00
+ - Qualified ET: £50.00
+ - Assistant, if not a volunteer: £28.00
 
- - Assistant: £28.00
+House, up to 5 main rooms, expected 2.5 hours per survey:
+
+ - Qualified ET: £58.75
+ - Assistant, if not a volunteer: £21.25
 
 6-8 rooms, expected 2.5 hours per survey:
 
-  - Qualified surveyor: £58.75
+  - Qualified ET: £67.50
+  - Assistant, if not a volunteer: £31.25
 
-  - Assistant: £32.50
+8+ rooms, expected 3.5 hours per survey:
 
-8+ rooms, expected 3 hours survey:
+  - Qualified surveyor: £76.25
+  - Assistant, if not a volunteer: £39.75
 
-  - Qualified surveyor: £67.50
+Call-out payment:
+ 
+ - Qualified ET: £15
+ - Assistant, if not a volunteer: £10
 
-  - Assistant: £37.00
+Please note:
 
-Additional to this we pay a 'Finders fee' of £5.00 for anyone who recruits a new
-**paid** survey which is completed.
-
-Please note that the payment includes the 1-month follow-up and collection of
-the CHEESE Box (if any is issued).
+ - The call-out payment will only be paid if the survey is cancelled, otherwise
+   it is paid as part of the fee.
+ - For qualified ETs, please note that the payment includes conducting the
+   1-month follow-up with the customer.
 
 ## Trainee ETs
 
 The training system is that you will (usually on one day) observe one survey
-with Brian as a pair, then take it in turns to lead a survey under supervision.
+with Brian Harper as a pair, then take it in turns to lead a survey under supervision.
 You will then do at least two more surveys under the supervision of an
-experienced ET. If these are considered to be satisfactory, you will be 'signed
-off' and become eligible for a flat £20.00 training fee for subsequent surveys
-that you **lead**. If you assist and are 'signed off' you will receive £15.00.
+experienced ET, being paid a flat rate of £20. 
+If these are considered to be satisfactory, you will be 'signed
+off' and become eligible for the fees above.
 
-After the tapes of several of these surveys have been reviewed by Brian as
-being satisfactory, you will be considered to be qualified on the practical
-surveys and will be paid the rates as above.
-
-You are, from the start, eligible for the 'Finder's fee'.
+At the end of the season, after the tapes of several of your last surveys have
+been reviewed by Brian as being satisfactory, you will be awarded a CPD
+certificate by Brian’s Energy Tracer CIC.
 
 ## Expenses
 
