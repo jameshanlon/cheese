@@ -38,7 +38,7 @@ Christmas/New Year). Local travel expenses will be paid. There may be an
 opportunity to progress to being a paid Energy Tracer™ surveyor with additional
 free training. Our work will continue the following cold season (November 2020
 - 30 April 2021). Due to the availability of householders and the nature of our
-  surveys it may involve, at times, working during the evenings and at
+surveys it may involve, at times, working during the evenings and at
 weekends. We prefer you to commit to an average of at least two surveys per
 week, over the survey season. Depending on the size of the house, surveys take
 from 2.5 to 4 hours, depending on the size of the home, and surveyors always

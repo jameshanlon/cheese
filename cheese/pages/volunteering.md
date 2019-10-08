@@ -32,7 +32,3 @@ If you would like to become involved with CHEESE as a volunteer, or just want
 to find out more then please get in touch by emailing
 [info@cheeseproject.co.uk](mailto:info@cheeseproject.co.uk) to introduce
 yourself.
-
-<hr>
-
-
