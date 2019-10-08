@@ -6,21 +6,25 @@ volunteers for its continued organisation and management. If you are interested
 in becoming involved with the project, but not necessarily as an Energy Tracer,
 there are many areas where we would value contributions:
 
-- community outreach/engagement and promotion of the project;
+- Be an assistant surveyor, working and learning alongside our experienced Energy Tracers ([more details](/news/2019-08-22-volunteer-assistant-surveyor-job-vacancy)).
 
-- publicising its surveys, and opportunities for Energy Tracers;
+- Community outreach/engagement and promotion of the project;
 
-- coordination and organisation for surveys;
+- Publicising its surveys, and opportunities for Energy Tracers;
 
-- social media;
+- Coordination and organisation for surveys;
 
-- website development, graphic design;
+- Social media;
 
-- data analysis;
+- Website development, graphic design;
 
-- by collecting thermal images of buildings to expand our [Heatview
+- Data analysis;
+
+<!--
+- By collecting thermal images of buildings to expand our [Heatview
   map](http://www.heatview.co.uk) (this involves operating a CHEESE thermal
   imaging camera, for which there will be a short training session provided).
+-->
 
 We are also open to suggestions of ways to improve the project!
 
@@ -28,3 +32,7 @@ If you would like to become involved with CHEESE as a volunteer, or just want
 to find out more then please get in touch by emailing
 [info@cheeseproject.co.uk](mailto:info@cheeseproject.co.uk) to introduce
 yourself.
+
+<hr>
+
+
