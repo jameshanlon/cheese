@@ -36,6 +36,8 @@ development, and more content will be added in due course!)
 
 - [Super Homes](http://www.superhomes.org.uk/) network on low-energy retrofit.
 
+- [Mitchell & Dickinson Retrofit News (issue 1, PDF)]({{url_for('.assets', filename='files/Mitchell-and-Dickinson-Retrofit-News-issue-1.pdf')}}).
+
 ## Technical information
 
 - Moisture and damp:

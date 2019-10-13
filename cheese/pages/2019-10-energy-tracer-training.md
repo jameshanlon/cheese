@@ -1,6 +1,7 @@
 article:
 date: 2019-10-05
 title: Fourth Energy Tracer training weekend
+author: Jamie Hanlon
 gallery: 2019-10-training
 image: images/2019-10-training/Jeremy-teaching.jpg
 
