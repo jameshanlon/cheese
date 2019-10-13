@@ -15,3 +15,8 @@ def url_for_asset(filename):
 @bp.app_template_filter('thumbnail')
 def thumbnail(filename, size):
     return get_thumbnail(filename, size)
+
+@bp.app_template_filter('remove_tag_block')
+def remove_tag_block(text, tag):
+    print text[:text.find("<"+tag)] + text[text.find("</"+tag+">") + len(tag)+3:]
+    return text[:text.find("<"+tag)] + text[text.find("</"+tag+">") + len(tag)+3:]

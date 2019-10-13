@@ -137,9 +137,10 @@
       {% endif %}
       {{article.date_str}}
     </p>
-    {% set body = article.html|safe|striptags %}
+    <!--Remove the figure block to prevent any caption text appearing in the summary-->
+    {% set body = article.html|remove_tag_block('figure')|safe|striptags %}
     {% if body|length > 500 %}
-      <p>{{body|truncate(500)|striptags|safe}}
+      <p>{{body|truncate(500)}}
         <a href="/news/{{article.path}}">read more &#187;</a></p>
     {% else %}
       <p>{{article.html|striptags|safe}}</p>

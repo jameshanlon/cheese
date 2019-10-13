@@ -4,9 +4,10 @@ title: Time to think about winter...
 image: images/2019-10-time-to-think-about-winter/winter-houses.jpg
 author: Nikki Jones
 
-<div class="float-right">
+<figure class="figure-img float-right">
   <img src="{{'images/2019-10-time-to-think-about-winter/winter-houses.jpg'|thumbnail('250x250')}}">
-</div>
+  <figcaption class="figure-caption">Image from <a href="https://commons.wikimedia.org/wiki/File:Houses_by_the_Gipping_in_winter_-_geograph.org.uk_-_1623997.jpg">Wikipedia</a></figcaption>
+</figure>
 
 A third of our heating in the UK is wasted – we heat buildings and rooms we
 don’t use, and our buildings leak. One degree down is estimated to save you 8%
