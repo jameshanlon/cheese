@@ -117,18 +117,22 @@ class ApplySurveyForm(FlaskForm):
                                          validators=[Required(),
                                                      NumberRange(min=1, max=100)])
     can_heat_comfortably = \
-        fields.BooleanField('Can you heat your home to a comfortable ' \
+        fields.BooleanField('(tick for yes) Can you heat your home to a comfortable ' \
                             +'temperature in the winter?',
                             validators=[Optional()])
     expected_benefit = fields.TextAreaField('How do you think you will ' \
                                             + 'benefit from a survey?',
                                             validators=[Optional()])
-    referral = fields.StringField('How did you hear about CHEESE?',
+    referral = fields.StringField('How did you hear about C.H.E.E.S.E. thermal-imaging surveys?',
                                   validators=[Optional(),
                                               Length(max=250)])
     free_survey_consideration = \
-        fields.BooleanField('I live in a low-income household and ' \
-                             +'would like to be considered for a free survey.',
+        fields.BooleanField('(tick for yes) I would like to be considered for a free survey. ' \
+                              +' We are working with partners to make free surveys' \
+                              +' available to people in poor housing conditions ' \
+                              +' and / or fuel poverty. Please tick the box if ' \
+                              +' you think this applies to your situation. You can talk this ' \
+                              +' through with our survey manager when they contact you.',
                             validators=[Optional()])
     agree_to_requirements = \
         fields.BooleanField('I <strong>agree</strong> to make the  ' \
