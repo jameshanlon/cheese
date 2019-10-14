@@ -56,9 +56,10 @@ do not plan to complete the Energy Tracer training.
 
 ## Scheduling of surveys
 
-The surveying season will start in November and surveys are usually scheduled
-at the weekends, but sometimes on weekday evenings, in sets of 2 or 3 in a day.
-They will be in in the greater Bristol area.
+The surveying season will start in November and surveys can be scheduled during
+weekdays and weekends between 9am and 9pm according to the availability of the
+customer matching the availability of the Energy Tracers. We can book in 2 or 3
+in a day.
 
 ## Get in touch
 
