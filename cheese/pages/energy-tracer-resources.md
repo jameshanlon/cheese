@@ -48,6 +48,7 @@ Welcome to the resources page for Energy Tracers.
 
 ## Other
 
+- [Contact, medical and equal oppoprtunities form]({{url_for('.assets', filename='files/CHEESE-contact-medical-and-equal-opps-form-2019-20.pdf')}})
 - [Privacy notice for staff and members](/privacy-notice-staff-and-members)
 - [Equal opportunities policy](/equal-opportunities)
 - [Safeguarding policy (PDF)]({{url_for('.assets', filename='files/CHEESE-Safeguarding-Adults-Policy-29Apr19.pdf')}})
