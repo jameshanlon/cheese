@@ -16,6 +16,8 @@ from cheese.models import db, \
                           SurveyLeadStatuses, \
                           Surveys, \
                           Results, \
+			  PreSurveyDetails, \
+			  PostSurveyDetails, \
                           MonthFeedback, \
                           YearFeedback, \
                           ThermalImage, \
@@ -32,7 +34,8 @@ from cheese.forms import ApplySurveyForm, \
                          MembershipForm, \
                          create_upload_thermal_image_form, \
                          create_apply_survey_form, \
-                         create_submit_results_form, \
+			 create_pre_survey_details_form, \
+			 create_post_survey_details_form, \
                          validate_date
 from cheese.settings import NUM_PHASES
 from cheese.thumbnail import get_thumbnail
@@ -78,7 +81,12 @@ def init_admin(admin):
     admin.add_view(SurveysView(Surveys, db.session,
                                category='Records'))
     admin.add_view(ResultsView(Results, db.session,
+			       name='Results (phase 1-4 only)',
                                category='Records'))
+    admin.add_view(PreSurveyDetailsView(PreSurveyDetails, db.session,
+					category='Records'))
+    admin.add_view(PostSurveyDetailsView(PostSurveyDetails, db.session,
+					 category='Records'))
     admin.add_view(MonthFeedbackView(MonthFeedback, db.session,
                                      name='1 month feedback',
                                      category='Records'))
@@ -431,6 +439,8 @@ class CheeseAdminIndexView(flask_admin.AdminIndexView):
                 survey=survey,
                 surveys_table=inspect(Surveys),
                 results_table=inspect(Results),
+		pre_survey_table=inspect(PreSurveyDetails),
+		post_survey_table=inspect(PostSurveyDetails),
                 month_table=inspect(MonthFeedback),
                 year_table=inspect(YearFeedback),
                 edit_permission=has_edit_permission())
@@ -462,9 +472,6 @@ class SurveysView(GeneralModelView):
         'lead_status',
         'survey_request_date',
         'building_type',
-        'num_main_rooms',
-        'can_heat_comfortably',
-        'expected_benefit',
         'signed_up_via',
         'referral',
         'availability',
@@ -485,12 +492,9 @@ class SurveysView(GeneralModelView):
     column_filters = columns_list
     column_exclude_list = list(all_cols - set(columns_list))
     column_formatters = {
-    'expected_benefit': view_string_html_formatter,
-    'availability':     view_string_html_formatter,
-    'notes':            view_string_html_formatter, }
+	'notes': view_string_html_formatter, }
     form_args = {
         'referral':             { 'label': 'Referral from?' },
-        'num_main_rooms':       { 'label': 'Number of main rooms' },
         'survey_request_date':  { 'validators': [validate_date], },
         'fee_paid_date':        { 'validators': [validate_date], },
         'survey_date':          { 'validators': [validate_date], }, }
@@ -556,6 +560,92 @@ class ResultsView(GeneralModelView):
         'annual_gas_end_date':    { 'validators': [validate_date], },
         'annual_elec_start_date': { 'validators': [validate_date], },
         'annual_elec_end_date':   { 'validators': [validate_date], }, }
+
+class PreSurveyDetailsView(GeneralModelView):
+    all_cols = [
+	'date',
+	'householders_name',
+	'address_line',
+	'postcode',
+	'special_considerations',
+	'num_main_rooms',
+	'can_heat_comfortably',
+	'expected_benefit',
+	'year_of_construction',
+	'building_type',
+	'wall_construction_type',
+	'occupation_type',
+	'primary_heating_type',
+	'secondary_heating_type',
+	'water_heating_type',
+	'cooking_type',
+	'depth_loft_insulation',
+	'number_open_fireplaces',
+	'double_glazing',
+	'num_occupants',
+	'annual_gas_kwh',
+	'annual_gas_estimated',
+	'annual_gas_start_date',
+	'annual_gas_end_date',
+	'annual_elec_kwh',
+	'annual_elec_estimated',
+	'annual_elec_start_date',
+	'annual_elec_end_date',
+	'annual_solid_spend',
+	'renewable_contribution_kwh',
+	'survey',
+	'notes', ]
+    columns_list = [
+	'householders_name',
+	'address_line', ]
+    column_filters = all_cols
+    column_exclude_list = list(set(all_cols) - set(columns_list))
+    column_formatters = {
+	'notes': view_string_html_formatter, }
+    form_widget_args = {
+	'notes': { 'rows': 8, 'cols': 20 }, }
+    form_args = {
+	'annual_gas_start_date':  { 'validators': [validate_date], },
+	'annual_gas_end_date':    { 'validators': [validate_date], },
+	'annual_elec_start_date': { 'validators': [validate_date], },
+	'annual_elec_end_date':   { 'validators': [validate_date], }, }
+
+
+class PostSurveyDetailsView(GeneralModelView):
+    all_cols = [
+	'date',
+	'lead_surveyor',
+	'assistant_surveyor',
+	'survey_date',
+	'external_temperature',
+	'faults_identified',
+	'recommendations',
+	'notes',
+	'survey', ]
+    columns_list = [
+	'lead_surveyor',
+	'assistant_surveyor',
+	'survey_date',
+	'survey', ]
+    column_filters = all_cols
+    column_exclude_list = list(set(all_cols) - set(columns_list))
+    column_formatters = {
+	'faults_identified': view_string_html_formatter,
+	'recommendations':   view_string_html_formatter,
+	'notes':             view_string_html_formatter, }
+    form_widget_args = {
+	'faults_identified': { 'rows': 8, 'cols': 20 },
+	'recommendations':   { 'rows': 8, 'cols': 20 },
+	'notes':             { 'rows': 8, 'cols': 20 }, }
+    form_args = {
+	'survey_date':            { 'validators': [validate_date], },
+	'annual_gas_start_date':  { 'validators': [validate_date], },
+	'annual_gas_end_date':    { 'validators': [validate_date], },
+	'annual_elec_start_date': { 'validators': [validate_date], },
+	'annual_elec_end_date':   { 'validators': [validate_date], }, }
+    form_args = {
+	'survey_date':            { 'validators': [validate_date], }, }
+
 
 class MonthFeedbackView(GeneralModelView):
     all_cols = [
@@ -712,30 +802,31 @@ class ThermalImageView(GeneralModelView):
 # Restricted pages.
 #===-----------------------------------------------------------------------===#
 
-@bp.route('/submit-results', methods=['GET', 'POST'])
-@login_required
-def submit_results():
-    form = create_submit_results_form(db.session, request.form)
+@bp.route('/submit-post-survey-details', methods=['GET', 'POST'])
+#@login_required
+def submit_post_survey_details():
+    form = create_post_survey_details_form(db.session, request.form)
+    print 'form = '+str(form)
     if request.method=='POST':
         if helpers.validate_form_on_submit(form):
-            results = Results()
-            form.populate_obj(results)
-            db.session.add(results)
+	    details = PostSurveyDetails()
+	    form.populate_obj(details)
+	    db.session.add(details)
             db.session.commit()
             # Send watchers email.
-            subject = '[CHEESE] New survey result'
-            message = 'For '+results.householders_name+', '+results.address_line \
-                      + ' at '+str(datetime.datetime.today())+': ' \
-                      + current_app.config['URL_BASE']+str(url_for('results.details_view', id=results.id))
+	    database_url = current_app.config['URL_BASE']+str(url_for('postsurveydetails.details_view', id=details.id))
+	    subject = '[CHEESE] New post-survey details'
+	    message = 'For '+str(details.survey)+'\n' \
+		      +str(datetime.datetime.today())+': '+database_url
             mail.send(Message(subject=subject,
                               body=message,
                               recipients=current_app.config['WATCHERS']))
             # Flash success message.
-            flash('Survey result submitted successfully.')
-            return redirect(url_for('cheese.submit_results'))
+	    flash('Survey details submitted successfully.')
+	    return redirect(url_for('cheese.submit_post_survey_details'))
         else:
             flash('There were problems with your form.', 'error')
-    return render_template('submit-results.html', form=form)
+    return render_template('submit-post-survey-details.html', form=form)
 
 
 def random_string(length):
@@ -893,6 +984,29 @@ def apply_for_a_survey():
             flash('There were problems with your form.', 'error')
     return render_template('apply-for-a-survey.html', form=form, notice=notice)
 
+
+@bp.route('/submit-pre-survey-details', methods=['GET', 'POST'])
+def submit_pre_survey_details():
+    form = create_pre_survey_details_form(db.session, request.form)
+    if request.method=='POST':
+	if helpers.validate_form_on_submit(form):
+	    results = PreSurveyDetails()
+	    form.populate_obj(results)
+	    db.session.add(results)
+	    db.session.commit()
+	    # Send watchers email.
+	    database_url = current_app.config['URL_BASE']+str(url_for('presurveydetails.details_view', id=results.id))
+	    subject = '[CHEESE] New pre-survey details'
+	    message = 'For '+str(results.survey)+'\n'+str(datetime.datetime.today())+': '+database_url
+	    mail.send(Message(subject=subject,
+			      body=message,
+			      recipients=current_app.config['WATCHERS']))
+	    # Redirect to success page..
+	    page = pages.get('pre-survey-details-successful')
+	    return render_template('page.html', page=page)
+	else:
+	    flash('There were problems with your form.', 'error')
+    return render_template('submit-pre-survey-details.html', form=form)
 
 
 @bp.route('/one-month-feedback', methods=['GET', 'POST'])

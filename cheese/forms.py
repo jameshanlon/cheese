@@ -82,50 +82,39 @@ class OneToFiveWidget(widgets.Input):
 
 class ApplySurveyForm(FlaskForm):
     recaptcha = RecaptchaField()
-    name = fields.StringField('Name*',
-                              validators=[Required(),
-                                          Length(max=100)])
-    address_line = fields.StringField('Address line*',
-                                      validators=[Required(),
-                                                  Length(max=100)])
-    postcode = fields.StringField('Post code*',
-                                  validators=[Required(),
-                                              Length(max=10)])
-    email = EmailField('Email address*',
-                       validators=[Required(),
-                                   validators.Email(),
-                                   Length(max=100)])
-    telephone = fields.StringField('Telephone*',
-                                   validators=[Required(),
-                                               Length(max=20)])
-    mobile = fields.StringField('Mobile',
-                                validators=[Optional(),
-                                            Length(max=20)])
-    availability = fields.TextAreaField('What is your availability to schedule the survey?*',
-                                        description='Please see the <a href="/home-surveys">survey information</a> for the expected duration of your survey.',
-                                        validators=[Required()])
-    special_considerations = fields.TextAreaField('Do you have any special requirements that we need to be aware of during the survey?',
-                                                  description='<ul class="text-muted">' \
-                                                              +'<li>Do you have any illnesses or disabilities?</li>' \
-                                                              +'<li>Will you be able to accompany the surveyor around your home for two to three hours during the survey?</li>' \
-                                                              +'<li>Do you have any pets that will be present in your home during the survey?</li>' \
-                                                              +'</ul>',
-                                                  validators=[Required()])
-    num_main_rooms = fields.IntegerField('Number of main rooms ' \
-                                         +'(please see <a href="/home-surveys#pricing">pricing details</a>' \
-                                         +', this will be confirmed during the survey)*',
-                                         validators=[Required(),
-                                                     NumberRange(min=1, max=100)])
-    can_heat_comfortably = \
-        fields.BooleanField('(tick for yes) Can you heat your home to a comfortable ' \
-                            +'temperature in the winter?',
-                            validators=[Optional()])
-    expected_benefit = fields.TextAreaField('How do you think you will ' \
-                                            + 'benefit from a survey?',
-                                            validators=[Optional()])
-    referral = fields.StringField('How did you hear about C.H.E.E.S.E. thermal-imaging surveys?',
-                                  validators=[Optional(),
-                                              Length(max=250)])
+    name = \
+	fields.StringField('Name*',
+			   validators=[Required(),
+				       Length(max=100)])
+    address_line = \
+	fields.StringField('Address line*',
+			    validators=[Required(),
+					Length(max=100)])
+    postcode = \
+	fields.StringField('Post code*',
+			   validators=[Required(),
+				       Length(max=10)])
+    email = \
+	EmailField('Email address*',
+		   validators=[Required(),
+			       validators.Email(),
+			       Length(max=100)])
+    telephone = \
+	fields.StringField('Main contact telephone number*',
+			   validators=[Required(),
+				       Length(max=20)])
+    mobile = \
+	fields.StringField('Secondary contact telephone number',
+			   validators=[Optional(),
+				       Length(max=20)])
+    availability = \
+	fields.TextAreaField('What is your availability to schedule the survey?*',
+			     description='Please see the <a href="/home-surveys">survey information</a> for the expected duration of your survey.',
+			     validators=[Required()])
+    referral = \
+	fields.StringField('How did you hear about C.H.E.E.S.E. thermal-imaging surveys?',
+			   validators=[Optional(),
+				       Length(max=250)])
     free_survey_consideration = \
         fields.BooleanField('(tick for yes) I would like to be considered for a free survey. ' \
                               +' We are working with partners to make free surveys' \
@@ -152,110 +141,116 @@ def create_apply_survey_form(db_session, formdata):
     """ Dynamicaly create a form to apply for a survey. """
     def ward_choices():
       return db_session.query(Wards).all()
-    def building_type_choices():
-      return db_session.query(BuildingTypes).all()
     ward = QuerySelectField('Ward*',
                             validators=[Required()],
                             query_factory=ward_choices,
                             allow_blank=True,
                             blank_text=u'Please select...',)
-    building_type = QuerySelectField('Building type',
-                                     validators=[Optional()],
-                                     query_factory=building_type_choices,
-                                     allow_blank=True,
-                                     blank_text=u'Please select...',)
     setattr(ApplySurveyForm, 'ward', ward)
-    setattr(ApplySurveyForm, 'building_type', building_type)
     return ApplySurveyForm(formdata)
 
-class SubmitResultsForm(FlaskForm):
-    lead_surveyor = fields.StringField('Lead surveyor*',
-                                       validators=[Required(),
-                                       Length(max=50)])
-    assistant_surveyor = fields.StringField('Assistant surveyor*',
-                                            validators=[Required(),
-                                            Length(max=50)])
-    householders_name = fields.StringField('Householder\'s name',
-                                           validators=[Optional(),
+
+class PreSurveyDetailsForm(FlaskForm):
+    recaptcha = RecaptchaField()
+    householders_name = fields.StringField('Your name*',
+					   validators=[Required(),
                                                        Length(max=50)])
-    address_line = fields.StringField('Address line',
-                                      validators=[Length(max=100)])
-    survey_date = fields.DateField('Survey date (dd/mm/yyyy)*',
-                                   format='%d/%m/%Y',
-                                   validators=[Required(),
-                                               validate_date],
-                                   widget=DatePickerWidget())
-    external_temperature = fields.DecimalField('External temperature (C)',
-                                               validators=[Optional()])
-    camera_kit_number = fields.TextField('Camera kit number',
-                                         validators=[Optional(),
-                                                     Length(max=25)])
-    loaned_cheese_box = fields.BooleanField('CHEESE box loaned?',
-                                            validators=[Optional()])
-    cheese_box_number = fields.TextField('CHEESE box number',
-                                         validators=[Optional(),
-                                                     Length(max=25)])
-    year_of_construction = fields.IntegerField('Year of construction',
-                                               validators=[Optional(),
-                                                           NumberRange(min=1000,
-                                                                       max=datetime.datetime.now().year)])
-    depth_loft_insulation = fields.TextField('Depth of loft insulation (mm)',
-                                             validators=[Optional(),
-                                                         Length(max=150)])
-    number_open_fireplaces = fields.TextField('Number of open fireplaces',
-                                              validators=[Optional(),
-                                                          Length(max=150)])
-    double_glazing = fields.TextField('Amount of double glazing (%)',
-                                      validators=[Optional(),
-                                                  Length(max=150)])
-    num_occupants = fields.IntegerField('Number of occupants',
-                                        validators=[Optional(),
-                                                    NumberRange(min=1, max=100)])
-    annual_gas_kwh = fields.DecimalField('Annual consumption (kWh',
-                                         validators=[Optional()])
-    annual_gas_estimated = fields.BooleanField('(tick for yes) Is the value based on estimated use?',
-                                               validators=[Optional()])
-    annual_gas_start_date = fields.DateField('Start date (dd/mm/yyyy)',
-                                             format='%d/%m/%Y',
-                                             validators=[Optional(),
-                                             validate_date],
-                                             widget=DatePickerWidget())
-    annual_gas_end_date = fields.DateField('End date (dd/mm/yyyy)',
-                                           format='%d/%m/%Y',
-                                           validators=[Optional(),
-                                           validate_date],
-                                           widget=DatePickerWidget())
-    annual_elec_kwh = fields.DecimalField('Annual consumption (kWh',
-                                           validators=[Optional()])
-    annual_elec_estimated = fields.BooleanField('(tick for yes) Is the value based on estimated use?',
-                                                validators=[Optional()])
-    annual_elec_start_date = fields.DateField('Start date (dd/mm/yyyy)',
-                                              format='%d/%m/%Y',
-                                              validators=[Optional(),
-                                              validate_date],
-                                              widget=DatePickerWidget())
-    annual_elec_end_date = fields.DateField('End date (dd/mm/yyyy)',
-                                            format='%d/%m/%Y',
-                                            validators=[Optional(),
-                                            validate_date],
-                                            widget=DatePickerWidget())
-    annual_solid_spend = fields.DecimalField('Annual spend on solid fuels (&pound;)',
-                                             validators=[Optional()])
-    renewable_contribution_kwh = fields.DecimalField('Annual contribution from renewable generation (kWh)',
-                                                     validators=[Optional()])
-    faults_identified = fields.TextAreaField('Faults identified*',
-                                        validators=[Required()])
-    recommendations = fields.TextAreaField('Recommendations*',
-                                      validators=[Required()])
-    notes = fields.TextAreaField('Notes',
+    address_line = fields.StringField('Address line*',
+				      validators=[Required(),
+						  Length(max=100)])
+    postcode = fields.StringField('Post code*',
+				  validators=[Required(),
+					      Length(max=10)])
+    special_considerations = \
+	fields.TextAreaField('Do you have any special requirements that we need to be aware of during the survey?',
+			     description='<ul class="text-muted">' \
+					 +'<li>Do you have any illnesses or disabilities?</li>' \
+					 +'<li>Will you be able to accompany the surveyor around your home for two to three hours during the survey?</li>' \
+					 +'<li>Do you have any pets that will be present in your home during the survey?</li>' \
+					 +'</ul>',
+			     validators=[Optional()])
+    num_main_rooms = \
+	fields.IntegerField('Number of main rooms* ' \
+			    +'(please see <a href="/home-surveys#pricing">pricing details</a>' \
+			    +', this will be confirmed during the survey)*',
+			    validators=[Required(),
+					NumberRange(min=1, max=100)])
+    can_heat_comfortably = \
+	fields.BooleanField('(tick for yes) Can you heat your home to a comfortable ' \
+			    +'temperature in the winter?',
+			    validators=[Optional()])
+    expected_benefit = \
+	fields.TextAreaField('How do you think you will ' \
+			     + 'benefit from a survey?',
+			     validators=[Optional()])
+    year_of_construction = \
+	fields.IntegerField('Year of construction',
+			    validators=[Optional(),
+					NumberRange(min=1000,
+						    max=datetime.datetime.now().year)])
+    depth_loft_insulation = \
+	fields.TextField('Depth of loft insulation (mm)',
+			 validators=[Optional(),
+				     Length(max=150)])
+    number_open_fireplaces = \
+	fields.TextField('Number of open fireplaces',
+			 validators=[Optional(),
+				     Length(max=150)])
+    double_glazing = \
+	fields.TextField('Amount of double glazing (%)',
+			 validators=[Optional(),
+				     Length(max=150)])
+    num_occupants = \
+	fields.IntegerField('Number of occupants',
+			    validators=[Optional(),
+					NumberRange(min=1, max=100)])
+    annual_gas_kwh = \
+	fields.DecimalField('Annual consumption (kWh',
+			    validators=[Optional()])
+    annual_gas_estimated = \
+	fields.BooleanField('(tick for yes) Is the value based on estimated use?',
+			    validators=[Optional()])
+    annual_gas_start_date = \
+	fields.DateField('Start date (dd/mm/yyyy)',
+			 format='%d/%m/%Y',
+			 validators=[Optional(),
+			 validate_date],
+			 widget=DatePickerWidget())
+    annual_gas_end_date = \
+	fields.DateField('End date (dd/mm/yyyy)',
+			 format='%d/%m/%Y',
+			 validators=[Optional(),
+			 validate_date],
+			 widget=DatePickerWidget())
+    annual_elec_kwh = \
+	fields.DecimalField('Annual consumption (kWh',
+			    validators=[Optional()])
+    annual_elec_estimated = \
+	fields.BooleanField('(tick for yes) Is the value based on estimated use?',
+			    validators=[Optional()])
+    annual_elec_start_date = \
+	fields.DateField('Start date (dd/mm/yyyy)',
+			 format='%d/%m/%Y',
+			 validators=[Optional(),
+			 validate_date],
+			 widget=DatePickerWidget())
+    annual_elec_end_date = \
+	fields.DateField('End date (dd/mm/yyyy)',
+			 format='%d/%m/%Y',
+			 validators=[Optional(),
+			 validate_date],
+			 widget=DatePickerWidget())
+    annual_solid_spend = \
+	fields.DecimalField('Annual spend on solid fuels (&pound;)',
+			    validators=[Optional()])
+    renewable_contribution_kwh = \
+	fields.DecimalField('Annual contribution from renewable generation (kWh)',
                             validators=[Optional()])
 
 
-def create_submit_results_form(db_session, formdata):
+def create_pre_survey_details_form(db_session, formdata):
     """ Dynamicaly create a form to submit results. """
     # Dynamic fields.
-    def survey_choices():
-      return db_session.query(Surveys).all()
     def building_type_choices():
       return db_session.query(BuildingTypes).all()
     def wall_construction_type_choices():
@@ -268,55 +263,105 @@ def create_submit_results_form(db_session, formdata):
       return db_session.query(WaterHeatingTypes).all()
     def cooking_type_choices():
       return db_session.query(CookingTypes).all()
-    survey = QuerySelectField('Survey*',
-                               validators=[Required()],
-                               query_factory=survey_choices,
-                               allow_blank=True,
-                               blank_text=u'Please select...')
-    building_type = QuerySelectField('Building type',
-                                     validators=[Optional()],
-                                     query_factory=building_type_choices,
-                                     allow_blank=True,
-                                     blank_text=u'Please select...')
-    wall_construction_type = QuerySelectField('Wall construction',
-                                              validators=[Optional()],
-                                              query_factory=wall_construction_type_choices,
-                                              allow_blank=True,
-                                              blank_text=u'Please select...',)
-    occupation_type = QuerySelectField('Occupation type',
-                                       validators=[Optional()],
-                                       query_factory=occupation_type_choices,
-                                       allow_blank=True,
-                                       blank_text=u'Please select...',)
-    primary_heating_type = QuerySelectField('Primary heating type',
-                                            validators=[Optional()],
-                                            query_factory=space_heating_type_choices,
-                                            allow_blank=True,
-                                            blank_text=u'Please select...',)
-    secondary_heating_type = QuerySelectField('Secondary heating type',
-                                              validators=[Optional()],
-                                              query_factory=space_heating_type_choices,
-                                              allow_blank=True,
-                                              blank_text=u'Please select...',)
-    water_heating_type = QuerySelectField('Water heating type',
-                                          validators=[Optional()],
-                                          query_factory=water_heating_type_choices,
-                                          allow_blank=True,
-                                          blank_text=u'Please select...',)
-    cooking_type = QuerySelectField('Cooking type',
-                                    validators=[Optional()],
-                                    query_factory=cooking_type_choices,
-                                    allow_blank=True,
-                                    blank_text=u'Please select...',)
-    setattr(SubmitResultsForm, 'survey',                 survey)
-    setattr(SubmitResultsForm, 'building_type',          building_type)
-    setattr(SubmitResultsForm, 'wall_construction_type', wall_construction_type)
-    setattr(SubmitResultsForm, 'occupation_type',        occupation_type)
-    setattr(SubmitResultsForm, 'primary_heating_type',   primary_heating_type)
-    setattr(SubmitResultsForm, 'secondary_heating_type', secondary_heating_type)
-    setattr(SubmitResultsForm, 'water_heating_type',     water_heating_type)
-    setattr(SubmitResultsForm, 'cooking_type',           cooking_type)
-    return SubmitResultsForm(formdata)
+    building_type = \
+	QuerySelectField('Building type',
+			 validators=[Optional()],
+			 query_factory=building_type_choices,
+			 allow_blank=True,
+			 blank_text=u'Please select...')
+    wall_construction_type = \
+	QuerySelectField('Wall construction',
+			 validators=[Optional()],
+			 query_factory=wall_construction_type_choices,
+			 allow_blank=True,
+			 blank_text=u'Please select...',)
+    occupation_type = \
+	QuerySelectField('Occupation type',
+			 validators=[Optional()],
+			 query_factory=occupation_type_choices,
+			 allow_blank=True,
+			 blank_text=u'Please select...',)
+    primary_heating_type = \
+	QuerySelectField('Primary heating type',
+			 validators=[Optional()],
+			 query_factory=space_heating_type_choices,
+			 allow_blank=True,
+			 blank_text=u'Please select...',)
+    secondary_heating_type = \
+	QuerySelectField('Secondary heating type',
+			 validators=[Optional()],
+			 query_factory=space_heating_type_choices,
+			 allow_blank=True,
+			 blank_text=u'Please select...',)
+    water_heating_type = \
+	QuerySelectField('Water heating type',
+			 validators=[Optional()],
+			 query_factory=water_heating_type_choices,
+			 allow_blank=True,
+			 blank_text=u'Please select...',)
+    cooking_type = \
+	QuerySelectField('Cooking type',
+			 validators=[Optional()],
+			 query_factory=cooking_type_choices,
+			 allow_blank=True,
+			 blank_text=u'Please select...',)
+    setattr(PreSurveyDetailsForm, 'building_type',          building_type)
+    setattr(PreSurveyDetailsForm, 'wall_construction_type', wall_construction_type)
+    setattr(PreSurveyDetailsForm, 'occupation_type',        occupation_type)
+    setattr(PreSurveyDetailsForm, 'primary_heating_type',   primary_heating_type)
+    setattr(PreSurveyDetailsForm, 'secondary_heating_type', secondary_heating_type)
+    setattr(PreSurveyDetailsForm, 'water_heating_type',     water_heating_type)
+    setattr(PreSurveyDetailsForm, 'cooking_type',           cooking_type)
+    return PreSurveyDetailsForm(formdata)
+
+
+class PostSurveyDetailsForm(FlaskForm):
+    recaptcha = RecaptchaField()
+    lead_surveyor = \
+	fields.StringField('Lead surveyor*',
+			   validators=[Required(),
+				       Length(max=50)])
+    assistant_surveyor = \
+	fields.StringField('Assistant surveyor*',
+			   validators=[Required(),
+			   Length(max=50)])
+    survey_date = \
+	fields.DateField('Survey date (dd/mm/yyyy)*',
+			 format='%d/%m/%Y',
+			 validators=[Required(),
+				     validate_date],
+			 widget=DatePickerWidget())
+    external_temperature = \
+	fields.DecimalField('External temperature (C)',
+			    validators=[Optional()])
+    camera_kit_number = \
+	fields.TextField('Camera kit number*',
+			 validators=[Required(),
+				     Length(max=25)])
+    faults_identified = \
+	fields.TextAreaField('Faults identified',
+			     validators=[Optional()])
+    recommendations = \
+	fields.TextAreaField('Recommendations',
+			     validators=[Optional()])
+    notes = \
+	  fields.TextAreaField('Notes',
+			       validators=[Optional()])
+
+
+def create_post_survey_details_form(db_session, formdata):
+    """ Dynamicaly create a form to submit results. """
+    # Dynamic fields.
+    def survey_choices():
+      return db_session.query(Surveys).all()
+    survey = \
+	QuerySelectField('Survey*',
+			 validators=[Required()],
+			 query_factory=survey_choices,
+			 allow_blank=True,
+			 blank_text=u'Please select...')
+    setattr(PostSurveyDetailsForm, 'survey', survey)
+    return PostSurveyDetailsForm(formdata)
 
 
 class UploadThermalImageForm(FlaskForm):

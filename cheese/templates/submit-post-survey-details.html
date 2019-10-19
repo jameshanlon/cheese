@@ -1,0 +1,29 @@
+{% import 'macros.html' as macros %}
+{% extends "base.html" %}
+{% block content %}
+
+<h1>Submit post-survey information</h1>
+
+<div id="submit-results-form" style="padding-top:1.2em">
+  <form method="POST" action="" enctype="multipart/form-data">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+    {{ macros.form_section('Survey details') }}
+    {{ macros.render_form_field(form.survey) }}
+    {{ macros.render_form_field(form.lead_surveyor) }}
+    {{ macros.render_form_field(form.assistant_surveyor) }}
+    {{ macros.render_form_field(form.survey_date) }}
+    {{ macros.render_form_field(form.external_temperature) }}
+    {{ macros.render_form_field(form.camera_kit_number) }}
+    {{ macros.end_form_section() }}
+    {{ macros.form_section('Results and recommendations') }}
+    {{ macros.render_form_field(form.faults_identified) }}
+    {{ macros.render_form_field(form.recommendations) }}
+    {{ macros.render_form_field(form.notes) }}
+    {{ macros.end_form_section() }}
+    <label></label>
+    <p>{{ form.recaptcha }}</p>
+    <button class="btn" type="submit">Submit</button>
+  </form>
+</div>
+
+{% endblock %}

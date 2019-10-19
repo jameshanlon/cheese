@@ -180,9 +180,9 @@ class Surveys(db.Model):
     photo_release             = db.Column(db.Boolean, default=False)
     building_type_id          = db.Column(db.Integer, db.ForeignKey('building_types.id'))
     building_type             = db.relationship('BuildingTypes')
-    num_main_rooms            = db.Column(db.Integer)
-    can_heat_comfortably      = db.Column(db.Boolean, default=False)
-    expected_benefit          = db.Column(db.Text)
+    num_main_rooms            = db.Column(db.Integer) # Deprecated
+    can_heat_comfortably      = db.Column(db.Boolean, default=False) # Deprecated
+    expected_benefit          = db.Column(db.Text) # Deprecated
     signed_up_via             = db.Column(db.String(250))
     referral                  = db.Column(db.String(250))
     availability              = db.Column(db.Text)
@@ -194,9 +194,11 @@ class Surveys(db.Model):
     survey_complete           = db.Column(db.Boolean, default=False)
     followed_up               = db.Column(db.Boolean, default=False)
     box_collected             = db.Column(db.Boolean, default=False)
-    special_considerations    = db.Column(db.Text)
+    special_considerations    = db.Column(db.Text) # Deprecated
     notes                     = db.Column(db.Text)
     result                    = db.relationship('Results')
+    pre_details               = db.relationship('PreSurveyDetails')
+    post_details              = db.relationship('PostSurveyDetails')
     month_feedback            = db.relationship('MonthFeedback')
     year_feedback             = db.relationship('YearFeedback')
 
@@ -211,6 +213,9 @@ class Surveys(db.Model):
 
 
 class Results(db.Model):
+    # This table has been deprecated. Details of the home are now provided by
+    # the householder in HomeDetails and details of the survey are provided
+    # by the ET in SurveyDetails.
     id = db.Column(db.Integer, primary_key=True)
     date                       = db.Column(db.DateTime,
                                            default=datetime.datetime.utcnow)
@@ -262,6 +267,86 @@ class Results(db.Model):
     def __repr__(self):
         return '<Result '+str(self.id)+'>'
 
+
+class PreSurveyDetails(db.Model):
+    # This table is now used to record householder-supplied survey details.
+    # Should be 'HomeDetails'
+    id = db.Column(db.Integer, primary_key=True)
+    date                       = db.Column(db.DateTime,
+					   default=datetime.datetime.utcnow)
+    householders_name          = db.Column(db.String(50))
+    address_line               = db.Column(db.String(100))
+    postcode                   = db.Column(db.String(10))
+    special_considerations     = db.Column(db.Text)
+    num_main_rooms             = db.Column(db.Integer)
+    can_heat_comfortably       = db.Column(db.Boolean, default=False)
+    expected_benefit           = db.Column(db.Text)
+    year_of_construction       = db.Column(db.Integer)
+    building_type_id           = db.Column(db.Integer,
+					   db.ForeignKey('building_types.id'))
+    building_type              = db.relationship('BuildingTypes')
+    wall_construction_type_id  = db.Column(db.Integer,
+					   db.ForeignKey('wall_construction_types.id'))
+    wall_construction_type     = db.relationship('WallConstructionTypes')
+    occupation_type_id         = db.Column(db.Integer,
+					   db.ForeignKey('occupation_types.id'))
+    occupation_type            = db.relationship('OccupationTypes')
+    primary_heating_type_id    = db.Column(db.Integer,
+					   db.ForeignKey('space_heating_types.id'))
+    primary_heating_type       = db.relationship('SpaceHeatingTypes',
+						 foreign_keys=primary_heating_type_id)
+    secondary_heating_type_id  = db.Column(db.Integer,
+					   db.ForeignKey('space_heating_types.id'))
+    secondary_heating_type     = db.relationship('SpaceHeatingTypes',
+						 foreign_keys=secondary_heating_type_id)
+    water_heating_type_id      = db.Column(db.Integer,
+					   db.ForeignKey('water_heating_types.id'))
+    water_heating_type         = db.relationship('WaterHeatingTypes')
+    cooking_type_id            = db.Column(db.Integer,
+					   db.ForeignKey('cooking_types.id'))
+    cooking_type               = db.relationship('CookingTypes')
+    depth_loft_insulation      = db.Column(db.String(150))
+    number_open_fireplaces     = db.Column(db.String(150))
+    double_glazing             = db.Column(db.String(150))
+    num_occupants              = db.Column(db.Integer)
+    annual_gas_kwh             = db.Column(db.Float)
+    annual_gas_estimated       = db.Column(db.Boolean)
+    annual_gas_start_date      = db.Column(db.Date)
+    annual_gas_end_date        = db.Column(db.Date)
+    annual_elec_kwh            = db.Column(db.Float)
+    annual_elec_estimated      = db.Column(db.Boolean)
+    annual_elec_start_date     = db.Column(db.Date)
+    annual_elec_end_date       = db.Column(db.Date)
+    annual_solid_spend         = db.Column(db.Float)
+    renewable_contribution_kwh = db.Column(db.Float)
+    notes                      = db.Column(db.Text)
+    # Survey ref
+    survey_id = db.Column(db.Integer, db.ForeignKey('surveys.id'))
+    survey    = db.relationship('Surveys')
+
+    def __repr__(self):
+	return '<PreSurveyDetails '+str(self.id)+'>'
+
+
+class PostSurveyDetails(db.Model):
+    # This table records surveyor-recorded details of the survey.
+    id = db.Column(db.Integer, primary_key=True)
+    date                       = db.Column(db.DateTime,
+					   default=datetime.datetime.utcnow)
+    lead_surveyor              = db.Column(db.String(50))
+    assistant_surveyor         = db.Column(db.String(50))
+    survey_date                = db.Column(db.Date)
+    camera_kit_number          = db.Column(db.String(25))
+    external_temperature       = db.Column(db.Float)
+    faults_identified          = db.Column(db.Text)
+    recommendations            = db.Column(db.Text)
+    notes                      = db.Column(db.Text)
+    # Survey ref
+    survey_id = db.Column(db.Integer, db.ForeignKey('surveys.id'))
+    survey    = db.relationship('Surveys')
+
+    def __repr__(self):
+	return '<PostSurveyDetails '+str(self.id)+'>'
 
 class MonthFeedback(db.Model):
     id = db.Column(db.Integer, primary_key=True)

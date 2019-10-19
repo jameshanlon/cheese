@@ -14,7 +14,8 @@ from cheese.models import db, \
                           CookingTypes, \
                           Wards, \
                           Surveys, \
-                          Results, \
+			  PreSurveyDetails, \
+			  PostSurveyDetails, \
                           MonthFeedback, \
                           YearFeedback, \
                           Member, \
@@ -24,14 +25,17 @@ from flask_login import login_user
 
 @pytest.fixture
 def app():
+    # Provide CONFIG values.
     config = dict(
       FLASK_DEBUG=True,
-      WTF_CSRF_ENABLED = False,
+      WTF_CSRF_ENABLED=False,
+      TESTING=True,
+      MAIL_DEFAULT_SENDER='info@cheeseproject.co.uk',
       SQLALCHEMY_DATABASE_URI = 'sqlite:///' + \
-          tempfile.NamedTemporaryFile(suffix='.db').name,
-      MAIL_SUPPRESS_SEND = True, )
+	  tempfile.NamedTemporaryFile(suffix='.db').name, )
     app = create_app(config)
     app.testing = True
+    print 'Testing true!'
     print 'Using db '+app.config['SQLALCHEMY_DATABASE_URI']
     with app.app_context():
         resetdb()
@@ -58,7 +62,6 @@ def test_user_login(client, app):
     assert b'Incorrect Password' not in rv.data
     rv = logout(client)
 
-# Tests the form submits with valid input data.
 def test_apply_for_survey_form(client, app):
     rv = client.post('/apply-for-a-survey', data=dict(
              name                      = 'test_name',
@@ -69,13 +72,8 @@ def test_apply_for_survey_form(client, app):
              telephone                 = '1234567',
              mobile                    = '1234567',
              availability              = 'availability',
-             building_type             = 1,
-             num_main_rooms            = '1',
-             can_heat_comfortably      = 'True',
-             expected_benefit          = 'expected_benefit',
              referral                  = 'referral',
              free_survey_consideration = 'True',
-             special_considerations    = 'special_considerations',
              agree_to_requirements     = 'True', # Not stored in DB.
              photo_release             = 'True',
           ), follow_redirects=True)
@@ -90,81 +88,70 @@ def test_apply_for_survey_form(client, app):
         assert survey.telephone                 == '1234567'
         assert survey.mobile                    == '1234567'
         assert survey.availability              == 'availability'
-        assert survey.building_type             == BuildingTypes.query.get(1)
-        assert survey.num_main_rooms            == 1
-        assert survey.can_heat_comfortably      == True
-        assert survey.expected_benefit          == 'expected_benefit'
         assert survey.referral                  == 'referral'
         assert survey.free_survey_consideration == True
-        assert survey.special_considerations    == 'special_considerations'
         assert survey.photo_release             == True
 
+PRE_SURVEY_REQ_FIELDS = dict(
+    householders_name          = 'householders_name',
+    address_line               = 'address_line',
+    postcode                   = 'postcode',
+    num_main_rooms             = 37,
+  )
 
-# Tests the form submits with valid input data.
-def test_submit_results_form(client, app):
+def test_submit_pre_survey_details_form_full(client, app):
     rv = admin_login(client)
-    rv = client.post('/submit-results', data=dict(
-	     survey                     = 1,
-	     lead_surveyor              = 'test_lead_surveyor',
-	     assistant_surveyor         = 'assistant_surveyor',
-	     householders_name          = 'householders_name',
-	     address_line               = 'address_line',
-	     survey_date                = '01/02/2017',
-	     external_temperature       = 123.456,
-	     loaned_cheese_box          = True,
-	     cheese_box_number          = 'Box 42',
-	     year_of_construction       = 1970,
-	     building_type              = '1',
-	     wall_construction_type     = '1',
-	     occupation_type            = '1',
-	     primary_heating_type       = '1',
-	     secondary_heating_type     = '2',
-	     water_heating_type         = '1',
-	     cooking_type               = '1',
-	     depth_loft_insulation      = "10%",
-	     number_open_fireplaces     = "50%",
-	     double_glazing             = "100%",
-	     num_occupants              = 10,
-	     annual_gas_kwh             = 124.456,
-	     annual_gas_estimated       = True,
-	     annual_gas_start_date      = '02/02/2017',
-	     annual_gas_end_date        = '03/02/2017',
-	     annual_elec_kwh            = 123.456,
-	     annual_elec_estimated      = True,
-	     annual_elec_start_date     = '04/02/2017',
-	     annual_elec_end_date       = '05/02/2017',
-	     annual_solid_spend         = 123.456,
-	     renewable_contribution_kwh = 123.456,
-	     faults_identified          = 'faults_identified',
-	     recommendations            = 'recommendations',
-	   ), follow_redirects=True)
-    assert b'Survey result submitted successfully' in rv.data
+    data = dict(special_considerations     = 'special_considerations',
+		can_heat_comfortably       = True,
+		expected_benefit           = 'expected_benefit',
+		year_of_construction       = 1970,
+		building_type              = '1',
+		wall_construction_type     = '1',
+		occupation_type            = '1',
+		primary_heating_type       = '1',
+		secondary_heating_type     = '1',
+		water_heating_type         = '1',
+		cooking_type               = '1',
+		depth_loft_insulation      = "10%",
+		number_open_fireplaces     = "50%",
+		double_glazing             = "100%",
+		num_occupants              = 17,
+		annual_gas_kwh             = 567.456,
+		annual_gas_estimated       = True,
+		annual_gas_start_date      = '02/02/2017',
+		annual_gas_end_date        = '03/02/2017',
+		annual_elec_kwh            = 123.456,
+		annual_elec_estimated      = True,
+		annual_elec_start_date     = '04/02/2017',
+		annual_elec_end_date       = '05/02/2017',
+		annual_solid_spend         = 890.456,
+		renewable_contribution_kwh = 901.456, )
+    data.update(PRE_SURVEY_REQ_FIELDS)
+    data['householders_name'] = 'test_submit_pre_survey_details_form_full'
+    rv = client.post('/submit-pre-survey-details', data=data, follow_redirects=True)
+    assert b'Your pre-survey details have been submitted' in rv.data
     logout(client)
     with app.app_context():
-        result = Results.query.filter(Results.lead_surveyor=='test_lead_surveyor').first()
-	assert result.survey                     == Surveys.query.get(1)
-	assert result.lead_surveyor              == 'test_lead_surveyor'
-	assert result.assistant_surveyor         == 'assistant_surveyor'
-	assert result.householders_name          == 'householders_name'
+	result = PreSurveyDetails.query.filter(PreSurveyDetails.householders_name=='test_submit_pre_survey_details_form_full').first()
 	assert result.address_line               == 'address_line'
-	assert result.survey_date                == datetime.date(2017, 2, 1)
-	assert result.external_temperature       == 123.456
-	assert result.camera_kit_number          == 'Camera kit 17'
-	assert result.loaned_cheese_box          == True
-	assert result.cheese_box_number          == 'Box 42'
+	assert result.postcode                   == 'postcode'
+	assert result.special_considerations     == 'special_considerations'
+	assert result.num_main_rooms             == 37
+	assert result.can_heat_comfortably       == True
+	assert result.expected_benefit           == 'expected_benefit'
 	assert result.year_of_construction       == 1970
 	assert result.building_type              == BuildingTypes.query.get(1)
 	assert result.wall_construction_type     == WallConstructionTypes.query.get(1)
 	assert result.occupation_type            == OccupationTypes.query.get(1)
 	assert result.primary_heating_type       == SpaceHeatingTypes.query.get(1)
-	assert result.secondary_heating_type     == SpaceHeatingTypes.query.get(2)
+	assert result.secondary_heating_type     == SpaceHeatingTypes.query.get(1)
 	assert result.water_heating_type         == WaterHeatingTypes.query.get(1)
 	assert result.cooking_type               == CookingTypes.query.get(1)
 	assert result.depth_loft_insulation      == '10%'
 	assert result.number_open_fireplaces     == '50%'
 	assert result.double_glazing             == '100%'
-	assert result.num_occupants              == 10
-	assert result.annual_gas_kwh             == 124.456
+	assert result.num_occupants              == 17
+	assert result.annual_gas_kwh             == 567.456
 	assert result.annual_gas_estimated       == True
 	assert result.annual_gas_start_date      == datetime.date(2017, 2, 2)
 	assert result.annual_gas_end_date        == datetime.date(2017, 2, 3)
@@ -172,10 +159,62 @@ def test_submit_results_form(client, app):
 	assert result.annual_elec_estimated      == True
 	assert result.annual_elec_start_date     == datetime.date(2017, 2, 4)
 	assert result.annual_elec_end_date       == datetime.date(2017, 2, 5)
-	assert result.annual_solid_spend         == 123.456
-	assert result.renewable_contribution_kwh == 123.456
-	assert result.faults_identified          == 'faults_identified'
-	assert result.recommendations            == 'recommendations'
+	assert result.annual_solid_spend         == 890.456
+	assert result.renewable_contribution_kwh == 901.456
+
+def test_submit_pre_survey_details_form_req(client, app):
+    rv = admin_login(client)
+    data = PRE_SURVEY_REQ_FIELDS
+    data['householders_name'] = 'test_submit_pre_survey_details_form_req'
+    rv = client.post('/submit-pre-survey-details', data=data, follow_redirects=True)
+    print rv.data
+    assert b'Your pre-survey details have been submitted' in rv.data
+    logout(client)
+    with app.app_context():
+	result = PreSurveyDetails.query.filter(PreSurveyDetails.householders_name=='test_submit_pre_survey_details_form_req').first()
+	assert result.address_line               == 'address_line'
+	assert result.postcode                   == 'postcode'
+	assert result.num_main_rooms             == 37
+
+POST_SURVEY_REQ_FIELDS = dict(
+      survey                     = 1,
+      lead_surveyor              = 'lead_surveyor',
+      assistant_surveyor         = 'assistant_surveyor',
+      survey_date                = '16/09/2017',
+      camera_kit_number          = '83',
+  )
+
+def test_submit_post_survey_details_form_full(client, app):
+    data=dict(external_temperature       = 20.67,
+	      faults_identified          = 'faults_identified',
+	      recommendations            = 'recommendations',
+	      notes                      = 'notes', )
+    data.update(POST_SURVEY_REQ_FIELDS)
+    data['lead_surveyor'] = 'test_submit_post_survey_details_form_full'
+    rv = client.post('/submit-post-survey-details', data=data, follow_redirects=True)
+    assert b'Survey details submitted successfully' in rv.data
+    with app.app_context():
+	result = PostSurveyDetails.query.filter(PostSurveyDetails.lead_surveyor=='test_submit_post_survey_details_form_full').first()
+	assert result.survey               == Surveys.query.get(1)
+	assert result.assistant_surveyor   == 'assistant_surveyor'
+	assert result.survey_date          == datetime.date(2017, 9, 16)
+	assert result.camera_kit_number    == '83'
+	assert result.external_temperature == 20.67
+	assert result.faults_identified    == 'faults_identified'
+	assert result.recommendations      == 'recommendations'
+	assert result.notes                == 'notes'
+
+def test_submit_post_survey_details_form_req(client, app):
+    data = POST_SURVEY_REQ_FIELDS
+    data['lead_surveyor'] = 'test_submit_post_survey_details_form_req'
+    rv = client.post('/submit-post-survey-details', data=data, follow_redirects=True)
+    assert b'Survey details submitted successfully' in rv.data
+    with app.app_context():
+	result = PostSurveyDetails.query.filter(PostSurveyDetails.lead_surveyor=='test_submit_post_survey_details_form_req').first()
+	assert result.survey               == Surveys.query.get(1)
+	assert result.assistant_surveyor   == 'assistant_surveyor'
+	assert result.survey_date          == datetime.date(2017, 9, 16)
+	assert result.camera_kit_number    == '83'
 
 ONE_MONTH_REQ_FIELDS = dict(householders_name     = 'householders_name',
                             address               = 'address',

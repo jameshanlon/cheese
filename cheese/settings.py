@@ -4,6 +4,7 @@ import os
 DEBUG = False
 if 'FLASK_ENV' in os.environ and os.environ['FLASK_ENV'] == 'development':
   DEBUG = True
+  TESTING = True # Supress mail being sent.
 
 APP_NAME                         = 'The CHEESE Project'
 URL_BASE                         = 'https://cheeseproject.co.uk'
@@ -87,3 +88,4 @@ PHASE_START_DATES = [datetime.date(2015, 4, 15),
 NUM_PHASES = len(PHASE_START_DATES)
 ONE_MONTH_FOLLOW_UP_DAYS = 31
 ONE_YEAR_FOLLOW_UP_DAYS = 365.25
+START_PHASE_NEW_SURVEY_FORMS = 5

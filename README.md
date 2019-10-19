@@ -34,6 +34,10 @@ Troubleshooting:
 
 ### Populate CONFIG
 
+- `FLASK_APP=run.py`
+- `FLASK_ENV=development`
+- `CHEESE_EMAIL_SENDER` must be set for mail to work (even if it is disabled
+  for debug).
 - `CHEESE_MYSQL_HOST` must be set to the name of the MySQL Docker container.
 - `CHEESE_MYSQL_DATA_DIR` must be set to a location on the host machine, in
   which to store the MySQL data.
@@ -117,9 +121,12 @@ uwsgi --http 0.0.0.0:9000 --manage-script-name --wsgi-file run.py --callable app
 
 ```
 $ source env/bin/activate
-$ source CONFIG
-$ pytest
+$ pytest --verbose
 ...
+```
+Run a particular test, or tests matching a regex:
+```
+$ pytest --verbose -k test_apply_for_survey_form
 ```
 
 ## Deployment notes

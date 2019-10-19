@@ -16,7 +16,8 @@ Welcome to the resources page for Energy Tracers.
 
 ## Survey results
 
-- [Submit survey results](/submit-results)
+- [Submit post-survey details](/submit-post-survey-details)
+- [Submit pre-survey details](/submit-pre-survey-details)
 - [Submit one-month feedback](/one-month-feedback)
 - [Submit one-year feedback](/one-year-feedback)
 - [Read customer feedback](/customer-feedback)

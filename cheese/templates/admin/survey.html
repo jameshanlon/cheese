@@ -13,11 +13,16 @@
   <tbody>
   {% for column in table.c %}
   <tr>
-    <td>{{ column.name|format_db_name }}</td>
+    <!-- _id fields are relationships. -->
+    {% set column_name = column.name.replace('_id', '') %}
+    <td>{{ column_name|format_db_name }}</td>
     {% if column.type|string() == 'TEXT' and entry[column.name] %}
       <td>{{ macros.render_text(entry[column.name]) }}</td>
     {% elif column.type|string() == 'BOOLEAN' %}
       <td>{{ macros.render_boolean(entry[column.name]) }}</td>
+    {% elif column_name in table.relationships.keys() %}
+      <!-- Display a relationship field. -->
+      <td>{{entry[column.name.replace('_id', '')]}}</td>
     {% else %}
       <td>{{ entry[column.name] }}</td>
     {% endif %}
@@ -74,10 +79,25 @@
 
 {{ display_entry('surveys', surveys_table, survey) }}
 
-<a class="anchor" name="result"></a>
-<h2>Survey result</h2>
+<!-- Switch between displaying survey results with old Results table or new
+     *SurveyDetails tables -->
+{% if survey.phase < config.START_PHASE_NEW_SURVEY_FORMS %}
 
-{{ display_relation('results', results_table, survey.result) }}
+  <a class="anchor" name="result"></a>
+  <h2>Survey result</h2>
+  {{ display_relation('results', results_table, survey.result) }}
+
+{% else %}
+
+  <a class="anchor" name="pre-survey-details"></a>
+  <h2>Pre-survey information</h2>
+  {{ display_relation('pre_survey_details', pre_survey_table, survey.pre_details) }}
+
+  <a class="anchor" name="post-survey-details"></a>
+  <h2>Post-survey information</h2>
+  {{ display_relation('post_survey_details', post_survey_table, survey.post_details) }}
+
+{% endif %}
 
 <a class="anchor" name="month-feedback"></a>
 <h2>One month feedback</h2>
