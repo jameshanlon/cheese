@@ -128,7 +128,8 @@ class ApplySurveyForm(FlaskForm):
             +'<a href="/pre-survey-guide#preparation" target="_blank">'
             +'necessary preparations</a> for the survey and am happy ' \
             +'to <a href="/pre-survey-guide#follow-ups" target="_blank"> ' \
-            +'report my progress after one month and one year</a>.',
+            +'report my progress after one month, and after one and two ' \
+            +'years after the survey</a>.',
             validators=[Required()])
     photo_release = \
         fields.BooleanField('I <strong>agree</strong> to any of the ' \
