@@ -56,9 +56,7 @@ identified and how they might be remedied, but we cannot offer this as
 professional advice. You must always consult an expert to determine the best
 way forward. We will record your current energy use by looking at your gas and
 electricity bills (you will need to [find them in
-advance](/pre-survey-guide#preparation) and you will have the opportunity to
-borrow a *CHEESE energy monitoring and action pack* containing simple-to-use
-meters to monitor energy use and information on DIY energy-saving techniques.
+advance](/pre-survey-guide#preparation)). 
 
 Because we are continuously developing the CHEESE Project and its approach, we
 will ask you to complete a short questionnaire after the survey to obtain
