@@ -180,9 +180,8 @@ class PreSurveyDetailsForm(FlaskForm):
 			    +'temperature in the winter?',
 			    validators=[Optional()])
     expected_benefit = \
-	fields.TextAreaField('How do you think you will ' \
-			     + 'benefit from a survey?',
-			     validators=[Optional()])
+	fields.TextAreaField('How do you think you will benefit from a survey?*',
+			     validators=[Required()])
     year_of_construction = \
 	fields.IntegerField('Year of construction',
 			    validators=[Optional(),
