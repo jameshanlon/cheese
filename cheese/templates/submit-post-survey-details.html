@@ -15,12 +15,11 @@
     {{ macros.render_form_field(form.external_temperature) }}
     {{ macros.render_form_field(form.camera_kit_number) }}
     {{ macros.end_form_section() }}
-    {{ macros.form_section('Results and recommendations') }}
+    {{ macros.form_section('Results and recommendations (optional)') }}
     {{ macros.render_form_field(form.faults_identified) }}
     {{ macros.render_form_field(form.recommendations) }}
-    {{ macros.render_form_field(form.notes) }}
     {{ macros.end_form_section() }}
-    <label></label>
+    {{ macros.render_form_field(form.notes) }}
     <p>{{ form.recaptcha }}</p>
     <button class="btn" type="submit">Submit</button>
   </form>
