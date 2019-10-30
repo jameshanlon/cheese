@@ -124,6 +124,24 @@ building processors for machine intelligence.</p>
 
 <div class="col-sm">
 <figure class="figure">
+<img class="img-fluid" src="{{'images/people/roz.jpg'|thumbnail('247x247')}}">
+</figure>
+<p class="lead">Rosamund Thomas</p>
+<p>Director</p>
+
+<p> Roz (left in the photo) has completed two phases as an Energy Tracer and in
+summer 2019 joined the team to become more involved with the project all year
+round. Her first tasks have been streamlining the survey process and helping
+the recruitment of new tracers the upcoming season. Roz has a Geography degree
+and has since pursued career in the energy sector, currently working as a
+renewable energy analyst.</p>
+
+<hr>
+</div>
+<div class="row">
+
+<div class="col-sm">
+<figure class="figure">
 <img class="img-fluid" src="{{'images/people/dave-1.jpg'|thumbnail('247x247')}}">
 </figure>
 <p class="lead">Dave Tudgey</p>
@@ -139,9 +157,7 @@ development informing strategy, funding and partnerships. </p>
 <hr>
 </div>
 
-</div>
-<div class="row">
-
+<div class="col-sm">
 <a name="maddy-longhurst"></a>
 <div class="col-sm">
 <figure class="figure">
