@@ -113,6 +113,8 @@ def resetdb():
 			  depth_loft_insulation=mixer.RANDOM,
 			  number_open_fireplaces=mixer.RANDOM,
 			  double_glazing=mixer.RANDOM,
+                          has_asbestos=mixer.RANDOM,
+                          asbestos_details=mixer.RANDOM,
 			  num_occupants=mixer.RANDOM,
 			  notes=mixer.RANDOM)
     mixer.cycle(50).blend(PostSurveyDetails,

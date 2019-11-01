@@ -124,12 +124,21 @@ class ApplySurveyForm(FlaskForm):
                               +' through with our survey manager when they contact you.',
                             validators=[Optional()])
     agree_to_requirements = \
-        fields.BooleanField('I <strong>agree</strong> to make the  ' \
-            +'<a href="/pre-survey-guide#preparation" target="_blank">'
-            +'necessary preparations</a> for the survey and am happy ' \
-            +'to <a href="/pre-survey-guide#follow-ups" target="_blank"> ' \
-            +'report my progress after one month, and after one and two ' \
-            +'years after the survey</a>.',
+        fields.BooleanField(
+""" I <strong>agree</strong> to make the <a
+href="/pre-survey-guide#preparation" target="_blank"> necessary
+preparations</a> for the survey, and I am <strong>happy</strong> to <a
+href="/pre-survey-guide#follow-ups" target="_blank">report my progress</a>
+after one month, and after one and two years after the survey. """,
+            validators=[Required()])
+    agree_to_cancellation = \
+        fields.BooleanField(
+""" I have <strong>read and understood</strong> the <a
+href="/home-surveys#cancellation" target="_blank">cancellation policy</a>: if
+your survey is cancelled less than 72 hours (3 days) prior to your survey there
+will be a &pound;100 cancellation fee. If you rebook your survey for a
+different date in the same season, &pound;50 of this will be credited against
+your new booking. """,
             validators=[Required()])
     photo_release = \
         fields.BooleanField('I <strong>agree</strong> to any of the ' \
@@ -204,6 +213,12 @@ class PreSurveyDetailsForm(FlaskForm):
 	fields.IntegerField('Number of occupants',
 			    validators=[Optional(),
 					NumberRange(min=1, max=100)])
+    has_asbestos = \
+	fields.BooleanField('(tick for yes) Are you aware of any asbestos, exposed or not exposed, in the building?',
+			    validators=[Optional()])
+    asbestos_details = \
+	fields.TextAreaField('If yes, please give details',
+			     validators=[RequiredIf('has_asbestos')])
     annual_gas_kwh = \
 	fields.DecimalField('Annual consumption (kWh',
 			    validators=[Optional()])

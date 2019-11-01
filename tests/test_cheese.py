@@ -30,12 +30,12 @@ def app():
       FLASK_DEBUG=True,
       WTF_CSRF_ENABLED=False,
       TESTING=True,
+      CHEESE_SECRET_KEY=1,
       MAIL_DEFAULT_SENDER='info@cheeseproject.co.uk',
       SQLALCHEMY_DATABASE_URI = 'sqlite:///' + \
 	  tempfile.NamedTemporaryFile(suffix='.db').name, )
     app = create_app(config)
     app.testing = True
-    print 'Testing true!'
     print 'Using db '+app.config['SQLALCHEMY_DATABASE_URI']
     with app.app_context():
         resetdb()
@@ -75,6 +75,7 @@ def test_apply_for_survey_form(client, app):
              referral                  = 'referral',
              free_survey_consideration = 'True',
              agree_to_requirements     = 'True', # Not stored in DB.
+             agree_to_cancellation     = 'True', # Not stored in DB.
              photo_release             = 'True',
           ), follow_redirects=True)
     assert b'Your survey application has been sent' in rv.data
@@ -96,6 +97,7 @@ PRE_SURVEY_REQ_FIELDS = dict(
     householders_name          = 'householders_name',
     address_line               = 'address_line',
     postcode                   = 'postcode',
+    expected_benefit           = 'expected_benefit',
     num_main_rooms             = 37,
   )
 
@@ -103,7 +105,6 @@ def test_submit_pre_survey_details_form_full(client, app):
     rv = admin_login(client)
     data = dict(special_considerations     = 'special_considerations',
 		can_heat_comfortably       = True,
-		expected_benefit           = 'expected_benefit',
 		year_of_construction       = 1970,
 		building_type              = '1',
 		wall_construction_type     = '1',
@@ -116,6 +117,8 @@ def test_submit_pre_survey_details_form_full(client, app):
 		number_open_fireplaces     = "50%",
 		double_glazing             = "100%",
 		num_occupants              = 17,
+                has_asbestos               = True,
+                asbestos_details           = 'asbestos_details',
 		annual_gas_kwh             = 567.456,
 		annual_gas_estimated       = True,
 		annual_gas_start_date      = '02/02/2017',
@@ -151,6 +154,8 @@ def test_submit_pre_survey_details_form_full(client, app):
 	assert result.number_open_fireplaces     == '50%'
 	assert result.double_glazing             == '100%'
 	assert result.num_occupants              == 17
+        assert result.has_asbestos               == True
+        assert result.asbestos_details           == 'asbestos_details'
 	assert result.annual_gas_kwh             == 567.456
 	assert result.annual_gas_estimated       == True
 	assert result.annual_gas_start_date      == datetime.date(2017, 2, 2)
@@ -167,14 +172,22 @@ def test_submit_pre_survey_details_form_req(client, app):
     data = PRE_SURVEY_REQ_FIELDS
     data['householders_name'] = 'test_submit_pre_survey_details_form_req'
     rv = client.post('/submit-pre-survey-details', data=data, follow_redirects=True)
-    print rv.data
     assert b'Your pre-survey details have been submitted' in rv.data
     logout(client)
     with app.app_context():
 	result = PreSurveyDetails.query.filter(PreSurveyDetails.householders_name=='test_submit_pre_survey_details_form_req').first()
 	assert result.address_line               == 'address_line'
 	assert result.postcode                   == 'postcode'
+	assert result.expected_benefit           == 'expected_benefit'
 	assert result.num_main_rooms             == 37
+
+def test_submit_pre_survey_details_form_asbestos_requiredif(client, app):
+    data = dict()
+    data.update(PRE_SURVEY_REQ_FIELDS)
+    data['has_asbestos'] = 'True'
+    rv = client.post('/submit-pre-survey-details', data=data, follow_redirects=True)
+    assert rv.data.count(b'This field is required') == 1
+
 
 POST_SURVEY_REQ_FIELDS = dict(
       survey                     = 1,

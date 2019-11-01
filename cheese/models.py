@@ -309,6 +309,8 @@ class PreSurveyDetails(db.Model):
     number_open_fireplaces     = db.Column(db.String(150))
     double_glazing             = db.Column(db.String(150))
     num_occupants              = db.Column(db.Integer)
+    has_asbestos               = db.Column(db.Boolean)
+    asbestos_details           = db.Column(db.Text)
     annual_gas_kwh             = db.Column(db.Float)
     annual_gas_estimated       = db.Column(db.Boolean)
     annual_gas_start_date      = db.Column(db.Date)

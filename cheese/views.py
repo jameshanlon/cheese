@@ -583,6 +583,8 @@ class PreSurveyDetailsView(GeneralModelView):
 	'number_open_fireplaces',
 	'double_glazing',
 	'num_occupants',
+        'has_asbestos',
+        'asbestos_details',
 	'annual_gas_kwh',
 	'annual_gas_estimated',
 	'annual_gas_start_date',
@@ -997,7 +999,7 @@ def submit_pre_survey_details():
 	    # Send watchers email.
 	    database_url = current_app.config['URL_BASE']+str(url_for('presurveydetails.details_view', id=results.id))
 	    subject = '[CHEESE] New pre-survey details'
-	    message = 'For '+results.householders_name+', '+result.address_line+', '+results.postcode  \
+	    message = 'For '+results.householders_name+', '+results.address_line+', '+results.postcode  \
                        +'\n'+str(datetime.datetime.today())+': '+database_url
 	    mail.send(Message(subject=subject,
 			      body=message,

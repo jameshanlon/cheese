@@ -183,3 +183,11 @@ if it will be a training survey.
 <div class="notice lead">
   <a href="/apply-for-a-survey">Apply for a survey</a> now!
 </div>
+
+<a class="anchor" name="cancellation"></a>
+## Cancellation policy
+
+If your survey is cancelled less than 72 hours (3 days) prior to your survey
+there will be a £100 cancellation fee. If you rebook your survey for a
+different date in the same season, £50 of this will be credited against your
+new booking. 
