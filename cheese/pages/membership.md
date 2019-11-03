@@ -16,11 +16,13 @@ it can be.
 As a member you can:
 
  - Help us to steer the direction of the project;
- - Vote at our AGM;
+ - Participate in Autumn / Winter / Spring Forums and any other talks;
  - Assist with our surveys;
+ - Attend and vote at our AGM;
  - Circulate our news and publicise our surveys and training opportunities;
- - Help us to find and link us to clients;
- - Collaborate on funding opportunities.
+ - Collaborate on funding opportunities;
+ - Help us to find and link us to clients, and receive a 10% discount for 5
+   successful referrals (20% for 10, 30% for 15 etc).
 
 If you are interested in becoming a member of the CHEESE Project then please
 complete the [membership application form](/apply-for-membership). The
