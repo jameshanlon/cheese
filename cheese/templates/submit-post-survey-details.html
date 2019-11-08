@@ -4,6 +4,25 @@
 
 <h1>Submit post-survey information</h1>
 
+<p> Well done for completing your latest survey.</p>
+
+<p>Please note:</p>
+<ul>
+<li>All you need to input here is enter the information on the first page of
+  the survey form.</li>
+<li>The faults and recommendations fields are optional, but you can leave details
+  of any particularly interesting or noteworthy information if you wish.</li>
+<li>Use the notes field to record any other relevant information.</li>
+<li>Everything you type in this form will appear in
+  the customers survey information page on the database.</li>
+<li>If you make any mistakes, then please resubmit this form with the correct
+  information.</li>
+<li>Once you have completed this form, then please consider uploading any
+  interesting thermal images from the survey <a
+    href="/upload-thermal-image">using this form</a>. You don't need to upload
+the image of the written faults and recommendations.</li>
+</ul>
+
 <div id="submit-results-form" style="padding-top:1.2em">
   <form method="POST" action="" enctype="multipart/form-data">
     <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
