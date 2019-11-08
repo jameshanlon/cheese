@@ -58,5 +58,5 @@ us](mailto:info@cheeseproject.co.uk) via email. We would be excited to hear from
 ## Are home thermal imaging surveys available outside of Bristol?
 
 We don't currently offer surveys elsewhere in the UK. However, CHEESE may
-expand further afield in the future; if you are intereted in helping this to
+expand further afield in the future; if you are interested in helping this to
 happen, then see the two previous questions.
