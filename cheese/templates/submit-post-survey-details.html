@@ -8,8 +8,10 @@
 
 <p>Please note:</p>
 <ul>
-<li>All you need to input here is enter the information on the first page of
+<li>All you need to input here is the information on the first page of
   the survey form.</li>
+<li>Firstly, select the survey it relates to from the drop-down menu
+  below (you can start typing in ther box to search for the name or road).</li>
 <li>The faults and recommendations fields are optional, but you can leave details
   of any particularly interesting or noteworthy information if you wish.</li>
 <li>Use the notes field to record any other relevant information.</li>
@@ -20,7 +22,8 @@
 <li>Once you have completed this form, then please consider uploading any
   interesting thermal images from the survey <a
     href="/upload-thermal-image">using this form</a>. You don't need to upload
-the image of the written faults and recommendations.</li>
+  the image of the written faults and recommendations, which will be archived with
+  the survey film.</li>
 </ul>
 
 <div id="submit-results-form" style="padding-top:1.2em">
@@ -34,7 +37,7 @@ the image of the written faults and recommendations.</li>
     {{ macros.render_form_field(form.external_temperature) }}
     {{ macros.render_form_field(form.camera_kit_number) }}
     {{ macros.end_form_section() }}
-    {{ macros.form_section('Results and recommendations (optional)') }}
+    {{ macros.form_section('Interesting and noteworthy findings and/or experiences relating to the faults and recommendations of this survey (optional)') }}
     {{ macros.render_form_field(form.faults_identified) }}
     {{ macros.render_form_field(form.recommendations) }}
     {{ macros.end_form_section() }}

@@ -360,7 +360,7 @@ class PostSurveyDetailsForm(FlaskForm):
 	fields.TextAreaField('Recommendations',
 			     validators=[Optional()])
     notes = \
-	  fields.TextAreaField('Notes',
+	  fields.TextAreaField('Notes (any other relevant information)',
 			       validators=[Optional()])
 
 
