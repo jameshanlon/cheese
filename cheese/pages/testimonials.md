@@ -6,6 +6,14 @@ a internal home survey.
 
 ## From the 2018/19 surveying season (phase 4)
 
+- *"Boycee and Trisha were lovely and the thermal imaging experience was
+  fascinating. Turns out I have draughts coming through my electrical sockets!
+  And that my sash windows have developed gaps that I hadn't noticed. I had those
+  windows refurbed only recently so they're probably still under warranty, so
+  that's hugely useful info. In fact, the whole thing was brilliant and I'm going
+  to replay the recording and make an action list. Can't recommend this highly
+  enough."*
+
 - *"CHEESE is the single most useful intervention I have had in my home since I
   began doing improvements when I first bought a house."*
   (Bristol Green Doors participant)
