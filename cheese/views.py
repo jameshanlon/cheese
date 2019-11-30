@@ -73,7 +73,8 @@ bp = Blueprint('cheese', __name__)
 def init_admin(admin):
     for phase in reversed(range(1, NUM_PHASES+1)):
         admin.add_menu_item(MenuLink(name='Phase {}'.format(phase), \
-                                     url='/admin?phase={}'.format(phase)))
+				     url='/admin?phase={}'.format(phase)),
+			    target_category='Phase')
     # Tables.
     admin.add_view(MemberView(Member, db.session,
                               name='Members',
@@ -344,7 +345,9 @@ class CheeseAdminIndexView(flask_admin.AdminIndexView):
 
     def get_surveys(self):
         # Handle filters.
-        active_phase = request.args.get('phase')
+	# Always default to the current phase.
+	request_phase = request.args.get('phase')
+	active_phase = current_app.config['NUM_PHASES'] if not request_phase else request_phase
         active_filters = request.args.getlist('filter')
         surveys = self.filter_query(active_phase, active_filters).all()
         # Handle sorting by column.
@@ -394,7 +397,7 @@ class CheeseAdminIndexView(flask_admin.AdminIndexView):
                            surveys=surveys,
                            reverse=(1 if reverse else 0),
                            phases=phases,
-                           active_phase=active_phase,
+			   active_phase=int(active_phase),
                            active_phase_start_date=active_phase_start_date,
                            active_phase_end_date=active_phase_end_date,
                            phase_start_dates=current_app.config['PHASE_START_DATES'],

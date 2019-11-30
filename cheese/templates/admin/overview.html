@@ -2,46 +2,85 @@
 {% import 'admin/macros.html' as macros %}
 {% block body %}
 {{ super() }}
-<!--Survey count and CSV export button-->
-<div class="pull-right">
-  <p>
-    {{surveys|length}} surveys<br/>
-    <a href="{{url_for('admin.export', filename=export_filename)}}?{{request.query_string}}">
-      <button type="button" class="btn btn-default btn-xs">
-        Export as CSV
-      </button>
-    </a>
-  </p>
-</div>
-<p>
-<!--Active phase-->
-{% if active_phase %}
-<p>
-Displaying <b>phase {{active_phase}} surveys</b>, between
-{{active_phase_start_date.strftime('%d %b %y')}} and
-{{active_phase_end_date.strftime('%d %b %y')}}.
-</p>
-{% endif %}
-<!--Filters-->
-<strong>Filters:</strong>
-{% for filter in filters %}
-  {% if filter in active_filters %}
-    <a href="{{remove_from_query(filter=filter)}}">
-      <button type="button" class="btn btn-primary btn-xs">
-        {{filter|format_db_name}}
-      </button>
-    </a>
+
+{% macro cell_bg(predicate) -%}
+  {% if predicate %}
+    class="green-bg"
   {% else %}
-    <a href="{{add_to_query(filter=filter)}}">
-      <button type="button" class="btn btn-default btn-xs">
-        {{filter|format_db_name}}
-      </button>
-    </a>
+    class="red-bg"
   {% endif %}
-{% endfor %}
-</p>
-<!--Table-->
-<table class="table table-condensed table-hover survey-overview-table">
+{%- endmacro %}
+{% macro details_button(table, id) -%}
+  <div class="pull-right" style="padding:0.2em">
+    <a class="icon" href="{{url_for(table.replace('_', '')+'.details_view', id=id, url=request.path+'?'+request.query_string)}}">
+      <span class="fa fa-pencil glyphicon glyphicon-eye-open"></span>
+    </a>
+  </div>
+{%- endmacro %}
+{% macro edit_button(table, id, edit_permission) -%}
+  {% if edit_permission %}
+    <div class="pull-right" style="padding:0.2em">
+      <a class="icon" href="{{url_for(table.replace('_', '')+'.edit_view', id=id, url=request.path+'?'+request.query_string)}}">
+	<span class="fa fa-pencil glyphicon glyphicon-pencil"></span>
+      </a>
+    </div>
+  {% endif %}
+{%- endmacro %}
+
+{% macro survey_name_cell(survey) -%}
+  <td class="survey-overview-col1">
+    {{ edit_button('surveys', survey.id) }}
+    <a href="{{url_for('admin.survey', survey_id=survey.id)}}">
+      {{survey.name}}<br>
+      {{survey.address_line}}
+    </a>
+  </td>
+{%- endmacro %}
+
+{% macro survey_lead_status_cell(survey) -%}
+  <td>
+    <strong>{{survey.lead_status.name}}</strong>
+  </td>
+{% endmacro -%}
+
+{% macro survey_ward_cell(survey) -%}
+  <td class="text-center">{{survey.ward}}</td>
+{%- endmacro %}
+
+{% macro survey_request_date_cell(survey) -%}
+  <td>
+    {% if survey.survey_request_date %}
+      {{survey.survey_request_date.strftime('%d %b %y')}}
+    {% endif %}
+  </td>
+{%- endmacro %}
+
+{% macro survey_date_cell(survey) -%}
+  <td>
+    {% if survey.survey_date %}
+      {{survey.survey_date.strftime('%d %b %y')}}
+    {% endif %}
+  </td>
+{% endmacro %}
+
+{% macro survey_free_cell(survey) -%}
+  <td class="text-center" {{cell_bg(survey.fee_paid)}}>
+    {% if survey.free_survey_consideration %}
+      <strong>Free</strong>
+    {% else %}
+      {% if edit_permission %}
+	<a href="{{add_to_query(set_fee_paid=(not survey.fee_paid), survey_id=survey.id)}}"
+	   onclick="return confirm('Are you sure you want to change this entry?')">
+	  {{ macros.render_boolean(survey.fee_paid) }}</a>
+      {% else %}
+	{{ macros.render_boolean(survey.fee_paid) }}
+      {% endif %}
+    {% endif %}
+  </td>
+{% endmacro %}
+
+{% macro pre_phase_5_table() -%}
+  <!--Table summarising fields and results records prior to phase 5-->
   <thead>
     <tr>
       <th class="survey-overview-col1">
@@ -59,63 +98,18 @@ Displaying <b>phase {{active_phase}} surveys</b>, between
     </tr>
   </thead>
   <tbody>
-    {% macro cell_bg(predicate) -%}
-      {% if predicate %}
-        class="green-bg"
-      {% else %}
-        class="red-bg"
-      {% endif %}
-    {%- endmacro %}
-    {% macro details_button(table, id) -%}
-      <div class="pull-right" style="padding:0.2em">
-        <a class="icon" href="{{url_for(table.replace('_', '')+'.details_view', id=id, url=request.path+'?'+request.query_string)}}">
-          <span class="fa fa-pencil glyphicon glyphicon-eye-open"></span>
-        </a>
-      </div>
-    {%- endmacro %}
-    {% macro edit_button(table, id, edit_permission) -%}
-      {% if edit_permission %}
-        <div class="pull-right" style="padding:0.2em">
-          <a class="icon" href="{{url_for(table.replace('_', '')+'.edit_view', id=id, url=request.path+'?'+request.query_string)}}">
-            <span class="fa fa-pencil glyphicon glyphicon-pencil"></span>
-          </a>
-        </div>
-      {% endif %}
-    {%- endmacro %}
     {% if surveys|length == 0 %}
       <tr><td colspan="11">No surveys match the criteria.</td></tr>
     {% endif %}
     {% for survey in surveys %}
     <tr>
-      <td class="survey-overview-col1">
-        {{ edit_button('surveys', survey.id) }}
-        <a href="{{url_for('admin.survey', survey_id=survey.id)}}">
-          {{survey.name}}<br>
-          {{survey.address_line}}</a>
-      </td>
-      <td class="text-center">{{survey.ward}}</td>
-      <td>
-        {% if survey.survey_request_date %}
-          {{survey.survey_request_date.strftime('%d %b %y')}}
-        {% endif %}
-      </td>
-      <td>
-        {% if survey.survey_date %}{{survey.survey_date.strftime('%d %b %y')}}{% endif %}
-      </td>
-      <td class="text-center" {{cell_bg(survey.fee_paid)}}>
-        {% if survey.free_survey_consideration %}
-          <strong>Free</strong>
-        {% else %}
-          {% if edit_permission %}
-            <a href="{{add_to_query(set_fee_paid=(not survey.fee_paid), survey_id=survey.id)}}"
-               onclick="return confirm('Are you sure you want to change this entry?')">
-              {{ macros.render_boolean(survey.fee_paid) }}</a>
-          {% else %}
-            {{ macros.render_boolean(survey.fee_paid) }}
-          {% endif %}
-        {% endif %}
-      </td>
+      {{ survey_name_cell(survey) }}
+      {{ survey_ward_cell(survey) }}
+      {{ survey_request_date_cell(survey) }}
+      {{ survey_date_cell(survey) }}
+      {{ survey_free_cell(survey) }}
       {% if survey.result %}
+	<!--Lead and assistant surveyors-->
         <td>
           {% if survey.result and survey.result[0].lead_surveyor %}
             {{survey.result[0].lead_surveyor}}
@@ -124,11 +118,13 @@ Displaying <b>phase {{active_phase}} surveys</b>, between
             <br>{{survey.result[0].assistant_surveyor}}
           {% endif %}
         </td>
+	<!--Cheese box number-->
         <td class="text-center">
           {% if survey.result and survey.result[0].cheese_box_number %}
             {{survey.result[0].cheese_box_number}}
           {% endif %}
         </td>
+	<!--Cheese box collected-->
         <td class="text-center" {{cell_bg(survey.box_collected)}}>
           {% if edit_permission %}
             <a href="{{add_to_query(set_box_collected=(not survey.box_collected), survey_id=survey.id)}}"
@@ -138,6 +134,7 @@ Displaying <b>phase {{active_phase}} surveys</b>, between
             {{ macros.render_boolean(survey.fee_paid) }}
           {% endif %}
         </td>
+	<!--Survey result-->
         <td class="text-center" {{cell_bg(survey.result)}}>
           {{ edit_button('results', survey.result[0].id, edit_permission) }}
           {{ details_button('results', survey.result[0].id) }}
@@ -181,12 +178,159 @@ Displaying <b>phase {{active_phase}} surveys</b>, between
       {% elif survey.lead_status.name == 'Successful' %}
         <td colspan="6" align="center"><b>Successful lead, result due</b></td>
       {% else %}
-      <td colspan="6" align="center">
-        <strong>{{survey.lead_status}}</strong>
-      </td>
+	<td colspan="6" align="center">
+	  <strong>{{survey.lead_status}}</strong>
+	</td>
       {% endif %}
     </tr>
     {% endfor %}
   </tbody>
+{%- endmacro %}
+
+{% macro phase_5_onwards_table() -%}
+  <!--Table summarising fields and results records changed at phase 5-->
+  <thead>
+    <tr>
+      <th class="survey-overview-col1">
+			      <a href="{{modify_query(sort='survey',           reverse=reverse)}}">Survey</a></th>
+      <th class="text-center"><a href="{{modify_query(sort='lead_status',      reverse=reverse)}}">Lead status</a></th>
+      <th class="text-center"><a href="{{modify_query(sort='ward',             reverse=reverse)}}">Ward</a></th>
+      <th>                    <a href="{{modify_query(sort='request_date',     reverse=reverse)}}">Request date</a></th>
+      <th>                    <a href="{{modify_query(sort='survey_date',      reverse=reverse)}}">Survey date</a></th>
+      <th class="text-center"><a href="{{modify_query(sort='fee_paid',         reverse=reverse)}}">Fee paid?{% if edit_permission %}<br>(click to change)</a>{% endif %}</th>
+      <th>                    <a href="{{modify_query(sort='lead_surveyor',    reverse=reverse)}}">Lead surveyor<br>& assistant</a></th>
+      <th class="text-center"><a href="{{modify_query(sort='got_pre_details',  reverse=reverse)}}">Pre-survey details</a></th>
+      <th class="text-center"><a href="{{modify_query(sort='got_post_details', reverse=reverse)}}">Post-survey details</a></th>
+      <th class="text-center"><a href="{{modify_query(sort='got_month',        reverse=reverse)}}">One month<br>(due/done)</a></th>
+      <th class="text-center"><a href="{{modify_query(sort='got_year',         reverse=reverse)}}">One year<br>(due/done)</a></th>
+    </tr>
+  </thead>
+  <tbody>
+    {% if surveys|length == 0 %}
+      <tr><td colspan="11">No surveys match the criteria.</td></tr>
+    {% endif %}
+    {% for survey in surveys %}
+    <tr>
+      {{ survey_name_cell(survey) }}
+      {{ survey_lead_status_cell(survey) }}
+      {{ survey_ward_cell(survey) }}
+      {{ survey_request_date_cell(survey) }}
+      {{ survey_date_cell(survey) }}
+      {{ survey_free_cell(survey) }}
+      <!--Lead and assistant surveyors-->
+      <td>
+	{% if survey.post_details and survey.post_details[0].lead_surveyor %}
+	  {{survey.post_details[0].lead_surveyor}}
+	{% endif %}
+	{% if survey.post_details and survey.post_details[0].assistant_surveyor %}
+	  <br>{{survey.post_details[0].assistant_surveyor}}
+	{% endif %}
+      </td>
+      <!--Survey pre details-->
+      {% if survey.pre_details %}
+	<td class="text-center" {{cell_bg(survey.pre_details)}}>
+	  {{ edit_button('pre_survey_details', survey.pre_details[0].id, edit_permission) }}
+	  {{ details_button('pre_survey_details', survey.pre_details[0].id) }}
+	  <a href="{{url_for('admin.survey', survey_id=survey.id)}}#result">
+	    {{ macros.render_boolean(survey.pre_details) }}</a>
+	</td>
+      {% else %}
+	<td class="red-bg"></td>
+      {% endif %}
+      <!--Survey post details-->
+      {% if survey.post_details %}
+	<td class="text-center" {{cell_bg(survey.post_details)}}>
+	  {{ edit_button('post_survey_details', survey.post_details[0].id, edit_permission) }}
+	  {{ details_button('post_survey_details', survey.post_details[0].id) }}
+	  <a href="{{url_for('admin.survey', survey_id=survey.id)}}#result">
+	    {{ macros.render_boolean(survey.post_details) }}</a>
+	</td>
+      {% else %}
+	<td class="red-bg"></td>
+      {% endif %}
+      <!--Month feedback-->
+      {% if survey.month_feedback %}
+	<td class="text-center green-bg">
+	  {{ edit_button('month_feedback', survey.month_feedback[0].id, edit_permission) }}
+	  {{ details_button('month_feedback', survey.month_feedback[0].id) }}
+	  <a href="{{url_for('admin.survey', survey_id=survey.id)}}#month-feedback">
+	    {{ macros.render_boolean(survey.month_feedback) }}</a>
+	</td>
+      {% elif survey.survey_date %}
+	{% set due_date = get_one_month_date(survey.survey_date) %}
+	<td class="text-center{% if due_date <= get_date_now() %} red-bg{% endif %}">
+	  {{ due_date.strftime('%d %b %y') }}</td>
+      {% else %}
+	<td></td>
+      {% endif %}
+      <!--Year feedback-->
+      {% if survey.year_feedback %}
+	<td class="text-center green-bg">
+	  {{ edit_button('year_feedback', survey.year_feedback[0].id, edit_permission) }}
+	  {{ details_button('year_feedback', survey.year_feedback[0].id) }}
+	  <a href="{{url_for('admin.survey', survey_id=survey.id)}}#year-feedback">
+	    {{ macros.render_boolean(survey.year_feedback) }}</a>
+	</td>
+      {% elif survey.survey_date %}
+	{% set due_date = get_one_year_date(survey.survey_date) %}
+	<td class="text-center{% if due_date <= get_date_now() %} red-bg{% endif %}">
+	  {{ due_date.strftime('%d %b %y') }}</td>
+      {% else %}
+	<td></td>
+      {% endif %}
+    </tr>
+    {% endfor %}
+  </tbody>
+{%- endmacro %}
+
+<!--Survey count and CSV export button-->
+<div class="pull-right">
+  <p>
+    {{surveys|length}} surveys<br/>
+    <a href="{{url_for('admin.export', filename=export_filename)}}?{{request.query_string}}">
+      <button type="button" class="btn btn-default btn-xs">
+	Export as CSV
+      </button>
+    </a>
+  </p>
+</div>
+<p>
+<!--Active phase-->
+{% if active_phase %}
+<p>
+Displaying <b>phase {{active_phase}} surveys</b>, between
+{{active_phase_start_date.strftime('%d %b %y')}} and
+{{active_phase_end_date.strftime('%d %b %y')}}.
+</p>
+{% endif %}
+<!--Filters-->
+<strong>Filters:</strong>
+{% for filter in filters %}
+  {% if filter in active_filters %}
+    <a href="{{remove_from_query(filter=filter)}}">
+      <button type="button" class="btn btn-primary btn-xs">
+	{{filter|format_db_name}}
+      </button>
+    </a>
+  {% else %}
+    <a href="{{add_to_query(filter=filter)}}">
+      <button type="button" class="btn btn-default btn-xs">
+	{{filter|format_db_name}}
+      </button>
+    </a>
+  {% endif %}
+{% endfor %}
+</p>
+<!--Table-->
+<table class="table table-condensed table-hover survey-overview-table">
+  {% if active_phase == None %}
+    <p>Please select a phase.</p>
+  {% else %}
+    {% if active_phase < config.START_PHASE_NEW_SURVEY_FORMS %}
+      {{ pre_phase_5_table() }}
+    {% else %}
+      {{ phase_5_onwards_table() }}
+    {% endif %}
+  {% endif %}
 </table>
 {% endblock body %}
