@@ -180,9 +180,9 @@ class Surveys(db.Model):
     photo_release             = db.Column(db.Boolean, default=False)
     building_type_id          = db.Column(db.Integer, db.ForeignKey('building_types.id'))
     building_type             = db.relationship('BuildingTypes')
-    num_main_rooms            = db.Column(db.Integer) # Deprecated
+    num_main_rooms            = db.Column(db.Integer)
     can_heat_comfortably      = db.Column(db.Boolean, default=False) # Deprecated
-    expected_benefit          = db.Column(db.Text) # Deprecated
+    expected_benefit          = db.Column(db.Text)
     signed_up_via             = db.Column(db.String(250))
     referral                  = db.Column(db.String(250))
     availability              = db.Column(db.Text)

@@ -107,6 +107,15 @@ class ApplySurveyForm(FlaskForm):
 	fields.StringField('Secondary contact telephone number',
 			   validators=[Optional(),
 				       Length(max=20)])
+    num_main_rooms = \
+	fields.IntegerField('Number of main rooms* ' \
+			    +'(please see <a href="/home-surveys#pricing">pricing details</a>' \
+			    +', this will be confirmed during the survey)*',
+			    validators=[Required(),
+					NumberRange(min=1, max=100)])
+    expected_benefit = \
+	fields.TextAreaField('How do you think you will benefit from a survey?*',
+			     validators=[Required()])
     availability = \
 	fields.TextAreaField('What is your availability to schedule the survey?*',
 			     description='Please see the <a href="/home-surveys">survey information</a> for the expected duration of your survey.',
@@ -179,19 +188,19 @@ class PreSurveyDetailsForm(FlaskForm):
 					 +'<li>Do you have any pets that will be present in your home during the survey?</li>' \
 					 +'</ul>',
 			     validators=[Optional()])
-    num_main_rooms = \
-	fields.IntegerField('Number of main rooms* ' \
-			    +'(please see <a href="/home-surveys#pricing">pricing details</a>' \
-			    +', this will be confirmed during the survey)*',
-			    validators=[Required(),
-					NumberRange(min=1, max=100)])
+#    num_main_rooms = \
+#	fields.IntegerField('Number of main rooms* ' \
+#			    +'(please see <a href="/home-surveys#pricing">pricing details</a>' \
+#			    +', this will be confirmed during the survey)*',
+#			    validators=[Required(),
+#					NumberRange(min=1, max=100)])
     can_heat_comfortably = \
 	fields.BooleanField('(tick for yes) Can you heat your home to a comfortable ' \
 			    +'temperature in the winter?',
 			    validators=[Optional()])
-    expected_benefit = \
-	fields.TextAreaField('How do you think you will benefit from a survey?*',
-			     validators=[Required()])
+#    expected_benefit = \
+#        fields.TextAreaField('How do you think you will benefit from a survey?*',
+#			     validators=[Required()])
     year_of_construction = \
 	fields.IntegerField('Year of construction',
 			    validators=[Optional(),
