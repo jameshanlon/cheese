@@ -6,6 +6,23 @@ survey season.
 
 ## Qualified ETs and assistants
 
+<div class="alert alert-info">
+
+<h4 class="alert-heading">Please note: volunteer assistants</h4>
+
+<p>This Spring, because we had not received any grants, we had to take a
+management decision that we could only afford to use unpaid volunteer
+Assistants. The reason for this is that we thought £150 (double last year's
+fee) was as much as the market would bear, while the actual cost of a survey to
+us is £240 if including overheads - despite all senior management working for
+nothing. If we paid assistants we would make a loss on all our survey direct
+salary costs - unsustainable. Until we get an additional income stream we
+cannot change this decision. An exception to this is when we are paid a
+considerably higher survey fee by a client or third party - this has to be in
+excess of £240.</p>
+
+</div>
+
 Flat, up to 5 main rooms, expected 2 hours per survey:
 
  - Qualified ET: £50.00
@@ -14,7 +31,7 @@ Flat, up to 5 main rooms, expected 2 hours per survey:
 House, up to 5 main rooms, expected 2.5 hours per survey:
 
  - Qualified ET: £58.75
- - Assistant, if not a volunteer: £21.25
+ - Assistant, if not a volunteer: £31.25
 
 6-8 rooms, expected 2.5 hours per survey:
 
@@ -33,6 +50,14 @@ Call-out payment:
 
 Please note:
 
+ - These rates are based on hourly rates of £8.50 for assistants and £17.50 for
+   ETs. If you are unsure about the size of the building you surveyed, you can
+   check the details in the [database](/admin).
+ - For Assistants, and ETs, payment is made on the basis of a call-out fee and
+   an hourly rate.
+ - The call out payment and hourly rate for ETs is higher than that of
+   assistant's becuase the ET takes responsibility and the leading role in the
+   survey.
  - The call-out payment will only be paid if the survey is cancelled, otherwise
    it is paid as part of the fee.
  - For qualified ETs, please note that the payment includes conducting the
