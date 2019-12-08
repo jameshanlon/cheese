@@ -4,7 +4,7 @@
 The C.H.E.E.S.E. Project is a not-for-profit organiastion. We offer surveys to
 low-income households for free as part of our efforts to tackle fuel poverty.
 We have only been able to offer our surveys for free through grant funding,
-which has been increasingly difficult to obtain. So e are now appealing for
+which has been increasingly difficult to obtain. We are now appealing for
 donations, so if you would like to help those in fuel poverty to have free
 surveys, then please donate here.
 
