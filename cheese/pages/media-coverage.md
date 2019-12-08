@@ -28,10 +28,10 @@ and out news item on it [here](news/2019-07-cabot-institute-sdgs).
   is mentioned in the context of a discussion of the promotion of
 energy-efficiency habits, products and information. What they say: The
 magnificently named ‘CHEESE Project’ is doing something different from many
-community projects. It conducts thermal imaging of a home, from low cost to no
+community projects. It conducts thermal imaging of a home from low cost to no
 cost, depending on a households circumstances. A clear understanding of a
-building’s thermal performance is essential is works to a home are to focus in
-the right and most cost effective places. CHEESE’s work typically shows top
+building’s thermal performance is essential so that works to a home are focused in
+the right and most cost effective places. CHEESE’s work typically shows
 poorly-fitted windows, missing insulation and draughts between floorboards, all
 of which can make a home feel quite uncomfortable in cold weather. Listen to
 the podcast [here](http://podcast.ecoflap.co.uk/podcast/passivhaus/).
