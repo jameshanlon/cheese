@@ -13,6 +13,14 @@ for the Easton and Lawrence Hill areas of Bristol. They included a short piece
 on CHEESE surveys in their winter edition of the print magazine.
 
 <div class="clearfix"></div>
+
+- **Bristol Green Capital Partnership guest blog, November 2019**.
+Our survey manager, Maddy Longhurst, has written a guest blog:
+'Colours Cut Carbon – How thermal imaging ensures not a penny is wasted in home
+retrofit and repair', read it
+[here](https://bristolgreencapital.org/colours-cut-carbon-how-thermal-imaging-ensures-not-a-penny-is-wasted-in-home-retrofit-and-repair/). 
+
+<div class="clearfix"></div>
 <div class="float-right">
 {{ macros.thumbnail('images/2019-07-cabot-institute-SDGs/Cabot-Institute-SDGs-cover.png', '140x140', 'media-coverage') }}
 </div>
@@ -23,6 +31,8 @@ under SDG 7 (Affordable and Clean Energy, page 27), as one of the most
 significant projects tacking fuel poverty in Bristol. Read the report
 [here](https://www.bristol.ac.uk/media-library/sites/cabot-institute-2018/documents/BRISTOL%20AND%20THE%20SDGs.pdf)
 and out news item on it [here](news/2019-07-cabot-institute-sdgs).
+
+<div class="clearfix"></div>
 
 - **Passivhaus: The Energy Efficiency Podcast – episode 2**, June 2019. CHEESE
   is mentioned in the context of a discussion of the promotion of
