@@ -1,5 +1,5 @@
 article:
-date: 2019-10-13
+date: 2019-12-08
 title: Sue Nicholls’ contribution to The CHEESE Project 
 image: images/people/Sue-Nicholls-CEE.jpg
 author: Mike Andrews 
