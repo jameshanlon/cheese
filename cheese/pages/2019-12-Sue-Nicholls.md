@@ -22,10 +22,10 @@ family’s carbon footprint by making energy-saving improvements to her own
 house, which then became one of the Bristol Green Doors example homes, open
 to the public.
 
-Sue then recognized that more could be done to help Bristol to reduce its
+Sue then recognised that more could be done to help Bristol to reduce its
 energy demand and became involved with The CHEESE Project. At that point, we
 had just started out with support from Bristol Green Capital in 2015. Sue
-helped to publicize CHEESE at the Redland May Fair, and set up the BCR energy
+helped to publicise CHEESE at the Redland May Fair, and set up the BCR energy
 group shortly afterwards to promote CHEESE parties as a way to promote our
 surveys. By the autumn she was part of the management team and she secured a
 crucial grant from BCR Neighbourhood Partnership which enabled CHEESE to buy
@@ -34,11 +34,11 @@ equipment to start internal thermal surveying.
 Since then, thanks to Sue’s continuing hard work, the project has surveyed more
 than 300 homes, to great acclaim by the householders. Earning local, national
 and international respect. Sue brought her scientific rigour to working with
-two successive interns from Bristol University, who were tasked with analyzing
+two successive interns from Bristol University, who were tasked with analysing
 the outcomes of the thermal surveys. Thanks to Sue’s contribution and
 remarkable, quiet commitment, even when she was seriously ill, the project has
 been replicated twice in SE London and there are plans to extend it nationwide
-to make a significant contribution to combatting climate disruption.
+to make a significant contribution to combating climate disruption.
 
 We will miss her greatly.
 

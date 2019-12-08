@@ -26,3 +26,4 @@ These presentations give an overview of the project:
 # Policy
 
 - [Equal opportunities policy](/equal-opportunities)
+- [Complaints procedure](/complaints)
