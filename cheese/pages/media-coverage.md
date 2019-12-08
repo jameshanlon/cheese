@@ -4,6 +4,16 @@
 # Media coverage
 
 <div class="float-right">
+{{ macros.thumbnail('images/2019-10-UpOurStreet-CHEESE.jpg', '140x140', 'media-coverage') }}
+</div>
+
+- **Up Our Street, November 2019**. [Up Our
+  Street](https://upourstreet.org.uk/) is a local magazine and community group
+for the Easton and Lawrence Hill areas of Bristol. They included a short piece
+on CHEESE surveys in their winter edition of the print magazine.
+
+<div class="clearfix"></div>
+<div class="float-right">
 {{ macros.thumbnail('images/2019-07-cabot-institute-SDGs/Cabot-Institute-SDGs-cover.png', '140x140', 'media-coverage') }}
 </div>
 
