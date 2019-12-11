@@ -81,7 +81,7 @@
   <div class="thumbs">
     {% for image in image_list(directory) %}
       <a data-lightbox="{{directory}}" href="{{url_for('.assets', filename=image)}}">
-        <img src="{{image|thumbnail(config['THUMB_SIZE'])}}" class="img-thumbnail">
+        <img src="{{image|thumbnail(config['THUMB_SIZE'])}}" class="img-thumbnail img-fluid">
       </a>
     {% endfor %}
   </div>
@@ -89,13 +89,13 @@
 
 {% macro thumbnail(image, size, group) -%}
   <a data-lightbox="{{group}}" href="{{url_for('.assets', filename=image)}}">
-    <img class="rounded" src="{{image|thumbnail(size)}}">
+    <img class="rounded img-fluid" src="{{image|thumbnail(size)}}">
   </a>
 {%- endmacro %}
 
 {% macro fig_thumbnail(image, size, group) -%}
   <a data-lightbox="{{group}}" href="{{url_for('.assets', filename=image)}}">
-    <img class="figure-img rounded" src="{{image|thumbnail(size)}}">
+    <img class="figure-img rounded img-fluid" src="{{image|thumbnail(size)}}">
   </a>
 {%- endmacro %}
 
