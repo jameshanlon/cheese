@@ -6,8 +6,9 @@ author: Mike Andrews
 
 {% import 'macros.html' as macros %}
 
-Sue Nicholls, a director and founder of the CHEESE project has died
-in November this year after a most courageous battle with cancer.
+We are very sad to report that Sue Nicholls, a director and founder of the
+CHEESE Project died in November this year after a most courageous battle with
+cancer.
 
 Sue played a most important role in the founding of the CHEESE Project, by
 obtaining funds through the Bishopston, Cotham and Redland (BCR) energy group,
