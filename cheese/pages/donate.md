@@ -1,4 +1,10 @@
 
+{% import 'macros.html' as macros %}
+
+<div class="text-center">
+{{ macros.thumbnail('images/donate-banner.jpg', '800x800', 'media-coverage') }}
+</div>
+
 # Make a donation
 
 The C.H.E.E.S.E. Project is a not-for-profit community-based organisation. We
