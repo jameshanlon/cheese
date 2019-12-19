@@ -256,6 +256,10 @@ class CheeseAdminIndexView(flask_admin.AdminIndexView):
                'box_not_collected',
                'has_result',
                'no_result',
+               'has_pre_details',
+               'no_pre_details',
+               'has_post_details',
+               'no_post_details',
                'has_one_month',
                'no_one_month',
                'has_one_year',
@@ -296,6 +300,14 @@ class CheeseAdminIndexView(flask_admin.AdminIndexView):
                 query = query.filter(Surveys.result != None)
             if name == 'no_result':
                 query = query.filter(Surveys.result == None)
+            if name == 'has_pre_details':
+                query = query.filter(Surveys.pre_details != None)
+            if name == 'no_pre_details':
+                query = query.filter(Surveys.pre_details == None)
+            if name == 'has_post_details':
+                query = query.filter(Surveys.post_details != None)
+            if name == 'no_post_details':
+                query = query.filter(Surveys.post_details == None)
             if name == 'has_one_month':
                 query = query.filter(Surveys.month_feedback != None)
             if name == 'no_one_month':
