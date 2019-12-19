@@ -245,25 +245,43 @@ def lead_status_id(name):
     return SurveyLeadStatuses.query.filter(SurveyLeadStatuses.name==name).first().id
 
 class CheeseAdminIndexView(flask_admin.AdminIndexView):
-    filters = ['successful_lead',
-               'possible_lead',
-               'dead_lead',
-               'free_survey',
-               'paid_survey',
-               'fee_paid',
-               'fee_not_paid',
-               'box_collected',
-               'box_not_collected',
-               'has_result',
-               'no_result',
-               'has_pre_details',
-               'no_pre_details',
-               'has_post_details',
-               'no_post_details',
-               'has_one_month',
-               'no_one_month',
-               'has_one_year',
-               'no_one_year']
+    filters1 = ['successful_lead',
+                'possible_lead',
+                'dead_lead',
+                'free_survey',
+                'paid_survey',
+                'fee_paid',
+                'fee_not_paid',
+                'box_collected',
+                'box_not_collected',
+                'has_result',
+                'no_result',
+                'has_one_month',
+                'no_one_month',
+                'has_one_year',
+                'no_one_year']
+    # Filters for phases 5 onwards.
+    filters2 = ['successful_lead',
+                'possible_lead',
+                'dead_lead',
+                'free_survey',
+                'paid_survey',
+                'fee_paid',
+                'fee_not_paid',
+                'has_pre_details',
+                'no_pre_details',
+                'has_post_details',
+                'no_post_details',
+                'has_one_month',
+                'no_one_month',
+                'has_one_year',
+                'no_one_year']
+
+    def get_filters(self, active_phase):
+        # Select the right set of filters based on the phase.
+        if int(active_phase) >= current_app.config['START_PHASE_NEW_SURVEY_FORMS']:
+            return self.filters2
+        return self.filters1
 
     def filter_query(self, active_phase, active_filters):
         query = Surveys.query;
@@ -413,7 +431,7 @@ class CheeseAdminIndexView(flask_admin.AdminIndexView):
                            active_phase_start_date=active_phase_start_date,
                            active_phase_end_date=active_phase_end_date,
                            phase_start_dates=current_app.config['PHASE_START_DATES'],
-                           filters=self.filters,
+                           filters=self.get_filters(active_phase),
                            active_filters=active_filters,
                            export_filename=export_filename,
                            edit_permission=has_edit_permission())
