@@ -488,10 +488,6 @@ class OneMonthFeedbackForm(FlaskForm):
                                           widget=OneToFiveWidget(),
                                           choices=choices_1_to_5,
                                           validators=[Required()])
-    cheese_box_1to5 = fields.RadioField('How useful did you find the CHEESE box? (1: least, to 5: most)*',
-                                        widget=OneToFiveWidget(),
-                                        choices=choices_1_to_5,
-                                        validators=[Required()])
     survey_video_1to5 = fields.RadioField('How useful have you find the survey video? (1: not at all, to 5: very)*',
                                           widget=OneToFiveWidget(),
                                           choices=choices_1_to_5,
@@ -508,9 +504,6 @@ class OneMonthFeedbackForm(FlaskForm):
                                        widget=OneToFiveWidget(),
                                        choices=choices_1_to_5,
                                        validators=[Required()])
-    cheese_box = fields.TextAreaField('Can you explain your <a href="/cheese-box">CHEESE box</a> score?*',
-                                      description='We would be interested to know specifically what you found useful and what you didn\'t.',
-                                      validators=[Required()])
     feedback = fields.TextAreaField('Do you have any feedback?',
                                     description='We would like to hear what you think about:'
                                                    +' the organisation of the survey,'
@@ -603,7 +596,6 @@ class OneYearFeedbackForm(FlaskForm):
     feedback = fields.TextAreaField('Lastly, do you have any other feedback on the CHEESE Project?',
                                     description='We would like to hear what you think about:'
                                                   +' how useful the survey was,'
-                                                  +' how useful the <a href="/cheese-box">CHEESE box</a> was,'
                                                   +' your overall satisfaction,'
                                                   +' and anything else at all you would like to let us know.',
                                     validators=[Optional()])

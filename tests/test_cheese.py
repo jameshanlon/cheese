@@ -230,12 +230,11 @@ def test_submit_post_survey_details_form_req(client, app):
 ONE_MONTH_REQ_FIELDS = dict(householders_name     = 'householders_name',
                             address               = 'address',
                             satisfaction_1to5     = '5',
-                            cheese_box_1to5       = '5',
                             survey_video_1to5     = '5',
                             surveyor_conduct_1to5 = '5',
                             survey_value_1to5     = '5',
                             recommend_1to5        = '5',
-                            cheese_box            = 'cheese_box', )
+			    )
 
 def test_month_feedback_form_full(client, app):
     # Test the form submits with valid input data.
@@ -269,12 +268,10 @@ def test_month_feedback_form_full(client, app):
         assert feedback.householders_name         == 'householders_name'
         assert feedback.address                   == 'address'
         assert feedback.satisfaction_1to5         == 5
-        assert feedback.cheese_box_1to5           == 5
         assert feedback.survey_video_1to5         == 5
         assert feedback.surveyor_conduct_1to5     == 5
         assert feedback.survey_value_1to5         == 5
         assert feedback.recommend_1to5            == 5
-        assert feedback.cheese_box                == 'cheese_box'
         assert feedback.annual_gas_kwh            == 123.456
         assert feedback.annual_gas_estimated      == True
         assert feedback.annual_gas_start_date     == datetime.date(2018, 10, 1)
