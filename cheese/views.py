@@ -846,6 +846,7 @@ def submit_post_survey_details():
         if helpers.validate_form_on_submit(form):
 	    details = PostSurveyDetails()
 	    form.populate_obj(details)
+            details.survey.lead_status_id = lead_status_id('Successful')
 	    db.session.add(details)
             db.session.commit()
             # Send watchers email.
