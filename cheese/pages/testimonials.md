@@ -28,7 +28,9 @@ the house to seek out every little draught and cold spot. He did this with
 great patience, thoroughly checking behind furniture, up at ceiling height and
 in the hidden corners. We  learnt a huge amount about the structure and history
 of our house, with plenty of surprising features shown up by the tell-tale cold
-spots. Chris and Rob were careful not to be prescriptive about the type of
+spots.
+<br><br>
+Chris and Rob were careful not to be prescriptive about the type of
 solutions we might benefit from, but were also generous in offering some sound
 advice from their combined wealth of knowledge of how they had seen other
 homeowners benefit from fixing cold home problems. Best of all, by the end of
