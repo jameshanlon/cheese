@@ -12,6 +12,33 @@ and an unnecessary vent - venting in mountains of cold which no longer needs to
 be there. This is going to save me mountains once I've done the work. Well done
 Boycee and Richard - so professional."*
 
+- *"Rob and Chris phoned shortly before their arrival to let us know exactly when
+  we could expect them. Before unpacking their kit, they sat down to carefully
+explain what they would be doing during the survey. Their hi-tec gadgets
+include a thermal imaging camera which connects wirelessly to a tablet so that
+my wife and I could see exactly what was being recorded throughout the survey,
+which meant we felt fully involved at every stage. What we weren't expecting,
+in addition to the thermal imaging, was that they would be investigating all of
+our big and small drafts by putting an air-tight fan on the front door to
+reduce the air pressure inside the house. It was amazing to be able to feel the
+cold air whistling through the cracks.
+<br><br>
+Chris proceeded through every room in
+the house to seek out every little draught and cold spot. He did this with
+great patience, thoroughly checking behind furniture, up at ceiling height and
+in the hidden corners. We  learnt a huge amount about the structure and history
+of our house, with plenty of surprising features shown up by the tell-tale cold
+spots. Chris and Rob were careful not to be prescriptive about the type of
+solutions we might benefit from, but were also generous in offering some sound
+advice from their combined wealth of knowledge of how they had seen other
+homeowners benefit from fixing cold home problems. Best of all, by the end of
+the survey, we felt genuinely empowered to actually do something about the cold
+and draughty spots we had directly seen on and set to making a whole list of
+easy DIY fixes.
+<br><br>
+Thanks to Chris and Rob for fun and informative survey."* -
+Richard and Caroline, Bedminster.
+
 ## From the 2018/19 surveying season (phase 4)
 
 - *"Boycee and Trisha were lovely and the thermal imaging experience was
