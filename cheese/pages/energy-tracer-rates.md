@@ -33,7 +33,7 @@ House, up to 5 main rooms, expected 2.5 hours per survey:
  - Qualified ET: £58.75
  - Assistant, if not a volunteer: £31.25
 
-6-8 rooms, expected 2.5 hours per survey:
+6-8 rooms, expected 3 hours per survey:
 
   - Qualified ET: £67.50
   - Assistant, if not a volunteer: £31.25
