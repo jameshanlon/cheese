@@ -4,6 +4,14 @@
 On this page, we've collected some representative feedback from customers who've had
 a internal home survey.
 
+## From the 2019/20 surveying season (phase 5)
+
+- *"Well - I am staggered. I've just had a 3 hour walk around my house and we've
+identified cracks, leaky windows, chimney stuff, a bay window letting in damp
+and an unnecessary vent - venting in mountains of cold which no longer needs to
+be there. This is going to save me mountains once I've done the work. Well done
+Boycee and Richard - so professional."*
+
 ## From the 2018/19 surveying season (phase 4)
 
 - *"Boycee and Trisha were lovely and the thermal imaging experience was
