@@ -15,11 +15,12 @@ of our efforts to tackle fuel poverty. <strong>Fuel poverty affects one in ten
 families in Bristol, who may have to chose between heating, eating, and paying
 the rent.</strong></p>
 
-<p>Because grant funding has become increasingly difficult to obtain, we are
-now appealing for donations to support our work. If you would like to help
-those in fuel poverty to have free surveys, please donate here.</p>
+<p>As grant funding to deliver free surveys can be hard to secure and only
+available intermittently, we are gratefully appealing for donations to support
+this work. Every donation will make a positive difference to someone's
+life.</p>
 
-<p>Every donation will go towards:</p>
+<p>Your donation will go towards:</p>
 
 <ul>
 
@@ -29,7 +30,7 @@ who would not otherwise be able to afford it without your help.</li>
 </ul>
 <ul>
 
-<li>Enabling these households to carry our targeted and effective draft
+<li>Enabling these households to carry out targeted and effective draft
 proofing to lower their bills and improve their comfort.</li>
 
 </ul>
