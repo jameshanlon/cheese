@@ -10,7 +10,7 @@ author: Jamie Hanlon
 
 We are delighted to have been awarded £15,000 over two years from the [Bristol
 Impact Fund][#bristol-impact-fund], Bristol City Council's fund for voluntary
-and community organisations. Our grant is to worth in partnership with [Re:work
+and community organisations. Our grant is to work in partnership with [Re:work
 Ltd][#rework] and [Hartcliffe & Withywood Community Partnership][#hwcp] (HWCP),
 and with support from the [Bristol Energy Network][#ben] (BEN), to engage
 within the Filwood, Hartcliffe/Withywood and Knowle wards to assess the energy
