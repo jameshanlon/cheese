@@ -37,11 +37,11 @@ Welcome to the resources page for Energy Tracers.
 
 - [Rates of pay for Energy Tracers](/energy-tracer-rates)
 - Invoice proforma for payment of expenses
-  ([Word.docx]({{url_for('.assets', filename='files/CHEESE-invoice-proforma-For-payment-of-expenses.docx')}}),
-   [PDF]({{url_for('.assets', filename='files/CHEESE-invoice-proforma-For-payment-of-expenses.pdf')}}))
+  ([Word.docx]({{url_for('.assets', filename='files/CHEESE-invoice-proforma-for-payment-of-expenses.docx')}}),
+   [PDF]({{url_for('.assets', filename='files/CHEESE-invoice-proforma-for-payment-of-expenses.pdf')}}))
 - Invoice proforma for payment of survey fees
-  ([Word.docx]({{url_for('.assets', filename='files/CHEESE-invoice-proforma-For-payment-of-survey-fees.docx')}}),
-   [PDF]({{url_for('.assets', filename='files/CHEESE-invoice-proforma-For-payment-of-survey-fees.pdf')}}))
+  ([Word.docx]({{url_for('.assets', filename='files/CHEESE-invoice-proforma-for-payment-of-survey-fees.docx')}}),
+   [PDF]({{url_for('.assets', filename='files/CHEESE-invoice-proforma-for-payment-of-survey-fees.pdf')}}))
 
 ## References
 
