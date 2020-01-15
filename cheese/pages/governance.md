@@ -50,13 +50,13 @@ manager:
   <p>Technical Director</p>
 
   <p>Jeremy founded a venture-capital funded software company (Pulsic Ltd,
-  Bristol). With 33 years experience in software and silicon chip design, he is
-  the author of several patents. Having developed bespoke software to power our
-  low-cost iPhone-based survey equipment, he has trained 32 surveyors to carry
-  out more than 200 C.H.E.E.S.E. surveys successfully. He is currently designing
-  our own custom thermal-imaging camera based on a Raspberry-Pi computer. This
-  system is currently at the working prototype stage. Jeremy works pro bono for
-  the project. </p>
+Bristol) and Friends of the Earth Bristol. With 33 years experience in software
+and silicon chip design, he is the author of several patents. Having developed
+bespoke software to power our low-cost iPhone-based survey equipment, he has
+trained 32 surveyors to carry out more than 200 C.H.E.E.S.E. surveys
+successfully. He is currently designing our own custom thermal-imaging camera
+based on a Raspberry-Pi computer. This system is currently at the working
+prototype stage. Jeremy works pro bono for the project. </p>
 
   <hr>
   </div>
@@ -131,12 +131,12 @@ manager:
   <p class="lead">Rosamund Thomas</p>
   <p>Director</p>
 
-  <p> Roz (left in the photo) has completed two phases as an Energy Tracer and in
-  summer 2019 joined the team to become more involved with the project all year
-  round. Her first tasks have been streamlining the survey process and helping
-  the recruitment of new tracers the upcoming season. Roz has a Geography degree
-  and has since pursued career in the energy sector, currently working as a
-  renewable energy analyst.</p>
+  <p> Roz has completed two phases as an Energy Tracer and in summer 2019
+joined the team to become more involved with the project all year round. Her
+first tasks have been streamlining the survey process and helping the
+recruitment of new tracers the upcoming season. Roz has a Geography degree and
+has since pursued career in the energy sector, currently working as a renewable
+energy analyst.</p>
 
   <hr>
   </div>
