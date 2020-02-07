@@ -132,6 +132,14 @@ class ApplySurveyForm(FlaskForm):
                               +' you think this applies to your situation. You can talk this ' \
                               +' through with our survey manager when they contact you.',
                             validators=[Optional()])
+    special_considerations = \
+	fields.TextAreaField('Do you have any special requirements that we need to be aware of during the survey?',
+			     description='<ul class="text-muted">' \
+					 +'<li>Do you have any illnesses or disabilities?</li>' \
+					 +'<li>Will you be able to accompany the surveyor around your home for two to three hours during the survey?</li>' \
+					 +'<li>Do you have any pets that will be present in your home during the survey?</li>' \
+					 +'</ul>',
+			     validators=[Optional()])
     agree_to_requirements = \
         fields.BooleanField(
 """ I <strong>agree</strong> to make the <a
@@ -180,14 +188,6 @@ class PreSurveyDetailsForm(FlaskForm):
     postcode = fields.StringField('Post code*',
 				  validators=[Required(),
 					      Length(max=10)])
-    special_considerations = \
-	fields.TextAreaField('Do you have any special requirements that we need to be aware of during the survey?',
-			     description='<ul class="text-muted">' \
-					 +'<li>Do you have any illnesses or disabilities?</li>' \
-					 +'<li>Will you be able to accompany the surveyor around your home for two to three hours during the survey?</li>' \
-					 +'<li>Do you have any pets that will be present in your home during the survey?</li>' \
-					 +'</ul>',
-			     validators=[Optional()])
 #    num_main_rooms = \
 #	fields.IntegerField('Number of main rooms* ' \
 #			    +'(please see <a href="/home-surveys#pricing">pricing details</a>' \

@@ -194,7 +194,7 @@ class Surveys(db.Model):
     survey_complete           = db.Column(db.Boolean, default=False)
     followed_up               = db.Column(db.Boolean, default=False)
     box_collected             = db.Column(db.Boolean, default=False)
-    special_considerations    = db.Column(db.Text) # Deprecated
+    special_considerations    = db.Column(db.Text)
     notes                     = db.Column(db.Text)
     result                    = db.relationship('Results')
     pre_details               = db.relationship('PreSurveyDetails')

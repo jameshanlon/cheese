@@ -76,6 +76,7 @@ def test_apply_for_survey_form(client, app):
              free_survey_consideration = 'True',
              expected_benefit          = 'expected_benefit',
              num_main_rooms            = 37,
+	     special_considerations    = 'special_considerations',
              agree_to_requirements     = 'True', # Not stored in DB.
              agree_to_cancellation     = 'True', # Not stored in DB.
              photo_release             = 'True',
@@ -93,6 +94,7 @@ def test_apply_for_survey_form(client, app):
         assert survey.availability              == 'availability'
         assert survey.referral                  == 'referral'
 	assert survey.num_main_rooms            == 37
+	assert survey.special_considerations    == 'special_considerations'
 	assert survey.expected_benefit          == 'expected_benefit'
         assert survey.free_survey_consideration == True
         assert survey.photo_release             == True
@@ -105,8 +107,7 @@ PRE_SURVEY_REQ_FIELDS = dict(
 
 def test_submit_pre_survey_details_form_full(client, app):
     rv = admin_login(client)
-    data = dict(special_considerations     = 'special_considerations',
-		can_heat_comfortably       = True,
+    data = dict(can_heat_comfortably       = True,
 		year_of_construction       = 1970,
 		building_type              = '1',
 		wall_construction_type     = '1',
@@ -140,7 +141,6 @@ def test_submit_pre_survey_details_form_full(client, app):
 	result = PreSurveyDetails.query.filter(PreSurveyDetails.householders_name=='test_submit_pre_survey_details_form_full').first()
 	assert result.address_line               == 'address_line'
 	assert result.postcode                   == 'postcode'
-	assert result.special_considerations     == 'special_considerations'
 	assert result.can_heat_comfortably       == True
 	assert result.year_of_construction       == 1970
 	assert result.building_type              == BuildingTypes.query.get(1)
