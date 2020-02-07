@@ -837,8 +837,34 @@ class ThermalImageView(GeneralModelView):
 # Restricted pages.
 #===-----------------------------------------------------------------------===#
 
+@bp.route('/submit-pre-survey-details', methods=['GET', 'POST'])
+@login_required
+def submit_pre_survey_details():
+    form = create_pre_survey_details_form(db.session, request.form)
+    if request.method=='POST':
+	if helpers.validate_form_on_submit(form):
+	    details = PreSurveyDetails()
+	    form.populate_obj(details)
+	    db.session.add(details)
+	    db.session.commit()
+	    # Send watchers email.
+	    database_url = current_app.config['URL_BASE']+str(url_for('presurveydetails.details_view', id=details.id))
+	    subject = '[CHEESE] New pre-survey details'
+	    message = 'For '+str(details.survey)+'\n' \
+		      +str(datetime.datetime.today())+': '+database_url
+	    mail.send(Message(subject=subject,
+			      body=message,
+			      recipients=current_app.config['WATCHERS']))
+	    # Redirect to success page..
+	    page = pages.get('pre-survey-details-successful')
+	    return render_template('page.html', page=page)
+	else:
+	    flash('There were problems with your form.', 'error')
+    return render_template('submit-pre-survey-details.html', form=form)
+
+
 @bp.route('/submit-post-survey-details', methods=['GET', 'POST'])
-#@login_required
+@login_required
 def submit_post_survey_details():
     form = create_post_survey_details_form(db.session, request.form)
     print 'form = '+str(form)
@@ -1019,31 +1045,6 @@ def apply_for_a_survey():
         else:
             flash('There were problems with your form.', 'error')
     return render_template('apply-for-a-survey.html', form=form, notice=notice)
-
-
-@bp.route('/submit-pre-survey-details', methods=['GET', 'POST'])
-def submit_pre_survey_details():
-    form = create_pre_survey_details_form(db.session, request.form)
-    if request.method=='POST':
-	if helpers.validate_form_on_submit(form):
-	    results = PreSurveyDetails()
-	    form.populate_obj(results)
-	    db.session.add(results)
-	    db.session.commit()
-	    # Send watchers email.
-	    database_url = current_app.config['URL_BASE']+str(url_for('presurveydetails.details_view', id=results.id))
-	    subject = '[CHEESE] New pre-survey details'
-	    message = 'For '+results.householders_name+', '+results.address_line+', '+results.postcode  \
-                       +'\n'+str(datetime.datetime.today())+': '+database_url
-	    mail.send(Message(subject=subject,
-			      body=message,
-			      recipients=current_app.config['WATCHERS']))
-	    # Redirect to success page..
-	    page = pages.get('pre-survey-details-successful')
-	    return render_template('page.html', page=page)
-	else:
-	    flash('There were problems with your form.', 'error')
-    return render_template('submit-pre-survey-details.html', form=form)
 
 
 @bp.route('/one-month-feedback', methods=['GET', 'POST'])

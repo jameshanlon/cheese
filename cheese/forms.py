@@ -179,15 +179,15 @@ def create_apply_survey_form(db_session, formdata):
 
 class PreSurveyDetailsForm(FlaskForm):
     recaptcha = RecaptchaField()
-    householders_name = fields.StringField('Your name*',
-					   validators=[Required(),
-                                                       Length(max=50)])
-    address_line = fields.StringField('Address line*',
-				      validators=[Required(),
-						  Length(max=100)])
-    postcode = fields.StringField('Post code*',
-				  validators=[Required(),
-					      Length(max=10)])
+#    householders_name = fields.StringField('Your name*',
+#					   validators=[Optional(),
+#                                                       Length(max=50)])
+#    address_line = fields.StringField('Address line*',
+#				      validators=[Optional(),
+#						  Length(max=100)])
+#    postcode = fields.StringField('Post code*',
+#				  validators=[Optional(),
+#					      Length(max=10)])
 #    num_main_rooms = \
 #	fields.IntegerField('Number of main rooms* ' \
 #			    +'(please see <a href="/home-surveys#pricing">pricing details</a>' \
@@ -270,11 +270,16 @@ class PreSurveyDetailsForm(FlaskForm):
     renewable_contribution_kwh = \
 	fields.DecimalField('Annual contribution from renewable generation (kWh)',
                             validators=[Optional()])
+    notes = \
+	  fields.TextAreaField('Notes (any other relevant information)',
+			       validators=[Optional()])
 
 
 def create_pre_survey_details_form(db_session, formdata):
     """ Dynamicaly create a form to submit results. """
     # Dynamic fields.
+    def survey_choices():
+      return db_session.query(Surveys).all()
     def building_type_choices():
       return db_session.query(BuildingTypes).all()
     def wall_construction_type_choices():
@@ -287,6 +292,12 @@ def create_pre_survey_details_form(db_session, formdata):
       return db_session.query(WaterHeatingTypes).all()
     def cooking_type_choices():
       return db_session.query(CookingTypes).all()
+    survey = \
+	QuerySelectField('Survey*',
+			 validators=[Required()],
+			 query_factory=survey_choices,
+			 allow_blank=True,
+			 blank_text=u'Please select...')
     building_type = \
 	QuerySelectField('Building type',
 			 validators=[Optional()],
@@ -329,6 +340,7 @@ def create_pre_survey_details_form(db_session, formdata):
 			 query_factory=cooking_type_choices,
 			 allow_blank=True,
 			 blank_text=u'Please select...',)
+    setattr(PreSurveyDetailsForm, 'survey',                 survey)
     setattr(PreSurveyDetailsForm, 'building_type',          building_type)
     setattr(PreSurveyDetailsForm, 'wall_construction_type', wall_construction_type)
     setattr(PreSurveyDetailsForm, 'occupation_type',        occupation_type)

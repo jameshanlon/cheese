@@ -4,19 +4,37 @@
 
 <h1>Submit your pre-survey information</h1>
 
-<p>Please complete the form to the best of your knowledge. We will use this
+<!--<p>Please complete the form to the best of your knowledge. We will use this
 information to plan your survey, and as part of our data collection to
 demonstrate the the impact of C.H.E.E.S.E surveys. Note that you can't edit the
 information once you have submitted it, but you can resubmit the information by
-submitting this form again. Fields marked with a * are required.</label>
+submitting this form again. Fields marked with a * are required.</label>-->
+
+<p> Well done for completing your latest survey.</p>
+
+
+<p>Please note:</p>
+<ul>
+  <li><strong>This form is to be completed by ETs as an interim solution to resolve issues
+      with the collection of data for surveys.</strong></li>
+<li>All you need to input here is the information on the first page of
+  the survey form.</li>
+<li>Firstly, select the survey it relates to from the drop-down menu
+  below (you can start typing in ther box to search for the name or road).</li>
+<li>Use the notes field to record any other relevant information.</li>
+<li>Everything you type in this form will appear in
+  the customers survey information page on the database.</li>
+<li>If you make any mistakes, then please resubmit this form with the correct
+  information.</li>
+<li>Once you have completed this form, then please complete the
+  <a href="/submit-post-survey-details">post-survey details</a> form.</li>
+</ul>
 
 <div id="submit-results-form" style="padding-top:1.2em">
   <form method="POST" action="" enctype="multipart/form-data">
     <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
-    {{ macros.form_section('Your details') }}
-    {{ macros.render_form_field(form.householders_name) }}
-    {{ macros.render_form_field(form.address_line) }}
-    {{ macros.render_form_field(form.postcode) }}
+    {{ macros.form_section('Survey details') }}
+    {{ macros.render_form_field(form.survey) }}
     {{ macros.end_form_section() }}
     {{ macros.form_section('Details of your home') }}
     {{ macros.render_form_field(form.building_type) }}
@@ -51,6 +69,7 @@ submitting this form again. Fields marked with a * are required.</label>
     {{ macros.render_form_field(form.annual_solid_spend) }}
     {{ macros.render_form_field(form.renewable_contribution_kwh) }}
     {{ macros.end_form_section() }}
+    {{ macros.render_form_field(form.notes) }}
     <label></label>
     <p>{% include 'privacy-statement.html' %}</p>
     <p>{{ form.recaptcha }}</p>
