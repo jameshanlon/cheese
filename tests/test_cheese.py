@@ -62,25 +62,32 @@ def test_user_login(client, app):
     assert b'Incorrect Password' not in rv.data
     rv = logout(client)
 
-def test_apply_for_survey_form(client, app):
-    rv = client.post('/apply-for-a-survey', data=dict(
-             name                      = 'test_name',
-             address_line              = 'address_line',
-             postcode                  = 'postcode',
-             ward                      = 1,
-             email                     = 'name@domain.com',
-             telephone                 = '1234567',
+APPLY_SURVEY_REQ_FIELDS = dict(
+  name                      = 'test_name',
+  address_line              = 'address_line',
+  postcode                  = 'postcode',
+  ward                      = 1,
+  email                     = 'name@domain.com',
+  telephone                 = '1234567',
+  availability              = 'availability',
+  num_main_rooms            = 37,
+  expected_benefit          = 'expected_benefit',
+  agree_to_requirements     = 'True', # Not stored in DB.
+  agree_to_cancellation     = 'True', # Not stored in DB.
+  )
+
+def test_apply_for_survey_form_full(client, app):
+    data = dict(
              mobile                    = '1234567',
-             availability              = 'availability',
              referral                  = 'referral',
              free_survey_consideration = 'True',
-             expected_benefit          = 'expected_benefit',
-             num_main_rooms            = 37,
+	     can_heat_comfortably      = True,
+	     has_asbestos              = True,
+	     asbestos_details          = 'asbestos_details',
 	     special_considerations    = 'special_considerations',
-             agree_to_requirements     = 'True', # Not stored in DB.
-             agree_to_cancellation     = 'True', # Not stored in DB.
-             photo_release             = 'True',
-          ), follow_redirects=True)
+	     photo_release             = 'True', )
+    data.update(APPLY_SURVEY_REQ_FIELDS)
+    rv = client.post('/apply-for-a-survey', data=data, follow_redirects=True)
     assert b'Your survey application has been sent' in rv.data
     with app.app_context():
         survey = Surveys.query.filter(Surveys.name=='test_name').first()
@@ -96,8 +103,44 @@ def test_apply_for_survey_form(client, app):
 	assert survey.num_main_rooms            == 37
 	assert survey.special_considerations    == 'special_considerations'
 	assert survey.expected_benefit          == 'expected_benefit'
+	assert survey.can_heat_comfortably      == True
+	assert survey.has_asbestos              == True
+	assert survey.asbestos_details          == 'asbestos_details'
         assert survey.free_survey_consideration == True
         assert survey.photo_release             == True
+
+def test_apply_for_survey_form_req(client, app):
+    data = dict(
+	     mobile                    = '1234567',
+	     referral                  = 'referral',
+	     free_survey_consideration = 'True',
+	     can_heat_comfortably      = True,
+	     has_asbestos              = True,
+	     asbestos_details          = 'asbestos_details',
+	     special_considerations    = 'special_considerations',
+	     photo_release             = 'True', )
+    data.update(APPLY_SURVEY_REQ_FIELDS)
+    rv = client.post('/apply-for-a-survey', data=data, follow_redirects=True)
+    assert b'Your survey application has been sent' in rv.data
+    with app.app_context():
+	survey = Surveys.query.filter(Surveys.name=='test_name').first()
+	assert survey.name             == 'test_name'
+	assert survey.address_line     == 'address_line'
+	assert survey.postcode         == 'postcode'
+	assert survey.ward             == Wards.query.get(1)
+	assert survey.email            == 'name@domain.com'
+	assert survey.telephone        == '1234567'
+	assert survey.availability     == 'availability'
+	assert survey.num_main_rooms   == 37
+	assert survey.expected_benefit == 'expected_benefit'
+
+def test_apply_for_survey_form_asbestos_requiredif(client, app):
+    data = dict()
+    data.update(APPLY_SURVEY_REQ_FIELDS)
+    data['has_asbestos'] = True
+    data['asbestos_details'] = None
+    rv = client.post('/apply-for-a-survey', data=data, follow_redirects=True)
+    assert rv.data.count(b'This field is required') == 1
 
 PRE_SURVEY_REQ_FIELDS = dict(
     survey                     = 1,
@@ -105,8 +148,7 @@ PRE_SURVEY_REQ_FIELDS = dict(
 
 def test_submit_pre_survey_details_form_full(client, app):
     rv = admin_login(client)
-    data = dict(can_heat_comfortably       = True,
-		year_of_construction       = 1970,
+    data = dict(year_of_construction       = 1970,
 		building_type              = '1',
 		wall_construction_type     = '1',
 		occupation_type            = '1',
@@ -118,8 +160,6 @@ def test_submit_pre_survey_details_form_full(client, app):
 		number_open_fireplaces     = "50%",
 		double_glazing             = "100%",
 		num_occupants              = 17,
-                has_asbestos               = True,
-		#asbestos_details           = 'asbestos_details',
 		annual_gas_kwh             = 567.456,
 		annual_gas_estimated       = True,
 		annual_gas_start_date      = '02/02/2017',
@@ -131,14 +171,13 @@ def test_submit_pre_survey_details_form_full(client, app):
 		annual_solid_spend         = 890.456,
 		renewable_contribution_kwh = 901.456, )
     data.update(PRE_SURVEY_REQ_FIELDS)
-    data['asbestos_details'] = 'test_submit_pre_survey_details_form_full'
+    data['double_glazing'] = 'test_submit_pre_survey_details_form_full'
     rv = client.post('/submit-pre-survey-details', data=data, follow_redirects=True)
     assert b'Your pre-survey details have been submitted' in rv.data
     logout(client)
     with app.app_context():
-	result = PreSurveyDetails.query.filter(PreSurveyDetails.asbestos_details=='test_submit_pre_survey_details_form_full').first()
+	result = PreSurveyDetails.query.filter(PreSurveyDetails.double_glazing=='test_submit_pre_survey_details_form_full').first()
 	assert result.survey                     == Surveys.query.get(1)
-	assert result.can_heat_comfortably       == True
 	assert result.year_of_construction       == 1970
 	assert result.building_type              == BuildingTypes.query.get(1)
 	assert result.wall_construction_type     == WallConstructionTypes.query.get(1)
@@ -149,10 +188,8 @@ def test_submit_pre_survey_details_form_full(client, app):
 	assert result.cooking_type               == CookingTypes.query.get(1)
 	assert result.depth_loft_insulation      == '10%'
 	assert result.number_open_fireplaces     == '50%'
-	assert result.double_glazing             == '100%'
+	#assert result.double_glazing             == '100%' # Use as a key instead
 	assert result.num_occupants              == 17
-        assert result.has_asbestos               == True
-	#assert result.asbestos_details           == 'asbestos_details'
 	assert result.annual_gas_kwh             == 567.456
 	assert result.annual_gas_estimated       == True
 	assert result.annual_gas_start_date      == datetime.date(2017, 2, 2)
@@ -167,24 +204,13 @@ def test_submit_pre_survey_details_form_full(client, app):
 def test_submit_pre_survey_details_form_req(client, app):
     rv = admin_login(client)
     data = PRE_SURVEY_REQ_FIELDS
-    data['asbestos_details'] = 'test_submit_pre_survey_details_form_full'
+    data['double_glazing'] = 'test_submit_pre_survey_details_form_full'
     rv = client.post('/submit-pre-survey-details', data=data, follow_redirects=True)
     assert b'Your pre-survey details have been submitted' in rv.data
     logout(client)
     with app.app_context():
-	result = PreSurveyDetails.query.filter(PreSurveyDetails.asbestos_details=='test_submit_pre_survey_details_form_full').first()
+	result = PreSurveyDetails.query.filter(PreSurveyDetails.double_glazing=='test_submit_pre_survey_details_form_full').first()
 	assert result.survey == Surveys.query.get(1)
-
-def test_submit_pre_survey_details_form_asbestos_requiredif(client, app):
-    rv = admin_login(client)
-    data = dict()
-    data.update(PRE_SURVEY_REQ_FIELDS)
-    data['has_asbestos'] = True
-    data['asbestos_details'] = None
-    rv = client.post('/submit-pre-survey-details', data=data, follow_redirects=True)
-    assert rv.data.count(b'This field is required') == 1
-    logout(client)
-
 
 POST_SURVEY_REQ_FIELDS = dict(
       survey                     = 1,

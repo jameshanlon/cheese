@@ -181,7 +181,9 @@ class Surveys(db.Model):
     building_type_id          = db.Column(db.Integer, db.ForeignKey('building_types.id'))
     building_type             = db.relationship('BuildingTypes')
     num_main_rooms            = db.Column(db.Integer)
-    can_heat_comfortably      = db.Column(db.Boolean, default=False) # Deprecated
+    has_asbestos              = db.Column(db.Boolean)
+    asbestos_details          = db.Column(db.Text)
+    can_heat_comfortably      = db.Column(db.Boolean, default=False)
     expected_benefit          = db.Column(db.Text)
     signed_up_via             = db.Column(db.String(250))
     referral                  = db.Column(db.String(250))
@@ -277,10 +279,10 @@ class PreSurveyDetails(db.Model):
     householders_name          = db.Column(db.String(50))
     address_line               = db.Column(db.String(100))
     postcode                   = db.Column(db.String(10))
-    special_considerations     = db.Column(db.Text)
+    special_considerations     = db.Column(db.Text) # Moved back to application
     num_main_rooms             = db.Column(db.Integer)
-    can_heat_comfortably       = db.Column(db.Boolean, default=False)
-    expected_benefit           = db.Column(db.Text)
+    can_heat_comfortably       = db.Column(db.Boolean, default=False) # Moved back to application
+    expected_benefit           = db.Column(db.Text) # Moved back to application
     year_of_construction       = db.Column(db.Integer)
     building_type_id           = db.Column(db.Integer,
 					   db.ForeignKey('building_types.id'))

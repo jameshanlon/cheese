@@ -113,9 +113,19 @@ class ApplySurveyForm(FlaskForm):
 			    +', this will be confirmed during the survey)*',
 			    validators=[Required(),
 					NumberRange(min=1, max=100)])
+    can_heat_comfortably = \
+	fields.BooleanField('(tick for yes) Can you heat your home to a comfortable ' \
+			    +'temperature in the winter?',
+			    validators=[Optional()])
     expected_benefit = \
 	fields.TextAreaField('How do you think you will benefit from a survey?*',
 			     validators=[Required()])
+    has_asbestos = \
+	fields.BooleanField('(tick for yes) Are you aware of any asbestos, exposed or not exposed, in the building?',
+			    validators=[Optional()])
+    asbestos_details = \
+	fields.TextAreaField('If yes, please give details',
+			     validators=[RequiredIf('has_asbestos')])
     availability = \
 	fields.TextAreaField('What is your availability to schedule the survey?*',
 			     description='Please see the <a href="/home-surveys">survey information</a> for the expected duration of your survey.',
@@ -194,13 +204,6 @@ class PreSurveyDetailsForm(FlaskForm):
 #			    +', this will be confirmed during the survey)*',
 #			    validators=[Required(),
 #					NumberRange(min=1, max=100)])
-    can_heat_comfortably = \
-	fields.BooleanField('(tick for yes) Can you heat your home to a comfortable ' \
-			    +'temperature in the winter?',
-			    validators=[Optional()])
-#    expected_benefit = \
-#        fields.TextAreaField('How do you think you will benefit from a survey?*',
-#			     validators=[Required()])
     year_of_construction = \
 	fields.IntegerField('Year of construction',
 			    validators=[Optional(),
@@ -222,12 +225,6 @@ class PreSurveyDetailsForm(FlaskForm):
 	fields.IntegerField('Number of occupants',
 			    validators=[Optional(),
 					NumberRange(min=1, max=100)])
-    has_asbestos = \
-	fields.BooleanField('(tick for yes) Are you aware of any asbestos, exposed or not exposed, in the building?',
-			    validators=[Optional()])
-    asbestos_details = \
-	fields.TextAreaField('If yes, please give details',
-			     validators=[RequiredIf('has_asbestos')])
     annual_gas_kwh = \
 	fields.DecimalField('Annual consumption (kWh',
 			    validators=[Optional()])
