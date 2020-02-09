@@ -34,6 +34,7 @@ from cheese.forms import ApplySurveyForm, \
                          MembershipForm, \
                          create_upload_thermal_image_form, \
                          create_apply_survey_form, \
+			 create_pre_survey_details_et_form, \
 			 create_pre_survey_details_form, \
 			 create_post_survey_details_form, \
                          validate_date
@@ -837,9 +838,34 @@ class ThermalImageView(GeneralModelView):
 # Restricted pages.
 #===-----------------------------------------------------------------------===#
 
-@bp.route('/submit-pre-survey-details', methods=['GET', 'POST'])
+@bp.route('/submit-pre-survey-details-et', methods=['GET', 'POST'])
 @login_required
+def submit_pre_survey_details_et():
+    form = create_pre_survey_details_et_form(db.session, request.form)
+    if request.method=='POST':
+	if helpers.validate_form_on_submit(form):
+	    details = PreSurveyDetails()
+	    form.populate_obj(details)
+	    db.session.add(details)
+	    db.session.commit()
+	    # Send watchers email.
+	    database_url = current_app.config['URL_BASE']+str(url_for('presurveydetails.details_view', id=details.id))
+	    subject = '[CHEESE] New pre-survey details (submitted by ET)'
+	    message = 'For '+str(details.survey)+'\n'+str(datetime.datetime.today())+': '+database_url
+	    mail.send(Message(subject=subject,
+			      body=message,
+			      recipients=current_app.config['WATCHERS']))
+	    # Redirect to success page..
+	    page = pages.get('pre-survey-details-successful')
+	    return render_template('page.html', page=page)
+	else:
+	    flash('There were problems with your form.', 'error')
+    return render_template('submit-pre-survey-details-et.html', form=form)
+
+
+@bp.route('/submit-pre-survey-details', methods=['GET', 'POST'])
 def submit_pre_survey_details():
+    # Public version of the pre-details form.
     form = create_pre_survey_details_form(db.session, request.form)
     if request.method=='POST':
 	if helpers.validate_form_on_submit(form):
@@ -849,9 +875,8 @@ def submit_pre_survey_details():
 	    db.session.commit()
 	    # Send watchers email.
 	    database_url = current_app.config['URL_BASE']+str(url_for('presurveydetails.details_view', id=details.id))
-	    subject = '[CHEESE] New pre-survey details'
-	    message = 'For '+str(details.survey)+'\n' \
-		      +str(datetime.datetime.today())+': '+database_url
+	    subject = '[CHEESE] New pre-survey details (submitted by householder)'
+	    message = 'For '+str(details.survey)+'\n'+str(datetime.datetime.today())+': '+database_url
 	    mail.send(Message(subject=subject,
 			      body=message,
 			      recipients=current_app.config['WATCHERS']))

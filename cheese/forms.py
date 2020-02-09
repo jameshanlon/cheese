@@ -189,21 +189,6 @@ def create_apply_survey_form(db_session, formdata):
 
 class PreSurveyDetailsForm(FlaskForm):
     recaptcha = RecaptchaField()
-#    householders_name = fields.StringField('Your name*',
-#					   validators=[Optional(),
-#                                                       Length(max=50)])
-#    address_line = fields.StringField('Address line*',
-#				      validators=[Optional(),
-#						  Length(max=100)])
-#    postcode = fields.StringField('Post code*',
-#				  validators=[Optional(),
-#					      Length(max=10)])
-#    num_main_rooms = \
-#	fields.IntegerField('Number of main rooms* ' \
-#			    +'(please see <a href="/home-surveys#pricing">pricing details</a>' \
-#			    +', this will be confirmed during the survey)*',
-#			    validators=[Required(),
-#					NumberRange(min=1, max=100)])
     year_of_construction = \
 	fields.IntegerField('Year of construction',
 			    validators=[Optional(),
@@ -271,10 +256,7 @@ class PreSurveyDetailsForm(FlaskForm):
 	  fields.TextAreaField('Notes (any other relevant information)',
 			       validators=[Optional()])
 
-
-def create_pre_survey_details_form(db_session, formdata):
-    """ Dynamicaly create a form to submit results. """
-    # Dynamic fields.
+def add_dynamic_fields_to_pre_survey_details_form(db_session):
     def survey_choices():
       return db_session.query(Surveys).all()
     def building_type_choices():
@@ -345,8 +327,32 @@ def create_pre_survey_details_form(db_session, formdata):
     setattr(PreSurveyDetailsForm, 'secondary_heating_type', secondary_heating_type)
     setattr(PreSurveyDetailsForm, 'water_heating_type',     water_heating_type)
     setattr(PreSurveyDetailsForm, 'cooking_type',           cooking_type)
+
+def create_pre_survey_details_et_form(db_session, formdata):
+    """ Dynamicaly create a form to submit results. """
+    # Dynamic fields.
+    add_dynamic_fields_to_pre_survey_details_form(db_session)
     return PreSurveyDetailsForm(formdata)
 
+
+def create_pre_survey_details_form(db_session, formdata):
+    # Public version of the pre details form.
+    add_dynamic_fields_to_pre_survey_details_form(db_session)
+    delattr(PreSurveyDetailsForm, 'survey')
+    # Add these additional fields.
+    householders_name = fields.StringField('Your name*',
+					        validators=[Optional(),
+                                                            Length(max=50)])
+    address_line = fields.StringField('Address line*',
+				      validators=[Optional(),
+						  Length(max=100)])
+    postcode = fields.StringField('Post code*',
+            		       validators=[Optional(),
+					   Length(max=10)])
+    setattr(PreSurveyDetailsForm, 'householders_name', householders_name)
+    setattr(PreSurveyDetailsForm, 'address_line', address_line) 
+    setattr(PreSurveyDetailsForm, 'postcode', postcode)
+    return PreSurveyDetailsForm(formdata)
 
 class PostSurveyDetailsForm(FlaskForm):
     recaptcha = RecaptchaField()

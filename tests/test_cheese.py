@@ -142,64 +142,105 @@ def test_apply_for_survey_form_asbestos_requiredif(client, app):
     rv = client.post('/apply-for-a-survey', data=data, follow_redirects=True)
     assert rv.data.count(b'This field is required') == 1
 
-PRE_SURVEY_REQ_FIELDS = dict(
-    survey                     = 1,
-  )
+PRE_SURVEY_ET_REQ_FIELDS = dict(
+  survey                     = 1, )
 
-def test_submit_pre_survey_details_form_full(client, app):
+PRE_SURVEY_REQ_FIELDS = dict(
+  householders_name          = 'householders_name',
+  address_line               = 'address_line',
+  postcode                   = 'postcode', )
+
+PRE_SURVEY_OTHER_FIELDS = dict(
+  year_of_construction       = 1970,
+  building_type              = '1',
+  wall_construction_type     = '1',
+  occupation_type            = '1',
+  primary_heating_type       = '1',
+  secondary_heating_type     = '1',
+  water_heating_type         = '1',
+  cooking_type               = '1',
+  depth_loft_insulation      = "10%",
+  number_open_fireplaces     = "50%",
+  double_glazing             = "100%",
+  num_occupants              = 17,
+  annual_gas_kwh             = 567.456,
+  annual_gas_estimated       = True,
+  annual_gas_start_date      = '02/02/2017',
+  annual_gas_end_date        = '03/02/2017',
+  annual_elec_kwh            = 123.456,
+  annual_elec_estimated      = True,
+  annual_elec_start_date     = '04/02/2017',
+  annual_elec_end_date       = '05/02/2017',
+  annual_solid_spend         = 890.456,
+  renewable_contribution_kwh = 901.456, )
+
+def check_pre_survey_fields(result):
+    assert result.year_of_construction       == 1970
+    assert result.building_type              == BuildingTypes.query.get(1)
+    assert result.wall_construction_type     == WallConstructionTypes.query.get(1)
+    assert result.occupation_type            == OccupationTypes.query.get(1)
+    assert result.primary_heating_type       == SpaceHeatingTypes.query.get(1)
+    assert result.secondary_heating_type     == SpaceHeatingTypes.query.get(1)
+    assert result.water_heating_type         == WaterHeatingTypes.query.get(1)
+    assert result.cooking_type               == CookingTypes.query.get(1)
+    assert result.depth_loft_insulation      == '10%'
+    assert result.number_open_fireplaces     == '50%'
+    #assert result.double_glazing             == '100%' # Use as a key instead
+    assert result.num_occupants              == 17
+    assert result.annual_gas_kwh             == 567.456
+    assert result.annual_gas_estimated       == True
+    assert result.annual_gas_start_date      == datetime.date(2017, 2, 2)
+    assert result.annual_gas_end_date        == datetime.date(2017, 2, 3)
+    assert result.annual_elec_kwh            == 123.456
+    assert result.annual_elec_estimated      == True
+    assert result.annual_elec_start_date     == datetime.date(2017, 2, 4)
+    assert result.annual_elec_end_date       == datetime.date(2017, 2, 5)
+    assert result.annual_solid_spend         == 890.456
+    assert result.renewable_contribution_kwh == 901.456
+
+def test_submit_pre_survey_details_et_form_full(client, app):
+    # Submitted by ETs (requiring login)
     rv = admin_login(client)
-    data = dict(year_of_construction       = 1970,
-		building_type              = '1',
-		wall_construction_type     = '1',
-		occupation_type            = '1',
-		primary_heating_type       = '1',
-		secondary_heating_type     = '1',
-		water_heating_type         = '1',
-		cooking_type               = '1',
-		depth_loft_insulation      = "10%",
-		number_open_fireplaces     = "50%",
-		double_glazing             = "100%",
-		num_occupants              = 17,
-		annual_gas_kwh             = 567.456,
-		annual_gas_estimated       = True,
-		annual_gas_start_date      = '02/02/2017',
-		annual_gas_end_date        = '03/02/2017',
-		annual_elec_kwh            = 123.456,
-		annual_elec_estimated      = True,
-		annual_elec_start_date     = '04/02/2017',
-		annual_elec_end_date       = '05/02/2017',
-		annual_solid_spend         = 890.456,
-		renewable_contribution_kwh = 901.456, )
-    data.update(PRE_SURVEY_REQ_FIELDS)
+    data = dict()
+    data.update(PRE_SURVEY_ET_REQ_FIELDS)
+    data.update(PRE_SURVEY_OTHER_FIELDS)
     data['double_glazing'] = 'test_submit_pre_survey_details_form_full'
-    rv = client.post('/submit-pre-survey-details', data=data, follow_redirects=True)
+    rv = client.post('/submit-pre-survey-details-et', data=data, follow_redirects=True)
     assert b'Your pre-survey details have been submitted' in rv.data
     logout(client)
     with app.app_context():
 	result = PreSurveyDetails.query.filter(PreSurveyDetails.double_glazing=='test_submit_pre_survey_details_form_full').first()
-	assert result.survey                     == Surveys.query.get(1)
-	assert result.year_of_construction       == 1970
-	assert result.building_type              == BuildingTypes.query.get(1)
-	assert result.wall_construction_type     == WallConstructionTypes.query.get(1)
-	assert result.occupation_type            == OccupationTypes.query.get(1)
-	assert result.primary_heating_type       == SpaceHeatingTypes.query.get(1)
-	assert result.secondary_heating_type     == SpaceHeatingTypes.query.get(1)
-	assert result.water_heating_type         == WaterHeatingTypes.query.get(1)
-	assert result.cooking_type               == CookingTypes.query.get(1)
-	assert result.depth_loft_insulation      == '10%'
-	assert result.number_open_fireplaces     == '50%'
-	#assert result.double_glazing             == '100%' # Use as a key instead
-	assert result.num_occupants              == 17
-	assert result.annual_gas_kwh             == 567.456
-	assert result.annual_gas_estimated       == True
-	assert result.annual_gas_start_date      == datetime.date(2017, 2, 2)
-	assert result.annual_gas_end_date        == datetime.date(2017, 2, 3)
-	assert result.annual_elec_kwh            == 123.456
-	assert result.annual_elec_estimated      == True
-	assert result.annual_elec_start_date     == datetime.date(2017, 2, 4)
-	assert result.annual_elec_end_date       == datetime.date(2017, 2, 5)
-	assert result.annual_solid_spend         == 890.456
-	assert result.renewable_contribution_kwh == 901.456
+	assert result.survey == Surveys.query.get(1)
+        check_pre_survey_fields(result)
+
+def test_submit_pre_survey_details_et_form_req(client, app):
+    # Submitted by ETs (requiring login)
+    rv = admin_login(client)
+    data = PRE_SURVEY_ET_REQ_FIELDS
+    data['double_glazing'] = 'test_submit_pre_survey_details_form_full'
+    rv = client.post('/submit-pre-survey-details-et', data=data, follow_redirects=True)
+    assert b'Your pre-survey details have been submitted' in rv.data
+    logout(client)
+    with app.app_context():
+	result = PreSurveyDetails.query.filter(PreSurveyDetails.double_glazing=='test_submit_pre_survey_details_form_full').first()
+	assert result.survey == Surveys.query.get(1)
+
+def test_submit_pre_survey_details_form_full(client, app):
+    rv = admin_login(client)
+    data = dict()
+    data.update(PRE_SURVEY_REQ_FIELDS)
+    data.update(PRE_SURVEY_OTHER_FIELDS)
+    data['double_glazing'] = 'test_submit_pre_survey_details_form_full'
+    rv = client.post('/submit-pre-survey-details', data=data, follow_redirects=True)
+    print rv.data 
+    assert b'Your pre-survey details have been submitted' in rv.data
+    logout(client)
+    with app.app_context():
+	result = PreSurveyDetails.query.filter(PreSurveyDetails.double_glazing=='test_submit_pre_survey_details_form_full').first()
+        assert result.householders_name == 'householders_name'
+        assert result.address_line      == 'address_line'
+        assert result.postcode          == 'postcode'
+        check_pre_survey_fields(result)
 
 def test_submit_pre_survey_details_form_req(client, app):
     rv = admin_login(client)
@@ -210,7 +251,9 @@ def test_submit_pre_survey_details_form_req(client, app):
     logout(client)
     with app.app_context():
 	result = PreSurveyDetails.query.filter(PreSurveyDetails.double_glazing=='test_submit_pre_survey_details_form_full').first()
-	assert result.survey == Surveys.query.get(1)
+        assert result.householders_name == 'householders_name'
+        assert result.address_line      == 'address_line'
+        assert result.postcode          == 'postcode'
 
 POST_SURVEY_REQ_FIELDS = dict(
       survey                     = 1,
