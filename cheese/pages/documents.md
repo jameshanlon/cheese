@@ -4,7 +4,7 @@
 Our progress report documents detail the current progress, status and plans for
 the CHEESE Project:
 
-- [CHEESE progress report (presented at the AGM) February 2020 (PDF)]({{url_for('.assets', filename='files/CHEESE-AGM-progress-report-Feb20.pdf')}})
+- [CHEESE progress report presented at the AGM, February 2020 (PDF)]({{url_for('.assets', filename='files/CHEESE-AGM-progress-report-Feb20.pdf')}})
 - [CHEESE progress report September 2018 (PDF)]({{url_for('.assets', filename='files/CHEESE-Progress-Report-Sep18.pdf')}})
 - [CHEESE progress report June 2017 (PDF)]({{url_for('.assets', filename='files/CHEESE-Progress-Report-Jun17.pdf')}})
 - [CHEESE progress report January 2017 (PDF)]({{url_for('.assets', filename='files/CHEESE-Progress-Report-Jan17.pdf')}})
