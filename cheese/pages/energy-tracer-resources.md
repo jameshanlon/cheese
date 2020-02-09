@@ -6,8 +6,8 @@ Welcome to the resources page for Energy Tracers.
 ## Survey materials
 
 - Results paper form to print
-  ([Google Docs](https://docs.google.com/document/d/1-4F5A_-g1hM8VHeJceLlNJWn3UUAMXsOZC7fmuO5xGo/edit?usp=sharing), 
-  [PDF]({{url_for('.assets', filename='files/CHEESE-survey-results-form-Nov19.pdf')}}))
+  ([PDF]({{url_for('.assets', filename='files/CHEESE-survey-results-form-Feb20.pdf')}}),
+   [Word.docx]({{url_for('.assets', filename='files/CHEESE-survey-results-form-Feb20.docx')}}))
 - Whereabouts of surveying equipment spreadsheet
   ([Google Docs](https://docs.google.com/spreadsheets/d/1YZ8ttMmJUeJ_Iwv0NzLnqQlHjP_t4F1Ds9FknTH2TEY/edit?usp=sharing))
 - Photo release form
