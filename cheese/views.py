@@ -876,7 +876,7 @@ def submit_pre_survey_details():
 	    # Send watchers email.
 	    database_url = current_app.config['URL_BASE']+str(url_for('presurveydetails.details_view', id=details.id))
 	    subject = '[CHEESE] New pre-survey details (submitted by householder)'
-	    message = 'For '+results.householders_name+', '+results.address_line+', '+results.postcode  \
+	    message = 'For '+details.householders_name+', '+details.address_line+', '+details.postcode  \
 			+'\n'+str(datetime.datetime.today())+': '+database_url
 	    mail.send(Message(subject=subject,
 			      body=message,
