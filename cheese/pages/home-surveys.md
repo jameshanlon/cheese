@@ -136,7 +136,8 @@ would like to refer yourself or someone else for a free survey.
     <tr>
       <th>Building type</th>
       <th>Survey time</th>
-      <th>Charge</th>
+      <th>Charge (Bristol)</th>
+      <th>Charge (Bath)<sup>&dagger;</sup></th>
     </tr>
   </thead>
   <tbody>
@@ -144,31 +145,40 @@ would like to refer yourself or someone else for a free survey.
       <td>Flat up to 2 bedrooms</td>
       <td>2 hours</td>
       <td>&pound;100</td>
+      <td>&pound;160</td>
     </tr>
     <tr>
       <td>3 to 5 main rooms</td>
       <td>2.5 hours</td>
       <td>&pound;150</td>
+      <td>&pound;210</td>
     </tr>
     <tr>
       <td>6 to 8 main rooms*</td>
       <td>2.5 to 3 hours</td>
       <td>&pound;185</td>
+      <td>&pound;245</td>
     </tr>
     <tr>
       <td>Over 8 main rooms*</td>
       <td>Over 3 hours</td>
       <td>&pound;200</td>
+      <td>&pound;260</td>
     </tr>
     <tr>
       <td>Commercial surveys for housing associations, councils etc.<br>
         (Additional charge for a written report</td>
       <td>Variable</td>
       <td>&pound;250<br>
+	&pound;100</td>
+      <td>&pound;310<br>
         &pound;100)</td>
     </tr>
   </tbody>
 </table>
+
+<sup>&dagger;</sup> Our prices for surveys in Bath include £60 for travel
+costs.
 
 \* We generally only survey large houses at weekends, though there may be some
 limited availability for surveying large houses on other days.
