@@ -177,8 +177,8 @@ would like to refer yourself or someone else for a free survey.
   </tbody>
 </table>
 
-<sup>&dagger;</sup> Our prices for surveys in Bath include £60 for travel
-costs.
+<sup>&dagger;</sup> Our prices for surveys in Bath include a supplement of £60 to cover travel
+costs to and from Bristol.
 
 \* We generally only survey large houses at weekends, though there may be some
 limited availability for surveying large houses on other days.
