@@ -4,6 +4,19 @@
 # Media coverage
 
 <div class="float-right">
+{{ macros.thumbnail('images/2020-03-Bristol-Zoo/croc2.jpg', '140x140', 'media-coverage') }}
+</div>
+
+- **Coverage of our survey of Bristol Zoo Garden's Reptile House**. From
+  [Bristol Energy](https://www.bristol-energy.co.uk/thermal-imaging-tech-bristol-zoo-gardens-gives-crocs-their-creature-comforts)
+  and [Renewable Energy Magazine](https://www.renewableenergymagazine.com/energy_saving/bristol-zoo-gardensa--reptile-house-uses-20200303),
+  to quote the latter: "Innovative thermal imaging tech has been used for an
+  energy efficiency survey in Bristol Zoo Gardens’ Reptile House to identify
+  where the enclosure to over 120 reptiles may be losing heat."
+
+<div class="clearfix"></div>
+
+<div class="float-right">
 {{ macros.thumbnail('images/2019-10-UpOurStreet-CHEESE.jpg', '140x140', 'media-coverage') }}
 </div>
 
