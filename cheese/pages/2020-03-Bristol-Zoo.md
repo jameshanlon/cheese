@@ -5,9 +5,9 @@ author: Jamie Hanlon
 gallery: 2020-03-Bristol-Zoo
 image: images/2020-03-Bristol-Zoo/croc1.jpg
 
-We recently conducted a thermal-imaging surveys in Bristol Zoo Garden’s Reptile
-House, paid for by the zoo’s energy provider [Bristol
-Energy](https://www.bristol-energy.co.uk). The survey will help Bristol Zoo
+We recently conducted a thermal-imaging survey in Bristol Zoo Garden’s Reptile
+House, paid for by the zoo’s energy provider [Bristol Energy
+Ltd](https://www.bristol-energy.co.uk). The survey will help Bristol Zoo
 Gardens, which is operated by conservation and education charity Bristol
 Zoological Society, to reduce their energy consumption, cut their carbon
 emissions and save money.
@@ -28,3 +28,6 @@ blog](https://www.bristol-energy.co.uk/thermal-imaging-tech-bristol-zoo-gardens-
 and in the [Renewable Energy
 Magazine](https://www.renewableenergymagazine.com/energy_saving/bristol-zoo-gardensa--reptile-house-uses-20200303).
 
+In the photos below, note that the cold-blooded crocodile is difficult to make
+out in the thermal images since there is little contrast between its body and
+the enclosure.
