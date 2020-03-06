@@ -2,8 +2,9 @@ article:
 date: 2020-03-02
 title: Thermal-imaging survey of the Reptile House at Bristol Zoo Gardens 
 author: Jamie Hanlon
-gallery: 2020-03-Bristol-Zoo
 image: images/2020-03-Bristol-Zoo/croc1.jpg
+
+{% import 'macros.html' as macros %}
 
 We recently conducted a thermal-imaging survey in Bristol Zoo Garden’s Reptile
 House, paid for by the zoo’s energy provider [Bristol Energy
@@ -28,6 +29,22 @@ blog](https://www.bristol-energy.co.uk/thermal-imaging-tech-bristol-zoo-gardens-
 and in the [Renewable Energy
 Magazine](https://www.renewableenergymagazine.com/energy_saving/bristol-zoo-gardensa--reptile-house-uses-20200303).
 
-In the photos below, note that the cold-blooded crocodile is difficult to make
-out in the thermal images since there is little contrast between its body and
-the enclosure.
+
+<div class="text-center">
+{{ macros.thumbnail('images/2020-03-Bristol-Zoo/croc1.jpg', '400x400', 'bristol-zoo') }}
+{{ macros.thumbnail('images/2020-03-Bristol-Zoo/croc2.jpg', '400x400', 'bristol-zoo') }}
+{{ macros.thumbnail('images/2020-03-Bristol-Zoo/zoo2.jpg', '400x400', 'bristol-zoo') }}
+</div>
+
+In the thermal photos above, the cold-blooded crocodile is difficult to make
+out becasue there is little contrast between its body and the enclosure,
+compared with the conventional photo.
+
+<div class="text-center">
+{{ macros.thumbnail('images/2020-03-Bristol-Zoo/zoo3.jpg', '400x400', 'bristol-zoo') }}
+{{ macros.thumbnail('images/2020-03-Bristol-Zoo/zoo1.jpg', '400x400', 'bristol-zoo') }}
+{{ macros.thumbnail('images/2020-03-Bristol-Zoo/zoo4.jpg', '400x400', 'bristol-zoo') }}
+</div>
+
+Above are photos of Brian Harper conducting the survey, with assistance from
+staff from the zoo.
