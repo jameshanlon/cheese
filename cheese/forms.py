@@ -58,25 +58,55 @@ class RequiredIf(InputRequired):
         else:
             Optional().__call__(form, field)
 
+date_picker_id = 0
 
 class DatePickerWidget(widgets.TextInput):
     """ A custom date picker widget, using Bootstrap-datetimepicker. """
+    def __init__(self):
+         super(DatePickerWidget, self).__init__()
+         global date_picker_id
+         self.date_picker_id = date_picker_id
+         date_picker_id += 1
     def __call__(self, field, **kwargs):
-        html = """<div class="input-group date" id="datepicker">
-                    <input type="text" class="form-control" %s/>
-                      <span class="input-group-addon"></span>
-                   </div>"""
-        return Markup(html % (self.html_params(name=field.name, **kwargs)))
+        # TODO: repopuate on failed form submission.
+        if kwargs.get('is_invalid', False):
+	    html = """<div class="input-group date datepicker" id="datepicker-{0}">
+			<input type="text" {1}>
+			<span class="input-group-addon"></span>
+                         <div class="invalid-feedback">Please select a valid date.</div> 
+		       </div>"""
+        else:
+	    html = """<div class="input-group date datepicker" id="datepicker-{0}">
+			<input type="text" {1}>
+			<span class="input-group-addon"></span>
+		       </div>"""
+        return Markup(html.format(self.date_picker_id, self.html_params(name=field.name, **kwargs)))
 
 
 class OneToFiveWidget(widgets.Input):
     """ A custom widget for 1-to-5 ratings. """
+    # TODO: repopuate on failed form submission.
     def __call__(self, field, **kwargs):
-        html = """<div class="form-check form-check-inline"><input type="radio" name="{0}" value="1" {1}><label class="form-check-label">1</label></div>
-                  <div class="form-check form-check-inline"><input type="radio" name="{0}" value="2" {1}><label class="form-check-label">2</label></div>
-                  <div class="form-check form-check-inline"><input type="radio" name="{0}" value="3" {1}><label class="form-check-label">3</label></div>
-                  <div class="form-check form-check-inline"><input type="radio" name="{0}" value="4" {1}><label class="form-check-label">4</label></div>
-                  <div class="form-check form-check-inline"><input type="radio" name="{0}" value="5" {1}><label class="form-check-label">5</label></div>"""
+        html = """<div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" id="{0}-1" name="{0}" value="1" {1}>
+                    <label class="custom-control-label" for="{0}-1">1</label>
+                  </div>
+                  <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" id="{0}-2" name="{0}" value="2" {1}>
+                    <label class="custom-control-label" for="{0}-2">2</label>
+                  </div>
+                  <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" id="{0}-3" name="{0}" value="2" {1}>
+                    <label class="custom-control-label" for="{0}-3">3</label>
+                  </div>
+                  <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" id="{0}-4" name="{0}" value="2" {1}>
+                    <label class="custom-control-label" for="{0}-4">4</label>
+                  </div>
+                  <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" id="{0}-5" name="{0}" value="2" {1}>
+                    <label class="custom-control-label" for="{0}-5">5</label>
+                  </div>"""
         return Markup(html.format(field.name, self.html_params(**kwargs)))
 
 

@@ -22,11 +22,11 @@
       {{ render_form_description(f.description) }}
       <div class="rating-1to5 form-check">
         {% if f.errors %}
-          {{ f(class_="form-check-input is-invalid") }}
+          {{ f(class_="custom-control-input is-invalid") }}
         {% else %}
-          {{ f(class_="form-check-input") }}
+          {{ f(class_="custom-control-input") }}
         {% endif %}
-        {{ render_form_errors(f) }}
+      {{ render_form_errors(f) }}
       </div>
     {% elif f.type == "BooleanField" %}
       <div class="form-check">
@@ -43,9 +43,9 @@
       {{ f.label(class_="control-label") }}
       {{ render_form_description(f.description) }}
       {% if f.errors %}
-        {{ f(class_="form-control is-invalid") }}
+        {{ f(class_="form-control is-invalid", is_invalid=True, value=f.value) }}
       {% else %}
-        {{ f(class_="form-control") }}
+        {{ f(class_="form-control", value=f.value) }}
       {% endif %}
       {{ render_form_errors(f) }}
     {% endif %}
