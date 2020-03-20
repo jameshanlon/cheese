@@ -54,7 +54,9 @@ Welcome to the resources page for Energy Tracers.
 ## Other
 
 - [Contact, medical and equal oppoprtunities form]({{url_for('.assets', filename='files/CHEESE-contact-medical-and-equal-opps-form-2019-20.pdf')}})
-- [Survey risk assessment]({{url_for('.assets', filename='files/CHEESE-survey-risk-assessment-Oct19.pdf')}})
+- Survey risk assessment
+  ([Google Docs](https://docs.google.com/document/d/1yvhWxv-6ci24NazZanmHqyQbApcQ-7KRPDkQxGW9ccY/edit?usp=sharing)
+   [PDF]({{url_for('.assets', filename='files/CHEESE-survey-risk-assessment-Mar20.pdf')}}))
 - [Privacy notice for staff and members](/privacy-notice-staff-and-members)
 - [Equal opportunities policy](/equal-opportunities)
 - [Safeguarding policy (PDF)]({{url_for('.assets', filename='files/CHEESE-Safeguarding-Adults-Policy-29Apr19.pdf')}})
