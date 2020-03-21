@@ -8,6 +8,7 @@
 </div>
 
 - **Coverage of our survey of Bristol Zoo Garden's Reptile House**. From
+  [Bristol Live](https://www.bristolpost.co.uk/special-features/bristol-businesses-cut-carbon-green-3956472),
   [Bristol Energy](https://www.bristol-energy.co.uk/thermal-imaging-tech-bristol-zoo-gardens-gives-crocs-their-creature-comforts)
   and [Renewable Energy Magazine](https://www.renewableenergymagazine.com/energy_saving/bristol-zoo-gardensa--reptile-house-uses-20200303),
   to quote the latter: "Innovative thermal imaging tech has been used for an
