@@ -15,6 +15,12 @@
   energy efficiency survey in Bristol Zoo Gardens’ Reptile House to identify
   where the enclosure to over 120 reptiles may be losing heat."
 
+- **Bristol Live, January 2020**.
+  [Cheap and easy ways to keep your home heated this winter](https://www.bristolpost.co.uk/news/bristol-news/cheap-easy-ways-keep-your-3745047),
+  "Those looking to go a step further to save money can also contact the CHEESE
+  project, a Bristol-based not-for-profit organisation which aims to reduce
+  energy loss in homes."
+
 <div class="clearfix"></div>
 
 <div class="float-right">
