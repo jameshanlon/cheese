@@ -4,13 +4,29 @@
 # Media coverage
 
 <div class="float-right">
+{{ macros.thumbnail('images/2020-03-Bristol-Cable/CHEESE-item.jpg', '140x140', 'media-coverage') }}
+{{ macros.thumbnail('images/2020-03-Bristol-Cable/CHEESE-spread.jpg', '140x140', 'media-coverage') }}
+</div>
+
+- **Bristol Cable, Issue 22, March 2020**, features a small piece on CHEESE as
+  part of a piece about 'solutions in the city'
+  (online version [here](https://thebristolcable.org/2020/03/bristol-a-city-of-solutions/)),
+  and there is another mention of CHEESE as a local initiative supporting
+  carbon reductions and retrofit in 'how to heat your home, save cash and the planet'
+  (online version [here](https://thebristolcable.org/2020/03/how-to-heat-your-home-save-cash-and-the-planet/)).
+
+<div class="clearfix"></div>
+
+<div class="float-right">
 {{ macros.thumbnail('images/2020-03-Bristol-Zoo/croc2.jpg', '140x140', 'media-coverage') }}
 </div>
 
-- **Coverage of our survey of Bristol Zoo Garden's Reptile House**. From
+- **Coverage of our survey of Bristol Zoo Garden's Reptile House, March 2020**.
+  From
   [Bristol Live](https://www.bristolpost.co.uk/special-features/bristol-businesses-cut-carbon-green-3956472),
   [Bristol Energy](https://www.bristol-energy.co.uk/thermal-imaging-tech-bristol-zoo-gardens-gives-crocs-their-creature-comforts)
-  and [Renewable Energy Magazine](https://www.renewableenergymagazine.com/energy_saving/bristol-zoo-gardensa--reptile-house-uses-20200303),
+  and
+  [Renewable Energy Magazine](https://www.renewableenergymagazine.com/energy_saving/bristol-zoo-gardensa--reptile-house-uses-20200303),
   to quote the latter: "Innovative thermal imaging tech has been used for an
   energy efficiency survey in Bristol Zoo Gardens’ Reptile House to identify
   where the enclosure to over 120 reptiles may be losing heat."
