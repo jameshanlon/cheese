@@ -96,15 +96,15 @@ class OneToFiveWidget(widgets.Input):
                     <label class="custom-control-label" for="{0}-2">2</label>
                   </div>
                   <div class="custom-control custom-radio custom-control-inline">
-                    <input type="radio" id="{0}-3" name="{0}" value="2" {1}>
+                    <input type="radio" id="{0}-3" name="{0}" value="3" {1}>
                     <label class="custom-control-label" for="{0}-3">3</label>
                   </div>
                   <div class="custom-control custom-radio custom-control-inline">
-                    <input type="radio" id="{0}-4" name="{0}" value="2" {1}>
+                    <input type="radio" id="{0}-4" name="{0}" value="4" {1}>
                     <label class="custom-control-label" for="{0}-4">4</label>
                   </div>
                   <div class="custom-control custom-radio custom-control-inline">
-                    <input type="radio" id="{0}-5" name="{0}" value="2" {1}>
+                    <input type="radio" id="{0}-5" name="{0}" value="5" {1}>
                     <label class="custom-control-label" for="{0}-5">5</label>
                   </div>"""
         return Markup(html.format(field.name, self.html_params(**kwargs)))

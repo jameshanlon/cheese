@@ -301,10 +301,10 @@ def test_submit_post_survey_details_form_req(client, app):
 
 ONE_MONTH_REQ_FIELDS = dict(householders_name     = 'householders_name',
                             address               = 'address',
-                            satisfaction_1to5     = '5',
-                            survey_video_1to5     = '5',
-                            surveyor_conduct_1to5 = '5',
-                            survey_value_1to5     = '5',
+                            satisfaction_1to5     = '1',
+                            survey_video_1to5     = '2',
+                            surveyor_conduct_1to5 = '3',
+                            survey_value_1to5     = '4',
                             recommend_1to5        = '5',
 			    )
 
@@ -339,10 +339,10 @@ def test_month_feedback_form_full(client, app):
         feedback = MonthFeedback.query.filter(MonthFeedback.householders_name=='householders_name').first()
         assert feedback.householders_name         == 'householders_name'
         assert feedback.address                   == 'address'
-        assert feedback.satisfaction_1to5         == 5
-        assert feedback.survey_video_1to5         == 5
-        assert feedback.surveyor_conduct_1to5     == 5
-        assert feedback.survey_value_1to5         == 5
+        assert feedback.satisfaction_1to5         == 1
+        assert feedback.survey_video_1to5         == 2
+        assert feedback.surveyor_conduct_1to5     == 3
+        assert feedback.survey_value_1to5         == 4
         assert feedback.recommend_1to5            == 5
         assert feedback.annual_gas_kwh            == 123.456
         assert feedback.annual_gas_estimated      == True
