@@ -33,34 +33,56 @@ work.
 <a class="anchor" name="phase-five"></a>
 ### Phase five (2019/20)
 
-We are going into this season without grant funding which means, sadly, we are
-only able to subsidise a few free surveys and have had to increase our prices
-to cover our true costs on larger homes. We are excited to be continuing our
-work with South East London Community Energy and Phoenix Housing Association in
-London who we trained last year, as well as developing a partnership with Bath
-and West Community Energy.
+We went into this season without grant funding which meant we were only able to
+offer free surveys by working with our partners
+[CHAS](http://www.chasbristol.co.uk/) and The WHAM Project (part of
+[CSE](https://www.cse.org.uk/)) and Re:work who work day to day with those in
+fuel poverty and vulnerable housing. We also increased our prices and had
+volunteer survey assistants, rather than being able to pay our assistants as we
+had the year before.
 
-Our focus for the coming season is twofold: to provide surveys to householders
-in Bristol and to establish partnerships with other organisations to catalyse
-the delivery of surveys at scale. Both involve providing detailed training in
-our thermal surveying protocol to those wanting to deliver surveys from within
-their own organisation (Councils, Housing Associations etc) or directly for The
-CHEESE Project. We will provide beginner and refresher training.
+As the season progressed we started up a partnership with
+[Futureproof](https://www.futureproof.uk.net/), another project of CSE,
+providing surveys to their clients as part of larger retrofit packages. This
+has worked well and will continue next season.
+
+We also successfully secured funding from the Bristol Impact Fund and
+[Hartcliffe and Withywood Community Partnership](https://hwcp.org.uk/) to carry
+out surveys with [Re:Work](https://sites.google.com/site/reworkltd/home) in
+Filwood, Hartcliffe and Withywood. Two members of the staff team at Re:Work are
+trained C.H.E.E.S.E Energy Tracers.
+
+We were then excited to secure funding from [Bath and West Community
+Energy](https://www.bwce.coop/) to set up a pilot project in Bath and start
+advertising our surveys and recruiting Our focus for the coming season is
+twofold: to provide surveys to householders in Bristol and to establish
+partnerships with other organisations to catalyse the delivery of surveys at
+scale. Both involve providing detailed training in our thermal surveying
+protocol to those wanting to deliver surveys from within their own organisation
+(Councils, Housing Associations etc) or directly for The C.H.E.E.S.E. Project.
+We will provide beginner and refresher training.
 
 The aim of partnership development is to embed this vital service within the
 offering of housing providers, and to ensure the ongoing financial
-sustainability of The CHEESE Project as a low-cost service, accessible to all.
-We are committed to a low-cost or free-service model in order to meet our
+sustainability of The C.H.E.E.S.E. Project as a low-cost service, accessible to
+all. We are committed to a low-cost or free-service model in order to meet our
 social and environmental objectives, amplified by the increasing urgency of
 climate destabilisation.
 
-The positive impact of CHEESE surveys both on householder behaviour and
+The positive impact of C.H.E.E.S.E. surveys both on householder behaviour and
 empowerment, and energy saving, is unmatched by other commercial
 thermal-imaging services. Customer satisfaction is [overwhelmingly
-positive](/testimonials). We believe this is due to the knowledge and
+positive](/testimonials), which we believe is due to the knowledge and
 sensitivity of the Energy Tracers to the needs of different households and the
 fact that the social and environmental objectives are the drivers of our work,
 and this comes across to our customers.
+
+Finally, the project also gained vaulable recognition from the [Big Innovation
+pitch Award for Buildings](2020-03-04-Futurebuild-Buildings-Innovation-Pitch)
+at the prestigious Futurebuild industry event, the [award for Environmental
+Impact at the ‘Voscurs’](2020-02-Voscur-awards) Bristol’s social impact awards,
+and a feature on BBC Radio 4’s [Costing the Earth](2020-03-Costing-the-Earth)
+exposing of the poor quality of new build homes.
 
 <a class="anchor" name="phase-four"></a>
 ### Phase four (2018/19)
