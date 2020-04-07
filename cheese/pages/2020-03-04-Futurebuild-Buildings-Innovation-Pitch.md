@@ -2,9 +2,13 @@ article:
 date: 2020-03-11
 title: CHEESE wins pitch for Buildings Innovation at Futurebuild 
 author: Jamie Hanlon
-image: images/2020-03-04-Futurebuild/logo-futurebuild.png
+image: images/2020-03-04-Futurebuild/Brian-Futurebuild-award.jpg
 
 {% import 'macros.html' as macros %}
+
+<div class="float-right">
+  <img src="{{'images/2020-03-04-Futurebuild/Brian-Futurebuild-award.jpg'|thumbnail('400x400')}}">
+</div>
 
 We are delighted to report that last Wednesday (4th March) at the huge and
 prestigious building industry event
