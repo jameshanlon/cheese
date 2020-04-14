@@ -14,6 +14,7 @@ the CHEESE Project:
 Our analysis reports present analsysis of the data we have collected from
 thermal imaging surveys and follow ups with householders after their surveys:
 
+- [CHEESE analysis report April 2020 (PDF)]({{url_for('.assets', filename='files/CHEESE-Analysis-Report-Apr20.pdf')}})
 - [CHEESE analysis report September 2018 (PDF)]({{url_for('.assets', filename='files/CHEESE-Analysis-Report-Sep18.pdf')}})
 - [CHEESE analysis report May 2017 (PDF)]({{url_for('.assets', filename='files/CHEESE-Analysis-Report-May17.pdf')}})
 
