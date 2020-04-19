@@ -1,3 +1,4 @@
+title: Donation successful
 
 # Thank you for your donation
 

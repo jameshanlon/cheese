@@ -1,3 +1,4 @@
+title: Publicity materials
 
 # Publicity materials
 

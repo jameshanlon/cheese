@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
-    <title>The C.H.E.E.S.E. Project Bristol</title>
+    <title>{% block title %}{{config.PAGE_TITLE}}{% endblock %}</title>
     <link href="{{url_for('static', filename='css/bootstrap.min.css')}}" rel="stylesheet">
     <link href="{{url_for('static', filename='css/bootstrap-datepicker.min.css')}}" rel="stylesheet">
     <link href="{{url_for('static', filename='css/lightbox.min.css')}}" rel="stylesheet">

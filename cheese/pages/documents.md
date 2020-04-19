@@ -1,3 +1,4 @@
+title: Reports and analyses
 
 # Progress reports
 

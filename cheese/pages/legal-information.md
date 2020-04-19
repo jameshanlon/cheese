@@ -1,3 +1,4 @@
+title: Legal information
 
 # Legal information
 

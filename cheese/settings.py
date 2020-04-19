@@ -80,6 +80,7 @@ USER_REQUIRE_INVITATION     = True
 USER_AFTER_LOGIN_ENDPOINT   = 'cheese.index'
 USER_AFTER_LOGOUT_ENDPOINT  = 'cheese.index'
 # Constants
+PAGE_TITLE = 'The C.H.E.E.S.E. Project CIC'
 PHASE_START_DATES = [datetime.date(2015, 4, 15),
                      datetime.date(2016, 4, 15),
                      datetime.date(2017, 4, 15),

@@ -1,3 +1,4 @@
+title: Equal opportunities policy
 
 # Equal opportunities policy
 

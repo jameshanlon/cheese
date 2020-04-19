@@ -1,3 +1,4 @@
+title: Privacy notice
 
 # Privacy notice
 

@@ -1,3 +1,4 @@
+title: Donate
 
 {% import 'macros.html' as macros %}
 

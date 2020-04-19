@@ -1,3 +1,4 @@
+title: Complaints procedure
 
 # Complaints procedure
 

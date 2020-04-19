@@ -1,3 +1,4 @@
+title: Energy Tracer resources
 
 # Energy Tracer resources
 

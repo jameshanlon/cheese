@@ -1,3 +1,4 @@
+title: Setting up a C.H.E.E.S.E Project in your area
 
 # Setting up a C.H.E.E.S.E Project in your area
 

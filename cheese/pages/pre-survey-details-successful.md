@@ -1,3 +1,4 @@
+title: Pre-survey details submitted
 
 # Your pre-survey details have been submitted!
 

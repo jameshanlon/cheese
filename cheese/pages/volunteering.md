@@ -1,3 +1,4 @@
+title: Volunteering
 
 # Volunteering with CHEESE
 

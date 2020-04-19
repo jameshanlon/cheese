@@ -1,3 +1,4 @@
+title: Rates of pay
 
 # Rates of pay
 

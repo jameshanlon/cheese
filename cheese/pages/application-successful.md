@@ -1,3 +1,4 @@
+title: Application successful
 
 # Your survey application has been sent!
 

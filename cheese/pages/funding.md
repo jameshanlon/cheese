@@ -1,3 +1,4 @@
+title: Funding
 
 <a class="anchor" name="funding"></a>
 # Funding

@@ -1,3 +1,4 @@
+title: Media coverage
 
 {% import 'macros.html' as macros %}
 

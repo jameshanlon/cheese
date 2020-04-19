@@ -1,4 +1,7 @@
 {% extends "base.html" %}
+{% block title %}
+{{page.meta.title}} - {{config.PAGE_TITLE}}
+{% endblock %}
 {% block content %}
 <h1>{{page.meta.title}}</h1>
 <div class='float-right'>

@@ -1,3 +1,4 @@
+title: Legitimate interest assessment
 
 # Legitimate interest assessment
 

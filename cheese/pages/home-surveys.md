@@ -1,3 +1,4 @@
+title: Home thermal-imaging surveys
 
 <div class="float-right">
   <a data-lightbox="bay-window" href="{{url_for('.assets', filename='images/thermal13.jpg')}}"
