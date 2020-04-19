@@ -42,6 +42,48 @@ easy DIY fixes.
 Thanks to Chris and Rob for fun and informative survey."* -
 Richard and Caroline, Bedminster.
 
+-  *"I feel I have learnt just as much from cheese survey as i could have done
+   if I paid double the price for a big company - really good value for money!
+   Already recommended to neighbours and friends.*"
+
+- *"I loved having the survey. Rob and Julius were so friendly and made the
+  information really interesting, they are both clearly very knowledgeable and
+passionate about their subject. There were some eye opening moments where we
+discovered draughts on places I didn't expect and Rob gave tips on easy fixes
+we could make. It's been a brilliant experience overall. Thank you!"*
+
+- *"She really enjoyed the survey - more than she expected to!"* (referring
+  to a grandmother).
+
+- *"Have been round all the rooms with caulks, silicone sealants of various
+  kinds and insulation to fill all gaps and plug drafts where possible. Draught
+excluders have been installed on some internal doors as well as some foam
+strips to better seal them when closed. Have done the work myself. Big
+difference in the kitchen especially. Certainly much more aware of draughts
+than before and will tackle them immediately. 5/5"*
+
+- *"The survey allowed us to go to a different firm who were able to advise us
+  on what could be done, based on the thermal survey. Would be quite useful in
+  a way to have the thermal survey done again now to see if the work has made a
+  decent difference!"*
+
+- *"We found the energy tracers very passionate and knowledgeable and would
+  certainly recommend this survey to others. Many thanks!"*
+
+- *"Great to get an understanding of how I can improve my home as well as
+  others. Great knowledge by the team as well."*
+
+- *"We knew about a lot of the issues but seeing it visually has inspired us to
+  actually DO something about them!"*
+
+- *"Survey gives me a sense of relief that I can fix some problems. Keep doing
+  what you do. 5/5"*
+
+- *"The energy tracers were both great and worked efficiently through the
+  house. Their knowledge prompted some useful discussions about actions to be
+taken as well as about possible solar options."*
+
+
 ## From the 2018/19 surveying season (phase 4)
 
 - *"Boycee and Trisha were lovely and the thermal imaging experience was
