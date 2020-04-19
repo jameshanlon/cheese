@@ -26,6 +26,10 @@ These presentations give an overview of the project:
 - [CHEESE overview (PDF)]({{url_for('.assets', filename='files/CHEESE-overview-March-2018.pdf')}})
 - [CHEESE overview (short version) (PDF)]({{url_for('.assets', filename='files/CHEESE-overview-March-2018-short.pdf')}})
 
+# AGM minutes
+
+- [CHEESE AGM, Feburary 2020 (PDF)]({{url_for('.assets', filename='files/CHEESE-AGM-Feb20.pdf')}})
+
 # Policy
 
 - [Equal opportunities policy](/equal-opportunities)
