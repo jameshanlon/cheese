@@ -85,6 +85,12 @@ Impact at the ‘Voscurs’](2020-02-Voscur-awards) Bristol’s social impact aw
 and a feature on BBC Radio 4’s [Costing the Earth](2020-03-Costing-the-Earth)
 exposing of the poor quality of new build homes.
 
+The spread of survey locations:
+
+<a data-lightbox="achievements" href="{{url_for('.assets', filename='images/2019-20-survey-locations.png')}}">
+  <img src="{{'images/2019-20-survey-locations.png'|thumbnail('400x400')}}" class="img-thumbnail img-fluid mx-auto d-block">
+</a>
+
 <a class="anchor" name="phase-four"></a>
 ### Phase four (2018/19)
 
