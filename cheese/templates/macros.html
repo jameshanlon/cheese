@@ -39,13 +39,22 @@
         {{ render_form_description(f.description) }}
         {{ render_form_errors(f) }}
       </div>
-    {% else %}
+    {% elif f.name.endswith == "_date" %}
       {{ f.label(class_="control-label") }}
       {{ render_form_description(f.description) }}
       {% if f.errors %}
         {{ f(class_="form-control is-invalid", is_invalid=True, value=f.value) }}
       {% else %}
         {{ f(class_="form-control", value=f.value) }}
+      {% endif %}
+      {{ render_form_errors(f) }}
+    {% else %}
+      {{ f.label(class_="control-label") }}
+      {{ render_form_description(f.description) }}
+      {% if f.errors %}
+        {{ f(class_="form-control is-invalid", is_invalid=True) }}
+      {% else %}
+        {{ f(class_="form-control") }}
       {% endif %}
       {{ render_form_errors(f) }}
     {% endif %}
