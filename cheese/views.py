@@ -945,7 +945,7 @@ def upload_thermal_image():
             db.session.add(thermal_image)
             db.session.commit()
             # Send watchers email.
-            subject = '[CHEESE] New themrmal image'
+            subject = '[CHEESE] New thermal image'
             message = 'From '+str(thermal_image.user) \
                       + ' at '+str(datetime.datetime.today())+': ' \
                       + current_app.config['URL_BASE']+str(url_for('thermalimage.details_view', id=thermal_image.id))
@@ -1045,15 +1045,9 @@ def apply_for_a_survey():
             db.session.add(survey)
             db.session.commit()
             # Send email to applicant.
-            subject = 'Request for a CHEESE survey'
-            message =  'Dear '+form.name.data+',\n\n'
-            message += 'Thank you for your survey request.\n\n'
-            message += 'We will be in touch soon when we have some prospective '
-            message += 'dates for the survey.\n\n'
-            message += 'In the mean time, please get in touch if you have any '
-            message += 'questions.\n\n'
-            message += 'Many thanks,\nThe CHEESE Project team\n\n'
-            message += 'www.cheeseproject.co.uk\ninfo@cheeseproject.co.uk'
+            subject = 'Your C.H.E.E.S.E. survey application has tbeen submitted successfully'
+            message = render_template('emails/survey-application.html',
+                                      name=survey.name)
             mail.send(Message(subject=subject,
                               body=message,
                               recipients=[form.email.data]))
@@ -1142,6 +1136,13 @@ def apply_for_membership():
             mail.send(Message(subject=subject,
                               body=message,
                               recipients=current_app.config['WATCHERS']))
+            # Send an acknowledgement email.
+            subject = 'Your C.H.E.E.S.E. membership application has been submitted'
+            message = render_template('emails/member-application.html',
+                                      name=member.name)
+            mail.send(Message(subject=subject,
+                              body=message,
+                              recipients=[member.email]))
             # Flash success message.
             flash('Your membership application was submitted successfully, thank you.')
             return redirect(url_for('cheese.apply_for_membership'))
