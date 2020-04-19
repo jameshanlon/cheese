@@ -34,9 +34,9 @@ def get_thumbnail(filepath, size):
     # https://stackoverflow.com/questions/4228530/pil-thumbnail-is-rotating-my-image
     if image.format == 'JPEG' or \
        image.format == 'TIFF':
-	for orientation in ExifTags.TAGS.keys():
-	    if ExifTags.TAGS[orientation]=='Orientation':
-		break
+        for orientation in ExifTags.TAGS.keys():
+            if ExifTags.TAGS[orientation]=='Orientation':
+                break
         if image._getexif():
             exif=dict(image._getexif().items())
             if orientation in exif:

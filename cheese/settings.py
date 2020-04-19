@@ -4,18 +4,18 @@ import os
 DEBUG = False
 if 'FLASK_ENV' in os.environ and os.environ['FLASK_ENV'] == 'development':
   DEBUG = True
-  TESTING = True # Supress mail being sent.
+  TESTING = True # Supress mail being sent and don't source config from env.
 
 APP_NAME                         = 'The CHEESE Project'
 URL_BASE                         = 'https://cheeseproject.co.uk'
-SECRET_KEY                       = os.environ['CHEESE_SECRET_KEY']
 CSRF_ENABLED                     = True
 FLATPAGES_EXTENSION              = '.md'
 SYSTEM_ERROR_SUBJECT_LINE        = 'CHEESE webiste error'
-ADMINS                           = os.environ['CHEESE_ADMINS'].split(';')
-WATCHERS                         = os.environ['CHEESE_WATCHERS'].split(';')
 LOG_FILENAME_INFO                = 'cheese.log'
 LOG_FILENAME_ERROR               = 'cheese-error.log'
+SECRET_KEY                       = os.environ['CHEESE_SECRET_KEY']
+ADMINS                           = os.environ['CHEESE_ADMINS'].split(';')
+WATCHERS                         = os.environ['CHEESE_WATCHERS'].split(';')
 # S3
 S3_BUCKET                        = 'jwh'
 S3_PREFIX                        = 'cheese'

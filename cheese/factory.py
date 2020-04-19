@@ -35,11 +35,11 @@ def init_signals(app):
 
 def init_file_logging(app):
     class LogLevelFilter(object):
-	""" Filter for log messages of a specific level. """
-	def __init__(self, level):
-	    self.__level = level
-	def filter(self, logRecord):
-	    return logRecord.levelno == self.__level
+        """ Filter for log messages of a specific level. """
+        def __init__(self, level):
+            self.__level = level
+        def filter(self, logRecord):
+            return logRecord.levelno == self.__level
     # Add a file INFO logging handler.
     file_handler = RotatingFileHandler(app.config['LOG_FILENAME_INFO'],
                                        backupCount=10)
@@ -50,7 +50,7 @@ def init_file_logging(app):
     app.logger.addHandler(file_handler)
     # Add a file ERROR logging handler.
     file_handler = RotatingFileHandler(app.config['LOG_FILENAME_ERROR'],
-				       backupCount=10)
+                                       backupCount=10)
     formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
     file_handler.setLevel(logging.ERROR)
     file_handler.setFormatter(formatter)

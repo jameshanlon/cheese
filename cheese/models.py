@@ -275,7 +275,7 @@ class PreSurveyDetails(db.Model):
     # Should be 'HomeDetails'
     id = db.Column(db.Integer, primary_key=True)
     date                       = db.Column(db.DateTime,
-					   default=datetime.datetime.utcnow)
+                                           default=datetime.datetime.utcnow)
     householders_name          = db.Column(db.String(50))
     address_line               = db.Column(db.String(100))
     postcode                   = db.Column(db.String(10))
@@ -285,27 +285,27 @@ class PreSurveyDetails(db.Model):
     expected_benefit           = db.Column(db.Text) # Moved back to application
     year_of_construction       = db.Column(db.Integer)
     building_type_id           = db.Column(db.Integer,
-					   db.ForeignKey('building_types.id'))
+                                           db.ForeignKey('building_types.id'))
     building_type              = db.relationship('BuildingTypes')
     wall_construction_type_id  = db.Column(db.Integer,
-					   db.ForeignKey('wall_construction_types.id'))
+                                           db.ForeignKey('wall_construction_types.id'))
     wall_construction_type     = db.relationship('WallConstructionTypes')
     occupation_type_id         = db.Column(db.Integer,
-					   db.ForeignKey('occupation_types.id'))
+                                           db.ForeignKey('occupation_types.id'))
     occupation_type            = db.relationship('OccupationTypes')
     primary_heating_type_id    = db.Column(db.Integer,
-					   db.ForeignKey('space_heating_types.id'))
+                                           db.ForeignKey('space_heating_types.id'))
     primary_heating_type       = db.relationship('SpaceHeatingTypes',
-						 foreign_keys=primary_heating_type_id)
+                                                 foreign_keys=primary_heating_type_id)
     secondary_heating_type_id  = db.Column(db.Integer,
-					   db.ForeignKey('space_heating_types.id'))
+                                           db.ForeignKey('space_heating_types.id'))
     secondary_heating_type     = db.relationship('SpaceHeatingTypes',
-						 foreign_keys=secondary_heating_type_id)
+                                                 foreign_keys=secondary_heating_type_id)
     water_heating_type_id      = db.Column(db.Integer,
-					   db.ForeignKey('water_heating_types.id'))
+                                           db.ForeignKey('water_heating_types.id'))
     water_heating_type         = db.relationship('WaterHeatingTypes')
     cooking_type_id            = db.Column(db.Integer,
-					   db.ForeignKey('cooking_types.id'))
+                                           db.ForeignKey('cooking_types.id'))
     cooking_type               = db.relationship('CookingTypes')
     depth_loft_insulation      = db.Column(db.String(150))
     number_open_fireplaces     = db.Column(db.String(150))
@@ -329,14 +329,14 @@ class PreSurveyDetails(db.Model):
     survey    = db.relationship('Surveys')
 
     def __repr__(self):
-	return '<PreSurveyDetails '+str(self.id)+'>'
+        return '<PreSurveyDetails '+str(self.id)+'>'
 
 
 class PostSurveyDetails(db.Model):
     # This table records surveyor-recorded details of the survey.
     id = db.Column(db.Integer, primary_key=True)
     date                       = db.Column(db.DateTime,
-					   default=datetime.datetime.utcnow)
+                                           default=datetime.datetime.utcnow)
     lead_surveyor              = db.Column(db.String(50))
     assistant_surveyor         = db.Column(db.String(50))
     survey_date                = db.Column(db.Date)
@@ -350,7 +350,7 @@ class PostSurveyDetails(db.Model):
     survey    = db.relationship('Surveys')
 
     def __repr__(self):
-	return '<PostSurveyDetails '+str(self.id)+'>'
+        return '<PostSurveyDetails '+str(self.id)+'>'
 
 class MonthFeedback(db.Model):
     id = db.Column(db.Integer, primary_key=True)
