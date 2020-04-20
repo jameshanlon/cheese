@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% block title %}
+Unlinked records - {{config.PAGE_TITLE}}
+{% endblock %}
+{% block content %}
+
+{% macro record(result, table_name, attr_name) -%}
+<li>
+  {{result.date.strftime('%d/%m/%Y')}}, {{result|attr(attr_name)}}
+  [<a href="{{url_for(table_name+'.details_view', id=id, url=request.path+'?'+request.query_string)}}">details</a>,
+  <a href="{{url_for(table_name+'.edit_view', id=id, url=request.path+'?'+request.query_string)}}">edit</a>]
+</li>
+{%- endmacro %}
+
+<h1>Unlinked records</h1>
+
+<h2>Results</h2>
+<p>{{results|length}} unlinked records.</p>
+
+<ul>
+{% for result in results %}
+{{record(result, 'results', 'householders_name')}}
+{% endfor %}
+</ul>
+
+<h2>Pre-survey details</h2>
+<p>{{pre_details|length}} unlinked records.</p>
+
+<ul>
+{% for result in pre_details %}
+{{record(result, 'presurveydetails', 'householders_name')}}
+{% endfor %}
+</ul>
+
+<h2>Post-survey details</h2>
+<p>{{post_details|length}} unlinked records.</p>
+
+<ul>
+{% for result in post_details %}
+{{record(result, 'postsurveydetails', 'lead_surveyor')}}
+{% endfor %}
+</ul>
+
+<h2>Month feedback</h2>
+<p>{{month_feedback|length}} unlinked records.</p>
+
+<ul>
+{% for result in month_feedback %}
+{{record(result, 'monthfeedback', 'householders_name')}}
+{% endfor %}
+</ul>
+
+<h2>Year feedback</h2>
+<p>{{year_feedback|length}} unlinked records.</p>
+
+<ul>
+{% for result in year_feedback %}
+{{record(result, 'yearfeedback', 'householders_name')}}
+{% endfor %}
+</ul>
+
+{% endblock %}

@@ -1018,6 +1018,21 @@ def survey_stats():
                            phases=phases,
                            stats=stats)
 
+@bp.route('/unlinked-records')
+@login_required
+def unlinked_records():
+    results        = Results.query.filter(Results.survey==None).all() 
+    pre_details    = PreSurveyDetails.query.filter(PreSurveyDetails.survey==None).all()
+    post_details   = PostSurveyDetails.query.filter(PostSurveyDetails.survey==None).all()
+    month_feedback = MonthFeedback.query.filter(MonthFeedback.survey==None).all()
+    year_feedback  = YearFeedback.query.filter(YearFeedback.survey==None).all()
+    return render_template('unlinked-records.html',
+                            results=results,
+                            pre_details = pre_details,
+                            post_details = post_details,
+                            month_feedback=month_feedback,
+                            year_feedback=year_feedback)
+
 #===-----------------------------------------------------------------------===#
 # Public pages.
 #===-----------------------------------------------------------------------===#
