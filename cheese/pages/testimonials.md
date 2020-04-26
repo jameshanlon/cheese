@@ -7,6 +7,12 @@ a internal home survey.
 
 ## From the 2019/20 surveying season (phase 5)
 
+- *"Very helpful in every respect. House much warmer and less damp."*
+
+- *"Survey was very helpful and the guys were great - very useful to have
+  everything written down, as well as the film of the survey. There were mostly
+  things that I would have had no idea about."*
+
 - *"Well - I am staggered. I've just had a 3 hour walk around my house and we've
 identified cracks, leaky windows, chimney stuff, a bay window letting in damp
 and an unnecessary vent - venting in mountains of cold which no longer needs to
