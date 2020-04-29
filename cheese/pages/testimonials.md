@@ -7,6 +7,12 @@ a internal home survey.
 
 ## From the 2019/20 surveying season (phase 5)
 
+- *"I was very interested in the findings of the survey and surprised at some
+  of the places that were cold spots (such as floor/skirting junctions).  It
+  has thrown up the need for a myriad of little remedial jobs, which is a bit
+  daunting.  My next task is to prioritise those that will be easiest and most
+  effective to carry out."*
+
 - *"Very helpful in every respect. House much warmer and less damp."*
 
 - *"Survey was very helpful and the guys were great - very useful to have
