@@ -7,11 +7,32 @@ a internal home survey.
 
 ## From the 2019/20 surveying season (phase 5)
 
+- *"Thank you so much for completing our survey. We would have made more
+  progress had we not been in lockdown.  The video was really useful to see
+  where we are losing heat and the advice from the energy tracers extremely
+  helpful."*
+
+- *"5/5 Brilliant! I would love to help spread the word."*
+
+- *"5/5 I am very glad this organisation exists. It is much needed. The thermal
+  imaging was a revelation! The energy tracers were very thorough and I did
+  feel by the end that I had a much better understanding of heat loss in my own
+  house. Remedies suggested were practical and often very affordable solutions.
+  Yes, I do feel that the survey was good value for money. I feel confident that
+  if I can take some of the steps recommended, my house will be less draughty and
+  warmer (especially the very cold kitchen) and there is a good chance that my
+  heating bills will therefore reduce."*
+
 - *"I was very interested in the findings of the survey and surprised at some
   of the places that were cold spots (such as floor/skirting junctions).  It
   has thrown up the need for a myriad of little remedial jobs, which is a bit
   daunting.  My next task is to prioritise those that will be easiest and most
   effective to carry out."*
+
+- *"It was definitely well worth having the CHEESE Project survey.  I certainly
+  know a great deal more now about how to keep the house nice and warm.  The
+  Surveyor was very pleasant and very patient in explaining the results of the
+  survey."*
 
 - *"Very helpful in every respect. House much warmer and less damp."*
 
