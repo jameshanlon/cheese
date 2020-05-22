@@ -50,4 +50,6 @@ Also shortlisted for the buildings category were:
 - [ENVELOPE ARCHITECTS LTD](https://www.futurebuild.co.uk/exhibitors/envelope-architects-ltd)
 - [University of Hull](https://www.futurebuild.co.uk/exhibitors/university-of-hull)
 - [Airex](https://www.futurebuild.co.uk/exhibitors/airex)
+  
+<img src="{{'images/2020-03-04-Futurebuild/Brian-Futurebuild-award-2.jpg'|thumbnail('800x800')}}">
 
