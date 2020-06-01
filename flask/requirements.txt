@@ -1,3 +1,4 @@
+werkzeug==0.16.1
 cffi==1.11.5
 uwsgi==2.0.15
 MySQL-python==1.2.5
