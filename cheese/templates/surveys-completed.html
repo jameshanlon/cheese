@@ -53,5 +53,10 @@ Energy Tracer surveys - {{config.PAGE_TITLE}}
   {{render_results(surveyor_map[key].lead, surveyor_map[key].assist)}}
 {% endfor %}
 
+<h2>Incomplete results</h2>
+<p>These results have missing lead or assistant fields</p>
+{{render_results(incomplete_lead_results,
+                 incomplete_assist_results)}}
+
 {% endblock %}
 

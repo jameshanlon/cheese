@@ -1043,10 +1043,13 @@ def surveys_completed():
             self.assist = []
     results = Results.query.all()
     surveyor_map = defaultdict(Surveyor)
+    incomplete_lead_results = []
+    incomplete_assist_results = []
     # Leads
     for result in results:
         if result.lead_surveyor == None \
             or result.lead_surveyor.strip() == '':
+            incomplete_lead_results.append(result)
             continue
         lead_key = result.lead_surveyor.strip().replace(' ', '_').lower()
         if not surveyor_map[lead_key].name:
@@ -1056,13 +1059,16 @@ def surveys_completed():
     for result in results:
         if result.assistant_surveyor == None \
             or result.assistant_surveyor.strip() == '':
+            incomplete_assist_results.append(result)
             continue
         assist_key = result.assistant_surveyor.strip().replace(' ', '_').lower()
         if not surveyor_map[assist_key].name:
             surveyor_map[assist_key].name = assist_key.replace('_', ' ').title()
         surveyor_map[assist_key].assist.append(result)
     return render_template('surveys-completed.html',
-                           surveyor_map=surveyor_map)
+                           surveyor_map=surveyor_map,
+                           incomplete_lead_results=incomplete_lead_results,
+                           incomplete_assist_results=incomplete_assist_results)
 
 #===-----------------------------------------------------------------------===#
 # Public pages.
