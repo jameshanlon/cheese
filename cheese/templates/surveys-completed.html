@@ -7,8 +7,16 @@ Energy Tracer surveys - {{config.PAGE_TITLE}}
 {% macro render_row(result, type) -%}
   <tr>
     <td>{{type}}</td>
-    {% if result.survey %}<td>{{result.survey.phase}}</td>{% else %}<td>No linked survey</td>{% endif %}
-    <td>{{result.survey_date.strftime('%d/%m/%Y')}}</td>
+    {% if result.survey %}
+      <td>{{result.survey.phase}}</td>
+    {% else %}
+      <td>No linked survey</td>
+    {% endif %}
+    {% if result.survey_date %}
+      <td>{{result.survey_date.strftime('%d/%m/%Y')}}</td>
+    {% else %}
+      <td>No date</td>
+    {% endif %}
     <td>{{result.householders_name}}</td>
     <td>{{result.address_line}}</td>
     <td><a href="{{url_for('results.details_view', id=result.id, url=request.path+'?'+request.query_string)}}">Result record</a></td>
@@ -16,7 +24,7 @@ Energy Tracer surveys - {{config.PAGE_TITLE}}
 {%- endmacro %}
 
 {% macro render_results(lead_results, assist_results, type) -%}
-<table class="table table-sm">
+<table class="table table-sm table-hover">
   <thead>
     <tr>
       <th scope="col">Role</th>
@@ -28,10 +36,10 @@ Energy Tracer surveys - {{config.PAGE_TITLE}}
     </tr>
   </thead>
   <tbody>
-  {% for result in lead_results|sort(attribute='survey_date') %}
+  {% for result in lead_results|sort(attribute='id') %}
     {{render_row(result, 'Lead')}}
   {% endfor %}
-  {% for result in assist_results|sort(attribute='survey_date') %}
+  {% for result in assist_results|sort(attribute='id') %}
     {{render_row(result, 'Assist')}}
   {% endfor %}
   </tbody>
@@ -39,7 +47,9 @@ Energy Tracer surveys - {{config.PAGE_TITLE}}
 {%- endmacro %}
 
 {% for key in surveyor_map.keys()|sort %}
-  <h2>{{surveyor_map[key].name}}</h2>
+  <h2>{{surveyor_map[key].name|safe}}</h2>
+  <p>({{surveyor_map[key].lead|length}} leads,
+      {{surveyor_map[key].assist|length}} assists)</p>
   {{render_results(surveyor_map[key].lead, surveyor_map[key].assist)}}
 {% endfor %}
 

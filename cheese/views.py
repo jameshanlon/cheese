@@ -1045,12 +1045,18 @@ def surveys_completed():
     surveyor_map = defaultdict(Surveyor)
     # Leads
     for result in results:
+        if result.lead_surveyor == None \
+            or result.lead_surveyor.strip() == '':
+            continue
         lead_key = result.lead_surveyor.strip().replace(' ', '_').lower()
         if not surveyor_map[lead_key].name:
             surveyor_map[lead_key].name = lead_key.replace('_', ' ').title()
         surveyor_map[lead_key].lead.append(result)
     # Assists
     for result in results:
+        if result.assistant_surveyor == None \
+            or result.assistant_surveyor.strip() == '':
+            continue
         assist_key = result.assistant_surveyor.strip().replace(' ', '_').lower()
         if not surveyor_map[assist_key].name:
             surveyor_map[assist_key].name = assist_key.replace('_', ' ').title()
