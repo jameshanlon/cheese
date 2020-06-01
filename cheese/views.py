@@ -1033,6 +1033,31 @@ def unlinked_records():
                             month_feedback=month_feedback,
                             year_feedback=year_feedback)
 
+@bp.route('/surveys-completed')
+@login_required
+def surveys_completed():
+    class Surveyor(object):
+        def __init__(self):
+            self.name = None
+            self.lead = []
+            self.assist = []
+    results = Results.query.all()
+    surveyor_map = defaultdict(Surveyor)
+    # Leads
+    for result in results:
+        lead_key = result.lead_surveyor.strip().replace(' ', '_').lower()
+        if not surveyor_map[lead_key].name:
+            surveyor_map[lead_key].name = lead_key.replace('_', ' ').title()
+        surveyor_map[lead_key].lead.append(result)
+    # Assists
+    for result in results:
+        assist_key = result.assistant_surveyor.strip().replace(' ', '_').lower()
+        if not surveyor_map[assist_key].name:
+            surveyor_map[assist_key].name = assist_key.replace('_', ' ').title()
+        surveyor_map[assist_key].assist.append(result)
+    return render_template('surveys-completed.html',
+                           surveyor_map=surveyor_map)
+
 #===-----------------------------------------------------------------------===#
 # Public pages.
 #===-----------------------------------------------------------------------===#
