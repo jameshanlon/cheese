@@ -1,8 +1,13 @@
-title: Media coverage
+itle: Media coverage
 
 {% import 'macros.html' as macros %}
 
 # Media coverage
+
+- **Bristol Green Doors retrofit stories: Insulation & heat. Renovating a
+  1950’s detached home**, this CSE video reports on the findings from a CHEESE
+  survey and remedial action taken by the householder, watch on
+  [YouTube](https://www.youtube.com/watch?v=gS2Iq-7ZAsM).
 
 <div class="float-right">
 {{ macros.thumbnail('images/2020-03-Bristol-Cable/CHEESE-item.jpg', '140x140', 'media-coverage') }}
