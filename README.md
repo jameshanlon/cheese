@@ -178,7 +178,7 @@ $ ./certbot-auto --nginx
 To renew:
 ```
 $ docker exec -it <proxy-containter> bash
-$ ./certbot renew --pre-hook "service nginx stop" --post-hook "service nginx start"
+$ /usr/local/bin/certbot-auto renew
 ```
 More details at https://certbot.eff.org/lets-encrypt
 
