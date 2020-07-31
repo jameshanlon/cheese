@@ -148,6 +148,12 @@ $ docker-compose build
 $ docker-compose up
 ...
 ```
+- Rebuild a single container (eg to update environment):
+```
+$ docker-compose ps
+$ docker-compose down <service_name>
+$ docker-compose up -d --no-deps --build <service_name>
+```
 
 ### Perform a database migration
 
