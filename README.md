@@ -151,7 +151,8 @@ $ docker-compose up
 - Rebuild a single container (eg to update environment):
 ```
 $ docker-compose ps
-$ docker-compose down <service_name>
+$ docker-compose stop <service_name>
+$ docker-compose rm <service_name>
 $ docker-compose up -d --no-deps --build <service_name>
 ```
 
