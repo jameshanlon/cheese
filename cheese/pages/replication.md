@@ -32,7 +32,7 @@ developing our own low-cost, high-specification camera, optimally designed for
 the job.
 
 We are optimistic that we will receive funding to enable commencing trial
-franchising by autumn 2020, when we hope that indoor surveying will be possible
+franchising by Autumn 2021, when we hope that indoor surveying will be possible
 again despite the Covid pandemic. We will endeavour to keep start-up costs to
 the minimum, but in the meantime we recommend that climate action NGOs wanting
 to set up a local franchise should seek opportunities for funding to cover
@@ -40,10 +40,11 @@ their core costs – the surveys will pay for themselves. We will continue to
 push for central government funding to assist with costs, e.g. for free surveys
 for the fuel poor.
 
-It is important to our social benefit aims that our franchised NGO replicas
-remain independent of those carrying out retrofitting businesses, are engaged
-with the local community, and are not-for-profit. They will need to be a
-registered legal body such as a CIC.
+It is important to our social benefit aims that our franchised replicas remain
+independent of those carrying out retrofitting businesses, and are engaged with
+the local community. They will need to be a registered legal body such as a
+CIC. Our likely pricing structure will include payment from sales to local
+Energy Tracers.
 
 We will update this page as further detail becomes available. In the meantime
 if you want to register your interest please email
