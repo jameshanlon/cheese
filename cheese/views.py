@@ -1100,7 +1100,7 @@ def apply_for_a_survey():
             message = render_template('emails/survey-application.html',
                                       name=survey.name)
             mail.send(Message(subject=subject,
-                              body=message,
+                              html=message,
                               recipients=[form.email.data]))
             # Send watchers email.
             subject = '[CHEESE] New request for a survey'
@@ -1192,7 +1192,7 @@ def apply_for_membership():
             message = render_template('emails/member-application.html',
                                       name=member.name)
             mail.send(Message(subject=subject,
-                              body=message,
+                              html=message,
                               recipients=[member.email]))
             # Flash success message.
             flash('Your membership application was submitted successfully, thank you.')
