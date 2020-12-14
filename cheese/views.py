@@ -1096,7 +1096,7 @@ def apply_for_a_survey():
             db.session.add(survey)
             db.session.commit()
             # Send email to applicant.
-            subject = 'Your C.H.E.E.S.E. survey application has tbeen submitted successfully'
+            subject = 'Your C.H.E.E.S.E. survey application has been submitted successfully'
             message = render_template('emails/survey-application.html',
                                       name=survey.name)
             mail.send(Message(subject=subject,
