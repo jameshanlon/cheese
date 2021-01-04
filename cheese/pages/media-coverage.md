@@ -4,6 +4,12 @@ itle: Media coverage
 
 # Media coverage
 
+- The Climate Change Committee's **Local Authorities and the Sixth Carbon
+  Budget**. CHEESE is referenced as providing "paid for energy audits to homes
+in Bristol, but free audits for people on low incomes, to kick start their
+retrofit journeys." Read the report
+[here](https://www.theccc.org.uk/publication/local-authorities-and-the-sixth-carbon-budget/).
+
 - **Bristol Green Doors retrofit stories: Insulation & heat. Renovating a
   1950’s detached home**, this CSE video reports on the findings from a CHEESE
   survey and remedial action taken by the householder, watch on
