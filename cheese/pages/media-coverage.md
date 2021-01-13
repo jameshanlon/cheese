@@ -4,6 +4,13 @@ itle: Media coverage
 
 # Media coverage
 
+- **Reasons to be hopeful in 2021**, [in The
+  Guardian](https://www.theguardian.com/environment/2020/dec/27/reasons-to-be-hopeful)
+(December 2020) mentions CHEESE's work in Bristol: "Other schemes include a
+phone app using thermal imaging to help 70% of residents who struggle to pay
+their electricity bills identify the energy efficiency of their homes. Traders
+then fix problems for an affordable fee."
+
 - The Climate Change Committee's **Local Authorities and the Sixth Carbon
   Budget**. CHEESE is referenced as providing "paid for energy audits to homes
 in Bristol, but free audits for people on low incomes, to kick start their
