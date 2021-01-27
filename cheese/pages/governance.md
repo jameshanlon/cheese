@@ -104,26 +104,6 @@ prototype stage. Jeremy works pro bono for the project. </p>
 </div>
 <div class="row">
 
-  <div class="col-sm">
-  <a name="maddy-longhurst"></a>
-  <figure class="figure">
-  <img class="img-fluid" src="{{'images/people/maddy.jpg'|thumbnail('247x247')}}">
-  </figure>
-  <p class="lead">Maddy Longhurst</p>
-  <p>Survey Manager</p>
-
-  <p>Maddy joined C.H.E.E.S.E. in Autumn 2018 to manage the surveys. She
-  previously co-devised and facilitated the MakeYourHomeEco course in Bristol and
-  worked as volunteer coordinator for the first Bristol Green Doors. In 2013, she
-  set up the Blue Finger Alliance, Bristol soil campaign, to coordinate efforts
-  to protect land for food growing and continues to run this alongside
-  C.H.E.E.S.E. She has a degree in Town and Country Planning, has worked with the
-  Happy City Initiative and has worked with young people both as a one to one and
-  group mentor and in one of the founding staff of Steiner Academy Bristol. She
-  is currently studying for a qualification in Community Organising.</p>
-
-  <hr>
-  </div>
 
   <div class="col-sm">
   <figure class="figure">
@@ -142,9 +122,6 @@ energy analyst.</p>
   <hr>
   </div>
 
-</div>
-<div class="row">
-
   <div class="col-sm">
   <figure class="figure">
   <img class="img-fluid" src="{{'images/people/dave-1.jpg'|thumbnail('247x247')}}">
@@ -162,12 +139,29 @@ energy analyst.</p>
   <hr>
   </div>
 
-  <div class="col-sm">
-  <!--blank-->
-  </div>
+</div>
+</div>
+  
+<!--<div class="col-sm">
+  <a name="maddy-longhurst"></a>
+  <figure class="figure">
+  <img class="img-fluid" src="{{'images/people/maddy.jpg'|thumbnail('247x247')}}">
+  </figure>
+  <p class="lead">Maddy Longhurst</p>
+  <p>Survey Manager</p>
 
-</div>
-</div>
+  <p>Maddy joined C.H.E.E.S.E. in Autumn 2018 to manage the surveys. She
+  previously co-devised and facilitated the MakeYourHomeEco course in Bristol and
+  worked as volunteer coordinator for the first Bristol Green Doors. In 2013, she
+  set up the Blue Finger Alliance, Bristol soil campaign, to coordinate efforts
+  to protect land for food growing and continues to run this alongside
+  C.H.E.E.S.E. She has a degree in Town and Country Planning, has worked with the
+  Happy City Initiative and has worked with young people both as a one to one and
+  group mentor and in one of the founding staff of Steiner Academy Bristol. She
+  is currently studying for a qualification in Community Organising.</p>
+
+  <hr>
+  </div>-->
 
 <!--<div class="col-sm">
 <figure class="figure">
