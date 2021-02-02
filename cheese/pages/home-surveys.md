@@ -89,6 +89,7 @@ board of directors.-->
 <!--The overwhelming response that we get is that our surveys are fascinating
 and exceptionally good value.-->
 
+<!--
 <div class="alert alert-info">
 <h4 class="alert-heading">A note on our pricing</h4>
 
@@ -113,6 +114,7 @@ believe to be key advantages of C.H.E.E.S.E. surveys.</li>
 </ul>
 
 </div>
+-->
 
 Below are our prices for various sizes of home. Please note that **main rooms**
 means any large room: including living rooms, dining rooms, kitchen-dining
