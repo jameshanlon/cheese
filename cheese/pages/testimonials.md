@@ -7,6 +7,11 @@ a internal home survey.
 
 ## From the 2019/20 surveying season (phase 5)
 
+- *"We have secondary-glazed the main windows, fitted Solar PV etc but are not
+  perfect. Also, I haven't really monitored the results.  But we ARE happier
+  and warmer in the house by a mile."* - Owner of a large Georgian terraced
+  house.
+
 - *"Thank you so much for completing our survey. We would have made more
   progress had we not been in lockdown.  The video was really useful to see
   where we are losing heat and the advice from the energy tracers extremely
