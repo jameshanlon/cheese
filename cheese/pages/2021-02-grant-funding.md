@@ -29,7 +29,7 @@ The grants will be sufficient to employ:
 
 - A full-time office administrator/assistant (to help Mike) - from early April.
 - 0.8 FTE General Manger with experience of franchising - from May.
-- 0.4 FTE CHEESE Survey Manager - drom June.
+- 0.4 FTE CHEESE Survey Manager - from June.
 
 These posts will be advertised shortly.
 
@@ -37,13 +37,10 @@ In the meantime, during lockdown, the Board have been busy developing the
 business model, including a new Heatview camera, blower door, on-line survey
 management system and revised training course.
 
-Many of you know that it has been a struggle to find funding and to keep the
-project afloat during the last two years prior to lock-down, but it is thanks
-to your help and our success together that we now have this wonderful
-opportunity to consolidate and expand. Together we can look forward to making a
-real difference to carbon emissions and fuel poverty. The potential for
-expansion is enormous if we can get it right. I look forward to working with
-you later this year.
+Thanks to the help of our members, staff, volunteers and friends, our success
+together has led to this wonderful opportunity. Together we can look forward to
+making a real difference to carbon emissions and fuel poverty. The potential
+for expansion is enormous if we can get it right. 
 
 At present, we hope to be carrying out a few surveys on empty properties during
 the next few months. Brian Harper is also experimenting with warm-weather
