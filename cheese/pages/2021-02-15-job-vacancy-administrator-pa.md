@@ -13,12 +13,12 @@ For five years a small team of committed environmentalists have successfully
 built up The C.H.E.E.S.E. Project CIC (Cold Homes Energy Efficiency Survey
 Experts) in Bristol and Bath, winning four awards, including the building
 industry's most prestigious award: [The Big Innovation
-Pitch](/2020-03-04-Futurebuild-Buildings-Innovation-Pitch) at Futurebuild last
+Pitch](/news/2020-03-04-Futurebuild-Buildings-Innovation-Pitch) at Futurebuild last
 March. We have developed a unique low-cost thermal imaging system for the
 interiors of homes that allows targeted 'first retrofit' to reduce energy loss
 by around a third - using DIY methods and a few hundred pounds. We have just
 been awarded a substantial grant to allow us to develop our Energy Tracing®
-business and replicate it by franchising UK-wide.
+business and replicate it by franchising UK wide, by starting a new company.
 
 This key position offers the successful applicant the opportunity to make a
 major contribution to tackling the climate emergency, while also assisting
@@ -26,22 +26,22 @@ those in fuel poverty. The post involves a degree of management, under
 supervision, and requires experience/expertise in business development, client
 management, HR and finance: including budgets, payroll, VAT, NIC and pension
 contributions. Prospective candidates should be able to handle multi-tasking in
-a pressured environment. Probationary period until 30 June 2021.
+a pressured environment.
 
-Reporting to Mike Andrews and also (later) the General Manager.
-
--	**Salary**: £23,000.
+Reporting to Mike Andrews and also (later) the manager of the new company.
 
 -	**Contract type**: Full time 40hr a week (flexible working considered). Please
 	note it may require working on some evenings or part of weekends.
 
--	**Duration of contract**: 1st April – 30th June (with likely extension to 31st
-	December 2023 - approx. 3 years depending on achieving project milestones).
+-	**Duration of contract**: 1st April – 30th June 2021 with likely extension to 31st
+	December 2023 - approx. 3 years depending on achieving project milestones.
 
 -	**Location**: Bristol. At first working from home, in an office 'Hub', and sometimes at
 	the registered office.
 
 -	**Closing date for application**: 12th March 2021.
+
+-	**Salary**: £23,000, with a probationary period until 30th June.
 
 
 ## Key Responsibilities
@@ -66,7 +66,9 @@ Your key responsibilities will be to:
 
 -	Liaise with C.H.E.E.S.E. anchor-organisation members in Bristol city wards and Bath to recruit paying customers and deliver free surveys.
 
--	Act as a contact point for/seek out potential franchisees of the C.H.E.E.S.E. operation, UK-wide.
+-	Act as a contact point for/seek out potential franchisees of the C.H.E.E.S.E. operation, UK wide.
+
+- Assist in the development of the new franchisor company.
 
 -	In charge of billing franchisees.
 
@@ -78,7 +80,7 @@ Your key responsibilities will be to:
 
 -	Supervise collation, reporting and analysis of survey results including faults for different building types.
 
--	Help to develop and maintain relationships with other energy and housing-related NGOs eg. Bristol Energy Network, Centre for Sustainable Energy, Citizens Advice Bureau, etc.
+-	Help to develop and maintain relationships with other energy and housing-related NGOs eg. Bristol Energy Network, Centre for Sustainable Energy, Citizens Advice, etc.
 
 
 ## Necessary skills
@@ -113,8 +115,6 @@ The skills necessary for the position are:
 
 -	Ability to work from home with workspace, fast internet connection, computer, printer etc.
 
--	Driving license.
-
 # Desirable skills
 
 The skills desirable for the position are:
@@ -126,6 +126,8 @@ The skills desirable for the position are:
 - Proven interest in sustainability and energy use.
 
 - Experience of not-for-profit third sector.
+
+-	Driving license.
 
 - Bachelor's degree in Business Administration or related field.
 
@@ -141,7 +143,7 @@ or
 [DOCX to fill in]({{url_for('.assets', filename='files/CHEESE-job-application-form.docx')}}))
 and send it to Mike Andrews, Managing Director, via email at
 ([jobs@cheeseproject.co.uk](mailto:jobs@cheeseproject.co.uk)).
-The closing date for applications is Wednesday 18th September, 2019.
+The closing date for applications is Wednesday 12th March 2021.
 Interviews will be the following week.
 
 **PLEASE NOTE:** please do not send in CVs and we will not accept applications from
