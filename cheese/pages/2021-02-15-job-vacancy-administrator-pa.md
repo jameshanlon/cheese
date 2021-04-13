@@ -1,8 +1,11 @@
 article:
 date: 2021-02-15
-title: "Job vacancy: Office Administrator/PA to Managing Director"
+title: "Job vacancy: Office Administrator/PA to Managing Director [closed]"
 image: images/ETlogo.png
 
+<div class="alert alert-warning" role="alert">
+The deadline for this role has now passed.
+</div>
 
 This role is a fantastic opportunity for an experienced, motivated, resourceful
 individual to take on an exciting and challenging role - helping to scale up an
