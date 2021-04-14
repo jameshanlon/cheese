@@ -116,6 +116,16 @@ believe to be key advantages of C.H.E.E.S.E. surveys.</li>
 </div>
 -->
 
+<div class="alert alert-primary">
+Please note: while we are holding our 2019-20 pricing (below) for those who
+booked surveys that had to be postponed due to the Covid pandemic, we
+anticipate having to raise our prices for the 2021-22 survey season in order to
+cover their administration costs. The maximum increase for Bristol will be no
+greater than 30%, with the surcharge for Bath remaining at £60 to cover travel
+costs. We will post the new prices nearer the start of the survey season (Covid
+permitting).
+</div>
+
 Below are our prices for various sizes of home. Please note that **main rooms**
 means any large room: including living rooms, dining rooms, kitchen-dining
 rooms, bedrooms and conservatories, but not bathrooms, separate kitchens,
