@@ -25,6 +25,7 @@ $ pip install --upgrade -r flask/requirements.txt
 $ brew install mysql openssl
 $ export LIBRARY_PATH=$LIBRARY_PATH:/usr/local/opt/openssl/lib/
 $ virtualenv env
+$ python -m pip install -U --force-reinstall pip
 $ pip install -r flask/requirements.txt
 ...
 ```
@@ -177,17 +178,15 @@ Install and run certbot to use Lets Encrypt the quick and easy way
 the proxy container is rebuilt.
 ```
 $ docker exec -it <proxy-containter> bash
-$ apt-get install wget
-$ wget https://dl.eff.org/certbot-auto
-$ chmod a+x certbot-auto
-$ ./certbot-auto --nginx
+$ apt-get install python3-certbot-nginx # If nginx plugin is missing
+$ certbot --nginx
 ```
 To renew:
 ```
 $ docker exec -it <proxy-containter> bash
-$ /usr/local/bin/certbot-auto renew
+$ certbot renew
 ```
-More details at https://certbot.eff.org/lets-encrypt
+More details at https://certbot.eff.org/docs/install.html
 
 #### Old method
 
