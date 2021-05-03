@@ -1,4 +1,4 @@
-FROM debian:stretch-slim
+FROM debian:bullseye-slim
 MAINTAINER James Hanlon
 
 ENV DEBIAN_FRONTEND=noninteractive
@@ -8,12 +8,12 @@ RUN apt-get update && \
                        libffi-dev \
                        libssl-dev \
                        default-libmysqlclient-dev \
-                       mysql-client \
+                       default-mysql-client \
                        libjpeg-dev \
-                       python \
-                       python-dev \
-                       python-setuptools \
-                       python-pip
+                       python3 \
+                       python3-dev \
+                       python3-setuptools \
+                       python3-pip
 
 COPY requirements.txt /tmp
 RUN pip install -r /tmp/requirements.txt
