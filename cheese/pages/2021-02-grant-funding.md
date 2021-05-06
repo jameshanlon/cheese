@@ -43,7 +43,6 @@ making a real difference to carbon emissions and fuel poverty. The potential
 for expansion is enormous if we can get it right. 
 
 At present, we hope to be carrying out a few surveys on empty properties during
-the next few months. Brian Harper is also experimenting with warm-weather
-surveys to extend the survey season. We hope that it will be possible to train
-more Energy Tracers in October, and start surveying in the Autumn - this will
-depend on government regulations, and our own precautions for Covid.
+the next few months. We hope that it will be possible to train more Energy
+Tracers in October, and start surveying in the Autumn - this will depend on
+government regulations, and our own precautions for Covid.
