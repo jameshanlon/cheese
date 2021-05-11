@@ -14,7 +14,7 @@ from flask_wtf.file import FileField, FileAllowed, FileRequired
 from wtforms import fields, validators, widgets
 from wtforms.ext.sqlalchemy.fields import QuerySelectField
 from wtforms.fields.html5 import EmailField
-from wtforms.validators import Length, Optional, Required, InputRequired, NumberRange
+from wtforms.validators import Length, Optional, DataRequired, InputRequired, NumberRange
 
 
 def choice(string):
@@ -125,24 +125,24 @@ class ApplySurveyForm(FlaskForm):
     recaptcha = RecaptchaField()
     name = \
         fields.StringField('Name*',
-                           validators=[Required(),
+                           validators=[DataRequired(),
                                        Length(max=100)])
     address_line = \
         fields.StringField('Address line*',
-                            validators=[Required(),
+                            validators=[DataRequired(),
                                         Length(max=100)])
     postcode = \
         fields.StringField('Post code*',
-                           validators=[Required(),
+                           validators=[DataRequired(),
                                        Length(max=10)])
     email = \
         EmailField('Email address*',
-                   validators=[Required(),
+                   validators=[DataRequired(),
                                validators.Email(),
                                Length(max=100)])
     telephone = \
         fields.StringField('Main contact telephone number*',
-                           validators=[Required(),
+                           validators=[DataRequired(),
                                        Length(max=20)])
     mobile = \
         fields.StringField('Secondary contact telephone number',
@@ -152,7 +152,7 @@ class ApplySurveyForm(FlaskForm):
         fields.IntegerField('Number of main rooms* ' \
                             +'(please see <a href="/home-surveys#pricing">pricing details</a>' \
                             +', this will be confirmed during the survey)*',
-                            validators=[Required(),
+                            validators=[DataRequired(),
                                         NumberRange(min=1, max=100)])
     can_heat_comfortably = \
         fields.BooleanField('(tick for yes) Can you heat your home to a comfortable ' \
@@ -160,7 +160,7 @@ class ApplySurveyForm(FlaskForm):
                             validators=[Optional()])
     expected_benefit = \
         fields.TextAreaField('How do you think you will benefit from a survey?*',
-                             validators=[Required()])
+                             validators=[DataRequired()])
     has_asbestos = \
         fields.BooleanField('(tick for yes) Are you aware of any asbestos, exposed or not exposed, in the building?',
                             validators=[Optional()])
@@ -170,7 +170,7 @@ class ApplySurveyForm(FlaskForm):
     availability = \
         fields.TextAreaField('What is your availability to schedule the survey?*',
                              description='Please see the <a href="/home-surveys">survey information</a> for the expected duration of your survey.',
-                             validators=[Required()])
+                             validators=[DataRequired()])
     referral = \
         fields.StringField('How did you hear about C.H.E.E.S.E. thermal-imaging surveys?',
                            validators=[Optional(),
@@ -198,7 +198,7 @@ href="/pre-survey-guide#preparation" target="_blank"> necessary
 preparations</a> for the survey, and I am <strong>happy</strong> to <a
 href="/pre-survey-guide#follow-ups" target="_blank">report my progress</a>
 after one month, and after one and two years after the survey. """,
-            validators=[Required()])
+            validators=[DataRequired()])
     agree_to_cancellation = \
         fields.BooleanField(
 """ I have <strong>read and understood</strong> the <a
@@ -207,7 +207,7 @@ your survey is cancelled less than 72 hours (3 days) prior to your survey there
 will be a &pound;100 cancellation fee. If you rebook your survey for a
 different date in the same season, &pound;50 of this will be credited against
 your new booking. """,
-            validators=[Required()])
+            validators=[DataRequired()])
     photo_release = \
         fields.BooleanField('I <strong>agree</strong> to any of the ' \
             +'still photos to be taken during my survey that do not ' \
@@ -220,7 +220,7 @@ def create_apply_survey_form(db_session, formdata):
     def ward_choices():
       return db_session.query(Wards).all()
     ward = QuerySelectField('Ward*',
-                            validators=[Required()],
+                            validators=[DataRequired()],
                             query_factory=ward_choices,
                             allow_blank=True,
                             blank_text=u'Please select...',)
@@ -314,7 +314,7 @@ def add_dynamic_fields_to_pre_survey_details_form(db_session):
       return db_session.query(CookingTypes).all()
     survey = \
         QuerySelectField('Survey*',
-                         validators=[Required()],
+                         validators=[DataRequired()],
                          query_factory=survey_choices,
                          allow_blank=True,
                          blank_text=u'Please select...')
@@ -399,16 +399,16 @@ class PostSurveyDetailsForm(FlaskForm):
     recaptcha = RecaptchaField()
     lead_surveyor = \
         fields.StringField('Lead surveyor*',
-                           validators=[Required(),
+                           validators=[DataRequired(),
                                        Length(max=50)])
     assistant_surveyor = \
         fields.StringField('Assistant surveyor*',
-                           validators=[Required(),
+                           validators=[DataRequired(),
                            Length(max=50)])
     survey_date = \
         fields.DateField('Survey date (dd/mm/yyyy)*',
                          format='%d/%m/%Y',
-                         validators=[Required(),
+                         validators=[DataRequired(),
                                      validate_date],
                          widget=DatePickerWidget())
     external_temperature = \
@@ -416,7 +416,7 @@ class PostSurveyDetailsForm(FlaskForm):
                             validators=[Optional()])
     camera_kit_number = \
         fields.TextField('Camera kit number*',
-                         validators=[Required(),
+                         validators=[DataRequired(),
                                      Length(max=25)])
     faults_identified = \
         fields.TextAreaField('Faults identified',
@@ -436,7 +436,7 @@ def create_post_survey_details_form(db_session, formdata):
       return db_session.query(Surveys).all()
     survey = \
         QuerySelectField('Survey*',
-                         validators=[Required()],
+                         validators=[DataRequired()],
                          query_factory=survey_choices,
                          allow_blank=True,
                          blank_text=u'Please select...')
@@ -450,11 +450,11 @@ class UploadThermalImageForm(FlaskForm):
                                        FileAllowed(IMAGE_FORMATS,
                                                    'Only images can be uploaded')])
     description = fields.TextAreaField('Description of the image*',
-                                       validators=[Required()])
+                                       validators=[DataRequired()])
     year_of_construction = fields.IntegerField('Year of construction',
                                                validators=[Optional()])
     keywords = fields.StringField("Keywords (separated by commas ',')*",
-                                  validators=[Required()])
+                                  validators=[DataRequired()])
 
 
 def create_upload_thermal_image_form(db_session, formdata=None):
@@ -481,10 +481,10 @@ class OneMonthFeedbackForm(FlaskForm):
     numbers_only = 'Only use digits and (optionally) a decimal point, no other punctuation or symbols.'
     recaptcha = RecaptchaField()
     householders_name = fields.StringField('Householder\'s name*',
-                                           validators=[Required(),
+                                           validators=[DataRequired(),
                                                        Length(max=50)])
     address = fields.StringField('Address*',
-                                 validators=[Required(),
+                                 validators=[DataRequired(),
                                              Length(max=100)])
     annual_gas_kwh = fields.DecimalField('Annual consumption (kWh)',
                                          validators=[Optional()])
@@ -543,23 +543,23 @@ class OneMonthFeedbackForm(FlaskForm):
     satisfaction_1to5 = fields.RadioField('How satisified were you with the survey overall? (1: least, to 5: most)*',
                                           widget=OneToFiveWidget(),
                                           choices=choices_1_to_5,
-                                          validators=[Required()])
+                                          validators=[DataRequired()])
     survey_video_1to5 = fields.RadioField('How useful have you find the survey video? (1: not at all, to 5: very)*',
                                           widget=OneToFiveWidget(),
                                           choices=choices_1_to_5,
-                                          validators=[Required()])
+                                          validators=[DataRequired()])
     surveyor_conduct_1to5 = fields.RadioField('How was the conduct of the surveyor? (1: poor, to 5: excellent)*',
                                               widget=OneToFiveWidget(),
                                               choices=choices_1_to_5,
-                                              validators=[Required()])
+                                              validators=[DataRequired()])
     survey_value_1to5 = fields.RadioField('Was the survey good value for money? (1: disagree, to 5: agree)*',
                                           widget=OneToFiveWidget(),
                                           choices=choices_1_to_5,
-                                          validators=[Required()])
+                                          validators=[DataRequired()])
     recommend_1to5 = fields.RadioField('Are you likely to recommend the survey to a friend or neighbour? (1: unlikely, to 5: definitely)*',
                                        widget=OneToFiveWidget(),
                                        choices=choices_1_to_5,
-                                       validators=[Required()])
+                                       validators=[DataRequired()])
     feedback = fields.TextAreaField('Do you have any feedback?',
                                     description='We would like to hear what you think about:'
                                                    +' the organisation of the survey,'
@@ -575,10 +575,10 @@ class OneYearFeedbackForm(FlaskForm):
     numbers_only = 'Only use digits and (optionally) a decimal point, no other punctuation or symbols.'
     #recaptcha = RecaptchaField()
     householders_name = fields.StringField('Householder\'s name*',
-                                           validators=[Required(),
+                                           validators=[DataRequired(),
                                                        Length(max=50)])
     address = fields.StringField('Address*',
-                                 validators=[Required(),
+                                 validators=[DataRequired(),
                                              Length(max=100)])
     annual_gas_kwh = fields.DecimalField('Annual consumption (kWh)',
                                          validators=[Optional()])
@@ -659,17 +659,17 @@ class OneYearFeedbackForm(FlaskForm):
 class MembershipForm(FlaskForm):
     recaptcha = RecaptchaField()
     name = fields.StringField('Organisation name or name of individual if individual membership*',
-                              validators=[Required(),
+                              validators=[DataRequired(),
                                           Length(max=250)])
     address = fields.StringField('Address*',
-                                 validators=[Required(),
+                                 validators=[DataRequired(),
                                              Length(max=500)])
     email = fields.StringField('Contact email address*',
                                description='This will act as the primary point of contact',
-                               validators=[Required(),
+                               validators=[DataRequired(),
                                            Length(max=100)])
     telephone = fields.StringField('Contact telephone number*',
-                                   validators=[Required(),
+                                   validators=[DataRequired(),
                                                Length(max=20)])
     representative_1_name = fields.StringField('Name',
                                                validators=[Optional(),

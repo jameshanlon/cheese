@@ -930,7 +930,7 @@ def upload_thermal_image():
             filename = random_string(10)+'_'+secure_filename(image.filename)
             s3.upload_fileobj_thermal_image(image, filename)
             thermal_image = ThermalImage()
-            thermal_image.filename = unicode(filename)
+            thermal_image.filename = str(filename)
             for f in ['description',
                       'year_of_construction',
                       'keywords', ]:

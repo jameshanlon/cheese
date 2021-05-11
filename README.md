@@ -123,6 +123,7 @@ uwsgi --http 0.0.0.0:9000 --manage-script-name --wsgi-file run.py --callable app
 ```
 $ source CONFIG
 $ source env/bin/activate
+$ pip install -r flask/requirements.txt
 $ pytest --verbose
 ...
 ```
