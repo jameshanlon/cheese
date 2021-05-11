@@ -12,7 +12,7 @@
 {%- endmacro %}
 {% macro details_button(table, id) -%}
   <div class="pull-right" style="padding:0.2em">
-    <a class="icon" href="{{url_for(table.replace('_', '')+'.details_view', id=id, url=request.path+'?'+request.query_string)}}">
+    <a class="icon" href="{{url_for(table.replace('_', '')+'.details_view', id=id, url=request.path+'?'+request.query_string.decode('utf-8'))}}">
       <span class="fa fa-pencil glyphicon glyphicon-eye-open"></span>
     </a>
   </div>
@@ -20,7 +20,7 @@
 {% macro edit_button(table, id, edit_permission) -%}
   {% if edit_permission %}
     <div class="pull-right" style="padding:0.2em">
-      <a class="icon" href="{{url_for(table.replace('_', '')+'.edit_view', id=id, url=request.path+'?'+request.query_string)}}">
+      <a class="icon" href="{{url_for(table.replace('_', '')+'.edit_view', id=id, url=request.path+'?'+request.query_string.decode('utf-8'))}}">
 	<span class="fa fa-pencil glyphicon glyphicon-pencil"></span>
       </a>
     </div>
@@ -287,7 +287,7 @@
 <div class="pull-right">
   <p>
     {{surveys|length}} surveys<br/>
-    <a href="{{url_for('admin.export', filename=export_filename)}}?{{request.query_string}}">
+    <a href="{{url_for('admin.export', filename=export_filename)}}?{{request.query_string.decode('utf-8')}}">
       <button type="button" class="btn btn-default btn-xs">
 	Export as CSV
       </button>
