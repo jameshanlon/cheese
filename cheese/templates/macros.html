@@ -158,7 +158,7 @@
 {%- endmacro %}
 
 {% macro details_button(table, id) -%}
-  <a class="icon" href="{{url_for(table.replace('_', '')+'.details_view', id=id, url=request.path+'?'+request.query_string.decdoe('utf-8'))}}">
+  <a class="icon" href="{{url_for(table.replace('_', '')+'.details_view', id=id, url=request.path+'?'+request.query_string.decode('utf-8'))}}">
     <button type"=button" class="btn btn-secondary btn-sm">Details</button>
   </a>
 {%- endmacro %}
