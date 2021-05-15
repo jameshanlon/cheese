@@ -19,7 +19,7 @@ Energy Tracer surveys - {{config.PAGE_TITLE}}
     {% endif %}
     <td>{{result.householders_name}}</td>
     <td>{{result.address_line}}</td>
-    <td><a href="{{url_for('results.details_view', id=result.id, url=request.path+'?'+request.query_string)}}">Result record</a></td>
+    <td><a href="{{url_for('results.details_view', id=result.id, url=request.path+'?'+request.query_string.decode('utf-8'))}}">Result record</a></td>
   </tr>
 {%- endmacro %}
 

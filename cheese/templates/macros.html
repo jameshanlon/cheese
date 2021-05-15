@@ -158,14 +158,14 @@
 {%- endmacro %}
 
 {% macro details_button(table, id) -%}
-  <a class="icon" href="{{url_for(table.replace('_', '')+'.details_view', id=id, url=request.path+'?'+request.query_string)}}">
+  <a class="icon" href="{{url_for(table.replace('_', '')+'.details_view', id=id, url=request.path+'?'+request.query_string.decdoe('utf-8'))}}">
     <button type"=button" class="btn btn-secondary btn-sm">Details</button>
   </a>
 {%- endmacro %}
 
 {% macro edit_button(table, id, edit_permission) -%}
   {% if edit_permission %}
-    <a class="icon" href="{{url_for(table.replace('_', '')+'.edit_view', id=id, url=request.path+'?'+request.query_string)}}">
+    <a class="icon" href="{{url_for(table.replace('_', '')+'.edit_view', id=id, url=request.path+'?'+request.query_string.decode('utf-8'))}}">
       <button type"=button" class="btn btn-secondary btn-sm">Edit</button>
     </a>
   {% endif %}
