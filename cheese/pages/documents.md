@@ -32,5 +32,6 @@ These presentations give an overview of the project:
 
 # Policy
 
-- [Equal opportunities policy](/equal-opportunities)
 - [Complaints procedure](/complaints)
+- [Equal opportunities policy](/equal-opportunities)
+- [Safeguarding Adults 2019 (PDF)]({{url_for('.assets', filename='files/CHEESE-Safeguarding-Adults-Policy-2019.pdf')}})
