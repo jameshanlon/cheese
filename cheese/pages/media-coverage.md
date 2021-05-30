@@ -43,7 +43,7 @@ retrofit journeys." Read the report
 - **Coverage of our survey of Bristol Zoo Garden's Reptile House, March 2020**.
   From
   [Bristol Live](https://www.bristolpost.co.uk/special-features/bristol-businesses-cut-carbon-green-3956472),
-  [Bristol Energy](https://www.bristol-energy.co.uk/thermal-imaging-tech-bristol-zoo-gardens-gives-crocs-their-creature-comforts)
+  Bristol Energy (link no longer working)
   and
   [Renewable Energy Magazine](https://www.renewableenergymagazine.com/energy_saving/bristol-zoo-gardensa--reptile-house-uses-20200303),
   to quote the latter: "Innovative thermal imaging tech has been used for an
@@ -63,9 +63,10 @@ retrofit journeys." Read the report
 </div>
 
 - **Up Our Street, November 2019**. [Up Our
-  Street](https://upourstreet.org.uk/) is a local magazine and community group
-for the Easton and Lawrence Hill areas of Bristol. They included a short piece
-on CHEESE surveys in their winter edition of the print magazine.
+  Street](https://eastsidecommunitytrust.org.uk/) (now Eastside Communit Trust)
+was a local magazine and community group for the Easton and Lawrence Hill areas
+of Bristol. They included a short piece on CHEESE surveys in their winter
+edition of the print magazine.
 
 <div class="clearfix"></div>
 
@@ -141,7 +142,7 @@ for free, but its abstract can be viewed
 </div>
 
 - **Vocalise magazine, January 2019**.
-  [Vocalise](http://www.vocalisemagazine.org.uk/) is the community magazine for
+  [Vocalise](http://www.vocalisemagazine.org/) is the community magazine for
   St Pauls, Montpellier and St Werburghs in Bristol. The winter edition
 features a double-page spread of common faults and remedies identified by
 CHEESE surveys.
@@ -160,7 +161,7 @@ CHEESE surveys.
 </div>
 
 - **Bristol 24/7, December 2018**. The New Year print edition of the [Bristol 24/7
-  magazine](https://www.bristol247.co.uk) features an article on CHEESE
+  magazine](https://www.bristol247.com) features an article on CHEESE
 entitled *Home remedy*. It gives an overview of the project and describes how
 one of our surveys is conducted. This article was later published in January on the
 [Bristol 24/7 webiste](https://www.bristol247.com/lifestyle/homes-and-gardens/homes-january/).

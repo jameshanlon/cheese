@@ -13,9 +13,9 @@ space and water heating account for [approximately 80% of total domestic energy
 consumption](https://www.gov.uk/government/statistics/energy-consumption-in-the-uk).
 
 One [study has
-shown](http://www.demandenergyequality.org/2030-energy-scenario.html) that we
-need to reduce domestic demand by 57% if we are to transition to a decarbonised
-energy system and reduce global warming to [an 'acceptable'
+shown](https://interestingengineering.com/greenpeace-report-shows-uk-can-almost-entirely-powered-renewable-energy)
+that we need to reduce domestic demand by 57% if we are to transition to a
+decarbonised energy system and reduce global warming to [an 'acceptable'
 2C](https://en.wikipedia.org/wiki/Avoiding_Dangerous_Climate_Change).  By
 reducing the energy we waste in our homes we can make a positive contribution
 to reducing global warming, whilst also saving money on bills, and improving
@@ -49,7 +49,7 @@ has worked well and will continue next season.
 
 We also successfully secured funding from the Bristol Impact Fund and
 [Hartcliffe and Withywood Community Partnership](https://hwcp.org.uk/) to carry
-out surveys with [Re:Work](https://sites.google.com/site/reworkltd/home) in
+out surveys with [Re:Work](https://www.reworkltd.org.uk/) in
 Filwood, Hartcliffe and Withywood. Two members of the staff team at Re:Work are
 trained C.H.E.E.S.E Energy Tracers.
 
@@ -79,10 +79,10 @@ fact that the social and environmental objectives are the drivers of our work,
 and this comes across to our customers.
 
 Finally, the project also gained vaulable recognition from the [Big Innovation
-pitch Award for Buildings](2020-03-04-Futurebuild-Buildings-Innovation-Pitch)
+pitch Award for Buildings](/news/2020-03-04-Futurebuild-Buildings-Innovation-Pitch)
 at the prestigious Futurebuild industry event, the [award for Environmental
-Impact at the ‘Voscurs’](2020-02-Voscur-awards) Bristol’s social impact awards,
-and a feature on BBC Radio 4’s [Costing the Earth](2020-03-Costing-the-Earth)
+Impact at the ‘Voscurs’](/news/2020-02-Voscur-awards) Bristol’s social impact awards,
+and a feature on BBC Radio 4’s [Costing the Earth](/news/2020-03-Costing-the-Earth)
 exposing of the poor quality of new build homes.
 
 The spread of survey locations:
@@ -101,9 +101,8 @@ This season:
 
 - We worked with [Dhek Bhal](http://www.dhekbhal.org.uk/) and [Golden
   Agers](https://www.wellaware.org.uk/activities/golden-agers/) to offer the
-service to our local BAME elders, with [Bedminster Energy
-Group](http://www.bedminsterenergy.org.uk/) who subsidised the cost of surveys
-for its members.
+service to our local BAME elders, with Bedminster Energy Group who subsidised
+the cost of surveys for its members.
 
 - We received funding from the Bristol Community Energy Fund to enable us to
   offer our surveys at low cost to all.

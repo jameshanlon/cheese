@@ -47,7 +47,7 @@ development, and more content will be added in due course!)
 
 - Insulation:
 
-    * [Problems resulting from absent insulation (Tony Cowling, UKCMB)](http://www.ukcmb.org/tony-cowling)
+    * [Problems resulting from absent insulation (Tony Cowling, UKCMB)](https://ukcmb.org/2018/05/24/problems-resulting-from-absent-insulation/)
     * [Avoidance and diagnosis of problems associated with internal wall insulation (UKCMB)](http://www.ukcmb.org/ukcmb-news/avoidance-and-diagnosis-of-problems-associated-with-internal-wall-insulation)
     * [Understanding best practice in deploying external solid-wall insulation and internal wall insulation in the UK (Gov.uk)](https://www.gov.uk/government/publications/understanding-best-practice-in-deploying-external-solid-wall-insulation-and-internal-wall-insulation-in-the-uk)
 

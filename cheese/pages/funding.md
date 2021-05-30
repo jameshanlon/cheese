@@ -20,7 +20,7 @@ For phase two of the project, the CHEESE Project recieved:
 
  - £4,400 from the Bristol Community Energy Best Practice fund.
  - £10,000 from the [Bristol Community Energy Fund](http://www.bristolcommunityenergy.co.uk/).
- - £10,000 from [Lottery Awards for All](https://www.biglotteryfund.org.uk/global-content/programmes/england/awards-for-all-england)</a>.
+ - £10,000 from [Lottery Awards for All](https://www.tnlcommunityfund.org.uk/funding/programmes/national-lottery-awards-for-all-england).
 
 For phase three of the project, the CHEESE Project has so far received:
 

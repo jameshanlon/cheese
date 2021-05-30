@@ -52,7 +52,7 @@ ensure this.
 If you are interested in setting up a new CHEESE Segment, then please read
 carefully through the information on this website to understand how we operate,
 in particular our [project progress report](/overview) and
-[constitution](/management-and-funding), investigate opportunities for
+[constitution](/governance), investigate opportunities for
 resourcing and funding a new group in your area, and then [get in touch with
 us](mailto:info@cheeseproject.co.uk) via email. We would be excited to hear from you.
 
