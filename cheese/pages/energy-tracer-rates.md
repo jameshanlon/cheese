@@ -2,7 +2,7 @@ title: Rates of pay
 
 # Rates of pay
 
-Please note these rates are effective from the start of the 2019/20 winter
+Please note these rates are effective from the start of the 2020/21 winter
 survey season.
 
 ## Qualified ETs and assistants
@@ -27,13 +27,9 @@ excess of £240.</p>
 For qualified ETs:
 
 - Flat, up to 5 main rooms, expected 2 hours per survey: £50.00
-
 - House, up to 5 main rooms, expected 2.5 hours per survey: £58.75
-
 - House 6-8 rooms, expected 3 hours per survey: £67.50
-
 - House 8+ rooms, expected 3.5 hours per survey: £76.25
-
 - Call-out payment: £15
 
 Please note:
