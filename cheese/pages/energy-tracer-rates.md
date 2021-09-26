@@ -24,30 +24,17 @@ excess of £240.</p>
 
 </div>
 
-Flat, up to 5 main rooms, expected 2 hours per survey:
+For qualified ETs:
 
- - Qualified ET: £50.00
- - Assistant, if not a volunteer: £28.00
+- Flat, up to 5 main rooms, expected 2 hours per survey: £50.00
 
-House, up to 5 main rooms, expected 2.5 hours per survey:
+- House, up to 5 main rooms, expected 2.5 hours per survey: £58.75
 
- - Qualified ET: £58.75
- - Assistant, if not a volunteer: £31.25
+- House 6-8 rooms, expected 3 hours per survey: £67.50
 
-6-8 rooms, expected 3 hours per survey:
+- House 8+ rooms, expected 3.5 hours per survey: £76.25
 
-  - Qualified ET: £67.50
-  - Assistant, if not a volunteer: £31.25
-
-8+ rooms, expected 3.5 hours per survey:
-
-  - Qualified surveyor: £76.25
-  - Assistant, if not a volunteer: £39.75
-
-Call-out payment:
- 
- - Qualified ET: £15
- - Assistant, if not a volunteer: £10
+- Call-out payment: £15
 
 Please note:
 
@@ -63,6 +50,11 @@ Please note:
    it is paid as part of the fee.
  - For qualified ETs, please note that the payment includes conducting the
    1-month follow-up with the customer.
+ - Since we are now operating in Bath and outlying villages in the Bristol
+   Postcode area, for any travel beyond 5 miles from the city centre, we will
+   now pay for ET's travel time. Example, Compton Dando: 10 miles from City centre
+   we will pay for the 5 extra miles there and back = 10 miles of travel time at
+   £17.50/hour = 29p/minute. Travel times are available on Google maps etc.
 
 ## Trainee ETs
 
@@ -87,23 +79,23 @@ on CHEESE business, such as during surveying to carry surveying equipment.
 
 If you have to get a train for CHEESE surveying business, that you would not
 otherwise have to get, you can claim for the cheapest return ticket available
-at the time of booking, but please get permission in advance from Maddy
-Longhurst or Mike Andrews.
+at the time of booking, but please get permission in advance from Nettie Burd
+or Mike Andrews.
 
 If it is unavoidable, for example if neither Energy Tracer on a survey has
 access to a car, then you can claim for car-club car hire costs incurred on
-CHEESE business, but the amount must be agreed in advance with Maddy Longhurst
+CHEESE business, but the amount must be agreed in advance with Nettie Burd
 or Mike Andrews.
 
 ## Invoicing
 
 Please complete invoices for all pay and expense claims and email copies to
-Maddy Longhurst and Mike Andrews.
+Nettie Burd and copied to Mike Andrews.
 
 - Invoice proforma for payment of expenses
-  ([Word.docx]({{url_for('.assets', filename='files/CHEESE-invoice-proforma-For-payment-of-expenses.docx')}}),
-   [PDF]({{url_for('.assets', filename='files/CHEESE-invoice-proforma-For-payment-of-expenses.pdf')}}))
+  ([Word.docx]({{url_for('.assets', filename='files/CHEESE-invoice-proforma-for-payment-of-expenses.docx')}}),
+   [PDF]({{url_for('.assets', filename='files/CHEESE-invoice-proforma-for-payment-of-expenses.pdf')}}))
 
 - Invoice proforma for payment of survey fees
-  ([Word.docx]({{url_for('.assets', filename='files/CHEESE-invoice-proforma-For-payment-of-survey-fees.docx')}}),
-   [PDF]({{url_for('.assets', filename='files/CHEESE-invoice-proforma-For-payment-of-survey-fees.pdf')}}))
+  ([Word.docx]({{url_for('.assets', filename='files/CHEESE-invoice-proforma-for-payment-of-survey-fees.docx')}}),
+   [PDF]({{url_for('.assets', filename='files/CHEESE-invoice-proforma-for-payment-of-survey-fees.pdf')}}))

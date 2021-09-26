@@ -22,9 +22,8 @@ we will follow up with your progress afterwards.
 ## Payment
 
 All surveys are paid for in advance by bank transfer. This is priced according
-to the number of bedrooms plus living rooms, because this determines how long
-the survey takes. See [our pricing for various sizes of
-homes](/home-surveys#pricing).
+to the number of bedrooms, because this determines how long the survey takes.
+See [our pricing for various sizes of homes](/home-surveys#pricing).
 
 Please make on-line payments to **The CHEESE Project**. Sort code 08-92-99,
 account number 65849565 with your name as reference. Cheques should be posted
