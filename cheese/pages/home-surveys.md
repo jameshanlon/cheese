@@ -126,11 +126,8 @@ costs. We will post the new prices nearer the start of the survey season (Covid
 permitting).
 </div>
 
-Below are our prices for various sizes of home. Please note that **main rooms**
-means any large room: including living rooms, dining rooms, kitchen-dining
-rooms, bedrooms and conservatories, but not bathrooms, separate kitchens,
-utility spaces or garages. Two living rooms which have been 'knocked-through'
-into one room will be charged as two rooms.
+Below are our prices for various sizes of home. Please note that **bedrooms**
+includes any converted to work-from-home or studio use.
 
 <!--We do offer **free surveys** to households on low incomes. We assess
 eligibility for free surveys on a case-by-case basis. It will be useful for us
@@ -155,37 +152,35 @@ would like to refer yourself or someone else for a free survey.
   </thead>
   <tbody>
     <tr>
-      <td>Flat up to 2 bedrooms</td>
+      <td>1-2 bedrooms</td>
       <td>2 hours</td>
-      <td>&pound;100</td>
-      <td>&pound;160</td>
+      <td>&pound;135</td>
+      <td>&pound;195</td>
     </tr>
     <tr>
-      <td>3 to 5 main rooms</td>
+      <td>3 bedrooms</td>
       <td>2.5 hours</td>
-      <td>&pound;150</td>
-      <td>&pound;210</td>
+      <td>&pound;195</td>
+      <td>&pound;255</td>
     </tr>
     <tr>
-      <td>6 to 8 main rooms*</td>
+      <td>4 bedrooms</td>
       <td>2.5 to 3 hours</td>
-      <td>&pound;185</td>
-      <td>&pound;245</td>
+      <td>&pound;240</td>
+      <td>&pound;300</td>
     </tr>
     <tr>
-      <td>Over 8 main rooms*</td>
+      <td>5+ bedrooms*</td>
       <td>Over 3 hours</td>
-      <td>&pound;200</td>
       <td>&pound;260</td>
+      <td>&pound;320</td>
     </tr>
     <tr>
       <td>Commercial surveys for housing associations, councils etc.<br>
         (Additional charge for a written report</td>
       <td>Variable</td>
-      <td>&pound;250<br>
-	&pound;100</td>
-      <td>&pound;310<br>
-        &pound;100)</td>
+      <td>&pound;300<br>&pound;100</td>
+      <td>&pound;360<br>&pound;100)</td>
     </tr>
   </tbody>
 </table>
