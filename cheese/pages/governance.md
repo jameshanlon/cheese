@@ -15,12 +15,11 @@ filename='files/CHEESE-CIC-articles-of-association-2018-03-09.pdf')}}).
 
 The project is organised by a *central office* and operates through
 *community segments* and *city partners* who carry out the internal and
-external surveys. Community segments are partner associations based in Bristol
-city wards and city partners replicate the CHEESE Project, in coordination with
-Bristol, in other cities (more details on [who we work with here](/partners)).
+external surveys. Community segments are partner associations based in and
+around Bristol and Bath (more details on [who we work with here](/partners)).
 
-Our central office management team consists of six directors and a survey
-manager:
+Our central office management team consists of six directors and an Office
+Assistant, Nettie Burd, and a survey manager:
 
 ## The team
 
@@ -65,21 +64,19 @@ prototype stage. Jeremy works pro bono for the project. </p>
 </div>
 <div class="row">
 
-  <a name="brian-harper"></a>
   <div class="col-sm">
   <figure class="figure">
-  <img class="img-fluid" src="{{'images/people/brian-bike.jpg'|thumbnail('247x247')}}">
+  <img class="img-fluid" src="{{'images/people/Roz-Thomas.jpg'|thumbnail('247x247')}}">
   </figure>
-  <p class="lead">Brian Harper</p>
-  <p>Director (trainer and technical development specialist)</p>
+  <p class="lead">Rosamund Thomas</p>
+  <p>Director responsible for training and membership</p>
 
-  <p>Brian developed thermal imaging cameras, in secret, for the government in
-  1970s working for the Radar Research Laboratory at Malvern. He setup his own
-  company to produce some of the first commercially-available thermal imaging
-  camera in the world. More recently, over 5 years, he developed the innovative
-  survey protocol which was licensed and adapted by the C.H.E.E.S.E. Project,
-  with his help, for use with miniature thermal cameras, reducing the cost
-  dramatically. Brian trains and supports staff to our own CPD qualifications.</p>
+  <p> Roz has completed two phases as an Energy Tracer and in summer 2019
+joined the team to become more involved with the project all year round. Her
+first tasks have been streamlining the survey process and helping the
+recruitment of new tracers the upcoming season. Roz has a Geography degree and
+has since pursued career in the energy sector, currently working as a renewable
+energy analyst.</p>
 
   <hr>
   </div>
@@ -104,24 +101,6 @@ prototype stage. Jeremy works pro bono for the project. </p>
 </div>
 <div class="row">
 
-
-  <div class="col-sm">
-  <figure class="figure">
-  <img class="img-fluid" src="{{'images/people/Roz-Thomas.jpg'|thumbnail('247x247')}}">
-  </figure>
-  <p class="lead">Rosamund Thomas</p>
-  <p>Director</p>
-
-  <p> Roz has completed two phases as an Energy Tracer and in summer 2019
-joined the team to become more involved with the project all year round. Her
-first tasks have been streamlining the survey process and helping the
-recruitment of new tracers the upcoming season. Roz has a Geography degree and
-has since pursued career in the energy sector, currently working as a renewable
-energy analyst.</p>
-
-  <hr>
-  </div>
-
   <div class="col-sm">
   <figure class="figure">
   <img class="img-fluid" src="{{'images/people/dave-1.jpg'|thumbnail('247x247')}}">
@@ -139,8 +118,28 @@ energy analyst.</p>
   <hr>
   </div>
 
+  <a name="brian-harper"></a>
+  <div class="col-sm">
+  <figure class="figure">
+  <img class="img-fluid" src="{{'images/people/brian-bike.jpg'|thumbnail('247x247')}}">
+  </figure>
+  <p class="lead">Brian Harper</p>
+  <p>Technical consultant and contractor, trainer</p>
+
+  <p>Brian developed thermal imaging cameras, in secret, for the government in
+  1970s working for the Radar Research Laboratory at Malvern. He setup his own
+  company to produce some of the first commercially-available thermal imaging
+  camera in the world. More recently, over 5 years, he developed the innovative
+  survey protocol which was licensed and adapted by the C.H.E.E.S.E. Project,
+  with his help, for use with miniature thermal cameras, reducing the cost
+  dramatically. Brian trains and supports staff to our own CPD qualifications.
+  Brian is currently developing a new blower-door and system for warmer-weather
+  surveys.</p>
+
 </div>
 </div>
+
+
   
 <!--<div class="col-sm">
   <a name="maddy-longhurst"></a>

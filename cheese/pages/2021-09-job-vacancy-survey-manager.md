@@ -11,7 +11,7 @@ image: images/cheese-house.png
 - **Contract**:27 month PAYE contract, 3 days/week till end December 2023, with possibility of full-time extension. The job can be self-scheduling but includes some evenings and weekends.
 - **Commencing**: early October 2021. 3 month probationary period.
 - **Salary**: £24,000 FTE  (£1,200/month), holidays and pension entitlement. (+ £5 commission for each survey completed - if organised by you.)
-- **Closing date**: 4th October 2021.
+- **Closing date**: 20th October 2021.
 
 This is fantastic opportunity for a stimulating job doing something you can be
 proud of: to manage energy-loss surveys for and to develop the

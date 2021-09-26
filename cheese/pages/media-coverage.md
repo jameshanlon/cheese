@@ -4,6 +4,20 @@ itle: Media coverage
 
 # Media coverage
 
+<div class="float-right">
+{{ macros.thumbnail('images/2021-06-EFT-CHEESE-featured.png', '140x140', 'media-coverage') }}
+</div>
+
+- **Projects supported by Energy for Tomorrow, June 2021**. The CHEESE Project
+  is featured in [Energy for Tomorrow's
+  homepage](https://www.centrica.com/sustainability/energy-for-tomorrow/) as
+  having received their support (details
+  [here](/news/2021-09-26-grant-funding-update)). A [supporting
+  video](https://www.youtube.com/watch?v=P7brOmz3XsE) was made for the showcase,
+  explaining the motivations and plans for the project.
+
+<div class="clearfix"></div>
+
 - **Reasons to be hopeful in 2021**, [in The
   Guardian](https://www.theguardian.com/environment/2020/dec/27/reasons-to-be-hopeful)
 (December 2020) mentions CHEESE's work in Bristol: "Other schemes include a

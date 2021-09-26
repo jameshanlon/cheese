@@ -31,6 +31,16 @@ work.
 
 ## Our achievements and plans
 
+<a class="anchor" name="phase-six"></a>
+### Phase six (2020/21)
+
+We look forward to using our new grant funding to develop our existing
+community partnerships, working with the Centre For Sustainable Energy, Bristol
+City Council Impact Fund, Bath and West Community Energy, local NGOs, etc to
+increase the number of homes surveyed, while also delivering free surveys to
+those on low incomes. We have had to increase our prices, but have held this
+increase to the 30% flagged up pre-Covid.
+
 <a class="anchor" name="phase-five"></a>
 ### Phase five (2019/20)
 
@@ -85,7 +95,11 @@ Impact at the ‘Voscurs’](/news/2020-02-Voscur-awards) Bristol’s social imp
 and a feature on BBC Radio 4’s [Costing the Earth](/news/2020-03-Costing-the-Earth)
 exposing of the poor quality of new build homes.
 
-The spread of survey locations:
+<div class="text-center">
+<img src="{{url_for('cheese.assets', filename='images/FutureBuild2021-winner.jpg')}}" width="500px"></img>
+</div>
+
+The spread of phase-five survey locations:
 
 <a data-lightbox="achievements" href="{{url_for('.assets', filename='images/2019-20-survey-locations.png')}}">
   <img src="{{'images/2019-20-survey-locations.png'|thumbnail('400x400')}}" class="img-thumbnail img-fluid mx-auto d-block">
@@ -117,7 +131,7 @@ project](/news/2018-10-community-energy-awards)'.
 - We recruited [Maddy Longhurst](/governance#maddy-longhurst) as our Survey
   Manager, trained new Energy Tracers and worked with new volunteers.
 
-The spread of survey locations:
+The spread of phase-four survey locations:
 
 <a data-lightbox="achievements" href="{{url_for('.assets', filename='images/2018-19-survey-locations.png')}}">
   <img src="{{'images/2018-19-survey-locations.png'|thumbnail('400x400')}}" class="img-thumbnail img-fluid mx-auto d-block">
@@ -136,7 +150,7 @@ This season:
 - Nick Clack was our Survey Manager for the second year, afterwards moving on
   to work at the Centre for Sustainable Energy.
 
-The spread of survey locations:
+The spread of phase-three survey locations:
 
 <a data-lightbox="achievements" href="{{url_for('.assets', filename='images/2017-18-survey-locations.png')}}">
   <img src="{{'images/2017-18-survey-locations.png'|thumbnail('400x400')}}" class="img-thumbnail img-fluid mx-auto d-block">
@@ -175,7 +189,7 @@ householders. During this work, we carefully documented many of common faults
 and remedies and we plan to make this information available to the 200,000
 households in Bristol.
 
-The spread of survey locations:
+The spread of phase-two survey locations:
 
 <a data-lightbox="achievements" href="{{url_for('.assets', filename='images/2016-17-survey-locations.png')}}">
   <img src="{{'images/2016-17-survey-locations.png'|thumbnail('400x400')}}" class="img-thumbnail img-fluid mx-auto d-block">

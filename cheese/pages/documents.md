@@ -28,6 +28,7 @@ These presentations give an overview of the project:
 
 # AGM minutes
 
+- [CHEESE AGM, September 2021 (PDF)]({{url_for('.assets', filename='files/CHEESE-AGM-Sep21.pdf')}})
 - [CHEESE AGM, Feburary 2020 (PDF)]({{url_for('.assets', filename='files/CHEESE-AGM-Feb20.pdf')}})
 
 # Policy

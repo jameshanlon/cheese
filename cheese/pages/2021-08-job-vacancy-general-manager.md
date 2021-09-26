@@ -18,4 +18,5 @@ thanks to a grant from Energy for Tomorrow - a Centrica Initiative.
 
 Full details of the position and how to apply can be found on the [First
 Thermal website](https://first-thermal.co.uk/general-manager-job.html).
-The closing date for applications is 30th August 2021.
+
+The closing date for applications is **20th October 2021**.

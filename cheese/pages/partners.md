@@ -9,7 +9,6 @@ trained Energy Tracers and use equipment supplied by the central office. Our
 current CHEESE segments are:
 
 - [Ambition Lawrence Weston](http://www.ambitionlw.org)
-- [Bishopston, Cotham, Redland Energy Group](https://www.facebook.com/BCR.EnergyGroup)
 - [Easton Energy Group](http://www.eastonenergygroup.org)
 - [Re:work](https://www.reworkltd.org.uk/)
 - [Sustainable Westbury On Trym](http://www.suswot.org.uk)
@@ -18,12 +17,10 @@ To obtain referrals for surveys, we have contacts with other socially-active
 groups, such as:
 
 - [Acorn](https://acorntheunion.org.uk/)
-- [Buzz Lockleaze](http://www.buzzlockleaze.co.uk/)
 - [Bristol Community Health](https://briscomhealth.org.uk/)
-- [Bristol Energy](https://www.bristol-energy.co.uk/)
 - [Centre for Sustainable Energy](https://www.cse.org.uk)
 - [CHAS Bristol Housing Advice service](http://www.chasbristol.co.uk/)
-- [Citizens Advice Bureau](https://www.citizensadvice.org.uk/)
+- [Citizens Advice](https://www.citizensadvice.org.uk/)
 - The Bristol Community Farm
 - [Dhek Bhal](http://www.dhekbhal.org.uk/)
 - [Ethical Property Company](http://www.ethicalproperty.co.uk/)
