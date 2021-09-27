@@ -11,7 +11,7 @@ survey season.
 
 <h4 class="alert-heading">Please note: volunteer assistants</h4>
 
-<p>This Spring, because we had not received any grants, we had to take a
+<!--<p>This Spring, because we had not received any grants, we had to take a
 management decision that we could only afford to use unpaid volunteer
 Assistants. The reason for this is that we thought £150 (double last year's
 fee) was as much as the market would bear, while the actual cost of a survey to
@@ -20,7 +20,19 @@ nothing. If we paid assistants we would make a loss on all our survey direct
 salary costs - unsustainable. Until we get an additional income stream we
 cannot change this decision. An exception to this is when we are paid a
 considerably higher survey fee by a client or third party - this has to be in
-excess of £240.</p>
+excess of £240.</p>-->
+
+<p> The company business plan is now that C.H.E.E.S.E. has to be sustainable
+financially without grants. This is in order that it can be an exemplar for the
+other franchisees who will replicate our process. This has required an
+approximately 30% increase on the 2019/20 survey prices, as below. We can also
+no longer afford to pay assistants to ETs. Brian's new collapsible door frame
+will make setting up the blower door easier. We appreciate that some ETs may
+not wish to work alone. In that case we will endeavour to pair you with an
+unpaid volunteer assistant who should share your transport. We would like to
+reassure you that our new prices are substantially less than the going average
+for thermal surveying - even without a blower door - and we know our system is
+far superior.</p>
 
 </div>
 
@@ -34,14 +46,10 @@ For qualified ETs:
 
 Please note:
 
- - These rates are based on hourly rates of £8.50 for assistants and £17.50 for
-   ETs. If you are unsure about the size of the building you surveyed, you can
-   check the details in the [database](/admin).
- - For Assistants, and ETs, payment is made on the basis of a call-out fee and
-   an hourly rate.
- - The call out payment and hourly rate for ETs is higher than that of
-   assistant's becuase the ET takes responsibility and the leading role in the
-   survey.
+ - These rates are based on hourly rates of £17.50 for ETs. If you are unsure
+   about the size of the building you surveyed, you can check the details in the
+  [database](/admin).
+ - Payment is made on the basis of a call-out fee and an hourly rate.
  - The call-out payment will only be paid if the survey is cancelled, otherwise
    it is paid as part of the fee.
  - For qualified ETs, please note that the payment includes conducting the
@@ -52,18 +60,22 @@ Please note:
    we will pay for the 5 extra miles there and back = 10 miles of travel time at
    £17.50/hour = 29p/minute. Travel times are available on Google maps etc.
 
+
 ## Trainee ETs
 
 The training system is that you will (usually on one day) observe one survey
-with Brian Harper as a pair, then take it in turns to lead a survey under supervision.
-You will then do at least two more surveys under the supervision of an
-experienced ET, being paid a flat rate of £20. 
-If these are considered to be satisfactory, you will be 'signed
-off' and become eligible for the fees above.
+with Brian Harper as a pair of trainees, then take it in turns to lead a survey
+under supervision. You will then lead from two to five more surveys under the
+supervision of an experienced ET, being paid a flat rate of £20. We will
+examine further recordings of your surveys during the season to monitor your
+progress and expertise, giving further instruction where necessary. If these
+are considered to be satisfactory, you will be 'signed off' and become eligible
+for the fees above.
 
 At the end of the season, after the tapes of several of your last surveys have
-been reviewed by Brian as being satisfactory, you will be awarded a CPD
-certificate by Brian’s Energy Tracer CIC.
+been reviewed and are found to be satisfactory, you will be awarded a CPD
+certificate.
+
 
 ## Expenses
 
