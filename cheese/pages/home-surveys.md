@@ -10,12 +10,15 @@ title: Home thermal-imaging surveys
 # Home thermal-imaging surveys
 
 **Our internal thermal-imaging surveys aim to improve the comfort and energy
-efficiency of your home, to you save money on your bills and to reduce your
+efficiency of your home, so you save money on your bills and to reduce your
 climate impact.**
 
-The survey process is based on a unique methodology developed by Brian Harper,
-who has been working with thermal imaging for 45 years and has surveyed over
-400 homes. Brian is a [director](/governance#brian-harper) of The CHEESE Project.
+Our survey process is based on the unique Energy Tracing methodology developed
+by Brian Harper in Malvern. He has been working with thermal imaging for over
+45 years and had developed his system while surveying about 400 homes over five
+years. The C.H.E.E.S.E. Project has adapted his system and licensed its name,
+developing its own software, training, and now hardware over a further five
+years in Bristol.
 
 <!--The method involves heating the house to 10 degrees above ambient
 temperature, reducing the indoor pressure and locating incoming cold draughts,
@@ -119,11 +122,8 @@ believe to be key advantages of C.H.E.E.S.E. surveys.</li>
 <div class="alert alert-primary">
 Please note: while we are holding our 2019-20 pricing (below) for those who
 booked surveys that had to be postponed due to the Covid pandemic, we
-anticipate having to raise our prices for the 2021-22 survey season in order to
-cover their administration costs. The maximum increase for Bristol will be no
-greater than 30%, with the surcharge for Bath remaining at £60 to cover travel
-costs. We will post the new prices nearer the start of the survey season (Covid
-permitting).
+have had to raise our prices by about 30% so that we can operate on a
+sustainable basis without grants.
 </div>
 
 Below are our prices for various sizes of home. Please note that **bedrooms**

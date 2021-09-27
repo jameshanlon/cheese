@@ -1,6 +1,6 @@
 article:
 date: 2021-09-26
-title: An update on out new grant funding
+title: An update on our new grant funding
 author: Mike Andrews
 image: images/energy-for-tomorrow-logo.png
 
