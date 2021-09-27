@@ -66,11 +66,12 @@ Please note:
 The training system is that you will (usually on one day) observe one survey
 with Brian Harper as a pair of trainees, then take it in turns to lead a survey
 under supervision. You will then lead from two to five more surveys under the
-supervision of an experienced ET, being paid a flat rate of £20. We will
-examine further recordings of your surveys during the season to monitor your
-progress and expertise, giving further instruction where necessary. If these
-are considered to be satisfactory, you will be 'signed off' and become eligible
-for the fees above.
+supervision of an experienced ET, being paid a flat rate of £20. 
+
+We will examine further recordings of your surveys during the season to monitor
+your progress and expertise, giving further instruction where necessary. If
+these are considered to be satisfactory, you will be 'signed off' and become
+eligible for the fees above. 
 
 At the end of the season, after the tapes of several of your last surveys have
 been reviewed and are found to be satisfactory, you will be awarded a CPD
