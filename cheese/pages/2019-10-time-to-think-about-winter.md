@@ -69,7 +69,7 @@ this are as examples, not direct recommendations.
     it will depend on how you consume as to whether this change benefits your
     pocket.
 
-14. [Green Energy UK offers 100% biomethane](https://www.greenenergyuk.com/)
+14. [GEUK offers 100% biomethane](https://www.greenenergyuk.com/)
     and [Bristol Energy Company](https://www.bristol-energy.co.uk/contact-us)
     offers a percentage. Others may do so too.
 
