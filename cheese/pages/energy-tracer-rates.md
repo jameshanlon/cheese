@@ -36,12 +36,13 @@ far superior.</p>
 
 </div>
 
-For qualified ETs:
+Rates of Pay for qualified ETs (regardless of whether the survey is paid for or
+free to the householder):
 
-- Flat, up to 5 main rooms, expected 2 hours per survey: £50.00
-- House, up to 5 main rooms, expected 2.5 hours per survey: £58.75
-- House 6-8 rooms, expected 3 hours per survey: £67.50
-- House 8+ rooms, expected 3.5 hours per survey: £76.25
+- 1-2 bedrooms, expected 2 hours per survey: £50.00
+- 3 bedrooms, expected 2.5 hours per survey: £58.75
+- 4 bedrooms, expected 3 hours per survey: £67.50
+- 5+ bedrooms, expected 3.5 hours per survey: £76.25
 - Call-out payment: £15
 
 Please note:
@@ -54,12 +55,22 @@ Please note:
    it is paid as part of the fee.
  - For qualified ETs, please note that the payment includes conducting the
    1-month follow-up with the customer.
+ - For those surveys, following your first day of training surveys, where a
+   trainee ET is leading the survey (i.e taking responsibility) but supervised by
+   an experienced ET, we pay a flat fee of £20 per survey to the trainee. After a
+   further 3-5 surveys led by you, Brian Harper or one of our experienced ETs will
+   confirm that you are competent and you will be ‘signed off as qualified’. You
+   can then carry out surveys unsupervised.
  - Since we are now operating in Bath and outlying villages in the Bristol
    Postcode area, for any travel beyond 5 miles from the city centre, we will
    now pay for ET's travel time. Example, Compton Dando: 10 miles from City centre
    we will pay for the 5 extra miles there and back = 10 miles of travel time at
    £17.50/hour = 29p/minute. Travel times are available on Google maps etc.
-
+ - The survey payment will only be made on the completion of all the following tasks:
+    * Full survey with memory-stick and paper report delivered to householder.
+    * Upload of survey results.
+    * Follow-up phone call after one month to check on the householder’s progress
+      if they haven’t already filled it in themselves.
 
 ## Trainee ETs
 
