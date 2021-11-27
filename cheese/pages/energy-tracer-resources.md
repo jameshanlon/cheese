@@ -6,18 +6,18 @@ Welcome to the resources page for Energy Tracers.
 
 ## Survey materials
 
+- [Survey checklist]({{url_for('.assets', filename='files/CHEESE-Energy-Tracer-Survey-Checklist.pdf')}})
 - Results paper form to print
-  ([PDF]({{url_for('.assets', filename='files/CHEESE-survey-results-form-Feb20.pdf')}}),
+  ([PDF]({{url_for('.assets', filename='files/CHEESE-survey-results-form-Nov21.pdf')}}),
    [Word.docx]({{url_for('.assets', filename='files/CHEESE-survey-results-form-Feb20.docx')}}))
 - Whereabouts of surveying equipment spreadsheet
   ([Google Docs](https://docs.google.com/spreadsheets/d/1YZ8ttMmJUeJ_Iwv0NzLnqQlHjP_t4F1Ds9FknTH2TEY/edit?usp=sharing))
 - Photo release form
   ([PDF]({{url_for('.assets', filename='files/CHEESE-photo-release-Dec19.pdf')}}),
    [Word.docx]({{url_for('.assets', filename='files/CHEESE-photo-release-Dec19.docx')}}))
-- Accident report form
-  ([Google Docs](https://docs.google.com/document/d/1DyLg6S2BzP9QHZKjHpQo1UotlB9062aSwv_oXxf3Cf0/edit?usp=sharing),
-   [PDF]({{url_for('.assets', filename='files/CHEESE-accident-report-form.pdf')}}),
-   [Word.docx]({{url_for('.assets', filename='files/CHEESE-accident-report-form.docx')}}))
+- [Incident report form]({{url_for('.assets', filename='files/CHEESE-Incident-Report-Form.pdf')}})
+- [Code of conduct]({{url_for('.assets', filename='files/CHEESE-Code-of-Conduct-2021.pdf')}})
+- [Risk assessment]({{url_for('.assets', filename='files/CHEESE-Risk-Assessment-Nov21.pdf')}})
 
 ## Survey results
 
