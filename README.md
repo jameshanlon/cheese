@@ -72,32 +72,20 @@ export CHEESE_MYSQL_PASSWORD='cheese'
 
 ### Populate the database
 
-To initialise a testing database (ignore Docker line if not in container):
+To initialise an  SQLite development database (ignore Docker line if not in container):
 ```
 $ docker exec -it <cheese-flask> bash
 $ cd /opt/www
 $ FLASK_APP=run.py flask resetdb command.
 ```
 
-To initialise a new, empty database, use the commands from `resetdb()` in
-`cheese/commands.py`, eg (ignore Docker line if not in container):
+To initialise a new, empty production database, use the following script
+(ignore Docker line if not in container):
 ```
 $ docker exec -it <cheese-flask> bash
 $ cd /opt/www
-$ python
->>> from cheese.factory import create_app
->>> from cheese.models import user_manager, db
->>> app = create_app({})
->>> from cheese.models import User, Role
->>>  user = User(email="admin@cheeseproject.co.uk", \
-       password=user_manager.hash_password('admin'), \
-       is_active=True)
->>> with app.app_context():
-...  db.drop_all()
-...  db.create_all()
-...  user.roles.append(Role(name='admin'))
-...  db.session.add(user)
-...  db.session.commit()
+$ PYTHONPATH=`pwd`:$PYTHONPATH python scripts/init_db.py
+>>>>>>> 02645f5 (Tweak instructions for getting a development setup running)
 ```
 
 To restore a local database from a backup:
