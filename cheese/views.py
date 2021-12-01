@@ -460,7 +460,7 @@ class CheeseAdminIndexView(flask_admin.AdminIndexView):
                    survey.email,
                    survey.mobile,
                    survey.survey_date, ]
-            writer.writerow([str(s).encode("utf-8") for s in row])
+            writer.writerow([str(s) for s in row])
         f.close()
         return send_from_directory(current_app.config['EXPORT_DIR'],
                                    filename, as_attachment=True)
