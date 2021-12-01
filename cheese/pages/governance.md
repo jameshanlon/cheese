@@ -118,6 +118,23 @@ energy analyst.</p>
   <hr>
   </div>
 
+  <a name="olivia-sweeney"></a>
+  <div class="col-sm">
+  <figure class="figure">
+  <img class="img-fluid" src="{{'images/people/olivia-sweeney.jpg'|thumbnail('247x247')}}">
+  </figure>
+  <p class="lead">Dr Olivia Mayonette Sweeney</p>
+  <p>Non-executive director</p>
+  <p>Chemical Engineer, sustainable waste consultant and former Green and Black Ambassador.
+Leading our engagement with diverse communities and young people.</p>
+
+  <hr>
+  </div>
+
+
+</div>
+<div class="row">
+
   <a name="brian-harper"></a>
   <div class="col-sm">
   <figure class="figure">
@@ -135,6 +152,12 @@ energy analyst.</p>
   dramatically. Brian trains and supports staff to our own CPD qualifications.
   Brian is currently developing a new blower-door and system for warmer-weather
   surveys.</p>
+
+  <hr>
+  </div>
+
+  <div class="col-sm">
+  </div>
 
 </div>
 </div>
