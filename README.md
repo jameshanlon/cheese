@@ -23,6 +23,7 @@ $ pip install --upgrade -r flask/requirements.txt
 
 ```
 $ brew install mysql openssl
+$ mysql.server start
 $ export LIBRARY_PATH=$LIBRARY_PATH:/usr/local/opt/openssl/lib/
 $ virtualenv env
 $ python -m pip install -U --force-reinstall pip
@@ -50,7 +51,7 @@ Run `./update-env.sh` to create the mysql.cnf file.
 Create a MySQL user and database, setting the correct permissions (this happens
 automatically in the MySQL Docker container):
 ```
-$ mysql -u root -p
+$ mysql -u root
 mysql> create database <database>;
 mysql> create user '<username>'@'localhost' identified by '<password>';
 mysql> grant all privileges on <database>.* to '<username>'@'localhost'
@@ -59,9 +60,19 @@ mysql> flush privileges;
 mysql> exit
 ```
 
+Add the entries to the CONFIG file, eg:
+```
+export CHEESE_MYSQL_HOST='localhost'
+export CHEESE_MYSQL_DATA_DIR='/Users/jamieh/cheese'
+export CHEESE_MYSQL_ROOT_PASSWORD=''
+export CHEESE_MYSQL_DATABASE='cheese'
+export CHEESE_MYSQL_USER='jamieh'
+export CHEESE_MYSQL_PASSWORD='cheese'
+```
+
 ### Populate the database
 
-To initialise a testing database:
+To initialise a testing database (ignore Docker line if not in container):
 ```
 $ docker exec -it <cheese-flask> bash
 $ cd /opt/www
@@ -69,12 +80,13 @@ $ FLASK_APP=run.py flask resetdb command.
 ```
 
 To initialise a new, empty database, use the commands from `resetdb()` in
-`cheese/commands.py`, eg:
+`cheese/commands.py`, eg (ignore Docker line if not in container):
 ```
 $ docker exec -it <cheese-flask> bash
 $ cd /opt/www
 $ python
 >>> from cheese.factory import create_app
+>>> from cheese.models import user_manager, db
 >>> app = create_app({})
 >>> from cheese.models import User, Role
 >>>  user = User(email="admin@cheeseproject.co.uk", \
