@@ -126,7 +126,7 @@ mark the figure as an estimate.
     <figcaption class="figure-caption" style="width:250px; margin-bottom:10px">
       A CHEESE blower door installed during a survey.
     </figcaption>
-    {{ macros.fig_thumbnail('images/CHEESE-kit.jpg', '250x250', 'survey-pictures') }}
+    {{ macros.fig_thumbnail('images/CHEESE-kit-Dec21.jpg', '250x250', 'survey-pictures') }}
     <figcaption class="figure-caption" style="width:250px; margin-bottom:10px">
       A CHEESE thermal imaging kit.
     </figcaption>
