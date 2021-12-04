@@ -123,7 +123,7 @@ energy analyst.</p>
   <figure class="figure">
   <img class="img-fluid" src="{{'images/people/olivia-sweeney.jpg'|thumbnail('247x247')}}">
   </figure>
-  <p class="lead">Dr Olivia Mayonette Sweeney</p>
+  <p class="lead">Dr Olivia Meyonette Sweeney</p>
   <p>Non-executive director</p>
   <p>Chemical Engineer, sustainable waste consultant and former Green and Black Ambassador.
 Leading our engagement with diverse communities and young people.</p>
