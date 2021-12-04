@@ -7,7 +7,7 @@ Unlinked records - {{config.PAGE_TITLE}}
 {% macro record(result, table_name, attr_name) -%}
 <li>
   {{result.date.strftime('%d/%m/%Y')}}, {{result|attr(attr_name)}}
-  [<a href="{{url_for(table_name+'.details_view', id=result.id, url=request.path+'?'+request.query_string.decode('utf-8')}}">details</a>,
+  [<a href="{{url_for(table_name+'.details_view', id=result.id, url=request.path+'?'+request.query_string.decode('utf-8'))}}">details</a>,
   <a href="{{url_for(table_name+'.edit_view', id=result.id, url=request.path+'?'+request.query_string.decode('utf-8'))}}">edit</a>]
 </li>
 {%- endmacro %}
