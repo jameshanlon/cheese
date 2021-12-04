@@ -120,10 +120,10 @@ believe to be key advantages of C.H.E.E.S.E. surveys.</li>
 -->
 
 <div class="alert alert-primary">
-Please note: while we are holding our 2019-20 pricing (below) for those who
-booked surveys that had to be postponed due to the Covid pandemic, we
-have had to raise our prices by about 30% so that we can operate on a
-sustainable basis without grants.
+Please note: while we are holding our 2019-20 pricing offered to those who
+booked surveys which had to be postponed due to the Covid pandemic, we have had
+to raise our prices by about 30% for this season so that we can operate on a
+sustainable not-for-profit basis without grants.
 </div>
 
 Below are our prices for various sizes of home. Please note that **bedrooms**
@@ -135,11 +135,12 @@ to know whether you are receiving benefits and whether you meet the [Minimum
 Income Standard](http://www.lboro.ac.uk/research/crsp/mis/), which you can find
 out using an [online calculator](http://www.minimumincome.org.uk/).-->
 
-Free surveys are available through our Partners
-[CHAS](http://www.chasbristol.co.uk/) and
+Free surveys are available through
 [WHAM](https://www.cse.org.uk/projects/view/1337) for people experiencing poor
 housing conditions and those in fuel poverty. Please just get in touch if you
 would like to refer yourself or someone else for a free survey.
+
+<!--[CHAS](http://www.chasbristol.co.uk/)-->
 
 <table class="table">
   <thead>
@@ -164,7 +165,7 @@ would like to refer yourself or someone else for a free survey.
       <td>&pound;255</td>
     </tr>
     <tr>
-      <td>4 bedrooms</td>
+      <td>4 bedrooms*</td>
       <td>2.5 to 3 hours</td>
       <td>&pound;240</td>
       <td>&pound;300</td>

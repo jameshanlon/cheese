@@ -11,12 +11,14 @@ we will follow up with your progress afterwards.
 ## Contents
 
 1. [Payment](#payment)
-2. [Preparation](#preparation)
-3. [Previous energy use](#previous-energy-use)
-4. [During the survey](#during)
-5. [Follow ups after the survey](#follow-ups)
-6. [Subsequently](#subsequently)
-7. [Privacy](#privacy)
+2. [Covid precautions](#covid)
+3. [Preparation](#preparation)
+4. [Previous energy use](#previous-energy-use)
+5. [During the survey](#during)
+6. [Training surveys](#training-surveys)
+7. [Follow ups after the survey](#follow-ups)
+8. [Subsequently](#subsequently)
+9. [Privacy](#privacy)
 
 <a class="anchor" name="payment"></a>
 ## Payment
@@ -25,10 +27,28 @@ All surveys are paid for in advance by bank transfer. This is priced according
 to the number of bedrooms, because this determines how long the survey takes.
 See [our pricing for various sizes of homes](/home-surveys#pricing).
 
-Please make on-line payments to **The CHEESE Project**. Sort code 08-92-99,
+<!--Please make on-line payments to **The CHEESE Project**. Sort code 08-92-99,
 account number 65849565 with your name as reference. Cheques should be posted
 to: Mike Andrews, Managing Director, The C.H.E.E.S.E. Project CIC, 28 Seawalls,
-Seawalls Road, Sneyd Park, Bristol BS9 1PG.
+Seawalls Road, Sneyd Park, Bristol BS9 1PG.-->
+
+<a class="anchor" name="covid"></a>
+## Covid precautions
+
+We require our Energy Tracers to take a lateral-flow test, or equivalent,
+before starting each survey day.
+
+To ensure the safety of our staff, we regret that we will have to postpone the
+survey if, on the day of the survey, anyone in your household is self
+isolating, awaiting a test, is displaying any Covid symptoms, or has been in
+contact with a positive case in the last 10 days.
+
+If you are comfortable confirming all adult householders' vaccine status, then
+please do so in your reply, this will reassure our staff.
+
+Our surveyors will be wearing masks and have wipes to clean door handles etc,
+since the doors and windows need to closed throughout the survey, our Energy
+Tracers will do their best to keep a distance between you both.
 
 <a class="anchor" name="preparation"></a>
 ## Preparation for the survey
@@ -38,7 +58,7 @@ make some preparations around your home before the survey:
 
 - We recommend that you switch on your heating for 24 hours before the survey
   to thoroughly warm up the fabric of the house (this is to create a difference
-  of at least 10 degrees between the house and the external temperature).
+  of at least 8 degrees Celcius between the house and the external temperature).
   Please make sure that all radiators are turned on; however you might want to
   adjust the temperature of individual radiators/rooms so that rooms do not
   become uncomfortable, particularly at night. Please also note, if you feel
@@ -62,7 +82,7 @@ make some preparations around your home before the survey:
 - Ensure there is a space for our thermal-imaging equipment, such as a kitchen
   table or worktop, and a nearby plug socket for charging.
 
-- Two hours before the survey:
+- Half an hour before the survey:
     * Switch off the central heating.
     * Open all curtains and blinds.
 
@@ -124,8 +144,6 @@ Please note:
   longer, a flat somewhat less. See the [survey information](/home-surveys#pricing)
   page for survey timings based on building size.
 
-- A lead Energy Tracer will carry out the survey, usually with an assistant.
-
 - A blower door, consisting of a large fan and airtight sheet, will be fitted
   to a suitable external door. This is used to reduce the pressure inside of
   the house slightly to induce draughts. You will not be able to use the door
@@ -152,6 +170,16 @@ Please note:
   (or DVD if requested in advance). This will also contain information from The
   Centre for Sustainable Energy (CSE) on how to deal with energy saving
   opportunities.
+
+<a class="anchor" name="training-surveys"></a>
+## Training Surveys
+
+Each survey season we will be training new Energy Tracers who need to accompany
+experienced Energy Tracers on some surveys to practice their skills and
+interpretation of images. Our Survey Manger may contact you to ask if you are
+willing to accept a training survey. This will mean one or two more people
+attending the survey. The advantage to you is that you will also have the most
+expert Energy Tracers carrying out your survey.
 
 <a class="anchor" name="follow-ups"></a>
 ## Follow ups after the survey
