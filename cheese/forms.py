@@ -149,9 +149,9 @@ class ApplySurveyForm(FlaskForm):
                            validators=[Optional(),
                                        Length(max=20)])
     num_main_rooms = \
-        fields.IntegerField('Number of main rooms* ' \
+        fields.IntegerField('Number of bedrooms* ' \
                             +'(please see <a href="/home-surveys#pricing">pricing details</a>' \
-                            +', this will be confirmed during the survey)*',
+                            +', this will be confirmed prior to the survey)*',
                             validators=[DataRequired(),
                                         NumberRange(min=1, max=100)])
     can_heat_comfortably = \
