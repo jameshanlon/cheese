@@ -40,37 +40,6 @@ for us to demonstrate the effectivness of what we do.</p>
     {{ macros.render_form_field(form.behaviour_changes) }}
     {{ macros.end_form_section() }}
 
-    {{ macros.form_section('Your electricity use') }}
-    <p>Please provide details of your total annual electricity use for the year
-    period before your survey in the fields below. For help with calculating the
-    value, please see <a href="/cheese-box#recording-energy-use">our guide</a>. It
-    is important that we have accurate energy figures, not ones that extrapolate
-    from previous use. If however you only have estimated ones, tick the box
-    below.</p>
-    {{ macros.render_form_field(form.annual_elec_kwh) }}
-    {{ macros.render_form_field(form.annual_elec_estimated) }}
-    {{ macros.render_form_field(form.annual_elec_start_date) }}
-    {{ macros.render_form_field(form.annual_elec_end_date) }}
-    {{ macros.end_form_section() }}
-
-    {{ macros.form_section('Your gas use') }}
-    <p>Please provide details of your total annual gas use for the year
-    period before your survey in the fields below. For help with calculating the
-    value, please see <a href="/cheese-box#recording-energy-use">our guide</a>. It
-    is important that we have accurate energy figures, not ones that extrapolate
-    from previous use. If however you only have estimated ones, tick the box
-    below.</p>
-    {{ macros.render_form_field(form.annual_gas_kwh) }}
-    {{ macros.render_form_field(form.annual_gas_estimated) }}
-    {{ macros.render_form_field(form.annual_gas_start_date) }}
-    {{ macros.render_form_field(form.annual_gas_end_date) }}
-    {{ macros.end_form_section() }}
-
-    {{ macros.form_section('Other energy use') }}
-    {{ macros.render_form_field(form.annual_solid_spend) }}
-    {{ macros.render_form_field(form.renewable_contrib_kwh) }}
-    {{ macros.end_form_section() }}
-
     {{ macros.form_section('Feedback to us') }}
     {{ macros.render_form_field(form.satisfaction_1to5) }}
     {{ macros.render_form_field(form.survey_video_1to5) }}
