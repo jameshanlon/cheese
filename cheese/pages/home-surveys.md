@@ -171,10 +171,16 @@ would like to refer yourself or someone else for a free survey.
       <td>&pound;300</td>
     </tr>
     <tr>
-      <td>5+ bedrooms*</td>
+      <td>8 or more rooms in total*</td>
       <td>Over 3 hours</td>
       <td>&pound;260</td>
       <td>&pound;320</td>
+    </tr>
+    <tr>
+      <td>12 or more rooms in total*</td>
+      <td>Over 3.5 hours</td>
+      <td>&pound;320</td>
+      <td>&pound;380</td>
     </tr>
     <tr>
       <td>Commercial surveys for housing associations, councils etc.<br>

@@ -42,11 +42,17 @@ free to the householder):
 - 1-2 bedrooms, expected 2 hours per survey: £50.00
 - 3 bedrooms, expected 2.5 hours per survey: £58.75
 - 4 bedrooms, expected 3 hours per survey: £67.50
-- 5+ bedrooms, expected 3.5 hours per survey: £76.25
+- 8 or more rooms in total, expected 3.5 hours per survey: £76.25
+- 12 or more rooms in total, expected 4 hours per survey: £100.00
 - Call-out payment: £15
 
 Please note:
 
+ - We consider 'a room' to be any room in a house which the client wishes to be
+   surveyed [we include unheated cellars].  We generally don't count kitchens
+   and bathrooms as a room unless either is especially large (this also applies to
+   especially large walk-in wardrobes etc)" We count a kitchen/diner where the
+   wall has been knocked through to a living room, as two rooms.
  - These rates are based on hourly rates of £17.50 for ETs. If you are unsure
    about the size of the building you surveyed, you can check the details in the
   [database](/admin).
