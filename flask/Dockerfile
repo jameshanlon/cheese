@@ -18,8 +18,8 @@ RUN apt-get update && \
 COPY requirements.txt /tmp
 RUN pip install -r /tmp/requirements.txt
 
+RUN sed -i 's/MinProtocol = TLSv1.2/MinProtocol = TLSv1.0/' /etc/ssl/openssl.cnf
+
 COPY mysql.cnf /etc/mysql/conf.d/
 COPY uwsgi.ini /tmp
 CMD uwsgi --ini /tmp/uwsgi.ini
-
-CMD sed -i 's/MinProtocol = TLSv1.2/MinProtocol = TLSv1.0/' /etc/ssl/openssl.cnf
