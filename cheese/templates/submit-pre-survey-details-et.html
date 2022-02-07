@@ -44,22 +44,6 @@ Submit pre-survey information - {{config.PAGE_TITLE}}
     {{ macros.render_form_field(form.double_glazing) }}
     {{ macros.render_form_field(form.num_occupants) }}
     {{ macros.end_form_section() }}
-    {{ macros.form_section('Gas use') }}
-    {{ macros.render_form_field(form.annual_gas_kwh) }}
-    {{ macros.render_form_field(form.annual_gas_estimated) }}
-    {{ macros.render_form_field(form.annual_gas_start_date) }}
-    {{ macros.render_form_field(form.annual_gas_end_date) }}
-    {{ macros.end_form_section() }}
-    {{ macros.form_section('Electricity use') }}
-    {{ macros.render_form_field(form.annual_elec_kwh) }}
-    {{ macros.render_form_field(form.annual_elec_estimated) }}
-    {{ macros.render_form_field(form.annual_elec_start_date) }}
-    {{ macros.render_form_field(form.annual_elec_end_date) }}
-    {{ macros.end_form_section() }}
-    {{ macros.form_section('Other energy use') }}
-    {{ macros.render_form_field(form.annual_solid_spend) }}
-    {{ macros.render_form_field(form.renewable_contribution_kwh) }}
-    {{ macros.end_form_section() }}
     {{ macros.render_form_field(form.notes) }}
     <label></label>
     <p>{% include 'privacy-statement.html' %}</p>
