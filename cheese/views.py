@@ -348,7 +348,7 @@ class CheeseAdminIndexView(flask_admin.AdminIndexView):
         if sort == 'survey':
             return sort_surveys(lambda x: x.name.lower())
         elif sort == 'ward':
-            return sort_surveys(lambda x: x.ward.name.lower())
+            return sort_surveys(lambda x: x.ward.name.lower() if x.ward else 'None')
         elif sort == 'request_date':
             return sort_surveys(lambda x:
              x.survey_request_date if x.survey_request_date \
