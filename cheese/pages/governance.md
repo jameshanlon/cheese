@@ -125,7 +125,7 @@ energy analyst.</p>
   </figure>
   <p class="lead">Olivia Meyonette Sweeney</p>
   <p>Non-executive director</p>
-  <p>Chemical Engineer, sustainable waste consultant and former Green and Black Ambassador.
+  <p>Chemical Engineer, sustainable waste consultant and former Black and Green Ambassador.
 Leading our engagement with diverse communities and young people.</p>
 
   <hr>
