@@ -2,17 +2,17 @@ title: FAQ
 
 # FAQ
 
-## I would like to become an Energy Tracer, what do I need to do?
+## I would like to become a surveyor, what do I need to do?
 
-Please read our page on [working as an Energy Tracer on the
-project](/energy-tracer-training) and get in touch by emailing us.
+Please read our page on [working as a surveyor on the
+project](/surveyor-training) and get in touch by emailing us.
 
-## I don't live in Bristol, but can I train to become an Energy Tracer?
+## I don't live in Bristol, but can I train to become a surveyor?
 
-If you are interested in becoming an Energy Tracer but do not live in the
+If you are interested in becoming a surveyor but do not live in the
 Bristol area, then, providing we have enough capacity, you may attend one of
 our training courses in Bristol as a guest. If you are part of a group of
-people interested in the Energy Tracer training and then it may be possible for
+people interested in the surveyor training and then it may be possible for
 us to run a CHEESE training course in the location where you are based. (In
 this case, you might be are interested in setting up a CHEESE Segment to
 provide surveys in your area, and this is the subject of the next question.)
@@ -34,7 +34,7 @@ limited resources, however we are keen to expand what we do to other UK cities,
 and even further afield. Our work in Bristol has demonstrated how the project
 can be scaled between local community energy groups in different city wards, in
 what we call CHEESE Segments. Where possible, the Bristol CHEESE Segments carry
-out surveys in their own areas, with their own Energy Tracers and equipment.
+out surveys in their own areas, with their own surveyors and equipment.
 
 This same approach can be applied to set up Segments outside of Bristol, for
 organisations to operate under the CHEESE name. To do this, you would need to
@@ -44,10 +44,10 @@ organisation, a new Segment would similarly operate not for profit.
 
 To help you establish a Segment, we would share with you our experience,
 processes, equipment specifications and software, and provide training for
-Energy Tracers. It is our principal concern is that any expansion of the CHEESE
-Project maintains an outstanding standard of community engagement, Energy
-Tracer proficiency, and survey delivery and we would work closely with you to
-ensure this.
+surveyors. It is our principal concern is that any expansion of the CHEESE
+Project maintains an outstanding standard of community engagement, surveyor
+proficiency, and survey delivery and we would work closely with you to ensure
+this.
 
 If you are interested in setting up a new CHEESE Segment, then please read
 carefully through the information on this website to understand how we operate,

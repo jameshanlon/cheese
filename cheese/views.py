@@ -1246,10 +1246,10 @@ def page(path):
     template = page.meta.get('template', 'page.html')
     return render_template(template, page=page)
 
-@bp.route('/energy-tracer-resources')
+@bp.route('/surveyor-resources')
 @login_required
-def energy_tracer_resources():
-    page = pages.get_or_404('energy-tracer-resources')
+def surveyor_resources():
+    page = pages.get_or_404('surveyor-resources')
     page.html = render_template_string(page.html)
     template = page.meta.get('template', 'page.html')
     return render_template(template, page=page)
@@ -1283,8 +1283,8 @@ documents              = bp.route('/documents')(flatpage_template)
 donate                 = bp.route('/donate')(flatpage_template)
 complaints             = bp.route('/complaints')(flatpage_template)
 partners               = bp.route('/partners')(flatpage_template)
-energy_tracer_training = bp.route('/energy-tracer-training')(flatpage_template)
-energy_tracer_rates    = bp.route('/energy-tracer-rates')(flatpage_template)
+surveyor_training      = bp.route('/surveyor-training')(flatpage_template)
+surveyor_rates         = bp.route('/surveyor-rates')(flatpage_template)
 governance             = bp.route('/governance')(flatpage_template)
 legal_information      = bp.route('/legal-information')(flatpage_template)
 funding                = bp.route('/funding')(flatpage_template)

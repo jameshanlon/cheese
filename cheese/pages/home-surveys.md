@@ -13,7 +13,7 @@ title: Home thermal-imaging surveys
 efficiency of your home, so you save money on your bills and to reduce your
 climate impact.**
 
-Our survey process is based on the unique Energy Tracing methodology developed
+Our survey process is based on the unique survey methodology developed
 by Brian Harper in Malvern. He has been working with thermal imaging for over
 45 years and had developed his system while surveying about 400 homes over five
 years. The C.H.E.E.S.E. Project has adapted his system and licensed its name,
@@ -39,7 +39,7 @@ We perform surveys in the winter so that when a house is heated there is a
 large difference between the temperature inside the house compared to the
 outside.
 
-An Energy Tracer will come at the prearranged time. Firstly, a large extractor
+A surveyor will come at the prearranged time. Firstly, a large extractor
 fan is fitted to an external door and run continuously to reduce the pressure
 inside the building. This causes cold air to be drawn in though any gaps. As we
 work through each room in the house we use the thermal imaging camera to look
@@ -83,7 +83,7 @@ software-created images.
 We will shortly present a new pricing structure which will keep surveys as
 affordable as possible, whilst covering our own costs.
 
-Our costs cover employment of a survey manager and the time of energy tracers
+Our costs cover employment of a survey manager and the time of the surveyors
 to carry out the surveys. It also covers the cost of travel, materials and (in
 some cases) report writing. All strategic management, software and hardware
 development, and website maintenance is carried out for free by a voluntary
@@ -198,12 +198,12 @@ costs to and from Bristol.
 \* We generally only survey large houses at weekends, though there may be some
 limited availability for surveying large houses on other days.
 
-Each year we train new Energy Tracers (ETs) and they learn on the job,
-supervised by more experienced ETs in order to gain their certificate. If you
-have your survey in November or December it may be a 'training survey'. While
-this may take a little longer you will have the benefit of both ETs experience
-and their technical and observational skills. We will let you know in advance
-if it will be a training survey.
+Each year we train new surveyors and they learn on the job, supervised by more
+experienced surveyors in order to gain their certificate. If you have your
+survey in November or December it may be a 'training survey'. While this may
+take a little longer you will have the benefit of both surveyors experience and
+their technical and observational skills. We will let you know in advance if it
+will be a training survey.
 
 <div class="notice lead">
   <a href="/apply-for-a-survey">Apply for a survey</a> now!

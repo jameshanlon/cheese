@@ -91,8 +91,8 @@ We use the **survey organisation data** to setup and schedule the survey, to
 organise the collection of the CHEESE box and collection of the one month and
 one year follow ups.
 
-We use the **videos** from the survey for assessment of [trainee Energy
-Tracers](/energy-tracer-training) as part of their Continuing Professional
+We use the **videos** from the survey for assessment of [trainee
+surveyors](/surveyor-training) as part of their Continuing Professional
 Development (CPD) qualification.
 
 With your permission, we select still **photos** from the survey, combined with

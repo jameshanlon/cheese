@@ -35,7 +35,7 @@ Seawalls Road, Sneyd Park, Bristol BS9 1PG.-->
 <a class="anchor" name="covid"></a>
 ## Covid precautions
 
-We require our Energy Tracers to take a lateral-flow test, or equivalent,
+We require our surveyors to take a lateral-flow test, or equivalent,
 before starting each survey day.
 
 To ensure the safety of our staff, we regret that we will have to postpone the
@@ -47,8 +47,8 @@ If you are comfortable confirming all adult householders' vaccine status, then
 please do so in your reply, this will reassure our staff.
 
 Our surveyors will be wearing masks and have wipes to clean door handles etc,
-since the doors and windows need to closed throughout the survey, our Energy
-Tracers will do their best to keep a distance between you both.
+since the doors and windows need to closed throughout the survey, our surveyors
+will do their best to keep a distance between you both.
 
 <a class="anchor" name="preparation"></a>
 ## Preparation for the survey
@@ -174,12 +174,12 @@ Please note:
 <a class="anchor" name="training-surveys"></a>
 ## Training Surveys
 
-Each survey season we will be training new Energy Tracers who need to accompany
-experienced Energy Tracers on some surveys to practice their skills and
+Each survey season we will be training new surveyors who need to accompany
+experienced surveyors on some surveys to practice their skills and
 interpretation of images. Our Survey Manger may contact you to ask if you are
 willing to accept a training survey. This will mean one or two more people
 attending the survey. The advantage to you is that you will also have the most
-expert Energy Tracers carrying out your survey.
+expert surveyors carrying out your survey.
 
 <a class="anchor" name="follow-ups"></a>
 ## Follow ups after the survey
@@ -191,8 +191,8 @@ a result of the survey, approximately one month after. We would also like to
 hear any thoughts or comments you have on the survey.
 
 For reference, you can take a look at the [one-month feedback form
-here](/one-month-feedback). The form can be filled in by you, or by an Energy
-Tracer on your behalf over the telephone or in person.
+here](/one-month-feedback). The form can be filled in by you, or by a surveyor
+on your behalf over the telephone or in person.
 
 ### One year
 
@@ -212,7 +212,7 @@ how you are getting on. We would like to know:
 - Any other comments that you might have.
 
 As with the one-month feedback form, the [one-year feedback
-form](/one-year-feedback) can be completed by you or by an Energy Tracer on
+form](/one-year-feedback) can be completed by you or by a surveyor on
 your behalf.
 
 <a class="anchor" name="subsequently"></a>

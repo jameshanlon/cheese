@@ -5,7 +5,7 @@ title: Who we work with
 
 We work closely with community groups in Bristol. We have a number of segments,
 that, where possible, carry out surveys in their areas, have their own
-trained Energy Tracers and use equipment supplied by the central office. Our
+trained surveyors and use equipment supplied by the central office. Our
 current CHEESE segments are:
 
 - [Ambition Lawrence Weston](http://www.ambitionlw.org)

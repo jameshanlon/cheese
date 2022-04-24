@@ -563,7 +563,7 @@ class OneMonthFeedbackForm(FlaskForm):
     feedback = fields.TextAreaField('Do you have any feedback?',
                                     description='We would like to hear what you think about:'
                                                    +' the organisation of the survey,'
-                                                   +' the conduct of the Energy Tracers,'
+                                                   +' the conduct of the surveyors,'
                                                    +' the results of the survey and suggested remedies,'
                                                    +' the overall value for money of the survey,'
                                                    +' your overall satisfaction,'

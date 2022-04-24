@@ -61,8 +61,8 @@
             <div class="dropdown-menu" aria-labelledby="get-involved-dropdown">
               <a class="dropdown-item" href="/membership">
                 Membership</a>
-              <a class="dropdown-item" href="/energy-tracer-training">
-                As an Energy Tracer surveyor</a>
+              <a class="dropdown-item" href="/surveyor-training">
+                As a Heat View surveyor</a>
               <a class="dropdown-item" href="/volunteering">
                 As a volunteer</a>
               <a class="dropdown-item" href="/publicity-materials">
@@ -100,7 +100,7 @@
             <a class="nav-link dropdown-toggle" href="#" id="user-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{current_user.email}}</a>
             <div class="dropdown-menu" aria-labelledby="user-dropdown">
                 {% if current_user.has_role('admin', 'manager', 'surveyor') %}
-                  <a class="dropdown-item" href="/energy-tracer-resources">Energy Tracer resources</a>
+                  <a class="dropdown-item" href="/surveyor-resources">Surveyor resources</a>
                   <a class="dropdown-item" href="{{url_for('admin.index')}}">CHEESE database</a>
                 {% endif %}
                 {% if current_user.has_role('admin') %}

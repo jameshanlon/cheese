@@ -1,8 +1,8 @@
-title: Setting up a franchised C.H.E.E.S.E. Energy Tracing® Project in your area
+title: Setting up a franchised C.H.E.E.S.E. Project in your area
 
 {% import 'macros.html' as macros %}
 
-# Setting up a franchised Energy Tracing® replica of the C.H.E.E.S.E. Project in your area
+# Setting up a franchised replica of the C.H.E.E.S.E. Project in your area
 
 The majority of people are now aware of the climate crisis, but many do not
 realise that 30% of UK energy use is within homes. Our project enables
@@ -29,10 +29,10 @@ exactly as instructed in the future franchise manual. They will pay a modest
 entry management fee and will be able to sustain their business by charging for
 their surveys. Royalties on their survey income will be paid to First Thermal
 Ltd to sustain its running costs. We plan low-cost rental of our newly
-developed Heatview camera and Energy Tracer® blower-door equipment, optimally
-designed in-house for the job, free training, recently updated to be mostly
-online, and a sophisticated survey booking and payment system. We plan to grant
-exclusive local licenses for First Thermal Energy Tracing® to our franchisees.
+developed Heatview camera and blower-door equipment, optimally designed
+in-house for the job, free training, recently updated to be mostly online, and
+a sophisticated survey booking and payment system. We plan to grant exclusive
+local licenses for First Thermal surveys to our franchisees.
 
 Working within government Covid guidelines, and with the safety of our staff
 and clients foremost, we have restarted surveying while our business model is
@@ -40,14 +40,14 @@ developed over the next few months. We will endeavour to keep start-up costs
 for franchisees to the minimum, but they will have to have considerable scale
 to cover their costs (for example of a survey manager) and they must be
 sustainable long term. Our pricing structure will include payment from sales to
-local Energy Tracers®, who are trained for free. Thus it may be to the
-advantage of small climate NGOs to form alliances with their neighbours. In the
-meantime, we recommend that climate action NGOs wanting to set up a local
-franchise should seek opportunities for funding to cover their core costs.
-Paid-for surveys provide income, but we will require a proportion of surveys to
-be conducted for free to assist the fuel poor. We will continue to lobby for
-central government funding to assist with these costs. The Lottery Awards for
-All is another potential source of funds for community-led groups.
+local surveyors, who are trained for free. Thus it may be to the advantage of
+small climate NGOs to form alliances with their neighbours. In the meantime, we
+recommend that climate action NGOs wanting to set up a local franchise should
+seek opportunities for funding to cover their core costs. Paid-for surveys
+provide income, but we will require a proportion of surveys to be conducted for
+free to assist the fuel poor. We will continue to lobby for central government
+funding to assist with these costs. The Lottery Awards for All is another
+potential source of funds for community-led groups.
 
 It is important to our social benefit aims that our franchised replicas remain
 independent of those carrying out retrofitting businesses, and are engaged with

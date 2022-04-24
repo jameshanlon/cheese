@@ -71,7 +71,7 @@ prototype stage. Jeremy works pro bono for the project. </p>
   <p class="lead">Rosamund Thomas</p>
   <p>Director responsible for training and membership</p>
 
-  <p> Roz has completed two phases as an Energy Tracer and in summer 2019
+  <p> Roz has completed two phases as a surveyor and in summer 2019
 joined the team to become more involved with the project all year round. Her
 first tasks have been streamlining the survey process and helping the
 recruitment of new tracers the upcoming season. Roz has a Geography degree and
@@ -89,7 +89,7 @@ energy analyst.</p>
   <p>Director and Company Secretary</p>
 
   <p>Jamie joined the project in 2015, meeting Mike and Dave through the Bristol
-  Green Capital Energy Champions initiative. He has worked as an Energy Tracer,
+  Green Capital Energy Champions initiative. He has worked as a surveyor,
   and helped to develop the materials and process supporting C.H.E.E.S.E surveys,
   including the website and and back-end database system for managing surveys and
   data collection. Jamie works as a silicon engineer at Graphcore in Bristol,

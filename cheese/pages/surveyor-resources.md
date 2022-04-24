@@ -1,12 +1,12 @@
-title: Energy Tracer resources
+title: Surveyor resources
 
-# Energy Tracer resources
+# Surveyor resources
 
-Welcome to the resources page for Energy Tracers.
+Welcome to the resources page for surveyors.
 
 ## Survey materials
 
-- [Survey checklist]({{url_for('.assets', filename='files/CHEESE-Energy-Tracer-Survey-Checklist.pdf')}})
+- [Survey checklist]({{url_for('.assets', filename='files/CHEESE-Surveyor-Checklist.pdf')}})
 - Results paper form to print
   ([PDF]({{url_for('.assets', filename='files/CHEESE-survey-results-form-Nov21.pdf')}}),
    [Word.docx]({{url_for('.assets', filename='files/CHEESE-survey-results-form-Feb20.docx')}}))
@@ -38,7 +38,7 @@ Welcome to the resources page for Energy Tracers.
 
 ## Invoicing
 
-- [Rates of pay for Energy Tracers](/energy-tracer-rates)
+- [Rates of pay for surveyors](/surveyor-rates)
 - Invoice proforma for payment of expenses
   ([Word.docx]({{url_for('.assets', filename='files/CHEESE-invoice-proforma-for-payment-of-expenses.docx')}}),
    [PDF]({{url_for('.assets', filename='files/CHEESE-invoice-proforma-for-payment-of-expenses.pdf')}}))

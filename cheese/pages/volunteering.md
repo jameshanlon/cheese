@@ -4,14 +4,14 @@ title: Volunteering
 
 The CHEESE Project operates on a very small budget and depends on the work of
 volunteers for its continued organisation and management. If you are interested
-in becoming involved with the project, but not necessarily as an Energy Tracer,
+in becoming involved with the project, but not necessarily as a surveyor,
 there are many areas where we would value contributions:
 
-- Be an assistant surveyor, working and learning alongside our experienced Energy Tracers ([more details](/news/2019-08-22-volunteer-assistant-surveyor-job-vacancy)).
+- Be an assistant surveyor, working and learning alongside our experienced surveyor ([more details](/news/2019-08-22-volunteer-assistant-surveyor-job-vacancy)).
 
 - Community outreach/engagement and promotion of the project;
 
-- Publicising its surveys, and opportunities for Energy Tracers;
+- Publicising its surveys, and opportunities for surveyors;
 
 - Coordination and organisation for surveys;
 
