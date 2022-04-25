@@ -133,7 +133,7 @@ Leading our engagement with diverse communities and young people.</p>
 
 
 </div>
-<div class="row">
+<!--<div class="row">
 
   <a name="brian-harper"></a>
   <div class="col-sm">
@@ -159,7 +159,7 @@ Leading our engagement with diverse communities and young people.</p>
   <div class="col-sm">
   </div>
 
-</div>
+</div>-->
 </div>
 
 
