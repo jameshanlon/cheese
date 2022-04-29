@@ -9,10 +9,10 @@ realise that 30% of UK energy use is within homes. Our project enables
 substantial cuts in energy loss at very low cost. We are receiving more and
 more enquiries from individuals, climate action NGOs, housing associations,
 councils, etc about how to set up a local C.H.E.E.S.E. Project replica. They
-recognise that an internal thermal Energy Trace® of domestic properties, as the
-first step in building appraisal, is the way to achieve highly-targeted,
-cost-effective, energy-loss reduction. Our low-cost Energy Tracing is far more
-informative than an EPC and is also highly effective in stimulating
+recognise that an internal thermal-imaging survey of domestic properties, as
+the first step in building appraisal, is the way to achieve highly-targeted,
+cost-effective, energy-loss reduction. Our low-cost survey methodology is far
+more informative than an EPC and is also highly effective in stimulating
 retrofitting. Two thirds of our clients take remedial action within a month,
 and over 87% within a year.
 

@@ -1,13 +1,13 @@
-title: Thermal-imaging surveyors 
+title: Heatview surveyors
 
-# Thermal-imaging surveyors 
+# Heatview surveyors
 
-Licensed Thermal-imaging surveyors conduct [surveys of domestic
+Licensed Heatview® thermal-imaging surveyors conduct [surveys of domestic
 buildings](/home-surveys) to identify areas of poor thermal efficiency. They
 also provide the householder with information on how to tackle any of the
 issues identified and other general ways of saving energy in their home.
 
-As a surveyor, you will learn how to operate the CHEESE thermal
+As a Heatview surveyor, you will learn how to operate the CHEESE thermal
 imaging equipment, how to interpret thermal images and the basics of building
 construction and energy efficiency. As well as this, you will have the
 opportunity to meet new and interesting people, to make a significant
@@ -18,7 +18,7 @@ can be fitted around a full-time job.
 
 ## Training
 
-To train to become a surveyor, you will need to attend our two-day
+To train to become a Heatview surveyor, you will need to attend our two-day
 training course to learn the basics of thermal imaging and building
 construction, led by thermal-imaging expert Brian Harper. We also run a
 half-day course on the health and safety aspects of working in people's homes.
@@ -37,12 +37,13 @@ held over the weekend of 21st, 22nd October 2017 said:
 > on my street and then the wider area.
 
 You will gain experience of CHEESE thermal imaging surveys by assisting a
-trained surveyor and shadow them as they perform house surveys. If you
+trained Heatview surveyor and shadow them as they perform house surveys. If you
 have undertaken the training courses, it is possible to become a fully-fledged
-surveyor in the same season. The final step to completing the training is
-for Brian Harper to assess a survey led by you, to check you are confident and
-capable of delivering surveys to the public. After this, you will be eligible
-for payment and be able to lead surveys, and help train new aspiring surveyors.
+Heatview surveyor in the same season. The final step to completing the training
+is for Brian Harper to assess a survey led by you, to check you are confident
+and capable of delivering surveys to the public. After this, you will be
+eligible for payment and be able to lead surveys, and help train new aspiring
+surveyors.
 
 If you were not able to complete the training courses, you can assist with
 surveys but will need to wait to complete the next training course to complete
@@ -59,7 +60,7 @@ three in a day.
 ## Get in touch
 
 If you are excited by the idea of becoming involved with the CHEESE Project to
-train as a surveyor, then please get in touch by emailing
+train as a Heatview surveyor, then please get in touch by emailing
 [info@cheeseproject.co.uk](mailto:info@cheeseproject.co.uk) to introduce
 yourself.
 

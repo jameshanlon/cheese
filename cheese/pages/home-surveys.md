@@ -9,29 +9,22 @@ title: Home thermal-imaging surveys
 
 # Home thermal-imaging surveys
 
-**Our internal thermal-imaging surveys aim to improve the comfort and energy
-efficiency of your home, so you save money on your bills and to reduce your
-climate impact.**
+**Our internal thermal-imaging surveys *enable you* to improve the comfort and
+energy efficiency of your home, so you save money on your bills and to reduce
+your climate impact.**
 
-Our survey process is based on the unique survey methodology developed
-by Brian Harper in Malvern. He has been working with thermal imaging for over
-45 years and had developed his system while surveying about 400 homes over five
-years. The C.H.E.E.S.E. Project has adapted his system and licensed its name,
-developing its own software, training, and now hardware over a further five
-years in Bristol.
+Our unique survey process was developed after studying methods used in the UK
+and USA of thermal imaging and pressure testing, including methods recommended
+by Ian Mawditt of Four Walls Consultants and Philip Haile of Transition
+Bath. Subsequently we worked with Brian Harper in Malvern, who had been
+developing thermal Imaging since the 1970s and who had his own low-cost protocol for
+internal surveys using pressure-reduction. We adapted this system using new
+cameras and digital software and licensed the use of his Energy Tracers name
+for three years until January 2022. We now use a unique bespoke Heatview®
+camera and software developed by our technical director Jeremy Birch. Our
+training for Heatview® surveyors has also been specifically developed based on
+6 year’s experience and over 500 surveys.
 
-<!--The method involves heating the house to 10 degrees above ambient
-temperature, reducing the indoor pressure and locating incoming cold draughts,
-inadequate insulation, poor construction, etc.
-
-The householder observes the survey and is informed of any energy-loss
-problems as they are revealed. The survey is also filmed, capturing the
-live thermal images and commentary from the surveyor, to provide to the
-householder for future reference.-->
-
-<!--<div class="alert alert-warning">
-<strong>Please note: our pricing is under review. See the <a href="#pricing">pricing</a> section for details.</strong>
-</div>-->
 
 ## How it works
 
@@ -69,6 +62,10 @@ again after a month and after a year to see if your energy use has changed!
 
 <a class="anchor" name="pricing"></a>
 ## Pricing
+
+<!--<div class="alert alert-warning">
+<strong>Please note: our pricing is under review. See the <a href="#pricing">pricing</a> section for details.</strong>
+</div>-->
 
 <!--We are sorry to say that we have not yet secured grant funding for our November
 2019/20 season, as we have in previous seasons. So for next season, we are at
