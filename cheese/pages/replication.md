@@ -62,6 +62,6 @@ if you want to register your interest please email
 December 2021.
 
 <div class="text-center">
-{{ macros.thumbnail('images/first-thermal-logo.png', '400x400', 'first-thermal') }}
+{{ macros.thumbnail('images/FTL-logo.png', '400x400', 'first-thermal') }}
 {{ macros.thumbnail('images/energy-for-tomorrow-logo.png', '400x400', 'first-thermal') }}
 </div>
