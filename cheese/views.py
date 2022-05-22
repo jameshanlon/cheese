@@ -359,12 +359,11 @@ class CheeseAdminIndexView(flask_admin.AdminIndexView):
             return sort_surveys(lambda x: 2 if x.free_survey_consideration else x.fee_paid)
         elif sort == 'box_number':
             return sort_surveys(lambda x:
-                     x.result[0].cheese_box_number if x.result else None)
+                     x.result[0].cheese_box_number if x.result else '')
         elif sort == 'box_collected':
             return sort_surveys(lambda x: x.box_collected)
         elif sort == 'lead_surveyor':
-            return sort_surveys(lambda x:
-                     x.result[0].lead_surveyor if x.result else None)
+            return sort_surveys(lambda x: (x.result[0].lead_surveyor if x.result[0].lead_surveyor != None else '') if x.result else '')
         elif sort == 'got_result':
             return sort_surveys(lambda x: x.result)
         elif sort == 'got_month':
@@ -1289,6 +1288,5 @@ governance             = bp.route('/governance')(flatpage_template)
 legal_information      = bp.route('/legal-information')(flatpage_template)
 funding                = bp.route('/funding')(flatpage_template)
 media_coverage         = bp.route('/media-coverage')(flatpage_template)
-publicity_materials    = bp.route('/publicity-materials')(flatpage_template)
 taking_action          = bp.route('/taking-action')(flatpage_template)
 replication            = bp.route('/replication')(flatpage_template)
