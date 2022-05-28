@@ -165,11 +165,12 @@ Please note:
   together with interpretation comments by the surveyor and your own comments.
   Still thermal photos are also recorded.
 
-- Following the de-briefing on the findings at the end of the survey you will
-  be given a recording of the video and its sound commentary on a memory stick
-  (or DVD if requested in advance). This will also contain information from The
-  Centre for Sustainable Energy (CSE) on how to deal with energy saving
-  opportunities.
+- Following the debriefing on the findings at the end of the survey you will be
+  given a recording of the video and its sound commentary on a USB memory
+  stick. This will also contain information from The Centre for Sustainable
+  Energy (CSE) on how to deal with energy saving opportunities. **Please make
+  sure you have a device that can be used to view the contents, if not then
+  please let us know before your survey**.
 
 <a class="anchor" name="training-surveys"></a>
 ## Training Surveys
