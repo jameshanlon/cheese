@@ -1079,9 +1079,13 @@ def apply_for_a_survey():
     today = datetime.date.today()
     notice = ''
     if (today.month > 3 and today.month < 9): # Display notice April to August
-      notice = """The {}/{} surveying season has now finished, but you can still apply
-      for a survey next winter, between November {} and April {}.""".format(
-        today.year-1, today.year, today.year, today.year+1)
+      notice = """<div class="lead">The {}/{} surveying season has now
+      finished, but you can still apply for a survey next winter, between
+      November {} and April {}.</div> <p>We anticipate a high demand and
+      recommend that you book now which will also secure our current prices
+      (they may increase in the autumn). Please be aware that if October is
+      warm, we may have to postpone your booking as we need an 8 degree C
+      temperature difference inside-outside.</p>""".format(today.year-1, today.year, today.year, today.year+1)
     if request.method=='POST':
         if helpers.validate_form_on_submit(form):
             # Add to db.
@@ -1114,7 +1118,8 @@ def apply_for_a_survey():
             return render_template('page.html', page=page)
         else:
             flash('There were problems with your form.', 'error')
-    return render_template('apply-for-a-survey.html', form=form, notice=notice)
+    return render_template('apply-for-a-survey.html', form=form,
+            notice=Markup(notice))
 
 
 @bp.route('/one-month-feedback', methods=['GET', 'POST'])
