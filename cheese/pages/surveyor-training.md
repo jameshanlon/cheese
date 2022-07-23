@@ -18,32 +18,37 @@ can be fitted around a full-time job.
 
 ## Training
 
-To train to become a Heatview surveyor, you will need to attend our two-day
-training course to learn the basics of thermal imaging and building
-construction, led by thermal-imaging expert Brian Harper. We also run a
-half-day course on the health and safety aspects of working in people's homes.
-We normally hold these courses in October and November, before the start of the
-surveying season.
+To train to become a Heatview surveyor, you will need to complete our training
+course which covers the both theory parts of the role (thermal imaging and
+building construction) and practical aspects of using equipment and conducting
+surveys.
 
-The two-day course has classroom-based and practical parts, with plenty of time
-for questions and discussion. Nick Banks, a participant of the training course,
-held over the weekend of 21st, 22nd October 2017 said:
+The training is provided completely free of charge and is a comprehensive
+course that can prepare someone for role of heatview surveyor without any
+previous experience. The theory side of the course is offered as an online
+course and then we consolidate this learning in face-to-face classroom
+training. Throughout the course there are trainers on hand to support delegates
+where needed. They are usually held in October and November, at the start of
+the surveying season.
+
+The course delivers content through a range of methods with tine given for
+plenty of discussion and questions. Nick Banks, a participant of a previous
+training course, said:
 
 > I just wanted to say thank you for the excellent course you delivered last
 > weekend. I thought the whole was delivered at the right pace, with insight,
 > gentle humour and plenty of opportunity to harvest contributions from the
-> trainees. [...] I look forward to the follow up sessions and, in the
-> meantime, I’d like to start proactively raising interest in a thermal survey
-> on my street and then the wider area.
+> trainees. [...] I look forward to the follow up sessions and, in the meantime,
+> I’d like to start proactively raising interest in a thermal survey on my street
+> and then the wider area.
 
-You will gain experience of CHEESE thermal imaging surveys by assisting a
-trained Heatview surveyor and shadow them as they perform house surveys. If you
-have undertaken the training courses, it is possible to become a fully-fledged
-Heatview surveyor in the same season. The final step to completing the training
-is for Brian Harper to assess a survey led by you, to check you are confident
-and capable of delivering surveys to the public. After this, you will be
-eligible for payment and be able to lead surveys, and help train new aspiring
-surveyors.
+Once you have completed training course you will gain experience of
+thermal-imaging surveys by assisting a trained Heatview surveyor and shadowing
+them as they perform surveys. If you have undertaken the training courses, it
+is possible to become a fully-fledged Heatview surveyor in the same season. The
+final step to be signed off as a heatview surveryor is to lead survey yourself
+so trainers can make sure you are confident and capable of delivering surveys
+unaccompanied.
 
 If you were not able to complete the training courses, you can assist with
 surveys but will need to wait to complete the next training course to complete
