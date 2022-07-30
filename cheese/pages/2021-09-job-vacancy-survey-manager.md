@@ -3,6 +3,10 @@ date: 2021-09-03
 title: "Job vacancy for a Survey Manager"
 image: images/cheese-house.png
 
+<div class="alert alert-warning" role="alert">
+The deadline for this role has now passed.
+</div>
+
 <div class="lead">
 <p>To manage thermal image surveys of the interior of homes to save energy loss</p>
 </div>

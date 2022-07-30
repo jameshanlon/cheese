@@ -3,6 +3,10 @@ date: 2021-08-10
 title: "Job vacancy: General Manager for First Thermal Ltd"
 image: images/FTL-logo.jpeg 
 
+<div class="alert alert-warning" role="alert">
+The deadline for this role has now passed.
+</div>
+
 If you would like a rewarding and stimulating job doing something you can be
 proud of, this is a unique opportunity to develop First Thermal Ltd. (FTL) a
 new social enterprise company, set up to be a social franchisor. FTL has been

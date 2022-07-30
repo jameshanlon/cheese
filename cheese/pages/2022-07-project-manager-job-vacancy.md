@@ -3,6 +3,10 @@ date: 2022-07-08
 title: "Job vacancy for a Project Manager"
 image: images/cheese-house.png
 
+<div class="alert alert-warning" role="alert">
+The deadline for this role has now passed.
+</div>
+
 <div class="lead"> <p>We’re on the lookout for a true go-getter; a project
 management specialist who can see potential in opportunities when others may
 not. If you’re looking for a new role with meaning and feel your expertise
