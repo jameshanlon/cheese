@@ -1,7 +1,9 @@
 article:
 date: 2022-08-16
 title: Part-time Thermal Imaging Heatview Surveyors (with free training)
-image: images/FTL-logo.png
+image: images/FTL-CHEESE.png
+
+<img class="img-fluid" src="{{url_for('.assets', filename='images/FTL-CHEESE.png')}}">
 
 <div class="lead">
 Part-time Thermal Imaging Heatview Surveyors with free training based in Gordano,
