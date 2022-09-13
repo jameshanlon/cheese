@@ -55,11 +55,12 @@ the local community. They will need to be a registered legal body such as a
 co-operative or CIC. This is a grass-roots-up project, and as such is trusted
 by local householders. 
 
-We will update this page as further detail becomes available. In the meantime
-if you want to register your interest please email
-[info@cheeseproject.co.uk](mailto:info@cheeseproject.co.uk). 
+For more details, please read our
+[briefing document]({{url_for('.assets', filename='files/First-Thermal-Briefing-11.pdf')}}) and
+if you want to register your interest please email [Hannah
+Piet](mailto:Hannah.Piet@first-thermal.co.uk).
 
-December 2021.
+September 2022.
 
 <div class="text-center">
 {{ macros.thumbnail('images/FTL-logo.png', '400x400', 'first-thermal') }}
