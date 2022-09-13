@@ -86,7 +86,8 @@ PHASE_START_DATES = [datetime.date(2015, 4, 15),
                      datetime.date(2017, 4, 15),
                      datetime.date(2018, 4, 15),
                      datetime.date(2019, 4, 15),
-                     datetime.date(2020, 4, 15)]
+                     datetime.date(2020, 4, 15),
+                     datetime.date(2021, 4, 15)]
 NUM_PHASES = len(PHASE_START_DATES)
 ONE_MONTH_FOLLOW_UP_DAYS = 31
 ONE_YEAR_FOLLOW_UP_DAYS = 365.25
