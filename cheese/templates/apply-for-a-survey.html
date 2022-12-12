@@ -5,8 +5,19 @@ Apply for a survey - {{config.PAGE_TITLE}}
 {% endblock %}
 {% block content %}
 
-<h1>Apply for a home survey</h1>
+<h1>Book a survey now</h1>
 
+<img class="img-fluid" src="{{url_for('.assets', filename='images/FTL-CHEESE.png')}}">
+
+<p>As part of our <a href="/news/2021-09-26-grant-funding-update">nationwide
+  expansion</a> under the <a href="http://first-thermal.co.uk">First Thermal
+  franchise</a>, we adopted a new automated bookings and payments system.</p>
+
+<p>Please use the new <a href="https://bookings.first-thermal.co.uk/">booking
+  system</a> to organise your survey (you will be directed to a different
+website).</p>
+
+<!--
 <div class="alert alert-primary"> <strong>New bookings and payments
     system.</strong> Please note that we are in the process of deploying a new
   bookings and payments system for our surveys. We are expecting to have this
@@ -16,6 +27,7 @@ Apply for a survey - {{config.PAGE_TITLE}}
   and make the payment. If you have any questions then please email <a
     href="mailto:surveys@cheeseproject.co.uk">surveys@cheeseproject.co.uk</a>.
   Thank you for your patience.</div>
+-->
 
 <!--
 <div class="alert alert-primary">
@@ -64,6 +76,7 @@ Apply for a survey - {{config.PAGE_TITLE}}
 
 <!--</div>-->
 
+<!--
 {% if notice %}
 <div class="alert alert-primary">
   {{ notice }}
@@ -73,7 +86,9 @@ Apply for a survey - {{config.PAGE_TITLE}}
 <a href="/news/2018-10-community-energy-awards">
   <img class="float-right" src="{{'images/2018-10-community-energy-awards/Community-Energy-Awards-1.png'|thumbnail('200x200')}}" />
 </a>
+-->
 
+<!--
 <p>Please complete the form below to apply for a survey, but before you do, we
 ask that you read through the <a href="/pre-survey-guide">survey preparation
 and information guide</a> and are happy to make the necessary preparations for
@@ -90,13 +105,6 @@ with other surveys and travel time and costs.</p>
 
 <p>Details of the <strong>survey process</strong> and <strong>pricing</strong>
 can be found <a href="/home-surveys">here</a>.</p>
-
-<!--
-<p>Once you have submitted the form, we will be in contact to organise a date
-with you.  If you have any questions about our surveys, then please get in
-touch by emailing
-<a href="mailto:surveys@cheeseproject.co.uk">surveys@cheeseproject.co.uk</a>.</p>
--->
 
 <div id="survey-form" style="padding-top:1.2em">
   <form method="POST" action="" enctype="multipart/form-data">
@@ -147,3 +155,4 @@ touch by emailing
 </div>
 
 {% endblock %}
+-->
