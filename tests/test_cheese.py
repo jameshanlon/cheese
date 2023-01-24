@@ -162,7 +162,17 @@ PRE_SURVEY_OTHER_FIELDS = dict(
   depth_loft_insulation      = "10%",
   number_open_fireplaces     = "50%",
   double_glazing             = "100%",
-  num_occupants              = 17, )
+  num_occupants              = 17,
+  annual_gas_kwh             = 567.456,
+  annual_gas_estimated       = True,
+  annual_gas_start_date      = '02/02/2017',
+  annual_gas_end_date        = '03/02/2017',
+  annual_elec_kwh            = 123.456,
+  annual_elec_estimated      = True,
+  annual_elec_start_date     = '04/02/2017',
+  annual_elec_end_date       = '05/02/2017',
+  annual_solid_spend         = 890.456,
+  renewable_contribution_kwh = 901.456, )
 
 def check_pre_survey_fields(result):
     assert result.year_of_construction       == 1970
@@ -177,6 +187,16 @@ def check_pre_survey_fields(result):
     assert result.number_open_fireplaces     == '50%'
     #assert result.double_glazing             == '100%' # Use as a key instead
     assert result.num_occupants              == 17
+    assert result.annual_gas_kwh             == 567.456
+    assert result.annual_gas_estimated       == True
+    assert result.annual_gas_start_date      == datetime.date(2017, 2, 2)
+    assert result.annual_gas_end_date        == datetime.date(2017, 2, 3)
+    assert result.annual_elec_kwh            == 123.456
+    assert result.annual_elec_estimated      == True
+    assert result.annual_elec_start_date     == datetime.date(2017, 2, 4)
+    assert result.annual_elec_end_date       == datetime.date(2017, 2, 5)
+    assert result.annual_solid_spend         == 890.456
+    assert result.renewable_contribution_kwh == 901.456
 
 def test_submit_pre_survey_details_et_form_full(client, app):
     # Submitted by ETs (requiring login)
@@ -290,6 +310,16 @@ ONE_MONTH_REQ_FIELDS = dict(householders_name     = 'householders_name',
 def test_month_feedback_form_full(client, app):
     # Test the form submits with valid input data.
     data = dict(submitted_by              = 'submitted_by',
+                annual_gas_kwh            = 123.456,
+                annual_gas_estimated      = 'True',
+                annual_gas_start_date     = '01/10/2018',
+                annual_gas_end_date       = '02/10/2018',
+                annual_elec_kwh           = 123.456,
+                annual_elec_estimated     = 'True',
+                annual_elec_start_date    = '03/10/2018',
+                annual_elec_end_date      = '04/10/2018',
+                annual_solid_spend        = 123.456,
+                renewable_contrib_kwh     = 123.456,
                 any_completed_actions     = 'True',
                 completed_actions         = 'completed_actions',
                 any_wellbeing_improvement = 'True',
@@ -313,6 +343,16 @@ def test_month_feedback_form_full(client, app):
         assert feedback.surveyor_conduct_1to5     == 3
         assert feedback.survey_value_1to5         == 4
         assert feedback.recommend_1to5            == 5
+        assert feedback.annual_gas_kwh            == 123.456
+        assert feedback.annual_gas_estimated      == True
+        assert feedback.annual_gas_start_date     == datetime.date(2018, 10, 1)
+        assert feedback.annual_gas_end_date       == datetime.date(2018, 10, 2)
+        assert feedback.annual_elec_kwh           == 123.456
+        assert feedback.annual_elec_estimated     == True
+        assert feedback.annual_elec_start_date    == datetime.date(2018, 10, 3)
+        assert feedback.annual_elec_end_date      == datetime.date(2018, 10, 4)
+        assert feedback.annual_solid_spend        == 123.456
+        assert feedback.renewable_contrib_kwh     == 123.456
         assert feedback.any_completed_actions     == True
         assert feedback.completed_actions         == 'completed_actions'
         assert feedback.any_wellbeing_improvement == True
@@ -365,7 +405,17 @@ ONE_YEAR_REQ_FIELDS = dict(householders_name = 'householders_name',
 
 def test_year_feedback_form_full(client, app):
    # Test the form submits with all valid input data.
-    data = dict(any_completed_actions     = 'True',
+    data = dict(annual_gas_kwh            = 123.456,
+                annual_gas_estimated      = 'True',
+                annual_gas_start_date     = '01/09/2019',
+                annual_gas_end_date       = '02/09/2019',
+                annual_elec_kwh           = 123.456,
+                annual_elec_estimated     = 'True',
+                annual_elec_start_date    = '03/09/2019',
+                annual_elec_end_date      = '04/09/2019',
+                annual_solid_spend        = 123.456,
+                renewable_contrib_kwh     = 123.456,
+                any_completed_actions     = 'True',
                 diy_work                  = 'diy_work',
                 prof_work                 = 'prof_work',
                 contractors_used          = 'contractors_used',
@@ -388,6 +438,16 @@ def test_year_feedback_form_full(client, app):
         feedback = YearFeedback.query.filter(YearFeedback.householders_name=='householders_name').first()
         assert feedback.householders_name         == 'householders_name'
         assert feedback.address                   == 'address'
+        assert feedback.annual_gas_kwh            == 123.456
+        assert feedback.annual_gas_estimated      == True
+        assert feedback.annual_gas_start_date     == datetime.date(2019, 9, 1)
+        assert feedback.annual_gas_end_date       == datetime.date(2019, 9, 2)
+        assert feedback.annual_elec_kwh           == 123.456
+        assert feedback.annual_elec_estimated     == True
+        assert feedback.annual_elec_start_date    == datetime.date(2019, 9, 3)
+        assert feedback.annual_elec_end_date      == datetime.date(2019, 9, 4)
+        assert feedback.annual_solid_spend        == 123.456
+        assert feedback.renewable_contrib_kwh     == 123.456
         assert feedback.any_completed_actions     == True
         assert feedback.diy_work                  == 'diy_work'
         assert feedback.prof_work                 == 'prof_work'

@@ -251,48 +251,48 @@ class PreSurveyDetailsForm(FlaskForm):
         fields.IntegerField('Number of occupants',
                             validators=[Optional(),
                                         NumberRange(min=1, max=100)])
-    #annual_gas_kwh = \
-    #    fields.DecimalField('Annual consumption (kWh',
-    #                        validators=[Optional()])
-    #annual_gas_estimated = \
-    #    fields.BooleanField('(tick for yes) Is the value based on estimated use?',
-    #                        validators=[Optional()])
-    #annual_gas_start_date = \
-    #    fields.DateField('Start date (dd/mm/yyyy)',
-    #                     format='%d/%m/%Y',
-    #                     validators=[Optional(),
-    #                     validate_date],
-    #                     widget=DatePickerWidget())
-    #annual_gas_end_date = \
-    #    fields.DateField('End date (dd/mm/yyyy)',
-    #                     format='%d/%m/%Y',
-    #                     validators=[Optional(),
-    #                     validate_date],
-    #                     widget=DatePickerWidget())
-    #annual_elec_kwh = \
-    #    fields.DecimalField('Annual consumption (kWh',
-    #                        validators=[Optional()])
-    #annual_elec_estimated = \
-    #    fields.BooleanField('(tick for yes) Is the value based on estimated use?',
-    #                        validators=[Optional()])
-    #annual_elec_start_date = \
-    #    fields.DateField('Start date (dd/mm/yyyy)',
-    #                     format='%d/%m/%Y',
-    #                     validators=[Optional(),
-    #                     validate_date],
-    #                     widget=DatePickerWidget())
-    #annual_elec_end_date = \
-    #    fields.DateField('End date (dd/mm/yyyy)',
-    #                     format='%d/%m/%Y',
-    #                     validators=[Optional(),
-    #                     validate_date],
-    #                     widget=DatePickerWidget())
-    #annual_solid_spend = \
-    #    fields.DecimalField('Annual spend on solid fuels (&pound;)',
-    #                        validators=[Optional()])
-    #renewable_contribution_kwh = \
-    #    fields.DecimalField('Annual contribution from renewable generation (kWh)',
-    #                        validators=[Optional()])
+    annual_gas_kwh = \
+        fields.DecimalField('Annual consumption (kWh',
+                            validators=[Optional()])
+    annual_gas_estimated = \
+        fields.BooleanField('(tick for yes) Is the value based on estimated use?',
+                            validators=[Optional()])
+    annual_gas_start_date = \
+        fields.DateField('Start date (dd/mm/yyyy)',
+                         format='%d/%m/%Y',
+                         validators=[Optional(),
+                         validate_date],
+                         widget=DatePickerWidget())
+    annual_gas_end_date = \
+        fields.DateField('End date (dd/mm/yyyy)',
+                         format='%d/%m/%Y',
+                         validators=[Optional(),
+                         validate_date],
+                         widget=DatePickerWidget())
+    annual_elec_kwh = \
+        fields.DecimalField('Annual consumption (kWh',
+                            validators=[Optional()])
+    annual_elec_estimated = \
+        fields.BooleanField('(tick for yes) Is the value based on estimated use?',
+                            validators=[Optional()])
+    annual_elec_start_date = \
+        fields.DateField('Start date (dd/mm/yyyy)',
+                         format='%d/%m/%Y',
+                         validators=[Optional(),
+                         validate_date],
+                         widget=DatePickerWidget())
+    annual_elec_end_date = \
+        fields.DateField('End date (dd/mm/yyyy)',
+                         format='%d/%m/%Y',
+                         validators=[Optional(),
+                         validate_date],
+                         widget=DatePickerWidget())
+    annual_solid_spend = \
+        fields.DecimalField('Annual spend on solid fuels (&pound;)',
+                            validators=[Optional()])
+    renewable_contribution_kwh = \
+        fields.DecimalField('Annual contribution from renewable generation (kWh)',
+                            validators=[Optional()])
     notes = \
           fields.TextAreaField('Notes (any other relevant information)',
                                validators=[Optional()])
@@ -486,38 +486,38 @@ class OneMonthFeedbackForm(FlaskForm):
     address = fields.StringField('Address*',
                                  validators=[DataRequired(),
                                              Length(max=100)])
-    #annual_gas_kwh = fields.DecimalField('Annual consumption (kWh)',
-    #                                     validators=[Optional()])
-    #annual_gas_estimated = fields.BooleanField('(tick for yes) Is the value based on estimated use?',
-    #                                           validators=[Optional()])
-    #annual_gas_start_date = fields.DateField('Start date (dd/mm/yyyy)',
-    #                                         format='%d/%m/%Y',
-    #                                         validators=[Optional(),
-    #                                         validate_date],
-    #                                         widget=DatePickerWidget())
-    #annual_gas_end_date = fields.DateField('End date (dd/mm/yyyy)',
-    #                                       format='%d/%m/%Y',
-    #                                       validators=[Optional(),
-    #                                       validate_date],
-    #                                       widget=DatePickerWidget())
-    #annual_elec_kwh = fields.DecimalField('Annual consumption (kWh)',
-    #                                      validators=[Optional()])
-    #annual_elec_estimated = fields.BooleanField('(tick for yes) Is the value based on estimated use?',
-    #                                            validators=[Optional()])
-    #annual_elec_start_date = fields.DateField('Start date (dd/mm/yyyy)',
-    #                                          format='%d/%m/%Y',
-    #                                          validators=[Optional(),
-    #                                          validate_date],
-    #                                          widget=DatePickerWidget())
-    #annual_elec_end_date = fields.DateField('End date (dd/mm/yyyy)',
-    #                                        format='%d/%m/%Y',
-    #                                        validators=[Optional(),
-    #                                        validate_date],
-    #                                        widget=DatePickerWidget())
-    #annual_solid_spend = fields.DecimalField('Annual spend on solid fuels (&pound;)',
-    #                                         validators=[Optional()])
-    #renewable_contrib_kwh = fields.DecimalField('Annual contribution from renewable generation (kWh)',
-    #                                            validators=[Optional()])
+    annual_gas_kwh = fields.DecimalField('Annual consumption (kWh)',
+                                         validators=[Optional()])
+    annual_gas_estimated = fields.BooleanField('(tick for yes) Is the value based on estimated use?',
+                                               validators=[Optional()])
+    annual_gas_start_date = fields.DateField('Start date (dd/mm/yyyy)',
+                                             format='%d/%m/%Y',
+                                             validators=[Optional(),
+                                             validate_date],
+                                             widget=DatePickerWidget())
+    annual_gas_end_date = fields.DateField('End date (dd/mm/yyyy)',
+                                           format='%d/%m/%Y',
+                                           validators=[Optional(),
+                                           validate_date],
+                                           widget=DatePickerWidget())
+    annual_elec_kwh = fields.DecimalField('Annual consumption (kWh)',
+                                          validators=[Optional()])
+    annual_elec_estimated = fields.BooleanField('(tick for yes) Is the value based on estimated use?',
+                                                validators=[Optional()])
+    annual_elec_start_date = fields.DateField('Start date (dd/mm/yyyy)',
+                                              format='%d/%m/%Y',
+                                              validators=[Optional(),
+                                              validate_date],
+                                              widget=DatePickerWidget())
+    annual_elec_end_date = fields.DateField('End date (dd/mm/yyyy)',
+                                            format='%d/%m/%Y',
+                                            validators=[Optional(),
+                                            validate_date],
+                                            widget=DatePickerWidget())
+    annual_solid_spend = fields.DecimalField('Annual spend on solid fuels (&pound;)',
+                                             validators=[Optional()])
+    renewable_contrib_kwh = fields.DecimalField('Annual contribution from renewable generation (kWh)',
+                                                validators=[Optional()])
     any_completed_actions = fields.BooleanField('(tick for yes) Have you already taken action to improve the thermal efficiency of your home?',
                                                 validators=[Optional()])
     completed_actions = fields.TextAreaField('If so, then what have you done? And have you done the work yourself or has it been done professionally?',
@@ -580,38 +580,38 @@ class OneYearFeedbackForm(FlaskForm):
     address = fields.StringField('Address*',
                                  validators=[DataRequired(),
                                              Length(max=100)])
-    #annual_gas_kwh = fields.DecimalField('Annual consumption (kWh)',
-    #                                     validators=[Optional()])
-    #annual_gas_estimated = fields.BooleanField('(tick for yes) Is the value based on estimated use?',
-    #                                           validators=[Optional()])
-    #annual_gas_start_date = fields.DateField('Start date (dd/mm/yyyy)',
-    #                                         format='%d/%m/%Y',
-    #                                         validators=[Optional(),
-    #                                         validate_date],
-    #                                         widget=DatePickerWidget())
-    #annual_gas_end_date = fields.DateField('End date (dd/mm/yyyy)',
-    #                                       format='%d/%m/%Y',
-    #                                       validators=[Optional(),
-    #                                       validate_date],
-    #                                       widget=DatePickerWidget())
-    #annual_elec_kwh = fields.DecimalField('Annual consumption (kWh)',
-    #                                      validators=[Optional()])
-    #annual_elec_estimated = fields.BooleanField('(tick for yes) Is the value based on estimated use?',
-    #                                            validators=[Optional()])
-    #annual_elec_start_date = fields.DateField('Start date (dd/mm/yyyy)',
-    #                                          format='%d/%m/%Y',
-    #                                          validators=[Optional(),
-    #                                          validate_date],
-    #                                          widget=DatePickerWidget())
-    #annual_elec_end_date = fields.DateField('End date (dd/mm/yyyy)',
-    #                                        format='%d/%m/%Y',
-    #                                        validators=[Optional(),
-    #                                        validate_date],
-    #                                        widget=DatePickerWidget())
-    #annual_solid_spend = fields.DecimalField('Annual spend on solid fuels (&pound;)',
-    #                                         validators=[Optional()])
-    #renewable_contrib_kwh = fields.DecimalField('Annual contribution from renewable generation (kWh)',
-    #                                            validators=[Optional()])
+    annual_gas_kwh = fields.DecimalField('Annual consumption (kWh)',
+                                         validators=[Optional()])
+    annual_gas_estimated = fields.BooleanField('(tick for yes) Is the value based on estimated use?',
+                                               validators=[Optional()])
+    annual_gas_start_date = fields.DateField('Start date (dd/mm/yyyy)',
+                                             format='%d/%m/%Y',
+                                             validators=[Optional(),
+                                             validate_date],
+                                             widget=DatePickerWidget())
+    annual_gas_end_date = fields.DateField('End date (dd/mm/yyyy)',
+                                           format='%d/%m/%Y',
+                                           validators=[Optional(),
+                                           validate_date],
+                                           widget=DatePickerWidget())
+    annual_elec_kwh = fields.DecimalField('Annual consumption (kWh)',
+                                          validators=[Optional()])
+    annual_elec_estimated = fields.BooleanField('(tick for yes) Is the value based on estimated use?',
+                                                validators=[Optional()])
+    annual_elec_start_date = fields.DateField('Start date (dd/mm/yyyy)',
+                                              format='%d/%m/%Y',
+                                              validators=[Optional(),
+                                              validate_date],
+                                              widget=DatePickerWidget())
+    annual_elec_end_date = fields.DateField('End date (dd/mm/yyyy)',
+                                            format='%d/%m/%Y',
+                                            validators=[Optional(),
+                                            validate_date],
+                                            widget=DatePickerWidget())
+    annual_solid_spend = fields.DecimalField('Annual spend on solid fuels (&pound;)',
+                                             validators=[Optional()])
+    renewable_contrib_kwh = fields.DecimalField('Annual contribution from renewable generation (kWh)',
+                                                validators=[Optional()])
     any_completed_actions = fields.BooleanField('(tick for yes) Have you taken action since your survey ' \
                                                 +'to improve the thermal efficiency of your home?*',
                                                 validators=[Optional()])
