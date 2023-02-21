@@ -28,9 +28,10 @@ training for Heatview® surveyors has also been specifically developed based on
 
 ## How it works
 
-We perform surveys in the winter so that when a house is heated there is a
-large difference between the temperature inside the house compared to the
-outside.
+We can perform surveys when there is an adequate difference in temperature (8
+degrees C) between the inside the house and the outside. So our surveys in the
+South begin in autumn and continue through to Spring. Further North our survey
+season is longer. 
 
 A surveyor will come at the prearranged time. Firstly, a large extractor
 fan is fitted to an external door and run continuously to reduce the pressure
