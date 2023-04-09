@@ -39,7 +39,6 @@ Our current member organisations:
 
 - [Ambition Lawrence Weston](https://www.ambitionlw.org/)
 - [Bedminster Energy Group](http://www.bedminsterenergy.org.uk/)
-- [Bishopston, Cotham and Redland Energy Group](https://www.facebook.com/BCR.EnergyGroup/)
 - [CHAS (Bristol Housing Advice Service)](http://www.chasbristol.co.uk/)
 - [Re:Work](http://www.knowlewest.co.uk/directory/rework/)
 - [SUSWoT (Sustainable Westbury on Trym)](http://www.suswot.org.uk/)

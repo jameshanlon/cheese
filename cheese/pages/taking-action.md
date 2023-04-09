@@ -18,15 +18,6 @@ development, and more content will be added in due course!)
     * [Love your old home](https://www.cse.org.uk/advice/advice-and-support/older-homes), making older homes warmer and cheaper to heat.
     * [Love your old home workbook (PDF)](https://www.cse.org.uk/downloads/file/love_your_old_home_workbook_standard.pdf).
 
-- [Bristol Green Doors](https://www.bristolgreendoors.org/) are now led by the
-  Centre for Sustainable Energy (CSE) as part of the [Futureproof
-  project](https://www.cse.org.uk/projects/view/1357) and their website has
-  lots of useful information, such as:
-
-    * [Details on individual retrofit measures](https://www.bristolgreendoors.org/research/individual-measures).
-    * [Numerous case studies of retrofit projects](https://www.bristolgreendoors.org/research/installers-suppliers-trades) (click 'Search our stories')
-    * [A trades and trade directory](https://www.bristolgreendoors.org/research/installers-suppliers-trades) (click 'Search our stories')
-
 - [DIY Doctor projects](http://www.diydoctor.org.uk/projects.htm) provide
   detailed guides for many different DIY projects around the home. There is
   also a collection of video guides.
@@ -77,8 +68,7 @@ development, and more content will be added in due course!)
  ([PDF](https://www.theccc.org.uk/wp-content/uploads/2013/12/Review-of-potential-for-carbon-savings-from-residential-energy-efficiency-Final-report-A-160114.pdf)).
 
 - BEIS report on energy consumption in the UK
- ([HTML](https://data.gov.uk/dataset/26afb14b-be9a-4722-916e-10655d0edc38/energy-consumption-in-the-uk),
-  [PDF](https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/729317/Energy_Consumption_in_the_UK__ECUK__2018.pdf))
+ ([HTML](https://data.gov.uk/dataset/26afb14b-be9a-4722-916e-10655d0edc38/energy-consumption-in-the-uk)).
 
 - The Economics of Low Carbon Cities: A Mini-Stern Review for the City of Bristol
  ([PDF](http://bristol.ac.uk/cabot/media/documents/bristol-low-carbon-cities-report.pdf)).
