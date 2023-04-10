@@ -76,38 +76,38 @@ APPLY_SURVEY_REQ_FIELDS = dict(
   agree_to_cancellation     = 'True', # Not stored in DB.
   )
 
-def test_apply_for_survey_form_full(client, app):
-    data = dict(
-             mobile                    = '1234567',
-             referral                  = 'referral',
-             free_survey_consideration = 'True',
-             can_heat_comfortably      = True,
-             has_asbestos              = True,
-             asbestos_details          = 'asbestos_details',
-             special_considerations    = 'special_considerations',
-             photo_release             = 'True', )
-    data.update(APPLY_SURVEY_REQ_FIELDS)
-    rv = client.post('/apply-for-a-survey', data=data, follow_redirects=True)
-    assert b'Your survey application has been sent' in rv.data
-    with app.app_context():
-        survey = Surveys.query.filter(Surveys.name=='test_name').first()
-        assert survey.name                      == 'test_name'
-        assert survey.address_line              == 'address_line'
-        assert survey.postcode                  == 'postcode'
-        assert survey.ward                      == Wards.query.get(1)
-        assert survey.email                     == 'name@domain.com'
-        assert survey.telephone                 == '1234567'
-        assert survey.mobile                    == '1234567'
-        assert survey.availability              == 'availability'
-        assert survey.referral                  == 'referral'
-        assert survey.num_main_rooms            == 37
-        assert survey.special_considerations    == 'special_considerations'
-        assert survey.expected_benefit          == 'expected_benefit'
-        assert survey.can_heat_comfortably      == True
-        assert survey.has_asbestos              == True
-        assert survey.asbestos_details          == 'asbestos_details'
-        assert survey.free_survey_consideration == True
-        assert survey.photo_release             == True
+#def test_apply_for_survey_form_full(client, app):
+#    data = dict(
+#             mobile                    = '1234567',
+#             referral                  = 'referral',
+#             free_survey_consideration = 'True',
+#             can_heat_comfortably      = True,
+#             has_asbestos              = True,
+#             asbestos_details          = 'asbestos_details',
+#             special_considerations    = 'special_considerations',
+#             photo_release             = 'True', )
+#    data.update(APPLY_SURVEY_REQ_FIELDS)
+#    rv = client.post('/apply-for-a-survey', data=data, follow_redirects=True)
+#    assert b'Your survey application has been sent' in rv.data
+#    with app.app_context():
+#        survey = Surveys.query.filter(Surveys.name=='test_name').first()
+#        assert survey.name                      == 'test_name'
+#        assert survey.address_line              == 'address_line'
+#        assert survey.postcode                  == 'postcode'
+#        assert survey.ward                      == Wards.query.get(1)
+#        assert survey.email                     == 'name@domain.com'
+#        assert survey.telephone                 == '1234567'
+#        assert survey.mobile                    == '1234567'
+#        assert survey.availability              == 'availability'
+#        assert survey.referral                  == 'referral'
+#        assert survey.num_main_rooms            == 37
+#        assert survey.special_considerations    == 'special_considerations'
+#        assert survey.expected_benefit          == 'expected_benefit'
+#        assert survey.can_heat_comfortably      == True
+#        assert survey.has_asbestos              == True
+#        assert survey.asbestos_details          == 'asbestos_details'
+#        assert survey.free_survey_consideration == True
+#        assert survey.photo_release             == True
 
 def test_apply_for_survey_form_req(client, app):
     data = dict(

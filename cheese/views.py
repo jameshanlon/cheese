@@ -1073,53 +1073,53 @@ def surveys_completed():
 # Public pages.
 #===-----------------------------------------------------------------------===#
 
-@bp.route('/apply-for-a-survey', methods=['GET', 'POST'])
-def apply_for_a_survey():
-    form = create_apply_survey_form(db.session, request.form)
-    today = datetime.date.today()
-    notice = ''
-    if (today.month > 3 and today.month < 9): # Display notice April to August
-      notice = """<div class="lead">The {}/{} surveying season has now
-      finished, but you can still apply for a survey next winter, between
-      November {} and April {}.</div> <p>We anticipate a high demand and
-      recommend that you book now which will also secure our current prices
-      (they may increase in the autumn). Please be aware that if October is
-      warm, we may have to postpone your booking as we need an 8 degree C
-      temperature difference inside-outside.</p>""".format(today.year-1, today.year, today.year, today.year+1)
-    if request.method=='POST':
-        if helpers.validate_form_on_submit(form):
-            # Add to db.
-            # Note that the lead_status_id should not be NULL, otherwise this
-            # will prevent the record from being displayed in the summary page.
-            survey = Surveys()
-            form.populate_obj(survey)
-            survey.signed_up_via = 'The CHEESE website'
-            survey.lead_status_id = lead_status_id('Possible')
-            survey.phase = get_survey_phase(datetime.datetime.utcnow().date())
-            db.session.add(survey)
-            db.session.commit()
-            # Send email to applicant.
-            subject = 'Your C.H.E.E.S.E. survey application has been submitted successfully'
-            message = render_template('emails/survey-application.html',
-                                      name=survey.name)
-            mail.send(Message(subject=subject,
-                              html=message,
-                              recipients=[form.email.data]))
-            # Send watchers email.
-            subject = '[CHEESE] New request for a survey'
-            message = 'From '+survey.name+', '+survey.address_line \
-                      + ' at '+str(datetime.datetime.today())+': ' \
-                      + current_app.config['URL_BASE']+str(url_for('surveys.details_view', id=survey.id))
-            mail.send(Message(subject=subject,
-                              body=message,
-                              recipients=current_app.config['WATCHERS']))
-            # Success page.
-            page = pages.get('application-successful')
-            return render_template('page.html', page=page)
-        else:
-            flash('There were problems with your form.', 'error')
-    return render_template('apply-for-a-survey.html', form=form,
-            notice=Markup(notice))
+#@bp.route('/apply-for-a-survey', methods=['GET', 'POST'])
+#def apply_for_a_survey():
+#    form = create_apply_survey_form(db.session, request.form)
+#    today = datetime.date.today()
+#    notice = ''
+#    if (today.month > 3 and today.month < 9): # Display notice April to August
+#      notice = """<div class="lead">The {}/{} surveying season has now
+#      finished, but you can still apply for a survey next winter, between
+#      November {} and April {}.</div> <p>We anticipate a high demand and
+#      recommend that you book now which will also secure our current prices
+#      (they may increase in the autumn). Please be aware that if October is
+#      warm, we may have to postpone your booking as we need an 8 degree C
+#      temperature difference inside-outside.</p>""".format(today.year-1, today.year, today.year, today.year+1)
+#    if request.method=='POST':
+#        if helpers.validate_form_on_submit(form):
+#            # Add to db.
+#            # Note that the lead_status_id should not be NULL, otherwise this
+#            # will prevent the record from being displayed in the summary page.
+#            survey = Surveys()
+#            form.populate_obj(survey)
+#            survey.signed_up_via = 'The CHEESE website'
+#            survey.lead_status_id = lead_status_id('Possible')
+#            survey.phase = get_survey_phase(datetime.datetime.utcnow().date())
+#            db.session.add(survey)
+#            db.session.commit()
+#            # Send email to applicant.
+#            subject = 'Your C.H.E.E.S.E. survey application has been submitted successfully'
+#            message = render_template('emails/survey-application.html',
+#                                      name=survey.name)
+#            mail.send(Message(subject=subject,
+#                              html=message,
+#                              recipients=[form.email.data]))
+#            # Send watchers email.
+#            subject = '[CHEESE] New request for a survey'
+#            message = 'From '+survey.name+', '+survey.address_line \
+#                      + ' at '+str(datetime.datetime.today())+': ' \
+#                      + current_app.config['URL_BASE']+str(url_for('surveys.details_view', id=survey.id))
+#            mail.send(Message(subject=subject,
+#                              body=message,
+#                              recipients=current_app.config['WATCHERS']))
+#            # Success page.
+#            page = pages.get('application-successful')
+#            return render_template('page.html', page=page)
+#        else:
+#            flash('There were problems with your form.', 'error')
+#    return render_template('apply-for-a-survey.html', form=form,
+#            notice=Markup(notice))
 
 
 @bp.route('/one-month-feedback', methods=['GET', 'POST'])
