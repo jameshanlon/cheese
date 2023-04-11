@@ -1280,6 +1280,7 @@ def flatpage_template():
     return render_template(template, page=page)
 
 home_surveys           = bp.route('/home-surveys')(flatpage_template)
+pre_surevey_guide      = bp.route('/pre-survey-guide')(flatpage_template)
 cheese_box             = bp.route('/cheese-box')(flatpage_template)
 overview               = bp.route('/overview')(flatpage_template)
 documents              = bp.route('/documents')(flatpage_template)
