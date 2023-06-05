@@ -668,8 +668,12 @@ class MembershipForm(FlaskForm):
                                description='This will act as the primary point of contact',
                                validators=[DataRequired(),
                                            Length(max=100)])
-    telephone = fields.StringField('Contact telephone number*',
-                                   validators=[DataRequired(),
+    telephone = fields.StringField('Contact telephpone number (<strong>only if you wish to be a voting member</strong>)',
+                                   description=('Being a voting member means you '
+                                   'can vote at AGMs on business decisions and '
+                                   'means you get a direct say in how The CHEESE '
+                                   'Project operates.'),
+                                   validators=[Optional(),
                                                Length(max=20)])
     representative_1_name = fields.StringField('Name',
                                                validators=[Optional(),
