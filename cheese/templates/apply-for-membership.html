@@ -7,6 +7,7 @@ Apply for membership - {{config.PAGE_TITLE}}
 
 <h1>Join the C.H.E.E.S.E. Project CIC</h1>
 
+{#
 <div id="one-month-feedback" style="padding-top:1.2em">
   <form method="POST" action="" enctype="multipart/form-data">
     <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
@@ -38,5 +39,6 @@ Apply for membership - {{config.PAGE_TITLE}}
     <button class="btn" type="submit">Submit my application</button>
   </form>
 </div>
+#}
 
 {% endblock %}

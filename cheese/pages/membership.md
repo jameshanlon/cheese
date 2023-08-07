@@ -26,11 +26,10 @@ As a member you can:
    successful referrals (20% for 10, 30% for 15 etc).
 
 If you are interested in becoming a member of the CHEESE Project then please
-complete the [membership application form](/apply-for-membership). The
-application form is also available to print in [PDF]({{url_for('.assets',
+complete the membership application form in [PDF]({{url_for('.assets',
 filename='files/CHEESE-membership-form.pdf')}}) or [DOCX]({{url_for('.assets',
-filename='files/CHEESE-membership-form.docx')}}) formats. Please return scans
-of completed paper forms completed to us by email to
+filename='files/CHEESE-membership-form.docx')}}) formats and return completed
+electronic or scanned copies to us at
 [info@cheeseproject.co.uk](mailto:info@cheeseproject.co.uk).
 
 ## Current members
