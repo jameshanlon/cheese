@@ -19,6 +19,15 @@ Update Python packages:
 $ pip install --upgrade -r flask/requirements.txt
 ```
 
+### Setup on Ubuntu 20.04
+
+```
+$ sudo apt-get install mysql-server mysql-client libmysqlclient-dev
+$ virtualenv env
+$ python -m pip install -U --force-reinstall pip
+$ pip install -r flask/requirements.txt
+```
+
 ### Setup on OSX
 
 ```
@@ -103,6 +112,16 @@ fix on [Stack Overflow][1] and [Flask documentation][2].
 
 [1]: https://stackoverflow.com/questions/51506416/mariadb-server-times-out-client-connection-after-600-seconds
 [2]: http://flask-sqlalchemy.pocoo.org/2.3/config/#timeouts
+
+### Restore database from a backup
+
+```
+$ docker exec -it <cheese-flask> bash
+$ mariadb
+...
+> use cheese
+> source /opt/www/<backup-file.sql>
+```
 
 ### Run the development server
 
