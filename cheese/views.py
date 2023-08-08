@@ -378,7 +378,7 @@ class CheeseAdminIndexView(flask_admin.AdminIndexView):
         # Always default to the current phase.
         request_phase = request.args.get('phase')
         #active_phase = current_app.config['NUM_PHASES'] if not request_phase else request_phase
-        active_phase = None if not request_phase else request_phase
+        active_phase = 0 if not request_phase else request_phase
         active_filters = request.args.getlist('filter')
         surveys = self.filter_query(active_phase, active_filters).all()
         # Handle sorting by column.
