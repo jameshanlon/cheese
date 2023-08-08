@@ -246,3 +246,38 @@ Resize a set of images using ImageMagick to a fixed width (only shrink), eg:
 $ convert '*.{jpg,JPG}[800x>]' -auto-orient <album-name>-%0d.jpg
 ```
 See http://www.imagemagick.org/script/command-line-processing.php#geometry
+
+## Archiving the website
+
+Using HTTrack.
+
+Export cookies from a logged-in session.
+Copy cookie data into cookies.txt in root directory of mirror.
+
+Additional link exclusions:
+```
+-*/sign-out*
+-*/submit*
+-*/upload*
+-*/change-password*
+-*admin/surveys/*
+-*admin/results/*
+-*admin/monthfeedback/*
+-*admin/yearfeedback/*
+-*admin/presurveydetails/*
+-*admin/postsurveydetails/*
+-*admin/member/*
+-*admin/thermalimage/*
+-*admin/inventory/*
+-*admin/kits/*
+-*delete*
+-*edit*
+-*export*
+-*filter*
+-*invite*
+-*keyword*
+-*new*
+-*sort*
+-*set_fee_paid*
+-*set_box_collected*
+```
